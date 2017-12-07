@@ -1,0 +1,81 @@
+Shadow Framework 0.0.1.0 :: Ethical Hacking Toolkit Framework
+Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
+================
+Shadow Framework is an Ethical Hacking Toolkit Framework.
+It provides default modules that you can use, written
+in C, BASH, Python, etc. You can also provide your own
+module that others can use. Shadow Framework is the main
+project of Shadow Team.
+
+What's new?
+------------------
+1.Initial Release <Unreleased>
+      -Initial release of Shadow Framework.
+
+Full Feature List
+------------------------
+-Pending...
+
+TO-DO List
+------------------------
+1.Main Menu
+      -Code the main menu of Shadow Framework in C.
+
+2.Module support
+      -Find an algorithm that let Shadow Framework use modules.
+
+3.Framework
+      -Code the algorithm.
+
+4.Modules
+      -Code the default modules.
+
+License and Copying
+------------------------
+
+-This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/.
+
+-See LICENSE file.
+
+Credits
+------------------------
+Project Lead :: Catayao56
+Project co-lead :: Sh4d0wHaX0R
+
+
+Requirements
+------------------------
+1.Currently, nothing. Because we haven't doing anything yet.
+
+
+Installing & Running
+------------------------
+1.Installing
+      -Compile the source files.
+           a.Termux Terminal Emulator on Android or Linux
+	         
+		 apt update && apt upgrade
+		 apt install clang
+		 cc -o ShadowFramework *.c
+                 chmod +x ShadowFramework
+		 
+	   b.OPTIONAL
+	         
+		 If desired, copy ShadowFramework to PATH.
+
+2.Running
+      -Run the executable file.
+           a.Termux Terminal Emulator on Android or Linux
+	   
+	         ./ShadowFramework
