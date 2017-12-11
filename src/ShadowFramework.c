@@ -24,5 +24,6 @@ int main(void)
     clr();
     logo();
     printf("Ethical Hacking Toolkit Framework\n");
+    //DEV0003: Find for an algorithm and continue this...
     return 0;
 }
