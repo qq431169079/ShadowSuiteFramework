@@ -9,17 +9,19 @@ project of Shadow Team.
 
 What's new?
 ------------------
-1.Initial Release <Unreleased>
+1.Initial Release <Dec. 7, 2017>
       -Initial release of Shadow Framework.
 
 Full Feature List
 ------------------------
--Pending...
+-Reconnaissance Toolkit <Pending...>
+-Scanning Toolkit <Pending...>
+-More will come soon.
 
 TO-DO List
 ------------------------
 1.Main Menu
-      -Code the main menu of Shadow Framework in C.
+      -Code the main menu of Shadow Framework in ANSI C.
 
 2.Module support
       -Find an algorithm that let Shadow Framework use modules.
@@ -30,6 +32,9 @@ TO-DO List
 4.Modules
       -Code the default modules.
 
+5.Custom Module Support
+      -Find an algorithm so that users can import their own modules.
+      
 License and Copying
 ------------------------
 
@@ -62,7 +67,7 @@ Requirements
 Installing & Running
 ------------------------
 1.Installing
-      -Compile the source files.
+      -Compile the source files. NOTE: CURRENTLY ON TERMUX ONLY!
            a.Termux Terminal Emulator on Android or Linux
 	         
 		 apt update && apt upgrade
