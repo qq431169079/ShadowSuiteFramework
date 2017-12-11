@@ -14,7 +14,7 @@ README for Developers
            
 	   -Comment tags definitions and examples
 
-	        DEV0001 : Error Tag
+	        DEV0001 : Requires Attention Tag
 		DEV0002 : Frequently Update Tag
 		DEV0003 : Where You Left Your Code (WYLYC) Tag
 		DEV0004 : Under Construction Tag
