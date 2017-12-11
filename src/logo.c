@@ -20,5 +20,6 @@
 
 void logo(void)
 {
+    //DEV0001: Change this ASAP!
     system("figlet ShadowConsole");
 }
