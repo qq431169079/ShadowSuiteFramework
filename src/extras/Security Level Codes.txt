@@ -1,0 +1,8 @@
+-=+ SECURITY LEVEL CODES +=-
+
+Security Level: 0 (Public)
+Security Level: 1 (Slightly Confidential)
+Security Level: 2 (Almost Confidential)
+Security Level: 3 (Confidential)
+Security Level: 4 (Secret)
+Security Level: 5 (Top Secret)

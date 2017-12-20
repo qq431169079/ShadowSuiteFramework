@@ -1,0 +1,8 @@
+-=+ SECURITY LEVEL CODES (for profiles) +=-
+
+Security Level: 0 (Short Time Masquerading; Carelessness allowed.)
+Security Level: 1 (Semi-Long Time Masquerading; Carelessness slightly prohibited.)
+Security Level: 2 (Middle-Time Masquerading; Carelessness nearly prohibited.)
+Security Level: 3 (Semi-Short Time Masquerading; Carelessness slightly allowed.)
+Security Level: 4 (Long Time Masquerading; Looks like a real account)
+Security Level: 5 (Real Profile/Identity; Carelessness Prohibited.)
