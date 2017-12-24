@@ -1,39 +1,34 @@
-Shadow Framework 0.0.1.1 :: Ethical Hacking Toolkit Framework
+Shadow Suite 0.0.2.0 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
-Shadow Framework is an Ethical Hacking Toolkit Framework.
-It provides default modules that you can use, written
-in C, BASH, Python, etc. You can also provide your own
-module that others can use. Shadow Framework is the main
-project of Shadow Team.
+Shadow Suite is an Ethical Hacking Toolkit.
+It provides many tools that you can use, written
+in C, BASH, Python, etc. Tools that you need for
+reconnaissance, scanning, exploitation, encryption,
+password cracking, and more! Shadow Framework is
+the main project of Shadow Team.
 
 What's new?
 ------------------
-1.Initial Release <Dec. 7, 2017>
-      -Initial release of Shadow Framework.
+1.New Name, new purpose, HAPPY NEW YEAR! <Jan. 1, 2017>
+      -It's name is no longer describes its real purpose.
+       It's no longer a framework. It's now a toolkit.
+       Shadow Suite version 0.0.2.0! Happy new year!
 
 Full Feature List
 ------------------------
 -Reconnaissance Toolkit <Pending...>
--Scanning Toolkit <Pending...>
--More will come soon.
 
 TO-DO List
 ------------------------
 1.Main Menu
       -Code the main menu of Shadow Framework in ANSI C.
 
-2.Module support
-      -Find an algorithm that let Shadow Framework use modules.
+2.Program navigation
+      -Code each menu so that the user can navigate properly.
 
-3.Framework
-      -Code the algorithm.
-
-4.Modules
-      -Code the default modules.
-
-5.Custom Module Support
-      -Find an algorithm so that users can import their own modules.
+3.Toolkits
+      -Include toolkits from different sources.
       
 License and Copying
 ------------------------
@@ -61,7 +56,8 @@ Project co-lead :: Sh4d0wHaX0R
 
 Requirements
 ------------------------
-1.Currently, nothing. Because we haven't doing anything yet.
+1.C compiler
+2.Dependencies can be installed automatically in the program.
 
 
 Installing & Running
