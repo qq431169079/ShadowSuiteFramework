@@ -116,6 +116,7 @@ void infoga(void)
 void redhawk(void)
 {
     clr();
+    prn_logo();
     system("cd $PWD/sections/reconnaissance/redhawk/ && php rhawk.php");
     system("cd ../../..");
 }
@@ -123,6 +124,7 @@ void redhawk(void)
 void set(void)
 {
     clr();
+    prn_logo();
     system("cd $PWD/sections/reconnaissance/set/ && python2 set");
     system("cd ../../..");
 }
@@ -130,6 +132,7 @@ void set(void)
 void urlcrazy(void)
 {
     clr();
+    prn_logo();
     system("cd $PWD/sections/reconnaissance/urlcrazy/ && chmod +x urlcrazy-wrapper && ./urlcrazy-wrapper");
     system("cd ../../..");
 }
@@ -137,7 +140,25 @@ void urlcrazy(void)
 void weeman(void)
 {
     clr();
+    prn_logo();
     system("cd $PWD/sections/reconnaissance/weeman/ && python2 weeman.py");
+    system("cd ../../..");
+}
+
+void dnsmap(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/sections/reconnaissance/dnsmap/ && python2 dnsmap.py");
+    system("cd ../../..");
+    readline();
+}
+
+void automater(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/sections/reconnaissance/automater/ && bash automater-wrapper");
     system("cd ../../..");
 }
 
@@ -148,7 +169,7 @@ void reconSection(void)
     clr();
     prn_logo();
     printf("\n==RECONNAISSACE SECTION==\n\n---------------------------------\n\n");
-    printf("\n[1] Infoga\n[2] Red Hawk\n[3] Social Engineer Toolkit [!] ROOT REQUIRED\n[4] URLCrazy\n[5] Weeman\n\n[99] Back\n");
+    printf("\n[1] Infoga\n[2] Red Hawk\n[3] Social Engineer Toolkit [!] ROOT REQUIRED\n[4] URLCrazy\n[5] Weeman\n[6] DNSMap\n[7] Automater\n\n[99] Back\n");
     scanf("\n%d", &reconSectionInput);
     switch (reconSectionInput)
     {
@@ -170,6 +191,14 @@ void reconSection(void)
 
 	case 5:
 		weeman();
+		break;
+
+	case 6:
+		dnsmap();
+		break;
+
+	case 7:
+		automater();
 		break;
 
 	case 99:
