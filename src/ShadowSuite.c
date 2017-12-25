@@ -107,7 +107,11 @@ void prn_logo(void)
 void infoga(void)
 {
     clr();
-    system("cd $PWD/sections/reconnaissance/infoga/ && python2 infoga.py");
+    prn_logo();
+    printf("Enter the domain to search:");
+    system("read TARGET");
+
+    system("cd $PWD/sections/reconnaissance/infoga/ && python2 infoga.py -t $TARGET -s all -v");
     system("cd ../../..");
 }
 
