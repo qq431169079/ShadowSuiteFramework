@@ -5,7 +5,7 @@ Shadow Suite is an Ethical Hacking Toolkit.
 It provides many tools that you can use, written
 in C, BASH, Python, etc. Tools that you need for
 reconnaissance, scanning, exploitation, encryption,
-password cracking, and more! Shadow Framework is
+password cracking, and more! Shadow Suite is
 the main project of Shadow Team.
 
 What's new?
@@ -15,14 +15,29 @@ What's new?
        It's no longer a framework. It's now a toolkit.
        Shadow Suite version 0.0.2.0! Happy new year!
 
+2.Reconnaissance Tools
+      -Now, we have our recon toolkit!
+
 Full Feature List
 ------------------------
--Reconnaissance Toolkit <Pending...>
+-Reconnaissance Toolkit
+     Infoga: Email Information Gathering tool
+     Red Hawk: Website Information Gathering tool
+     Social Engineer Toolkit: Social Engineering tool [i] ROOT REQUIRED
+     URLCrazy: Study domainname typos and URL Hijacking
+     Weeman: HTTP Server for phishing.
+     DNSMap: discover the target company's IP netblocks, domain names, phone numbers, etc.
+     Automater: Automate the OSINT analysis of IP Addresses.
+     Angry Fuzz3r: collection of tools for pentesting to gather information and discover vulnerabilities of the targets based on Fuzzedb
+     Metagoofil: metadata extractor
+     The Harvester: tool for gathering target details.
+
+-Scanning Toolkit <Pending...>
 
 TO-DO List
 ------------------------
 1.Main Menu
-      -Code the main menu of Shadow Framework in ANSI C.
+      -Code the main menu of Shadow Suite in ANSI C.
 
 2.Program navigation
       -Code each menu so that the user can navigate properly.

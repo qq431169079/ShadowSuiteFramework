@@ -1,0 +1,30 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo ""
+echo "Remote Target"
+echo ""
+echo "Domain to search:"
+read TARGET
+echo ""
+echo "Filetypes to download (pdf,doc,xls,ppt,odp,ods,docx,xlsx,pptx):"
+read FILETYPES
+echo ""
+echo "Set the limit of results to search (default: 200):"
+read LIMIT
+echo ""
+echo "Set the limit of files to download:"
+echo "(Type '-n [LIMIT]' to enable; Otherwise, press enter.)"
+read LIMITDL
+echo ""
+echo "Output file:"
+read OUTPUT
+echo ""
+echo "Running..."
+echo ""
+python2 metagoofil.py -d $TARGET -t $FILETYPES -l $LIMIT $LIMITDL -o $PWD -f $OUTPUT.html
+echo ""
+echo "Running... Done!"
+echo ""
+less $PWD/$OUTPUT.html
+read waitforexit
+exit 0

@@ -1,0 +1,29 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo ""
+echo "Target URL (e.g. \"http://www.target.com/page.php?id=1\")"
+read TARGET
+echo ""
+echo "POST data (e.g. \"query=test\")"
+read POST
+echo ""
+echo "HTTP Cookie header value"
+read COOKIE
+echo ""
+echo "HTTP User-Agent header value"
+read UA
+echo ""
+echo "HTTP Referer header value"
+read REFERER
+echo ""
+echo "HTTP proxy address (e.g. \"http://127.0.0.1:8080\")"
+read PROXY
+echo ""
+echo "Running..."
+echo ""
+python2 dsss.py --url $TARGET --data $POST --cookie $COOKIE --user-agent $UA --referer $REFERER --proxy $PROXY
+echo ""
+echo "Running... Done!"
+echo ""
+read waitforexit
+exit 0

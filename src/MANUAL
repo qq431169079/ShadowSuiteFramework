@@ -1,0 +1,39 @@
+SHADOW SUITE :: ETHICAL HACKING TOOLKIT
+
+I.About Shadow Suite
+
+	Shadow suite is a toolkit for almost any kind of ethical hacking.
+	Shadow Suite is an Ethical Hacking Toolkit. It provides many
+	tools that you can use, written in C, BASH, Python, etc. Tools
+	that you need for reconnaissance, scanning, exploitation,
+	encryption, password cracking, and more! Shadow Framework is
+	the main project of Shadow Team.
+
+II.License
+
+	Shadow Suite is licensed under GNU General Public License version 3.
+	See 'LICENSE' for details.
+
+III.Contributors
+
+	Project lead: Catayao56
+	Project co-lead: Sh4d0wH4X0R
+
+
+
+
+
+Part I:
+
+1.Installation
+
+	Compiling and installing Shadow Suite is easy. You don't need to
+	modify the source code. But if you want to run Shadow Suite on
+	different operating systems, you need to modify some of it to
+	properly compile and run it.
+
+		a.Modify the source code if necessary.
+		
+		b.Compile source code.
+
+		c.Run Shadow Suite.

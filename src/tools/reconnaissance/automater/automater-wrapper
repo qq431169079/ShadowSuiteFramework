@@ -1,0 +1,14 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo ""
+echo "Target domain:"
+read TARGET
+echo ""
+echo "Running..."
+echo ""
+python2 Automater.py $TARGET
+echo ""
+echo "Running... Done!"
+echo ""
+read waitforexit
+exit 0

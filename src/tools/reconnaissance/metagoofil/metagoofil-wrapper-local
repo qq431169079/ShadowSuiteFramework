@@ -1,0 +1,23 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo ""
+echo "Local Target"
+echo ""
+echo "Directory to search:"
+read TARGET
+echo ""
+echo "Filetypes to search:"
+read FILETYPES
+echo ""
+echo "Output file:"
+read OUTPUT
+echo ""
+echo "Running..."
+echo ""
+python2 metagoofil.py -h yes -o $TARGET -t $FILETYPES -f $OUTPUT.html
+echo ""
+echo "Running... Done!"
+echo ""
+less $PWD/$OUTPUT.html
+read waitforexit
+exit 0
