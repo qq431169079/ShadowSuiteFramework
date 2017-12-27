@@ -56,8 +56,13 @@ void scanSection(void); //Scanning tools
  void dtect(void);
  void dsss(void);
  void ciscoauditingtool(void);
+ void nmap(void);
  void scanhelp(void);
 void crackSection(void); //Encryption and Password Cracking tools
+ void randompass(void);
+ void shadowcrack(void);
+ void blackhydra(void);
+ void crackhelp(void);
 void exploitSection(void); //Exploitation tools
 void dosSection(void); //Denial-of-Service tools
 void hijackSection(void); //Session Hijacking tools
@@ -394,13 +399,78 @@ void scanSection(void)
     }
 }
 
-void crackSection(void)
+void randompass(void)
 {
     clr();
     prn_logo();
-    printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS==\n\n---------------------------------\n\n");
-    prn_construction();
+    system("cd $PWD/tools/cracking/randompass/src/ && bash randompass.sh");
+    system("cd ../../../..");
+}
+
+void shadowcrack(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/cracking/shadowcrack/src/ && python2 ShadowCrack.py");
     readline();
+    system("cd ../../../..");
+}
+
+void blackhydra(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/cracking/blackhydra/ && python2 blackhydra.py");
+    readline();
+    system("cd ../../..");
+}
+
+void crackhelp(void)
+{
+    clr();
+    prn_logo();
+    printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS HELP==\n\n---------------------------------\n\n");
+    printf("Random Pass: Random Password block generator\n\n");
+    printf("Shadow Crack: Hashing tool\n\n");
+    printf("Black Hydra: Shorten brute force sessions on hydra\n\n");
+    printf("\nPress enter to continue...\n\n");
+    readline();
+}
+
+void crackSection(void)
+{
+    int crackSectionInput;
+
+    clr();
+    prn_logo();
+    printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS==\n\n---------------------------------\n\n");
+    printf("[1] Random Pass\n[2] Shadow Crack\n[3] Black Hydra\n\n[98] Help\n[99]Back\n");
+    scanf("\n%d", &crackSectionInput);
+    switch (crackSectionInput)
+    {
+        case 1:
+		randompass();
+		break;
+
+	case 2:
+		shadowcrack();
+		break;
+
+	case 3:
+		blackhydra();
+		break;
+
+	case 98:
+		crackhelp();
+		break;
+
+	case 99:
+		break;
+
+	default:
+		prn_invalidinput();
+		break;
+    }
 }
 
 void exploitSection(void)
