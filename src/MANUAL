@@ -23,7 +23,7 @@ III.Contributors
 
 
 
-Part I:
+Part I: Compilation and Installation
 
 1.Installation
 
@@ -36,4 +36,48 @@ Part I:
 		
 		b.Compile source code.
 
-		c.Run Shadow Suite.
+		c.Optional: copy Shadow Suite to PATH.
+
+		d.Run Shadow Suite.
+
+
+
+
+
+Part II: Usage
+
+1.User Interface
+
+	Shadow Suite's user interface is user-friendly. You only need to
+	type the needed information and Shadow Suite will do the job for
+	you. At first startup, There will be the Tools categorized by their
+	use.
+	
+		[1] Reconnaissance
+		[2] Scanning
+		[3] Encryption and Password Cracking
+		[4] Exploitation
+		[5] Denial-of-Service
+		[6] Session Hijacking
+
+		[97] Help
+		[98] Install Dependencies
+		[99] Exit
+	
+	And you can notice that there is also an extra selection
+	that starts at the line of nine.
+
+	[1] Reconnaissance
+
+	This section is for Information Gathering phase of Ethical Hacking.
+	All tools here is for gathering all required tools for reconnaissance
+	(Information Gathering). You can find Red hawk, Social Engineer Toolkit,
+	and Metagoofil in this section.
+
+	[2] Scanning
+
+	This section is for the Scanning phase of Ethical Hacking. All tools
+	here are used to scan a remote host, scan for open ports, scan for
+	vulnerabilities, etc. You can find Nmap and Cisco Auditing Tool here.
+
+	[3] Encryption and Password Cracking

@@ -31,6 +31,7 @@
 
 //Define preprocessor directives
 
+
 //Function declarations
 void clr(void); //Clears the screen.
 void readline(void); //Wait for user input.
@@ -260,7 +261,7 @@ void reconSection(void)
 
 	case 3:
 		set();
-		readline(); //This is temporary while my device is not rooted.
+		readline(); //DEV0001: This is temporary while my device is not rooted.
 		break;
 
 	case 4:
@@ -332,6 +333,13 @@ void ciscoauditingtool(void)
     system("cd ../../..");
 }
 
+void nmap(void)
+{
+    clr();
+    prn_construction();
+    readline();
+}
+
 void scanhelp(void)
 {
     clr();
@@ -339,6 +347,7 @@ void scanhelp(void)
     printf("\n==SCANNING TOOLS HELP==\n\n---------------------------------\n\n");
     printf("D-Tect: provides multiple features and detection features which gather target information and finds different flaws in it.\n\n");
     printf("DSSS: A fully functional SQLi Scanner\n\n");
+    printf("Cisco Auditing Tool: Scans cisco routers for common vulnerabilities.\n\n");
     printf("\nPress enter to continue...\n\n");
     readline();
 }
@@ -350,7 +359,7 @@ void scanSection(void)
     clr();
     prn_logo();
     printf("\n==SCANNING TOOLS==\n\n---------------------------------\n\n");
-    printf("[1] D-Tect\n[2] DSSS\n[3] Cisco Auditing Tool\n\n[98] Help\n[99] Back\n");
+    printf("[1] D-Tect\n[2] DSSS\n[3] Cisco Auditing Tool\n[4] Nmap\n\n[98] Help\n[99] Back\n");
     scanf("\n%d", &scanSectionInput);
     switch (scanSectionInput)
     {
@@ -364,6 +373,10 @@ void scanSection(void)
 
 	case 3:
 		ciscoauditingtool();
+		break;
+
+	case 4:
+		nmap();
 		break;
 
         case 98:
@@ -424,7 +437,12 @@ void instdeps(void)
     printf("\nInstalling dependencies...\n");
     system("apt update -y");
     system("apt install apache2 apache2-dev bash bash-completion bash-dev binutils  binutils-dev bsdtar busybox command-not-found coreutils cowsay curl debianutils dialog diffutils dnsutils figlet findutils git gnupg gnupg2 inetutils iperf3 less lftp lighttpd neofetch net-tools netcat nginx nmap openssh openssl openssl-dev openssl-tool perl php php-apache php-dev php-pgsql postgresql privoxy proxychains-ng python python-dev python2 python2-dev radare2 radare2-dev readline readline-dev ruby ruby-dev sl sslscan tar tor torsocks tracepath tree util-linux vim w3m wget zip");
-    system("pip install requests urllib3 shodan");
+    system("pip install requests urllib3 shodan netaddr pefile simplejson pycurl");
+    system("cpan LWP::UserAgent");
+    system("cpan Net::Telnet");
+    system("cpan Net::IP");
+    system("cpan Net::DNS");
+    system("cpan IO::Socket::SSL");
     printf("\nInstalling dependencies... Done!\n");
     printf("Press any key to continue...");
     readline();
