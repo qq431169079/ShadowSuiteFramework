@@ -1,0 +1,247 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo ""
+echo "Target's IP Address or URL: "
+read TARGET
+echo ""
+echo "Nmap: Network exploration tool and security / port scanner"
+echo ""
+echo ""
+echo ""
+echo "Common Scanning Types:"
+echo "[1] TCP connect scan"
+# nmap -sT [TARGET]
+echo "[2] Half-open scan        [i] ROOT REQUIRED"
+# nmap -sS [TARGET]
+echo "[3] ping scan"
+# nmap -sP [TARGET]
+echo "[4] UDP scan              [i] ROOT REQUIRED"
+# nmap -sU [TARGET]
+echo "[5] IP Protocol scan      [i] ROOT REQUIRED"
+# nmap -sO [TARGET]
+echo ""
+echo "Ping Scanning Types:"
+echo "[6] TCP SYN ping"
+# nmap -PS[PORTLIST] [TARGET]
+echo "[7] TCP ACK ping"
+# nmap -PA[PORTLIST] [TARGET]
+echo "[8] UDP ping              [i] ROOT REQUIRED"
+# nmap -PU[PORTLIST] [TARGET]
+echo "[9] SCTP INIT ping        [i] ROOT REQUIRED"
+# nmap -PY[PORTLIST] [TARGET]
+echo "[10] ARP ping"
+# nmap -PR [TARGET]
+echo ""
+echo "Other Scan Types:"
+echo "[11] List scan"
+# nmap -sL [TARGET]
+echo "[12] SCTP INIT scan       [i] ROOT REQUIRED"
+# nmap -sY [TARGET]
+echo "[13] TCP ACK scan         [i] ROOT REQUIRED"
+# nmap -sA [TARGET]
+echo "[14] TCP Windows scan     [i] ROOT REQUIRED"
+# nmap -sW [TARGET]
+echo "[15] OS scan              [i] ROOT REQUIRED"
+echo ""
+echo ""
+echo ""
+echo "[99] Quit"
+# nmap -O [TARGET]
+echo ""
+read SCANTYPE
+
+if [ "$SCANTYPE" == "1" ]; then
+	echo ""
+	echo ""
+	echo ""
+	echo "TCP Connect scan"
+	echo ""
+	nmap -sT $TARGET
+	echo ""
+	read waitforexit
+	exit
+fi
+
+if [ "$SCANTYPE" == "2" ]; then
+	echo ""
+	echo ""
+	echo ""
+	echo "Half-open scan"
+	echo ""
+	nmap -sS $TARGET
+	echo ""
+	read waitforexit
+	exit
+fi
+
+if [ "$SCANTYPE" == "3" ]; then
+	echo ""
+	echo ""
+	echo ""
+	echo "Ping scan"
+	echo ""
+	nmap -sP $TARGET
+	echo ""
+	read waitforexit
+	exit
+fi
+
+if [ "$SCANTYPE" == "4" ]; then
+	echo ""
+	echo ""
+	echo ""
+	echo "UDP scan"
+	echo ""
+	nmap -sU $TARGET
+	echo ""
+	read waitforexit
+	exit
+fi
+
+if [ "$SCANTYPE" == "5" ]; then
+	echo ""
+	echo ""
+	echo ""
+	echo "IP Protocol scan"
+	echo ""
+	nmap -sO $TARGET
+	echo ""
+	read waitforexit
+	exit
+fi
+
+if [ "$SCANTYPE" == "6" ]; then
+        echo ""
+        echo ""
+        echo ""
+        echo "TCP SYN ping"
+        echo ""
+        nmap -PS20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 $TARGET
+        echo ""
+        read waitforexit
+        exit
+fi
+
+if [ "$SCANTYPE" == "7" ]; then
+	echo ""
+	echo ""
+	echo ""
+	echo "TCP ACK ping"
+	echo ""
+	nmap -PA20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 $TARGET
+	echo ""
+	read waitforexit
+	exit
+fi
+
+if [ "$SCANTYPE" == "8" ]; then
+        echo ""
+        echo ""
+        echo ""
+        echo "UDP ping"
+        echo ""
+        nmap -PU20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 $TARGET
+        echo ""
+        read waitforexit
+        exit
+fi
+
+if [ "$SCANTYPE" == "9" ]; then
+        echo ""
+        echo ""
+        echo ""
+        echo "SCTP INIT ping"
+        echo ""
+        nmap -PY20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 $TARGET
+        echo ""
+        read waitforexit
+        exit
+fi
+
+if [ "$SCANTYPE" == "10" ]; then
+        echo ""
+        echo ""
+        echo ""
+        echo "ARP ping"
+        echo ""
+        nmap -PR20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 $TARGET
+        echo ""
+        read waitforexit
+        exit
+fi
+
+if [ "$SCANTYPE" == "11" ]; then
+	echo ""
+	echo ""
+	echo ""
+	echo "List scan"
+	echo ""
+	nmap -sL $TARGET
+	echo ""
+	read waitforexit
+	exit
+fi
+
+if [ "$SCANTYPE" == "12" ]; then
+        echo ""
+        echo ""
+        echo ""
+        echo "SCTP INIT scan"
+        echo ""
+        nmap -sY $TARGET
+        echo ""
+        read waitforexit
+        exit
+fi
+
+if [ "$SCANTYPE" == "13" ]; then
+        echo ""
+        echo ""
+        echo ""
+        echo "TCP ACK scan"
+        echo ""
+        nmap -sA $TARGET
+        echo ""
+        read waitforexit
+        exit
+fi
+
+if [ "$SCANTYPE" == "14" ]; then
+        echo ""
+        echo ""
+        echo ""
+        echo "TCP Window scan"
+        echo ""
+        nmap -sW $TARGET
+        echo ""
+        read waitforexit
+        exit
+fi
+
+if [ "$SCANTYPE" == "15" ]; then
+	echo ""
+	echo ""
+	echo "OS scan"
+	echo ""
+	nmap -O $TARGET
+	echo""
+	read waitforexit
+	exit
+fi
+
+if [ "$SCANTYPE" == "99" ]; then
+	echo ""
+	echo ""
+	echo ""
+	echo "Press enter to continue..."
+	echo ""
+	read waitforexit
+	exit 0
+fi
+
+echo ""
+echo ""
+echo ""
+echo "You have entered an invalid input!"
+read waitforexit
+exit

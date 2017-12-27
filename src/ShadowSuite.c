@@ -336,8 +336,9 @@ void ciscoauditingtool(void)
 void nmap(void)
 {
     clr();
-    prn_construction();
-    readline();
+    prn_logo();
+    system("cd $PWD/tools/scanning/nmap/ && bash nmap-wrapper");
+    system("cd ../../..");
 }
 
 void scanhelp(void)
@@ -348,6 +349,7 @@ void scanhelp(void)
     printf("D-Tect: provides multiple features and detection features which gather target information and finds different flaws in it.\n\n");
     printf("DSSS: A fully functional SQLi Scanner\n\n");
     printf("Cisco Auditing Tool: Scans cisco routers for common vulnerabilities.\n\n");
+    printf("Nmap: Network exploration tool and security / port scanner\n\n");
     printf("\nPress enter to continue...\n\n");
     readline();
 }
