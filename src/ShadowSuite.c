@@ -62,11 +62,17 @@ void crackSection(void); //Encryption and Password Cracking tools
  void randompass(void);
  void shadowcrack(void);
  void blackhydra(void);
+ void hashbuster(void);
+ void hashidentifier(void);
+ void cupp(void);
+ void fbrute(void);
+ void wifite(void);
  void crackhelp(void);
 void exploitSection(void); //Exploitation tools
 void dosSection(void); //Denial-of-Service tools
 void hijackSection(void); //Session Hijacking tools
 void instdeps(void); //Install Dependencies function
+void prn_license(void); //License function
 void prn_help(void); //Help function 
 
 void clr(void)  //Clear and set color function
@@ -130,7 +136,7 @@ void prn_construction(void)
 //prn_logo(); Function
 void prn_logo(void)
 {
-        //In the future, it needs to be standalone!
+        //DEV0001: In the future, it needs to be standalone!
         //which means it doesn't need any third-party tools!
     system("figlet -f shadow Shadow Suite");
     printf("\n\"Ethical Hacking Toolkit\"\n");
@@ -230,6 +236,7 @@ void reconhelp(void)
 {
     clr();
     prn_logo();
+    //DEV0002: This should be updated when a new reconnaissance tool is added.
     printf("\n==RECONNAISSANCE TOOLS HELP==\n\n---------------------------------\n\n");
     printf("Infoga: Email Information Gathering tool\n\n");
     printf("Red Hawk: Website Information Gathering tool\n\n");
@@ -251,6 +258,7 @@ void reconSection(void)
 
     clr();
     prn_logo();
+    //DEV0002: This should be updated when a new reconnaissance tool is added.
     printf("\n==RECONNAISSACE TOOLS==\n\n---------------------------------\n\n");
     printf("\n[1] Infoga\n[2] Red Hawk\n[3] Social Engineer Toolkit\t\t[!] ROOT REQUIRED\n[4] URLCrazy\n[5] Weeman\n[6] DNSMap\n[7] Automater\n[8] Angry Fuzz3r\n[9] Metagoofil (Remote)\n[10] Metagoofil (Local)\n[11] The Harvester\n\n[98] Help\n[99] Back\n");
     scanf("\n%d", &reconSectionInput);
@@ -306,9 +314,11 @@ void reconSection(void)
 		break;
 
 	case 99:
+		//Blank statement; Oh, there's a statement... The 'break;' statement.
 		break;
 
 	default:
+		//If none of the above met, 'prn_invalidinput();' function will be called.
 		prn_invalidinput();
 		break;
     }
@@ -350,6 +360,7 @@ void scanhelp(void)
 {
     clr();
     prn_logo();
+    //DEV0002: Update this when a new scanning tool is added.
     printf("\n==SCANNING TOOLS HELP==\n\n---------------------------------\n\n");
     printf("D-Tect: provides multiple features and detection features which gather target information and finds different flaws in it.\n\n");
     printf("DSSS: A fully functional SQLi Scanner\n\n");
@@ -365,6 +376,7 @@ void scanSection(void)
 
     clr();
     prn_logo();
+    //DEV0002: Update this when a new scanning tool is added.
     printf("\n==SCANNING TOOLS==\n\n---------------------------------\n\n");
     printf("[1] D-Tect\n[2] DSSS\n[3] Cisco Auditing Tool\n[4] Nmap\n\n[98] Help\n[99] Back\n");
     scanf("\n%d", &scanSectionInput);
@@ -412,7 +424,7 @@ void shadowcrack(void)
     clr();
     prn_logo();
     system("cd $PWD/tools/cracking/shadowcrack/src/ && python2 ShadowCrack.py");
-    readline();
+    //readline();
     system("cd ../../../..");
 }
 
@@ -421,7 +433,52 @@ void blackhydra(void)
     clr();
     prn_logo();
     system("cd $PWD/tools/cracking/blackhydra/ && python2 blackhydra.py");
-    readline();
+    //readline();
+    system("cd ../../..");
+}
+
+void hashbuster(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/cracking/hashbuster/ && python2 hash.py");
+    //readline();
+    system("cd ../../..");
+}
+
+void hashidentifier(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/cracking/hashidentifier/ && python2 Hash_ID.py");
+    system("cd ../../..");
+}
+
+void cupp(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/cracking/cupp/ && bash cupp-wrapper");
+    system("cd ../../..");
+}
+
+void fbrute(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/cracking/fbrute && python2 facebook.py");
+    /* DEV 0001: Uncomment the line if you confirm the automatic exit of the program. */
+    //readline();
+    system("cd ../../..");
+}
+
+void wifite(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/cracking/wifite2 && python2 Wifite.py");
+    readline(); //DEV0001: This is temporary while my device isn't rooted.
+                //But if automatic exit of the prpgram is present, leave it here.
     system("cd ../../..");
 }
 
@@ -429,10 +486,15 @@ void crackhelp(void)
 {
     clr();
     prn_logo();
+    //DEV0002: Update this if a new cracking/encryption tool is added.
     printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS HELP==\n\n---------------------------------\n\n");
     printf("Random Pass: Random Password block generator\n\n");
     printf("Shadow Crack: Hashing tool\n\n");
     printf("Black Hydra: Shorten brute force sessions on hydra\n\n");
+    printf("Hash Buster: use several online hash crackers to find cleartext of a hash in less than 5 seconds.\n\n");
+    printf("Hash Identifier: Identify the type of a hash.\n\n");
+    printf("Common User Passwords Profiler (CUPP): Common user passwords profiler.\n\n");
+    printf("Facebook Cracker: Crack facebook account's passwords.");
     printf("\nPress enter to continue...\n\n");
     readline();
 }
@@ -443,8 +505,9 @@ void crackSection(void)
 
     clr();
     prn_logo();
+    //DEV0002: Update this if a new cracking/encryption tool is added.
     printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS==\n\n---------------------------------\n\n");
-    printf("[1] Random Pass\n[2] Shadow Crack\n[3] Black Hydra\n\n[98] Help\n[99]Back\n");
+    printf("[1] Random Pass\n[2] Shadow Crack\n[3] Black Hydra\n[4] Hash Buster\n[5] Hash Identifier\n[6] Common User Passwords Profiler (CUPP)\n[7] Facebook Cracker\n[8] Wifite\t\t\t[i] ROOT REQUIRED\n\n[98] Help\n[99]Back\n");
     scanf("\n%d", &crackSectionInput);
     switch (crackSectionInput)
     {
@@ -458,6 +521,26 @@ void crackSection(void)
 
 	case 3:
 		blackhydra();
+		break;
+
+	case 4:
+		hashbuster();
+		break;
+
+	case 5:
+		hashidentifier();
+		break;
+
+	case 6:
+		cupp();
+		break;
+
+	case 7:
+		fbrute();
+		break;
+
+	case 8:
+		wifite();
 		break;
 
 	case 98:
@@ -505,6 +588,7 @@ void instdeps(void)
     int batch = 4;
     clr();
     prn_logo();
+    //DEV0002: Update this if a new dependency is needed.
     printf("\n==INSTALL DEPENDENCIES==\n\n---------------------------------\n\n");
     printf("\nInstalling dependencies...\n");
     system("apt update -y");
@@ -520,10 +604,19 @@ void instdeps(void)
     readline();
 }
 
+void prn_license(void)
+{
+    clr();
+    prn_logo();
+    //Opens the LICENSE file.
+    system("less LICENSE");
+}
+
 void prn_help(void)
 {
     clr();
     prn_logo();
+    //Opens the MANUAL file.
     system("less MANUAL");
 }
 
@@ -541,7 +634,7 @@ int main(void)
     printf("\n==TOOLS==\n\n---------------------------------\n\n");
     printf("\n[1] Reconnaissance\n[2] Scanning\n[3] Encryption and Password Cracking\n");
     printf("[4] Exploitation\n[5] Denial-of-Service\n[6] Session Hijacking\n");
-    printf("\n[97] Help\n[98] Install Dependencies\n[99] Exit\n");
+    printf("\n[96] License\n[97] Manual\n[98] Install Dependencies\n[99] Exit\n");
 
     scanf("\n%d", &section);
 
@@ -569,6 +662,10 @@ int main(void)
 
 	case 6:
 		hijackSection();
+		break;
+
+	case 96:
+		prn_license();
 		break;
 
 	case 97:

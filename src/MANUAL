@@ -4,9 +4,9 @@ I.About Shadow Suite
 
 	Shadow suite is a toolkit for almost any kind of ethical hacking.
 	Shadow Suite is an Ethical Hacking Toolkit. It provides many
-	tools that you can use, written in C, BASH, Python, etc. Tools
-	that you need for reconnaissance, scanning, exploitation,
-	encryption, password cracking, and more! Shadow Framework is
+	tools that you can use, written in C, BASH, Python, Perl, etc.
+	Tools that you need for reconnaissance, scanning, exploitation,
+	encryption, password cracking, and more. Shadow Framework is
 	the main project of Shadow Team.
 
 II.License
@@ -19,6 +19,34 @@ III.Contributors
 	Project lead: Catayao56
 	Project co-lead: Sh4d0wH4X0R
 
+IV.Credits
+
+	DedSecTL: for creating Black Hydra.
+	Shadow Team: for creating Random Pass and Shadow Crack.
+	UltimateHackers: for creating Hash Buster.
+	Zion3R: for creating Hash Identifier.
+	Muris Kurgas aka j0rgan: for creating CUPP.
+	InfoSecHacker: for creating Facebook Cracker.
+	derv82: for creating Wifite.
+	Sold1er: for creating Angry Fuzzer.
+	TekDefense: for creating Automater.
+	548rU PH0X7R07: for creating DNSMap.
+	m4ll0k: for creating Infoga.
+	Christian Martorella: for creating metagoofil and The Harvester.
+	R3D#@0R_2H1N A.K.A Tuhinshubhra: for creating Red Hawk.
+	David Kennedy (ReL1K): for creating Social Engineer Toolkit.
+	Andrew Horton (urbanadventurer): for creating URLCrazy.
+	Hypsurus: for creating Weeman.
+	Shawar Khan: for creating D-Tect.
+	NMap Team: for creating NMap.
+	Linus Torvalds: for creating Linux Operating System.
+	Dennis Ritchie: for creating C programming Language.
+
+	Whoever you are, thank you for creating:
+		Cisco Auditing Tool
+		Damn Small SQLi Scanner
+
+
 
 
 
@@ -27,10 +55,10 @@ Part I: Compilation and Installation
 
 1.Installation
 
-	Compiling and installing Shadow Suite is easy. You don't need to
-	modify the source code. But if you want to run Shadow Suite on
-	different operating systems, you need to modify some of it to
-	properly compile and run it.
+	Compiling and installing Shadow Suite on Termux is easy. You
+	don't need to modify the source code. But if you want to run
+	Shadow Suite on a different operating system, you need to
+	modify some of it to properly compile and run it.
 
 		a.Modify the source code if necessary.
 		
@@ -60,7 +88,8 @@ Part II: Usage
 		[5] Denial-of-Service
 		[6] Session Hijacking
 
-		[97] Help
+		[96] License
+		[97] Manual
 		[98] Install Dependencies
 		[99] Exit
 	
@@ -81,3 +110,127 @@ Part II: Usage
 	vulnerabilities, etc. You can find Nmap and Cisco Auditing Tool here.
 
 	[3] Encryption and Password Cracking
+
+	This section is for the password cracking phase of Ethical Hacking. All
+	tools here is for cracking encrypted passwords, encipher a string, and
+	more. You can find Shadow Crack, Random Pass, and CUPP in this section.
+
+	[4] Exploitation
+
+	This section included the tools used for exploitation. A famous tool
+	which is included here is Metasploit Framework.
+
+	[5] Denial-of-Service
+
+	This section is of course, used for denial-of-service attacks. Tools
+	included here are UFOnet, fl00d, and slowloris.
+
+	[6] Session Hijacking
+
+	This section is for session hijacking attacks. It is hard to find a
+	reliable one so the only tool here is A-Rat.
+
+	[96] License
+
+	This option shows the license of the software.
+
+	[97] Manual
+
+	This option shows the manual of the sofrware. You currently viewing
+	it.
+
+	[98] Install Dependencies
+
+	This option installs dependencies for the software.
+
+	[99] Exit
+
+	This option allows the user to gently go out of the program.
+
+2.Quick Start
+
+	1.Compile Shadow Suite.
+
+	2.Run Shadow Suite.
+
+	3.For first run, select the option 98, which is to install dependencies.
+	  You need internet connectivity to successfully install the
+	  dependencies.
+
+3.Tools User Interface
+
+	In every tools in this toolkit, it has different types of user interface.
+	Some have friendly ones, some have interactive ones, some have user
+	interface that needs to be understand carefully.
+
+	Some tools accepts input only via command-line arguments. Hopefully,
+	Shadow Suite developers coded some wrapper scripts to make them
+	more user-friendly.
+
+	Almost all operations are done by Shadow Suite. From changing directory,
+	to running scripts and tools. All it needs is the necessary informations
+	to properly launch the tool.
+
+4.Tools Usage
+
+	I.Reconnaissance Tools
+
+		1.Infoga
+			Infoga is used to gather email informations.
+			When you run Infoga, just enter the domain to search and
+			Shadow Suite will pass the argument to infoga wrapper
+			script. And infoga wrapper script will pass the argument
+			to infoga.
+
+		2.Red Hawk
+			Red Hawk is used to gather information about a specific site.
+			When you run Red Hawk, enter the website you want to scan.
+			This can be a Uniform Resource Locator (URL), or an IP
+			Address. Then it will ask you if it is HTTP or HTTPS. enter
+			1 for HTTP and 2 for HTTPS, which is secured. Then a window
+			will show up. Type the number of you desired scan or action
+			type. If it is your first time running Red Hawk, choose the
+			option Fix (type 'F') to install all dependencies required
+			by Red Hawk. Type Q to quit the tool and return to Shadow
+			Suite's UI.
+
+		3.Social Engineer Toolkit
+			DEV0001: Provide codumentation for SET.
+
+		4.URLCrazy
+			URLCrazy is used to study domainname typos and URL Hijacking.
+			When you run URLCrazy, enter the target URL, chose the
+			keyboard layout, and answer the asked questions. After
+			answering required questions, an output will be displayed.
+			Press enter to continue.
+
+		5.Weeman
+			Weeman is used to start an HTTP server for phishing.
+			When you run Weeman, set the values. Type:
+
+			show  :: to show default settings.
+			set   :: to set value for an option. (USAGE: set <OPTION> <VALUE>)
+			run   :: to start the server.
+			clear :: to clear the screen.
+			quit  :: to quit weeman and return to Shadow Suite UI.
+
+			for more information, type 'help' on weeman's console.
+
+		6.DNSMap
+			DNSMap is used to discover the target company's IP netblocks,
+			domain names, phone numbers, etc. When you run DNSMap, just
+			enter the domain. It could be a URL, Hostname, or IP Address.
+			After entering the domain, you will see the output.
+
+		7.Automater
+			Automater is used to automate OSINT analysis of IP Addresses.
+			When you run Automater, type the target domain name.
+			After that, an output will be shown.
+
+		8.Angry Fuzz3r
+			Angry Fuzz3r is used to gather information and discover
+			vulnerabilities of the targets based on Fuzzedb. When you
+			run Angry Fuzz3r, It will ask you for the target domain, target
+			CMS, and the wordlist path.
+
+		DEV0003: Where You Left Off

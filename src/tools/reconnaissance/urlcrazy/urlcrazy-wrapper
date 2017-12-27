@@ -9,7 +9,7 @@ echo "(Supported: qwerty, azerty, qwertz, dvorak)"
 read KEYBOARD
 echo ""
 echo "Do you want to check domain popularity with Google?"
-echo "Type '-p' to enable; Othwrwise, press enter."
+echo "Type '-p' to enable; Otherwise, press enter."
 read POPULARITY
 echo ""
 echo "Do you want to not resolve DNS?"

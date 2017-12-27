@@ -1,0 +1,73 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo ""
+echo "___________"
+echo " cupp.py!                 # Common"
+echo "    \                     # User"
+echo "     \   ,__,             # Passwords"
+echo "      \  (oo)____         # Profiler"
+echo "         (__)    )\\"
+echo "            ||--|| *   Muris Kurgas <j0rgan@remote-exploit.org>"
+echo ""
+python2 cupp.py -v
+echo ""
+echo "[1] Interactive questions for user password profiling"
+echo "[2] Improve existing dictionary"
+echo "[3] Download huge wordlists from repository"
+echo "[4] Parse default usernames and passwords directly from Alecto DB."
+echo ""
+echo "[99] Quit"
+echo ""
+read OPTION
+
+if [ "$OPTION" == "1" ]; then
+	clear
+	echo ""
+	echo ""
+	echo ""
+	python cupp3.py -i
+	read waitforexit
+	exit $?
+fi
+
+if [ "$OPTION" == "2" ]; then
+	clear
+	echo ""
+	echo ""
+	echo ""
+	echo "Wordlist path:"
+	read WORDLIST
+	python cupp3.py -w $WORDLIST
+	read waitforexit
+	exit $?
+fi
+
+if [ "$OPTION" == "3" ]; then
+	clear
+	echo ""
+	echo ""
+	echo ""
+	python cupp3.py -l
+	read waitforexit
+	exit $?
+fi
+
+if [ "$OPTION" == "4" ]; then
+	clear
+	echo ""
+	echo ""
+	echo ""
+	python cupp3.py -a
+	read waitforexit
+	exit $?
+fi
+
+if [ "$OPTION" == "99" ]; then
+	exit 0
+fi
+
+echo ""
+echo "INVALID INPUT!"
+echo ""
+read waitforexit
+exit 1
