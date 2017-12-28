@@ -1,4 +1,4 @@
-Shadow Suite 0.0.2.2 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.2.3 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -18,6 +18,15 @@ What's new?
 2.Reconnaissance Tools
       -Now, we have our recon toolkit!
 
+3.Scanning Toolkit
+      -We also had our Scanning toolkit!
+
+4.Encryption and Password Cracking Toolkit
+      -Now we had our Cracking toolkit!
+
+5.Fancy colors
+      -Added some fancy colors to lighten up your work!
+
 Full Feature List
 ------------------------
 -Reconnaissance Toolkit
@@ -28,22 +37,31 @@ Full Feature List
      Weeman: HTTP Server for phishing.
      DNSMap: discover the target company's IP netblocks, domain names, phone numbers, etc.
      Automater: Automate the OSINT analysis of IP Addresses.
-     Angry Fuzz3r: collection of tools for pentesting to gather information and discover vulnerabilities of the targets based on Fuzzedb
+     Angry Fuzz3r: collection of tools for pentesting to gather information and
+     discover vulnerabilities of the targets based on Fuzzedb
      Metagoofil: metadata extractor
      The Harvester: tool for gathering target details.
 
--Scanning Toolkit <Pending...>
+-Scanning Toolkit <Dec. 27, 2017>
+     D-Tect: provides multiple features and detection features which gather target
+     information and finds different flaws in it.
+     DSSS: A fully functional SQLi Scanner
+     Cisco Auditing Tool: Scans cisco routers for common vulnerabilities.
+     Nmap: Network exploration tool and security / port scanner
+
+-Exploitation Toolkit <Pending...>
 
 TO-DO List
 ------------------------
-1.Main Menu
-      -Code the main menu of Shadow Suite in ANSI C.
 
-2.Program navigation
+1.Program navigation
       -Code each menu so that the user can navigate properly.
 
-3.Toolkits
+2.Toolkits
       -Include toolkits from different sources.
+
+3.Facebook Cracker
+      -Find a facebook cracker which is open-source.
       
 License and Copying
 ------------------------
@@ -67,6 +85,31 @@ Credits
 ------------------------
 Project Lead :: Catayao56
 Project co-lead :: Sh4d0wHaX0R
+DedSecTL: for creating Black Hydra.
+Shadow Team: for creating Random Pass and Shadow Crack.
+UltimateHackers: for creating Hash Buster.
+Zion3R: for creating Hash Identifier.
+Muris Kurgas aka j0rgan: for creating CUPP.
+InfoSecHacker: for creating Facebook Cracker.
+derv82: for creating Wifite.
+Sold1er: for creating Angry Fuzzer.
+TekDefense: for creating Automater.
+548rU PH0X7R07: for creating DNSMap.
+m4ll0k: for creating Infoga.
+Christian Martorella: for creating metagoofil and The Harvester.
+R3D#@0R_2H1N A.K.A Tuhinshubhra: for creating Red Hawk.
+David Kennedy (ReL1K): for creating Social Engineer Toolkit.
+Andrew Horton (urbanadventurer): for creating URLCrazy.
+Hypsurus: for creating Weeman.
+Shawar Khan: for creating D-Tect.
+NMap Team: for creating NMap.
+Linus Torvalds: for creating Linux Operating System.
+Dennis Ritchie: for creating C programming Language.
+
+Whoever you are, thank you for creating:
+        Cisco Auditing Tool
+        Damn Small SQLi Scanner
+
 
 
 Requirements

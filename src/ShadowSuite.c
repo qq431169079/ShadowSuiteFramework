@@ -19,9 +19,9 @@
  * W  = '\033[0m'  # white (normal)
  * R  = '\033[31m' # red
  * G  = '\033[32m' # green
- * O  = '\033[33m' # orange
+ * O  = '\033[33m' # yellow
  * B  = '\033[1m'  # bold
- * RR = '\033[3m'  # greencolor
+ * RR = '\033[3m'  # italic
  */
 
 //Include preprocessor directives
@@ -39,6 +39,12 @@ void prn_invalidinput(void); //Prints the invalid input message.
 void exit_confirm(void); //Asks for exit confirmation.
 void prn_construction(void); //Prints the under construction message.
 void prn_logo(void); //Prints our logo.
+void color_white(void);
+void color_red(void);
+void color_green(void);
+void color_yellow(void);
+void color_bold(void); //I know, this is not a color!
+void color_italic(void);
 void reconSection(void); //Reconnaissance tools
  void infoga(void);
  void redhawk(void);
@@ -77,7 +83,7 @@ void prn_help(void); //Help function
 
 void clr(void)  //Clear and set color function
 {
-    system("echo -e \033[32m"); //Sets terminal color to green.
+    color_green();
     system("clear"); //Actual command that clears the screen
 }
 
@@ -91,7 +97,9 @@ void prn_invalidinput(void)
 {
     clr();
     prn_logo();
+    color_red();
     printf("\nERROR: Invalid Input\n");
+    color_green();
     readline();
 }
 
@@ -104,14 +112,16 @@ void exit_confirm(void)
     {
     clr();
     prn_logo();
+    color_white();
     printf("\nDo you really want to quit?\nAnswer (y/n) : \n");
     scanf(" %c", &confirm);
     if (confirm == 'y' || confirm == 'Y')
     {
         clr();
         error_value = 0;
+	color_red();
         printf("\nExiting...\n");
-	system("echo -e \033[0m""");
+	color_white();
         exit(EXIT_SUCCESS);
     }
     if (confirm == 'n' || confirm == 'N')
@@ -130,23 +140,53 @@ void exit_confirm(void)
 void prn_construction(void)
 {
     prn_logo();
+    color_yellow();
     printf("\nERROR: Under Construction!\n");
 }
 
 //prn_logo(); Function
 void prn_logo(void)
 {
-        //DEV0001: In the future, it needs to be standalone!
-        //which means it doesn't need any third-party tools!
+    //DEV0001: In the future, it needs to be standalone!
+    //which means it doesn't need any third-party tools!
     system("figlet -f shadow Shadow Suite");
     printf("\n\"Ethical Hacking Toolkit\"\n");
+}
+
+void color_white(void)
+{
+    system("echo -e \033[0m"); //Sets terminal color to white.
+}
+
+void color_red(void)
+{
+    system("echo -e \033[31m"); //Sets terminal color to red.
+}
+
+void color_green(void)
+{
+    system("echo -e \033[32m"); //Sets terminal color to green.
+}
+
+void color_yellow(void)
+{
+    system("echo -e \033[33m"); //Sets terminal color to orange.
+}
+
+void color_bold(void)
+{
+    system("echo -e \033[1m"); //Sets terminal font to bold.
+}
+
+void color_italic(void)
+{
+    system("echo -e \033[3m"); //Sets terminal font to italic.
 }
 
 void infoga(void)
 {
     clr();
     prn_logo();
-    printf("\n==INFOGA (RECONNAISSANCE)==\n\n---------------------------------\n\n");
     system("cd $PWD/tools/reconnaissance/infoga/ && bash infoga_wrapper.sh");
     system("cd ../../..");
 }
@@ -235,6 +275,7 @@ void theharvester(void)
 void reconhelp(void)
 {
     clr();
+    color_green();
     prn_logo();
     //DEV0002: This should be updated when a new reconnaissance tool is added.
     printf("\n==RECONNAISSANCE TOOLS HELP==\n\n---------------------------------\n\n");
@@ -257,6 +298,7 @@ void reconSection(void)
     int reconSectionInput;
 
     clr();
+    color_green();
     prn_logo();
     //DEV0002: This should be updated when a new reconnaissance tool is added.
     printf("\n==RECONNAISSACE TOOLS==\n\n---------------------------------\n\n");
@@ -359,6 +401,7 @@ void nmap(void)
 void scanhelp(void)
 {
     clr();
+    color_green();
     prn_logo();
     //DEV0002: Update this when a new scanning tool is added.
     printf("\n==SCANNING TOOLS HELP==\n\n---------------------------------\n\n");
@@ -375,6 +418,7 @@ void scanSection(void)
     int scanSectionInput;
 
     clr();
+    color_green();
     prn_logo();
     //DEV0002: Update this when a new scanning tool is added.
     printf("\n==SCANNING TOOLS==\n\n---------------------------------\n\n");
@@ -424,7 +468,7 @@ void shadowcrack(void)
     clr();
     prn_logo();
     system("cd $PWD/tools/cracking/shadowcrack/src/ && python2 ShadowCrack.py");
-    //readline();
+    readline();
     system("cd ../../../..");
 }
 
@@ -485,6 +529,7 @@ void wifite(void)
 void crackhelp(void)
 {
     clr();
+    color_green();
     prn_logo();
     //DEV0002: Update this if a new cracking/encryption tool is added.
     printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS HELP==\n\n---------------------------------\n\n");
@@ -504,6 +549,7 @@ void crackSection(void)
     int crackSectionInput;
 
     clr();
+    color_green();
     prn_logo();
     //DEV0002: Update this if a new cracking/encryption tool is added.
     printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS==\n\n---------------------------------\n\n");
@@ -559,8 +605,10 @@ void crackSection(void)
 void exploitSection(void)
 {
     clr();
+    color_green();
     prn_logo();
     printf("\n==EXPLOITATION TOOLS==\n\n---------------------------------\n\n");
+    //DEV0003: Remove function below and code this.
     prn_construction();
     readline();
 }
@@ -568,6 +616,7 @@ void exploitSection(void)
 void dosSection(void)
 {
     clr();
+    color_green();
     prn_logo();
     printf("\n==DENIAL-OF-SERVICE TOOLS==\n\n---------------------------------\n\n");
     prn_construction();
@@ -577,6 +626,7 @@ void dosSection(void)
 void hijackSection(void)
 {
     clr();
+    color_green();
     prn_logo();
     printf("\n==SESSION HIJACKING TOOLS==\n\n---------------------------------\n\n");
     prn_construction();
@@ -587,6 +637,7 @@ void instdeps(void)
 {
     int batch = 4;
     clr();
+    color_green();
     prn_logo();
     //DEV0002: Update this if a new dependency is needed.
     printf("\n==INSTALL DEPENDENCIES==\n\n---------------------------------\n\n");
@@ -607,6 +658,7 @@ void instdeps(void)
 void prn_license(void)
 {
     clr();
+    color_green();
     prn_logo();
     //Opens the LICENSE file.
     system("less LICENSE");
@@ -615,6 +667,7 @@ void prn_license(void)
 void prn_help(void)
 {
     clr();
+    color_green();
     prn_logo();
     //Opens the MANUAL file.
     system("less MANUAL");
@@ -629,6 +682,7 @@ int main(void)
     while (justarandomone == 'x')
     {
     clr();
+    color_green();
     //Prints the logo of Shadow Framework..
     prn_logo();
     printf("\n==TOOLS==\n\n---------------------------------\n\n");

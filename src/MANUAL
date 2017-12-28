@@ -233,4 +233,9 @@ Part II: Usage
 			run Angry Fuzz3r, It will ask you for the target domain, target
 			CMS, and the wordlist path.
 
-		DEV0003: Where You Left Off
+		9.Metagoofil (Remote)
+			Metagoofil wrapper script has two versions. The remote and
+			local versions.
+
+				A.Remote
+					The remote version DEV0003: WYLO

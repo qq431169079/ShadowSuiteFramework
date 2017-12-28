@@ -10,7 +10,7 @@ apt install figlet
 
 # Program Start
 clear
-figlet Pwgen
+figlet RandomPass
 figlet -f mini Password Generator
 figlet -f mini Version 1.0
 echo ""
