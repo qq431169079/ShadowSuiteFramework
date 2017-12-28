@@ -75,6 +75,9 @@ void crackSection(void); //Encryption and Password Cracking tools
  void wifite(void);
  void crackhelp(void);
 void exploitSection(void); //Exploitation tools
+ void backdoor_factory(void);
+ void brutal(void);
+ void exploithelp(void);
 void dosSection(void); //Denial-of-Service tools
 void hijackSection(void); //Session Hijacking tools
 void instdeps(void); //Install Dependencies function
@@ -149,6 +152,7 @@ void prn_logo(void)
 {
     //DEV0001: In the future, it needs to be standalone!
     //which means it doesn't need any third-party tools!
+    color_green();
     system("figlet -f shadow Shadow Suite");
     printf("\n\"Ethical Hacking Toolkit\"\n");
 }
@@ -602,15 +606,99 @@ void crackSection(void)
     }
 }
 
-void exploitSection(void)
+void backdoor_factory(void)
+{
+    clr();
+    prn_logo();
+    //DEV0001: Code the wrapper script!
+    system("cd $PWD/tools/exploitation/backdoorfactory && bash backdoorfactory-wrapper");
+    system("cd ../../..");
+}
+
+void brutal(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/exploitation/brutal && bash Brutal.sh");
+    system("cd ../../..");
+}
+
+void exploithelp(void)
 {
     clr();
     color_green();
     prn_logo();
+    //DEV0002: Update this when a new explpitation tool is added.
     printf("\n==EXPLOITATION TOOLS==\n\n---------------------------------\n\n");
-    //DEV0003: Remove function below and code this.
-    prn_construction();
-    readline();
+    printf("Backdoor Factory: Patch executable binaries with user desired shellcode and continue normal execution of the prepatched state.\n\n");
+    printf("Brutal: Toolkit to quickly create various payload, powershell attack, virus attack and launch listener for a Human Interface Device.\n\n");
+    printf("\nPress enter to continue...\n\n");
+}
+
+void exploitSection(void)
+{
+    int exploitSectionInput;
+
+    clr();
+    color_green();
+    prn_logo();
+    //DEV0002: Update this when a new exploitation tool is added.
+    printf("\n==EXPLOITATION TOOLS==\n\n---------------------------------\n\n");
+    printf("[1] Backdoor Factory\n[2] Brutal\n[3] Cisco Global Exploiter\n[4] Exploit Database\n[5] Linux Exploit Suggester\n[6] Metasploit Payload Creator\n[7] Metasploit Framework\n[8] RouterSploit\n[9] ShellShocker\n[10] WebDav\n\n[98] Help\n[99] Back\n");
+    scanf("\n%d", &exploitSectionInput);
+    switch (exploitSectionInput)
+    {
+        case 1:
+		backdoor_factory();
+		break;
+
+	case 2:
+		brutal();
+		break;
+
+	case 3:
+		//cge();
+		break;
+
+	case 4:
+		//exploitdb();
+		break;
+
+	case 5:
+		//les();
+		break;
+
+	case 6:
+		//mpc();
+		break;
+
+	case 7:
+		//msf();
+		break;
+
+	case 8:
+		//routersploit();
+		break;
+
+	case 9:
+		//shellshocker();
+		break;
+
+	case 10:
+		//webdav();
+		break;
+
+	case 98:
+		exploithelp();
+		break;
+
+	case 99:
+		break;
+
+	default:
+		prn_invalidinput();
+		break;
+    }
 }
 
 void dosSection(void)
