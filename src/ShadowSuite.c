@@ -16,12 +16,19 @@
  */
 
 /* Colors
- * W  = '\033[0m'  # white (normal)
- * R  = '\033[31m' # red
- * G  = '\033[32m' # green
- * O  = '\033[33m' # yellow
- * B  = '\033[1m'  # bold
- * RR = '\033[3m'  # italic
+ * \033[0m  ==  white (normal)
+ * \033[31m ==  red
+ * \033[32m ==  green
+ * \033[33m ==  yellow
+ * \033[1m  ==  bold
+ * \033[3m  ==  italic
+ *
+ * Below not yet used;
+ *
+ * \033[34m ==  blue
+ * \033[35m ==  purple
+ * \033[36m ==  cyan
+ * \033[37m ==  gray
  */
 
 //Include preprocessor directives
@@ -30,16 +37,37 @@
 #include <time.h>
 
 //Define preprocessor directives
-
+#define PI 3.141326
+#define MAJOR_VERSION 0
+#define MINOR_VERSION 0
+#define BETA_VERSION 2
+//WB stands for Weekly Build.
+#define WB_VERSION 5
+#define BUILD_TYPE "Unstable-Release"
+//BUILD_TYPE define hint:
+//
+//Choose between "Weekly_Build", "Unstable_Release", "Experimental", or"Stable_Release".
+//Weekly_Build:   Means update of the program which is released weekly; has many bugs
+//                and has tools under development.
+//
+//Unstable_Release: Means update of the program which has a new tool that is in
+//                  first-usable stage, but still has many bugs and more features
+//                  needs to implement..
+//
+//Experimental: Means update of the program which has a new tool, but has some bugs on it.
+//
+//Stable_Release: Means update of the program which is stable, and almost all bugs
+//               are fixed; after this, a "maintenance/feature update" can be initialized.
 
 //Function declarations
+void error101(void); /*Error code 101 */
 void clr(void); //Clears the screen.
 void readline(void); //Wait for user input.
 void prn_invalidinput(void); //Prints the invalid input message.
 void exit_confirm(void); //Asks for exit confirmation.
 void prn_construction(void); //Prints the under construction message.
 void prn_logo(void); //Prints our logo.
-void color_white(void);
+void color_white(void); //Colors
 void color_red(void);
 void color_green(void);
 void color_yellow(void);
@@ -59,6 +87,7 @@ void reconSection(void); //Reconnaissance tools
  void metagoofil_local(void);
  void theharvester(void);
  void reconhelp(void);
+
 void scanSection(void); //Scanning tools
 //DEV0002: Functions for Scanning tools
  void dtect(void);
@@ -66,6 +95,7 @@ void scanSection(void); //Scanning tools
  void ciscoauditingtool(void);
  void nmap(void);
  void scanhelp(void);
+
 void crackSection(void); //Encryption and Password Cracking tools
 //DEV0002: Functions for encryption and password cracking tools
  void randompass(void);
@@ -77,6 +107,7 @@ void crackSection(void); //Encryption and Password Cracking tools
  void fbrute(void);
  void wifite(void);
  void crackhelp(void);
+
 void exploitSection(void); //Exploitation tools
 //DEV0002: Functions for exploitation tools
  void backdoor_factory(void);
@@ -84,16 +115,32 @@ void exploitSection(void); //Exploitation tools
  void cge(void);
  void exploitdb(void);
  void les(void);
- void mpc(void);
  void msf(void);
+ void routersploit(void);
+ void shellshocker(void);
  void exploithelp(void);
+
 void dosSection(void); //Denial-of-Service tools
 //DEV0002: Functions for DoS and DDoS tools
+
 void hijackSection(void); //Session Hijacking tools
 //DEV0002: Functions for Session Hijacking tools
+
 void instdeps(void); //Install Dependencies function
 void prn_license(void); //License function
 void prn_help(void); //Help function 
+
+void error101(void)
+{
+clr();
+color_red();
+printf("OH NO! PROGRAM MUST NOT GO HERE!\n\n");
+printf("This might be a bug, so please contact Shadow Team.\n");
+printf("Tell us what you had done and send it to any of the following::\n\n");
+printf("Public.ShadowTeam@gmail.com\nCatayao56@gmail.com\nCristineAnn.DG.Santos@gmail.com\n");
+printf("\nPress any key to exit...\n");
+readline();
+}
 
 void clr(void)  //Clear and set color function
 {
@@ -111,10 +158,10 @@ void prn_invalidinput(void)
 {
     clr();
     prn_logo();
-    color_red();
-    printf("\nERROR: Invalid Input\n");
-    color_green();
-    readline();
+    color_red();                        //Sets the terminal color to red...
+    printf("\nERROR: Invalid Input\n"); //...Then prints this message...
+    color_green();                      //...And lastly, sets the terminal color
+    readline();                         //back to green.
 }
 
 void exit_confirm(void)
@@ -122,6 +169,8 @@ void exit_confirm(void)
     char confirm;
     int error_value = 1;
 
+    //If user enters a character except for y, Y, n, and N, the variable 'error_value'
+    //will still have the value '1', which causes the loop to start again from the top.
     while (error_value == 1)
     {
     clr();
@@ -132,21 +181,21 @@ void exit_confirm(void)
     if (confirm == 'y' || confirm == 'Y')
     {
         clr();
-        error_value = 0;
-	color_red();
+        error_value = 0; //Assigns variable 'error_value' to have the value 0, to get
+	color_red();                                               //out of the loop.
         printf("\nExiting...\n");
-	color_white();
+	color_white(); //Sets the terminal color back to normal.
         exit(EXIT_SUCCESS);
     }
     if (confirm == 'n' || confirm == 'N')
     {
-        error_value = 0;
-        clr();
+        error_value = 0; //Assigns variable 'error_value' to have the value 0, to get
+        clr();                                                     //out of the loop.
     }
     else
     {
-            error_value = 1;
-        prn_invalidinput();
+        error_value = 1; //If none of the conditions above met, then the program will
+        prn_invalidinput();                //call the 'prn_invalidinput();' function.
     }
     }
 }
@@ -154,8 +203,8 @@ void exit_confirm(void)
 void prn_construction(void)
 {
     prn_logo();
-    color_yellow();
-    printf("\nERROR: Under Construction!\n");
+    color_yellow();                           //Sets the terminal color to yellow...
+    printf("\nERROR: Under Construction!\n"); //...Then prints this message.
 }
 
 void prn_logo(void)
@@ -165,6 +214,8 @@ void prn_logo(void)
     color_green();
     system("figlet -f shadow Shadow Suite");
     printf("\n\"Ethical Hacking Toolkit\"\n");
+    //Prints the program's version.
+    printf("v%d.%d.%d.%d -- %s\n", MAJOR_VERSION, MINOR_VERSION, BETA_VERSION, WB_VERSION, BUILD_TYPE);
 }
 
 void color_white(void)
@@ -199,7 +250,7 @@ void color_italic(void)
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                                                                                     *
- *                          START OF PROGRAM FUNCTIONS                                 *
+ *                      START OF THE ACTUAL PROGRAM FUNCTIONS                          *
  *                                                                                     *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -298,7 +349,7 @@ void reconhelp(void)
     color_green();
     prn_logo();
     //DEV0002: This should be updated when a new reconnaissance tool is added.
-    printf("\n==RECONNAISSANCE TOOLS HELP==\n\n---------------------------------\n\n");
+    printf("\n==RECONNAISSANCE TOOLS INFO==\n\n---------------------------------\n\n");
     printf("Infoga: Email Information Gathering tool\n\n");
     printf("Red Hawk: Website Information Gathering tool\n\n");
     printf("Social Engineer Toolkit: Social Engineering tool\t\t[i] ROOT REQUIRED\n\n");
@@ -322,7 +373,7 @@ void reconSection(void)
     prn_logo();
     //DEV0002: This should be updated when a new reconnaissance tool is added.
     printf("\n==RECONNAISSACE TOOLS==\n\n---------------------------------\n\n");
-    printf("\n[1] Infoga\n[2] Red Hawk\n[3] Social Engineer Toolkit\t\t[!] ROOT REQUIRED\n[4] URLCrazy\n[5] Weeman\n[6] DNSMap\n[7] Automater\n[8] Angry Fuzz3r\n[9] Metagoofil (Remote)\n[10] Metagoofil (Local)\n[11] The Harvester\n\n[98] Help\n[99] Back\n");
+    printf("\n[1] Infoga\n[2] Red Hawk\n[3] Social Engineer Toolkit\t\t[!] ROOT REQUIRED\n[4] URLCrazy\n[5] Weeman\n[6] DNSMap\n[7] Automater\n[8] Angry Fuzz3r\n[9] Metagoofil (Remote)\n[10] Metagoofil (Local)\n[11] The Harvester\n\n[98] Info\n[99] Back\n");
     scanf("\n%d", &reconSectionInput);
     switch (reconSectionInput)
     {
@@ -425,7 +476,7 @@ void scanhelp(void)
     color_green();
     prn_logo();
     //DEV0002: Update this when a new scanning tool is added.
-    printf("\n==SCANNING TOOLS HELP==\n\n---------------------------------\n\n");
+    printf("\n==SCANNING TOOLS INFO==\n\n---------------------------------\n\n");
     printf("D-Tect: provides multiple features and detection features which gather target information and finds different flaws in it.\n\n");
     printf("DSSS: A fully functional SQLi Scanner\n\n");
     printf("Cisco Auditing Tool: Scans cisco routers for common vulnerabilities.\n\n");
@@ -443,7 +494,7 @@ void scanSection(void)
     prn_logo();
     //DEV0002: Update this when a new scanning tool is added.
     printf("\n==SCANNING TOOLS==\n\n---------------------------------\n\n");
-    printf("[1] D-Tect\n[2] DSSS\n[3] Cisco Auditing Tool\n[4] Nmap\n\n[98] Help\n[99] Back\n");
+    printf("[1] D-Tect\n[2] DSSS\n[3] Cisco Auditing Tool\n[4] Nmap\n\n[98] Info\n[99] Back\n");
     scanf("\n%d", &scanSectionInput);
     switch (scanSectionInput)
     {
@@ -471,6 +522,7 @@ void scanSection(void)
 		break;
 
 	default:
+		//If none of the above met, the prn_invalidinput(); will be called.
 		prn_invalidinput();
 		break;
     }
@@ -555,14 +607,15 @@ void crackhelp(void)
     color_green();
     prn_logo();
     //DEV0002: Update this if a new cracking/encryption tool is added.
-    printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS HELP==\n\n---------------------------------\n\n");
+    printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS INFO ==\n\n---------------------------------\n\n");
     printf("Random Pass: Random Password block generator\n\n");
     printf("Shadow Crack: Hashing tool\n\n");
     printf("Black Hydra: Shorten brute force sessions on hydra\n\n");
     printf("Hash Buster: use several online hash crackers to find cleartext of a hash in less than 5 seconds.\n\n");
     printf("Hash Identifier: Identify the type of a hash.\n\n");
     printf("Common User Passwords Profiler (CUPP): Common user passwords profiler.\n\n");
-    printf("Facebook Cracker: Crack facebook account's passwords.");
+    printf("Facebook Cracker: Crack facebook account's passwords.\n\n");
+    printf("Wifite: Wireless network auditor.\n\n");
     printf("\nPress enter to continue...\n\n");
     readline();
 }
@@ -576,7 +629,7 @@ void crackSection(void)
     prn_logo();
     //DEV0002: Update this if a new cracking/encryption tool is added.
     printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS==\n\n---------------------------------\n\n");
-    printf("[1] Random Pass\n[2] Shadow Crack\n[3] Black Hydra\n[4] Hash Buster\n[5] Hash Identifier\n[6] Common User Passwords Profiler (CUPP)\n[7] Facebook Cracker\n[8] Wifite\t\t\t[i] ROOT REQUIRED\n\n[98] Help\n[99]Back\n");
+    printf("[1] Random Pass\n[2] Shadow Crack\n[3] Black Hydra\n[4] Hash Buster\n[5] Hash Identifier\n[6] Common User Passwords Profiler (CUPP)\n[7] Facebook Cracker\n[8] Wifite\t\t\t[i] ROOT REQUIRED\n\n[98] Info\n[99]Back\n");
     scanf("\n%d", &crackSectionInput);
     switch (crackSectionInput)
     {
@@ -668,22 +721,29 @@ void les(void)
     system("cd ../../..");
 }
 
-void mpc(void)
-{
-    clr();
-    prn_logo();
-    system("cd $PWD/tools/exploitation/mpc && bash msfpc.sh");
-    readline(); //DEV0001: Delete if automatic exit of program is absent.
-    system("cd ../../..");
-}
-
 void msf(void)
 {
     clr();
     prn_logo();
-    system("cd $PWD/tools/exploitation/msf && ruby msfconsole");
+    system("cd $PWD/tools/exploitation/msf/src && ruby msfconsole");
     readline(); //DEV0001: Remove if automatic exit of program is absent.
     system("cd ,./../..");
+}
+
+void routersploit(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/exploitation/routersploit && python2 rsf.py");
+    system("cd ../../..");
+}
+
+void shellshocker(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/exploitation/shellshocker && bash shellshocker.sh");
+    system("cd ../../..");
 }
 
 void exploithelp(void)
@@ -692,12 +752,18 @@ void exploithelp(void)
     color_green();
     prn_logo();
     //DEV0002: Update this when a new explpitation tool is added.
-    printf("\n==EXPLOITATION TOOLS==\n\n---------------------------------\n\n");
+    printf("\n==EXPLOITATION TOOLS INFO==\n\n---------------------------------\n\n");
     printf("Backdoor Factory: Patch executable binaries with user desired shellcode and continue normal execution of the prepatched state.\n\n");
     printf("Brutal: Toolkit to quickly create various payload, powershell attack, virus attack and launch listener for a Human Interface Device.\n\n");
     printf("Cisco Global Exploiter: Exploit the most dangerous vulnerabilities of Cisco systems.\n\n");
-    printf("Exploit Database: Search exploit-db.com exploits.");
+    printf("Exploit Database: Search exploit-db.com exploits.\n\n");
+    printf("Linux Exploit Suggester: Linux Exploit Suggester; based on operating system release number.\n\n");
+    //DEV0001: Provide better description for Metasploit Framework.
+    printf("Metasploit Framework: Create various payload for malicious attacks.\n\n");
+    printf("RouterSploit: Exploitation framework dedicated to embedded devices.\n\n");
+    printf("ShellShocker: Test a list of hosts for the shellshock vulnerability.\n\n");
     printf("\nPress enter to continue...\n\n");
+    readline();
 }
 
 void exploitSection(void)
@@ -709,7 +775,7 @@ void exploitSection(void)
     prn_logo();
     //DEV0002: Update this when a new exploitation tool is added.
     printf("\n==EXPLOITATION TOOLS==\n\n---------------------------------\n\n");
-    printf("[1] Backdoor Factory\n[2] Brutal\n[3] Cisco Global Exploiter\n[4] Exploit Database\n[5] Linux Exploit Suggester\n[6] Metasploit Payload Creator\n[7] Metasploit Framework\n[8] RouterSploit\n[9] ShellShocker\n[10] WebDav\n\n[98] Help\n[99] Back\n");
+    printf("[1] Backdoor Factory\n[2] Brutal\n[3] Cisco Global Exploiter\n[4] Exploit Database\n[5] Linux Exploit Suggester\n[6] Metasploit Framework\n[7] RouterSploit\n[8] ShellShocker\n\n[98] Info\n[99] Back\n");
     scanf("\n%d", &exploitSectionInput);
     switch (exploitSectionInput)
     {
@@ -734,23 +800,15 @@ void exploitSection(void)
 		break;
 
 	case 6:
-		mpc();
-		break;
-
-	case 7:
 		msf();
 		break;
 
+	case 7:
+		routersploit();
+		break;
+
 	case 8:
-		//routersploit();
-		break;
-
-	case 9:
-		//shellshocker();
-		break;
-
-	case 10:
-		//webdav();
+		shellshocker();
 		break;
 
 	case 98:
@@ -803,6 +861,16 @@ void instdeps(void)
     system("cpan Net::IP");
     system("cpan Net::DNS");
     system("cpan IO::Socket::SSL");
+    system("cpan Term::ANSIColor");
+    system("cpan Getopt::Long");
+    system("cpan IO::File");
+    system("cpan Net::IP");
+    system("cpan Net::DNS");
+    system("cpan Net::Netmask");
+    system("cpan XML::Writer");
+    system("cpan Config");
+    system("cpan Socket");
+    system("cpan String::Random");
     printf("\nInstalling dependencies... Done!\n");
     printf("Press any key to continue...");
     readline();
@@ -894,14 +962,8 @@ int main(void)
     		break;
         }
     }
-    clr();
-    color_red();
-    printf("OH NO! PROGRAM MUST NOT GO HERE!\n\n");
-    printf("This might be a bug, so please contact Shadow Team.\n");
-    printf("Tell us what you had done and send it to any of thenfollowing::\n\n");
-    printf("Public.ShadowTeam@gmail.com\nCatayao56@gmail.com\n");
-    printf("\nPress any key to exit...\n");
-    readline();
+    error101();
+    color_white();
     return 1; //Program must not go here!!!
     exit(EXIT_FAILURE);
 }

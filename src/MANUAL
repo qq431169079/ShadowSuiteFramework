@@ -40,6 +40,13 @@ IV.Credits
 	Shawar Khan: for creating D-Tect.
 	NMap Team: for creating NMap.
 	Edo Maland ( Screetsec ): for creating Brutal.
+	Nemesis and E4m: for creating Cisco Global Exploiter.
+	Offensive Security: for creating Kali Linux, Kali NetHunter, and Exploit Database.
+	mattoufoutu: for creating ExploitDB script.
+	PenturaLabs: for creating Linux Exploit Suggester.
+	Rapid7: for creating Metasploit and Metasploit Framework.
+	NullArray: for creating Shellshocker.
+
 	Linus Torvalds: for creating Linux Operating System.
 	Dennis Ritchie: for creating C programming Language.
 
@@ -47,6 +54,7 @@ IV.Credits
 		Cisco Auditing Tool
 		Damn Small SQLi Scanner
 		Backdoor Factory
+		Routersploit
 
 
 
@@ -83,11 +91,11 @@ Part II: Usage
 	you. At first startup, There will be the Tools categorized by their
 	use.
 	
-		[1] Reconnaissance
+		[1] Reconnaissance (Information Gathering)
 		[2] Scanning
 		[3] Encryption and Password Cracking
 		[4] Exploitation
-		[5] Denial-of-Service
+		[5] Denial-of-Service (Stress Testing)
 		[6] Session Hijacking
 
 		[96] License
@@ -240,4 +248,46 @@ Part II: Usage
 			local versions.
 
 				A.Remote
-					The remote version DEV0003: WYLO
+					-The remote version is used to extract metadata
+			of public documents (pdf,doc,xls,ppt,etc) availables in the
+			target websites. To start, run metagoofil (remote). Then enter
+			the target website. then enter the filetypes to download.
+			Then Set the limit of results to search. And Set the limit of
+			files to download, which is optional. And lastly, enter the
+			filename for the output file. After that, metagoofil will do
+			its work. Then after a minute, It will show you the results.
+
+				B.Local
+				       -The local version is used to extract metadata
+			of public dociments (pdf,doc,xls,ppt,etc) available in your
+			local directory. To start, run metagoofil (local). Then enter
+			the target directory. Then enter the filetypes to search. And
+			then lastly, enter the filename for the output file. After
+			that, metagoofil will do it's work. Then after a minute, It
+			will show you the results.
+
+	       10.The Harvester
+		        The Harvester is used to "harvest" information about the
+			target. When you run The Harvester, type the target domain.
+			And choose your desired data source. This may be Google, Bing,
+			Yahoo, etc. List of supported data sources is in the wrapper
+			script. Then the wrapper script will ask you in what result
+			number will it start. After that, it will ask you if you want
+			to enable some switches. Then The Harvester will "harvest"
+			all aquired information about the target host.
+
+	II.Scanning Tools
+
+		1.D-Tect
+			D-Tect provides multiple features and detection features
+			which gather target information and finds different flaws in it.
+			To use D-Tect on Shadow Suite, run D-Tect. Then a menu will
+			show up. Select your desired option.
+
+		2.DSSS
+			DSSS, short for Damn Small SQLi Scanner, which is written
+			under 100 lines of code. Run DSSS, just enter the required
+			information and it will do the work.
+
+		3.Cisco Auditing Tool
+			DEV0003: WYLO

@@ -1,4 +1,4 @@
-Shadow Suite 0.0.2.4 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.2.5 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -10,47 +10,85 @@ the main project of Shadow Team.
 
 What's new?
 ------------------
-1.New Name, new purpose, HAPPY NEW YEAR! <Jan. 1, 2017>
-      -It's name is no longer describes its real purpose.
-       It's no longer a framework. It's now a toolkit.
-       Shadow Suite version 0.0.2.0! Happy new year!
-
-2.Reconnaissance Tools
-      -Now, we have our recon toolkit!
-
-3.Scanning Toolkit
-      -We also had our Scanning toolkit!
-
-4.Encryption and Password Cracking Toolkit
-      -Now we had our Cracking toolkit!
-
-5.Fancy colors
-      -Added some fancy colors to lighten up your work!
+1.Added more comprehensive comments on Shadow Suite's source code.
 
 Full Feature List
 ------------------------
 -Reconnaissance Toolkit
      Infoga: Email Information Gathering tool
+     
      Red Hawk: Website Information Gathering tool
+     
      Social Engineer Toolkit: Social Engineering tool [i] ROOT REQUIRED
+     
      URLCrazy: Study domainname typos and URL Hijacking
+     
      Weeman: HTTP Server for phishing.
+     
      DNSMap: discover the target company's IP netblocks, domain names, phone numbers, etc.
+     
      Automater: Automate the OSINT analysis of IP Addresses.
+     
      Angry Fuzz3r: collection of tools for pentesting to gather information and
      discover vulnerabilities of the targets based on Fuzzedb
+     
      Metagoofil: metadata extractor
+     
      The Harvester: tool for gathering target details.
 
--Scanning Toolkit <Dec. 27, 2017>
+-Scanning Toolkit
      D-Tect: provides multiple features and detection features which gather target
      information and finds different flaws in it.
+     
      DSSS: A fully functional SQLi Scanner
+     
      Cisco Auditing Tool: Scans cisco routers for common vulnerabilities.
+     
      Nmap: Network exploration tool and security / port scanner
 
--Exploitation Toolkit <Dec. 28, 2017>
-     Backdoor Factory 
+-Encryption and Password Cracking Toolkit
+     Random Pass: Random Password block generator
+     
+     Shadow Crack: Hashing tool
+     
+     Black Hydra: Shorten brute force sessions on hydra
+     
+     Hash Buster: use several online hash crackers to find cleartext of a hash in less
+     than 5 seconds.
+     
+     Hash Identifier: Identify the type of a hash.
+     
+     Common User Passwords Profiler (CUPP): Common user passwords profiler.
+     
+     Facebook Cracker: Crack facebook account's passwords.
+     
+     Wifite: Wireless network auditor.
+
+-Exploitation Toolkit
+     Backdoor Factory: Patch executable binaries with user desired shellcode and
+     continue normal execution of the prepatched state.
+     
+     Brutal: Toolkit to quickly create various payload, powershell attack, virus
+     attack and launch listener for a Human Interface Device.
+     
+     Cisco Global Exploiter: Exploit the most dangerous vulnerabilities of Cisco systems.
+     
+     Exploit Database: Search exploit-db.com exploits.
+     
+     Linux Exploit Suggester: Linux Exploit Suggester; based on operating system
+     release number.
+     
+     Metasploit Framework: Create various payload for malicious attacks.
+     
+     RouterSploit: Exploitation framework dedicated to embedded devices.
+     
+     ShellShocker: Test a list of hosts for the shellshock vulnerability.
+
+-Build-in Manual
+     Shadow Suite has a built-in manual for you to see and be a better user.
+
+-Built-in Dependency Installer
+     Shadow Suite has also a built-in dependency installer to be user-friendly.
 
 TO-DO List
 ------------------------
@@ -78,41 +116,49 @@ License and Copying
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with this program.  If not, see <http://www.gnu.org/licenses/.
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 -See LICENSE file.
 
 Credits
 ------------------------
 Project Lead: Catayao56
-Project co-lead: Sh4d0wHaX0R
+Project co-lead: Sh4d0wHaX
 
-DedSecTL: for creating Black Hydra.
-Shadow Team: for creating Random Pass and Shadow Crack.
-UltimateHackers: for creating Hash Buster.
-Zion3R: for creating Hash Identifier.
-Muris Kurgas aka j0rgan: for creating CUPP.
-InfoSecHacker: for creating Facebook Cracker.
-derv82: for creating Wifite.
-Sold1er: for creating Angry Fuzzer.
-TekDefense: for creating Automater.
-548rU PH0X7R07: for creating DNSMap.
-m4ll0k: for creating Infoga.
-Christian Martorella: for creating metagoofil and The Harvester.
-R3D#@0R_2H1N A.K.A Tuhinshubhra: for creating Red Hawk.
-David Kennedy (ReL1K): for creating Social Engineer Toolkit.
-Andrew Horton (urbanadventurer): for creating URLCrazy.
-Hypsurus: for creating Weeman.
-Shawar Khan: for creating D-Tect.
-NMap Team: for creating NMap.
-Edo Maland ( Screetsec ): for creating Brutal.
-Linus Torvalds: for creating Linux Operating System.
-Dennis Ritchie: for creating C programming Language.
+        DedSecTL: for creating Black Hydra.
+        Shadow Team: for creating Random Pass and Shadow Crack.
+        UltimateHackers: for creating Hash Buster.
+        Zion3R: for creating Hash Identifier.
+        Muris Kurgas aka j0rgan: for creating CUPP.
+        InfoSecHacker: for creating Facebook Cracker.
+        derv82: for creating Wifite.
+        Sold1er: for creating Angry Fuzzer.
+        TekDefense: for creating Automater.
+        548rU PH0X7R07: for creating DNSMap.
+        m4ll0k: for creating Infoga.
+        Christian Martorella: for creating metagoofil and The Harvester.
+        R3D#@0R_2H1N A.K.A Tuhinshubhra: for creating Red Hawk.
+        David Kennedy (ReL1K): for creating Social Engineer Toolkit.
+        Andrew Horton (urbanadventurer): for creating URLCrazy.
+        Hypsurus: for creating Weeman.
+        Shawar Khan: for creating D-Tect.
+        NMap Team: for creating NMap.
+        Edo Maland ( Screetsec ): for creating Brutal.
+        Nemesis and E4m: for creating Cisco Global Exploiter.
+        Offensive Security: for creating Kali Linux, Kali NetHunter, and Exploit Database.
+        mattoufoutu: for creating ExploitDB script.
+        PenturaLabs: for creating Linux Exploit Suggester.
+        Rapid7: for creating Metasploit and Metasploit Framework.
+        NullArray: for creating Shellshocker.
 
-Whoever you are, thank you for creating:
-	Cisco Auditing Tool
-	Damn Small SQLi Scanner
-	Backdoor Factory
+        Linus Torvalds: for creating Linux Operating System.
+        Dennis Ritchie: for creating C programming Language.
+
+        Whoever you are, thank you for creating:
+                Cisco Auditing Tool
+                Damn Small SQLi Scanner
+                Backdoor Factory
+                Routersploit
 
 
 
@@ -142,3 +188,6 @@ Installing & Running
            a.Termux Terminal Emulator on Android or Linux
 	   
 	         ./ShadowFramework
+
+		 or
+		 sudo ./ShadowFramework

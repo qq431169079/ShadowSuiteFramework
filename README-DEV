@@ -13,9 +13,10 @@ README for Developers
        				Main
 				 ^
 				/ \
-			Function1 Function2
-			   ^          ^
-		    Subfunctions   Subfunctions
+			       /   \
+		       Function1   Function2
+			 ^             ^
+		 Subfunctions         Subfunctions
 
 
 
@@ -23,9 +24,10 @@ README for Developers
 
 
 
-       		    Subfunctions   Subfunctions
+       		 Subfunctions         Subfunctions
 		         v              v
-		        Function1 Function2
+		       Function1   Function2
+		               \   /
 			        \ /
 			         v
 				Main
@@ -49,3 +51,70 @@ README for Developers
 		DEV0005 : Mentioned line is for debugging purposes.
 		          Comment the mentioned line if not debugging.
 		DEV0006 : Feature request Tag
+
+3.Program Development Cycle
+
+      -This program uses the Waterfall development.
+
+      -The Waterfall development has 5 phases.
+
+                Requirements
+                          |
+                          v
+                         Design
+                             |
+                             v
+                            Implementation
+                                        |
+                                        v
+                                       Verification
+                                                 |
+                                                 v
+                                                Maintenance
+
+      -Descriptions:
+        1.Requirements:
+	
+	  -Requirements analysis resulting in a software requirements specification.
+
+	2.Design
+	  -Software design is the process by which an agent creates a specification
+	   of a software artifact, intended to accomplish goals, using a set of
+	   primitive components and subject to constraints.
+
+	3.Implementation
+	  -The actual production of the software. This includes programming, graphics
+	   design, etc.
+
+	4.Verification
+	  A.Software testing is an investigation conducted to provide stakeholders
+	   with information about the quality of the software product or service
+	   under test.
+
+	  B.System integration is defined in information technology as the process
+	   of linking together different computing systems and software applications
+	   physically or functionally, to act as a coordinated whole.
+
+	  C.Software deployment is all of the activities that make a software system
+	   available for use; Installation (or setup) of a computer program
+	   (including device drivers and plugins), is the act of making the program
+	   ready for execution.
+
+	5.Maintenance
+	  -Software maintenance in software engineering is the modification of a
+	   software product after delivery to correct faults, to improve performance
+	   or other attributes.
+
+      -The basic principles of the Waterfall development are:
+	   
+	1.Project is divided into sequential phases, with some overlap and
+	  splashback acceptable between phases.
+        
+	2.Emphasis is on planning, time schedules, target dates, budgets and
+	  implementation of an entire system at one time.
+        
+	3.Tight control is maintained over the life of the project via
+	  extensive written documentation, formal reviews, and approval/signoff
+	  by the user and information technology management occurring at the end
+	  of most phases before beginning the next phase. Written documentation is
+	  an explicit deliverable of each phase.
