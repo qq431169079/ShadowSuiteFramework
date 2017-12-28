@@ -46,6 +46,7 @@ void color_yellow(void);
 void color_bold(void); //I know, this is not a color!
 void color_italic(void);
 void reconSection(void); //Reconnaissance tools
+//DEV0002: Functions for Reconnaissance tools
  void infoga(void);
  void redhawk(void);
  void set(void);
@@ -59,12 +60,14 @@ void reconSection(void); //Reconnaissance tools
  void theharvester(void);
  void reconhelp(void);
 void scanSection(void); //Scanning tools
+//DEV0002: Functions for Scanning tools
  void dtect(void);
  void dsss(void);
  void ciscoauditingtool(void);
  void nmap(void);
  void scanhelp(void);
 void crackSection(void); //Encryption and Password Cracking tools
+//DEV0002: Functions for encryption and password cracking tools
  void randompass(void);
  void shadowcrack(void);
  void blackhydra(void);
@@ -75,25 +78,33 @@ void crackSection(void); //Encryption and Password Cracking tools
  void wifite(void);
  void crackhelp(void);
 void exploitSection(void); //Exploitation tools
+//DEV0002: Functions for exploitation tools
  void backdoor_factory(void);
  void brutal(void);
+ void cge(void);
+ void exploitdb(void);
+ void les(void);
+ void mpc(void);
+ void msf(void);
  void exploithelp(void);
 void dosSection(void); //Denial-of-Service tools
+//DEV0002: Functions for DoS and DDoS tools
 void hijackSection(void); //Session Hijacking tools
+//DEV0002: Functions for Session Hijacking tools
 void instdeps(void); //Install Dependencies function
 void prn_license(void); //License function
 void prn_help(void); //Help function 
 
 void clr(void)  //Clear and set color function
 {
-    color_green();
+    color_green(); //Sets terminal color to green.
     system("clear"); //Actual command that clears the screen
 }
 
 void readline(void)
 {
     system("read dummy"); //Command lets user input any word, even
-                              //a line break.
+                         //a line break.
 }
 
 void prn_invalidinput(void)
@@ -115,7 +126,7 @@ void exit_confirm(void)
     {
     clr();
     prn_logo();
-    color_white();
+    color_yellow();
     printf("\nDo you really want to quit?\nAnswer (y/n) : \n");
     scanf(" %c", &confirm);
     if (confirm == 'y' || confirm == 'Y')
@@ -147,7 +158,6 @@ void prn_construction(void)
     printf("\nERROR: Under Construction!\n");
 }
 
-//prn_logo(); Function
 void prn_logo(void)
 {
     //DEV0001: In the future, it needs to be standalone!
@@ -174,7 +184,7 @@ void color_green(void)
 
 void color_yellow(void)
 {
-    system("echo -e \033[33m"); //Sets terminal color to orange.
+    system("echo -e \033[33m"); //Sets terminal color to yellow.
 }
 
 void color_bold(void)
@@ -186,6 +196,12 @@ void color_italic(void)
 {
     system("echo -e \033[3m"); //Sets terminal font to italic.
 }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                                                                                     *
+ *                          START OF PROGRAM FUNCTIONS                                 *
+ *                                                                                     *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 void infoga(void)
 {
@@ -375,6 +391,7 @@ void dtect(void)
     clr();
     prn_logo();
     system("cd $PWD/tools/scanning/dtect && python2 d-tect.py");
+    readline();
     system("cd ../../..");
 }
 
@@ -481,6 +498,7 @@ void blackhydra(void)
     clr();
     prn_logo();
     system("cd $PWD/tools/cracking/blackhydra/ && python2 blackhydra.py");
+    //DEV0001: Uncomment the line if automatic program exit is present.
     //readline();
     system("cd ../../..");
 }
@@ -490,6 +508,7 @@ void hashbuster(void)
     clr();
     prn_logo();
     system("cd $PWD/tools/cracking/hashbuster/ && python2 hash.py");
+    //DEV0001: Uncomment the line if automatic program exit is present.
     //readline();
     system("cd ../../..");
 }
@@ -526,7 +545,7 @@ void wifite(void)
     prn_logo();
     system("cd $PWD/tools/cracking/wifite2 && python2 Wifite.py");
     readline(); //DEV0001: This is temporary while my device isn't rooted.
-                //But if automatic exit of the prpgram is present, leave it here.
+                //But if automatic exit of the program is present, leave it here.
     system("cd ../../..");
 }
 
@@ -623,6 +642,50 @@ void brutal(void)
     system("cd ../../..");
 }
 
+void cge(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/exploitation/cge && perl cge.pl");
+    readline(); //DEV0001: Remove this if automatic exit of program is absent.
+    system("cd ../../..");
+}
+
+void exploitdb(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/exploitation/exploitdb && python2 exploitdb.py");
+    readline(); //DEV0001: Remove if automatic exit of progran is absent.
+    system("cd ../../..");
+}
+
+void les(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/exploitation/les && bash les-wrapper");
+    system("cd ../../..");
+}
+
+void mpc(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/exploitation/mpc && bash msfpc.sh");
+    readline(); //DEV0001: Delete if automatic exit of program is absent.
+    system("cd ../../..");
+}
+
+void msf(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/exploitation/msf && ruby msfconsole");
+    readline(); //DEV0001: Remove if automatic exit of program is absent.
+    system("cd ,./../..");
+}
+
 void exploithelp(void)
 {
     clr();
@@ -632,6 +695,8 @@ void exploithelp(void)
     printf("\n==EXPLOITATION TOOLS==\n\n---------------------------------\n\n");
     printf("Backdoor Factory: Patch executable binaries with user desired shellcode and continue normal execution of the prepatched state.\n\n");
     printf("Brutal: Toolkit to quickly create various payload, powershell attack, virus attack and launch listener for a Human Interface Device.\n\n");
+    printf("Cisco Global Exploiter: Exploit the most dangerous vulnerabilities of Cisco systems.\n\n");
+    printf("Exploit Database: Search exploit-db.com exploits.");
     printf("\nPress enter to continue...\n\n");
 }
 
@@ -657,23 +722,23 @@ void exploitSection(void)
 		break;
 
 	case 3:
-		//cge();
+		cge();
 		break;
 
 	case 4:
-		//exploitdb();
+		exploitdb();
 		break;
 
 	case 5:
-		//les();
+		les();
 		break;
 
 	case 6:
-		//mpc();
+		mpc();
 		break;
 
 	case 7:
-		//msf();
+		msf();
 		break;
 
 	case 8:
@@ -769,13 +834,15 @@ int main(void)
 
     while (justarandomone == 'x')
     {
+    //Clears the screen
     clr();
+    //Sets terminal color to green.
     color_green();
     //Prints the logo of Shadow Framework..
     prn_logo();
     printf("\n==TOOLS==\n\n---------------------------------\n\n");
-    printf("\n[1] Reconnaissance\n[2] Scanning\n[3] Encryption and Password Cracking\n");
-    printf("[4] Exploitation\n[5] Denial-of-Service\n[6] Session Hijacking\n");
+    printf("\n[1] Reconnaissance (Information Gathering)\n[2] Scanning\n[3] Encryption and Password Cracking\n");
+    printf("[4] Exploitation\n[5] Denial-of-Service (Stress Testing)\n[6] Session Hijacking\n");
     printf("\n[96] License\n[97] Manual\n[98] Install Dependencies\n[99] Exit\n");
 
     scanf("\n%d", &section);
@@ -827,5 +894,14 @@ int main(void)
     		break;
         }
     }
+    clr();
+    color_red();
+    printf("OH NO! PROGRAM MUST NOT GO HERE!\n\n");
+    printf("This might be a bug, so please contact Shadow Team.\n");
+    printf("Tell us what you had done and send it to any of thenfollowing::\n\n");
+    printf("Public.ShadowTeam@gmail.com\nCatayao56@gmail.com\n");
+    printf("\nPress any key to exit...\n");
+    readline();
     return 1; //Program must not go here!!!
+    exit(EXIT_FAILURE);
 }
