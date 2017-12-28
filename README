@@ -49,7 +49,8 @@ Full Feature List
      Cisco Auditing Tool: Scans cisco routers for common vulnerabilities.
      Nmap: Network exploration tool and security / port scanner
 
--Exploitation Toolkit <Pending...>
+-Exploitation Toolkit <Dec. 28, 2017>
+     Backdoor Factory 
 
 TO-DO List
 ------------------------
@@ -83,8 +84,9 @@ License and Copying
 
 Credits
 ------------------------
-Project Lead :: Catayao56
-Project co-lead :: Sh4d0wHaX0R
+Project Lead: Catayao56
+Project co-lead: Sh4d0wHaX0R
+
 DedSecTL: for creating Black Hydra.
 Shadow Team: for creating Random Pass and Shadow Crack.
 UltimateHackers: for creating Hash Buster.
@@ -103,12 +105,14 @@ Andrew Horton (urbanadventurer): for creating URLCrazy.
 Hypsurus: for creating Weeman.
 Shawar Khan: for creating D-Tect.
 NMap Team: for creating NMap.
+Edo Maland ( Screetsec ): for creating Brutal.
 Linus Torvalds: for creating Linux Operating System.
 Dennis Ritchie: for creating C programming Language.
 
 Whoever you are, thank you for creating:
-        Cisco Auditing Tool
-        Damn Small SQLi Scanner
+	Cisco Auditing Tool
+	Damn Small SQLi Scanner
+	Backdoor Factory
 
 
 
