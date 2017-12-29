@@ -21,40 +21,47 @@ III.Contributors
 
 IV.Credits
 
-	DedSecTL: for creating Black Hydra.
-	Shadow Team: for creating Random Pass and Shadow Crack.
-	UltimateHackers: for creating Hash Buster.
-	Zion3R: for creating Hash Identifier.
-	Muris Kurgas aka j0rgan: for creating CUPP.
-	InfoSecHacker: for creating Facebook Cracker.
-	derv82: for creating Wifite.
-	Sold1er: for creating Angry Fuzzer.
-	TekDefense: for creating Automater.
-	548rU PH0X7R07: for creating DNSMap.
-	m4ll0k: for creating Infoga.
-	Christian Martorella: for creating metagoofil and The Harvester.
-	R3D#@0R_2H1N A.K.A Tuhinshubhra: for creating Red Hawk.
-	David Kennedy (ReL1K): for creating Social Engineer Toolkit.
-	Andrew Horton (urbanadventurer): for creating URLCrazy.
-	Hypsurus: for creating Weeman.
-	Shawar Khan: for creating D-Tect.
-	NMap Team: for creating NMap.
-	Edo Maland ( Screetsec ): for creating Brutal.
-	Nemesis and E4m: for creating Cisco Global Exploiter.
-	Offensive Security: for creating Kali Linux, Kali NetHunter, and Exploit Database.
-	mattoufoutu: for creating ExploitDB script.
-	PenturaLabs: for creating Linux Exploit Suggester.
-	Rapid7: for creating Metasploit and Metasploit Framework.
-	NullArray: for creating Shellshocker.
+	Project Lead: Catayao56
+    Project co-lead: Sh4d0wHaX0R
 
-	Linus Torvalds: for creating Linux Operating System.
-	Dennis Ritchie: for creating C programming Language.
+        DedSecTL: for creating Black Hydra.
+        Shadow Team: for creating Random Pass and Shadow Crack.
+        UltimateHackers: for creating Hash Buster.
+        Zion3R: for creating Hash Identifier.
+        Muris Kurgas aka j0rgan: for creating CUPP.
+        InfoSecHacker: for creating Facebook Cracker.
+        derv82: for creating Wifite.
+        Sold1er: for creating Angry Fuzzer.
+        TekDefense: for creating Automater.
+        548rU PH0X7R07: for creating DNSMap.
+        m4ll0k: for creating Infoga.
+        Christian Martorella: for creating metagoofil and The Harvester.
+        R3D#@0R_2H1N A.K.A Tuhinshubhra: for creating Red Hawk.
+        David Kennedy (ReL1K): for creating Social Engineer Toolkit.
+        Andrew Horton (urbanadventurer): for creating URLCrazy.
+        Hypsurus: for creating Weeman.
+        Shawar Khan: for creating D-Tect.
+        NMap Team: for creating NMap.
+        Edo Maland ( Screetsec ): for creating Brutal.
+        Nemesis and E4m: for creating Cisco Global Exploiter.
+        Offensive Security: for creating Kali Linux, Kali NetHunter, and Exploit Database.
+        mattoufoutu: for creating ExploitDB script.
+        PenturaLabs: for creating Linux Exploit Suggester.
+        Rapid7: for creating Metasploit and Metasploit Framework.
+        NullArray: for creating Shellshocker.
+        AndroSec1337: for creating A-Rat, fl00d and fl00d 2.
 
-	Whoever you are, thank you for creating:
-		Cisco Auditing Tool
-		Damn Small SQLi Scanner
-		Backdoor Factory
-		Routersploit
+        Linus Torvalds: for creating Linux Operating System.
+        Dennis Ritchie: for creating C programming Language.
+
+        Whoever you are, thank you for creating:
+                Cisco Auditing Tool
+                Damn Small SQLi Scanner
+                Backdoor Factory
+                Routersploit
+                Slowloris
+                Tor's Hammer
+                UFONet
 
 
 
@@ -290,4 +297,164 @@ Part II: Usage
 			information and it will do the work.
 
 		3.Cisco Auditing Tool
-			DEV0003: WYLO
+			DEV0001: Provide documentation
+			
+		4.Nmap
+		    Nmap is a Network exploration tool and security / port scanner
+		    which is used by hundreds of thousands if not millions of
+		    penetration testers, ethical hackers, and security auditors.
+		    Nmap is an important tool for host discovery, host port scanning,
+		    and more. To use Nmap in Shadow Suite, we have provided a wrapper
+		    script for you to use. When Nmap is selected, enter your target's
+		    IP Address or website domain. Then press enter. After that, a menu
+			will show up:
+			
+			___|  |               |                  ___|       _) |
+          \___ \  __ \   _` |  _` |  _ \\ \  \   / \___ \  |   | | __|  _ \
+                | | | | (   | (   | (   |\ \  \ /        | |   | | |    __/
+          _____/ _| |_|\__,_|\__,_|\___/  \_/\_/   _____/ \__,_|_|\__|\___|
+
+
+           "Ethical Hacking Toolkit"
+           v0.0.3.0 -- Experimental
+
+           Target's IP Address or URL:
+           example.com
+
+           Nmap: Network exploration tool and security / port scanner
+
+
+
+           Common Scanning Types:
+           [1] TCP connect scan
+           [2] Half-open scan        [i] ROOT REQUIRED
+           [3] ping scan
+           [4] UDP scan              [i] ROOT REQUIRED
+           [5] IP Protocol scan      [i] ROOT REQUIRED
+
+           Ping Scanning Types:
+           [6] TCP SYN ping
+           [7] TCP ACK ping
+           [8] UDP ping              [i] ROOT REQUIRED
+           [9] SCTP INIT ping        [i] ROOT REQUIRED
+           [10] ARP ping
+
+           Other Scan Types:
+           [11] List scan
+           [12] SCTP INIT scan       [i] ROOT REQUIRED
+           [13] TCP ACK scan         [i] ROOT REQUIRED
+           [14] TCP Windows scan     [i] ROOT REQUIRED
+           [15] OS scan              [i] ROOT REQUIRED
+
+
+
+           [99] Quit
+           
+           Type the number of your desired Scan type. Note
+           that almost all scan types require a rooted
+           device.
+           
+	III.Encryption and Password Cracking Tools
+	
+		1.Random Pass
+		   Random Pass, created by Shadow Team, is a random
+		   password block generator that uses PWGen password
+		   generator. Just run it, press enter, copy the password
+		   block, press enter again, and you're done.
+		
+		2.Shadow Crack
+		   Shadow Crack is a hash generator and at the same time,
+		   hash cracker. To use Shadow Crack, run it from Shadow
+		   Suite. Type 'e' or 'E' to encrypt a string, and 'c' or
+		   'C' to crack a hash. ShadowCrk supports MD5, SHA1, 
+           SHA224, SHA256, SHA384, and SHA512 hash types.
+           
+        3.Black Hydra
+           Black Hydra is a tool to Shorten brute force sessions
+           on hydra. Hydra is a very fast network logon cracker
+           which support many different services. To start, run
+           Black Hydra and the rest will be on-board.
+           
+        4.Hash Buster
+           Hash buster is a hash cracker tool that use several
+           online hash crackers to find cleartext of a hash in
+           less than 5 seconds. But it has some limitations.
+           It cannot crack unique passwords. it cannot crack
+           hashes with the plaintext:
+           
+           Ijwnsni(ayz66atwu2op=d=_0(zp9&%$[\wkd]nxJ@o(@
+           
+           But it can crack i think one-word hashes like:
+           
+           soldier
+           sysadmin
+           hacker
+           
+           To start, run Hash Buster and enter your hash, then
+           Hash Buster will do the rest.
+           
+        5.Hash Identifier
+           Hash Identifier, as the name implies, identifies the
+           hash type of the given hash. It does not crack. It
+           does not hack. It only gives you the type of your
+		   given hash. For example, i had a hash. I don't know
+		   what hash type it is. So i will use Hash Identifier.
+		   Run Hash Identifier and enter your hash. To quit,
+		   type CTRL+C.
+		
+		6.Common User Passwords Profiler (CUPP)
+		   Common User Passwords Profiler (CUPP) also does not
+		   crack hashes. It does not hack. As the name implies,
+		   It only profiles the *POSSIBLE* password of your
+		   victim. The developer said:
+
+		   A weak password might be very short or only use
+           alphanumberic characters, making decryption simple.
+		   A weak password can also be one that is easily
+		   guessed by someone profiling the user, such as a
+		   birthday, nickname, address, name of a pet or
+           relative, or a common word such as God, love,
+           money or password.
+
+		   To start, run CUPP from Shadow Suite. a menu will
+		   appear. Choose the desired option, and an
+           interactive questions will appear.
+           
+        7.Facebook Cracker
+           Facebook Cracker is a tool to crack facebook
+		   accounts. It simply tries every word in a selected
+		   wordlist to be the password and if it matches,
+		   the account is cracked. To use, run Facebook
+		   Cracker from Shadow Suite. Enter the ID of the
+		   Facebook account, located after the website URL.
+		
+		   https://www.facebook.com/MyTargetID
+		
+		   It can be a username, or a number. After that,
+		   enter the wordlist you want to use. Type
+           password.txt for default wordlist and the tool
+           will start the cracking.
+           
+        8.Wifite
+           DEV0001: Provide documentation.
+           
+	IV: Exploitation Tools
+		
+		1.Backdoor Factory
+		   DEV0001: Provide documentation
+		
+		2.Brutal
+		   Brutal is a Toolkit to quickly create various
+		   payload, powershell attack, virus attack and
+		   launch listener for a Human Interface Device.
+		   After launching Brutal, enter the number of
+		   the desired operation.
+		
+		3.Cisco Global Exploiter (CGE)
+		   Cisco Global Exploiter Exploits the most
+		   dangerous vulnerabilities of Cisco systems.
+		   To start, run CGE and type number of the
+		   desired attack.
+		
+		4.Exploit Database
+		   DEV0003: WYLO

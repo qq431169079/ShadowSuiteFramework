@@ -48,8 +48,7 @@ void hashbuster(void)
     clr();
     prn_logo();
     system("cd $PWD/tools/cracking/hashbuster/ && python2 hash.py");
-    //DEV0001: Uncomment the line if automatic program exit is present.
-    //readline();
+    readline();
     system("cd ../../..");
 }
 
