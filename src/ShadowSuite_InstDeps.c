@@ -26,7 +26,7 @@ void instdeps(void)
     printf("\n==INSTALL DEPENDENCIES==\n\n---------------------------------\n\n");
     printf("\nInstalling dependencies...\n\n\n");
     system("apt update -y");
-    system("apt install apache2 apache2-dev bash bash-completion bash-dev binutils  binutils-dev bsdtar busybox command-not-found coreutils cowsay curl debianutils dialog diffutils dnsutils figlet findutils git gnupg gnupg2 inetutils iperf3 less lftp lighttpd neofetch net-tools netcat nginx nmap openssh openssl openssl-dev openssl-tool perl php php-apache php-dev php-pgsql postgresql privoxy proxychains-ng python python-dev python2 python2-dev radare2 radare2-dev readline readline-dev ruby ruby-dev sl sslscan tar tor torsocks tracepath tree util-linux vim w3m wget zip");
+    system("apt install apache2 apache2-dev bash bash-completion bash-dev binutils  binutils-dev bsdtar busybox command-not-found coreutils cowsay curl debianutils dialog diffutils dnsutils figlet findutils git gnupg gnupg2 inetutils less lftp lighttpd neofetch net-tools netcat nmap openssh openssl openssl-dev openssl-tool perl php php-apache php-dev php-pgsql postgresql python python-dev python2 python2-dev readline readline-dev ruby ruby-dev sl sslscan tar tor torsocks tracepath tree util-linux vim w3m wget zip");
     system("pip install beautifulsoup4 certifi chardet click click-plugins colorama");
     system("pip install docutils future idna numpy pymongo ranger scipy Slowloris");
     system("pip install termcolor urllib3 XlsxWriter");
