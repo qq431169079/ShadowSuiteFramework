@@ -397,27 +397,27 @@ Part II: Usage
            Hash Identifier, as the name implies, identifies the
            hash type of the given hash. It does not crack. It
            does not hack. It only gives you the type of your
-		   given hash. For example, i had a hash. I don't know
-		   what hash type it is. So i will use Hash Identifier.
-		   Run Hash Identifier and enter your hash. To quit,
-		   type CTRL+C.
+	   given hash. For example, i had a hash. I don't know
+	   what hash type it is. So i will use Hash Identifier.
+	   Run Hash Identifier and enter your hash. To quit,
+	   type CTRL+C.
 		
-		6.Common User Passwords Profiler (CUPP)
-		   Common User Passwords Profiler (CUPP) also does not
-		   crack hashes. It does not hack. As the name implies,
-		   It only profiles the *POSSIBLE* password of your
-		   victim. The developer said:
+	6.Common User Passwords Profiler (CUPP)
+	   Common User Passwords Profiler (CUPP) also does not
+	   crack hashes. It does not hack. As the name implies,
+	   It only profiles the *POSSIBLE* password of your
+	   victim. The developer said:
 
 		   A weak password might be very short or only use
-           alphanumberic characters, making decryption simple.
+           	   alphanumberic characters, making decryption simple.
 		   A weak password can also be one that is easily
 		   guessed by someone profiling the user, such as a
 		   birthday, nickname, address, name of a pet or
-           relative, or a common word such as God, love,
-           money or password.
+           	   relative, or a common word such as God, love,
+           	   money or password.
 
-		   To start, run CUPP from Shadow Suite. a menu will
-		   appear. Choose the desired option, and an
+	   To start, run CUPP from Shadow Suite. a menu will
+	   appear. Choose the desired option, and an
            interactive questions will appear.
            
         7.Facebook Cracker
