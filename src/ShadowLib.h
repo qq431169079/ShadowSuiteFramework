@@ -35,6 +35,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h>
 
 //Define preprocessor directives
 //#define PI 3.141326   If you ever need this, this is the value of PI.
