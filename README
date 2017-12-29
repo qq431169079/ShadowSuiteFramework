@@ -1,4 +1,4 @@
-Shadow Suite 0.0.2.5 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.2.6 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -11,6 +11,8 @@ the main project of Shadow Team.
 What's new?
 ------------------
 1.Added more comprehensive comments on Shadow Suite's source code.
+
+2.We've decided to break down Shadow Suite's source code into pieces.
 
 Full Feature List
 ------------------------
