@@ -1,4 +1,4 @@
-Shadow Suite 0.0.2.6 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.3.0 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -13,6 +13,8 @@ What's new?
 1.Added more comprehensive comments on Shadow Suite's source code.
 
 2.We've decided to break down Shadow Suite's source code into pieces.
+
+3.Our toolkit is READY!!! It's just about 300 megabytes of storage space.
 
 Full Feature List
 ------------------------
@@ -86,6 +88,21 @@ Full Feature List
      
      ShellShocker: Test a list of hosts for the shellshock vulnerability.
 
+-Stress Testing Toolkit
+     fl00d: fl00d is a Stress testing tool to perform DoS attacks.
+     
+     fl00d 2: an enhanced version of fl00d.
+     
+     Slowloris: Low bandwidth stress test tool for websites.
+     
+     Tor's Hammer: Slow POST DoS Testing Tool.
+     
+     UFONet: Launch DDoS attacks against a target, using 'Open Redirect' vectors on
+     third party web applications, like botnet.
+
+-Session Hijacking Toolkit
+     A-Rat: Remote Administration Tool; Bassed Reverse Shell.
+
 -Build-in Manual
      Shadow Suite has a built-in manual for you to see and be a better user.
 
@@ -98,11 +115,29 @@ TO-DO List
 1.Program navigation
       -Code each menu so that the user can navigate properly.
 
-2.Toolkits
-      -Include toolkits from different sources.
+2.Fix/Debug Toolkits
+      -Code Toolkits and wrapper scripts
+          1.Backdoor Factory
+	  2.SET
+	  3.Hash Buster
+	  4.FBrute
+	  5.Wifite
+	  6.UFONet
+	  7.CGE
+	  8.ExploitDB
+	  9.MSF
 
 3.Facebook Cracker
       -Find a facebook cracker which is open-source.
+
+4.Software Testing
+      -Coduct a software testing for three days.
+      -Priorities: Tools, UI, User Input Testing
+
+5.MOAR Tools
+      -SQLMap          (Exploitation?)
+      -OWTF            (Frameworks?)
+      -Hakku Framework (Frameworks)
       
 License and Copying
 ------------------------
@@ -152,6 +187,7 @@ Project co-lead: Sh4d0wHaX
         PenturaLabs: for creating Linux Exploit Suggester.
         Rapid7: for creating Metasploit and Metasploit Framework.
         NullArray: for creating Shellshocker.
+	AndroSec1337: for creating A-Rat, fl00d and fl00d 2.
 
         Linus Torvalds: for creating Linux Operating System.
         Dennis Ritchie: for creating C programming Language.
@@ -161,6 +197,9 @@ Project co-lead: Sh4d0wHaX
                 Damn Small SQLi Scanner
                 Backdoor Factory
                 Routersploit
+		Slowloris
+		Tor's Hammer
+		UFONet
 
 
 

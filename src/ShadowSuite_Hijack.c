@@ -17,12 +17,50 @@
 
 #include "ShadowLib.h"
 
-void hijackSection(void)
+void a_rat(void)
+{
+    clr();
+    prn_logo();
+    system("cd $PWD/tools/hijacking/a-rat && python2 A-Rat.py");
+    system("cd ../../..");
+}
+
+void hijackhelp(void)
 {
     clr();
     color_green();
     prn_logo();
-    printf("\n==SESSION HIJACKING TOOLS==\n\n---------------------------------\n\n");
-    prn_construction();
+    printf("\n==SESSION HIJACKING TOOLS INFO==\n\n---------------------------------\n\n");
+    printf("A-Rat: Remote Administration Tool; Bassed Reverse Shell\n\n");
+    printf("\nPress enter to continue...\n\n");
     readline();
+}
+
+void hijackSection(void)
+{
+    int hijackSectionInput;
+
+    clr();
+    color_green();
+    prn_logo();
+    printf("\n==SESSION HIJACKING TOOLS==\n\n---------------------------------\n\n");
+    printf("[1] A-Rat\n\n[98] Info\n[99] Back\n");
+    scanf("\n%d", &hijackSectionInput);
+    switch (hijackSectionInput)
+    {
+        case 1:
+		a_rat();
+		break;
+
+	case 98:
+		hijackhelp();
+		break;
+
+	case 99:
+		break;
+
+	default:
+		prn_invalidinput();
+		break;
+    }
 }

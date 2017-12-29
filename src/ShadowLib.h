@@ -37,13 +37,15 @@
 #include <time.h>
 
 //Define preprocessor directives
-#define PI 3.141326
+//#define PI 3.141326   If you ever need this, this is the value of PI.
+#define MAXSTRING 100
+#define MINSTRING 1
 #define MAJOR_VERSION 0
 #define MINOR_VERSION 0
-#define BETA_VERSION 2
+#define BETA_VERSION 3
 //WB stands for Weekly Build.
-#define WB_VERSION 6
-#define BUILD_TYPE "Unstable-Release"
+#define WB_VERSION 0
+#define BUILD_TYPE "Experimental"
 //BUILD_TYPE define hint:
 //
 //Choose between "Weekly_Build", "Unstable_Release", "Experimental", or"Stable_Release".
@@ -123,9 +125,16 @@ void exploitSection(void); //Exploitation tools
 
 void dosSection(void); //Denial-of-Service tools
 //DEV0002: Functions for DoS and DDoS tools
+ void fl00d(void);
+ void fl00d2(void);
+ void doshelp(void);
+ void slowloris(void);
+ void torshammer(void);
 
 void hijackSection(void); //Session Hijacking tools
 //DEV0002: Functions for Session Hijacking tools
+ void a_rat(void);
+ void hijackhelp(void);
 
 void instdeps(void); //Install Dependencies function
 void prn_license(void); //License function

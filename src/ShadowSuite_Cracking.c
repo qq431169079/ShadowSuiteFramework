@@ -39,8 +39,7 @@ void blackhydra(void)
     clr();
     prn_logo();
     system("cd $PWD/tools/cracking/blackhydra/ && python2 blackhydra.py");
-    //DEV0001: Uncomment the line if automatic program exit is present.
-    //readline();
+    readline();
     system("cd ../../..");
 }
 
