@@ -74,7 +74,7 @@ void scanSection(void)
     prn_logo();
     //DEV0002: Update this when a new scanning tool is added.
     printf("\n==SCANNING TOOLS==\n\n---------------------------------\n\n");
-    printf("[1] D-Tect\n[2] DSSS\n[3] Cisco Auditing Tool\n[4] Nmap\n\n[98] Info\n[99] Back\n");
+    printf("[01] D-Tect\n[02] DSSS\n[03] Cisco Auditing Tool\n[04] Nmap\n\n[98] Info\n[99] Back\n");
     scanf("\n%d", &scanSectionInput);
     switch (scanSectionInput)
     {

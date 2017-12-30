@@ -83,7 +83,7 @@ void dosSection(void)
     color_green();
     prn_logo();
     printf("\n==DENIAL-OF-SERVICE TOOLS==\n\n---------------------------------\n\n");
-    printf("[1] Fl00d\n[2] Fl00d 2\n[3] Slowloris\n[4] Tor's Hammer\n[5] UFONet\n\n[98] Info\n[99] Back\n");
+    printf("[01] Fl00d\n[02] Fl00d 2\n[03] Slowloris\n[04] Tor's Hammer\n[05] UFONet\n\n[98] Info\n[99] Back\n");
     scanf("\n%d", &dosSectionInput);
     switch (dosSectionInput)
     {

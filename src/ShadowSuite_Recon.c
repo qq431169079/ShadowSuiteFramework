@@ -136,7 +136,7 @@ void reconSection(void)
     prn_logo();
     //DEV0002: This should be updated when a new reconnaissance tool is added.
     printf("\n==RECONNAISSACE TOOLS==\n\n---------------------------------\n\n");
-    printf("\n[1] Infoga\n[2] Red Hawk\n[3] Social Engineer Toolkit\t\t[!] ROOT REQUIRED\n[4] URLCrazy\n[5] Weeman\n[6] DNSMap\n[7] Automater\n[8] Angry Fuzz3r\n[9] Metagoofil (Remote)\n[10] Metagoofil (Local)\n[11] The Harvester\n\n[98] Info\n[99] Back\n");
+    printf("\n[01] Infoga\n[02] Red Hawk\n[03] Social Engineer Toolkit\t\t[!] ROOT REQUIRED\n[04] URLCrazy\n[05] Weeman\n[06] DNSMap\n[07] Automater\n[08] Angry Fuzz3r\n[09] Metagoofil (Remote)\n[10] Metagoofil (Local)\n[11] The Harvester\n\n[98] Info\n[99] Back\n");
     scanf("\n%d", &reconSectionInput);
     switch (reconSectionInput)
     {

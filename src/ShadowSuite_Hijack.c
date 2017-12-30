@@ -44,7 +44,7 @@ void hijackSection(void)
     color_green();
     prn_logo();
     printf("\n==SESSION HIJACKING TOOLS==\n\n---------------------------------\n\n");
-    printf("[1] A-Rat\n\n[98] Info\n[99] Back\n");
+    printf("[01] A-Rat\n\n[98] Info\n[99] Back\n");
     scanf("\n%d", &hijackSectionInput);
     switch (hijackSectionInput)
     {

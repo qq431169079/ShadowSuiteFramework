@@ -73,8 +73,7 @@ void fbrute(void)
     clr();
     prn_logo();
     system("cd $PWD/tools/cracking/fbrute && python2 facebook.py");
-    /* DEV 0001: Uncomment the line if you confirm the automatic exit of the program. */
-    //readline();
+    readline();
     system("cd ../../..");
 }
 
@@ -116,7 +115,7 @@ void crackSection(void)
     prn_logo();
     //DEV0002: Update this if a new cracking/encryption tool is added.
     printf("\n==ENCRYPTION AND PASSWORD CRACKING TOOLS==\n\n---------------------------------\n\n");
-    printf("[1] Random Pass\n[2] Shadow Crack\n[3] Black Hydra\n[4] Hash Buster\n[5] Hash Identifier\n[6] Common User Passwords Profiler (CUPP)\n[7] Facebook Cracker\n[8] Wifite\t\t\t[i] ROOT REQUIRED\n\n[98] Info\n[99]Back\n");
+    printf("[01] Random Pass\n[02] Shadow Crack\n[03] Black Hydra\n[04] Hash Buster\n[05] Hash Identifier\n[06] Common User Passwords Profiler (CUPP)\n[07] Facebook Cracker\n[08] Wifite\t\t\t[i] ROOT REQUIRED\n\n[98] Info\n[99]Back\n");
     scanf("\n%d", &crackSectionInput);
     switch (crackSectionInput)
     {

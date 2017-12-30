@@ -38,8 +38,8 @@ int main(void)
     //Prints the logo of Shadow Framework..
     prn_logo();
     printf("\n==TOOLS==\n\n---------------------------------\n\n");
-    printf("\n[1] Reconnaissance (Information Gathering)\n[2] Scanning\n[3] Encryption and Password Cracking\n");
-    printf("[4] Exploitation\n[5] Denial-of-Service (Stress Testing)\n[6] Session Hijacking\n");
+    printf("\n[01] Reconnaissance (Information Gathering)\n[02] Scanning\n[03] Encryption and Password Cracking\n");
+    printf("[04] Exploitation\n[05] Denial-of-Service (Stress Testing)\n[06] Session Hijacking\n");
     printf("\n[96] License\n[97] Manual\n[98] Install Dependencies\n[99] Exit\n");
     scanf("\n%d", &section);
     switch (section)
