@@ -25,13 +25,14 @@ void instdeps(void)
     //DEV0002: Update this if a new dependency is needed.
     printf("\n==INSTALL DEPENDENCIES==\n\n---------------------------------\n\n");
     printf("\nInstalling dependencies...\n\n\n");
+    //Updates the package information from APT.
     system("apt update -y");
-    system("apt install apache2 apache2-dev bash bash-completion bash-dev binutils  binutils-dev bsdtar busybox command-not-found coreutils cowsay curl debianutils dialog diffutils dnsutils figlet findutils git gnupg gnupg2 inetutils less lftp lighttpd neofetch net-tools netcat nmap openssh openssl openssl-dev openssl-tool perl php php-apache php-dev php-pgsql postgresql python python-dev python2 python2-dev readline readline-dev ruby ruby-dev sl sslscan tar tor torsocks tracepath tree util-linux vim w3m wget zip");
-    system("pip install beautifulsoup4 certifi chardet click click-plugins colorama");
-    system("pip install docutils future idna numpy pymongo ranger scipy Slowloris");
-    system("pip install termcolor urllib3 XlsxWriter");
-    system("pip install requests urllib3 shodan netaddr pefile simplejson pycurl");
-    system("pip install argparse string sqlite3 datetime");
+    //Installs dependencies from $PWD/apt_requirements.
+    system("xargs -0 apt install -y < <(tr \\n \\0 < $PWD/apt_requirements)");
+    //Installs python modules from $PWD/python_requirements
+    system("pip install -r $PWD/python_requirements");
+    system("pip3 install -r $PWD/python_requirements");
+    //Installs perl modules.
     system("cpan LWP::UserAgent");
     system("cpan Net::Telnet");
     system("cpan Net::IP");
