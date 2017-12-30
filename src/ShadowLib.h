@@ -45,7 +45,7 @@
 #define MINOR_VERSION 0
 #define BETA_VERSION 3
 //WB stands for Weekly Build.
-#define WB_VERSION 0
+#define WB_VERSION 1
 #define BUILD_TYPE "Experimental"
 //BUILD_TYPE define hint:
 //
