@@ -27,11 +27,11 @@ void instdeps(void)
     printf("\nInstalling dependencies...\n\n\n");
     //Updates the package information from APT.
     system("apt update -y");
-    //Installs dependencies from $PWD/apt_requirements.
-    system("xargs -0 apt install -y < <(tr \\n \\0 < $PWD/apt_requirements)");
-    //Installs python modules from $PWD/python_requirements
-    system("pip install -r $PWD/python_requirements");
-    system("pip3 install -r $PWD/python_requirements");
+    //Installs dependencies from apt_requirements.
+    system("bash inst_deps.bash");
+    //Installs python modules from python_requirements
+    system("pip install -r python_requirements");
+    system("pip3 install -r python_requirements");
     //Installs perl modules.
     system("cpan LWP::UserAgent");
     system("cpan Net::Telnet");
