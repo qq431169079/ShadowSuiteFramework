@@ -22,4 +22,4 @@ import core.misc
 
 def prn_invalidinput():
     # This function prints the 'ERROR 0001: Invalid Input message.'
-    print(misc.cr, "ERROR 0001: Invalid Input", misc.cw)
+    print(misc.cr + "ERROR 0001: Invalid Input" + misc.cw)
