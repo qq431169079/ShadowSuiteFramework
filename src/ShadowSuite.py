@@ -1,4 +1,6 @@
-#!/bin/python
+#!/bin/python                                                                                                                                                                       # Shadow Suite :: Ethical Hacking Toolkit                                                 # Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>                           #                                                                                         # This program is free software: you can redistribute it and/or modify                    # it under the terms of the GNU General Public License as published by                    # the Free Software Foundation, either version 3 of the License, or                       # (at your option) any later version.                                                     #                                                                                         # This program is distributed in the hope that it will be useful,                         # but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                           # GNU General Public License for more details.
+#                                                                                         # You should have received a copy of the GNU General Public License                       # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
 import sys
@@ -21,18 +23,20 @@ while loop:
 
         if menu_input == "help":
             print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr)
-            print(core.misc.cw + "help        :: prints this help menu.")
-            print("license     :: opens the license file via less command.")
-            print("full update :: update Shadow Suite and install dependencies.")
+            print(core.misc.cw + "help            :: prints this help menu.")
+            print("license         :: opens the license file via less command.")
+            print("full update     :: update Shadow Suite and install dependencies.")
+            print("module <option> :: manage modules. type \'module help\' for details.")
             print("\n")
-            print("quit        :: quit Shadow Suite.\n")
+            print("quit            :: quit Shadow Suite.")
+            print("exit            :: same as \'quit\' command.\n")
 
         elif menu_input == "license":
             print("Opening \'LICENSE\' file via less command ...")
             os.system("less LICENSE")
 
         elif menu_input == "full update":
-            print(core.misc.cy + "Do you really want to perform a full update (y/n)?" + core.misc.cw)
+            print(core.misc.cgr + "Do you really want to perform a full update (y/n)?" + core.misc.cw)
             full_updateinput = input(" > ")
             if full_updateinput == "y":
                 core.update.full_update()
@@ -40,15 +44,31 @@ while loop:
             elif full_updateinput == "Y":
                 core.update.full_update()
 
+            elif full_updateinput == "n":
+                print(core.misc.cr + "Full update cancelled by user..." + core.misc.cw)
+
+            elif full_updateinput == "N":
+                print(core.misc.cr + "Full update cancelled by user..." + core.misc.cw)
+
             else:
-                print(core.misc.cy + "Full update cancelled by user..." + core.misc.cw)
+                core.error.error0001()
+
+        elif menu_input == "module":
+            core.error.warning0002()
+
+        elif menu_input == "module help":
+            core.error.warning0002()
 
         elif menu_input == "quit":
             print("Quitting Shadow Suite...\n")
             sys.exit(0)
 
+        elif menu_input == "exit":
+            print("Quitting Shadow Suite...\n")
+            sys.exit(0)
+
         else:
-            core.misc.error0001()
+            core.error.error0001()
 
     except KeyboardInterrupt:
         print("Forcing Shadow Suite to quit...\n")

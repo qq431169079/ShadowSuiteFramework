@@ -16,26 +16,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-# =====ERROR CODES=====
-#
-# In 
-# ERROR 0001: Invalid input! Please check your command.
-
-# =====WARNING CODES=====
-#
-# WARNING 0001: Shadow Suite has been renamed!
-
 # Colors with meanings
-cw = '\033[0m'     #  white (normal)
-cr = '\033[31m'    #  red   (errors)
-cg = '\033[32m'    #  green (some highlights)
+cw = '\033[0m'     #  white  (normal)
+cr = '\033[31m'    #  red    (errors)
+cg = '\033[32m'    #  green  (main color)
 cy = '\033[33m'    #  yellow (warnings)
+cb = '\033[34m'    #  blue   (highlights)
+cgr = '\033[37m'   #  gray   (questions)
 
 # Misc colors
-cb = '\033[34m'    #  blue
 cp = '\033[35m'    #  purple
 cc = '\033[36m'    #  cyan
-cgr = '\033[37m'   #  gray
 
 # Font types
 fr = '\033[0m'     #  regular
@@ -57,14 +48,7 @@ def prn_brief_license():
     print("This is free software, and you are welcome to redistribute it")
     print("under certain conditions; type 'license' for details." + cw)
 
-def error0001():
-    # This function prints the "Invalid Input message.
-    print(cr + "ERROR 0001: Invalid Input! Please check your command." + cw)
-
-def warning0001():
-    # This function is called if ShadowSuite.py is renamed.
-    print(cy + "WARNING 0001: Shadow Suite has been renamed!" + cw)
-
 def module_mode():
+    # DEV0001: Implement this...
     # This function is called if ShadowSuite is running as module.
-    print(cy + "[i] Running as module..." + cw)
+    print(cy + "[i] Running as module...\n" + cw)

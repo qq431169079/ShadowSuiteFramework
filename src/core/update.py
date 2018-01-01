@@ -14,8 +14,8 @@ def full_update():
     process = "2"
 
     print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a full update..." + core.misc.fr + core.misc.cw)
-    print("Installing dependency files... (1/" + process + ")\n")
-    os.system("xargs -0 apt install -y <(tr \\n \\0 < $PWD/apt_requirements)")
-    print("Installing python modules... (2/" + process + ")\n")
+    print(core.misc.cb + "Installing dependency files... (1/" + process + ")\n" + core.misc.cw)
+    os.system("bash instdeps.bash")
+    print(core.misc.cb + "Installing python modules... (2/" + process + ")\n" + core.misc.cw)
     os.system("pip install -r python_requirements")
     print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a full update... Done!" + core.misc.fr + core.misc.cw)

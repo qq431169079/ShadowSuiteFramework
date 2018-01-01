@@ -20,6 +20,14 @@ import os
 import sys
 import core.misc
 
-def prn_invalidinput():
-    # This function prints the 'ERROR 0001: Invalid Input message.'
-    print(misc.cr + "ERROR 0001: Invalid Input" + misc.cw)
+def error0001():
+    # This function prints the "Invalid Input message.
+    print(core.misc.cr + "ERROR 0001: Invalid Input! Please check your command.\n[i] TIP: commands are case-sensitive!" + core.misc.cw)
+
+def warning0001():
+    # This function is called if ShadowSuite.py is renamed.
+    print(core.misc.cy + "WARNING 0001: Shadow Suite has been renamed!" + core.misc.cw)
+
+def warning0002():
+    # This function should be called if a feature is not yet implemented.
+    print(core.misc.cy + "WARNING 0002: Feature not yet implemented, cannot proceed..." + core.misc.cw)
