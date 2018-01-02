@@ -22,7 +22,16 @@ import core.misc
 
 def error0001():
     # This function prints the "Invalid Input message.
-    print(core.misc.cr + "ERROR 0001: Invalid Input! Please check your command.\n[i] TIP: commands are case-sensitive!" + core.misc.cw)
+    print(core.misc.cr + "ERROR 0001: Invalid Input! Please check your command.\n[i] TIP: commands are case-sensitive!\n[i] Type 'help' for commands and their descriptions." + core.misc.cw)
+
+def error0002():
+    # This function prints this message if CTRL+C is detected.
+    print(core.misc.cr + "ERROR 0002: Forcing Shadow Suite to quit..." + core.misc.cw)
+    sys.exit(1)
+
+def error0003():
+    # This function prints this message if 'quit' or 'exit' command is entered when inside a module.
+    print(core.misc.cr + "ERROR 0003: 'exit' and 'quit' cannot be used inside a module; use 'back' instead..." + core.misc.cw)
 
 def warning0001():
     # This function is called if ShadowSuite.py is renamed.

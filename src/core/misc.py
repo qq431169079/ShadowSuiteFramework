@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+import core.version
+
 # Colors with meanings
 cw = '\033[0m'     #  white  (normal)
 cr = '\033[31m'    #  red    (errors)
@@ -41,6 +43,7 @@ def prn_logo():
     print("      | | | | (   | (   | (   |\\ \\  \\ /        | |   | | |    __/")
     print("_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|")
     print("\nEthical Hacking Toolkit\n\n" + cw)
+    core.version.both()
 
 def prn_brief_license():
     # This function prints a brief description of the license.

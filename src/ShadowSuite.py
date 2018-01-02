@@ -7,12 +7,17 @@ import sys
 import core.error
 import core.misc
 import core.update
+import core.version
+import core.module_manager
 
 loop = True
 
 os.system("clear")
 core.misc.prn_logo()
+print("\n")
 core.misc.prn_brief_license()
+print("\n")
+print("[i] If you need help, type 'help'...")
 print("\n")
 if __name__ != '__main__':
     core.misc.module_mode()
@@ -26,7 +31,7 @@ while loop:
             print(core.misc.cw + "help            :: prints this help menu.")
             print("license         :: opens the license file via less command.")
             print("full update     :: update Shadow Suite and install dependencies.")
-            print("module <option> :: manage modules. type \'module help\' for details.")
+            print("module          :: enter module shell. type \'module\' then \'help\'for details.")
             print("\n")
             print("quit            :: quit Shadow Suite.")
             print("exit            :: same as \'quit\' command.\n")
@@ -54,10 +59,10 @@ while loop:
                 core.error.error0001()
 
         elif menu_input == "module":
-            core.error.warning0002()
+            core.module_manager.shell()
 
         elif menu_input == "module help":
-            core.error.warning0002()
+            core.module_manager.shell()
 
         elif menu_input == "quit":
             print("Quitting Shadow Suite...\n")
@@ -71,5 +76,4 @@ while loop:
             core.error.error0001()
 
     except KeyboardInterrupt:
-        print("Forcing Shadow Suite to quit...\n")
-        sys.exit(0)
+        core.error.error0002()
