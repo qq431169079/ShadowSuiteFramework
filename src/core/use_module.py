@@ -17,7 +17,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 import core.misc
 import core.error
+from modules import *
 
 def use(module_name):
-    core.error.warning0002()
-    # DEV0003: Continue this.
+    print("searching for module named \'" + module_name + "\' in modules directory...")
+
+    if module_name == "dnsmap":
+        print("Module found!")
+        modules.dnsmap()
+
+    elif module_name == "nwrap":
+        print("Module found!")
+        modules.nwrap()
+
+    else:
+        core.error.error0001()

@@ -2,7 +2,7 @@
 
 import core.misc
 import core.error
-import core.search_module
+import core.list_module
 import core.use_module
 
 def shell():
@@ -15,15 +15,14 @@ def shell():
             if command == "help":
                 print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)
                 print("help            :: prints this help menu.")
-                print("search          :: search installed module/s.")
-                print("use             :: use installed module.")
+                print("list            :: list module/s.")
+                print("use             :: use module.")
                 print("manage          :: run module manager.")
                 print("\n")
                 print("back            :: back to Shadow Suite shell.")
 
-            elif command == "search":
-                query = input(core.misc.cgr + "Enter the module name to search > " + core.misc.cw)
-                core.search_module.search(query)
+            elif command == "list":
+                core.list_module.list()
 
             elif command == "use":
                 module_name = input(core.misc.cgr + "Enter the module name to use > " + core.misc.cw)
