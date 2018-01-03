@@ -84,11 +84,14 @@ README for Developers
        5.After that, edit 'list_module.py' and copy the code below, which is
          optional:
 
-       		print(core.misc.cp + "1")
+       		print(core.misc.cp + "\t\t1")
 
 	 NOTE: Replace '1' with your module's filename.
 
-       6.Lastly, test your module:
+       6.After finishing the steps above, it's time to move your custom module
+         into the modules folder. Move your custom module to the 'modules' directory.
+
+       7.Lastly, test your module:
 
        		$ python ShadowSuite.py
 		[ShadowSuite.py] $: module

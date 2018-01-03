@@ -30,6 +30,7 @@ while loop:
             print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr)
             print(core.misc.cw + "help            :: prints this help menu.")
             print("license         :: opens the license file via less command.")
+            print("info            :: prints a brief information about Shadow Suite.")
             print("full update     :: update Shadow Suite and install dependencies.")
             print("module          :: enter module shell. type \'module\' then \'help\'for details.")
             print("\n")
@@ -39,6 +40,18 @@ while loop:
         elif menu_input == "license":
             print("Opening \'LICENSE\' file via less command ...")
             os.system("less LICENSE")
+
+        elif menu_input == "info":
+            core.misc.prn_logo()
+            print()
+            print("The current version number of this program is:")
+            core.version.number()
+            print()
+            print("The current version type of this program is:")
+            core.version.type()
+            print()
+            print("To automatically update, type \'full update\'. To manually update,")
+            print("go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuite\' and clone the repository.")
 
         elif menu_input == "full update":
             print(core.misc.cgr + "Do you really want to perform a full update (y/n)?" + core.misc.cw)

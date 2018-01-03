@@ -32,7 +32,8 @@ def use(module_name):
         import modules.nwrap
         modules.nwrap.main()
 
-    # Put your custom modules below...
+    # Put the code below... Careful with the indentation! match indents of the codes
+    # above to avoid errors!
 
     # Hey! don't modify this thing below!
     else:

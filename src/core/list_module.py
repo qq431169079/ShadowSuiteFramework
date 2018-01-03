@@ -29,5 +29,6 @@ def list():
     print(core.misc.cgr + "\t\tDNSrecon")
     print(core.misc.cgr + "\t\tMetagoofil")
     print(core.misc.cgr + "\t\tThe Harvester")
+    print(core.misc.cb + "\t==Custom Modules==\n" + core.misc.cw)
     # If you are adding a custom module, duplicate the code below:
     # print(core.misc.cp + "[MODULE NAME]")
