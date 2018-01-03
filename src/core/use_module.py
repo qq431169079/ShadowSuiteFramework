@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+
 import core.misc
 import core.error
 
@@ -31,5 +32,8 @@ def use(module_name):
         import modules.nwrap
         modules.nwrap.main()
 
+    # Put your custom modules below...
+
+    # Hey! don't modify this thing below!
     else:
         core.error.error0001()
