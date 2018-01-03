@@ -14,7 +14,7 @@ import core.error
 
 def list():
     print(core.misc.cg + "===Shadow Suite Modules===\n\n" + core.misc.cb)
-    print(core.misc.cy + "[i] The stability of the tools is color-coded:")
+    print(core.misc.cw + "[i] The stability of the tools is color-coded:")
     print(core.misc.cg + "\tStable")
     print(core.misc.cy + "\tExperimental")
     print(core.misc.cr + "\tUnstable\n\n")

@@ -4,6 +4,7 @@ import core.misc
 import core.error
 import core.list_module
 import core.use_module
+import core.manage_module
 
 def shell():
     loop = True
@@ -27,6 +28,9 @@ def shell():
             elif command == "use":
                 module_name = input(core.misc.cgr + "Enter the module name to use > " + core.misc.cw)
                 core.use_module.use(module_name)
+
+            elif command == "manage":
+                core.manage_module.manager()
 
             elif command == "quit":
                 core.error.error0003()
