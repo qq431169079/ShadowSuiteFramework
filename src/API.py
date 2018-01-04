@@ -29,16 +29,14 @@ import core.update
 import core.use_module
 import core.version
 
-class ShadowSuiteAPI:
-    API_version = "0.0.1.5"
+class Class:
+    API_version = core.version.vapi
+    ShadowSuite_ver_num = core.version.vnumber
+    ShadowSuite_ver_type = core.version.vtype
+    ShadowSuite_ver_codename = core.version.vcodename
 
-    def ShadowSuite_version(self):
-        ShadowSuite_ver_num = core.version.version_number
-        ShadowSuite_ver_type = core.version.version_type
-        ShadowSuite_codename = core.version.codename
+    def list_module():
+        core.list_module.list()
 
-    def prn_API_version(self):
-        print(API_version)
-
-    def list_module(self):
-        core.
+    def finish():
+        print("[i] Module finished running...")

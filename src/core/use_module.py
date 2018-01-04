@@ -36,6 +36,11 @@ def use(module_name):
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
+    elif module_name == "sample":
+        print("Module found!")
+        import modules.sample
+        modules.sample.main()
+
     # Hey! don't modify this thing below!
     else:
         core.error.error0001()

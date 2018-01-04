@@ -46,3 +46,4 @@ def list():
     print(cb + "\t==Custom Modules==\n" + cw)
     # If you are adding a custom module, duplicate the code below:
     # print(core.misc.cp + "[MODULE NAME]")
+    print(core.misc.cp + "\t\tsample" + cw)

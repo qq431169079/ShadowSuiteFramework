@@ -84,7 +84,7 @@ README for Developers
        5.After that, edit 'list_module.py' and copy the code below, which is
          optional:
 
-       		print(core.misc.cp + "\t\t1")
+       		print(core.misc.cp + "\t\t1" + cw)
 
 	 NOTE: Replace '1' with your module's filename.
 
@@ -96,4 +96,4 @@ README for Developers
        		$ python ShadowSuite.py
 		[ShadowSuite.py] $: module
 		[Module_Manager.py] $: use
-		Enter the module name to use > temp     #Your module name.
+		Enter the module name to use > Your-module-name

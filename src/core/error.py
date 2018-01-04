@@ -37,6 +37,11 @@ def error0004():
     # This function is called only in ShadowSuite.py
     print(core.misc.cr + "ERROR 0004: 'back' cannot be used in the main module; use 'quit' or 'exit' instead..." + core.misc.cw)
 
+def error0005():
+    # This function is called if user device has no superuser permission but is running a
+    # module that needs root.
+    print(core.misc.cr + "ERROR 0005: This operation requires SuperUser (SU) permissions!\nPlease root your device first before proceeding.\nSearch for \'Android Rooting\' for details...")
+
 def warning0001():
     # This function is called if ShadowSuite.py is renamed.
     print(core.misc.cy + "WARNING 0001: Shadow Suite has been renamed!" + core.misc.cw)

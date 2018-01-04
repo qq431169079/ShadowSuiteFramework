@@ -19,12 +19,15 @@
 import core.misc
 import core.error
 
-global version_number
-global version_type
+global vapi
+global vnumber
+global vtype
+global vcodename
 
-version_number = "0.0.3.2"
-version_type = "Weekly Build"
-codename = "Elliot"
+vapi = "0.0.3.7"
+vnumber = "0.0.3.5"
+vtype = "Weekly Build"
+vcodename = "Faraday"
 
 def number():
     # example:
@@ -35,7 +38,7 @@ def number():
     #           ^           ^           ^            ^
     #         Major       Minor        Beta      Weekly Build
     #        version     version     version       version
-    print(core.misc.cg + version_number + core.misc.cw)
+    print(core.misc.cg + vnumber + core.misc.cw)
     # Major version: Major release of the prpgram.
     #                e.g. it's the 5th major release, then the major
     #                version is 5.
@@ -54,7 +57,7 @@ def number():
     #               it's updating weekly.
 
 def type():
-    print(core.misc.cg + version_type + core.misc.cw)
+    print(core.misc.cg + vtype + core.misc.cw)
     #
     # Weekly Build: first phase of release cycle. Many tools under
     #               production, program has so many bugs, very unstable.
@@ -71,4 +74,4 @@ def type():
     #               cycle will go back to Weekly Build.
 
 def both():
-    print(core.misc.cg + version_number + "\t" + version_type + "\t" + codename + core.misc.cw)
+    print(core.misc.cg + vnumber + "\t" + vtype + "\tCodename: " + vcodename + core.misc.cw)

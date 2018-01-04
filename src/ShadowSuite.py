@@ -47,9 +47,11 @@ while loop:
         elif menu_input == "info":
             core.misc.prn_logo()
             print()
-            print("The current version number of this program is: " + core.version.version_number)
+            print("The current version number of this program is: " + core.version.vnumber)
             print()
-            print("The current version type of this program is: " + core.version.version_type)
+            print("The current version type of this program is: " + core.version.vtype)
+            print()
+            print("The current version codename of this program is: " + core.version.vcodename)
             print()
             print("To automatically update, type \'full update\'. To manually update,")
             print("go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuite\' and clone the repository.")

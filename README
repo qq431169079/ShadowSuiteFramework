@@ -1,4 +1,4 @@
-Shadow Suite 0.0.3.2 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.3.5 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -10,16 +10,51 @@ the main project of Shadow Team.
 
 What's new?
 ------------------
-1.We will rewrite Shadow Suite in Python.
+1.Module Template
+      -We now have implemented a feature to let you create your own module!
+
+2.Pre-installed modules
+      -Our currently pre-installed modules are DNSMap and NWrap. More are
+       coming soon!
 
 Full Feature List
 ------------------------
--Rewrite in progress...
+-Friendly CLI
+      -As most people know, Command-Line Interfaces (CLI) are very hard to
+       use. But this framework is different. The commands does not need
+       arguments, instead they ask you interactively. For example, it needs
+       three arguments. Then the command will ask you "Will i enable this?",
+       "Do i need to do that?", "which file should i work on?", blah, blah,
+       blah.
+
+-Open Source
+      -Shadow Suite is protected by the GNU General Public License, means
+       that you can freely download, modify, and distribute the software.
+       Just give "creds" to me ;)
+
+-Create Custom Modules from template
+      -Do you know Python? Do you know how to code in Python 3? Do you want
+       to create your own module that can penetration test a highly secured
+       computers in just three seconds? Shadow Suite provides you a module
+       template to help you start creating your custom module. It also
+       provides an Application Programming Interface (API) to help you on
+       the integration of Shadow Suite and your custom module.
+
+-Pre-installed modules
+      -It's okay if you don't know how to program. Shadow Suite has an
+       arsenal! It provides you tools written in different languages, Python,
+       Ruby, Perl, etc.
+
+-Third-Party Frameworks Integration
+      -There are pros and cons in every software, as well as frameworks.
+       So Shadow Team decided to integrate Shadow Suite with other frameworks,
+       such as the "Hakku Framework". Hakku Framework provides different
+       modules, and Shadow Suite also provides different tools.
 
 TO-DO List
 ------------------------
 
-1.Do a complete rewrite to python.
+1.Add more modules.
 
 License and Copying
 ------------------------
@@ -43,7 +78,6 @@ Credits
 ------------------------
 Project Lead: Catayao56
 Project co-lead: Sh4d0wH4X0R
-        Shadow Team: for creating Random Pass and Shadow Crack.
         Offensive Security: for creating Kali Linux, Kali NetHunter,
 	                    and Exploit Database.
 	4Shadoww: for creating Hakku Framework.
