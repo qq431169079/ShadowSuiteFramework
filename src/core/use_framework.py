@@ -20,29 +20,17 @@ import os
 import sys
 import core.misc
 import core.error
+import core.hakku
 
-def use(module_name):
+def use(framework_name):
     
-    print("searching for module named \'" + module_name + "\' in modules directory...")
+    print("searching for framework named \'" + framework_name + "\' in root directory...")
 
-    if module_name == "dnsmap":
-        print("Module found!")
-        import modules.dnsmap
-        modules.dnsmap.main()
+    if framework_name == "hakku":
+        print("Framework found!")
+        # DEV 0001: This must use the API module not the OS module!
+        # TIP: Use the algorithm of calling the module in use_module.py
+        core.hakku.integrator()
 
-    elif module_name == "nwrap":
-        print("Module found!")
-        import modules.nwrap
-        modules.nwrap.main()
-
-    # Put the code below... Careful with the indentation! match indents of the codes
-    # above to avoid errors!
-
-    elif module_name == "sample":
-        print("Module found!")
-        import modules.sample
-        modules.sample.main()
-
-    # Hey! don't modify this thing below!
     else:
         core.error.error0001()

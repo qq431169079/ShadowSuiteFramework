@@ -1,4 +1,4 @@
-Shadow Suite 0.0.3.5 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.3.6 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -16,6 +16,12 @@ What's new?
 2.Pre-installed modules
       -Our currently pre-installed modules are DNSMap and NWrap. More are
        coming soon!
+
+3.Third-Party Frameworks Integration
+      -There are pros and cons in every software, as well as frameworks.
+       So Shadow Team decided to integrate Shadow Suite with other frameworks
+       such as the "Hakku Framework". Hakku Framework provides different
+       modules, and Shadow Suite also provides different tools.
 
 Full Feature List
 ------------------------

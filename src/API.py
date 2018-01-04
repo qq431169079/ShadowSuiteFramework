@@ -27,6 +27,7 @@ import core.misc
 import core.module_manager
 import core.update
 import core.use_module
+import core.use_framework
 import core.version
 
 class Class:
@@ -34,9 +35,16 @@ class Class:
     ShadowSuite_ver_num = core.version.vnumber
     ShadowSuite_ver_type = core.version.vtype
     ShadowSuite_ver_codename = core.version.vcodename
+    # Hey! Learn how to use 'self'!
 
     def list_module():
         core.list_module.list()
 
+    def use_module(module):
+        core.use_module.use(module)
+
+    def use_framework(framework):
+        core.use_framework.use(framework)
+
     def finish():
-        print("[i] Module finished running...")
+        print("\n[i] Module finished running...\n")

@@ -28,7 +28,7 @@ def list():
     fb = '\033[1m'                       #  bold
     fi = '\033[3m'                       #  italic
 
-    print(cg + "===Shadow Suite Modules===\n\n" + cb)
+    print(cg + "===Shadow Suite Modules and Frameworks===\n\n" + cb)
     print(cw + "[i] The stability of the tools is color-coded:" + cw)
     print(cg + "\tStable" + cw)
     print(cy + "\tExperimental" + cw)
@@ -43,6 +43,8 @@ def list():
     print(cr + "\t\tDNSrecon" + nyi + cw)
     print(cr + "\t\tMetagoofil" + nyi + cw)
     print(cr + "\t\tThe Harvester" + nyi + cw)
+    print(cb + "\t==Integrated Frameworks==\n" + cw)
+    print(cg + "\t\tHakku Framework" + cw)
     print(cb + "\t==Custom Modules==\n" + cw)
     # If you are adding a custom module, duplicate the code below:
     # print(core.misc.cp + "[MODULE NAME]")

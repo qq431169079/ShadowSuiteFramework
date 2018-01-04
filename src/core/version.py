@@ -24,10 +24,10 @@ global vnumber
 global vtype
 global vcodename
 
-vapi = "0.0.3.7"
-vnumber = "0.0.3.5"
+vapi = "0.0.3.8"
+vnumber = "0.0.3.6"
 vtype = "Weekly Build"
-vcodename = "Faraday"
+vcodename = "Game Blaster"
 
 def number():
     # example:

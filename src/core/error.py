@@ -20,6 +20,12 @@ import os
 import sys
 import core.misc
 
+    ##################################################################################
+    #                                                                                #
+    #                               ERROR FUNCTIONS                                  #
+    #                                                                                #
+    ##################################################################################
+
 def error0001():
     # This function prints the "Invalid Input message.
     print(core.misc.cr + "ERROR 0001: Invalid Input! Please check your command.\n[i] TIP: commands are case-sensitive!\n[i] Type 'help' for commands and their descriptions." + core.misc.cw)
@@ -40,7 +46,21 @@ def error0004():
 def error0005():
     # This function is called if user device has no superuser permission but is running a
     # module that needs root.
-    print(core.misc.cr + "ERROR 0005: This operation requires SuperUser (SU) permissions!\nPlease root your device first before proceeding.\nSearch for \'Android Rooting\' for details...")
+    print(core.misc.cr + "ERROR 0005: This operation requires SuperUser (SU) permissions!\nPlease root your device first before proceeding.\nSearch for \'Android Rooting\' for details..." + core.misc.cw)
+
+def error0006():
+    # This function is called if no modules were found in the modules directory.
+    print(core.misc.cr + "ERROR 0006: No modules with that name was found.")
+
+def error0007():
+    # This function is called if no frameworks were found in the modules directory.
+    print(core.misc.cr + "ERROR 0007: No frameworks with that name was found.")
+
+    ##################################################################################
+    #                                                                                #
+    #                              WARNING FUNCTIONS                                 #
+    #                                                                                #
+    ##################################################################################
 
 def warning0001():
     # This function is called if ShadowSuite.py is renamed.

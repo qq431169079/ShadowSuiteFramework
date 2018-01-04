@@ -1,3 +1,5 @@
+# This is the unmodified version of Hakku Framework's API module.
+
 #        Copyright (C) 2015 Noa-Emil Nissinen (4shadoww)
 
 

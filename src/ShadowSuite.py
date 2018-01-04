@@ -31,14 +31,16 @@ while loop:
 
         if menu_input == "help":
             print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr)
-            print(core.misc.cw + "help            :: prints this help menu.")
-            print("license         :: opens the license file via less command.")
-            print("info            :: prints a brief information about Shadow Suite.")
-            print("full update     :: update Shadow Suite and install dependencies.")
-            print("module          :: enter module shell. type \'module\' then \'help\'for details.")
+            print(core.misc.cw + "help              :: prints this help menu.")
+            print("license           :: opens the license file via less command.")
+            print("info              :: prints a brief information about Shadow Suite.")
+            print("program update    :: update Shadow Suite.")
+            print("dependency update :: update dependency files.")
+            print("full update       :: update Shadow Suite and install dependencies.")
+            print("module            :: enter module shell. type \'module\' then \'help\'for details.")
             print("\n")
-            print("quit            :: quit Shadow Suite.")
-            print("exit            :: same as \'quit\' command.\n")
+            print("quit              :: quit Shadow Suite.")
+            print("exit              :: same as \'quit\' command.\n")
 
         elif menu_input == "license":
             print("Opening \'LICENSE\' file via less command ...")
@@ -55,6 +57,14 @@ while loop:
             print()
             print("To automatically update, type \'full update\'. To manually update,")
             print("go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuite\' and clone the repository.")
+
+        elif menu_input == "program update":
+            print(core.misc.cgr + "Fetching Shadow Suite from Shadow Team's repository..." + core.misc.cw)
+            core.update.prog_update()
+
+        elif menu_input == "dependency update":
+            print(core.misc.cgr + "Downloading and installing dependencies..." + core.misc.cw)
+            core.update.deps_update()
 
         elif menu_input == "full update":
             print(core.misc.cgr + "Do you really want to perform a full update (y/n)?" + core.misc.cw)

@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/bash
 
 # Shadow Suite :: Ethical Hacking Toolkit
 # Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
@@ -16,15 +16,5 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os
-import sys
-import core.error
-import core.misc
-import core.update
-import core.version
-import core.module_manager
-import hakku_API
-
-def integrator():
-    print("[i] Running Hakku...")
-    os.system("bash hakku_integrator")
+cd hakkuframework
+python hakku

@@ -19,6 +19,7 @@
 import os
 import core.misc
 import core.error
+import core.use_module
 
 def manager():
     loop = True
@@ -54,15 +55,13 @@ def manager():
                         print("[i] Downloading Hakku Framework via Git...\n")
                         os.system("git clone https://github.com/4shadoww/hakkuframework")
                         print("\n[i] Running Hakku Framework...\n")
-                        import core.hakku
-                        core.hakku.integrator()
+                        core.use_framework.use("hakku")
 
                     elif infr_ask == "Y":
                         print("[i] Downloading Hakku Framework via Git...\n")
                         os.system("git clone https://github.com/4shadoww/hakkuframework")
                         print("\n[i] Running Hakku Framework...\n")
-                        import core.hakku
-                        core.hakku.integrator()
+                        core.use_framework.use("hakku")
 
                 elif infr == "2":
                     core.error.warning0002()
