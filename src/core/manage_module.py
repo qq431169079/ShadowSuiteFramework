@@ -22,11 +22,13 @@ import core.error
 
 def manager():
     loop = True
+    global core
     
     while loop == True:
         try:
             if os.geteuid() != 0:
-                command = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.fr + core.misc.cw + "] $: ")
+                command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] $: ")
+
             else:
                 command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] #: ")
 
@@ -52,13 +54,15 @@ def manager():
                         print("[i] Downloading Hakku Framework via Git...\n")
                         os.system("git clone https://github.com/4shadoww/hakkuframework")
                         print("\n[i] Running Hakku Framework...\n")
-                        os.system("python hakkuframework/hakku")
+                        import core.hakku
+                        core.hakku.integrator()
 
                     elif infr_ask == "Y":
                         print("[i] Downloading Hakku Framework via Git...\n")
                         os.system("git clone https://github.com/4shadoww/hakkuframework")
                         print("\n[i] Running Hakku Framework...\n")
-                        os.system("python hakkuframework/hakku")
+                        import core.hakku
+                        core.hakku.integrator()
 
                 elif infr == "2":
                     core.error.warning0002()
