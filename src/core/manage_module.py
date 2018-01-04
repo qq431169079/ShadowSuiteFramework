@@ -25,18 +25,46 @@ def manager():
     
     while loop == True:
         try:
-            command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] $: ")
+            if os.geteuid() != 0:
+                command = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.fr + core.misc.cw + "] $: ")
+            else:
+                command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] #: ")
 
             if command == "help":
                 print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)
                 print("generate new :: generate a new module template.")
+                print("integrate    :: integrate Shadow Suite with another framework.")
                 print("\n")
                 print("back         :: back to Module_Manager.py shell.")
 
             elif command == "generate new":
                 print("Extracting template...")
-                os.system("cp $PWD/modules/temp.py $PWD/output/")
+                os.system("cp $PWD/core/temp.py $PWD/output/")
                 os.system("echo You can now open the template located on: $PWD/output/temp.py")
+
+            elif command == "integrate":
+                print("What framework do you want to integrate with?")
+                print("\n[1] Hakku Framework\n[2] Coming Soon\n\n")
+                infr = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] $: ")
+                if infr == "1":
+                    infr_ask = input("Do you want to download Hakku Framework now (y/n)? > ")
+                    if infr_ask == "y":
+                        print("[i] Downloading Hakku Framework via Git...\n")
+                        os.system("git clone https://github.com/4shadoww/hakkuframework")
+                        print("\n[i] Running Hakku Framework...\n")
+                        os.system("python hakkuframework/hakku")
+
+                    elif infr_ask == "Y":
+                        print("[i] Downloading Hakku Framework via Git...\n")
+                        os.system("git clone https://github.com/4shadoww/hakkuframework")
+                        print("\n[i] Running Hakku Framework...\n")
+                        os.system("python hakkuframework/hakku")
+
+                elif infr == "2":
+                    core.error.warning0002()
+
+                else:
+                    core.error.error0001()
 
             elif command == "quit":
                 core.error.error0003()

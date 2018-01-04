@@ -52,6 +52,5 @@ def prn_brief_license():
     print("under certain conditions; type 'license' for details." + cw)
 
 def module_mode():
-    # DEV0001: Implement this...
     # This function is called if ShadowSuite is running as module.
     print(cy + "[i] Running as module...\n" + cw)

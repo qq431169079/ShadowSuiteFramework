@@ -1,5 +1,3 @@
-#!/bin/python
-
 def main():
     # Colours
     D  = "\033[0m"  

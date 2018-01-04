@@ -13,22 +13,36 @@ import core.misc
 import core.error
 
 def list():
-    print(core.misc.cg + "===Shadow Suite Modules===\n\n" + core.misc.cb)
-    print(core.misc.cw + "[i] The stability of the tools is color-coded:")
-    print(core.misc.cg + "\tStable")
-    print(core.misc.cy + "\tExperimental")
-    print(core.misc.cr + "\tUnstable")
-    print(core.misc.cgr + "\tNot yet implemented")
-    print(core.misc.cp + "\tCustom Module\n\n")
-    print(core.misc.cb + "\t==01-Informarion Gathering==\n" + core.misc.cw)
-    print(core.misc.cg + "\t\tDNSMap")
-    print(core.misc.cg + "\t\tNwrap")
-    print(core.misc.cgr + "\t\tRed Hawk")
-    print(core.misc.cgr + "\t\tAutomater")
-    print(core.misc.cgr + "\t\tDNSenum")
-    print(core.misc.cgr + "\t\tDNSrecon")
-    print(core.misc.cgr + "\t\tMetagoofil")
-    print(core.misc.cgr + "\t\tThe Harvester")
-    print(core.misc.cb + "\t==Custom Modules==\n" + core.misc.cw)
+
+    cw = '\033[0m'                       #  white  (normal)
+    cb = '\033[34m'                      #  blue   (highlights)
+
+    cg = '\033[32m'                      #  green  (Stable)
+    cy = '\033[33m'                      #  yellow (Experimental)
+    cr = '\033[31m'                      #  red    (Unstable)
+    nyi = "\t[i] Not yet Implemented!!!"   # Not yet Implemented
+    cp = '\033[35m'                      #  purple (Custom Module)
+    
+    # Font types
+    fr = '\033[0m'                       #  regular
+    fb = '\033[1m'                       #  bold
+    fi = '\033[3m'                       #  italic
+
+    print(cg + "===Shadow Suite Modules===\n\n" + cb)
+    print(cw + "[i] The stability of the tools is color-coded:" + cw)
+    print(cg + "\tStable" + cw)
+    print(cy + "\tExperimental" + cw)
+    print(cr + "\tUnstable" + cw)
+    print(cp + "\tCustom Module\n\n" + cw)
+    print(cb + "\t==01-Informarion Gathering==\n" + cw)
+    print(cg + "\t\tDNSMap" + cw)
+    print(cg + "\t\tNwrap" + cw)
+    print(cr + "\t\tRed Hawk" + nyi + cw)
+    print(cr + "\t\tAutomater" + nyi + cw)
+    print(cr + "\t\tDNSenum" + nyi + cw)
+    print(cr + "\t\tDNSrecon" + nyi + cw)
+    print(cr + "\t\tMetagoofil" + nyi + cw)
+    print(cr + "\t\tThe Harvester" + nyi + cw)
+    print(cb + "\t==Custom Modules==\n" + cw)
     # If you are adding a custom module, duplicate the code below:
     # print(core.misc.cp + "[MODULE NAME]")

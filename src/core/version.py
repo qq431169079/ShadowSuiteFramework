@@ -24,6 +24,7 @@ global version_type
 
 version_number = "0.0.3.2"
 version_type = "Weekly Build"
+codename = "Elliot"
 
 def number():
     # example:
@@ -70,4 +71,4 @@ def type():
     #               cycle will go back to Weekly Build.
 
 def both():
-    print(core.misc.cg + version_number + "\t" + version_type + core.misc.cw)
+    print(core.misc.cg + version_number + "\t" + version_type + "\t" + codename + core.misc.cw)

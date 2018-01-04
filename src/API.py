@@ -1,7 +1,6 @@
 #!/bin/python
-
 # Shadow Suite :: Ethical Hacking Toolkit
-# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
+# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,26 +15,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import core.misc
+# Python modules
+import os
+import sys
+
+# Shadow Suite modules
 import core.error
+import core.list_module
+import core.manage_module
+import core.misc
+import core.module_manager
+import core.update
+import core.use_module
+import core.version
 
-def use(module_name):
-    
-    print("searching for module named \'" + module_name + "\' in modules directory...")
+class ShadowSuiteAPI:
+    API_version = "0.0.1.5"
 
-    if module_name == "dnsmap":
-        print("Module found!")
-        import modules.dnsmap
-        modules.dnsmap.main()
+    def ShadowSuite_version(self):
+        ShadowSuite_ver_num = core.version.version_number
+        ShadowSuite_ver_type = core.version.version_type
+        ShadowSuite_codename = core.version.codename
 
-    elif module_name == "nwrap":
-        print("Module found!")
-        import modules.nwrap
-        modules.nwrap.main()
+    def prn_API_version(self):
+        print(API_version)
 
-    # Put the code below... Careful with the indentation! match indents of the codes
-    # above to avoid errors!
-
-    # Hey! don't modify this thing below!
-    else:
-        core.error.error0001()
+    def list_module(self):
+        core.

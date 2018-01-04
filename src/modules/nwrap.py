@@ -1,5 +1,3 @@
-#!/bin/python
-
 def main():
     import os
     import core.error

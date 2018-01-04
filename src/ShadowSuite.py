@@ -24,7 +24,10 @@ if __name__ != '__main__':
 
 while loop:
     try:
-        menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] $: ")
+        if os.geteuid() != 0:
+            menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] $: ")
+        else:
+            menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] #: ")
 
         if menu_input == "help":
             print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr)
@@ -44,11 +47,9 @@ while loop:
         elif menu_input == "info":
             core.misc.prn_logo()
             print()
-            print("The current version number of this program is:")
-            core.version.number()
+            print("The current version number of this program is: " + core.version.version_number)
             print()
-            print("The current version type of this program is:")
-            core.version.type()
+            print("The current version type of this program is: " + core.version.version_type)
             print()
             print("To automatically update, type \'full update\'. To manually update,")
             print("go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuite\' and clone the repository.")
@@ -76,6 +77,9 @@ while loop:
 
         elif menu_input == "module help":
             core.module_manager.shell()
+
+        elif menu_input == "back":
+            core.error.error0004()
 
         elif menu_input == "quit":
             print("Quitting Shadow Suite...\n")
