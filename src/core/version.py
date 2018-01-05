@@ -24,8 +24,8 @@ global vnumber
 global vtype
 global vcodename
 
-vapi = "0.0.3.8"
-vnumber = "0.0.3.6"
+vapi = "0.0.4.0"
+vnumber = "0.0.3.7"
 vtype = "Weekly Build"
 vcodename = "Game Blaster"
 
@@ -72,6 +72,41 @@ def type():
     #               all known bugs are fixed. In this phase, you can now
     #               start a new maintenance update, which means the release
     #               cycle will go back to Weekly Build.
+
+def codename():
+    print(core.misc.cg + vcodename + core.misc.cw)
+    #
+    # (Catayao56:) I suggest that you use codenames in alphabetical order.
+    # What i mean is this:
+    #
+    # Default Codenames:
+    # 
+    # Abstraction                                        ( Used in v0.0.0.1 )
+    # Bang                                               ( Used in v0.0.1.0 )
+    # Cache                                              ( Used in v0.0.2.0 )
+    # Dark                                               ( Used in v0.0.3.0 )
+    # Elliot                                             ( Used in v0.0.3.4 )
+    # Faraday                                            ( Used in v0.0.3.5 )
+    # Game Buster                                        ( Used in v0.0.3.6 )
+    # Handshake                                          ( Not yet used )
+    # Implementation                                     ( Not yet used )
+    # Job                                                ( Not yet used )
+    # Knight                                             ( Not yet used )
+    # Lazy                                               ( Not yet used )
+    # Metro                                              ( Not yet used )
+    # New ways                                           ( Not yet used )
+    # Open Grounds                                       ( Not yet used )
+    # PHP                                                ( Not yet used )
+    # Querty                                             ( Not yet used )
+    # Ruby                                               ( Not yet used )
+    # Silicon                                            ( Not yet used )
+    # Time                                               ( Not yet used )
+    # Universal                                          ( Not yet used )
+    # Variable                                           ( Not yet used )
+    # Wireless                                           ( Not yet used )
+    # Xfr                                                ( Not yet used )
+    # You There                                          ( Not yet used )
+    # Zero-Day                                           ( Not yet used )
 
 def both():
     print(core.misc.cg + vnumber + "\t" + vtype + "\tCodename: " + vcodename + core.misc.cw)

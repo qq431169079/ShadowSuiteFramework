@@ -23,7 +23,8 @@ import core.misc
 import core.update
 import core.version
 import core.module_manager
-import hakku_API
+# DEV 0001: The integrator() function must use the Hakku API not this bash script!
+# import hakku_API
 
 def integrator():
     print("[i] Running Hakku...")

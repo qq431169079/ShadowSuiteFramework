@@ -21,6 +21,10 @@ import core.misc
 import core.error
 import core.use_module
 
+def generate_new():
+    os.system("cp $PWD/core/temp.py $PWD/output/")
+    os.system("echo You can now open the template located on: $PWD/output/temp.py")
+
 def manager():
     loop = True
     global core
@@ -42,8 +46,7 @@ def manager():
 
             elif command == "generate new":
                 print("Extracting template...")
-                os.system("cp $PWD/core/temp.py $PWD/output/")
-                os.system("echo You can now open the template located on: $PWD/output/temp.py")
+                generate_new()
 
             elif command == "integrate":
                 print("What framework do you want to integrate with?")
