@@ -74,30 +74,30 @@ import core.version
 #
 
 class Class:
+    # Method calling: API.Class().[METHOD NAME]()
     API_version = core.version.vapi
     ShadowSuite_ver_num = core.version.vnumber
     ShadowSuite_ver_type = core.version.vtype
     ShadowSuite_ver_codename = core.version.vcodename
-    # Hey! Learn how to use 'self'!
 
-    def generate_new_module(cmn):
+    def generate_new_module(self, cmn):
         # Copies the custom module template from module directory to output directory.
         core.manage_module.generate_new(cmn)
 
-    def list_module():
+    def list_module(self):
         core.list_module.list()
 
-    def find_module(module):
+    def find_module(self, module):
         # Argument "module" is the target module to view the info.
         core.find_module.find(module)
 
-    def use_module(module):
+    def use_module(self, module):
         # Argument "module" is the target module to run.
         core.use_module.use(module)
 
-    def use_framework(framework):
+    def use_framework(self, framework):
         # Argument "framework" is the target framework to run.
         core.use_framework.use(framework)
 
-    def finish():
+    def finish(self):
         print("\n[i] Module finished running...\n")

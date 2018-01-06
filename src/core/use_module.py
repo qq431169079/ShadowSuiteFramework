@@ -35,6 +35,11 @@ def use(module_name):
         import modules.nwrap
         modules.nwrap.main()
 
+    elif module_name == "automater":
+        print("Module found!")
+        import modules.automater
+        modules.automater.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

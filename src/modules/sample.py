@@ -25,7 +25,7 @@ info = {
 dependencies = ['python 3','Shadow Suite.py','API.py','Nothing','N/A'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 3.2:\nSample module update\n\nVersion 2.1:\nAnother Update\n\nVersion 1.0:\nSample Module Initial Release"
+changelog = "Version 3.3:\nUpdated Sample module to keep up with API's update.\n\nVersion 3.2:\nSample module update\n\nVersion 2.1:\nAnother Update\n\nVersion 1.0:\nSample Module Initial Release"
 
 # Prints the module information
 def module_info():
@@ -73,7 +73,7 @@ def module_body():
     print("Shadow Suite's API version is " + API.Class.API_version + ".")
     time.sleep(4)
     print("Listing installed modules...")
-    API.Class.list_module()
+    API.Class().list_module()
     time.sleep(8)
     print("Quitting in 3...")
     time.sleep(1)
@@ -83,4 +83,4 @@ def module_body():
     time.sleep(0.700)
     print("Quitting in 0...")
     time.sleep(.300)
-    API.Class.finish()
+    API.Class().finish()

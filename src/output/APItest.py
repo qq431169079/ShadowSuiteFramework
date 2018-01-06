@@ -2,29 +2,29 @@
 import os
 import sys
 import core.error
-import API
+# import API
 # Uncomment the line above if your module will use Shadow Suite's API.
 
 # Place your 'import' directives here
 
 # Put your module information here.
 info = {
-        "name": "Automater", # Module filename (Change filename if you want to change this)
+        "name": "test", # Module filename (Change filename if you want to change this)
         "version": "1.0", # version
-        "author": "TekDefense", # Author
-        "desc": "A tool to do analysis of IP Addresses, URLs, and Hashes.", # Brief description
+        "author": "none", # Author
+        "desc": "none", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Jan, 06, 2018",                     # a website of the author.
+        "lastupdate": "MONTH, DD, YYYY",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
-        "usingapi": "True", # Using API?
+        "usingapi": "False", # Using API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 1.0:\nrelease"
 
 # Prints the module information
 def module_info():
@@ -58,5 +58,4 @@ def main():
 
 def module_body():
     # Place your program here. This is the function where your program will be placed.
-    # DEV0003: COTINUE
-    from modules.automater import Automater
+    module_info()

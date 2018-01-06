@@ -63,10 +63,20 @@ README for Developers
 
 	 NOTE: Replace '1' with your module's filename.
 
-       6.After finishing the steps above, it's time to move your custom module
+       6.The next step is edit 'find_module.py', which is also inside core directory.
+         Copy the codr below, whivh is also optional:
+	 
+	 elif module_name == "1":
+	     print("Module found!")
+	     import modules.1
+	     modules.1.module_info()
+
+	NOTE: Replace '1' with your module's filename.
+
+       7.After finishing the steps above, it's time to move your custom module
          into the modules folder. Move your custom module to the 'modules' directory.
 
-       7.Lastly, test your module:
+       8.Lastly, test your module:
 
        		$ python ShadowSuite.py
 		[ShadowSuite.py] $: module
