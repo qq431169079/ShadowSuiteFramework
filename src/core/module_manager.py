@@ -27,7 +27,6 @@ def shell():
                 print("use module      :: use a module.")
                 print("module info     :: show module information.")
                 print("use framework   :: use a framework")
-                print("framework info  :: show framework information.")
                 print("manage          :: run module manager.")
                 print("\n")
                 print("back            :: back to Shadow Suite shell.")
