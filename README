@@ -2,11 +2,12 @@ Shadow Suite 0.0.3.7 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
+It was born on Thursday, Dec 7 2:44:37 PM, 2017.
 It provides many tools that you can use, written
-in Python, BASH, PHP, etc. Tools that you need for
-reconnaissance, scanning, exploitation, encryption,
-password cracking, and more! Shadow Suite is
-the main project of Shadow Team.
+mainly in Python, BASH, PHP, etc. Tools that you
+need for reconnaissance, scanning, exploitation,
+encryption, password cracking, and more! Shadow
+Suite is the main project of Shadow Team.
 
 What's new?
 ------------------
