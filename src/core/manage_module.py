@@ -21,9 +21,10 @@ import core.misc
 import core.error
 import core.use_module
 
-def generate_new():
+def generate_new(cmn):
     os.system("cp $PWD/core/temp.py $PWD/output/")
-    os.system("echo You can now open the template located on: $PWD/output/temp.py")
+    os.system("mv $PWD/output/temp.py $PWD/output/" + cmn + ".py")
+    os.system("echo You can now open the template located on: $PWD/output/" + cmn + ".py")
 
 def manager():
     loop = True
@@ -45,8 +46,9 @@ def manager():
                 print("back         :: back to Module_Manager.py shell.")
 
             elif command == "generate new":
+                cmn = input("Enter the name of your custom module > ")
                 print("Extracting template...")
-                generate_new()
+                generate_new(cmn)
 
             elif command == "integrate":
                 print("What framework do you want to integrate with?")

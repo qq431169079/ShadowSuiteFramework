@@ -6,17 +6,16 @@ import core.error
 # Uncomment the line above if your module will use Shadow Suite's API.
 
 # Place your 'import' directives here
-import socket
 
 # Put your module information here.
 info = {
-        "name": "DNSmap", # Module filename (Change filename if you want to change this)
-        "version": "2.0", # version
-        "author": "Filip Waeytens", # Author
-        "desc": "Dnsmap is mainly meant to be used by pentesters during the information\ngathering/enumeration phase of infrastructure security assessments.", # Brief description
-        "email": "N/A", # Email
-        "authorinfo": "N/A", # Additional information about the author; this could be
-        "lastupdate": "Jan. 05, 2018",                     # a website of the author.
+        "name": "test", # Module filename (Change filename if you want to change this)
+        "version": "1.0", # version
+        "author": "none", # Author
+        "desc": "none", # Brief description
+        "email": "none", # Email
+        "authorinfo": "none", # Additional information about the author; this could be
+        "lastupdate": "MONTH, DD, YYYY",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "False", # Using API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -25,7 +24,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 1.0:\nrelease"
 
 # Prints the module information
 def module_info():
@@ -58,19 +57,5 @@ def main():
         module_body()
 
 def module_body():
-    # Colours
-    D  = "\033[0m"
-    W  = "\033[01;37m"
-    O  = "\033[01;33m"
-    SUCESS = "\033[01;32m"
-    FAIL = "\033[01;31m"
-    print("\nDNSMap\n")
-    print (W+"")
-    domain = input("[DNSMap] Set domain: ") # www.domain.com
-
-    try:
-        ip = socket.gethostbyname( domain )
-        print (SUCESS + "The DNS of \'" + domain + "\' is \'" + ip + "\'.")
-
-    except socket.gaierror:
-        print (FAIL+'Invalid Domain or no internet connection.\n')
+    # Place your program here. This is the function where your program will be placed.
+    module_info()

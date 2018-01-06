@@ -10,14 +10,7 @@ the main project of Shadow Team.
 
 What's new?
 ------------------
-1.Module Template
-      -We now have implemented a feature to let you create your own module!
-
-2.Pre-installed modules
-      -Our currently pre-installed modules are DNSMap and NWrap. More are
-       coming soon!
-
-3.Third-Party Frameworks Integration
+1.Third-Party Frameworks Integration
       -There are pros and cons in every software, as well as frameworks.
        So Shadow Team decided to integrate Shadow Suite with other frameworks
        such as the "Hakku Framework". Hakku Framework provides different
@@ -62,6 +55,14 @@ TO-DO List
 
 1.Add more modules.
 
+2.Figure out how to automatically install custom modules.
+
+3.Fix bugs.
+
+4.Code more modules from different sources...
+
+5.Implement framework info.
+
 License and Copying
 ------------------------
 
@@ -84,16 +85,23 @@ Credits
 ------------------------
 Project Lead: Catayao56
 Project co-lead: Sh4d0wH4X0R
+
+	==Modules==
+        Filip Waeytens: for creating the original DNSMap.
+
+	==Frameworks==
+	4Shadoww: for creating Hakku Framework.
+
+	==Others==
         Offensive Security: for creating Kali Linux, Kali NetHunter,
 	                    and Exploit Database.
-	4Shadoww: for creating Hakku Framework.
         Linus Torvalds: for creating Linux Operating System.
 
 
 
 Requirements
 ------------------------
-1.Python Interpreter versions 2 and 3.
+1.Python Interpreter version 3.
 2.Dependencies can be installed automatically in the program.
 
 
@@ -103,7 +111,7 @@ Installing & Running
       -Enter these command in your terminal:
 
       $ apt update && apt upgrade [1]
-      $ apt install python python-dev python2 python2-dev [2]
+      $ apt install python python-dev [2]
       $ chmod +x ShadowSuite.py [3]
       $ ./ShadowSuite.py [4]
       [Shadow] $ full update [5]

@@ -30,6 +30,7 @@ import core.error
 #      (Replace * with warning number. See core/error.py for details.)
 #      API.core.error.warning****()
 #
+import core.find_module
 import core.hakku
 import core.list_module
 import core.manage_module
@@ -79,12 +80,16 @@ class Class:
     ShadowSuite_ver_codename = core.version.vcodename
     # Hey! Learn how to use 'self'!
 
-    def generate_new_module():
+    def generate_new_module(cmn):
         # Copies the custom module template from module directory to output directory.
-        core.manage_module.generate_new()
+        core.manage_module.generate_new(cmn)
 
     def list_module():
         core.list_module.list()
+
+    def find_module(module):
+        # Argument "module" is the target module to view the info.
+        core.find_module.find(module)
 
     def use_module(module):
         # Argument "module" is the target module to run.

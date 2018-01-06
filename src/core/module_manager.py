@@ -25,7 +25,9 @@ def shell():
                 print("help            :: prints this help menu.")
                 print("list            :: list module/s.")
                 print("use module      :: use a module.")
+                print("module info     :: show module information.")
                 print("use framework   :: use a framework")
+                print("framework info  :: show framework information.")
                 print("manage          :: run module manager.")
                 print("\n")
                 print("back            :: back to Shadow Suite shell.")
@@ -37,9 +39,17 @@ def shell():
                 module_name = input(core.misc.cgr + "Enter the module name to use > " + core.misc.cw)
                 core.use_module.use(module_name)
 
+            elif command == "module info":
+                miname = input(core.misc.cgr + "Enter the module name to view > " + core.misc.cw)
+                core.find_module.find(miname)
+
             elif command == "use framework":
                 framework_name = input(core.misc.cgr + "Enter the framework name to use > " + core.misc.cw)
                 core.use_framework.use(framework_name)
+
+            elif command == "framework info":
+                finame = input(core.misc.cgr + "Enter the framework name to view > " + core.misc.cw)
+                core.error.warning0002()
 
             elif command == "manage":
                 core.manage_module.manager()

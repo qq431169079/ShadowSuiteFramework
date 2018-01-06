@@ -2,35 +2,10 @@ README for Developers
 
 1.How the code is structured?
 
-      -At the beginning, The license is commented.
-       below the license, include and define
-       directives are placed. Function declarations
-       comes next. Then what i called 'subfunctions'
-       comes next, before the function. Then after
-       the function, the main function comes last.
-       It's like an inverted tree. because instead of:
+      -The program is now ported to Python 3. The program has been
+       broken down into little pieces called 'modules'. The Shadow
+       Suite API provides methods to integrate with Shadow Suite.
 
-       				Main
-				 ^
-				/ \
-			       /   \
-		       Function1   Function2
-			 ^             ^
-		 Subfunctions         Subfunctions
-
-
-
-       This is the program's source code structure:
-
-
-
-       		 Subfunctions         Subfunctions
-		         v              v
-		       Function1   Function2
-		               \   /
-			        \ /
-			         v
-				Main
 
 
 
