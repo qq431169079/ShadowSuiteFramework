@@ -22,7 +22,7 @@ import core.misc
 import core.error
 
 def find(module_name):
-    print("searching for module named \'" + module_name + "\' in modules directory...")
+    print("searching for module named \'" + module_name + "\' in modules directory...\n\n\n")
     
     if module_name == "dnsmap":
         print("Module found!")
@@ -33,6 +33,11 @@ def find(module_name):
         print("Module found!")
         import modules.nwrap
         modules.nwrap.module_info()
+
+    elif module_name == "red hawk":
+        print("Module found!")
+        import modules.red_hawk
+        modules.red_hawk.module_info()
 
     elif module_name == "automater":
         print("Module found!")
@@ -49,4 +54,4 @@ def find(module_name):
 
     # Hey! don't modify this thing below!
     else:
-        core.error.error0001()
+        core.error.error0006()

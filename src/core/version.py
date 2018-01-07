@@ -24,10 +24,10 @@ global vnumber
 global vtype
 global vcodename
 
-vapi = "0.0.4.5"
-vnumber = "0.0.3.7"
+vapi = "0.0.5.0"
+vnumber = "0.0.3.9"
 vtype = "Weekly Build"
-vcodename = "Game Blaster"
+vcodename = "Handshake"
 
 def number():
     # example:
@@ -87,8 +87,8 @@ def codename():
     # Dark                                               ( Used in v0.0.3.0 )
     # Elliot                                             ( Used in v0.0.3.4 )
     # Faraday                                            ( Used in v0.0.3.5 )
-    # Game Buster                                        ( Used in v0.0.3.6 )
-    # Handshake                                          ( Not yet used )
+    # Game Blaster                                       ( Used in v0.0.3.6 )
+    # Handshake                                          ( Used in v0.0.3.8 )
     # Implementation                                     ( Not yet used )
     # Job                                                ( Not yet used )
     # Knight                                             ( Not yet used )

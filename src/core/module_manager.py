@@ -4,15 +4,14 @@ import os
 import sys
 import core.misc
 import core.error
+import core.find_module
 import core.list_module
 import core.use_module
 import core.use_framework
 import core.manage_module
 
 def shell():
-    loop = True
-
-    while loop == True:
+    while True:
         try:
             if os.geteuid() != 0:
                 command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module_Manager.py" + core.misc.cw + core.misc.fr + "] $: ")
@@ -23,7 +22,7 @@ def shell():
             if command == "help":
                 print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)
                 print("help            :: prints this help menu.")
-                print("list            :: list module/s.")
+                print("list            :: list modules and frameworks.")
                 print("use module      :: use a module.")
                 print("module info     :: show module information.")
                 print("use framework   :: use a framework")

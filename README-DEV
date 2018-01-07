@@ -30,18 +30,18 @@ README for Developers
 3.Program Development Cycle
 
       -Shadow Suite uses RAD Program Development Cycle.
-       What we have in mind, we test it, then integrate it.
+       What we have in mind, we test it, integrate it, then publish it.
 
 4.Manual Module Installation
 
-      -As of now, Shadow Suite cannot automatically install modules.
+      -As of now, Shadow Suite cannot install modules with just one click.
        But if you really want to install a module, follow these steps:
 
        1.Launch Shadow Suite, type 'module', then 'manage', and lastly,
          type 'generate new'.
 
-       2.A new file will be made on the output directory named 'temp.py'.
-         Rename it with your desired filename.
+       2.The program will as you for the filename and it will be created.
+         It can be seen in the 'output' directory.
 
        3.Edit the file and write your module. You may need to learn Python 3
          to create your own module.
@@ -64,7 +64,7 @@ README for Developers
 	 NOTE: Replace '1' with your module's filename.
 
        6.The next step is edit 'find_module.py', which is also inside core directory.
-         Copy the codr below, whivh is also optional:
+         Copy the code below, which is also optional:
 	 
 	 elif module_name == "1":
 	     print("Module found!")

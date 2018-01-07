@@ -22,6 +22,7 @@ import core.error
 import core.use_module
 
 def generate_new(cmn):
+    # This is used to generate a custom module from a template via API.
     os.system("cp $PWD/core/temp.py $PWD/output/")
     os.system("mv $PWD/output/temp.py $PWD/output/" + cmn + ".py")
     os.system("echo You can now open the template located on: $PWD/output/" + cmn + ".py")
@@ -72,7 +73,7 @@ def manager():
                     core.error.warning0002()
 
                 else:
-                    core.error.error0001()
+                    core.error.error0007()
 
             elif command == "quit":
                 core.error.error0003()

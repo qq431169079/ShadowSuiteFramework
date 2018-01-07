@@ -35,6 +35,11 @@ def use(module_name):
         import modules.nwrap
         modules.nwrap.main()
 
+    elif module_name == "red hawk":
+        print("Module found!")
+        import modules.red_hawk
+        modules.red_hawk.main()
+
     elif module_name == "automater":
         print("Module found!")
         import modules.automater
@@ -50,4 +55,4 @@ def use(module_name):
 
     # Hey! don't modify this thing below!
     else:
-        core.error.error0001()
+        core.error.error0006()

@@ -46,7 +46,7 @@ def error0004():
 def error0005():
     # This function is called if user device has no superuser permission but is running a
     # module that needs root.
-    print(core.misc.cr + "ERROR 0005: This operation requires SuperUser (SU) permissions!\nPlease root your device first before proceeding.\nSearch for \'Android Rooting\' for details..." + core.misc.cw)
+    print(core.misc.cr + "ERROR 0005: This operation requires root permissions!\n\nPlease run as root first before proceeding. Search for \'Android Rooting\' if you are using\nShadow Suite on Android, or \'Linux Root User\' if you are running on Linux for details.\nIf you are using Windows Operating System, try to run as Administrator..." + core.misc.cw)
 
 def error0006():
     # This function is called if no modules were found in the modules directory.
@@ -55,6 +55,13 @@ def error0006():
 def error0007():
     # This function is called if no frameworks were found in the modules directory.
     print(core.misc.cr + "ERROR 0007: No frameworks with that name was found.")
+
+def error0008():
+    # This function is called if a module was missing.
+    cr = '\033[31m'
+    cw = '\033[0m'
+
+    print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue..." + cw)
 
     ##################################################################################
     #                                                                                #

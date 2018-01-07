@@ -33,4 +33,4 @@ def use(framework_name):
         core.hakku.integrator()
 
     else:
-        core.error.error0001()
+        core.error.error0007()

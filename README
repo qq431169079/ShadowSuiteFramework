@@ -1,4 +1,4 @@
-Shadow Suite 0.0.3.7 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.3.9 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -88,7 +88,10 @@ Project Lead: Catayao56
 Project co-lead: Sh4d0wH4X0R
 
 	==Modules==
-        Filip Waeytens: for creating the original DNSMap.
+        Filip Waeytens: for creating the original DNSMap DNS Enumeration tool.
+	NMap Team: for creating NMap Network Mapper.
+	R3D#@0R_2H1N A.K.A Tuhinshubhra: for creating Red Hawk.
+	TekDefense: for creating Automater.
 
 	==Frameworks==
 	4Shadoww: for creating Hakku Framework.

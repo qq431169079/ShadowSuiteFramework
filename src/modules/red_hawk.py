@@ -2,29 +2,29 @@
 import os
 import sys
 import core.error
-import API
+# import API
 # Uncomment the line above if your module will use Shadow Suite's API.
 
 # Place your 'import' directives here
 
 # Put your module information here.
 info = {
-        "name": "Automater", # Module filename (Change filename if you want to change this)
+        "name": "Red Hawk", # Module filename (Change filename if you want to change this)
         "version": "1.0", # version
-        "author": "TekDefense", # Author
-        "desc": "IP, URL, and Hash Passive Analysis tool", # Brief description
+        "author": "R3D#@0R_2H1N A.K.A Tuhinshubhra", # Author
+        "desc": "All in one tool for Information Gathering and Vulnerability Scanning", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Jan, 06, 2018",                     # a website of the author.
+        "lastupdate": "Jan. 07, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
-        "usingapi": "True", # Using API?
+        "usingapi": "False", # Using API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none'] # Put needed dependencies here.  
+dependencies = ['PHP 7.1.12-1', 'PHP-dev', 'PHP-curl', 'PHP-xml'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 1.0:\nInitial wrapper module release"
 
 # Prints the module information
 def module_info():
@@ -43,6 +43,13 @@ def module_info():
     print("Module's last update: " + info['lastupdate'])
     print("Using Shadow Suite's API: " + info['usingapi'])
     print("Needs root: " + superm)
+    print()
+    print("Dependencies:", end=' ')
+    for item in dependencies:
+        print(item, ",", end=' ')
+    print()
+    print("Changelog:\n" + "\n" + changelog)
+    print("\n\n")
 
 # Main module function
 def main():
@@ -58,16 +65,5 @@ def main():
 
 def module_body():
     # Place your program here. This is the function where your program will be placed.
-
-    # Support Proxy and UserAgent switches!
-    print("\nAutomater -- " + info['desc'] + "\n")
-    print("List one IP Address (CIDR or dash notation accepted),\nURL or Hash to query or pass the filename of a file\ncontaining IP Address info, URL or Hash to query each\nseparated by a newline.")
-    target = input(" > ")
-    print()
-    output = input("Enter the name of the output file > ")
-    space = " "
-    print("\n[i] Running \'Automater.py\'...\n")
-    os.system("cd modules/AUTOMATER && python2 Automater.py -o ../../output/" + output + " " + target)
-    os.system("cd ../..")
-    print("\n[i] Running \'Automater.py\'... Done!\n")
+    os.system("php modules/RED_HAWK/rhawk.php")
     print()
