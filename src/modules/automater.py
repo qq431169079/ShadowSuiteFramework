@@ -12,7 +12,7 @@ info = {
         "name": "Automater", # Module filename (Change filename if you want to change this)
         "version": "1.0", # version
         "author": "TekDefense", # Author
-        "desc": "A tool to do analysis of IP Addresses, URLs, and Hashes.", # Brief description
+        "desc": "IP, URL, and Hash Passive Analysis tool", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
         "lastupdate": "Jan, 06, 2018",                     # a website of the author.
@@ -58,5 +58,11 @@ def main():
 
 def module_body():
     # Place your program here. This is the function where your program will be placed.
-    # DEV0003: COTINUE
-    from modules.automater import Automater
+    print("\nAutomater -- " + info['desc'] + "\n")
+    print("List one IP Address (CIDR or dash notation accepted),\nURL or Hash to query or pass the filename of a file\ncontaining IP Address info, URL or Hash to query each\nseparated by a newline.")
+    target = input(" > ")
+    print()
+    output = input("Enter the name of the output file > ")
+    ask_proxy = input("Do you want to use a proxy? > ")
+    if ask_proxy == "y":
+        # DEV 0003: continue...
