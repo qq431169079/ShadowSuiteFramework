@@ -40,7 +40,7 @@ def list():
     print(cg + "\t\tRed Hawk" + cw)
     print(cg + "\t\tAutomater" + cw)
     print(cg + "\t\tDNSEnum" + cw)
-    print(cy + "\t\tDNSrecon" + nyi + cw)
+    print(cy + "\t\tDNSrecon" + cw)
     print(cr + "\t\tMetagoofil" + nyi + cw)
     print(cr + "\t\tThe Harvester" + nyi + cw)
     print(cb + "\t==Integrated Frameworks==\n" + cw)
@@ -48,4 +48,4 @@ def list():
     print(cb + "\t==Custom Modules==\n" + cw)
     # If you are adding a custom module, duplicate the code below:
     # print(core.misc.cp + "[MODULE NAME]")
-    print(core.misc.cp + "\t\tsample" + cw)
+    print(cp + "\t\tsample" + cw)
