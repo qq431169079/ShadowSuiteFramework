@@ -30,7 +30,8 @@ Full Feature List
 -Open Source
       -Shadow Suite is protected by the GNU General Public License, means
        that you can freely download, modify, and distribute the software.
-       Just give "creds" to me ;)
+       Just give "creds" to us and the developers that made the awesome
+       tools ;)
 
 -Create Custom Modules from template
       -Do you know Python? Do you know how to code in Python 3? Do you want
@@ -84,14 +85,20 @@ License and Copying
 
 Credits
 ------------------------
-Project Lead: Catayao56
-Project co-lead: Sh4d0wH4X0R
+
+	==Shadow Suite Framework Contibutors==
+	Project Lead: Catayao56
+	Project co-lead: Sh4d0wH4X0R
 
 	==Modules==
-        Filip Waeytens: for creating the original DNSMap DNS Enumeration tool.
 	NMap Team: for creating NMap Network Mapper.
 	R3D#@0R_2H1N A.K.A Tuhinshubhra: for creating Red Hawk.
 	TekDefense: for creating Automater.
+	Filip Waeytens: for creating the original DNSEnum DNS Enumeration tool.
+
+		Whoever you are, thank you for creating:
+		-DNSMap
+		-DNSrecon
 
 	==Frameworks==
 	4Shadoww: for creating Hakku Framework.
@@ -99,30 +106,50 @@ Project co-lead: Sh4d0wH4X0R
 	==Others==
         Offensive Security: for creating Kali Linux, Kali NetHunter,
 	                    and Exploit Database.
-        Linus Torvalds: for creating Linux Operating System.
+        Linus Torvalds: for creating the Linux Operating System.
 
 
 
 Requirements
 ------------------------
-1.Python Interpreter version 3.
-2.Dependencies can be installed automatically in the program.
+1.Internet Connection. (for performing attacks)
+2.Python Interpreter version 3.
+3.Dependencies can be installed automatically in the program. (Needs Internet Connection)
 
 
 Installing & Running
 ------------------------
-1.Installing
-      -Enter these command in your terminal:
+1.Installing and Running
+      -Enter these commands in your terminal:
 
       $ apt update && apt upgrade [1]
-      $ apt install python python-dev [2]
-      $ chmod +x ShadowSuite.py [3]
-      $ ./ShadowSuite.py [4]
-      [Shadow] $ full update [5]
+      $ apt install python python-dev git [2]
+      $ git clone https://github.com/Sh4d0w-T34m/ShadowSuite/ [3]
+      $ cd ShadowSuite/src && chmod +x ShadowSuite.py [4]
+      $ ./ShadowSuite.py [5]
+      [Shadow] $ full update [6]
+      [Shadow] $ help [7]
 
       [1] Update repository package list/s.
-      [2] Install Python interpreters.
-      [3] Change file mode to executable.
-      [4] Run 'ShadowSuite.py'.
-      [5] Type 'full update' on Shadow Suite's console to update
-          the program and dependencies..
+      [2] Install Python interpreters and Git client.
+      [3] Clone Shadow Suite from Shadow Team's Github repository.
+      [4] Changes directory to ShadowSuite/src and changes file mode to executable.
+      [5] Run 'ShadowSuite.py'.
+      [6] Type 'full update' on Shadow Suite's console to update
+          the program and dependencies.
+      [7] Type 'help' on Shadow Suite's console to see the help menu.
+
+2.Debugging
+
+      -This is not actually debugging. I used this for developing Shadow Suite.
+      If you run Shadow Suite via the debug script, it will not write .pyc files
+      on import, prints a message each time a module is initialized, showing
+      the place (filename or built-in module) from which it is loaded, and
+      another message for each file that is checked for when searching
+      for a module. Also provides information on module cleanup at exit.
+
+      -To start Shadow Suite in debugging mode, enter this command in your terminal:
+
+      $ bash debug
+
+      This will automatically run the command 'python -vv -B ShadowSuite.py'.

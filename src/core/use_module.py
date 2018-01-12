@@ -45,6 +45,16 @@ def use(module_name):
         import modules.automater
         modules.automater.main()
 
+    elif module_name == "dnsenum":
+        print("Module found!")
+        import modules.dnsenum
+        modules.dnsenum.main()
+
+    elif module_name == "dnsrecon":
+        print("Module found!")
+        import modules.dnsrecon
+        modules.dnsrecon.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

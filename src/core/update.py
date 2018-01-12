@@ -11,7 +11,7 @@ import core.misc
 import core.error
 
 def full_update():
-    process = "3"
+    process = "4"
 
     print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a full update..." + core.misc.fr + core.misc.cw)
     print(core.misc.cb + "Installing dependency files... (1/" + process + ")\n" + core.misc.cw)
@@ -20,15 +20,19 @@ def full_update():
     os.system("git pull")
     print(core.misc.cb + "Installing python modules... (3/" + process + ")\n" + core.misc.cw)
     os.system("pip install -r python_requirements")
+    print(core.misc.cb + "Installing perl modules... (4/" + process + ")\n" + core.misc.cw)
+    os.system("cpan threads::shared, Thread::Queue Net::Whois::IP WWW::Mechanize")
     print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a full update... Done!" + core.misc.fr + core.misc.cw)
 
 def deps_update():
-    process = "2"
+    process = "3"
 
     print(core.misc.cb + "Installing dependency files... (1/" + process + ")\n" + core.misc.cw)
     os.system("bash instdeps.bash")
     print(core.misc.cb + "Installing python modules... (2/" + process + ")\n" + core.misc.cw)
     os.system("pip install -r python_requirements")
+    print(core.misc.cb + "Installing perl modules... (3/" + process + ")\n" + core.misc.cw)
+    os.system("cpan threads::shared, Thread::Queue Net::Whois::IP WWW::Mechanize")
     print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a dependency update... Done!" + core.misc.fr + core.misc.cw)
     
 def prog_update():

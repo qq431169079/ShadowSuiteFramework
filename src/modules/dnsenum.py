@@ -4,32 +4,32 @@
 #                                                                                      #
 ########################################################################################
 
-# Module version: 2.6
+# Module version: 2.5
 
 # Import directives
 import os
 import sys
 import core.error
-# import API
+import API
 # Uncomment the line above if your module will use Shadow Suite's API.
 
 # Place your 'import' directives here
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change filename if you want to change this)
+        "name": "DNSEnum", # Module filename (Change filename if you want to change this)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
+        "author": "Filip Waeytens", # Author
+        "desc": "multithreaded perl script to enumerate DNS information of a domain\nand to discover non-contiguous ip blocks.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "lastupdate": "Jan. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
-        "usingapi": "False", # Is this module using Shadow Suite's API?
+        "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['Perl'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -55,7 +55,7 @@ def module_info():
     print("Needs root: " + superm)
     print()
     # Prints the dependencies via for loop. I just copy/pasted it from a reference book
-    # and modified it XD
+    # and modify it XD
     print("Dependencies:", end=' ')
     for item in dependencies:
         print(item, ",", end=' ')
@@ -86,4 +86,12 @@ def main():
 def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
-    module_info()
+    print()
+    print("DNSEnum")
+    print()
+    target = input("Target Domain > ")
+    output = input("Output filename > ")
+    print("Performing enumeration...")
+    os.system("perl modules/DNSENUM/dnsenum.pl --enum -v -o $PWD/output/"+ output + " " + target)
+    print()
+    API.Class().finish()

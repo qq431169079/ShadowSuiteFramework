@@ -10,26 +10,26 @@
 import os
 import sys
 import core.error
-# import API
+import API
 # Uncomment the line above if your module will use Shadow Suite's API.
 
 # Place your 'import' directives here
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change filename if you want to change this)
+        "name": "DNSrecon", # Module filename (Change filename if you want to change this)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
+        "author": "N/A", # Author
+        "desc": "DNS reconnaissance tool", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "lastupdate": "Jan. 12, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
-        "usingapi": "False", # Is this module using Shadow Suite's API?
+        "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -86,4 +86,5 @@ def main():
 def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
-    module_info()
+    print("\n\n\n")
+    API.core.error.warning0002()
