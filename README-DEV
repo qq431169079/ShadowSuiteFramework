@@ -4,7 +4,7 @@ README for Developers
 
       -The program is now ported to Python 3. The program has been
        broken down into little pieces called 'modules'. The Shadow
-       Suite API provides methods to integrate with Shadow Suite.
+       Framework API provides methods to integrate with Shadow Suite.
 
 
 

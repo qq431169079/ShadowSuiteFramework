@@ -20,6 +20,18 @@ import os
 import sys
 import core.misc
 
+# ERROR 0001: Invalid Input message
+# ERROR 0002: CTRL-C Detection
+# ERROR 0003: Exit and Quit can't be used inside a module
+# ERROR 0004: Back can't be used in the main module
+# ERROR 0005: Requires root permission
+# ERROR 0006: No module with that filename found
+# ERROR 0007: No framework with that filename found
+# ERROR 0008: A module was missing message
+
+# WARNING 0001: Shadow Suite Renamed message
+# WARNING 0002: Feature not implemented message
+
     ##################################################################################
     #                                                                                #
     #                               ERROR FUNCTIONS                                  #

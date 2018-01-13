@@ -4,20 +4,27 @@
 #                                                                                      #
 ########################################################################################
 
-# Module version: 2.6
+# Module version: 3.0
 
 # Import directives
-import os
-import sys
-import core.error
-# import API
-# Uncomment the line above if your module will use Shadow Suite's API.
+try:
+    import os
+    import sys
+    import core.error
+    # import API
+    # Uncomment the line above if your module will use Shadow Suite's API.
+except ImportError:
+    print("[!] A module is missing! Please install the required modules...")
 
-# Place your 'import' directives here
+try:
+    # Place your 'import' directives here
+
+except ImportError:
+    print("[!] A module is missing! Please install the required modules...")
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change filename if you want to change this)
+        "name": "test", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
         "author": "none", # Author
         "desc": "none", # Brief description

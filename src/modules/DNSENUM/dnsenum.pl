@@ -47,7 +47,7 @@
 #	please see perldoc dnsenum.pl for options and arguments
 
 use strict;
-use warnings;#it complains about uninitialized values when it doesn't find address in RR; need to fix later
+use warnings;   #it complains about uninitialized values when it doesn't find address in RR; need to fix later
 use Config;
 use Term::ANSIColor;
 use Getopt::Long;

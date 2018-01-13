@@ -1,4 +1,4 @@
-Shadow Suite 0.0.3.9 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.4.0 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -11,11 +11,7 @@ Suite is the main project of Shadow Team.
 
 What's new?
 ------------------
-1.Third-Party Frameworks Integration
-      -There are pros and cons in every software, as well as frameworks.
-       So Shadow Team decided to integrate Shadow Suite with other frameworks
-       such as the "Hakku Framework". Hakku Framework provides different
-       modules, and Shadow Suite also provides different tools.
+1.Fixed some bugs and added a new tool.
 
 Full Feature List
 ------------------------
@@ -112,7 +108,7 @@ Credits
 
 Requirements
 ------------------------
-1.Internet Connection. (for performing attacks)
+1.Internet Connection. (for performing remote attacks)
 2.Python Interpreter version 3.
 3.Dependencies can be installed automatically in the program. (Needs Internet Connection)
 

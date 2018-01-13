@@ -14,64 +14,66 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+try:
+    # Python modules
+    import os
+    import sys
+    import time
 
-# Python modules
-import os
-import sys
-import time
-
-# Shadow Suite modules
-import core.error
-# core.error calling
-#      
-#      (Replace * with error number. See core/error.py for details.)
-#      API.core.error.error****()
-#
-#      (Replace * with warning number. See core/error.py for details.)
-#      API.core.error.warning****()
-#
-import core.find_module
-import core.hakku
-import core.list_module
-import core.manage_module
-import core.misc
-# core.misc calling
-#
-#      (Prints Shadow Suite logo and version.)
-#      API.core.misc.prn_logo()
-#
-#      (Prints "module mode" message.)
-#      API.core.misc.module_mode()
-#
-import core.update
-# core.update calling
-#
-#      (Performs a full update.)
-#      API.core.update.full_update()
-#
-#      (Performs a dependency update.)
-#      API.core.update.deps_update()
-#
-#      (Performs a program update.)
-#      API.core.update.prog_update()
-#
-import core.use_framework
-import core.use_module
-import core.version
-# core.version calling
-#
-#      (Print the Shadow Suite's version number)
-#      API.core.version.number()
-#
-#      (Print the Shadow Suite's version type.)
-#      API.core.version.type()
-#
-#      (Print the Shadow Suite's version codename.)
-#      API.core.version.codename()
-#
-#      (Print the Shadow Suite's version number, type and codename.)
-#      API.core.version.both()
-#
+    # Shadow Suite modules
+    import core.error
+    # core.error calling
+    #      
+    #      (Replace * with error number. See core/error.py for details.)
+    #      API.core.error.error****()
+    #
+    #      (Replace * with warning number. See core/error.py for details.)
+    #      API.core.error.warning****()
+    #
+    import core.find_module
+    import core.hakku
+    import core.list_module
+    import core.manage_module
+    import core.misc
+    # core.misc calling
+    #
+    #      (Prints Shadow Suite logo and version.)
+    #      API.core.misc.prn_logo()
+    #
+    #      (Prints "module mode" message.)
+    #      API.core.misc.module_mode()
+    #
+    import core.update
+    # core.update calling
+    #
+    #      (Performs a full update.)
+    #      API.core.update.full_update()
+    #
+    #      (Performs a dependency update.)
+    #      API.core.update.deps_update()
+    #
+    #      (Performs a program update.)
+    #      API.core.update.prog_update()
+    #
+    import core.use_framework
+    import core.use_module
+    import core.version
+    # core.version calling
+    #
+    #      (Print the Shadow Suite's version number)
+    #      API.core.version.number()
+    #
+    #      (Print the Shadow Suite's version type.)
+    #      API.core.version.type()
+    #
+    #      (Print the Shadow Suite's version codename.)
+    #      API.core.version.codename()
+    #
+    #      (Print the Shadow Suite's version number, type and codename.)
+    #      API.core.version.both()
+    #
+except ImportError:
+    print("Error Importing Modules! Now Quitting...")
 
 class Class:
     # Method calling: API.Class().[METHOD NAME]()

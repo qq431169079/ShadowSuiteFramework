@@ -1,17 +1,39 @@
-#!/bin/python                                                                                                                                                                       # Shadow Suite :: Ethical Hacking Toolkit                                                 # Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>                           #                                                                                         # This program is free software: you can redistribute it and/or modify                    # it under the terms of the GNU General Public License as published by                    # the Free Software Foundation, either version 3 of the License, or                       # (at your option) any later version.                                                     #                                                                                         # This program is distributed in the hope that it will be useful,                         # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                           # GNU General Public License for more details.
-#                                                                                         # You should have received a copy of the GNU General Public License                       # along with this program.  If not, see <http://www.gnu.org/licenses/>
+#!/bin/python
+# Shadow Suite :: Ethical Hacking Toolkit
+# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-# Import core modules to run properly
-import os
-import sys
-import core.error
-import core.misc
-import core.update
-import core.version
-import core.module_manager
+# Import Python and Core modules to run properly
+try:
+    import os
+    import sys
+    import core.error
+    import core.misc
+    import core.update
+    import core.version
+    import core.module_manager
 
-print("\n\n\n\n\n") # Creates five blank lines / new lines / line breaks.
+except ImportError:
+    # This function is called if a module was missing.
+    cr = '\033[31m'
+    cw = '\033[0m'
+    print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue..." + cw)
+    sys.exit(2)
+
+
+print("\n\n\n\n\n") # Creates five blank lines / new lines / line breaks / whatever you wanna call it.
 core.misc.prn_logo() # Prints logo
 print("\n")
 core.misc.prn_brief_license() # Prints a brief information about the license.

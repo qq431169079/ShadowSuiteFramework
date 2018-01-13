@@ -8,6 +8,9 @@ while loop == True:
     print("Please type \'run\' to begin...")
     entered = input(" >>> ")
     if entered == "run":
-        import ShadowSuite
+    	try:
+    		import ShadowSuite
+    	except ImportError:
+    		print("[E] Import Error! Please make sure that Shadow Suite is in this directory!")
     else:
         print("[E] ERROR!")

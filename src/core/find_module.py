@@ -49,6 +49,11 @@ def find(module_name):
         import modules.dnsenum
         modules.dnsenum.module_info()
 
+    elif module_name == "dnsrecon":
+        print("Module found!")
+        import modules.dnsrecon
+        modules.dnsrecon.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
