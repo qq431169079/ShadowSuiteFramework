@@ -24,7 +24,6 @@ XlsxWriter
 netaddr
 pefile
 simplejson
-pycurl
 argparse
 string
 sqlite3
@@ -37,4 +36,4 @@ Mechanize
 gephi
 dns
 dnspython
-
+pycurl

@@ -4,7 +4,7 @@
 #                                                                                      #
 ########################################################################################
 
-# Module version: 3.0
+# Module version: 3.2
 
 # Import directives
 try:
@@ -13,11 +13,8 @@ try:
     import core.error
     # import API
     # Uncomment the line above if your module will use Shadow Suite's API.
-except ImportError:
-    print("[!] A module is missing! Please install the required modules...")
 
-try:
-    # Place your 'import' directives here
+    # Place your 'import' directives below
 
 except ImportError:
     print("[!] A module is missing! Please install the required modules...")
