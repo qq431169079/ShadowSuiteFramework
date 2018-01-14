@@ -60,6 +60,11 @@ def use(module_name):
         import modules.metagoofil
         modules.metagoofil.main()
 
+    elif module_name == "the harvester":
+        print("Module found!")
+        import modules.theharvester
+        modules.theharvester.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

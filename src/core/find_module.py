@@ -59,6 +59,11 @@ def find(module_name):
         import modules.metagoofil
         modules.metagoofil.module_info()
 
+    elif module_name == "the harvester":
+        print("Module found!")
+        import modules.theharvester
+        modules.theharvester.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
