@@ -32,108 +32,108 @@ except ImportError:
     print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue..." + cw)
     sys.exit(2)
 
+def main():
+    print("\n\n\n\n\n") # Creates five blank lines / new lines / line breaks / whatever you wanna call it.
+    core.misc.prn_logo() # Prints logo
+    print("\n")
+    core.misc.prn_brief_license() # Prints a brief information about the license.
+    print("\n")
+    print("[i] If you need help, type 'help'...")
+    print("\n")
+    if __name__ != '__main__':
+        # If the program is not running independently, then a message will be shown, while
+        # still allowing the user to use it.
+        core.misc.module_mode()
 
-print("\n\n\n\n\n") # Creates five blank lines / new lines / line breaks / whatever you wanna call it.
-core.misc.prn_logo() # Prints logo
-print("\n")
-core.misc.prn_brief_license() # Prints a brief information about the license.
-print("\n")
-print("[i] If you need help, type 'help'...")
-print("\n")
-if __name__ != '__main__':
-    # If the program is not running independently, then a message will be shown, while
-    # still allowing the user to use it.
-    core.misc.module_mode()
+    # This while loop enables the user to enter commands inside shadow suite without needing
+    # to run the program everytime a command is entered.
+    while True:
+        try:
+            # If os.geteuid() is equal to 0, then a terminal with # will be shown.
+            # Otherwise, $ will be shown.
+            if os.geteuid() != 0:
+                menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] $: ")
+            else:
+                menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] #: ")
 
-# This while loop enables the user to enter commands inside shadow suite without needing
-# to run the program everytime a command is entered.
-while True:
-    try:
-        # If os.geteuid() is equal to 0, then a terminal with # will be shown.
-        # Otherwise, $ will be shown.
-        if os.geteuid() != 0:
-            menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] $: ")
-        else:
-            menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] #: ")
+            menu_input.lower()
 
-        if menu_input == "help":
-            print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr)
-            print(core.misc.cw + "help              :: prints this help menu.")
-            print("license           :: opens the license file via less command.")
-            print("info              :: prints a brief information about Shadow Suite.")
-            print("prog update       :: update Shadow Suite.")
-            print("deps update       :: update dependency files.")
-            print("full update       :: update Shadow Suite and install dependencies.")
-            print("module            :: enter module shell. type \'module\' then \'help\'for details.")
-            print("\n")
-            print("quit              :: quit Shadow Suite.")
-            print("exit              :: same as \'quit\' command.\n")
+            if menu_input == "help":
+                print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr)
+                print(core.misc.cw + "help              :: prints this help menu.")
+                print("license           :: opens the license file via less command.")
+                print("info              :: prints a brief information about Shadow Suite.")
+                print("prog update       :: update Shadow Suite.")
+                print("deps update       :: update dependency files.")
+                print("full update       :: update Shadow Suite and install dependencies.")
+                print("module            :: enter module shell. type \'module\' then \'help\'for details.")
+                print("\n")
+                print("quit              :: quit Shadow Suite.")
+                print("exit              :: same as \'quit\' command.\n")
 
-        elif menu_input == "license":
-            print("Opening \'LICENSE\' file via less command ...")
-            os.system("less LICENSE")
+            elif menu_input == "license":
+                print("Opening \'LICENSE\' file via less command ...")
+                os.system("less LICENSE")
 
-        elif menu_input == "info":
-            print()
-            print("The current version number of this program is: " + core.version.vnumber)
-            print()
-            print("The current version type of this program is: " + core.version.vtype)
-            print()
-            print("The current version codename of this program is: " + core.version.vcodename)
-            print()
-            print("To automatically update, type \'full update\' on this terminal.")
-            print("To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuite\' and clone the repository.")
+            elif menu_input == "info":
+                print()
+                print("The current version number of this program is: " + core.version.vnumber)
+                print()
+                print("The current version type of this program is: " + core.version.vtype)
+                print()
+                print("The current version codename of this program is: " + core.version.vcodename)
+                print()
+                print("To automatically update, type \'full update\' on this terminal.")
+                print("To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuite\' and clone the repository.")
 
-        elif menu_input == "prog update":
-            print(core.misc.cgr + "Fetching Shadow Suite from Shadow Team's repository..." + core.misc.cw)
-            core.update.prog_update()
+            elif menu_input == "prog update":
+                print(core.misc.cgr + "Fetching Shadow Suite from Shadow Team's repository..." + core.misc.cw)
+                core.update.prog_update()
 
-        elif menu_input == "deps update":
-            print(core.misc.cgr + "Downloading and installing dependencies..." + core.misc.cw)
-            core.update.deps_update()
+            elif menu_input == "deps update":
+                print(core.misc.cgr + "Downloading and installing dependencies..." + core.misc.cw)
+                core.update.deps_update()
 
-        elif menu_input == "full update":
-            print(core.misc.cgr + "Do you really want to perform a full update (y/n)?" + core.misc.cw)
-            full_updateinput = input(" > ")
-            if full_updateinput == "y":
-                core.update.full_update()
+            elif menu_input == "full update":
+                print(core.misc.cgr + "Do you really want to perform a full update (y/n)?" + core.misc.cw)
+                full_updateinput = input(" > ")
+                if full_updateinput == "y" or full_updateinput == "Y":
+                    core.update.full_update()
 
-            elif full_updateinput == "Y":
-                core.update.full_update()
+                elif full_updateinput == "n" or full_updateinput == "N":
+                    print(core.misc.cr + "Full update cancelled by user..." + core.misc.cw)
 
-            elif full_updateinput == "n":
-                print(core.misc.cr + "Full update cancelled by user..." + core.misc.cw)
+                else:
+                    core.error.error0001()
 
-            elif full_updateinput == "N":
-                print(core.misc.cr + "Full update cancelled by user..." + core.misc.cw)
+            elif menu_input == "module":
+                # Runs the module_manager.py module.
+                core.module_manager.shell()
+
+            elif menu_input == "back":
+                core.error.error0004()
+
+            elif menu_input == "quit":
+                print("Quitting Shadow Suite...\n")
+                sys.exit(0)
+
+            elif menu_input == "exit":
+                print("Quitting Shadow Suite...\n")
+                sys.exit(0)
 
             else:
                 core.error.error0001()
 
-        elif menu_input == "module":
-            # Runs the module_manager.py module.
-            core.module_manager.shell()
+        except KeyboardInterrupt:
+            core.error.error0002()
 
-        elif menu_input == "back":
-            core.error.error0004()
+        except ImportError:
+            # This function is called if a module was missing.
+            cr = '\033[31m'
+            cw = '\033[0m'
+            print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue..." + cw)
+            sys.exit(2)
 
-        elif menu_input == "quit":
-            print("Quitting Shadow Suite...\n")
-            sys.exit(0)
-
-        elif menu_input == "exit":
-            print("Quitting Shadow Suite...\n")
-            sys.exit(0)
-
-        else:
-            core.error.error0001()
-
-    except KeyboardInterrupt:
-        core.error.error0002()
-
-    except ImportError:
-        # This function is called if a module was missing.
-        cr = '\033[31m'
-        cw = '\033[0m'
-        print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue..." + cw)
-        sys.exit(2)
+# Starts the program
+if __name__ == "__main__":
+    main()

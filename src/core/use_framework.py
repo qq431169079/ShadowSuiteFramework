@@ -26,6 +26,8 @@ def use(framework_name):
     
     print("searching for framework named \'" + framework_name + "\' in root directory...")
 
+    framework_name.lower()
+
     if framework_name == "hakku":
         print("Framework found!")
         # DEV 0001: This must use the API module not the OS module!

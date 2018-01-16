@@ -23,6 +23,7 @@ import core.error
 
 def find(module_name):
     print("searching for module named \'" + module_name + "\' in modules directory...\n\n\n")
+    module_name.lower()
     
     if module_name == "dnsmap":
         print("Module found!")
@@ -63,6 +64,11 @@ def find(module_name):
         print("Module found!")
         import modules.theharvester
         modules.theharvester.module_info()
+
+    elif module_name == "lanscan":
+        print("Module found!")
+        import modules.lanscan
+        modules.lanscan.module_info()
 
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!

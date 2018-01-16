@@ -83,6 +83,7 @@ class Class:
     ShadowSuite_ver_codename = core.version.vcodename
 
     def generate_new_module(self, cmn):
+        cmn.lower()
         # Copies the custom module template from module directory to output directory.
         core.manage_module.generate_new(cmn)
 
@@ -91,14 +92,17 @@ class Class:
 
     def find_module(self, module):
         # Argument "module" is the target module to view the info.
+        module.lower()
         core.find_module.find(module)
 
     def use_module(self, module):
         # Argument "module" is the target module to run.
+        module.lower()
         core.use_module.use(module)
 
     def use_framework(self, framework):
         # Argument "framework" is the target framework to run.
+        framework.lower()
         core.use_framework.use(framework)
 
     def finish(self):
