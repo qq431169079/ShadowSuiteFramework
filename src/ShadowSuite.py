@@ -73,7 +73,7 @@ def main():
 
             elif menu_input == "license":
                 print("Opening \'LICENSE\' file via less command ...")
-                os.system("less LICENSE")
+                os.system("less extras/shadowsuitelicense")
 
             elif menu_input == "info":
                 print()
