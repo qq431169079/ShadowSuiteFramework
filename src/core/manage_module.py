@@ -23,6 +23,7 @@ import core.use_module
 
 def generate_new(cmn):
     # This is used to generate a custom module from a template via API.
+    cmn.lower()
     os.system("cp $PWD/core/temp.py $PWD/output/")
     os.system("mv $PWD/output/temp.py $PWD/output/" + cmn + ".py")
     os.system("echo You can now open the template located on: $PWD/output/" + cmn + ".py")
@@ -38,6 +39,8 @@ def manager():
 
             else:
                 command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] #: ")
+
+            command.lower()
 
             if command == "help":
                 print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)
@@ -57,13 +60,7 @@ def manager():
                 infr = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] $: ")
                 if infr == "1":
                     infr_ask = input("Do you want to download Hakku Framework now (y/n)? > ")
-                    if infr_ask == "y":
-                        print("[i] Downloading Hakku Framework via Git...\n")
-                        os.system("git clone https://github.com/4shadoww/hakkuframework")
-                        print("\n[i] Running Hakku Framework...\n")
-                        core.use_framework.use("hakku")
-
-                    elif infr_ask == "Y":
+                    if infr_ask == "y" or infr_ask == "Y":
                         print("[i] Downloading Hakku Framework via Git...\n")
                         os.system("git clone https://github.com/4shadoww/hakkuframework")
                         print("\n[i] Running Hakku Framework...\n")

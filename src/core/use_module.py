@@ -25,6 +25,8 @@ def use(module_name):
     
     print("searching for module named \'" + module_name + "\' in modules directory...")
 
+    module_name.lower()
+
     if module_name == "dnsmap":
         print("Module found!")
         import modules.dnsmap
@@ -64,6 +66,11 @@ def use(module_name):
         print("Module found!")
         import modules.theharvester
         modules.theharvester.main()
+
+    elif module_name == "lanscan":
+        print("Module found!")
+        import modules.lanscan
+        modules.lanscan.main()
 
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
