@@ -26,7 +26,7 @@ def use(framework_name):
     
     print("searching for framework named \'" + framework_name + "\' in root directory...")
 
-    framework_name = framework_name.lower()
+    framework_name.lower()
 
     if framework_name == "hakku":
         print("Framework found!")

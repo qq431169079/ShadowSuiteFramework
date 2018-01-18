@@ -40,7 +40,7 @@ def manager():
             else:
                 command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] #: ")
 
-            command = command.lower()
+            command.lower()
 
             if command == "help":
                 print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)

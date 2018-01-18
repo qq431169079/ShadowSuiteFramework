@@ -22,7 +22,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "The Harvester", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "2.0", # version
+        "version": "1.0", # version
         "author": "Christian Martorella", # Author
         "desc": "A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/banners, and employee names from different public sources (search engines, pgp key servers).", # Brief description
         "email": "none", # Email
@@ -36,7 +36,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 2.0:\nAdded functionality\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 1.0:\nInitial module release"
 
 # Prints the module information
 def module_info():

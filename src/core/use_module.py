@@ -25,7 +25,7 @@ def use(module_name):
     
     print("searching for module named \'" + module_name + "\' in modules directory...")
 
-    module_name = module_name.lower()
+    module_name.lower()
 
     if module_name == "dnsmap":
         print("Module found!")

@@ -73,7 +73,7 @@ def error0008():
     cr = '\033[31m'
     cw = '\033[0m'
 
-    print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue..." + cw)
+    print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download the missing module to continue..." + cw)
 
     ##################################################################################
     #                                                                                #
