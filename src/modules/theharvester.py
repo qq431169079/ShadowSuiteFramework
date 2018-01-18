@@ -105,54 +105,22 @@ def module_body():
     print()
     TARGET = input("Domain to search or company name > ")
     SOURCE = input("(Supported sources:\n\tbaidu\n\tbing,\n\tbingapi\n\tdogpile\n\tgoogle\n\tgoogleCSE\n\tgoogleplus\n\tgoogle-profiles\n\tlinkedin\n\tpgp\n\ttwitter\n\tvhost\n\tyahoo\n\tall\nSelect your data source > ")
-    START = input ("Start in result number X (default: 0) > ")
-    verifyloop = True
-    while verifyloop == True:
-        VERIFY = input("Enable verification of host name via dns resolution and search for virtual hosts? (y/n) > ")
-        VERIFY = VERIFY.lower()
-        if VERIFY != "y" and VERIFY != "n":
-            print("Please input a valid character!")
+    START = input("Start in result number X (default: 0) > ")
+    OUTPUT = input("Output filename > ")
+    LIMITloop = True
+    while LIMITloop == True:
+        LIMT = input("Limit the number of results to work with\n(bing goes from 50 to 50 results, google 100 to 100, and pgp doesn't use this option) > ")
+        LIMT = LIMT.lower()
+
+        if LIMT == "y":
+            LIMITloop = False
+            LIMITSWITCH = ' -l '
+            LIMIT = input("Set the limit of results to work with > ")
 
         else:
-            verifyloop = False
+            LIMITloop = False
+            LIMITSWITCH = ''
+            LIMIT = ''
 
-    OUTPUT = input("Output filename (without extension) > ")
-    rdnsloop = True
-    while rdnsloop == True:
-        RDNS = input("Perform a DNS reverse query on all ranges discovered? (y/n) > ")
-        RDNS = RDNS.lower()
-        if RDNS != "y" and RDNS != "n":
-            print("Please put a valid character!")
-
-        else:
-            rdnsloop = False
-
-    dnsbfloop = True
-    while dnsbfloop == True:
-        DNSBF = input("Perform a DNS brute force for the domain name? (y/n) > ")
-        DNSBF = DNSBF.lower()
-        if DNSBF != "y" and DNSBF != "n":
-            print("Please put a valid character!")
-
-        else:
-            dnsbfloop = False
-
-    dnstldloop = True
-    while dnstldloop == True:
-        DNSTLD = input("Perform a DNS TLD expansion discovery? (y/n) > ")
-        DNSTLD = DNSTLD.lower()
-        if DNSTLD != "y" and DNSTLD != "n":
-            print("Please put a valid character!")
-
-        else:
-            dnstldloop = False
-
-    cdnsloop = True
-    while cdnsloop == True:
-        CDNS_ask = input("Do you want to use a custom DNS Server? (y/n) > ")
-        CDNS_ask = CDNS_ask.lower()
-        if CDNS_ask == "y":
-            CDNS = input("Enter the DNS Server to use > ")
-            # DEV0003: Continue this code. You know, i think you have made a
-            # mistake. The questions that needs to be answered by y or n has
-            # no flow control so if the user chooses y or n, nothing happens.
+    os.system("python2 modules/THEHARVESTER/theHarvester.py -d " + TARGET + " -b " + SOURCE + " -s " + START + " -f $PWD/output/" + OUTPUT + LIMITSWITCH + LIMIT)
+    API.Class().finish()

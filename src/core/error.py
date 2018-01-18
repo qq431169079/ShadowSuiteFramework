@@ -29,7 +29,7 @@ import core.misc
 # ERROR 0007: No framework with that filename found
 # ERROR 0008: A module was missing message
 
-# WARNING 0001: Shadow Suite Renamed message
+# WARNING 0001: 
 # WARNING 0002: Feature not implemented message
 
     ##################################################################################
@@ -82,8 +82,8 @@ def error0008():
     ##################################################################################
 
 def warning0001():
-    # This function is called if ShadowSuite.py is renamed.
-    print(core.misc.cy + "WARNING 0001: Shadow Suite has been renamed!" + core.misc.cw)
+    # This function is vacant
+    print(core.misc.cy + "WARNING 0001: " + core.misc.cw)
 
 def warning0002():
     # This function should be called if a feature is not yet implemented.
