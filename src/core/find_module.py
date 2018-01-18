@@ -23,7 +23,7 @@ import core.error
 
 def find(module_name):
     print("searching for module named \'" + module_name + "\' in modules directory...\n\n\n")
-    module_name.lower()
+    module_name = module_name.lower()
     
     if module_name == "dnsmap":
         print("Module found!")

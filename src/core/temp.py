@@ -37,11 +37,15 @@ dependencies = ['none1', 'none2'] # Put needed dependencies here.
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
+# Changelog format:
+#
+# changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
 
 # Prints the module information
 def module_info():
-    # Unofficial way to convert integer to Boolean. if [argument] == 0 then True;
-    # Otherwise, False.
+    # Unofficial way to convert integer to Boolean
+    # (well, not really a boolean, as it is a string).
+    # if [argument] == 0 then True; Otherwise, False.
     if info['needsroot'] == "0":
         superm = "True"
     else:
