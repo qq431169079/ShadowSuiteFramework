@@ -56,7 +56,7 @@ def main():
             else:
                 menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] #: ")
 
-            menu_input.lower()
+            menu_input = menu_input.lower()
 
             if menu_input == "help":
                 print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr)

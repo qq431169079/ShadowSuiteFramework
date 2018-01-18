@@ -19,7 +19,7 @@ def shell():
             else:
                 command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module_Manager.py" + core.misc.cw + core.misc.fr + "] #: ")
 
-            command.lower()
+            command = command.lower()
             
             if command == "help":
                 print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)

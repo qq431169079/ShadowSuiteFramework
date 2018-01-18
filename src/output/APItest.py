@@ -4,20 +4,24 @@
 #                                                                                      #
 ########################################################################################
 
-# Module version: 2.6
+# Module version: 3.2
 
 # Import directives
-import os
-import sys
-import core.error
-# import API
-# Uncomment the line above if your module will use Shadow Suite's API.
+try:
+    import os
+    import sys
+    import core.error
+    # import API
+    # Uncomment the line above if your module will use Shadow Suite's API.
 
-# Place your 'import' directives here
+    # Place your 'import' directives below
+
+except ImportError:
+    print("[!] A module is missing! Please install the required modules...")
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change filename if you want to change this)
+        "name": "test", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
         "author": "none", # Author
         "desc": "none", # Brief description
@@ -29,15 +33,15 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
 
 # Prints the module information
 def module_info():
-    # Unofficial way to convert integer to Boolean. if [argument] == 0 then True;
-    # Otherwise, False.
+    # Unofficial way to convert integer to Boolean (well, not really a boolean).
+    # if [argument] == 0 then True; Otherwise, False.
     if info['needsroot'] == "0":
         superm = "True"
     else:
