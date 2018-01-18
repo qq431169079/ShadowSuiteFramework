@@ -14,6 +14,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+
+# This Application Programming Interface (API) is meantly built for
+# Shadow Suite custom modules. This may be used to integrate with
+# Shadow Suite's features.
 try:
     # Python modules
     import os
@@ -74,16 +78,18 @@ try:
     #
 except ImportError:
     print("Error Importing Modules! Now Quitting...")
+    sys.exit(1)
 
 class Class:
     # Method calling: API.Class().[METHOD NAME]()
-    API_version = core.version.vapi
-    ShadowSuite_ver_num = core.version.vnumber
-    ShadowSuite_ver_type = core.version.vtype
-    ShadowSuite_ver_codename = core.version.vcodename
+    API_version = core.version.vapi # This API's version
+    ShadowSuite_ver_num = core.version.vnumber # Shadow Suite's version number
+    ShadowSuite_ver_type = core.version.vtype # Shadow Suite's version type
+    ShadowSuite_ver_codename = core.version.vcodename # Shadow Suite's version codename
 
     def generate_new_module(self, cmn):
-        cmn.lower()
+        # Converts capital characters to lowercase characters.
+        cmn = cmn.lower()
         # Copies the custom module template from module directory to output directory.
         core.manage_module.generate_new(cmn)
 
@@ -92,17 +98,17 @@ class Class:
 
     def find_module(self, module):
         # Argument "module" is the target module to view the info.
-        module.lower()
+        module = module.lower()
         core.find_module.find(module)
 
     def use_module(self, module):
         # Argument "module" is the target module to run.
-        module.lower()
+        module = module.lower()
         core.use_module.use(module)
 
     def use_framework(self, framework):
         # Argument "framework" is the target framework to run.
-        framework.lower()
+        framework = framework.lower()
         core.use_framework.use(framework)
 
     def finish(self):
