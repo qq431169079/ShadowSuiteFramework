@@ -22,7 +22,7 @@ info = {
         "version": "1.0", # version
         "author": "Christian Martorella", # Author
         "desc": "A tool for extracting metadata of public documents (pdf,doc,xls,ppt,etc) availables in the target websites.", # Brief description
-        "email": "none", # Email
+        "email": "cmartorella@edge-security.com", # Email
         "authorinfo": "none", # Additional information about the author; this could be
         "lastupdate": "Jan. 13, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
