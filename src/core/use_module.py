@@ -72,6 +72,16 @@ def use(module_name):
         import modules.lanscan
         modules.lanscan.main()
 
+    elif module_name == "cat":
+        print("Module found!")
+        import modules.cat
+        modules.cat.main()
+
+    elif module_name == "cge":
+        print("Module found!")
+        import modules.cge
+        modules.cge.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
