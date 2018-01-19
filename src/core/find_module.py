@@ -70,6 +70,16 @@ def find(module_name):
         import modules.lanscan
         modules.lanscan.module_info()
 
+    elif module_name == "cat":
+        print("Module found!")
+        import modules.cat
+        modules.cat.module_info()
+
+    elif module_name == "cge":
+        print("Module found!")
+        import modules.cge
+        modules.cge.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
