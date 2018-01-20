@@ -16,16 +16,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import os
-import sys
 import core.error
 import core.misc
-import core.update
 import core.version
-import core.module_manager
-# DEV 0001: The integrator() function must use this Hakku API not the bash script!
-# import hakku_API
 
-def integrator():
-    print("[i] Running Hakku...")
-    os.system("bash hakku_integrator")
+def api(criteria):
+    criteria = criteria.lower()
+    criteria = criteria.replace(',', ' ')
+    print("Searching...")
+    # DEV0003

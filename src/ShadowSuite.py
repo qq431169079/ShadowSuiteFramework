@@ -1,4 +1,5 @@
 #!/bin/python
+# Coding=UTF-8
 # Shadow Suite :: Ethical Hacking Toolkit
 # Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
 #
@@ -24,6 +25,7 @@ try:
     import core.update
     import core.version
     import core.module_manager
+    import core.suggest
 
 except ImportError:
     # This function is called if a module was missing.
@@ -45,8 +47,8 @@ def main():
         # still allowing the user to use it.
         core.misc.module_mode()
 
-    # This while loop enables the user to enter commands inside shadow suite without needing
-    # to run the program everytime a command is entered.
+    # This while loop enables the user to enter commands inside shadow suite without
+    # needing to run the program everytime a command is entered.
     while True:
         try:
             # If os.geteuid() is equal to 0, then a terminal with # will be shown.
@@ -67,6 +69,7 @@ def main():
                 print("deps update       :: update dependency files.")
                 print("full update       :: update Shadow Suite and install dependencies.")
                 print("module            :: enter module shell. type \'module\' then \'help\'for details.")
+                print("suggest           :: suggest an attack based on your critera.")
                 print("\n")
                 print("quit              :: quit Shadow Suite.")
                 print("exit              :: same as \'quit\' command.\n")
@@ -109,6 +112,9 @@ def main():
             elif menu_input == "module":
                 # Runs the module_manager.py module.
                 core.module_manager.shell()
+
+            elif menu_input == "suggest":
+                core.error.warning0002()
 
             elif menu_input == "back":
                 core.error.error0004()

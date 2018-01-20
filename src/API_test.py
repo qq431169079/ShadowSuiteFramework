@@ -1,4 +1,5 @@
 #!/bin/python
+# Coding=UTF-8
 # This script will test the Shadow Suite Application Programming Interface (API). 
 
 import API
