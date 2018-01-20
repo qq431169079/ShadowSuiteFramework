@@ -3,8 +3,9 @@
 #                             MODULE FOR SHADOW SUITE                                  #
 #                                                                                      #
 ########################################################################################
+# Coding=UTF-8
 
-# Module version: 3.2
+# Module version: 3.3
 
 # Import directives
 try:

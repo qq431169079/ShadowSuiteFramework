@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
+# Coding=UTF-8
 
 # Install packages listed in apt_requirements file.
 

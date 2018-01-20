@@ -1,3 +1,5 @@
+# Coding=UTF-8
+
 # Import directives
 import os
 import sys

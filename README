@@ -81,7 +81,7 @@ License and Copying
 Credits
 ------------------------
 
-	==Shadow Suite Framework Contibutors==
+	==Shadow Suite Framework Contributors==
 	Project Lead: Catayao56
 	Project co-lead: Sh4d0wH4X0R
 
@@ -123,7 +123,7 @@ Installing & Running
 
       $ apt update && apt upgrade [1]
       $ apt install python python-dev git [2]
-      $ git clone https://github.com/Sh4d0w-T34m/ShadowSuite/ [3]
+      $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuite/ [3]
       $ cd ShadowSuite/src && chmod +x ShadowSuite.py [4]
       $ ./ShadowSuite.py [5]
       [Shadow] $ full update [6]
