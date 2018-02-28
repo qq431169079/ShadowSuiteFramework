@@ -83,7 +83,7 @@ def error0008():
 
 def warning0001():
     # This function is vacant
-    print(core.misc.cy + "WARNING 0001: " + core.misc.cw)
+    print(core.misc.cy + "WARNING 0001: This feature is still in " + core.misc.cw)
 
 def warning0002():
     # This function should be called if a feature is not yet implemented.

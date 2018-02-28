@@ -1,0 +1,16 @@
+Features in Concept:
+=======================================
+
+1.The 'Suggest' command':
+    -It will help the user to know what tool he will use for his specific needs.
+
+2.Fuzzing and Stress Testing Tools:
+    -Fuzzing Tools:
+        -AngryFuzzer
+        -DotDotPwn
+    -Stress Testing Tools:
+        -fl00d
+	-fl00d 2
+	-Slowloris
+
+3.Bug Fixes
