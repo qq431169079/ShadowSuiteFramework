@@ -31,7 +31,7 @@ except ImportError:
     # This function is called if a module was missing.
     cr = '\033[31m'
     cw = '\033[0m'
-    print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue..." + cw)
+    print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue... Please make sure that required modules are installed and running properly!" + cw)
     sys.exit(2)
 
 def main():
@@ -69,7 +69,7 @@ def main():
                 print("deps update       :: update dependency files.")
                 print("full update       :: update Shadow Suite and install dependencies.")
                 print("module            :: enter module shell. type \'module\' then \'help\'for details.")
-                print("suggest           :: suggest an attack based on your critera.")
+                print("suggest           :: suggest a tool based on your critera.")
                 print("\n")
                 print("quit              :: quit Shadow Suite.")
                 print("exit              :: same as \'quit\' command.\n")
@@ -114,7 +114,8 @@ def main():
                 core.module_manager.shell()
 
             elif menu_input == "suggest":
-                core.error.warning0002()
+                criteria = input("Enter keywords separated by comma (dns, wireless, cracking) > ")
+                core.suggest.api(criteria)
 
             elif menu_input == "back":
                 core.error.error0004()

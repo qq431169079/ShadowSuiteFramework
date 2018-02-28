@@ -1,4 +1,4 @@
-Shadow Suite 0.0.4.4 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.4.5 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -122,15 +122,15 @@ Installing & Running
       -Enter these commands in your terminal:
 
       $ apt update && apt upgrade [1]
-      $ apt install python python-dev git [2]
+      $ apt install python git [2]
       $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuite/ [3]
-      $ cd ShadowSuite/src && chmod +x ShadowSuite.py [4]
+      $ cd ShadowSuite/src && chmod 755 ShadowSuite.py [4]
       $ ./ShadowSuite.py [5]
       [Shadow] $ full update [6]
       [Shadow] $ help [7]
 
       [1] Update repository package list/s.
-      [2] Install Python interpreters and Git client.
+      [2] Install Python interpreter and Git client.
       [3] Clone Shadow Suite from Shadow Team's Github repository.
       [4] Changes directory to ShadowSuite/src and changes file mode to executable.
       [5] Run 'ShadowSuite.py'.

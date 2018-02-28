@@ -24,4 +24,26 @@ def api(criteria):
     criteria = criteria.lower()
     criteria = criteria.replace(',', ' ')
     print("Searching...")
-    # DEV0003
+    results = "0"
+
+    # Saved keywords
+    automater = ["automate", "recon", "info", "ga", "tekdefense", "python", "ip", "url", "hash", "passive", "analysis"]
+    dnsenum = ["dnsenum", "multithread", "perl", "enum", "dns", "info", "ga", "domain", "ip", "block"]
+    
+    # Conditional Statements
+    if criteria in automater:
+        print(core.misc.cg + "Automater : IP, URL, and Hash Passive Analysis Tool." + core.misc.cw)
+        results = results + "1"
+    
+    if criteria in dnsenum:
+        print(core.misc.cg + "DNSEnum : Multithreaded perl script to enumerate DNS information of a domain and to discover non-contiguous ip blocks." + core.misc.cw)
+        results = results + "1"
+
+    # More info
+    print("\n")
+    if results == "0":
+        print("SORRY! No tool matched your criteria... Please contact Shadow Team for Feature requests...")
+    elif results == "01":
+        print(results + " tool matched your criteria.")
+    else:
+        print(results + " tools matched your criteria!")

@@ -25,6 +25,7 @@ def find(module_name):
     print("searching for module named \'" + module_name + "\' in modules directory...\n\n\n")
     module_name = module_name.lower()
     
+    # DEV0002: Add new tools here
     if module_name == "dnsmap":
         print("Module found!")
         import modules.dnsmap

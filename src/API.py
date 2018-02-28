@@ -48,6 +48,7 @@ try:
     #      (Prints "module mode" message.)
     #      API.core.misc.module_mode()
     #
+    import core.suggest
     import core.update
     # core.update calling
     #
@@ -111,6 +112,11 @@ class Class:
         # Argument "framework" is the target framework to run.
         framework = framework.lower()
         core.use_framework.use(framework)
+
+    def suggest(self, criteria):
+        # Argument "criteria" is the keywords typed in by user.
+        criteria = criteria.lower()
+        core.suggest.api(criteria)
 
     def finish(self):
         print("\n[i] Module finished running...\n")

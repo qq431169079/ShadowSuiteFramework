@@ -14,3 +14,9 @@ Features in Concept:
 	-Slowloris
 
 3.Bug Fixes
+
+4.Add changelog when user uses the 'module info' command.
+
+5.Rewrite Nwrap to python3 and use nmap module to rewrite it.
+
+6.Fix 'suggest' command's result counter.
