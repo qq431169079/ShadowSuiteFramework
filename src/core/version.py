@@ -25,9 +25,9 @@ global vtype
 global vcodename
 
 vapi = "0.0.6.0"
-vnumber = "0.0.4.5"
+vnumber = "0.0.4.6"
 vtype = "Weekly Build"
-vcodename = "Implementation"
+vcodename = "Jargon"
 
 def number():
     # example:

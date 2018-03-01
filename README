@@ -1,4 +1,4 @@
-Shadow Suite 0.0.4.5 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.4.6 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -11,8 +11,9 @@ Suite is the main project of Shadow Team.
 
 What's new?
 ------------------
-1.Added two new tools: The Harvester and Metagoofil;
-  Fixed some bugs.
+1.Suggest command is now functional.
+
+2.More features coming sooner.
 
 Full Feature List
 ------------------------
@@ -28,7 +29,7 @@ Full Feature List
       -Shadow Suite is protected by the GNU General Public License, means
        that you can freely download, modify, and distribute the software.
        Just give "creds" to us and the developers that made the awesome
-       tools ;)
+       tools :)
 
 -Create Custom Modules from template
       -Do you know Python? Do you know how to code in Python 3? Do you want
@@ -41,7 +42,7 @@ Full Feature List
 -Pre-installed modules
       -It's okay if you don't know how to program. Shadow Suite has an
        arsenal! It provides you tools written in different languages, Python,
-       Ruby, Perl, etc.
+       Ruby, Perl, PHP, and many more!
 
 -Third-Party Frameworks Integration
       -There are pros and cons in every software, as well as frameworks.
@@ -57,8 +58,6 @@ TO-DO List
 2.Figure out how to automatically install custom modules.
 
 3.Fix bugs.
-
-4.Code more modules from different sources...
 
 License and Copying
 ------------------------
@@ -105,7 +104,7 @@ Credits
 	==Others==
         Offensive Security: for creating Kali Linux, Kali NetHunter,
 	                    and Exploit Database.
-        Linus Torvalds: for creating the Linux Operating System.
+        Linus Torvalds and contributors: for creating the Linux Operating System.
 
 
 
@@ -121,7 +120,7 @@ Installing & Running
 1.Installing and Running
       -Enter these commands in your terminal:
 
-      $ apt update && apt upgrade [1]
+      $ apt update && apt upgrade -y [1]
       $ apt install python git [2]
       $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuite/ [3]
       $ cd ShadowSuite/src && chmod 755 ShadowSuite.py [4]
@@ -152,3 +151,7 @@ Installing & Running
       $ bash debug
 
       This will automatically run the command 'python -vv -B ShadowSuite.py'.
+
+3.Questions? Feature requests? Bugs?
+      
+      -Just contact us and we'll respond as soon as possible.

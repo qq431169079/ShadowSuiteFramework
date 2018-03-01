@@ -25,6 +25,7 @@ import core.list_module
 import core.use_module
 import core.use_framework
 import core.manage_module
+import core.suggest
 
 def shell():
     while True:
@@ -45,6 +46,7 @@ def shell():
                 print("module info     :: show module information.")
                 print("use framework   :: use a framework")
                 print("manage          :: run module manager.")
+                print("suggest         :: suggest an attack based on your criteria.")
                 print("\n")
                 print("back            :: back to Shadow Suite shell.")
 
@@ -69,6 +71,10 @@ def shell():
 
             elif command == "manage":
                 core.manage_module.manager()
+
+            elif command == "suggest":
+                criteria = input("Enter keywords separated by comma (dns, wireless, cracking) > ")
+                core.suggest.api(criteria)
 
             elif command == "quit":
                 core.error.error0003()
