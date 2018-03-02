@@ -23,6 +23,7 @@ git status
 read TEMP
 git gc
 read TEMP
+git tag $VERSION
 git tag
 git log
 read TEMP

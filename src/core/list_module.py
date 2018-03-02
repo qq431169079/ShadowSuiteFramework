@@ -60,7 +60,7 @@ def list():
     print(cg + "\t\t\tCisco Global Exploiter" + cw)
     print()
     print(cb + "\t\t==Fuzzing Tools==\n" + cw)
-    print(cr + "\t\t\tAngry Fuzzer" + cw)
+    print(cg + "\t\t\tAngry Fuzzer" + cw)
     print(cr + "\t\t\tDotDotPwn" + cw)
     print()
     print(cb + "\t\t==Stress Testing==\n" + cw)

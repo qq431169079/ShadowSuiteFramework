@@ -22,19 +22,19 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "Angry Fuzz3r", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
+        "author": "Unknown", # Author
+        "desc": "A collection of tools for pentesting to gather information and discover vulnerabilities of the targets based on Fuzzedb https://github.com/fuzzdb-project/fuzzdb project.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "lastupdate": "Mar. 02, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "False", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -95,4 +95,8 @@ def main():
 def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
-    module_info()
+    target = input("Target URl > ")
+    print("[i] Running module...")
+    os.system("cd modules/ANGRYFUZZER && python2 angryFuzzer.py -u " + target)
+    os.system("cd ../..")
+    print("[i] Finished!")

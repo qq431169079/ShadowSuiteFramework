@@ -7,9 +7,13 @@ Features in Concept:
         -DotDotPwn
     -Stress Testing Tools:
         -fl00d
-	-fl00d 2
 	-Slowloris
+    -Web Application Analysis:
+        -Web Vulnerability Scanners
+	    -D-TECT
+	    -Shell Shocker
+	    -Striker
 
 2.Bug Fixes
 
-3.Rewrite Nwrap to python3 and use nmap module to rewrite it.
+3.Automatic installation of modules.

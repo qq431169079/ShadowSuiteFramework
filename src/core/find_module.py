@@ -81,6 +81,11 @@ def find(module_name):
         import modules.cge
         modules.cge.module_info()
 
+    elif module_name == "angryfuzzer":
+        print("Module found!")
+        import modules.angryfuzzer
+        modules.angryfuzzer.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
