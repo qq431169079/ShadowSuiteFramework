@@ -52,8 +52,7 @@ def api(criteria):
         results = results + 1
 
     if 'nmap' in criteria or 'nwrap' in criteria or 'catayao56' in criteria or 'net' in criteria and 'map' in criteria or 'port' in criteria and 'scan' in criteria or 'ping' in criteria or 'tcp' in criteria or 'udp' in criteria or 'python' in criteria:
-        # DEV0001: Update this description
-        print(core.misc.cg + "Nwrap : [UPDATE DESC]\n")
+        print(core.misc.cg + "Nwrap : Wrapper script for NMap Network Mapper.\n")
         results = results + 1
 
     if 'red' in criteria and 'hawk' in criteria or 'r3d#@0r_2h1n' in criteria or 'tuhinshubhra' in criteria or 'info' in criteria and 'ga' in criteria or 'vuln' in criteria and 'scan' in criteria or 'wordpress' in criteria or 'wp' in criteria or 'php' in criteria:
@@ -69,7 +68,19 @@ def api(criteria):
         results = results + 1
 
     if 'cisco' in criteria or 'exploit' in criteria or 'vuln' in criteria:
-        print(core.misc.cg + "Cisco Global Exploiter : An advanced,simple and fast security testing tool, that is able to exploit the most dangerous vulnerabilities of Cisco systems.\n")
+        print(core.misc.cg + "Cisco Global Exploiter : An advanced,simple and fast security testing tool, that is able to exploit the most dangerous vulnerabilities of Cisco systems.\n" + core.misc.cw)
+        results = results + 1
+
+    if 'angry' in criteria and 'fuzz' in criteria or 'info' in criteria and 'ga' in criteria or 'discover' in criteria or 'vuln' in criteria or 'fuzz' in criteria:
+        print(core.misc.cg + "Angry Fuzz3r : A collection of tools for pentesting to gather information and discover vulnerabilities of the targets based on Fuzzedb https://github.com/fuzzdb-project/fuzzdb project.\n" + core.misc.cw)
+        results = results + 1
+
+    if 'dot' in criteria and 'pwn' in criteria or 'sectester' in criteria or 'intelligent' in criteria or 'fuzz' in criteria or 'discover' in criteria or 'traversal' in criteria or 'dir' in criteria or 'vuln' in criteria or 'soft' in criteria or 'http' in criteria or 'ftp' in criteria or 'tftp' in criteria or 'server' in criteria or 'web' in criteria or 'cms' in criteria or 'erp' in criteria or 'blog' in criteria or 'perl' in criteria:
+        print(core.misc.cg + "DotDotPwn : A very flexible intelligent fuzzer to discover traversal directory vulnerabilities in software such as HTTP/FTP/TFTP servers, Web platforms such as CMSs, ERPs, Blogs, etc.\n" + core.misc.cw)
+        results = results + 1
+
+    if 'fl00d' in criteria or 'dedsectl' in criteria or 'androsec1337' in criteria or 'catayao56' in criteria or 'simple' in criteria or 'dos' in criteria or 'denial' in criteria and 'service' in criteria or 'low' in criteria and 'security' in criteria or 'python' in criteria:
+        print(core.misc.cg + "Fl00d : A simple DoS tool for target hosts with low-level security.\n" + core.misc.cw)
         results = results + 1
 
     # More info

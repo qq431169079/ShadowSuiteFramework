@@ -87,6 +87,16 @@ def use(module_name):
         import modules.angryfuzzer
         modules.angryfuzzer.main()
 
+    elif module_name == "dotdotpwn":
+        print("Module found!")
+        import modules.dotdotpwn
+        modules.dotdotpwn.main()
+
+    elif module_name == "fl00d":
+        print("Module found!")
+        import modules.fl00d
+        modules.fl00d.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

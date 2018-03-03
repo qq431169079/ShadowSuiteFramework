@@ -85,6 +85,16 @@ def find(module_name):
         print("Module found!")
         import modules.angryfuzzer
         modules.angryfuzzer.module_info()
+    
+    elif module_name == "dotdotpwn":
+        print("Module found!")
+        import modules.dotdotpwn
+        modules.dotdotpwn.module_info()
+
+    elif module_name == "fl00d":
+        print("Module found!")
+        import modules.fl00d
+        modules.fl00d.module_info()
 
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!

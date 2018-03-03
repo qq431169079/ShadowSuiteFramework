@@ -37,3 +37,8 @@ gephi
 dns
 dnspython
 pycurl
+optparse
+urlparse
+getopt
+datetime
+

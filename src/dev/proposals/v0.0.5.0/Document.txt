@@ -2,9 +2,6 @@ Features in Concept:
 =======================================
 
 1.Fuzzing and Stress Testing Tools:
-    -Fuzzing Tools:
-        -AngryFuzzer
-        -DotDotPwn
     -Stress Testing Tools:
         -fl00d
 	-Slowloris
