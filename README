@@ -1,4 +1,4 @@
-Shadow Suite 0.0.4.6 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.4.8 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -93,6 +93,8 @@ Credits
 	Christian Martorella: for creating Metagoofil and The Harvester.
 	g0ne [null0]: for creating Cisco Auditing Tool.
 	Nemesis: for creating Cisco Global Exploiter.
+	SecTester: for creating DotDotPwn.
+	DedSecTL, AndroSec1337, Catayao56: for creating Fl00d DoS Tool; Catayao56 for porting Fl00d to Python 3.
 
 		Whoever you are, thank you for creating:
 		-DNSMap
