@@ -1,4 +1,4 @@
-Shadow Suite 0.0.4.8 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.4.9 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -43,6 +43,48 @@ Full Feature List
       -It's okay if you don't know how to program. Shadow Suite has an
        arsenal! It provides you tools written in different languages, Python,
        Ruby, Perl, PHP, and many more!
+
+      -Full tools listing:
+       ==01-Informarion Gathering==
+
+                Automater
+                DNSEnum
+                DNSMap
+                DNSrecon
+                LANScan
+                Metagoofil
+                Nwrap
+                Red Hawk
+                The Harvester
+
+        ==02-Vulnerability Analysis==
+
+                ==Cisco Tools==
+
+                        Cisco Auditing Tool
+                        Cisco Global Exploiter
+
+                ==Fuzzing Tools==
+
+                        Angry Fuzzer
+                        DotDotPwn
+
+                ==Stress Testing==
+
+                        fl00d
+                        Slowloris
+
+                ==VoIP Tools==
+
+        [i] Not yet Implemented!!!
+
+        ==Integrated Frameworks==
+
+                Hakku Framework
+
+        ==Custom Modules==
+
+                sample
 
 -Third-Party Frameworks Integration
       -There are pros and cons in every software, as well as frameworks.

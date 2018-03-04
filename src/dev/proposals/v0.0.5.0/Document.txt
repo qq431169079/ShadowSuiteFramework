@@ -3,7 +3,6 @@ Features in Concept:
 
 1.Fuzzing and Stress Testing Tools:
     -Stress Testing Tools:
-        -fl00d
 	-Slowloris
     -Web Application Analysis:
         -Web Vulnerability Scanners

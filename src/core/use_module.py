@@ -97,6 +97,11 @@ def use(module_name):
         import modules.fl00d
         modules.fl00d.main()
 
+    elif module_name == "slowloris":
+        print("Module found!")
+        import modules.slowloris
+        modules.slowloris.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

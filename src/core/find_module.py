@@ -96,6 +96,11 @@ def find(module_name):
         import modules.fl00d
         modules.fl00d.module_info()
 
+    elif module_name == "slowloris":
+        print("Module found!")
+        import modules.slowloris
+        modules.slowloris.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

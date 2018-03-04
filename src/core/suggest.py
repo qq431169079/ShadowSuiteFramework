@@ -79,8 +79,12 @@ def api(criteria):
         print(core.misc.cg + "DotDotPwn : A very flexible intelligent fuzzer to discover traversal directory vulnerabilities in software such as HTTP/FTP/TFTP servers, Web platforms such as CMSs, ERPs, Blogs, etc.\n" + core.misc.cw)
         results = results + 1
 
-    if 'fl00d' in criteria or 'dedsectl' in criteria or 'androsec1337' in criteria or 'catayao56' in criteria or 'simple' in criteria or 'dos' in criteria or 'denial' in criteria and 'service' in criteria or 'low' in criteria and 'security' in criteria or 'python' in criteria:
+    if 'fl00d' in criteria or 'dedsectl' in criteria or 'androsec1337' in criteria or 'catayao56' in criteria or 'simple' in criteria or 'dos' in criteria or 'denial' in criteria and 'service' in criteria or 'low' in criteria and 'security' in criteria or 'python' in criteria or 'stress' in criteria and 'test' in criteria:
         print(core.misc.cg + "Fl00d : A simple DoS tool for target hosts with low-level security.\n" + core.misc.cw)
+        results = results + 1
+
+    if 'slowloris' in criteria or 'low' in criteria and 'bandwidth' in criteria or 'stress' in criteria and 'test' in criteria or 'web' in criteria:
+        print(core.misc.cg + "Slowloris : Low bandwidth stress test tool for websites.\n" + core.misc.cw)
         results = results + 1
 
     # More info

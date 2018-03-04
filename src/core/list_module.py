@@ -65,7 +65,7 @@ def list():
     print()
     print(cb + "\t\t==Stress Testing==\n" + cw)
     print(cg + "\t\t\tfl00d" + cw)
-    print(cr + "\t\t\tSlowloris" + cw)
+    print(cg + "\t\t\tSlowloris" + cw)
     print()
     print(cb + "\t\t==VoIP Tools==\n" + cw)
     print(nyi)
