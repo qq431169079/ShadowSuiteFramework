@@ -10,7 +10,7 @@ import core.error
 # Put your module information here.
 info = {
         "name": "Red Hawk", # Module filename (Change filename if you want to change this)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "R3D#@0R_2H1N A.K.A Tuhinshubhra", # Author
         "desc": "All in one tool for Information Gathering and Vulnerability Scanning", # Brief description
         "email": "none", # Email
@@ -24,7 +24,7 @@ info = {
 dependencies = ['PHP 7.1.12-1', 'PHP-dev', 'PHP-curl', 'PHP-xml'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial wrapper module release"
+changelog = "Version 2.0:\nMerge pull request #15 from Romain/master; Fixed a typo\n\nVersion 1.0:\nInitial wrapper module release"
 
 # Prints the module information
 def module_info():

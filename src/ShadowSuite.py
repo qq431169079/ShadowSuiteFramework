@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/env python
 # Coding=UTF-8
 # Shadow Suite :: Ethical Hacking Toolkit
 # Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>

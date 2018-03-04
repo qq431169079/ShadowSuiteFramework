@@ -24,7 +24,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Slowloris", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "none", # Author
         "desc": "Low bandwidth stress test tool for websites.", # Brief description
         "email": "none", # Email
@@ -38,7 +38,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 2.0:\nMerge pull request #16 from Syslog777/patch-1\nChanged shebang line\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
