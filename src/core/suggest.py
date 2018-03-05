@@ -91,6 +91,10 @@ def api(criteria):
         print(core.misc.cg + "D-Tect : An All-In-One Tool that provides multiple features and detection features which gather target information and finds different flaws in it." + core.misc.cw)
         results = results + 1
 
+    if 'shell' in criteria or 'shock' in criteria or 'nullarray' in criteria or 'vuln' in criteria:
+        print(core.misc.cg + "Shellshocker : A bash script that tests [a list of] hosts for the shellshock vulnerability." + core.misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

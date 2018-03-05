@@ -106,6 +106,11 @@ def find(module_name):
         import modules.dtect
         modules.dtect.module_info()
 
+    elif module_name == "shellshocker":
+        print("Module found!")
+        import modules.shellshocker
+        modules.shellshocker.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

