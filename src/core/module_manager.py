@@ -47,6 +47,7 @@ def shell():
                 print("use framework   :: use a framework")
                 print("manage          :: run module manager.")
                 print("suggest         :: suggest an attack based on your criteria.")
+                print("clear           :: clears the screen.")
                 print("\n")
                 print("back            :: back to Shadow Suite shell.")
 
@@ -75,6 +76,9 @@ def shell():
             elif command == "suggest":
                 criteria = input("Enter keywords separated by comma (dns, wireless, cracking) > ")
                 core.suggest.api(criteria)
+
+            elif command == "clear":
+                os.system("clear")
 
             elif command == "quit":
                 core.error.error0003()

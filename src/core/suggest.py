@@ -39,7 +39,7 @@ def api(criteria):
         print(core.misc.cg + "DNSMap : Mainly meant to be used by pentesters during the information gathering/enumeration phase of infrastructure security assessments.\n" + core.misc.cw)
         results = results + 1
 
-    if 'dnsrecon' in criteria or 'dns' in criteria or 'recon' in criteria or 'info' in criteria and 'ga' in criteria or 'tool' in criteria or 'python' in criteria:
+    if 'dnsrecon' in criteria or 'dns' in criteria or 'recon' in criteria or 'info' in criteria and 'ga' in criteria or 'python' in criteria:
         print(core.misc.cg + "DNSRecon : DNS Reconnaissance Tool.\n" + core.misc.cw)
         results = results + 1
 

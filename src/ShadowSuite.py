@@ -70,6 +70,7 @@ def main():
                 print("full update       :: update Shadow Suite and install dependencies.")
                 print("module            :: enter module shell. type \'module\' then \'help\'for details.")
                 print("suggest           :: suggest a tool based on your critera.")
+                print("clear             :: clears the screen.")
                 print("\n")
                 print("quit              :: quit Shadow Suite.")
                 print("exit              :: same as \'quit\' command.\n")
@@ -116,6 +117,9 @@ def main():
             elif menu_input == "suggest":
                 criteria = input("Enter keywords separated by comma (dns, wireless, cracking) > ")
                 core.suggest.api(criteria)
+
+            elif menu_input == "clear":
+                os.system("clear")
 
             elif menu_input == "back":
                 core.error.error0004()

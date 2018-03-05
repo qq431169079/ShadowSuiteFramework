@@ -47,6 +47,7 @@ def manager():
                 print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)
                 print("generate new :: generate a new module template.")
                 print("integrate    :: integrate Shadow Suite with another framework.")
+                print("clear        :: clears the screen.")
                 print("\n")
                 print("back         :: back to Module_Manager.py shell.")
 
@@ -72,6 +73,9 @@ def manager():
 
                 else:
                     core.error.error0007()
+
+            elif command == "clear":
+                os.system("clear")
 
             elif command == "quit":
                 core.error.error0003()
