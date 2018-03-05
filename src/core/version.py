@@ -25,7 +25,7 @@ global vtype
 global vcodename
 
 vapi = "0.0.6.0"
-vnumber = "0.0.4.9"
+vnumber = "0.0.4.10"
 vtype = "Weekly Build"
 vcodename = "Jargon"
 
@@ -90,22 +90,22 @@ def codename():
     # Game Blaster                                       ( Used in v0.0.3.6 )
     # Handshake                                          ( Used in v0.0.3.8 )
     # Implementation                                     ( Used in v0.0.4.0 )
-    # Job                                                ( Not yet used )
-    # Knight                                             ( Not yet used )
-    # Lazy                                               ( Not yet used )
-    # Metro                                              ( Not yet used )
-    # New ways                                           ( Not yet used )
-    # Open Grounds                                       ( Not yet used )
+    # Jargon                                             ( Used in v0.0.4.6 )
+    # Kerberos                                           ( Not yet used )
+    # Linux                                              ( Not yet used )
+    # Maintenance                                        ( Not yet used )
+    # Network                                            ( Not yet used )
+    # Open Source                                        ( Not yet used )
     # PHP                                                ( Not yet used )
     # Querty                                             ( Not yet used )
     # Ruby                                               ( Not yet used )
-    # Silicon                                            ( Not yet used )
-    # Time                                               ( Not yet used )
-    # Universal                                          ( Not yet used )
+    # SCADA                                              ( Not yet used )
+    # TCAP                                               ( Not yet used )
+    # Ugly Code                                          ( Not yet used )
     # Variable                                           ( Not yet used )
     # Wireless                                           ( Not yet used )
     # Xfr                                                ( Not yet used )
-    # You There                                          ( Not yet used )
+    # YWSYLS                                             ( Not yet used )
     # Zero-Day                                           ( Not yet used )
 
 def both():

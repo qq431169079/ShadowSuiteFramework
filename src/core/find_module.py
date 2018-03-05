@@ -101,6 +101,11 @@ def find(module_name):
         import modules.slowloris
         modules.slowloris.module_info()
 
+    elif module_name == "dtect":
+        print("Module found!")
+        import modules.dtect
+        modules.dtect.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

@@ -22,19 +22,19 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "D-Tect", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
+        "author": "Shawar Khan", # Author
+        "desc": "An All-In-One Tool that provides multiple features and detection features which gather target information and finds different flaws in it.", # Brief description
         "email": "none", # Email
-        "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "authorinfo": "https://shawarkhan.com/about/", # Additional information about the author; this could be
+        "lastupdate": "Mar. 05, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "False", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['python 2 interpreter'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -95,4 +95,5 @@ def main():
 def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
-    module_info()
+    os.system("cd modules/DTECT && python2 d-tect.py")
+    os.system("cd ../..")

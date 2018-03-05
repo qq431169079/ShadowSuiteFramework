@@ -81,7 +81,7 @@ def list():
     print(nyi)
     print()
     print(cb + "\t\t==Web Vulnerability Scanners==\n" + cw)
-    print(cr + "\t\t\tD-TECT" + cw)
+    print(cg + "\t\t\tD-TECT (DTECT)" + cw)
     print(cr + "\t\t\tShellshocker" + cw)
     print(cr + "\t\t\tStriker" + cw)
     print()

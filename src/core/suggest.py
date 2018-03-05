@@ -87,6 +87,10 @@ def api(criteria):
         print(core.misc.cg + "Slowloris : Low bandwidth stress test tool for websites.\n" + core.misc.cw)
         results = results + 1
 
+    if 'dtect' in criteria or 'shawar' in criteria and 'khan' in criteria or 'python' in criteria or 'word' in criteria and 'press' in criteria or 'wp' in criteria or 'username' in criteria or 'enum' in criteria or 'sensitive' in criteria or 'file' in criteria or 'detect' in criteria or 'sub' in criteria and 'domain' in criteria or 'scan' in criteria or 'port' in criteria or 'cross' in criteria and 'site' in criteria and 'script' in criteria or 'xss' in criteria or 'backup' in criteria and 'grab' in criteria or 'sql' in criteria and 'inject' in criteria or 'sqli' in criteria:
+        print(core.misc.cg + "D-Tect : An All-In-One Tool that provides multiple features and detection features which gather target information and finds different flaws in it." + core.misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)
