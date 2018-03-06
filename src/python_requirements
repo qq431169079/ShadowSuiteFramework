@@ -41,4 +41,14 @@ optparse
 urlparse
 getopt
 datetime
-
+socket
+string
+time
+_thread
+platform
+urllib
+warnings
+logging
+ssl
+bs4
+httplib
