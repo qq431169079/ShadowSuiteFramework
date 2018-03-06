@@ -95,6 +95,10 @@ def api(criteria):
         print(core.misc.cg + "Shellshocker : A bash script that tests [a list of] hosts for the shellshock vulnerability." + core.misc.cw)
         results = results + 1
 
+    if 'striker' in criteria or 'ultimate' in criteria and 'hacker' in criteria or 'offensive' in criteria or 'info' in criteria or 'vuln' in criteria or 'scan' in criteria:
+        print(core.misc.cg + "Striker : An offensive information and vulnerability scanner.")
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

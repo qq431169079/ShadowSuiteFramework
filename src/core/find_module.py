@@ -111,6 +111,11 @@ def find(module_name):
         import modules.shellshocker
         modules.shellshocker.module_info()
 
+    elif module_name == "striker":
+        print("Module found!")
+        import modules.striker
+        modules.striker.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

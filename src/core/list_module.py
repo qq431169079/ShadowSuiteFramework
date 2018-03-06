@@ -83,7 +83,7 @@ def list():
     print(cb + "\t\t==Web Vulnerability Scanners==\n" + cw)
     print(cg + "\t\t\tD-TECT (DTECT)" + cw)
     print(cg + "\t\t\tShellshocker" + cw)
-    print(cr + "\t\t\tStriker" + cw)
+    print(cg + "\t\t\tStriker" + cw)
     print()
     print(cb + "\t==04-Database Assessment==\n" + cw)
     print(cr + "\t\tDSSS" + cw)

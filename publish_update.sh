@@ -28,4 +28,4 @@ read TEMP
 git status
 read TEMP
 git push
-echo "[i] Update \'$VERSION\' published..."
+echo "[i] Update $VERSION published..."
