@@ -25,8 +25,6 @@ netaddr
 pefile
 simplejson
 argparse
-string
-sqlite3
 datetime
 Selenium
 Matplotlib
@@ -42,9 +40,8 @@ urlparse
 getopt
 datetime
 socket
-string
 time
-_thread
+thread
 platform
 urllib
 warnings
