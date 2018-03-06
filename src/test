@@ -1,0 +1,4 @@
+#!/bin/bash
+# Coding=UTF-8
+
+python -B ShadowSuite.py

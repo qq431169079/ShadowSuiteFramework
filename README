@@ -180,21 +180,6 @@ Installing & Running
           the program and dependencies.
       [7] Type 'help' on Shadow Suite's console to see the help menu.
 
-2.Debugging
-
-      -This is not actually debugging. I used this for developing Shadow Suite.
-      If you run Shadow Suite via the debug script, it will not write .pyc files
-      on import, prints a message each time a module is initialized, showing
-      the place (filename or built-in module) from which it is loaded, and
-      another message for each file that is checked for when searching
-      for a module. Also provides information on module cleanup at exit.
-
-      -To start Shadow Suite in debugging mode, enter this command in your terminal:
-
-      $ bash debug
-
-      This will automatically run the command 'python -vv -B ShadowSuite.py'.
-
-3.Questions? Feature requests? Bugs?
+2.Questions? Feature requests? Bugs?
       
       -Just contact us and we'll respond as soon as possible.
