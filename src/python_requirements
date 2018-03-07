@@ -27,10 +27,8 @@ simplejson
 argparse
 datetime
 Selenium
-Matplotlib
 Networkx
 Pygraphviz
-Mechanize
 gephi
 dns
 dnspython
@@ -49,3 +47,4 @@ logging
 ssl
 bs4
 httplib
+lxml
