@@ -29,7 +29,6 @@ datetime
 Selenium
 Networkx
 Pygraphviz
-gephi
 dns
 dnspython
 pycurl

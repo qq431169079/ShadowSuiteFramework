@@ -31,7 +31,7 @@ def full_update():
     print(core.misc.cb + "Installing python modules... (3/" + process + ")\n" + core.misc.cw)
     os.system("pip install -r python_requirements")
     print(core.misc.cb + "Installing perl modules... (4/" + process + ")\n" + core.misc.cw)
-    os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn")
+    os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize")
     print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a full update... Done!" + core.misc.fr + core.misc.cw)
 
 def deps_update():
@@ -42,7 +42,7 @@ def deps_update():
     print(core.misc.cb + "Installing python modules... (2/" + process + ")\n" + core.misc.cw)
     os.system("pip install -r python_requirements")
     print(core.misc.cb + "Installing perl modules... (3/" + process + ")\n" + core.misc.cw)
-    os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn")
+    os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize")
     print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a dependency update... Done!" + core.misc.fr + core.misc.cw)
     
 def prog_update():
