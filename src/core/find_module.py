@@ -116,6 +116,11 @@ def find(module_name):
         import modules.striker
         modules.striker.module_info()
 
+    elif module_name == "dsss":
+        print("Module found!")
+        import modules.dsss
+        modules.dsss.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

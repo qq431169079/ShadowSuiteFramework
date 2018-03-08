@@ -99,6 +99,10 @@ def api(criteria):
         print(core.misc.cg + "Striker : An offensive information and vulnerability scanner.")
         results = results + 1
 
+    if 'damn' in criteria and 'small' in criteria and 'sqli' in criteria and 'scanner' in criteria or 'dsss' in criteria or 'sql' in criteria or 'scan' in criteria or 'python' in criteria or 'miroslav' in criteria and 'stampar' in criteria:
+        print(core.misc.cg + "DSSS :: A fully functional SQL Injection vulnerability scanner (supporting GET and POST parameters) written in under 100 lines of code.")
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

@@ -12,7 +12,7 @@ try:
     import os
     import sys
     import core.error
-    # import API
+    import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
     # Place your 'import' directives below
@@ -22,15 +22,15 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "Damn Small SQLi Scanner (DSSS)", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "Damn Small SQLi Scamner (DSSS)", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
         "author": "Miroslav Stampar", # Author
-        "desc": "A fully functional SQL injection vulnerability scanner (supporting GET and POST parameters) written in under 100 lines of code.", # Brief description
+        "desc": "A fully functional SQL Injection vulnerability scanner (supporting GET and POST parameters) written in under 100 lines of code.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Mar. 07, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
-        "usingapi": "False", # Is this module using Shadow Suite's API?
+        "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
@@ -95,4 +95,12 @@ def main():
 def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
-    module_info()
+    print("Damn Small SQLi Scanner (DSSS) :: Miroslav Stampar")
+    print()
+    print()
+    print()
+    target = input("Target URL (e.g. \"http://www.target.com/page.php?id=1\") > ")
+    print()
+    os.system("cd modules/DSSS && python2 dsss.py -u " + target)
+    API.Class().finish()
+

@@ -86,7 +86,7 @@ def list():
     print(cg + "\t\t\tStriker" + cw)
     print()
     print(cb + "\t==04-Database Assessment==\n" + cw)
-    print(cr + "\t\tDSSS" + cw)
+    print(cy + "\t\tDSSS" + cw)
     print(cr + "\t\tSQLMap" + cw)
     print()
     print(cb + "\t==05-Password Attacks==\n" + cw)
