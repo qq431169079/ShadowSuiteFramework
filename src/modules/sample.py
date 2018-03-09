@@ -11,7 +11,7 @@ import time
 # Put your module information here.
 info = {
         "name": "Sample", # Module filename (Change filename if you want to change this)
-        "version": "3.2", # version
+        "version": "4.0", # version
         "author": "Catayao56", # Author
         "desc": "A sample module that uses the Shadow Suite API.", # Brief description
         "email": "N/A", # Email
@@ -61,20 +61,21 @@ def module_body():
     # Place your program here. This is the function where your program will be placed.
     module_info()
     print("Hello!")
-    time.sleep(10)
+    time.sleep(2)
     print("This is a sample module for Shadow Suite...")
-    time.sleep(4)
+    time.sleep(2)
     print("Shadow Suite's version number is " + API.Class.ShadowSuite_ver_num + ".")
-    time.sleep(5)
+    time.sleep(2)
     print("Shadow Suite's version type is " + API.Class.ShadowSuite_ver_type + ".")
-    time.sleep(4)
+    time.sleep(2)
     print("Shadow Suite's version codename is " + API.Class.ShadowSuite_ver_codename + ".")
-    time.sleep(5)
+    time.sleep(2)
     print("Shadow Suite's API version is " + API.Class.API_version + ".")
-    time.sleep(4)
+    time.sleep(2)
     print("Listing installed modules...")
+    time.sleep(2)
     API.Class().list_module()
-    time.sleep(8)
+    time.sleep(2)
     print("Quitting in 3...")
     time.sleep(1)
     print("Quitting in 2...")

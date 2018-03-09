@@ -72,6 +72,7 @@ def main():
                 print("suggest           :: suggest a tool based on your critera.")
                 print("clear             :: clears the screen.")
                 print("\n")
+                print("restart           :: restart Shadow Suite.")
                 print("quit              :: quit Shadow Suite.")
                 print("exit              :: same as \'quit\' command.\n")
 
@@ -123,6 +124,10 @@ def main():
 
             elif menu_input == "back":
                 core.error.error0004()
+
+            elif menu_input == "restart":
+                os.system("clear")
+                core.misc.program_restart()
 
             elif menu_input == "quit":
                 print("Quitting Shadow Suite...\n")

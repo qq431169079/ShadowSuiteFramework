@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+import os
+import sys
 import core.version
 
 # Colors with meanings
@@ -54,3 +56,10 @@ def prn_brief_license():
 def module_mode():
     # This function is called if ShadowSuite is running as module.
     print(cy + "[i] Running as module...\n" + cw)
+
+def program_restart():
+    # Restart ####################
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+    curdir = os.getcwd()
+    ##############################

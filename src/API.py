@@ -48,6 +48,9 @@ try:
     #      (Prints "module mode" message.)
     #      API.core.misc.module_mode()
     #
+    #      (Restarts Shadow Suite.)
+    #      API.core.misc.restart_program()
+    #
     import core.suggest
     import core.update
     # core.update calling
