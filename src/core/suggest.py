@@ -88,19 +88,27 @@ def api(criteria):
         results = results + 1
 
     if 'dtect' in criteria or 'shawar' in criteria and 'khan' in criteria or 'python' in criteria or 'word' in criteria and 'press' in criteria or 'wp' in criteria or 'username' in criteria or 'enum' in criteria or 'sensitive' in criteria or 'file' in criteria or 'detect' in criteria or 'sub' in criteria and 'domain' in criteria or 'scan' in criteria or 'port' in criteria or 'cross' in criteria and 'site' in criteria and 'script' in criteria or 'xss' in criteria or 'backup' in criteria and 'grab' in criteria or 'sql' in criteria and 'inject' in criteria or 'sqli' in criteria:
-        print(core.misc.cg + "D-Tect : An All-In-One Tool that provides multiple features and detection features which gather target information and finds different flaws in it." + core.misc.cw)
+        print(core.misc.cg + "D-Tect : An All-In-One Tool that provides multiple features and detection features which gather target information and finds different flaws in it.\n" + core.misc.cw)
         results = results + 1
 
     if 'shell' in criteria or 'shock' in criteria or 'nullarray' in criteria or 'vuln' in criteria:
-        print(core.misc.cg + "Shellshocker : A bash script that tests [a list of] hosts for the shellshock vulnerability." + core.misc.cw)
+        print(core.misc.cg + "Shellshocker : A bash script that tests [a list of] hosts for the shellshock vulnerability.\n" + core.misc.cw)
         results = results + 1
 
     if 'striker' in criteria or 'ultimate' in criteria and 'hacker' in criteria or 'offensive' in criteria or 'info' in criteria or 'vuln' in criteria or 'scan' in criteria:
-        print(core.misc.cg + "Striker : An offensive information and vulnerability scanner.")
+        print(core.misc.cg + "Striker : An offensive information and vulnerability scanner.\n" + core.misc.cw)
         results = results + 1
 
-    if 'damn' in criteria and 'small' in criteria and 'sqli' in criteria and 'scanner' in criteria or 'dsss' in criteria or 'sql' in criteria or 'scan' in criteria or 'python' in criteria or 'miroslav' in criteria and 'stampar' in criteria:
-        print(core.misc.cg + "DSSS :: A fully functional SQL Injection vulnerability scanner (supporting GET and POST parameters) written in under 100 lines of code.")
+    if 'damn' in criteria and 'small' in criteria and 'sqli' in criteria and 'scanner' in criteria or 'dsss' in criteria or 'sql' in criteria or 'scan' in criteria or 'python' in criteria or 'miroslav' in criteria and 'stampar' in criteria or 'database' in criteria or 'db' in criteria:
+        print(core.misc.cg + "DSSS :: A fully functional SQL Injection vulnerability scanner (supporting GET and POST parameters) written in under 100 lines of code.\n" + core.misc.cw)
+        results = results + 1
+
+    if 'sql' in criteria or 'sqlmap' in criteria or 'miroslav' in criteria and 'stampar' in criteria or 'inject' in criteria or 'database' in criteria or 'db' in criteria or 'python' in criteria:
+        print(core.misc.cg + "SQLMap :: An open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.\n" + core.misc.cw)
+        results = results + 1
+
+    if 'hash' in criteria or 'id' in criteria or 'zion3r' in criteria or 'type' in criteria or 'python' in criteria:
+        print(core.misc.cg + "Hash Identifier :: Identifies hash types.\n" + core.misc.cw)
         results = results + 1
 
     # More info

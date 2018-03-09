@@ -121,6 +121,16 @@ def find(module_name):
         import modules.dsss
         modules.dsss.module_info()
 
+    elif module_name == "sqlmap":
+        print("Module found!")
+        import modules.sqlmap
+        modules.sqlmap.module_info()
+
+    elif module_name == "hash identifier":
+        print("Module found!")
+        import modules.hashid
+        modules.hashid.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

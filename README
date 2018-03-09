@@ -1,4 +1,4 @@
-Shadow Suite 0.0.5.1 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.5.2 :: Ethical Hacking Toolkit
 Copyright (C) 2017 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -11,11 +11,9 @@ Suite is the main project of Shadow Team.
 
 What's new?
 ------------------
-1.We now have 'SEVENTEEN' pre-installed modules! Yes, 17!
+1.Added more tools!
 
 2.We need testers! Please help us make Shadow Suite a better framework. Thank you!
-
-3.DotDotPwn and DSSS still under development.
 
 Full Feature List
 ------------------------
