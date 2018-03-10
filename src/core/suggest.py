@@ -111,6 +111,10 @@ def api(criteria):
         print(core.misc.cg + "Hash Identifier :: Identifies hash types.\n" + core.misc.cw)
         results = results + 1
 
+    if 'hash' in criteria or 'shadow' in criteria or 'crack' in criteria or 'md5' in criteria or 'sha' in criteria:
+        print(core.misc.cg + "ShadowCrack :: A hashing tool used to encrypt strings and/or crack hashes.\n" + core.misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

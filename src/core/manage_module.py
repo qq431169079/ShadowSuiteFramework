@@ -25,6 +25,7 @@ def generate_new(cmn):
     # This is used to generate a custom module from a template via API.
     cmn = cmn.lower()
     cmn = cmn.strip()
+    cmn = cmn.replace(' ', '')
     os.system("cp $PWD/core/temp.py $PWD/output/")
     os.system("mv $PWD/output/temp.py $PWD/output/" + cmn + ".py")
     os.system("echo You can now open the template located on: $PWD/output/" + cmn + ".py")

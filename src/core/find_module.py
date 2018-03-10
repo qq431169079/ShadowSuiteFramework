@@ -131,6 +131,11 @@ def find(module_name):
         import modules.hashid
         modules.hashid.module_info()
 
+    elif module_name == "shadow crack":
+        print("Module found!")
+        import modules.shadowcrack
+        modules.shadowcrack.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

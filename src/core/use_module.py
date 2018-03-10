@@ -132,6 +132,11 @@ def use(module_name):
         import modules.hashid
         modules.hashid.main()
 
+    elif module_name == "shadow crack":
+        print("Module found!")
+        import modules.shadowcrack
+        modules.shadowcrack.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
