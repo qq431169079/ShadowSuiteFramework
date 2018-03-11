@@ -147,6 +147,11 @@ def use(module_name):
         import modules.hashbuster
         modules.hashbuster.main()
 
+    elif module_name == "cupp":
+        print("Module found!")
+        import modules.cupp
+        modules.cupp.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

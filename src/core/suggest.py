@@ -119,6 +119,10 @@ def api(criteria):
         print(core.misc.cg + "Black Hydra :: A small program to shorten brute force sessions in hydra.\n" + core.misc.cw)
         results = results + 1
 
+    if 'cupp' in criteria or 'j0rgan' in criteria or 'muris' in criteria and 'kurgas' in criteria or 'wordlist' in criteria or 'wl' in criteria or 'profil' in criteria:
+        print(core.misc.cg + "CUPP :: Common user passwords profiler.\n" + core.misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

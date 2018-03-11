@@ -12,7 +12,7 @@ try:
     import os
     import sys
     import core.error as error
-    # import API
+    import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
     # Place your 'import' directives below
@@ -22,19 +22,19 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "Common User Passwords Profiler (CUPP)", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
-        "email": "none", # Email
+        "author": "Muris Kurgas aka j0rgan", # Author
+        "desc": "Common user passwords profiler.", # Brief description
+        "email": "j0rgan@remote-exploit.org", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "lastupdate": "Mar. 11, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
-        "usingapi": "False", # Is this module using Shadow Suite's API?
+        "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -93,8 +93,41 @@ def main():
         module_body()
 
 def module_body():
-    # Place your program here. This is the function where your program will be placed.
-    # Remove module_info(), or leave it here. It's your call.
-    module_info()
-    print()
-    error.warning0002()
+    go = "cd modules/CUPP"
+    back = os.system("cd ../..")
+    print("  ___________")
+    print(" | cupp.py! |               # Common")
+    print("      \\                     # User")
+    print("       \\   ,__,             # Passwords")
+    print("        \\  (oo)____         # Profiler")
+    print("           (__)    )\\")
+    print("              ||--|| *   Muris Kurgas <j0rgan@remote-exploit.org>")
+    print('\n\nOutput files are in the modules/CUPP folder...\n\n')
+    print("[1] Interactive questions for user password profiling")
+    print("[2] Use this option to improve existing dictionary, or WyD.pl output to make some pwnsauce")
+    print("[3] Download huge wordlists from repository")
+    print("[4] Test CUPP.py")
+    print("\n[9] Quit\n\n")
+    select = input("Input > ")
+    select = int(select)
+    if select == 1:
+        os.system(go + " && python cupp3.py -i -q")
+        back
+
+    elif select == 2:
+        os.system(go + " && python cupp3.py -w -q")
+        back
+
+    elif select == 3:
+        os.system(go + " && python cupp3.py -l -q")
+        back
+
+    elif select == 4:
+        os.system(go + " && python test_cupp.py")
+        back
+
+    elif select == 9:
+        return
+
+    else:
+        error.error0001()

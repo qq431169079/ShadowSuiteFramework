@@ -91,7 +91,7 @@ def manager():
                 break
 
             else:
-                loggrr.log(0, 'User entered an unknown command.', 'logfile.txt')
+                logger.log(0, 'User entered an unknown command.', 'logfile.txt')
                 core.error.error0001()
 
         except KeyboardInterrupt:
