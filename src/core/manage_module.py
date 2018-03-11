@@ -20,6 +20,7 @@ import os
 import core.misc
 import core.error
 import core.use_module
+import core.logger as logger
 
 def generate_new(cmn):
     # This is used to generate a custom module from a template via API.
@@ -86,10 +87,13 @@ def manager():
 
             elif command == "back":
                 print("[i] Going back to Module_Manager.py shell...")
+                logger.log(0, 'User exits module manager...', 'logfile.txt')
                 break
 
             else:
+                loggrr.log(0, 'User entered an unknown command.', 'logfile.txt')
                 core.error.error0001()
 
         except KeyboardInterrupt:
+            logger.log(0, 'CTRL+C detected...', 'logfile.txt')
             core.error.error0002()

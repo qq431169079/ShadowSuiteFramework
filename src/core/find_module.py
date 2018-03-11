@@ -141,6 +141,11 @@ def find(module_name):
         import modules.blackhydra
         modules.blackhydra.module_info()
 
+    elif module_name == "hash buster":
+        print("Module found!")
+        import modules.hashbuster
+        modules.hashbuster.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

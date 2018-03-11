@@ -26,6 +26,7 @@ import core.use_module
 import core.use_framework
 import core.manage_module
 import core.suggest
+import core.logger as logger
 
 def shell():
     while True:
@@ -56,19 +57,18 @@ def shell():
 
             elif command == "use module":
                 module_name = input(core.misc.cgr + "Enter the module name to use > " + core.misc.cw)
+                logger.log(0, 'User uses ' + module_name + ' module.', 'logfile.txt')
                 core.use_module.use(module_name)
 
             elif command == "module info":
                 miname = input(core.misc.cgr + "Enter the module name to view > " + core.misc.cw)
+                logger.log(0, 'User finds ' + module_name + ' module.', 'logfile.txt')
                 core.find_module.find(miname)
 
             elif command == "use framework":
                 framework_name = input(core.misc.cgr + "Enter the framework name to use > " + core.misc.cw)
+                logger.log(0, 'User uses ' + module_name + ' framework.', 'logfile.txt')
                 core.use_framework.use(framework_name)
-
-            elif command == "framework info":
-                finame = input(core.misc.cgr + "Enter the framework name to view > " + core.misc.cw)
-                core.error.warning0002()
 
             elif command == "manage":
                 core.manage_module.manager()
@@ -91,7 +91,9 @@ def shell():
                 break
                 
             else:
+                logger.log(2, 'User entered an unknown command.', 'logfile.txt')
                 core.error.error0001()
 
         except KeyboardInterrupt:
+            logger.log(1, 'CTRL+C detected...', 'logfile.txt')
             core.error.error0002()

@@ -5,13 +5,13 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 3.5
+# Module version: 3.3
 
 # Import directives
 try:
     import os
     import sys
-    import core.error as error
+    import core.error
     # import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -22,19 +22,19 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "Hash Buster", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
+        "author": "UltimateHackers", # Author
+        "desc": "Uses several online hash crackers to find cleartext of a hash in less than 5 seconds.", # Brief description
         "email": "none", # Email
-        "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "authorinfo": "https://github.com/UltimateHackers/", # Additional information about the author; this could be
+        "lastupdate": "Mar. 11, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "False", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['Python 2 Interpreter'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -93,8 +93,5 @@ def main():
         module_body()
 
 def module_body():
-    # Place your program here. This is the function where your program will be placed.
-    # Remove module_info(), or leave it here. It's your call.
-    module_info()
-    print()
-    error.warning.warning0001()
+    os.system("cd modules/HASH_BUSTER && python2 hash.py")
+    os.system("cd ../..")

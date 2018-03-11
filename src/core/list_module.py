@@ -96,7 +96,7 @@ def list():
     print()
     print(cb + "\t\t==Online Attacks==\n" + cw)
     print(cg + "\t\t\tBlack Hydra" + cw)
-    print(cr + "\t\t\tHash Buster" + cw)
+    print(cg + "\t\t\tHash Buster" + cw)
     print(cr + "\t\t\tFBrute" + cw)
     print()
     print(cb + "\t\t==Passing the Hash Tools==\n" + cw)

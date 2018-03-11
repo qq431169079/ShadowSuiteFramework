@@ -1,4 +1,4 @@
-Shadow Suite 0.0.5.4 :: Ethical Hacking Toolkit
+Shadow Suite 0.0.5.5 :: Ethical Hacking Toolkit
 Copyright (C) 2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite is an Ethical Hacking Toolkit.
@@ -139,7 +139,7 @@ Credits
 	DedSecTL, AndroSec1337, Catayao56: for creating Fl00d DoS Tool; Catayao56 for porting Fl00d to Python 3.
 	Shawar Khan: for creating D-TECT.
 	NullArray: for creating Shell Shocker.
-	Ultimate Hackers: for creating Striker.
+	Ultimate Hackers: for creating Striker and Hash Buster.
 	Miroslav Stampar: for creating Damn Small SQLi Scanner (DSSS) and SQLMap.
 	Zion3R: for creating Hash Identifier.
 	Shadow Team: for creating ShadowCrack.
