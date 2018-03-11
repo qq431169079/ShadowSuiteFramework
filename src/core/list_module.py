@@ -95,7 +95,7 @@ def list():
     print(cg + "\t\t\tShadowCrack" + cw)
     print()
     print(cb + "\t\t==Online Attacks==\n" + cw)
-    print(cr + "\t\t\tBlack Hydra" + cw)
+    print(cg + "\t\t\tBlack Hydra" + cw)
     print(cr + "\t\t\tHash Buster" + cw)
     print(cr + "\t\t\tFBrute" + cw)
     print()

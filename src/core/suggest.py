@@ -115,6 +115,10 @@ def api(criteria):
         print(core.misc.cg + "ShadowCrack :: A hashing tool used to encrypt strings and/or crack hashes.\n" + core.misc.cw)
         results = results + 1
 
+    if 'black' in criteria or 'hydra' in criteria or 'crack' in criteria or 'dedsectl' in criteria or 'python' in criteria or 'online' in criteria:
+        print(core.misc.cg + "Black Hydra :: A small program to shorten brute force sessions in hydra.\n" + core.misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

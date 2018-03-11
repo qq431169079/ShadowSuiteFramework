@@ -24,17 +24,17 @@ except ImportError:
 info = {
         "name": "Black Hydra", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
+        "author": "DedSecTL", # Author
+        "desc": "A small program to shorten brute force sessions on hydra.", # Brief description
         "email": "none", # Email
-        "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "authorinfo": "https://m.facebook.com/100004136748473", # Additional information about the author; this could be
+        "lastupdate": "Mar. 11, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "False", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['Python 2 Interpreter'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -93,6 +93,5 @@ def main():
         module_body()
 
 def module_body():
-    # Place your program here. This is the function where your program will be placed.
-    # Remove module_info(), or leave it here. It's your call.
-    module_info()
+    os.system("cd modules/BLACK_HYDRA && python2 blackhydra.py")
+    os.system("cd ../..")

@@ -136,6 +136,11 @@ def find(module_name):
         import modules.shadowcrack
         modules.shadowcrack.module_info()
 
+    elif module_name == "black hydra":
+        print("Module found!")
+        import modules.blackhydra
+        modules.blackhydra.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
