@@ -24,7 +24,7 @@ global vnumber
 global vtype
 global vcodename
 
-vapi = "0.0.6.0"
+vapi = "0.0.6.1-API"
 vnumber = "0.0.5.4"
 vtype = "Weekly Build"
 vcodename = "Jargon"

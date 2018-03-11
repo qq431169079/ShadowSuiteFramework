@@ -81,6 +81,34 @@ try:
     #      (Print the Shadow Suite's version number, type and codename.)
     #      API.core.version.both()
     #
+    import core.quote
+    # core.quote calling
+    #
+    #      (Print a random quote)
+    #      API.core.quote.quote()
+    #
+    import core.joke
+    # core.joke calling
+    #
+    #      (Print a random joke)
+    #      API.core.joke.joke()
+    #
+    import core.logger as logger
+    # logger calling
+    #
+    #      (Logging something)
+    #      # This function needs three arguments, type, message, and logfile.
+    #      # The type is an integer, message is a string, and logfile is also a string.
+    #      # Log Type codes: 0 == INF (Information)
+    #      #                 1 == WRN (Warning)
+    #      #                 2 == ERR (Error)
+    #      # If none above met, then UNK (Unknown) will be used.
+    #
+    #      # Example usage:
+    #
+    #      API.logger.log(2, 'Error message', 'logfile.txt')
+    #
+
 except ImportError:
     print("Error Importing Modules! Now Quitting...")
     sys.exit(1)

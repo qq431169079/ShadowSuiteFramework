@@ -4,6 +4,7 @@
 import os
 
 def log(TYPE, MSG, LOGFILE):
+    TYPE = int(TYPE)
     line = '========================================'
 
     boundary = os.system('echo ' + line + " >> " + LOGFILE)
@@ -13,13 +14,13 @@ def log(TYPE, MSG, LOGFILE):
     # 1 == Warning message
     # 2 == Error message
 
-    if TYPE == '0':
+    if TYPE == 0:
         ICO = '[INF]: '
 
-    elif TYPE == '1':
+    elif TYPE == 1:
         ICO = '[WRN]: '
 
-    elif TYPE == '2':
+    elif TYPE == 2:
         ICO = '[ERR]: '
 
     else:
