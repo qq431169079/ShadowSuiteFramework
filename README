@@ -101,8 +101,6 @@ TO-DO List
 
 3.Fix bugs.
 
-4.Continue logging at manage_module.py
-
 License and Copying
 ------------------------
 
@@ -139,11 +137,19 @@ Credits
 	Nemesis: for creating Cisco Global Exploiter.
 	SecTester: for creating DotDotPwn.
 	DedSecTL, AndroSec1337, Catayao56: for creating Fl00d DoS Tool; Catayao56 for porting Fl00d to Python 3.
+	Shawar Khan: for creating D-TECT.
+	NullArray: for creating Shell Shocker.
+	Ultimate Hackers: for creating Striker.
+	Miroslav Stampar: for creating Damn Small SQLi Scanner (DSSS) and SQLMap.
+	Zion3R: for creating Hash Identifier.
+	Shadow Team: for creating ShadowCrack.
+	DedSecTL: for creating Black Hydra.
 
 		Whoever you are, thank you for creating:
 		-DNSMap
 		-DNSrecon
 		-Angry Fuzz3r
+		-Slowloris
 
 	==Frameworks==
 	4Shadoww: for creating Hakku Framework.
@@ -152,6 +158,7 @@ Credits
         Offensive Security: for creating Kali Linux, Kali NetHunter,
 	                    and Exploit Database.
         Linus Torvalds and contributors: for creating the Linux Operating System.
+	Termux Developers: for creating an amazing terminal emulator for Android.
 
 
 
