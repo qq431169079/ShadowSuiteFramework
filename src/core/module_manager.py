@@ -62,7 +62,7 @@ def shell():
 
             elif command == "module info":
                 miname = input(core.misc.cgr + "Enter the module name to view > " + core.misc.cw)
-                logger.log(0, 'User finds ' + module_name + ' module.', 'logfile.txt')
+                logger.log(0, 'User finds ' + miname + ' module.', 'logfile.txt')
                 core.find_module.find(miname)
 
             elif command == "use framework":

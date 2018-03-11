@@ -151,6 +151,11 @@ def find(module_name):
         import modules.cupp
         modules.cupp.module_info()
 
+    elif module_name == "les":
+        print("Module found!")
+        import modules.les
+        modules.les.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
