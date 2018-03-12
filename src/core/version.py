@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License.
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+import os
 import core.misc
 import core.error
 
@@ -110,3 +111,7 @@ def codename():
 
 def both():
     print(core.misc.cg + vnumber + "\t" + vtype + "\tCodename: " + vcodename + core.misc.cw)
+
+def changelog():
+    print("Changelog:\n\n\n")
+    os.system("git log -n 3")

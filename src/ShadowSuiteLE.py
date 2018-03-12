@@ -77,6 +77,7 @@ def main():
                 print("prog update       :: update Shadow Suite.")
                 print("deps update       :: update dependency files.")
                 print("full update       :: update Shadow Suite and install dependencies.")
+                print("changelog         :: shows the changelog from the previous three updates.")
                 print("module            :: enter module shell. type \'module\' then \'help\'for details.")
                 print("suggest           :: suggest a tool based on your critera.")
                 print("clear             :: clears the screen.")
@@ -122,6 +123,9 @@ def main():
 
                 else:
                     core.error.error0001()
+
+            elif menu_input == "changelog":
+                core.version.changelog()
 
             elif menu_input == "module":
                 # Runs the module_manager.py module.
