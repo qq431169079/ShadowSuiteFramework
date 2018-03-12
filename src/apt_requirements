@@ -3,7 +3,6 @@ cowsay
 curl
 figlet
 git
-gnupg
 less
 nmap
 openssh
@@ -13,10 +12,8 @@ php
 python
 python2
 ruby
-sslscan
 tar
 tor
 vim
-w3m
 wget
 zip

@@ -1,7 +1,7 @@
 #!/bin/python
 # Coding=UTF-8
-# Shadow Suite :: Ethical Hacking Toolkit
-# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
+# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,10 +24,10 @@ global vnumber
 global vtype
 global vcodename
 
-vapi = "0.0.6.1-API"
-vnumber = "0.0.5.7"
+vapi = "0.0.6.2-API"
+vnumber = "0.0.6.0-Linux"
 vtype = "Weekly Build"
-vcodename = "Jargon"
+vcodename = "Kerberos"
 
 def number():
     # example:
@@ -91,7 +91,7 @@ def codename():
     # Handshake                                          ( Used in v0.0.3.8 )
     # Implementation                                     ( Used in v0.0.4.0 )
     # Jargon                                             ( Used in v0.0.4.6 )
-    # Kerberos                                           ( Not yet used )
+    # Kerberos                                           ( Used in v0.0.6.0 )
     # Linux                                              ( Not yet used )
     # Maintenance                                        ( Not yet used )
     # Network                                            ( Not yet used )

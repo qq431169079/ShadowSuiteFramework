@@ -1,7 +1,7 @@
 #!/bin/python
 # Coding=UTF-8
-# Shadow Suite :: Ethical Hacking Toolkit
-# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com
+# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,8 +17,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 # This Application Programming Interface (API) is meantly built for
-# Shadow Suite custom modules. This may be used to integrate with
-# Shadow Suite's features.
+# Shadow Suite LE custom modules. This may be used to integrate with
+# Shadow Suite Linux Edition's features.
+
+# Please take note that the API for Linux Edition is different from
+# Windows Edition. Using an API from a different edition may not work.
+
 try:
     # Python modules
     import os
@@ -36,7 +40,6 @@ try:
     #      API.core.error.warning****()
     #
     import core.find_module
-    import core.hakku
     import core.list_module
     import core.manage_module
     import core.misc
@@ -64,7 +67,6 @@ try:
     #      (Performs a program update.)
     #      API.core.update.prog_update()
     #
-    import core.use_framework
     import core.use_module
     import core.version
     # core.version calling
@@ -110,7 +112,7 @@ try:
     #
 
 except ImportError:
-    print("Error Importing Modules! Now Quitting...")
+    print("Error While Importing Modules! Now Quitting...")
     sys.exit(1)
 
 class Class:
@@ -138,11 +140,6 @@ class Class:
         # Argument "module" is the target module to run.
         module = module.lower()
         core.use_module.use(module)
-
-    def use_framework(self, framework):
-        # Argument "framework" is the target framework to run.
-        framework = framework.lower()
-        core.use_framework.use(framework)
 
     def suggest(self, criteria):
         # Argument "criteria" is the keywords typed in by user.

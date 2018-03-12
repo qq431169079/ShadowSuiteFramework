@@ -1,4 +1,4 @@
 #!/bin/bash
 # Coding=UTF-8
 
-python -B ShadowSuite.py
+python -B ShadowSuiteLE.py

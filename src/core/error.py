@@ -1,7 +1,7 @@
 #!/bin/python
 # Coding=UTF-8
-# Shadow Suite :: Ethical Hacking Toolkit
-# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
+# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ import core.misc
 # ERROR 0004: Back can't be used in the main module
 # ERROR 0005: Requires root permission
 # ERROR 0006: No module with that filename found
-# ERROR 0007: No framework with that filename found
+# ERROR 0007: Vacant 'seat'
 # ERROR 0008: A module was missing message
 
 # WARNING 0001: Feature under dev
@@ -58,15 +58,15 @@ def error0004():
 def error0005():
     # This function is called if user device has no superuser permission but is running a
     # module that needs root.
-    print(core.misc.cr + "ERROR 0005: This operation requires root permissions!\n\nPlease run as root first before proceeding. Search for \'Android Rooting\' if you are using\nShadow Suite on Android, or \'Linux Root User\' if you are running on Linux for details.\nIf you are using Windows Operating System, try to run as Administrator..." + core.misc.cw)
+    print(core.misc.cr + "ERROR 0005: This operation requires root permissions!\n\nPlease run as root first before proceeding. Search for \'Android Rooting\' if you are using\nShadow Suite LE on Android, or \'Linux Root User\' if you are running on Linux for details.\nIf you are using Windows Operating System, try to run as Administrator..." + core.misc.cw)
 
 def error0006():
     # This function is called if no modules were found in the modules directory.
-    print(core.misc.cr + "ERROR 0006: No modules with that name was found.")
+    print(core.misc.cr + "ERROR 0006: No module with that name was found.")
 
 def error0007():
     # This function is called if no frameworks were found in the modules directory.
-    print(core.misc.cr + "ERROR 0007: No frameworks with that name was found.")
+    print(core.misc.cr + "ERROR 0007: VACANT")
 
 def error0008():
     # This function is called if a module was missing.

@@ -1,7 +1,7 @@
 #!/bin/python
 # Coding=UTF-8
-# Shadow Suite :: Ethical Hacking Toolkit
-# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
+# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@ import core.error
 import core.find_module
 import core.list_module
 import core.use_module
-import core.use_framework
 import core.manage_module
 import core.suggest
 import core.logger as logger
@@ -45,10 +44,10 @@ def shell():
                 print("list            :: list modules and frameworks.")
                 print("use module      :: use a module.")
                 print("module info     :: show module information.")
-                print("use framework   :: use a framework")
                 print("manage          :: run module manager.")
                 print("suggest         :: suggest an attack based on your criteria.")
                 print("clear           :: clears the screen.")
+
                 print("\n")
                 print("back            :: back to Shadow Suite shell.")
 
@@ -64,11 +63,6 @@ def shell():
                 miname = input(core.misc.cgr + "Enter the module name to view > " + core.misc.cw)
                 logger.log(0, 'User finds ' + miname + ' module.', 'logfile.txt')
                 core.find_module.find(miname)
-
-            elif command == "use framework":
-                framework_name = input(core.misc.cgr + "Enter the framework name to use > " + core.misc.cw)
-                logger.log(0, 'User uses ' + module_name + ' framework.', 'logfile.txt')
-                core.use_framework.use(framework_name)
 
             elif command == "manage":
                 core.manage_module.manager()

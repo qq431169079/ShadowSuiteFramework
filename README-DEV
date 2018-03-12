@@ -4,7 +4,7 @@ README for Developers
 
       -The program is now ported to Python 3. The program has been
        broken down into little pieces called 'modules'. The Shadow
-       Framework API provides methods to integrate with Shadow Suite.
+       Suite API provides methods to integrate with Shadow Suite LE.
 
 
 
@@ -33,10 +33,10 @@ README for Developers
 
 4.Manual Module Installation
 
-      -As of now, Shadow Suite cannot install modules with just one click.
+      -As of now, Shadow Suite LE cannot install modules with just one command.
        But if you really want to install a module, follow these steps:
 
-       1.Launch Shadow Suite, type 'module', then 'manage', and lastly,
+       1.Launch Shadow Suite LE, type 'module', then 'manage', and lastly,
          type 'generate new'.
 
        2.The program will as you for the filename and it will be created.
@@ -78,6 +78,6 @@ README for Developers
        8.Lastly, test your module:
 
        		$ python ShadowSuite.py
-		[ShadowSuite.py] $: module
+		[ShadowSuiteLE.py] $: module
 		[Module_Manager.py] $: use
 		Enter the module name to use > Your-module-name

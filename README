@@ -1,19 +1,21 @@
-Shadow Suite 0.0.5.7 :: Ethical Hacking Toolkit
-Copyright (C) 2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
+Shadow Suite Linux Edition 0.0.6.0 :: Ethical Hacking Toolkit
+Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
-Shadow Suite is an Ethical Hacking Toolkit.
+Shadow Suite Linux Edition is an Ethical Hacking Toolkit.
 It was born on Thursday, Dec 7 2:44:37 PM, 2017.
-It provides many tools that you can use, written
-mainly in Python, BASH, PHP, etc. Tools that you
-need for reconnaissance, scanning, exploitation,
-encryption, password cracking, and more! Shadow
-Suite is the main project of Shadow Team.
+It provides many tools that you can use,
+written mainly in Python, BASH, PHP, etc.
+Tools that you need for reconnaissance, scanning,
+exploitation, encryption, password cracking, and more!
+Shadow Suite is the main project of Shadow Team.
+If you only have a windows computer, you should look
+for Shadow Suite Windows Edition.
 
 What's new?
 ------------------
-1.Added more tools!
+1.This is now the linux edition... We will have the windows edition!
 
-2.We need testers! Please help us make Shadow Suite a better framework. Thank you!
+2.Participation in this project is open to anyone. :)
 
 Full Feature List
 ------------------------
@@ -22,8 +24,7 @@ Full Feature List
        use. But this framework is different. The commands does not need
        arguments, instead they ask you interactively. For example, it needs
        three arguments. Then the command will ask you "Will i enable this?",
-       "Do i need to do that?", "which file should i work on?", blah, blah,
-       blah.
+       "Do i need to do that?", "which file should i work on?", and so on.
 
 -Open Source
       -Shadow Suite is protected by the GNU General Public License, means
@@ -33,8 +34,8 @@ Full Feature List
 
 -Create Custom Modules from template
       -Do you know Python? Do you know how to code in Python 3? Do you want
-       to create your own module that can penetration test a highly secured
-       computers in just three seconds? Shadow Suite provides you a module
+       to create your own module that can penetration test a Class A network
+       in just three seconds? (exagerrated) Shadow Suite provides you a module
        template to help you start creating your custom module. It also
        provides an Application Programming Interface (API) to help you on
        the integration of Shadow Suite and your custom module.
@@ -86,12 +87,6 @@ Full Feature List
 
                 sample
 
--Third-Party Frameworks Integration
-      -There are pros and cons in every software, as well as frameworks.
-       So Shadow Team decided to integrate Shadow Suite with other frameworks,
-       such as the "Hakku Framework". Hakku Framework provides different
-       modules, and Shadow Suite also provides different tools.
-
 TO-DO List
 ------------------------
 
@@ -131,7 +126,7 @@ Credits
 	R3D#@0R_2H1N A.K.A Tuhinshubhra: for creating Red Hawk.
 	TekDefense: for creating Automater.
 	Filip Waeytens: for creating the original DNSEnum DNS Enumeration tool.
-	Stephan van de Kerkhof: for creating LANScan a system ping / TCP network scanner
+	Stephan van de Kerkhof: for creating LANScan and for encouraging us.
 	Christian Martorella: for creating Metagoofil and The Harvester.
 	g0ne [null0]: for creating Cisco Auditing Tool.
 	Nemesis: for creating Cisco Global Exploiter.
@@ -153,9 +148,6 @@ Credits
 		-Angry Fuzz3r
 		-Slowloris
 
-	==Frameworks==
-	4Shadoww: for creating Hakku Framework.
-
 	==Others==
         Offensive Security: for creating Kali Linux, Kali NetHunter,
 	                    and Exploit Database.
@@ -166,9 +158,10 @@ Credits
 
 Requirements
 ------------------------
-1.Internet Connection. (for performing remote attacks)
-2.Python Interpreter version 3.
-3.Dependencies can be installed automatically in the program. (Needs Internet Connection)
+1.Linux or Linux-based Operating System (Tested on Termux Terminal Emulator and Kali Operating System)
+2.Internet Connection. (for performing remote attacks and/or updating)
+3.Python Interpreter version 3.
+4.Dependencies can be installed automatically in the program. (Needs Internet Connection)
 
 
 Installing & Running
@@ -178,17 +171,17 @@ Installing & Running
 
       $ apt update && apt upgrade -y [1]
       $ apt install python git [2]
-      $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuite/ [3]
-      $ cd ShadowSuite/src && chmod 755 ShadowSuite.py [4]
-      $ ./ShadowSuite.py [5]
+      $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuiteLE/ [3]
+      $ cd ShadowSuiteLE/src && chmod 755 ShadowSuiteLE.py [4]
+      $ ./ShadowSuiteLE.py [5]
       [Shadow] $ full update [6]
       [Shadow] $ help [7]
 
       [1] Update repository package list/s.
       [2] Install Python interpreter and Git client.
-      [3] Clone Shadow Suite from Shadow Team's Github repository.
-      [4] Changes directory to ShadowSuite/src and changes file mode to executable.
-      [5] Run 'ShadowSuite.py'.
+      [3] Clone Shadow Suite Linux Edition from Shadow Team's Github repository.
+      [4] Changes directory to ShadowSuiteLE/src and changes file mode to executable.
+      [5] Run 'ShadowSuiteLE.py'.
       [6] Type 'full update' on Shadow Suite's console to update
           the program and dependencies.
       [7] Type 'help' on Shadow Suite's console to see the help menu.

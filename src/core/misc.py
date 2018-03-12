@@ -1,7 +1,7 @@
 #!/bin/python
 # Coding=UTF-8
-# Shadow Suite :: Ethical Hacking Toolkit
-# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
+# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ def prn_logo():
     print("\\___ \\  __ \\   _` |  _` |  _ \\\\ \\  \\   / \\___ \\  |   | | __|  _ \\")
     print("      | | | | (   | (   | (   |\\ \\  \\ /        | |   | | |    __/")
     print("_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|")
-    print("\nEthical Hacking Toolkit\n\n" + cw)
+    print("\n                    Linux Edition\n                Ethical Hacking Toolkit\n\n" + cw)
     core.version.both()
 
 def prn_brief_license():
@@ -58,8 +58,6 @@ def module_mode():
     print(cy + "[i] Running as module...\n" + cw)
 
 def program_restart():
-    # Restart ####################
     python = sys.executable
     os.execl(python, python, * sys.argv)
     curdir = os.getcwd()
-    ##############################

@@ -1,11 +1,11 @@
 ########################################################################################
 #                                                                                      #
-#                             MODULE FOR SHADOW SUITE                                  #
+#                       MODULE FOR SHADOW SUITE LINUX EDITION                          #
 #                                                                                      #
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 3.5
+# Module version: 4.0
 
 # Import directives
 try:

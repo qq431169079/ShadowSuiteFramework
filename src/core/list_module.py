@@ -1,7 +1,7 @@
 #!/bin/python
 # Coding=UTF-8
-# Shadow Suite :: Ethical Hacking Toolkit
-# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
+# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -142,9 +142,6 @@ def list():
     print()
     print(cb + "\t==15-Others==\n" + cw)
     print(cr + "\t\tHackMe" + cw)
-    print()
-    print(cb + "\t==Integrated Frameworks==\n" + cw)
-    print(cg + "\t\tHakku Framework" + cw)
     print()
     print(cb + "\t==Custom Modules==\n" + cw)
     # If you are adding a custom module, duplicate the code below:

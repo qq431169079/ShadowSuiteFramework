@@ -1,7 +1,7 @@
 #!/bin/env python
 # Coding=UTF-8
-# Shadow Suite :: Ethical Hacking Toolkit
-# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
+# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -97,8 +97,8 @@ def main():
                 print()
                 print("The current version codename of this program is: " + core.version.vcodename)
                 print()
-                print("To automatically update, type \'full update\' on this terminal.")
-                print("To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuite\' and clone the repository.")
+                print("To automatically update, type \'full update\' on this terminal.\n")
+                print("To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuiteLE\' and clone the repository.")
 
             elif menu_input == "prog update":
                 print(core.misc.cgr + "Fetching Shadow Suite from Shadow Team's repository..." + core.misc.cw)

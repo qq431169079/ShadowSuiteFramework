@@ -1,7 +1,7 @@
 #!/bin/python
 # Coding=UTF-8
-# Shadow Suite :: Ethical Hacking Toolkit
-# Copyright (C) 2017  Shadow Team <Public.ShadowTeam@gmail.com>
+# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -48,7 +48,6 @@ def manager():
             if command == "help":
                 print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)
                 print("generate new :: generate a new module template.")
-                print("integrate    :: integrate Shadow Suite with another framework.")
                 print("clear        :: clears the screen.")
                 print("\n")
                 print("back         :: back to Module_Manager.py shell.")
@@ -57,24 +56,6 @@ def manager():
                 cmn = input("Enter the name of your custom module > ")
                 print("Extracting template...")
                 generate_new(cmn)
-
-            elif command == "integrate":
-                print("What framework do you want to integrate with?")
-                print("\n[1] Hakku Framework\n[2] Coming Soon\n\n")
-                infr = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] $: ")
-                if infr == "1":
-                    infr_ask = input("Do you want to download Hakku Framework now (y/n)? > ")
-                    if infr_ask == "y" or infr_ask == "Y":
-                        print("[i] Downloading Hakku Framework via Git...\n")
-                        os.system("git clone https://github.com/4shadoww/hakkuframework")
-                        print("\n[i] Running Hakku Framework...\n")
-                        core.use_framework.use("hakku")
-
-                elif infr == "2":
-                    core.error.warning0002()
-
-                else:
-                    core.error.error0007()
 
             elif command == "clear":
                 os.system("clear")
