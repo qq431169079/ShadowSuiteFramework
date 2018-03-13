@@ -3,7 +3,7 @@
 
 import os
 
-def log(TYPE, MSG, LOGFILE):
+def log(TYPE=3, MSG="", LOGFILE="logfile.txt"):
     TYPE = int(TYPE)
     line = '========================================'
 

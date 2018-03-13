@@ -20,6 +20,7 @@
 try:
     import os
     import sys
+    import traceback
     import core.error
     import core.misc
     import core.update
@@ -35,6 +36,9 @@ except ImportError:
     cr = '\033[31m'
     cw = '\033[0m'
     print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue... Please make sure that required modules are installed and running properly!" + cw)
+    print("==================== TRACEBACK ====================")
+    traceback.print_exc()
+    print("===================================================")
     sys.exit(2)
 
 def main():
@@ -173,6 +177,9 @@ def main():
             cr = '\033[31m'
             cw = '\033[0m'
             print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue..." + cw)
+            print("==================== TRACEBACK ====================")
+            traceback.print_exc()
+            print("===================================================")
             sys.exit(2)
 
 # Starts the program

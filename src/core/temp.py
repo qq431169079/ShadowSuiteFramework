@@ -11,6 +11,7 @@
 try:
     import os
     import sys
+    import traceback
     import core.error as error
     # import API
     # Uncomment the line above if your module will use Shadow Suite's API.
@@ -19,6 +20,9 @@ try:
 
 except ImportError:
     print("[!] A module is missing! Please install the required modules...")
+    print("==================== TRACEBACK ====================")
+    traceback.print_exc()
+    print("===================================================")
 
 # Put your module information here.
 info = {

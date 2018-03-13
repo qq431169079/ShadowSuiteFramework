@@ -27,6 +27,7 @@ try:
     # Python modules
     import os
     import sys
+    import traceback
     import time
 
     # Shadow Suite modules
@@ -113,6 +114,10 @@ try:
 
 except ImportError:
     print("Error While Importing Modules! Now Quitting...")
+    print()
+    print("==================== TRACEBACK ====================")
+    traceback.print_exc()
+    print("===================================================")
     sys.exit(1)
 
 class Class:
