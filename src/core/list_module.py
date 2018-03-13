@@ -43,7 +43,7 @@ def list():
     print(cr + "\tUnstable" + cw)
     print(cp + "\tCustom Module\n\n" + cw)
     # DEV0002: Add new modules here, self-explanatory.
-    print(cb + "\t==01-Informarion Gathering==\n" + cw)
+    print(cb + "\t==01-Information Gathering==\n" + cw)
     print(cg + "\t\tAutomater" + cw)
     print(cg + "\t\tDNSEnum" + cw)
     print(cg + "\t\tDNSMap" + cw)

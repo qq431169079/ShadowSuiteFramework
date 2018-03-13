@@ -177,4 +177,12 @@ def main():
 
 # Starts the program
 if __name__ == "__main__":
-    main()
+    # Check python version first before main() function execution
+    req_py_version = (3, 6, 4)
+    cur_py_version = sys.version_info
+    if cur_py_version < req_py_version:
+        print('ERROR: Python 3.6.4 or greater is recommended. Now Quitting...')
+        sys.exit()
+
+    else:
+        main()
