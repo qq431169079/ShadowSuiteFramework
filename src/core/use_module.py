@@ -157,6 +157,11 @@ def use(module_name):
         import modules.les
         modules.les.main()
 
+    elif module_name == "routersploit":
+        print("Module found!")
+        import modules.routersploit
+        modules.routersploit.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

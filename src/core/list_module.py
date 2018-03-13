@@ -113,7 +113,7 @@ def list():
     print(cb + "\t==08-Exploitation Tools==\n" + cw)
     print(cg + "\t\tLinux Exploit Suggester (LES)" + cw)
     print(cr + "\t\tMetasploit Framework (MSF)" + cw)
-    print(cr + "\t\tRouterSploit" + cw)
+    print(cg + "\t\tRouterSploit" + cw)
     print(cr + "\t\tShellNoob" + cw)
     print()
     print(cb + "\t==09-Sniffing and Spoofing==\n" + cw)

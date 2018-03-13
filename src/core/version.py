@@ -26,7 +26,7 @@ global vtype
 global vcodename
 
 vapi = "0.0.6.2-API"
-vnumber = "0.0.6.0-Linux"
+vnumber = "0.0.6.1-Linux"
 vtype = "Weekly Build"
 vcodename = "Kerberos"
 

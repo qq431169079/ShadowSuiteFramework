@@ -123,6 +123,10 @@ def api(criteria):
         print(core.misc.cg + "CUPP :: Common user passwords profiler.\n" + core.misc.cw)
         results = results + 1
 
+    if 'routersploit' in criteria or 'marcin' in criteria and 'bury' in criteria or 'router' in criteria or 'exploit' in criteria or 'framework' in criteria:
+        print(core.misc.cg + "RouterSploit :: A Router Exploitation Framework.\n" + core.misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)
