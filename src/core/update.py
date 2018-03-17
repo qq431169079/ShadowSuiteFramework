@@ -19,6 +19,7 @@
 import os
 import core.misc
 import core.error
+import core.fullupdate
 
 def full_update():
     process = "4"
@@ -27,7 +28,7 @@ def full_update():
     print(core.misc.cb + "Installing dependency files... (1/" + process + ")\n" + core.misc.cw)
     os.system("bash instdeps.bash")
     print(core.misc.cb + "Updating Shadow Suite... (2/" + process + ")\n" + core.misc.cw)
-    os.system("git pull")
+    core.fullupdate.update()
     print(core.misc.cb + "Installing python modules... (3/" + process + ")\n" + core.misc.cw)
     os.system("pip install -r python_requirements")
     print(core.misc.cb + "Installing perl modules... (4/" + process + ")\n" + core.misc.cw)
@@ -49,4 +50,5 @@ def prog_update():
     process = "1"
     
     print(core.misc.cb + "Updating Shadow Suite... (1/" + process + ")\n" + core.misc.cw)
-    os.system("git pull")
+    core.fullupdate.check_for_updates()
+    core.fullupdate.update()

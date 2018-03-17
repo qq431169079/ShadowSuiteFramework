@@ -65,7 +65,6 @@ def error0006():
     print(core.misc.cr + "ERROR 0006: No module with that name was found.")
 
 def error0007():
-    # This function is called if no frameworks were found in the modules directory.
     print(core.misc.cr + "ERROR 0007: VACANT")
 
 def error0008():
