@@ -11,7 +11,7 @@
 try:
     import os
     import sys
-    import core.error
+    from core import error
     import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -23,12 +23,12 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Fl00d", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "DedSecTL and AndroSec1337", # Author
         "desc": "A simple DoS tool for target hosts with low-level security.", # Brief description
         "email": "none", # Email
         "authorinfo": "Ported to Python 3 by Catayao56", # Additional information about the author; this could be
-        "lastupdate": "Mar. 03, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -84,7 +84,8 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
+            return 0
 
         else:
             module_body()
@@ -100,13 +101,13 @@ def module_body():
     selection = input(">>> ")
     selection = int(selection)
     if selection == 1:
-        os.system("python modules/FL00D/fl00d.py")
+        from modules.FL00D import fl00d
 
     elif selection == 2:
-        os.system("python modules/FL00D/fl00d2.py")
+        from modules.FL00D import fl00d2
 
     elif selection == 3:
         pass
 
     else:
-        API.core.error.error0001()
+        print(API.error.error0001)

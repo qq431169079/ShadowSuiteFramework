@@ -5,14 +5,14 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 4.0
+# Module version: 4.1
 
 # Import directives
 try:
     import os
     import sys
     import traceback
-    import core.error as error
+    from core import error
     # import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -88,7 +88,8 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
+            return 0
 
         else:
             module_body()

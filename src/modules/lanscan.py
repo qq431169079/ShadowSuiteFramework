@@ -10,7 +10,7 @@
 try:
     import os
     import sys
-    import core.error
+    from core import error
     import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -23,12 +23,12 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "LANScan", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.2", # version
+        "version": "2.2", # version
         "author": "Stephan van de Kerkhof", # Author
         "desc": "system ping / TCP network scanner", # Brief description
         "email": "none", # Email
         "authorinfo": "https://github.com/stephanvandekerkhof/", # Additional information about the author; this could be
-        "lastupdate": "Jan. 16, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -80,7 +80,7 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
 
         else:
             module_body()
@@ -97,4 +97,4 @@ def module_body():
 def lanscan():
     print("[i] Running LANScan...")
     os.system("python2 modules/LANSCAN/lanscan.py")
-    API.Class().finish()
+    print(API.ShadowSuiteLE().finish)

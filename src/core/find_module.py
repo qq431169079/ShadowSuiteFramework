@@ -18,8 +18,8 @@
 
 import os
 import sys
-import core.misc
-import core.error
+from core import misc
+from core import error
 
 def find(module_name):
     print("searching for module named \'" + module_name + "\' in modules directory...\n\n\n")
@@ -171,4 +171,4 @@ def find(module_name):
 
     # Hey! don't modify this thing below!
     else:
-        core.error.error0006()
+        print(error.error0006)

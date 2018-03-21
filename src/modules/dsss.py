@@ -11,7 +11,7 @@
 try:
     import os
     import sys
-    import core.error
+    from core import error
     import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -23,12 +23,12 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Damn Small SQLi Scamner (DSSS)", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "Miroslav Stampar", # Author
         "desc": "A fully functional SQL Injection vulnerability scanner (supporting GET and POST parameters) written in under 100 lines of code.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Mar. 08, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -84,7 +84,8 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
+            return 0
 
         else:
             module_body()
@@ -102,5 +103,5 @@ def module_body():
     target = input("Target URL (e.g. \"http://www.target.com/page.php?id=1\") > ")
     print()
     os.system("cd modules/DSSS && python2 dsss.py -u " + target)
-    API.Class().finish()
+    print(API.ShadowSuiteLE().finish)
 

@@ -2,49 +2,56 @@
 
 # Python modules
 
+import os
+import sys
 import requests
 import json
-import os
-from packaging import version
+# from packaging import version
 import urllib.request
-from glob import glob
 import shutil
-import sys
 import distutils.dir_util
+from glob import glob
+from core import misc
+from core import error
 
 def check_for_updates():
     try:
-        print(colors.green+"checking for updates..."+colors.end)
+        print(misc.cg + "[i] Checking for updates..." + misc.cw)
         r = requests.get("https://api.github.com/repos/Sh4d0w-T34m/ShadowSuiteLE/releases/latest")
         if(r.ok):
             items = json.loads(r.text or r.content)
             rver = items['tag_name']
         
         else:
-            print("error")
+            print(error.error0007)
 
     except Exception as error:
-        print(colors.red+"error: "+str(error)+colors.end)
+        print(misc.cr + "Error: " + str(error) + misc.cw)
 
 def update():
-    answer = input("do you want to start update? ")
+    answer = input(misc.cgr + "Do you want to start update? > " + misc.cw)
     answer = answer.lower()
-    
     if answer != "yes" and answer != "y":
-        return
+        return None
     
     else:
         url = "https://github.com/Sh4d0w-T34m/ShadowSuiteLE/tarball/master"
-        print(colors.green+"downloading..."+colors.end)
-        u = urllib.request.urlopen(url)
-        print(colors.green+"clearing tmp..."+colors.end)
+        print(misc.cg + "Downloading..." + misc.cw)
+        try:
+            u = urllib.request.urlopen(url)
+
+        except urllib.error.URLError:
+            print(error.error0010)
+            return None
+
+        print(misc.cg + "Clearing tmp..." + misc.cw)
         mscop.clear_tmp()
-        print(colors.green+"writing..."+colors.end)
+        print(misc.cg + "Writing..." + misc.cw)
         f = open(getpath.tmp()+"update.tar.gz", "wb")
         f.write(u.read())
         f.close()
-        print(colors.green+"extracting..."+colors.end)
-        os.system("tar -zxvf '"+getpath.tmp()+"update.tar.gz' -C '"+getpath.tmp()+"'")
+        print(misc.cg + "Extracting..." + misc.cw)
+        os.system("tar -zxvf '" + getpath.tmp() + "update.tar.gz' -C '" + getpath.tmp() + "'")
         files = glob(getpath.tmp()+"*/")
         update_path = None
         for file in files:
@@ -53,21 +60,21 @@ def update():
                 break
             
         if update_path == None:
-            print(colors.red+"error: update package not found!"+colors.end)
+            print(misc.cr + error.error0009 + misc.cw)
             return
         
-        files = glob(update_path+"*")
-        print(colors.green+"installing update..."+colors.end)
+        files = glob(update_path + "*")
+        print(misc.cg + "Installing update..." + misc.cw)
         for file in files:
             file_name = file.replace(update_path, "")
-            print(getpath.main()+file_name)
+            print(getpath.main() + file_name)
             if os.path.isfile(file):
-                shutil.copyfile(file, getpath.main()+file_name)
+                shutil.copyfile(file, getpath.main() + file_name)
 
             else:
-                distutils.dir_util.copy_tree(file, getpath.main()+file_name)
+                distutils.dir_util.copy_tree(file, getpath.main() + file_name)
                 
-        print(colors.green+"clearing tmp..."+colors.end)
+        print(misc.cg + "Clearing tmp..." + misc.cw)
         mscop.clear_tmp()
-        print(colors.green+"update installed! closing Shadow Suite LE..."+colors.end)
-        sys.exit()
+        print(misc.cy + "Update installed! closing Shadow Suite LE..." + misc.cw)
+        sys.exit(0)

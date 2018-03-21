@@ -9,7 +9,7 @@
 # Import directives
 import os
 import sys
-import core.error
+from core import error
 import API
 # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -18,12 +18,12 @@ import API
 # Put your module information here.
 info = {
         "name": "DNSEnum", # Module filename (Change filename if you want to change this)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "Filip Waeytens", # Author
         "desc": "multithreaded perl script to enumerate DNS information of a domain\nand to discover non-contiguous ip blocks.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Jan. 08, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -75,7 +75,8 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
+            return 0
 
         else:
             module_body()
@@ -94,4 +95,4 @@ def module_body():
     print("Performing enumeration...")
     os.system("perl modules/DNSENUM/dnsenum.pl --enum -v -o $PWD/output/"+ output + " " + target)
     print()
-    API.Class().finish()
+    print(API.ShadowSuiteLE().finish)

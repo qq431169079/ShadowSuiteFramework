@@ -18,18 +18,32 @@
 
 # Import Python and Core modules to run properly
 try:
+    print("Importing 'os' module...")
     import os
+    print("Importing 'sys' module...")
     import sys
+    print("Importing 'traceback' module...")
     import traceback
-    import core.error
-    import core.misc
-    import core.update
-    import core.version
-    import core.module_manager
-    import core.suggest
-    import core.logger as logger
-    import core.joke
-    import core.quote
+    print("Importing 'error' module...")
+    from core import error
+    print("Importing 'misc' module...")
+    from core import misc
+    print("Importing 'update' module...")
+    from core import update
+    print("Importing 'version' module...")
+    from core import version
+    print("Importing 'module_manager' module...")
+    from core import module_manager
+    print("Importing 'suggest' module...")
+    from core import suggest
+    print("Importing 'logger' module...")
+    from core import logger
+    print("Importing 'joke' module...")
+    from core import joke
+    print("Importing 'quote' module...")
+    from core import quote
+    print("Finished Importing modules...\n")
+    misc.programFunctions().pause(False)
 
 except ImportError:
     # This function is called if a module was missing.
@@ -43,12 +57,12 @@ except ImportError:
 
 def main():
     logger.log(0, 'Shadow Suite launched...', 'logfile.txt')
-    print("\n\n\n\n\n") # Creates five blank lines / new lines / line breaks / whatever you wanna call it.
-    core.misc.prn_logo() # Prints logo
+    print()
+    print(misc.logo) # Prints logo
     print("\n")
-    core.misc.prn_brief_license() # Prints a brief information about the license.
+    print(misc.brief_license) # Prints a brief information about the license.
     print("\n")
-    core.quote.quote()
+    print(quote.quote())
     print("\n")
     print("[i] If you need help, type 'help'...")
     print("\n")
@@ -56,7 +70,7 @@ def main():
         # If the program is not running independently, then a message will be shown, while
         # still allowing the user to use it.
         logger.log(0, 'Shadow Suite running as module...', 'logfile.txt')
-        core.misc.module_mode()
+        print(misc.module_mode)
 
     # This while loop enables the user to enter commands inside shadow suite without
     # needing to run the program everytime a command is entered.
@@ -66,16 +80,16 @@ def main():
             # Otherwise, $ will be shown.
             if os.geteuid() != 0:
                 logger.log(0, 'Running as normal user...', 'logfile.txt')
-                menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] $: ")
+                menu_input = input("[" + misc.cb + misc.fb + misc.fi + "ShadowSuite.py" + misc.fr + misc.cw + "] $: ")
             else:
                 logger.log(0, 'Running as root...', 'logfile.txt')
-                menu_input = input("[" + core.misc.cb + core.misc.fb + core.misc.fi + "ShadowSuite.py" + core.misc.fr + core.misc.cw + "] #: ")
+                menu_input = input("[" + misc.cb + misc.fb + misc.fi + "ShadowSuite.py" + misc.fr + misc.cw + "] #: ")
 
             menu_input.lower()
 
             if menu_input == "help":
-                print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr)
-                print(core.misc.cw + "help              :: prints this help menu.")
+                print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr)
+                print(misc.cw + "help              :: prints this help menu.")
                 print("license           :: opens the license file via less command.")
                 print("info              :: prints a brief information about Shadow Suite.")
                 print("prog update       :: update Shadow Suite.")
@@ -96,81 +110,82 @@ def main():
 
             elif menu_input == "info":
                 print()
-                print("The current version number of this program is: " + core.version.vnumber)
+                print("The current version number of this program is: " + version.vnumber)
                 print()
-                print("The current version type of this program is: " + core.version.vtype)
+                print("The current version type of this program is: " + version.vtype)
                 print()
-                print("The current version codename of this program is: " + core.version.vcodename)
+                print("The current version codename of this program is: " + version.vcodename)
                 print()
                 print("To automatically update, type \'full update\' on this terminal.\n")
                 print("To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuiteLE\' and clone the repository.")
 
             elif menu_input == "prog update":
-                print(core.misc.cgr + "Fetching Shadow Suite from Shadow Team's repository..." + core.misc.cw)
+                print(misc.cgr + "Fetching Shadow Suite from Shadow Team's repository..." + misc.cw)
                 logger.log(0, 'User performs a program update...', 'logfile.txt')
-                core.update.prog_update()
+                update.prog_update()
 
             elif menu_input == "deps update":
-                print(core.misc.cgr + "Downloading and installing dependencies..." + core.misc.cw)
+                print(misc.cgr + "Downloading and installing dependencies..." + misc.cw)
                 logger.log(0, 'User performs a dependency update...', 'logfile.txt')
-                core.update.deps_update()
+                update.deps_update()
 
             elif menu_input == "full update":
-                print(core.misc.cgr + "Do you really want to perform a full update (y/n)?" + core.misc.cw)
+                print(misc.cgr + "Do you really want to perform a full update (y/n)?" + misc.cw)
                 full_updateinput = input(" > ")
                 if full_updateinput == "y" or full_updateinput == "Y":
                     logger.log(0, 'User performs a full update...', 'logfile.txt')
-                    core.update.full_update()
+                    update.full_update()
 
                 elif full_updateinput == "n" or full_updateinput == "N":
-                    print(core.misc.cr + "Full update cancelled by user..." + core.misc.cw)
+                    print(misc.cr + "Full update cancelled by user..." + misc.cw)
 
                 else:
-                    core.error.error0001()
+                    print(error.error0001)
 
             elif menu_input == "changelog":
-                core.version.changelog()
+                version.changelog()
 
             elif menu_input == "module":
                 # Runs the module_manager.py module.
                 logger.log(0, 'User enters module_manager shell...', 'logfile.txt')
-                core.module_manager.shell()
+                module_manager.shell()
 
             elif menu_input == "suggest":
                 criteria = input("Enter keywords separated by comma (dns, wireless, cracking) > ")
-                core.suggest.api(criteria)
+                suggest.api(criteria)
 
             elif menu_input == "clear":
-                os.system("clear")
+                misc.programFunctions().clrscrn()
 
             elif menu_input == "back":
                 logger.log(2, 'ERROR 0004: Back can\'t be used in the main module', 'logfile.txt')
-                core.error.error0004()
+                print(error.error0004)
 
             elif menu_input == "restart":
                 logger.log(0, 'User restarted Shadow Suite...', 'logfile.txt')
                 os.system("clear")
-                core.misc.program_restart()
+                misc.programFunctions().program_restart()
 
             elif menu_input == "quit":
-                core.joke.joke()
+                print(joke.joke())
                 print("Quitting Shadow Suite...\n")
                 logger.log(0, 'User quits Shadow Suite...', 'logfile.txt')
                 sys.exit(0)
 
             elif menu_input == "exit":
-                core.joke.joke()
+                print(joke.joke())
                 print("Quitting Shadow Suite...\n")
                 logger.log(0, 'User exits Shadow Suite...', 'logfile.txt')
                 sys.exit(0)
 
             else:
                 logger.log(2, 'ERROR 0001: Invalid Input', 'logfile.txt')
-                core.error.error0001()
+                print(error.error0001)
 
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C Detected...', 'logfile.txt')
-            core.error.error0002()
+            print(error.error0002)
+            sys.exit(1)
 
         except ImportError:
             # This function is called if a module was missing.
@@ -189,7 +204,8 @@ if __name__ == "__main__":
     cur_py_version = sys.version_info
     if cur_py_version < req_py_version:
         print('ERROR: Python 3.6.4 or greater is recommended. Now Quitting...')
-        sys.exit()
+        sys.exit(2)
 
     else:
+        misc.programFunctions().clrscrn()
         main()

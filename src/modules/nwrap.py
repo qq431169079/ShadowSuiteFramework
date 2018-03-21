@@ -9,7 +9,7 @@
 # Import directives
 import os
 import sys
-import core.error
+from core import error
 # import API
 # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -18,12 +18,12 @@ import core.error
 # Put your module information here.
 info = {
         "name": "NWrap", # Module filename (Change filename if you want to change this)
-        "version": "3.4", # version
+        "version": "4.4", # version
         "author": "Catayao56", # Author
         "desc": "Wrapper script for NMap Network Mapper.", # Brief description
         "email": "Catayao56@gmail.com", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Jan. 07, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "False", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -75,7 +75,7 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
 
         else:
             module_body()
@@ -302,5 +302,5 @@ def module_body():
         print("Quitting NWRAP...")
 
     else:
-	    core.error.error0001()
+	    print(error.error0001)
 

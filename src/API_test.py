@@ -1,90 +1,73 @@
-#!/bin/python
-# Coding=UTF-8
-# This script will test the Shadow Suite Application Programming Interface (API). 
+#!/usr/bin/env python
 
-import API
-import time
+import os
 import sys
 
-API.os.system("clear")
-print("Preparing to test API...")
-time.sleep(5)
-print("Testing API...")
-print()
-print("Testing error functions via API...")
-time.sleep(3)
-API.core.error.error0001()
-print("Skipping error 0002()...")
-API.core.error.error0003()
-API.core.error.error0004()
-API.core.error.error0005()
-API.core.error.error0006()
-API.core.error.error0007()
-print("Testing find_module() function via API with the valid argument \"sample\"...")
-API.Class().find_module("sample")
-print("Testing find_module() function via API with the invalid argument \"nsjs25ijw3\"...")
-API.Class().find_module("nsjs25ijw3")
-print("Testing warning functions via API...")
-time.sleep(3)
-API.core.error.warning0001()
-API.core.error.warning0002()
-print("Testing prn_logo() function via API...")
-time.sleep(3)
-API.core.misc.prn_logo()
-print("Testing module_mode() function via API...")
-time.sleep(3)
-API.core.misc.module_mode()
-print("Testing full update via API...")
-time.sleep(3)
-API.core.update.full_update()
-print("Testing deps update via API...")
-time.sleep(3)
-API.core.update.deps_update()
-print("Testing program update via API...")
-time.sleep(3)
-API.core.update.prog_update()
-print("Testing version functions via API...")
-time.sleep(3)
-API.core.version.number()
-print()
-API.core.version.type()
-print()
-API.core.version.codename()
-print()
-API.core.version.both()
-print("Getting API_version variable from API...")
-apiversion = API.Class().API_version
-print(apiversion)
-print("Getting ShadowSuite_ver_num variable from API...")
-ver_num = API.Class().ShadowSuite_ver_num
-print(ver_num)
-print("Getting ShadowSuite_ver_type variable from API...")
-ver_type = API.Class().ShadowSuite_ver_type
-print(ver_type)
-print("Getting ShadowSuite_ver_codename variable from API...")
-ver_cn = API.Class().ShadowSuite_ver_codename
-print(ver_cn)
-print("Calling generate_new_module(cmd) method with a valid argument 'APItest'...")
-time.sleep(3)
-API.Class().generate_new_module("APItest")
-print("Calling list_module() method...")
-time.sleep(3)
-API.Class().list_module()
-print("Calling use_module(module) method with the valid argument \"sample\"...")
-time.sleep(3)
-API.Class().use_module("sample")
-print("Calling use_framework(framework) method with the valid argument \"hakku\"...")
-time.sleep(3)
-API.Class().use_framework("hakku")
-print("Calling use_module(module) method with the invalid argument \"nsjs25ijw3\"...")
-time.sleep(3)
-API.Class().use_module("nsjs25ijw3")
-print("Calling use_framework(framework) method with the invalid argument \"nsjs25ijw3\"...")
-time.sleep(3)
-API.Class().use_module("nsjs25ijw3")
-print("Calling suggest(criteria) method with the valid argument \"dns\"...")
-API.Class().suggest("dns")
-print("Calling finish() method...")
-API.Class().finish()
-print("Test finished!!! Now quitting...")
-sys.exit(0)
+def main():
+    try:
+        print('Importing time module...')
+        import time
+        time.sleep(1)
+    
+    except ImportError:
+        print('Error importing module!')
+        sys.exit(1)
+
+    try:
+        print('Importing API module...')
+        import API
+        time.sleep(1)
+
+    except ImportError:
+        print('Error importing module!')
+        sys.exit(1)
+
+    print('Preparing to test API...')
+    time.sleep(3)
+
+    try:
+        print('Testing error module...')
+        print()
+        print(API.error.error0001)
+        print()
+        print(API.error.error0002)
+        print()
+        print(API.error.error0003)
+        print()
+        print(API.error.error0004)
+        print()
+        print(API.error.error0005)
+        print()
+        print(API.error.error0006)
+        print()
+        print(API.error.error0007)
+        print()
+        print(API.error.error0008)
+        print()
+        print(API.error.warning0001)
+        print()
+        print(API.error.warning0002)
+        print()
+        time.sleep(1)
+
+    except:
+        print('Error while testing error module...')
+        sys.exit(1)
+
+    try:
+        print('Testing misc module...')
+        print()
+        print(API.misc.logo)
+        print()
+        print(API.misc.module_mode_info)
+        print()
+        print('Skipping program_restart()')
+        print()
+        time.sleep(1)
+
+    except:
+        print('Error while testing misc module...')
+        sys.exit(1)
+
+if __name__ == '__main__':
+    main()

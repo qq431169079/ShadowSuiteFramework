@@ -18,7 +18,7 @@
 
 import os
 import sys
-import core.misc
+from core import misc
 
 # ERROR 0001: Invalid Input message
 # ERROR 0002: CTRL-C Detection
@@ -26,7 +26,7 @@ import core.misc
 # ERROR 0004: Back can't be used in the main module
 # ERROR 0005: Requires root permission
 # ERROR 0006: No module with that filename found
-# ERROR 0007: Vacant 'seat'
+# ERROR 0007: An error occured while updating Shadow Suite.
 # ERROR 0008: A module was missing message
 
 # WARNING 0001: Feature under dev
@@ -38,41 +38,35 @@ import core.misc
     #                                                                                #
     ##################################################################################
 
-def error0001():
-    # This function prints the "Invalid Input message.
-    print(core.misc.cr + "ERROR 0001: Invalid Input! Please check your command.\n[i] TIP: commands are case-sensitive!\n[i] Type 'help' for commands and their descriptions." + core.misc.cw)
+# This function prints the "Invalid Input message.
+error0001 = misc.cr + "ERROR 0001: Invalid Input! Please check your command.\n[i] TIP: commands are case-sensitive!\n[i] Type 'help' for commands and their descriptions." + misc.cw
 
-def error0002():
-    # This function prints this message if CTRL+C is detected.
-    print(core.misc.cr + "ERROR 0002: Forcing Shadow Suite to quit..." + core.misc.cw)
-    sys.exit(1)
+# This function prints this message if CTRL+C is detected.
+error0002 = misc.cr + "ERROR 0002: Forcing Shadow Suite to quit..." + misc.cw
 
-def error0003():
-    # This function prints this message if 'quit' or 'exit' command is entered when inside a module.
-    print(core.misc.cr + "ERROR 0003: 'exit' and 'quit' cannot be used inside a module; use 'back' instead..." + core.misc.cw)
+# This function prints this message if 'quit' or 'exit' command is entered when inside a module.
+error0003 = misc.cr + "ERROR 0003: 'exit' and 'quit' cannot be used inside a module; use 'back' instead..." + misc.cw
 
-def error0004():
-    # This function is called only in ShadowSuite.py
-    print(core.misc.cr + "ERROR 0004: 'back' cannot be used in the main module; use 'quit' or 'exit' instead..." + core.misc.cw)
+# This function is called only in ShadowSuite.py
+error0004 = misc.cr + "ERROR 0004: 'back' cannot be used in the main module; use 'quit' or 'exit' instead..." + misc.cw
 
-def error0005():
-    # This function is called if user device has no superuser permission but is running a
-    # module that needs root.
-    print(core.misc.cr + "ERROR 0005: This operation requires root permissions!\n\nPlease run as root first before proceeding. Search for \'Android Rooting\' if you are using\nShadow Suite LE on Android, or \'Linux Root User\' if you are running on Linux for details.\nIf you are using Windows Operating System, try to run as Administrator..." + core.misc.cw)
+# This function is called if user device has no superuser permission but is running a module that needs root.
+error0005 = misc.cr + "ERROR 0005: This operation requires root permissions!\n\nPlease run as root first before proceeding. Search for \'Android Rooting\' if you are using\nShadow Suite LE on Android, or \'Linux Root User\' if you are running on Linux for details.\nIf you are using Windows Operating System, try to run as Administrator..." + misc.cw
 
-def error0006():
-    # This function is called if no modules were found in the modules directory.
-    print(core.misc.cr + "ERROR 0006: No module with that name was found.")
+# This function is called if no modules were found in the modules directory.
+error0006 = misc.cr + "ERROR 0006: No module with that name was found." + misc.cw
 
-def error0007():
-    print(core.misc.cr + "ERROR 0007: VACANT")
+# Vacant
+error0007 = misc.cr + "ERROR 0007: An error occured while updating Shadow Suite." + misc.cw
 
-def error0008():
-    # This function is called if a module was missing.
-    cr = '\033[31m'
-    cw = '\033[0m'
+# This function is called if a module was missing
+error0008 = "ERROR 0008: A module is missing!\nPlease re-install/re-download the missing module to continue..."
 
-    print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download the missing module to continue..." + cw)
+# This is called if the update package is not found.
+error0009 = "ERROR 0009: The update package was not found! Maybe corrupted?"
+
+# This is called if we need internet but there is no internet connection.
+error0010 = "ERROR 0010: There is no internet connection!"
 
     ##################################################################################
     #                                                                                #
@@ -80,10 +74,8 @@ def error0008():
     #                                                                                #
     ##################################################################################
 
-def warning0001():
-    # This function is vacant
-    print(core.misc.cy + "WARNING 0001: This feature was still under development, it may contain bugs." + core.misc.cw)
+# This function is vacant
+warning0001 = misc.cy + "WARNING 0001: This feature was still under development, it may contain bugs." + misc.cw
 
-def warning0002():
-    # This function should be called if a feature is not yet implemented.
-    print(core.misc.cy + "WARNING 0002: Feature not yet implemented, cannot proceed..." + core.misc.cw)
+# This function should be called if a feature is not yet implemented.
+warning0002 = misc.cy + "WARNING 0002: Feature not yet implemented, cannot proceed..." + misc.cw

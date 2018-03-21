@@ -11,7 +11,7 @@
 try:
     import os
     import sys
-    import core.error
+    from core import error
     # import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -23,12 +23,12 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Hash Identifier", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "Zion3R", # Author
         "desc": "Identifies hash types.", # Brief description
         "email": "Root@Blackploit.com", # Email
         "authorinfo": "www.Blackploit.com", # Additional information about the author; this could be
-        "lastupdate": "Mar. 09, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "False", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -84,7 +84,8 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
+            return 0
 
         else:
             module_body()

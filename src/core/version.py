@@ -17,20 +17,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
-import core.misc
-import core.error
+from core import misc
+from core import error
 
-global vapi
-global vnumber
-global vtype
-global vcodename
-
-vapi = "0.0.6.2-API"
-vnumber = "0.0.6.1-Linux"
+vapi = "0.0.6.1-API"
+vnumber = "0.0.7.0-Linux"
 vtype = "Weekly Build"
-vcodename = "Kerberos"
+vcodename = "Lambda"
+both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
 
-def number():
     # example:
     # Program's version is...
     #
@@ -39,7 +34,7 @@ def number():
     #           ^           ^           ^            ^
     #         Major       Minor        Beta      Weekly Build
     #        version     version     version       version
-    print(core.misc.cg + vnumber + core.misc.cw)
+    #
     # Major version: Major release of the prpgram.
     #                e.g. it's the 5th major release, then the major
     #                version is 5.
@@ -56,9 +51,6 @@ def number():
     #               Very unstable, many tools are under production.
     #               like nightly builds, but instead of updating nightly,
     #               it's updating weekly.
-
-def type():
-    print(core.misc.cg + vtype + core.misc.cw)
     #
     # Weekly Build: first phase of release cycle. Many tools under
     #               production, program has so many bugs, very unstable.
@@ -73,9 +65,6 @@ def type():
     #               all known bugs are fixed. In this phase, you can now
     #               start a new maintenance update, which means the release
     #               cycle will go back to Weekly Build.
-
-def codename():
-    print(core.misc.cg + vcodename + core.misc.cw)
     #
     # (Catayao56:) I suggest that you use codenames in alphabetical order.
     # What i mean is this:
@@ -93,7 +82,7 @@ def codename():
     # Implementation                                     ( Used in v0.0.4.0 )
     # Jargon                                             ( Used in v0.0.4.6 )
     # Kerberos                                           ( Used in v0.0.6.0 )
-    # Linux                                              ( Not yet used )
+    # Lambda                                             ( Used in v0.0.7.0 )
     # Maintenance                                        ( Not yet used )
     # Network                                            ( Not yet used )
     # Open Source                                        ( Not yet used )
@@ -108,9 +97,6 @@ def codename():
     # Xfr                                                ( Not yet used )
     # YWSYLS                                             ( Not yet used )
     # Zero-Day                                           ( Not yet used )
-
-def both():
-    print(core.misc.cg + vnumber + "\t" + vtype + "\tCodename: " + vcodename + core.misc.cw)
 
 def changelog():
     print("Changelog:\n\n\n")

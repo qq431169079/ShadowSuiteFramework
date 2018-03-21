@@ -31,72 +31,72 @@ try:
     import time
 
     # Shadow Suite modules
-    import core.error
-    # core.error calling
+    from core import error
+    # error calling
     #      
     #      (Replace * with error number. See core/error.py for details.)
-    #      API.core.error.error****()
+    #      error = API.error.error****
     #
     #      (Replace * with warning number. See core/error.py for details.)
-    #      API.core.error.warning****()
+    #      error = API.error.warning****
     #
-    import core.find_module
-    import core.list_module
-    import core.manage_module
-    import core.misc
-    # core.misc calling
+    from core import find_module
+    from core import list_module
+    from core import manage_module
+    from core import misc
+    # misc calling
     #
     #      (Prints Shadow Suite logo and version.)
-    #      API.core.misc.prn_logo()
+    #      logo = API.misc.logo
     #
     #      (Prints "module mode" message.)
-    #      API.core.misc.module_mode()
+    #      mm = API.misc.module_mode_info
     #
     #      (Restarts Shadow Suite.)
-    #      API.core.misc.restart_program()
+    #      API.misc.restart_program()
     #
-    import core.suggest
-    import core.update
-    # core.update calling
+    from core import suggest
+    from core import update
+    # update calling
     #
     #      (Performs a full update.)
-    #      API.core.update.full_update()
+    #      API.update.full_update()
     #
     #      (Performs a dependency update.)
-    #      API.core.update.deps_update()
+    #      API.update.deps_update()
     #
     #      (Performs a program update.)
-    #      API.core.update.prog_update()
+    #      API.update.prog_update()
     #
-    import core.use_module
-    import core.version
-    # core.version calling
+    from core import use_module
+    from core import version
+    # version calling
     #
     #      (Print the Shadow Suite's version number)
-    #      API.core.version.number()
+    #      ver_num = API.version.number()
     #
     #      (Print the Shadow Suite's version type.)
-    #      API.core.version.type()
+    #      ver_type = API.version.type()
     #
     #      (Print the Shadow Suite's version codename.)
-    #      API.core.version.codename()
+    #      codename = API.version.codename()
     #
     #      (Print the Shadow Suite's version number, type and codename.)
-    #      API.core.version.both()
+    #      both = API.version.both()
     #
-    import core.quote
-    # core.quote calling
+    from core import quote
+    # quote calling
     #
     #      (Print a random quote)
-    #      API.core.quote.quote()
+    #      quote = API.quote.quote()
     #
-    import core.joke
-    # core.joke calling
+    from core import joke
+    # joke calling
     #
     #      (Print a random joke)
-    #      API.core.joke.joke()
+    #      joke = API.joke.joke()
     #
-    import core.logger as logger
+    from core import logger
     # logger calling
     #
     #      (Logging something)
@@ -120,36 +120,40 @@ except ImportError:
     print("===================================================")
     sys.exit(1)
 
-class Class:
-    # Method calling: API.Class().[METHOD NAME]()
-    API_version = core.version.vapi # This API's version
-    ShadowSuite_ver_num = core.version.vnumber # Shadow Suite's version number
-    ShadowSuite_ver_type = core.version.vtype # Shadow Suite's version type
-    ShadowSuite_ver_codename = core.version.vcodename # Shadow Suite's version codename
+class ShadowSuiteLE:
+    # Method calling: API.ShadowSuiteLE().[METHOD NAME]()
+    # Variable assignment: variable = API.ShadowSuiteLE().[VARIABLE]
+
+    API_version = version.vapi # This API's version
+    ShadowSuite_ver_num = version.vnumber # Shadow Suite's version number
+    ShadowSuite_ver_type = version.vtype # Shadow Suite's version type
+    ShadowSuite_ver_codename = version.vcodename # Shadow Suite's version codename
+    finish = "\n[i] Module finished running...\n"
 
     def generate_new_module(self, cmn):
         # Converts capital characters to lowercase characters.
         cmn = cmn.lower()
         # Copies the custom module template from module directory to output directory.
-        core.manage_module.generate_new(cmn)
+        manage_module.generate_new(cmn)
 
     def list_module(self):
-        core.list_module.list()
+        list_module.list()
 
     def find_module(self, module):
         # Argument "module" is the target module to view the info.
         module = module.lower()
-        core.find_module.find(module)
+        find_module.find(module)
 
     def use_module(self, module):
         # Argument "module" is the target module to run.
         module = module.lower()
-        core.use_module.use(module)
+        use_module.use(module)
 
     def suggest(self, criteria):
         # Argument "criteria" is the keywords typed in by user.
         criteria = criteria.lower()
-        core.suggest.api(criteria)
+        suggest.api(criteria)
 
-    def finish(self):
-        print("\n[i] Module finished running...\n")
+    def clrsrcn(self):
+        # Clears the contents of the screen.
+        misc.programFunctions.clrscrn()

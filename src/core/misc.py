@@ -18,7 +18,7 @@
 
 import os
 import sys
-import core.version
+from core import version
 
 # Colors with meanings
 cw = '\033[0m'     #  white  (normal)
@@ -37,27 +37,60 @@ fr = '\033[0m'     #  regular
 fb = '\033[1m'     #  bold
 fi = '\033[3m'     #  italic
 
-# Function to print the logo.
-def prn_logo():
-    # This function prints Shadow Suite's logo and a brief description.
-    print(cg + "  ___|  |               |                  ___|       _) |")
-    print("\\___ \\  __ \\   _` |  _` |  _ \\\\ \\  \\   / \\___ \\  |   | | __|  _ \\")
-    print("      | | | | (   | (   | (   |\\ \\  \\ /        | |   | | |    __/")
-    print("_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|")
-    print("\n                    Linux Edition\n                Ethical Hacking Toolkit\n\n" + cw)
-    core.version.both()
+# Shadow Suite's logo and a brief description.
+logo = cg + """  ___|  |               |                  ___|       _) |
+\\___ \\  __ \\   _` |  _` |  _ \\\\ \\  \\   / \\___ \\  |   | | __|  _ \\
+      | | | | (   | (   | (   |\\ \\  \\ /        | |   | | |    __/
+_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|""" + "\n                    Linux Edition\n                Ethical Hacking Toolkit\n\n" + '\n' + version.both + cw
 
-def prn_brief_license():
-    # This function prints a brief description of the license.
-    print(cg + "This program comes with ABSOLUTELY NO WARRANTY.")
-    print("This is free software, and you are welcome to redistribute it")
-    print("under certain conditions; type 'license' for details." + cw)
+# brief description of the license.
+brief_license = cg + r"""This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it
+under certain conditions; type 'license' for details.""" + cw
 
-def module_mode():
-    # This function is called if ShadowSuite is running as module.
-    print(cy + "[i] Running as module...\n" + cw)
+# ShadowSuite is running as module.
+module_mode_info = cy + "[i] Running as module...\n" + cw
 
-def program_restart():
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
-    curdir = os.getcwd()
+class programFunctions():
+    copyright = "Copyright(C) 2017-2018 by Shadow Team"
+
+    def program_restart(self):
+        python = sys.executable
+        os.execl(python, python, * sys.argv)
+        curdir = os.getcwd()
+
+    def clrscrn(self):
+        platform = sys.platform
+        if platform == 'linux':
+            os.system('clear')
+
+        elif platform == 'windows':
+            os.system('cls')
+
+        else:
+            os.system('clear')
+
+    def pause(self, silent=False):
+        platform = sys.platform
+        if platform == 'linux':
+            if silent is False:
+                print('Press any key to continue...')
+                os.system('read A972681B318C92911A4020C18ACF78B6')
+
+            else:
+                os.system('read A972681B318C92911A4020C18ACF78B6')
+
+        elif platform == 'windows':
+            if silent is False:
+                os.system('pause')
+
+            else:
+                os.sysem('pause > nul')
+
+        else:
+            if silent is False:
+                print('Press any key to continue...')
+                os.system('read A972681B318C92911A4020C18ACF78B6')
+
+            else:
+                os.system('read A972681B318C92911A4020C18ACF78B6')

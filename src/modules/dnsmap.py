@@ -1,7 +1,7 @@
 # Import directives
 import os
 import sys
-import core.error
+from core import error
 # import API
 # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -16,7 +16,7 @@ info = {
         "desc": "Dnsmap is mainly meant to be used by pentesters during the information\ngathering/enumeration phase of infrastructure security assessments.", # Brief description
         "email": "N/A", # Email
         "authorinfo": "N/A", # Additional information about the author; this could be
-        "lastupdate": "Jan. 05, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "False", # Using API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -49,7 +49,8 @@ def module_info():
 def main():
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
+            return 0
 
         else:
             module_body()
@@ -69,7 +70,7 @@ def module_body():
     domain = input("[DNSMap] Set domain: ") # www.domain.com
 
     try:
-        ip = socket.gethostbyname( domain )
+        ip = socket.gethostbyname(domain)
         print (SUCESS + "The DNS of \'" + domain + "\' is \'" + ip + "\'.")
 
     except socket.gaierror:

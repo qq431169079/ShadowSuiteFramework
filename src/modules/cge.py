@@ -10,7 +10,7 @@
 try:
     import os
     import sys
-    import core.error
+    from core import error
     import API
     # Uncomment the line above if your module will use Shadow Suite's API.
 
@@ -22,12 +22,12 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Cisco Global Exploiter", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "Nemesis\nE4m", # Author
         "desc": "Cisco Global Exploiter (CGE), is an advanced,simple and fast security\ntesting tool, that is able to exploit the most dangerous vulnerabilities\nof Cisco systems.", # Brief description
         "email": "nemesis@blackangels.it\ne4m@blackangels.it", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Jan. 19, 2018",                     # a website of the author.
+        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -83,7 +83,8 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            core.error.error0005()
+            print(error.error0005)
+            return 0
 
         else:
             module_body()
@@ -163,4 +164,4 @@ def exploit(TARGET, TGTNUM):
     space = ' '
     os.system("cd modules/CGE/ && perl cge.pl " + TARGET + space + TGTNUM)
     os.system("cd ../..")
-    API.Class().finish()
+    print(API.ShadowSuiteLE().finish)

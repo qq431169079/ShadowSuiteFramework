@@ -1,6 +1,6 @@
 #!/bin/python
 # Coding=UTF-8
-# Shadow Suite Linux Edition:: Ethical Hacking Toolkit
+# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -18,8 +18,8 @@
 
 import os
 import sys
-import core.misc
-import core.error
+from core import misc
+from core import error
 
 def use(module_name):
     
@@ -172,4 +172,4 @@ def use(module_name):
 
     # Hey! don't modify this thing below!
     else:
-        core.error.error0006()
+        print(error.error0006)

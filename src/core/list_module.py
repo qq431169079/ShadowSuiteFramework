@@ -17,8 +17,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
-import core.misc
-import core.error
+from core import misc
+from core import error
 
 def list():
 

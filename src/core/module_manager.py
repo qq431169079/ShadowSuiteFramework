@@ -18,28 +18,28 @@
 
 import os
 import sys
-import core.misc
-import core.error
-import core.find_module
-import core.list_module
-import core.use_module
-import core.manage_module
-import core.suggest
-import core.logger as logger
+from core import misc
+from core import error
+from core import find_module
+from core import list_module
+from core import use_module
+from core import manage_module
+from core import suggest
+from core import logger
 
 def shell():
     while True:
         try:
             if os.geteuid() != 0:
-                command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module_Manager.py" + core.misc.cw + core.misc.fr + "] $: ")
+                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Module_Manager.py" + misc.cw + misc.fr + "] $: ")
                 
             else:
-                command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module_Manager.py" + core.misc.cw + core.misc.fr + "] #: ")
+                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Module_Manager.py" + misc.cw + misc.fr + "] #: ")
 
             command = command.lower()
             
             if command == "help":
-                print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)
+                print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr + misc.cw)
                 print("help            :: prints this help menu.")
                 print("list            :: list modules and frameworks.")
                 print("use module      :: use a module.")
@@ -47,38 +47,37 @@ def shell():
                 print("manage          :: run module manager.")
                 print("suggest         :: suggest an attack based on your criteria.")
                 print("clear           :: clears the screen.")
-
                 print("\n")
                 print("back            :: back to Shadow Suite shell.")
 
             elif command == "list":
-                core.list_module.list()
+                list_module.list()
 
             elif command == "use module":
-                module_name = input(core.misc.cgr + "Enter the module name to use > " + core.misc.cw)
+                module_name = input(misc.cgr + "Enter the module name to use > " + misc.cw)
                 logger.log(0, 'User uses ' + module_name + ' module.', 'logfile.txt')
-                core.use_module.use(module_name)
+                use_module.use(module_name)
 
             elif command == "module info":
-                miname = input(core.misc.cgr + "Enter the module name to view > " + core.misc.cw)
+                miname = input(misc.cgr + "Enter the module name to view > " + misc.cw)
                 logger.log(0, 'User finds ' + miname + ' module.', 'logfile.txt')
-                core.find_module.find(miname)
+                find_module.find(miname)
 
             elif command == "manage":
-                core.manage_module.manager()
+                manage_module.manager()
 
             elif command == "suggest":
                 criteria = input("Enter keywords separated by comma (dns, wireless, cracking) > ")
-                core.suggest.api(criteria)
+                suggest.api(criteria)
 
             elif command == "clear":
                 os.system("clear")
 
             elif command == "quit":
-                core.error.error0003()
+                print(error.error0003)
 
             elif command == "exit":
-                core.error.error0003()
+                print(error.error0003)
 
             elif command == "back":
                 print("[i] Going back to Shadow Suite shell...")
@@ -86,8 +85,9 @@ def shell():
                 
             else:
                 logger.log(2, 'User entered an unknown command.', 'logfile.txt')
-                core.error.error0001()
+                print(error.error0001)
 
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C detected...', 'logfile.txt')
-            core.error.error0002()
+            print(error.error0002)
+            sys.exit(1)

@@ -12,4 +12,4 @@ def joke():
     joke8 = "<joke>Joke Here</joke>"
     joke9 = "Hide & Seek champion (Hackers vs. FBI) -- Since 1958"
     headers = [joke1, joke2, joke3, joke4, joke5, joke6, joke7, joke8, joke9]
-    print(headers[randint(0,8)])
+    return headers[randint(0,8)]

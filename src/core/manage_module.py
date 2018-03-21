@@ -17,10 +17,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
-import core.misc
-import core.error
-import core.use_module
-import core.logger as logger
+import sys
+from core import misc
+from core import error
+from core import use_module
+from core import logger
 
 def generate_new(cmn):
     # This is used to generate a custom module from a template via API.
@@ -38,15 +39,15 @@ def manager():
     while loop == True:
         try:
             if os.geteuid() != 0:
-                command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] $: ")
+                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Module Manager" + misc.cw + misc.fr + "] $: ")
 
             else:
-                command = input(core.misc.cw + "[" + core.misc.cb + core.misc.fb + core.misc.fi + "Module Manager" + core.misc.cw + core.misc.fr + "] #: ")
+                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Module Manager" + misc.cw + misc.fr + "] #: ")
 
             command = command.lower()
 
             if command == "help":
-                print(core.misc.cc + core.misc.fb + core.misc.fi + "\nHELP\n" + core.misc.fr + core.misc.cw)
+                print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr + misc.cw)
                 print("generate new :: generate a new module template.")
                 print("clear        :: clears the screen.")
                 print("\n")
@@ -61,10 +62,10 @@ def manager():
                 os.system("clear")
 
             elif command == "quit":
-                core.error.error0003()
+                print(error.error0003)
 
             elif command == "exit":
-                core.error.error0003()
+                print(error.error0003)
 
             elif command == "back":
                 print("[i] Going back to Module_Manager.py shell...")
@@ -73,8 +74,9 @@ def manager():
 
             else:
                 logger.log(0, 'User entered an unknown command.', 'logfile.txt')
-                core.error.error0001()
+                print(error.error0001)
 
         except KeyboardInterrupt:
             logger.log(0, 'CTRL+C detected...', 'logfile.txt')
-            core.error.error0002()
+            print(error.error0002)
+            sys.exit(1)

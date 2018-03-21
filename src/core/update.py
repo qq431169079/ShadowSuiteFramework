@@ -17,38 +17,38 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
-import core.misc
-import core.error
-import core.fullupdate
+from core import misc
+from core import error
+from core import fullupdate
 
 def full_update():
     process = "4"
 
-    print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a full update..." + core.misc.fr + core.misc.cw)
-    print(core.misc.cb + "Installing dependency files... (1/" + process + ")\n" + core.misc.cw)
+    print(misc.fb + misc.fi + misc.cb + "Performing a full update..." + misc.fr + misc.cw)
+    print(misc.cb + "Installing dependency files... (1/" + process + ")\n" + misc.cw)
     os.system("bash instdeps.bash")
-    print(core.misc.cb + "Updating Shadow Suite... (2/" + process + ")\n" + core.misc.cw)
-    core.fullupdate.update()
-    print(core.misc.cb + "Installing python modules... (3/" + process + ")\n" + core.misc.cw)
+    print(misc.cb + "Updating Shadow Suite... (2/" + process + ")\n" + misc.cw)
+    fullupdate.update()
+    print(misc.cb + "Installing python modules... (3/" + process + ")\n" + misc.cw)
     os.system("pip install -r python_requirements")
-    print(core.misc.cb + "Installing perl modules... (4/" + process + ")\n" + core.misc.cw)
+    print(misc.cb + "Installing perl modules... (4/" + process + ")\n" + misc.cw)
     os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize")
-    print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a full update... Done!" + core.misc.fr + core.misc.cw)
+    print(misc.fb + misc.fi + misc.cb + "Performing a full update... Done!" + misc.fr + misc.cw)
 
 def deps_update():
     process = "3"
 
-    print(core.misc.cb + "Installing dependency files... (1/" + process + ")\n" + core.misc.cw)
+    print(misc.cb + "Installing dependency files... (1/" + process + ")\n" + misc.cw)
     os.system("bash instdeps.bash")
-    print(core.misc.cb + "Installing python modules... (2/" + process + ")\n" + core.misc.cw)
+    print(misc.cb + "Installing python modules... (2/" + process + ")\n" + misc.cw)
     os.system("pip install -r python_requirements")
-    print(core.misc.cb + "Installing perl modules... (3/" + process + ")\n" + core.misc.cw)
+    print(misc.cb + "Installing perl modules... (3/" + process + ")\n" + misc.cw)
     os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize")
-    print(core.misc.fb + core.misc.fi + core.misc.cb + "Performing a dependency update... Done!" + core.misc.fr + core.misc.cw)
+    print(misc.fb + misc.fi + misc.cb + "Performing a dependency update... Done!" + misc.fr + misc.cw)
     
 def prog_update():
     process = "1"
     
-    print(core.misc.cb + "Updating Shadow Suite... (1/" + process + ")\n" + core.misc.cw)
-    core.fullupdate.check_for_updates()
-    core.fullupdate.update()
+    print(misc.cb + "Updating Shadow Suite... (1/" + process + ")\n" + misc.cw)
+    fullupdate.check_for_updates()
+    fullupdate.update()
