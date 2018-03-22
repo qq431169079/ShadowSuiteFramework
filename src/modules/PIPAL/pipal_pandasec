@@ -1,0 +1,329 @@
+#pandasecurity dump 2012
+
+Total entries = 114
+Total unique entries = 58
+
+Top 10 passwords
+qwe123 = 6 (5.26%)
+mierda = 5 (4.39%)
+albertini = 4 (3.51%)
+murrieta = 4 (3.51%)
+positivo = 4 (3.51%)
+yourself = 4 (3.51%)
+mcgyver = 4 (3.51%)
+panda123 = 3 (2.63%)
+800718 = 3 (2.63%)
+arturo = 3 (2.63%)
+
+Top 10 base words
+panda = 8 (7.02%)
+mierda = 5 (4.39%)
+positivo = 4 (3.51%)
+albertini = 4 (3.51%)
+mcgyver = 4 (3.51%)
+yourself = 4 (3.51%)
+murrieta = 4 (3.51%)
+changeme = 3 (2.63%)
+mother = 3 (2.63%)
+silvia = 3 (2.63%)
+
+Password length (length ordered)
+3 = 3 (2.63%)
+6 = 45 (39.47%)
+7 = 13 (11.4%)
+8 = 47 (41.23%)
+9 = 11 (9.65%)
+
+Password length (count ordered)
+8 = 47 (41.23%)
+6 = 45 (39.47%)
+7 = 13 (11.4%)
+9 = 11 (9.65%)
+3 = 3 (2.63%)
+
+      | |                                                               
+      | |                                                               
+      | |                                                               
+      | |                                                               
+      | |                                                               
+      | |                                                               
+      | |                                                               
+      | |                                                               
+      | |                                                               
+      | |                                                               
+      | |                                                               
+      |||                                                               
+      ||||                                                              
+      ||||                                                              
+   |  ||||                                                              
+||||||||||                                                              
+0123456789
+
+One to six characters = 46 (40.35%)
+One to eight characters = 104 (91.23%)
+More than eight characters = 10 (8.77%)
+
+Only lowercase alpha = 59 (51.75%)
+Only uppercase alpha = 0 (0.0%)
+Only alpha = 59 (51.75%)
+Only numeric = 16 (14.04%)
+
+First capital last symbol = 0 (0.0%)
+First capital last number = 8 (7.02%)
+
+Months
+None found
+
+Days
+None found
+
+Months (Abreviated)
+mar = 1 (0.88%)
+
+Days (Abreviated)
+None found
+
+Includes years
+2005 = 1 (0.88%)
+2010 = 3 (2.63%)
+
+Years (Top 10)
+2010 = 3 (2.63%)
+2005 = 1 (0.88%)
+
+Single digit on the end = 8 (7.02%)
+Two digits on the end = 4 (3.51%)
+Three digits on the end = 17 (14.91%)
+
+Last number
+0 = 5 (4.39%)
+1 = 9 (7.89%)
+2 = 5 (4.39%)
+3 = 18 (15.79%)
+4 = 2 (1.75%)
+5 = 1 (0.88%)
+6 = 1 (0.88%)
+7 = 2 (1.75%)
+8 = 8 (7.02%)
+
+   |                                                                    
+   |                                                                    
+   |                                                                    
+   |                                                                    
+   |                                                                    
+   |                                                                    
+   |                                                                    
+ | |                                                                    
+ | |    |                                                               
+ | |    |                                                               
+ | |    |                                                               
+||||    |                                                               
+||||    |                                                               
+||||    |                                                               
+|||||  ||                                                               
+||||||||||                                                              
+0123456789
+
+Last digit
+3 = 18 (15.79%)
+1 = 9 (7.89%)
+8 = 8 (7.02%)
+0 = 5 (4.39%)
+2 = 5 (4.39%)
+4 = 2 (1.75%)
+7 = 2 (1.75%)
+6 = 1 (0.88%)
+5 = 1 (0.88%)
+
+Last 2 digits (Top 10)
+23 = 15 (13.16%)
+01 = 5 (4.39%)
+10 = 4 (3.51%)
+88 = 3 (2.63%)
+18 = 3 (2.63%)
+34 = 2 (1.75%)
+72 = 2 (1.75%)
+97 = 2 (1.75%)
+78 = 2 (1.75%)
+00 = 1 (0.88%)
+
+Last 3 digits (Top 10)
+123 = 15 (13.16%)
+010 = 4 (3.51%)
+088 = 3 (2.63%)
+718 = 3 (2.63%)
+001 = 3 (2.63%)
+234 = 2 (1.75%)
+297 = 2 (1.75%)
+272 = 2 (1.75%)
+678 = 2 (1.75%)
+456 = 1 (0.88%)
+
+Last 4 digits (Top 10)
+0718 = 3 (2.63%)
+2010 = 3 (2.63%)
+1088 = 3 (2.63%)
+1234 = 2 (1.75%)
+5678 = 2 (1.75%)
+0272 = 2 (1.75%)
+1297 = 2 (1.75%)
+1010 = 1 (0.88%)
+3456 = 1 (0.88%)
+0000 = 1 (0.88%)
+
+Last 5 digits (Top 10)
+01088 = 3 (2.63%)
+00718 = 3 (2.63%)
+60272 = 2 (1.75%)
+31297 = 2 (1.75%)
+45678 = 2 (1.75%)
+23123 = 1 (0.88%)
+23456 = 1 (0.88%)
+12005 = 1 (0.88%)
+00000 = 1 (0.88%)
+
+Character sets
+loweralpha: 59 (51.75%)
+loweralphanum: 28 (24.56%)
+numeric: 16 (14.04%)
+mixedalphanum: 8 (7.02%)
+mixedalpha: 2 (1.75%)
+mixedalphaspecialnum: 1 (0.88%)
+
+Character set ordering
+allstring: 61 (53.51%)
+stringdigit: 34 (29.82%)
+alldigit: 16 (14.04%)
+digitstring: 1 (0.88%)
+digitstringdigit: 1 (0.88%)
+othermask: 1 (0.88%)
+
+Hashcat masks (Top 10)
+?l?l?l?l?l?l: 23 (20.18%)
+?l?l?l?l?l?l?l?l: 22 (19.3%)
+?d?d?d?d?d?d: 12 (10.53%)
+?l?l?l?l?l?l?l: 8 (7.02%)
+?l?l?l?d?d?d: 8 (7.02%)
+?l?l?l?l?l?d?d?d: 6 (5.26%)
+?l?l?l?l?l?d?d?d?d: 5 (4.39%)
+?l?l?l?l?l?l?l?l?l: 4 (3.51%)
+?d?d?d?d?d?d?d?d: 3 (2.63%)
+?l?l?l?l?l?l?l?d: 3 (2.63%)
+
+
+#passwords
+
+hellfire
+mierda
+william
+changeme
+bonny1234    
+raziel    
+000000  
+panda123  
+yourself  
+perkele3
+160272  
+albertini    
+mierda
+131297
+panda001
+Azerty01  
+Haslo123
+murrieta
+SeanPaul
+mierda
+albertini
+positivo    
+athletic
+panda001
+abrego    
+yourself
+123abc
+arturo
+mcgyver
+murrieta
+123123123
+panda123
+snoopy
+1qazxsw2
+101088
+positivo
+silvia    
+101088
+pandas
+positivo
+silvia
+arturo
+mcgyver
+qwe123
+Mother1
+qwe123
+mierda
+abc123
+800718
+ghbdtn
+centrino
+albertini
+qwe123
+software
+panda123
+singha
+101088
+pandas
+positivo
+silvia
+arturo
+mcgyver
+qwe123
+mother
+qwe123
+mierda
+abc123
+yourself
+800718  
+ghbdtn
+centrino  
+changeme
+123456
+murrieta
+SeanPaul
+murrieta
+changeme
+trustno1
+bonny1234
+raziel
+test1010
+800718
+Pa$$w0rd
+yourself
+perkele3
+160272
+mcgyver
+albertini
+131297
+Letmein1
+panda001
+vikings
+Azerty01
+cristian
+Scarfac3
+Haslo123
+test123
+panda2010
+marcelo
+qwe123
+mclover
+22112005
+Mother1
+nancy2010
+jesus12
+panda2010
+abrego
+entrar
+software
+sparta22
+usa
+12345678
+usa
+12345678

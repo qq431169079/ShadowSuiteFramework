@@ -162,6 +162,11 @@ def use(module_name):
         import modules.routersploit
         modules.routersploit.main()
 
+    elif module_name == "pipal":
+        print("Module found!")
+        import modules.pipal
+        modules.pipal.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

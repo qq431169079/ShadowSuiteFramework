@@ -21,7 +21,7 @@ from core import misc
 from core import error
 
 vapi = "0.0.6.1-API"
-vnumber = "0.0.7.0-Linux"
+vnumber = "0.0.7.1-Linux"
 vtype = "Weekly Build"
 vcodename = "Lambda"
 both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename

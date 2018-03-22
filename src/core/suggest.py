@@ -127,6 +127,10 @@ def api(criteria):
         print(misc.cg + "RouterSploit :: A Router Exploitation Framework.\n" + misc.cw)
         results = results + 1
 
+    if 'pipal' in criteria or 'robin' in criteria and 'wood' in criteria or 'pass' in criteria or 'word' in criteria or 'analys' in criteria:
+        print(misc.cg + "Pipal :: Password Analyser.\n" + misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

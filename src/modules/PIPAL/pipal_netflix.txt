@@ -1,0 +1,334 @@
+Basic Results
+
+Total entries = 858
+Total unique entries = 853
+
+Top 10 passwords
+dennislinda999 = 2 (0.23%)
+monkey = 2 (0.23%)
+superman = 2 (0.23%)
+michael = 2 (0.23%)
+brownie = 2 (0.23%)
+hysteria = 1 (0.12%)
+pevonia = 1 (0.12%)
+lucas22 = 1 (0.12%)
+Emily86 = 1 (0.12%)
+wchs34 = 1 (0.12%)
+
+Top 10 base words
+superman = 4 (0.47%)
+football = 2 (0.23%)
+shanti = 2 (0.23%)
+family = 2 (0.23%)
+marriage = 2 (0.23%)
+katrina = 2 (0.23%)
+june = 2 (0.23%)
+bandit = 2 (0.23%)
+scooby = 2 (0.23%)
+cubbies = 2 (0.23%)
+
+Password length (length ordered)
+4 = 2 (0.23%)
+5 = 5 (0.58%)
+6 = 190 (22.14%)
+7 = 157 (18.3%)
+8 = 289 (33.68%)
+9 = 117 (13.64%)
+10 = 65 (7.58%)
+11 = 23 (2.68%)
+12 = 4 (0.47%)
+13 = 4 (0.47%)
+14 = 2 (0.23%)
+
+Password length (count ordered)
+8 = 289 (33.68%)
+6 = 190 (22.14%)
+7 = 157 (18.3%)
+9 = 117 (13.64%)
+10 = 65 (7.58%)
+11 = 23 (2.68%)
+5 = 5 (0.58%)
+12 = 4 (0.47%)
+13 = 4 (0.47%)
+4 = 2 (0.23%)
+14 = 2 (0.23%)
+
+        |                                                               
+        |                                                               
+        |                                                               
+        |                                                               
+        |                                                               
+      | |                                                               
+      | |                                                               
+      |||                                                               
+      |||                                                               
+      ||||                                                              
+      ||||                                                              
+      ||||                                                              
+      |||||                                                             
+      |||||                                                             
+      ||||||                                                            
+|||||||||||||||                                                         
+000000000011111
+012345678901234
+
+One to six characters = 197 (0.0%)
+One to eight characters = 643 (74.94'%)
+More than eight characters = 215 (25.06%)
+
+Only lowercase alpha = 300 (34.97%)
+Only uppercase alpha = 1 (0.12%)
+Only alpha = 301 (35.08%)
+Only numeric = 37 (4.31%)
+
+First capital last symbol = 2 (0.23%)
+First capital last number = 34 (3.96%)
+
+Single digit on the end = 118 (13.75%)
+Two digits on the end = 143 (16.67%)
+Three digits on the end = 56 (6.53%)
+
+Last number
+0 = 32 (3.73%)
+1 = 99 (11.54%)
+2 = 47 (5.48%)
+3 = 65 (7.58%)
+4 = 31 (3.61%)
+5 = 33 (3.85%)
+6 = 33 (3.85%)
+7 = 39 (4.55%)
+8 = 38 (4.43%)
+9 = 36 (4.2%)
+
+ |                                                                      
+ |                                                                      
+ |                                                                      
+ |                                                                      
+ |                                                                      
+ | |                                                                    
+ | |                                                                    
+ | |                                                                    
+ |||                                                                    
+ |||   ||                                                               
+||||||||||                                                              
+||||||||||                                                              
+||||||||||                                                              
+||||||||||                                                              
+||||||||||                                                              
+||||||||||                                                              
+0123456789
+
+Last digit
+1 = 99 (11.54%)
+3 = 65 (7.58%)
+2 = 47 (5.48%)
+7 = 39 (4.55%)
+8 = 38 (4.43%)
+9 = 36 (4.2%)
+5 = 33 (3.85%)
+6 = 33 (3.85%)
+0 = 32 (3.73%)
+4 = 31 (3.61%)
+
+Last 2 digits (Top 10)
+23 = 28 (3.26%)
+01 = 17 (1.98%)
+12 = 13 (1.52%)
+13 = 12 (1.4%)
+02 = 8 (0.93%)
+69 = 8 (0.93%)
+11 = 7 (0.82%)
+55 = 7 (0.82%)
+88 = 7 (0.82%)
+18 = 7 (0.82%)
+
+Last 3 digits (Top 10)
+123 = 19 (2.21%)
+999 = 4 (0.47%)
+010 = 3 (0.35%)
+968 = 3 (0.35%)
+111 = 2 (0.23%)
+246 = 2 (0.23%)
+479 = 2 (0.23%)
+470 = 2 (0.23%)
+234 = 2 (0.23%)
+078 = 2 (0.23%)
+
+Last 4 digits (Top 10)
+1968 = 3 (0.35%)
+2010 = 2 (0.23%)
+0912 = 1 (0.12%)
+2855 = 1 (0.12%)
+8246 = 1 (0.12%)
+6380 = 1 (0.12%)
+7946 = 1 (0.12%)
+5488 = 1 (0.12%)
+9052 = 1 (0.12%)
+2007 = 1 (0.12%)
+
+Last 5 digits (Top 10)
+01234 = 1 (0.12%)
+82855 = 1 (0.12%)
+88246 = 1 (0.12%)
+06380 = 1 (0.12%)
+59052 = 1 (0.12%)
+21249 = 1 (0.12%)
+33763 = 1 (0.12%)
+50000 = 1 (0.12%)
+49494 = 1 (0.12%)
+21959 = 1 (0.12%)
+
+Character sets
+loweralphanum: 457 (53.26%)
+loweralpha: 300 (34.97%)
+mixedalphanum: 48 (5.59%)
+numeric: 37 (4.31%)
+mixedalpha: 8 (0.93%)
+mixedalphaspecialnum: 2 (0.23%)
+loweralphaspecial: 2 (0.23%)
+upperalpha: 1 (0.12%)
+loweralphaspecialnum: 1 (0.12%)
+upperalphanum: 1 (0.12%)
+
+Character set ordering
+stringdigit: 394 (45.92%)
+allstring: 309 (36.01%)
+digitstring: 40 (4.66%)
+stringdigitstring: 39 (4.55%)
+alldigit: 37 (4.31%)
+othermask: 32 (3.73%)
+digitstringdigit: 4 (0.47%)
+stringspecial: 1 (0.12%)
+stringspecialstring: 1 (0.12%)
+stringspecialdigit: 1 (0.12%)
+
+UK Cities
+london = 1 (0.12%)
+
+Colours
+red = 3 (0.35%)
+brown = 2 (0.23%)
+black = 1 (0.12%)
+blue = 1 (0.12%)
+orange = 1 (0.12%)
+
+Dates
+
+Months
+april = 1 (0.12%)
+june = 2 (0.23%)
+august = 1 (0.12%)
+
+Days
+None found
+
+Months (Abreviated)
+jan = 2 (0.23%)
+feb = 1 (0.12%)
+mar = 4 (0.47%)
+apr = 1 (0.12%)
+jun = 2 (0.23%)
+aug = 1 (0.12%)
+nov = 1 (0.12%)
+
+Days (Abreviated)
+mon = 11 (1.28 %)
+fri = 1 (0.12 %)
+sun = 4 (0.47 %)
+
+Includes years
+1976 = 2 (0.23%)
+1977 = 1 (0.12%)
+1998 = 1 (0.12%)
+1999 = 1 (0.12%)
+2001 = 2 (0.23%)
+2002 = 1 (0.12%)
+2004 = 1 (0.12%)
+2007 = 1 (0.12%)
+2008 = 1 (0.12%)
+2010 = 2 (0.23%)
+2012 = 1 (0.12%)
+
+Years (Top 10)
+1976 = 2 (0.23%)
+2010 = 2 (0.23%)
+2001 = 2 (0.23%)
+2002 = 1 (0.12%)
+1998 = 1 (0.12%)
+1999 = 1 (0.12%)
+2004 = 1 (0.12%)
+2007 = 1 (0.12%)
+2008 = 1 (0.12%)
+1977 = 1 (0.12%)
+
+Email Checker
+=============
+
+Exact Matches
+-------------
+Whole Email Address
+No Exact Matches
+
+Just Name
+gog1873 from gog1873@hotmail.com
+ziggy1962 from ziggy1962@sympatico.ca
+
+Levenshtein Results
+-------------------
+Average distance (email) 17.87
+Average distance (name) 8.83
+
+Close Matches
+-------------
+Whole Email Address
+No matches within supplied tolerance
+
+Just Name
+D: 1 U: yashinl (yashinl@discovery.co.za) P: yashin1
+D: 2 U: unni79 (unni79@gmail.com) P: unni12
+D: 2 U: stuart (stuart@moabretreat.com) P: stuart53
+D: 3 U: jason_215 (jason_215@hotmail.com) P: jasonf14
+D: 3 U: tutug60 (tutug60@hotmail.com) P: tutuye2
+D: 3 U: xraychen73 (xraychen73@gmail.com) P: Xraychen2
+D: 3 U: Rick (Rick@Havu.us) P: rick59
+D: 3 U: zuzujar (zuzujar@msn.com) P: zuzu02
+
+First Name Test
+Exact Matches
+No Exact Matches
+
+Levenshtein Results
+Average distance 0.0
+
+Close Matches
+No matches within supplied tolerance
+
+Hashcat masks (Top 10)
+
+?l?l?l?l?l?l: 94 (10.96%)
+?l?l?l?l?l?l?l: 73 (8.51%)
+?l?l?l?l?l?l?l?l: 70 (8.16%)
+?l?l?l?l?l?l?d?d: 53 (6.18%)
+?l?l?l?l?l?l?l?l?l: 35 (4.08%)
+?l?l?l?l?l?l?l?d: 28 (3.26%)
+?l?l?l?l?d?d?d?d: 24 (2.8%)
+?l?l?l?l?l?d: 22 (2.56%)
+?l?l?l?l?l?d?d: 22 (2.56%)
+?l?l?l?l?l?d?d?d: 18 (2.1%)
+
+Seasons
+summer = 1 (0.12%)
+winter = 1 (0.12%)
+
+Surname Test
+Exact Matches
+No Exact Matches
+
+Levenshtein Results
+Average distance 0.0
+
+Close Matches
+No matches within supplied tolerance
+
+Windows AD Default Complexity
+Number of matches = 44 (5.13%)

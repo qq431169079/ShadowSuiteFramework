@@ -10,6 +10,7 @@ import json
 import urllib.request
 import shutil
 import distutils.dir_util
+from core.packaging import version
 from glob import glob
 from core import misc
 from core import error
