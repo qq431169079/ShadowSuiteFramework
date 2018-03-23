@@ -127,8 +127,12 @@ def api(criteria):
         print(misc.cg + "RouterSploit :: A Router Exploitation Framework.\n" + misc.cw)
         results = results + 1
 
-    if 'pipal' in criteria or 'robin' in criteria and 'wood' in criteria or 'pass' in criteria or 'word' in criteria or 'analys' in criteria:
+    if 'pipal' in criteria or 'robin' in criteria and 'wood' in criteria or 'pass' in criteria or 'word' in criteria or 'analys' in criteria or 'ruby' in criteria:
         print(misc.cg + "Pipal :: Password Analyser.\n" + misc.cw)
+        results = results + 1
+
+    if 'set' in criteria or 'social' in criteria or 'engineer' in criteria or 'toolkit' in criteria or 'info' in criteria or 'ga' in criteria or 'recon' in criteria or 'python' in criteria:
+        print(misc.cg + "Social Engineer Toolkit :: A tool designed to make complex social engineering tasks relatively simple for you by allowing you to utilize a robust framework for penetration tests.\n" + misc.cw)
         results = results + 1
 
     # More info

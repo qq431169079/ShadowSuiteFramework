@@ -132,7 +132,7 @@ def list():
     print(cg + "\t\tPipal" + cw)
     print()
     print(cb + "\t==13-Social Engineering Tools==\n" + cw)
-    print(cr + "\t\tSocial Engineer Toolkit (SET)" + cw)
+    print(cg + "\t\tSocial Engineer Toolkit (SET)" + cw)
     print(cr + "\t\tURLCrazy" + cw)
     print(cr + "\t\tWeeman" + cw)
     print()

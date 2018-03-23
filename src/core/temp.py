@@ -7,22 +7,25 @@
 
 # Module version: 4.2
 
-# Import directives
-try:
-    import os
-    import sys
-    import traceback
-    from core import error
-    import API
+def import_modules():
+    # Import directives
+    try:
+        import os
+        import sys
+        import traceback
+        from core import error
+        import API
 
-    # Place your 'import' directives below
+        # Place your 'import' directives below
 
-except ImportError:
-    print("[!] A module is missing! Please install the required modules...")
-    print("==================== TRACEBACK ====================")
-    traceback.print_exc()
-    print("===================================================")
-    return None
+        return False
+
+    except ImportError:
+        print("[!] A module is missing! Please install the required modules...")
+        print("==================== TRACEBACK ====================")
+        traceback.print_exc()
+        print("===================================================")
+        return True
 
 # Put your module information here.
 info = {
@@ -79,27 +82,32 @@ def module_info():
 
 # Main module function
 def main():
-    """ First, it checks the value assigned to the 'needsroot' variable in the 
-    dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
-    function from the 'os' module. If the result from geteuid is also zero, then
-    the module will call the function 'module_body()'. Otherwise, it will print an
-    error message. If the value assigned to the 'needsroot' variable in the dictionary
-    'info' is not equal to zero, then the module will not call the 'geteuid()' function
-    from the 'os' module, and will immediately call 'module_body()' function. """
-    if info['needsroot'] == "0":
-        if os.geteuid() != 0:
-            print(error.error0005)
-            return 0
+    import_error = import_modules()
+    if import_error is True:
+        return None
+
+    else:
+        """ First, it checks the value assigned to the 'needsroot' variable in the 
+        dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
+        function from the 'os' module. If the result from geteuid is also zero, then
+        the module will call the function 'module_body()'. Otherwise, it will print an
+        error message. If the value assigned to the 'needsroot' variable in the dictionary
+        'info' is not equal to zero, then the module will not call the 'geteuid()' function
+        from the 'os' module, and will immediately call 'module_body()' function. """
+        if info['needsroot'] == "0":
+            if os.geteuid() != 0:
+                print(error.error0005)
+                return 0
+
+            else:
+                module_body()
 
         else:
             module_body()
-
-    else:
-        module_body()
 
 def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
     module_info()
     print()
-    error.warning0002()
+    print(error.warning0002)
