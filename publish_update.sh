@@ -27,9 +27,6 @@ git gc
 echo "[!] Press any key to continue... (Git tag)"
 read TEMP
 git tag $VERSION
-echo "[!] Press any key to continue... (Git tag)"
-read TEMP
-git tag
 echo "[!] Press any key to continue... (Git log)"
 read TEMP
 git log
