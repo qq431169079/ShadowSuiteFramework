@@ -23,7 +23,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Striker", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "2.0", # version
+        "version": "3.0", # version
         "author": "Ultimate Hackers", # Author
         "desc": "An offensive information and vulnerability scanner.", # Brief description
         "email": "none", # Email
@@ -37,7 +37,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 3.0:\nFixes #27\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"

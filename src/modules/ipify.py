@@ -16,7 +16,7 @@ try:
     import API
 
     # Place your 'import' directives below
-    from requests import get
+    import requests
 
     import_error = False
 
@@ -107,7 +107,14 @@ def main():
 def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
-    ip = get('https://api.ipify.org/').text
-    ip = str(ip)
-    print('Your public IP Address: ' + ip)
-    print(API.ShadowSuiteLE.finish)
+    try:
+        ip = requests.get('https://api.ipify.org/').text
+        ip = str(ip)
+        print('Your public IP Address: ' + ip)
+        print(API.ShadowSuiteLE.finish)
+
+    except ConnectionError:
+        print(API.error.error0010)
+
+    except requests.exceptions.ConnectionError:
+        print(API.error.error0010)

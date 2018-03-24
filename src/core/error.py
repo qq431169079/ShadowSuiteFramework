@@ -21,13 +21,15 @@ import sys
 from core import misc
 
 # ERROR 0001: Invalid Input message
-# ERROR 0002: CTRL-C Detection
+# ERROR 0002: CTRL+C Detection
 # ERROR 0003: Exit and Quit can't be used inside a module
 # ERROR 0004: Back can't be used in the main module
 # ERROR 0005: Requires root permission
 # ERROR 0006: No module with that filename found
 # ERROR 0007: An error occured while updating Shadow Suite.
 # ERROR 0008: A module was missing message
+# ERROR 0009: Update package not found
+# ERROR 0010: Connection Error
 
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
@@ -66,7 +68,7 @@ error0008 = "ERROR 0008: A module is missing!\nPlease re-install/re-download the
 error0009 = "ERROR 0009: The update package was not found! Maybe corrupted?"
 
 # This is called if we need internet but there is no internet connection.
-error0010 = "ERROR 0010: There is no internet connection!"
+error0010 = "ERROR 0010: Cannot connect! Is it really up? Or the problem is ours? Please check."
 
     ##################################################################################
     #                                                                                #

@@ -18,7 +18,7 @@ import API
 # Put your module information here.
 info = {
         "name": "DNSrecon", # Module filename (Change filename if you want to change this)
-        "version": "2.0", # version
+        "version": "3.0", # version
         "author": "N/A", # Author
         "desc": "DNS reconnaissance tool", # Brief description
         "email": "none", # Email
@@ -32,7 +32,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 3.0:\nChanged to new function.\n\nVersion 1.0:\nInitial module release"
 
 # Prints the module information
 def module_info():

@@ -187,13 +187,13 @@ class Connect(object):
 
         if not kb.dnsMode and conn:
             headers = conn.info()
-            if headers and hasattr(headers, "getheader") and (headers.getheader(HTTP_HEADER.CONTENT_ENCODING, "").lower() in ("gzip", "deflate")\
-              or "text" not in headers.getheader(HTTP_HEADER.CONTENT_TYPE, "").lower()):
+            if kb.pageCompress and headers and hasattr(headers, "getheader") and (headers.getheader(HTTP_HEADER.CONTENT_ENCODING, "").lower() in ("gzip", "deflate") or "text" not in headers.getheader(HTTP_HEADER.CONTENT_TYPE, "").lower()):
                 retVal = conn.read(MAX_CONNECTION_TOTAL_SIZE)
                 if len(retVal) == MAX_CONNECTION_TOTAL_SIZE:
                     warnMsg = "large compressed response detected. Disabling compression"
                     singleTimeWarnMessage(warnMsg)
                     kb.pageCompress = False
+                    raise SqlmapCompressionException
             else:
                 while True:
                     if not conn:
@@ -241,27 +241,27 @@ class Connect(object):
             kb.requestCounter += 1
             threadData.lastRequestUID = kb.requestCounter
 
-        url = kwargs.get("url",                     None) or conf.url
-        get = kwargs.get("get",                     None)
-        post = kwargs.get("post",                   None)
-        method = kwargs.get("method",               None)
-        cookie = kwargs.get("cookie",               None)
-        ua = kwargs.get("ua",                       None) or conf.agent
-        referer = kwargs.get("referer",             None) or conf.referer
-        host = kwargs.get("host",                   None) or conf.host
-        direct_ = kwargs.get("direct",              False)
-        multipart = kwargs.get("multipart",         None)
-        silent = kwargs.get("silent",               False)
-        raise404 = kwargs.get("raise404",           True)
-        timeout = kwargs.get("timeout",             None) or conf.timeout
-        auxHeaders = kwargs.get("auxHeaders",       None)
-        response = kwargs.get("response",           False)
+        url = kwargs.get("url", None) or conf.url
+        get = kwargs.get("get", None)
+        post = kwargs.get("post", None)
+        method = kwargs.get("method", None)
+        cookie = kwargs.get("cookie", None)
+        ua = kwargs.get("ua", None) or conf.agent
+        referer = kwargs.get("referer", None) or conf.referer
+        host = kwargs.get("host", None) or conf.host
+        direct_ = kwargs.get("direct", False)
+        multipart = kwargs.get("multipart", None)
+        silent = kwargs.get("silent", False)
+        raise404 = kwargs.get("raise404", True)
+        timeout = kwargs.get("timeout", None) or conf.timeout
+        auxHeaders = kwargs.get("auxHeaders", None)
+        response = kwargs.get("response", False)
         ignoreTimeout = kwargs.get("ignoreTimeout", False) or kb.ignoreTimeout or conf.ignoreTimeouts
-        refreshing = kwargs.get("refreshing",       False)
-        retrying = kwargs.get("retrying",           False)
-        crawling = kwargs.get("crawling",           False)
-        checking = kwargs.get("checking",           False)
-        skipRead = kwargs.get("skipRead",           False)
+        refreshing = kwargs.get("refreshing", False)
+        retrying = kwargs.get("retrying", False)
+        crawling = kwargs.get("crawling", False)
+        checking = kwargs.get("checking", False)
+        skipRead = kwargs.get("skipRead", False)
 
         if multipart:
             post = multipart
@@ -683,6 +683,9 @@ class Connect(object):
                 status = re.search(r"Handshake status ([\d]{3})", tbMsg)
                 errMsg = "websocket handshake status %s" % status.group(1) if status else "unknown"
                 raise SqlmapConnectionException(errMsg)
+            elif "SqlmapCompressionException" in tbMsg:
+                warnMsg = "problems with response (de)compression"
+                retrying = True
             else:
                 warnMsg = "unable to connect to the target URL"
 
@@ -861,7 +864,9 @@ class Connect(object):
                             skip = True
 
                     if not skip:
-                        payload = urlencode(payload, '%', False, place != PLACE.URI)  # spaceplus is handled down below
+                        if place in (PLACE.POST, PLACE.CUSTOM_POST):  # potential problems in other cases (e.g. URL encoding of whole URI - including path)
+                            value = urlencode(value, spaceplus=kb.postSpaceToPlus)
+                        payload = urlencode(payload, safe='%', spaceplus=kb.postSpaceToPlus)
                         value = agent.replacePayload(value, payload)
                         postUrlEncode = False
 
@@ -931,9 +936,9 @@ class Connect(object):
 
         if value and place == PLACE.CUSTOM_HEADER:
             if value.split(',')[0].capitalize() == PLACE.COOKIE:
-                cookie = value.split(',', 1)[1]
+                cookie = value.split(',', 1)[-1]
             else:
-                auxHeaders[value.split(',')[0]] = value.split(',', 1)[1]
+                auxHeaders[value.split(',')[0]] = value.split(',', 1)[-1]
 
         if conf.csrfToken:
             def _adjustParameter(paramString, parameter, newValue):
@@ -980,7 +985,7 @@ class Connect(object):
                     if not conf.csrfUrl:
                         errMsg += ". You can try to rerun by providing "
                         errMsg += "a valid value for option '--csrf-url'"
-                    raise SqlmapTokenException, errMsg
+                    raise SqlmapTokenException(errMsg)
 
             if token:
                 token = token.strip("'\"")
@@ -1038,7 +1043,7 @@ class Connect(object):
                             name = safeVariableNaming(name)
                         elif name in keywords:
                             name = "%s%s" % (name, EVALCODE_KEYWORD_SUFFIX)
-                        value = urldecode(value, convall=True, plusspace=(item==post and kb.postSpaceToPlus))
+                        value = urldecode(value, convall=True, spaceplus=(item == post and kb.postSpaceToPlus))
                         variables[name] = value
 
             if cookie:
@@ -1260,7 +1265,11 @@ class Connect(object):
             page = removeReflectiveValues(page, payload)
 
         kb.maxConnectionsFlag = re.search(MAX_CONNECTIONS_REGEX, page or "", re.I) is not None
-        kb.permissionFlag = re.search(PERMISSION_DENIED_REGEX, page or "", re.I) is not None
+
+        message = extractRegexResult(PERMISSION_DENIED_REGEX, page or "", re.I)
+        if message:
+            kb.permissionFlag = True
+            singleTimeWarnMessage("potential permission problems detected ('%s')" % message)
 
         if content or response:
             return page, headers, code
