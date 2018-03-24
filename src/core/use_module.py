@@ -177,6 +177,11 @@ def use(module_name):
         import modules.ipify
         modules.ipify.main()
 
+    elif module_name == "urlcrazy":
+        print("Module found!")
+        import modules.urlcrazy
+        modules.urlcrazy.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

@@ -139,6 +139,10 @@ def api(criteria):
         print(misc.cg + "Ipify :: A simple Public IP Address API.\n" + misc.cw)
         results = results + 1
 
+    if 'urlcrazy' in criteria or 'andrew' in criteria or 'horton' in criteria or 'typo' in criteria or 'hijack' in criteria or 'ruby' in criteria:
+        print(misc.cg + "URLCrazy :: UrlCrazy is for the study of domainname typos and URL hijacking.\n" + misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)
