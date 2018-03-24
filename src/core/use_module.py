@@ -172,6 +172,11 @@ def use(module_name):
         import modules.set
         modules.set.main()
 
+    elif module_name == "ipify":
+        print("Module found!")
+        import modules.ipify
+        modules.ipify.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

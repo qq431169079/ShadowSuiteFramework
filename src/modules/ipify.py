@@ -16,6 +16,7 @@ try:
     import API
 
     # Place your 'import' directives below
+    from requests import get
 
     import_error = False
 
@@ -28,19 +29,19 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "Ipify", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
-        "email": "none", # Email
-        "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "author": "Catayao56", # Author
+        "desc": "A simple Public IP Address API.", # Brief description
+        "email": "Catayao56@gmail.com", # Email
+        "authorinfo": "https://github.com/Catayao56", # Additional information about the author; this could be
+        "lastupdate": "Mar. 24, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -106,6 +107,7 @@ def main():
 def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
-    module_info()
-    print()
-    print(error.warning0002)
+    ip = get('https://api.ipify.org/').text
+    ip = str(ip)
+    print('Your public IP Address: ' + ip)
+    print(API.ShadowSuiteLE.finish)

@@ -137,6 +137,7 @@ def list():
     print(cr + "\t\tWeeman" + cw)
     print()
     print(cb + "\t==14-System Services==\n" + cw)
+    print(cg + "\t\tIpify" + cw)
     print(cr + "\t\tWebExpose" + cw)
     print()
     print(cb + "\t==15-Others==\n" + cw)
