@@ -135,6 +135,10 @@ def api(criteria):
         print(misc.cg + "Social Engineer Toolkit :: A tool designed to make complex social engineering tasks relatively simple for you by allowing you to utilize a robust framework for penetration tests.\n" + misc.cw)
         results = results + 1
 
+    if 'ipify' in criteria or 'catayao56' in criteria or 'public' in criteria or 'ip' in criteria or 'external' in criteria or 'python' in criteria:
+        print(misc.cg + "Ipify :: A simple Public IP Address API.\n" + misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)
