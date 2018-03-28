@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 4.3
+# Module version: 4.2
 
 # Import directives
 try:
@@ -28,19 +28,19 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "Weeman", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
+        "author": "Hypsurus", # Author
+        "desc": "HTTP Server for phishing.", # Brief description
         "email": "none", # Email
-        "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "authorinfo": "https://github.com/Hypsurus/weeman", # Additional information about the author; this could be
+        "lastupdate": "Mar. 28, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['Python 2 Interpreter'] # Put needed dependencies here.  
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -104,9 +104,6 @@ def main():
             module_body()
 
 def module_body():
-    # Place your program here. This is the function where your program will be placed.
-    # Remove module_info(), or leave it here. It's your call.
-    module_info()
-    print()
-    print(error.warning0002)
+    os.system("cd modules/WEEMAN && python2 -B weeman.py")
+    os.system("cd ../..")
     print(API.ShadowSuiteLE().finish)

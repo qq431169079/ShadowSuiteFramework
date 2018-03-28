@@ -143,6 +143,10 @@ def api(criteria):
         print(misc.cg + "URLCrazy :: UrlCrazy is for the study of domainname typos and URL hijacking.\n" + misc.cw)
         results = results + 1
 
+    if 'weeman' in criteria or 'hypsurus' in criteria or 'http' in criteria or 'server' in criteria or 'daemon' in criteria or 'phishing' in criteria or 'social' in criteria and 'engineer' in criteria or 'se' in criteria or 'python' in criteria:
+        print(misc.cg + "Weeman :: HTTP Server for phishing.\n" + misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

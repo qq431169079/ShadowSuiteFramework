@@ -134,7 +134,7 @@ def list():
     print(cb + "\t==13-Social Engineering Tools==\n" + cw)
     print(cg + "\t\tSocial Engineer Toolkit (SET)" + cw)
     print(cg + "\t\tURLCrazy" + cw)
-    print(cr + "\t\tWeeman" + cw)
+    print(cg + "\t\tWeeman" + cw)
     print()
     print(cb + "\t==14-System Services==\n" + cw)
     print(cg + "\t\tIpify" + cw)

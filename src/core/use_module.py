@@ -182,6 +182,11 @@ def use(module_name):
         import modules.urlcrazy
         modules.urlcrazy.main()
 
+    elif module_name == "weeman":
+        print("Module found!")
+        import modules.weeman
+        modules.weeman.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 
