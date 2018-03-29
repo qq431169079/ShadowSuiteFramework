@@ -138,10 +138,12 @@ def list():
     print()
     print(cb + "\t==14-System Services==\n" + cw)
     print(cg + "\t\tIpify" + cw)
+    print(cr + "\t\tChainProxy" + cw)
+    print(cr + "\t\tSubCalc" + cw)
     print(cg + "\t\tWebExpose" + cw)
     print()
     print(cb + "\t==15-Others==\n" + cw)
-    print(cr + "\t\tHackMe" + cw)
+    print(nyi)
     print()
     print(cb + "\t==Custom Modules==\n" + cw)
     # If you are adding a custom module, duplicate the code below:
