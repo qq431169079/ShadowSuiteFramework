@@ -7,7 +7,7 @@ def joke():
     joke3 = "In a world without fences and walls, who needs Gates and Windows?"
     joke4 = "If at first you don\'t succeed; call it version 1.0."
     joke5 = "Programmers are tools for converting caffeine into code."
-    joke6 = "Hacking is like sex. You get in, you get out, and hope that you didn\'t leave something that can be traced back to you."
+    joke6 = "Hacking is like s**. You get in, you get out, and hope that you didn\'t leave something that can be traced back to you."
     joke7 = "!false - its funny because its true"
     joke8 = "<joke>Joke Here</joke>"
     joke9 = "Hide & Seek champion (Hackers vs. FBI) -- Since 1958"

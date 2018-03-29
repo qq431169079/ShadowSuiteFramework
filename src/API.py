@@ -1,7 +1,7 @@
 #!/bin/python
 # Coding=UTF-8
 # Shadow Suite Linux Edition :: Ethical Hacking Toolkit
-# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -47,10 +47,10 @@ try:
     # misc calling
     #
     #      (Prints Shadow Suite logo and version.)
-    #      logo = API.misc.logo
+    #      print(API.misc.logo)
     #
     #      (Prints "module mode" message.)
-    #      mm = API.misc.module_mode_info
+    #      print(API.misc.module_mode_info)
     #
     #      (Restarts Shadow Suite.)
     #      API.misc.restart_program()
@@ -73,28 +73,28 @@ try:
     # version calling
     #
     #      (Print the Shadow Suite's version number)
-    #      ver_num = API.version.number()
+    #      print(API.version.vnumber)
     #
     #      (Print the Shadow Suite's version type.)
-    #      ver_type = API.version.type()
+    #      print(API.version.vtype)
     #
     #      (Print the Shadow Suite's version codename.)
-    #      codename = API.version.codename()
+    #      print(API.version.vcodename)
     #
     #      (Print the Shadow Suite's version number, type and codename.)
-    #      both = API.version.both()
+    #      print(API.version.both)
     #
     from core import quote
     # quote calling
     #
     #      (Print a random quote)
-    #      quote = API.quote.quote()
+    #      print(API.quote.quote)
     #
     from core import joke
     # joke calling
     #
     #      (Print a random joke)
-    #      joke = API.joke.joke()
+    #      print(API.joke.joke)
     #
     from core import logger
     # logger calling
@@ -154,6 +154,10 @@ class ShadowSuiteLE:
         criteria = criteria.lower()
         suggest.api(criteria)
 
-    def clrsrcn(self):
+    def clrscrn(self):
         # Clears the contents of the screen.
-        misc.programFunctions.clrscrn()
+        misc.programFunctions().clrscrn()
+
+    def pause(self, silent=False):
+        # Waits the user to press enter.
+        misc.programFunctions().pause(silent)
