@@ -42,8 +42,8 @@ def shell():
                 print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr + misc.cw)
                 print("help            :: prints this help menu.")
                 print("list            :: list modules and frameworks.")
-                print("use module      :: use a module.")
-                print("module info     :: show module information.")
+                print("use             :: use a module.")
+                print("info            :: show module information.")
                 print("manage          :: run module manager.")
                 print("suggest         :: suggest an attack based on your criteria.")
                 print("clear           :: clears the screen.")
@@ -53,12 +53,12 @@ def shell():
             elif command == "list":
                 list_module.list()
 
-            elif command == "use module":
+            elif command == "use":
                 module_name = input(misc.cgr + "Enter the module name to use > " + misc.cw)
                 logger.log(0, 'User uses ' + module_name + ' module.', 'logfile.txt')
                 use_module.use(module_name)
 
-            elif command == "module info":
+            elif command == "info":
                 miname = input(misc.cgr + "Enter the module name to view > " + misc.cw)
                 logger.log(0, 'User finds ' + miname + ' module.', 'logfile.txt')
                 find_module.find(miname)

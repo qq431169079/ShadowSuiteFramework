@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 # Coding=UTF-8
 
 python -B ShadowSuiteLE.py

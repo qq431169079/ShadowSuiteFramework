@@ -25,6 +25,7 @@ from core import logger
 
 def generate_new(cmn):
     # This is used to generate a custom module from a template via API.
+    logger.log(0, 'User generated a new module named ' + cmn, 'logfile.txt')
     cmn = cmn.lower()
     cmn = cmn.strip()
     cmn = cmn.replace(' ', '')
@@ -48,12 +49,12 @@ def manager():
 
             if command == "help":
                 print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr + misc.cw)
-                print("generate new :: generate a new module template.")
+                print("generate     :: generate a new module template.")
                 print("clear        :: clears the screen.")
                 print("\n")
                 print("back         :: back to Module_Manager.py shell.")
 
-            elif command == "generate new":
+            elif command == "generate":
                 cmn = input("Enter the name of your custom module > ")
                 print("Extracting template...")
                 generate_new(cmn)

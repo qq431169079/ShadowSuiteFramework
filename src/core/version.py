@@ -21,9 +21,9 @@ from core import misc
 from core import error
 
 vapi = "0.0.6.2-API"
-vnumber = "0.0.7.9-Linux"
-vtype = "Weekly Build"
-vcodename = "Lambda"
+vnumber = "0.0.8.0-Linux"
+vtype = "Unstable"
+vcodename = "Machine Independent"
 both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
 
     # example:
@@ -83,7 +83,7 @@ both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
     # Jargon                                             ( Used in v0.0.4.6 )
     # Kerberos                                           ( Used in v0.0.6.0 )
     # Lambda                                             ( Used in v0.0.7.0 )
-    # Maintenance                                        ( Not yet used )
+    # Machine Independent                                ( Not yet used )
     # Network                                            ( Not yet used )
     # Open Source                                        ( Not yet used )
     # PHP                                                ( Not yet used )
@@ -99,5 +99,4 @@ both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
     # Zero-Day                                           ( Not yet used )
 
 def changelog():
-    print("Changelog:\n\n\n")
-    os.system("git log -n 3")
+    os.system('less extras/changelog')

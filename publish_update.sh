@@ -15,7 +15,7 @@ git gc
 echo "[!] Press any key to continue... (Git add .)"
 read TEMP
 git add .
-echo "[!] Press any key to continue... (Git comit -as)"
+echo "[!] Press any key to continue... (Git commit -as)"
 read TEMP
 git commit -as
 echo "[!] Press any key to continue... (Git status)"
@@ -30,6 +30,12 @@ git tag $VERSION
 echo "[!] Press any key to continue... (Git log)"
 read TEMP
 git log
+cd src/extras/
+git log > changelog
+cd ../..
+echo "[!] Press any key to continue... (Git commit -as)"
+read TEMP
+git commit -as -m 'Added changelog.'
 echo "[!] Press any key to continue... (Git status)"
 read TEMP
 git status
