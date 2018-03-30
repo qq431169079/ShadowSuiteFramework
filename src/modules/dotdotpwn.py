@@ -96,10 +96,8 @@ def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
     print("DotDotPwn : The directory Traversal Fuzzer\n")
-    print("\n\n[E] Sorry! This module is not yet working! Can you help us develop this module?")
+    print("\n\n[E] Sorry! This module is not yet working! Can you help us develop this module?\n")
 
-    # DEV0001: Develop this
-    """
     module = input("Module [http | http-url | ftp | tftp | payload | stdout] > ")
     url = input("URL with the part to be fuzzed marked as TRAVERSAL (e.g. http://foo:8080/id.php?x=TRAVERSAL&y=31337) > ")
     depth = input("Depth of traversals (e.g. deepness 3 equals to ../../../; default: 6) > ")
@@ -108,4 +106,3 @@ def module_body():
     print("[i] Running module...")
     os.system("cd modules/DOTDOTPWN && perl dotdotpwn.pl -m " + module + " -u " + url + " -d " + depth + " -x " + port)
     os.system("cd ../..")
-    """

@@ -61,7 +61,7 @@ def list():
     print()
     print(cb + "\t\t==Fuzzing Tools==\n" + cw)
     print(cg + "\t\t\tAngry Fuzzer" + cw)
-    print(cy + "\t\t\tDotDotPwn" + cw)
+    print(cr + "\t\t\tDotDotPwn" + cw)
     print()
     print(cb + "\t\t==Stress Testing==\n" + cw)
     print(cg + "\t\t\tfl00d" + cw)
