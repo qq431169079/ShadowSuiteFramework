@@ -226,7 +226,10 @@ if __name__ == "__main__":
     # Check python version first before main() function execution
     req_py_version = (3, 6, 4)
     cur_py_version = sys.version_info
-    logger.log(0, 'User has python version ' + '.', 'logfile.txt')
+    str_py_version = str(sys.version_info)
+    str_py_version = str_py_version.replace('sys.version_info(', '')
+    str_py_version = str_py_version.replace(')', '')
+    logger.log(0, 'User has python version ' + str_py_version +'.', 'logfile.txt')
     if cur_py_version < req_py_version:
         PythonVersionError_msg = 'PythonVersionError: Python 3.6.4 or greater is recommended. Now Quitting...'
         print(PythonVersionError_msg)
