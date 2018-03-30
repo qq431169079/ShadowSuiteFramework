@@ -1,3 +1,21 @@
+commit a8facb57bcfefce2f8d267b4254d84c7508730fb
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 30 17:37:56 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.8.1-Linux
+    
+    Fixed version logging.
+
+commit dd3b7eb5e9a57f55c1041458254dd90a7bb3e24d
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 30 17:19:57 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit e7e9fa4404e091b2964798bb1db0c90faf1f1f99
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Fri Mar 30 17:19:31 2018 +0800
