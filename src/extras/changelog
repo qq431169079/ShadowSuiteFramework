@@ -1,0 +1,1448 @@
+commit e7e9fa4404e091b2964798bb1db0c90faf1f1f99
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 30 17:19:31 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated publish_update.sh
+
+commit ad46e1ab3204fb8ee080e8bb7d12fb465f4c590e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 30 17:13:44 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.8.0-Linux
+    
+    Our program is now in the second stage of development!
+    From developing weekly builds, we moved to the Unstable build!
+    Sounds not good, but in other words, it is in debugging phase.
+    
+    We are doing our best to make Shadow Suite better, for novices
+    and experienced, and take note, FOR WHITE HATS ONLY.
+    
+    Have a nice day and thank you very much!
+    
+    -Catayao56
+
+commit 3d4ac7d0c83ff7022f51e0076d4d767c2cd3cefd
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 30 14:39:24 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated API.
+    
+    Updated ShadowSuiteLE.py
+    
+    Updated error.py
+    
+    Updated misc.py
+    
+    Updated version.py
+
+commit fd393bb0dbeb9236a3d94dafe8b2ec0703caaeb0
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 30 08:27:11 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.7.9-Linux
+    
+    Bug fixes.
+
+commit f88faaaf07fcfbe8778b6834e7cdf47b3b29fccb
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Mar 29 12:36:46 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added modules in progress.
+
+commit 6ff04053ea9151f69293c7c0723942f67a6f1721
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Mar 29 12:28:25 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.7.8-Linux
+    
+    Updated code, fixed bugs.
+
+commit 5a145f37a60538b7510d232ef7b4dd6136e67397
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Mar 28 16:18:33 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.7.6-Linux
+    
+    Added Weeman HTTP server for phishing.
+
+commit 7718dd8162ff94df76920096d1df541537c91782
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 24 17:59:06 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.7.5-Linux
+    
+    Added URLCrazy
+
+commit 906feef91d4e5e36de722bd53f4bb467a7a8a650
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 24 16:56:54 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated publish_update.sh
+
+commit 194ec2800d57bf84954fe5cd5b8e7563f1e1ca86
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 24 16:53:55 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.7.4-Linux
+    
+    Updated 4 modules:
+            -dnsrecon
+            -angryfuzzer
+            -striker
+            -sqlmap
+
+commit fd52d3774cd6cb833a0192a9a6391f47aae28ddf
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 24 12:59:04 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added ipify on suggest.py
+
+commit b030dbfa50a1baa6ec5842ee1128c56ac5e1cf3e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 24 12:53:58 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.7.3-Linux
+    
+    Added Ipify
+
+commit e8466b1020bbbd166f296edacd41ec2701ec193a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 23 20:09:58 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.7.2-Linux
+    
+    Added Social Engineer Toolkit
+
+commit 87238e89d4e6085058ecb7f11a23bc9853f958fc
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Mar 22 11:42:42 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.7.1-Linux:
+    
+    Added Pipal, a password analyser.
+
+commit 4f30e890c304c762979fb241ca7679a44495a51b
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Mar 21 11:31:10 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.7.0-Linux
+    
+    New Code style and updated API.
+
+commit 82ba843081c83f8f73f95f2d8e3f09d3fd957420
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 17 19:58:26 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Developing new update algorithm
+
+commit 4be17226c9564bb42c78db7a1915341ed3f48c33
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Mar 13 15:05:36 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.6.1-Linux
+    
+    Added Routersploit
+
+commit e3a1e12c2d8c3592210760bd44f8105d8e9eda61
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Mar 13 14:36:04 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added traceback information.
+
+commit fb9c792d8725d23d2aeb0659ededf3c050c40e1e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Mar 13 10:14:42 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated README and updated Shadow Suite LE code.
+
+commit 4f05bc69ca119c2694d70f46a25dca59569866b0
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Mar 13 08:20:46 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated README
+
+commit 0b828e62d7130d717f1f0e401ec480eac586ac11
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Mar 12 22:42:35 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added 'changelog' command.
+
+commit 6a552de678d7785742874bc5781ff53d6ac41477
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Mar 12 22:33:44 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.6.0-Linux
+    
+    Shadow Suite is now Shadow Suite Linux Edition! I know you know why...
+    
+    Removed framework integration.
+
+commit a82a48b8b0b03ffdea72dbaf9630f86b2e07bbec
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 11 20:23:13 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.5.7
+    
+    Added Linux Exploit Suggester.
+
+commit 3bec70722d675404ac3a5641e3fbb01d7f33970c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 11 19:51:06 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.5.6
+    
+    Added CUPP.
+    
+    Removed some tools that will not be added.
+
+commit 6f0266c2189eb58b64df64a2a40f907697829343
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 11 10:03:16 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.5.5
+    
+    Added Hash Buster.
+
+commit 962196b2eedbf9233513325208d81ea18fa73a04
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 11 09:10:49 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated README
+
+commit 3e6b050b8fcd7eef4e149f0014776315f5fd57c1
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 11 08:44:33 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added Black Hydra's default password list
+
+commit 438af3884f2f058fcbebec9befb5c8665c325686
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 11 08:15:16 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated API.py to version 0.0.6.1-API
+    
+    Fixed logging.
+
+commit 98327f19ca924ac4e81957d9fbbd287422983c98
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 11 07:56:30 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added Quoutes and jokes. Well, not really needed.
+
+commit b3c26364f022ff1e788846168ba0f0cc2b81f304
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 10 22:45:03 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.5.4
+    
+    Added Shadow Crack and Black Hydra under construction.
+
+commit 928e7397f19f8e9810a31201da63d25b0c10065a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 9 19:49:30 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added SQLMap and HashID
+
+commit 58523f8784ce9cb65c37a1a3e85dcc09065e73d3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 9 08:45:46 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated API and sample.py
+
+commit cbbb98c7104f3478ce43601db065b5588b51367f
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Mar 8 13:40:51 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated README
+
+commit 6881b84bfc5b34956fc18cee0b37e2d259fb9479
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Mar 8 13:35:23 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.5.1
+    
+    Added DSSS
+
+commit 8bf7510d8ea2a37b637535690cced5f70ba6d738
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Mar 8 08:32:07 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated Requirements.
+    
+    We need some testers!
+
+commit 41814f2af28c7bc0a3e0512b12b776841240fe89
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Mar 7 21:34:28 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated python_requirements
+    
+    Added DSSS under development
+
+commit 8a820f456acbc43f3e1bb25b901cc7a4712d0eed
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Mar 6 20:04:18 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    renamed debug to test. updated README.
+
+commit 88ae22be08e666f595c58600561e792f6dd994d4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Mar 6 17:15:20 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.5.0
+    
+    Added Striker.
+    
+    We are now almost 50% finished in implementing the tools!
+
+commit 2fc1fc7d7dfb70bfd57682ce093d253ba9b7178f
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Mar 6 12:14:29 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added Striker under development.
+    
+    Updated python_requirements file.
+
+commit 769704e7e4f5107aa378ec924a2c9f124b095ef9
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Mar 6 12:02:01 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated dependency lists
+
+commit ce3577acea00c90bfa7bc6cacdfb0f54b860cf24
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Mar 5 21:10:31 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.4.11
+    
+    -Now, Shellshocker is ported to Python 3, by Catayao56. Meaning that
+    it is now running as a single module.
+
+commit 9c6713cfd54a85224f9a5b7efabe0daa76170a39
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Mar 5 20:23:59 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Renamed merge_to_master.sh to publish_update.sh as we are now using only
+    one branch, which is the 'master' branch.
+    
+    Added Shellshocker which will be functional soon.
+
+commit c0322565feebf0cdd577dc30be46f9ce656afc2b
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Mar 5 19:55:24 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.4.10
+    
+    Added D-Tect website penetration testing tool
+
+commit 78a5cfd748e83f3c3d4925ecdbe1807582a2f2bb
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Mar 5 12:49:50 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added 'clear' command.
+
+commit bbfc7bcdd8d726bd6333318fb13f84bbe97064b4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 4 16:34:18 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated Red Hawk and Slowloris
+    
+    Updated shebang to Google coding standards. The shebang formally pointed to "python", which usually refers to python2.7 on Linux systems. Now it uses "env" to find the Python3 interpreter.
+
+commit a28ba900e5f2c32bb5e2b5f3ee70e82ea05cd582
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 4 15:56:20 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Modified list_module.py and added d-tect.py (under development)
+
+commit 17044d99370b96024790798f42b7a520f5bbb41a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Mar 4 08:57:33 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.4.9
+    
+    Added Slowloris, Low bandwidth stress test tool for websites.
+
+commit f8c6621e52cde5a7b8716e2c54106b352ea616f4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 3 20:29:10 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    I forgot to update README.
+
+commit 632541da8007d040299544b19c3dd836d7593ca4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 3 20:22:46 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.4.8
+    
+    Added two new modules: DotDotPwn (Under Development) and Fl00D
+    (Experimental)
+
+commit c68fbaecb3a2a955acefb97968bfafb7715f6e2b
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 2 23:49:30 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update 0.0.4.7:
+    
+    Added Angry Fuzz3r Fuzzing tool.
+
+commit a98b56c95bb9a318c5283cca55c1a7f72f5d59c5
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Mar 1 10:57:23 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.4.6:
+    
+    -Suggest command is now functional.
+    
+    -More updates coming soon.
+
+commit bb4590da8ae64147379d242381475f95ebabb41c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Feb 28 16:10:18 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    added merge_to_master.sh script.
+
+commit 94f49279d7caedc11e4fc9e472ae31868f7c78a8
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Feb 28 15:53:32 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update 0.0.4.5
+    
+    Working on new features (again) because the more latest version has been
+    corrupted. :(
+
+commit 7d6956c1d7b6a76530df83a74f384821b5f199da
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Feb 28 11:39:29 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added development files.
+
+commit 741723ef5294fe064cb1e72a0c46c18130e26f81
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Jan 1 20:48:38 2016 +0800
+
+    Deleted shadow_suite_as_module_test.py
+
+commit 1d57452883788600a458072936e939549906976e
+Merge: 217c802 1d37cc1
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 20 17:08:01 2018 +0800
+
+    Merge branch 'Weekly-Build'
+
+commit 1d37cc11ae9e715a793cede4b688b5ccb896acae
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 20 17:06:33 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Removed test files
+
+commit 217c802ac24506f58f58bb65090d59ba423fdb55
+Merge: 90277d8 c9fdf8f
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 20 08:46:27 2018 +0800
+
+    Merge branch 'Weekly-Build'
+
+commit c9fdf8fcdbf7c115d14a296905a6509d094c3ac3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 20 08:45:34 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added encoding information.
+
+commit d1b46585d92fc4ce4dac2d99d0aad0a0bfa19e62
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Jan 19 20:22:27 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Coding a new feature...
+
+commit 90277d860792179db91503d535916c7139db7543
+Merge: d4e54d9 3b50d06
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Jan 19 16:21:19 2018 +0800
+
+    Merge branch 'Weekly-Build'
+    
+    Updated to v0.0.4.4
+
+commit 3b50d067bdc9d8d2abe1bd7ca7acc485e366f0bb
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Jan 19 16:20:36 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated to v0.0.4.4
+
+commit d4e54d9e3cfe6878a44f302e6dd589e2e5bb94ac
+Merge: f5127f6 e209745
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Jan 19 16:18:32 2018 +0800
+
+    Merge branch 'Weekly-Build'
+    
+    Added two new Cisco tools
+
+commit e20974539c33ff8732b1c32c308a14c5382b589c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Jan 19 16:17:41 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added Cisco Auditing Tool and Cisco Global Exploiter.
+
+commit f5127f62a8829ac0a307fe0015690e86645e2477
+Merge: 0daa8b1 700bf08
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 18 21:01:22 2018 +0800
+
+    Merge branch 'Weekly-Build'
+    
+    UPDATE v0.0.4.3
+    
+    Fixed capitalization support
+    
+    Fixed The Harvester module
+
+commit 700bf08f0fdfec5e8bc33dad3f3c46a9739d96a9
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 18 21:00:03 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    UPDATE v0.0.4.3
+    
+    Fixed capitalization support
+    
+    Fixed The Harvester module
+
+commit 0daa8b1ac395669fdb9c190715d20ffbabbb0a82
+Merge: 592d034 f5863a1
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 18 19:44:24 2018 +0800
+
+    Merge branch 'Weekly-Build'
+    
+    Updated README file
+
+commit f5863a13c2b13d99b90c674e5187b0cd19e06400
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 18 19:43:39 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated README
+
+commit 592d0344eac7d0deef5cd83770f459c2e48f1b25
+Merge: 74b1d29 e8a510c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 18 19:31:10 2018 +0800
+
+    Merge branch 'Weekly-Build'
+    
+    Added two new tools and fixed some bugs.
+
+commit e8a510cc105eed8e4068a11f53fd7a3fad7b1b7c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 18 19:30:07 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added new tools: The Harvester and Metagoofil.
+    
+    Fixed bugs.
+
+commit 74b1d299206c1408b65ac0306a646fd28cce2982
+Merge: 2d9c443 5e2fc91
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 18 18:21:38 2018 +0800
+
+    Merge branch 'Weekly-Build'
+    
+    Added capitalization support.
+
+commit 5e2fc9114ba396c2104fa4ec5430b3d5c808f3e8
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 18 18:16:14 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    UPDATE v0.0.4.2
+    
+    Added capitalization support.
+
+commit 1a54ccaa8ca21dceb054ea5bc2b141aca289dbef
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 18 18:11:48 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    UPDATE 0.0.4.2
+    
+    Fixed capitalization support.
+
+commit 2d9c443075d418dc5babd9feae095ec167d202c5
+Merge: 94932b1 1ae1c5c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Jan 16 17:46:26 2018 +0800
+
+    Merge branch 'Weekly-Build'
+    
+    Moved src/LICENSE to src/extras folder.
+
+commit 1ae1c5c80bbe0a63ddc8cd9e76e5c5a9ede1d9c3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Jan 16 17:45:30 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Moved src/LICENSE to src/extras/shadowsuitelicense
+
+commit 94932b12971e439413595be4fe7416f035b8de08
+Merge: 0bf3d4d 7edc894
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Jan 16 17:37:20 2018 +0800
+
+    Merge branch 'Weekly-Build'
+
+commit 7edc8944da021893631c6de2433c5bda90a5ef72
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Jan 16 17:26:33 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.4.1
+    
+    Added LANScan, fixed bugs, some features are being added, just don't
+    mind the *.lower() thing.
+
+commit 0bf3d4df19126dd3432895dd7eeace3a31d24eb8
+Merge: f42fff9 d615d96
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Jan 14 19:27:14 2018 +0800
+
+    Merge branch 'Weekly-Build'
+
+commit d615d96dc8234d350845f141999fd0bb2e4f0e2a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Jan 14 19:24:38 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added a new tool: The Harvester (Under Development)
+
+commit f42fff95123c1b86a2a186704ae073d322a26d02
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Jan 14 15:09:32 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Changed error description.
+
+commit 19d906d1b576895bfc50d2added6de38487b539e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Jan 14 13:56:24 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Removed pyc files.
+
+commit 5300c49a7be35483444243bedb942626da01474d
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 13 22:57:58 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added new tool: Metagoofil
+
+commit ea814c5b524b8d63183f02d97e8cf06a20ea88c8
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 13 18:04:46 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    UPDATE v0.0.4.0
+    
+    Fixed some bugs and added a new tool.
+
+commit a6210ac7dbb382f1e9061942e25b3c9db3961921
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Jan 12 19:55:24 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Fixed list_module.py
+
+commit ba9ff35cc87596423d9306fc30f03b15f00bfea2
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Jan 12 19:43:32 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    -New tools under development.
+    -Renamed src/debug.bash to src/debug
+
+commit 6771581fad0517fa0352c1cbf8729f83ed92e772
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Jan 7 16:35:52 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update 0.0.3.9
+    
+    Added Red Hawk, added more documentation, fixed bugs.
+    
+    Today, Shadow Suite is ONE-month old!
+
+commit e2ce7f9b61d74e18d71459bd5ac3575035c5bb27
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Jan 7 08:06:04 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added test.py to output folder.
+
+commit d760cf4ad4607f6c61d5ec48d59827afd0bb544a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Jan 7 08:03:25 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Renamed 'automater' folder to 'AUTOMATER'.
+
+commit 11999a859dd4a4739fda689257d4d42a91a8ce60
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 6 20:38:32 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated README.
+
+commit e3e5f6ae7b1635a09eb515955ae4f54cae11d557
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 6 20:28:39 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated API version to 0.0.4.1
+
+commit d09a035db92337cef492571815f3d35befce398e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 6 20:26:44 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Adding new modules to use.
+
+commit 38e9ec201c05b6cf15b625bc5cb6bb1cae82034e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 6 18:00:39 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Deleted currently-unimplemented command "framework info".
+
+commit 6008261af483ee099c48d12d31dcc7e58b037e68
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 6 17:57:17 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added debug script.
+
+commit a7b1a52617e762cce870b59b0e0b6225537b75e3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Jan 6 17:51:14 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Program still under development
+
+commit 76bc9a4c6b7aab6635d2a93c8ec0a3a075cbbacb
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Jan 5 10:52:19 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update 0.0.3.7
+    
+    Added API_test.py to test the integrity of Shadow Suite's API module.
+    
+    Fixed some bugs.
+    
+    Improved Program and API.
+
+commit 60ffac643b00b147caca6eca4fb08ef60de68708
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 4 22:47:33 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update 0.0.3.6
+    
+    Coded temporary integration algorithm with Hakku Framework.
+    Improved API.
+    Hidden hakku_API.py while i'm working on it.
+
+commit 3c8739cef9c3279b09fdc72f67d148385c93caca
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 4 19:11:25 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Trying to figure out of how to integrate with Hakku Framework.
+
+commit c19bd25027c17c55529a20d3888a1ca7ee1d3d35
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 4 15:32:06 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    See README for details.
+
+commit 4089e5bfb4fba90919a4c1cab9e5a817de357d0a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Jan 4 12:30:12 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added API.
+
+commit 4727d7c0b8b8f708cbe12ed88dc3811f1cf9529f
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Jan 3 15:06:07 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Fixed full update; Added more documentation of how to manually create a
+    custom module.
+
+commit 31f08d8f89e44c877d06edf802de716f81976977
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Jan 3 14:42:30 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added documentation on how to manually create a custom module.
+
+commit 8767709eb6ca7abc79c27ae18f73f7a35d092db9
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Jan 3 14:14:41 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added module manager.
+
+commit 2f2b7d07f2e0ba386cebfbbd3149f67ecb3672ea
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Jan 3 12:44:44 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added 2 new modules:
+            DNSMap and Nwrap.
+
+commit 58bfc8c7a6235e8c0555e8e13c5dcdfb9b2d03fe
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Jan 2 20:33:35 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Still working on it...
+
+commit 379041ebdb0b420373593a95278153f21ffd4231
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Jan 2 18:06:21 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added features to module manager.
+
+commit 0f4224215fdfaa21d4d78dc31523de1a1de3512e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Jan 2 15:08:22 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update 0.0.3.2
+    
+    More features coming soon.
+
+commit 49afd3969d5450bdcf45b8a3fb07c638ebdd5c77
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Jan 1 23:06:56 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    New commands will come...
+
+commit 63dd7707b3346aaa550f8a583236902ceb6b3950
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Jan 1 21:39:37 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Program development update: Now, we have our nice shell-type interface.
+
+commit b033361b38fb903f1009b304a16f5d2d838ee638
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Jan 1 19:43:34 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Starting to create Shadow Suite to python.
+
+commit 80fb92dbd3b27f8b0c33f3d56d24ce3fe0e12ce3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Jan 1 00:24:42 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Rewrite of Shadow Suite in progress...
+
+commit d9d248815e5758385b5ef3a03567dee1a53b7677
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Dec 31 10:55:32 2017 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated dependency list of msf.
+    Reason: The yard dependency defined in Gemfile.lock has a known
+    high severity security vulnerability in version range < 0.9.11
+    and should be updated.
+
+commit 818d6bb3da1f7dd6a763f5d1e6b981850a76ec22
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Dec 31 03:03:09 2017 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Planning to do a complete rewrite.
+
+commit dbea74c573fe98430292d90a3cbd7e8ddf9be29e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Dec 30 21:37:50 2017 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Fixed typo in LES wrapper script.
+
+commit 30d8b639fb99cea25b5656c233a3c8ef1e134e9a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Dec 30 19:48:31 2017 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added some changes.
+
+commit c792eb24aaac60f26ff0014e885766266f104a2c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Dec 30 18:16:14 2017 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Code Fix for Installing dependencies.
+
+commit f3d15742c111ebef0d9cdf3c81f0cc18d1aa03e4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Dec 30 17:50:40 2017 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated to Shadow Suite to 0.0.3.1
+
+commit 3212fed2eb9fdcd7dc05596c13cd7cdf6c497e2c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Dec 30 17:48:13 2017 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added dependency lists for more cleaner code.
+
+commit 1ae46fca0b3e8ac8428ad1a7c4101dfd537a8b11
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 18:42:16 2017 +0800
+
+    Compiled Shadow Suite for termux.
+
+commit 64fa6ba468246e55fc3bff9a6622f22ba95fb1bb
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 18:39:36 2017 +0800
+
+    Removed dependencies that are not really needed.
+
+commit 20d0a867416f7730b80f8c2ecdcdfd2b2f8a2a99
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 17:55:45 2017 +0800
+
+    Added ctype.h header file on ShadowLib.h for future use,
+    and removed blank line in ShadowSuite.c
+
+commit 6c7f3301ccd8925ad608800f985c1a02f0490c9c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 17:30:59 2017 +0800
+
+    MANUAL Fix
+
+commit ee0890f6e025d238c29bc6f321cb6761dac4a74e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 17:09:44 2017 +0800
+
+    Fixed ASCII screenshot on MANUAL.
+
+commit 06522495d35132afd572cd4277fc4a5123d83220
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 17:04:33 2017 +0800
+
+    Chmodded src/MANUAL file.
+
+commit e940ea4853c5d54ac8d58f8247c996ffa4157a07
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 16:57:49 2017 +0800
+
+    Added more documentation on the src/MANUAL file.
+    
+    Fixed some bugs.
+
+commit 2b42efa4ec5eb4f3f20efa412e69006684e36755
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 15:54:34 2017 +0800
+
+    Update 0.0.3.0
+    
+    Our toolkit is READY! Are you?
+    
+    Shadow Suite is now on Debugging phase.
+    You can contact us at the following Gmail accounts:
+    
+    Public.ShadowTeam@gmail.com
+    Catayao56@gmail.com
+    CristineAnn.DG.Santos@gmail.com
+
+commit 2407dc47c5404a81357e3faf5183a4e72ff2b639
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 12:14:48 2017 +0800
+
+    Just moved to a new Software Development Cycle.
+
+commit 2b24d78d6af1eccb05552fe37d116d028a6043a0
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 11:34:46 2017 +0800
+
+    Compiled Shadow Suite for termux.
+
+commit 03b272207577c42353908671f67d5f24c47946dd
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 29 11:30:11 2017 +0800
+
+    Update 0.0.2.6
+    
+    We've decided to break down Shadow Suite's source code into pieces.
+
+commit c93c368d859890c1431b46816328d73bc1c7cb26
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Dec 28 22:21:49 2017 +0800
+
+    Update 0.0.2.5
+    
+    Removed Metasploit Payload Creator and Webdav.
+    
+    Added #define directives on 'ShadowSuite.c'.
+    
+    Continued documentation at src/MANUAL.
+
+commit 5dac044a8c468a31c33dbe957cce6986a5f1b6c3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Dec 28 17:48:21 2017 +0800
+
+    Sorry, my bad!
+    
+    It's version 0.0.2.4!
+
+commit d733c698376a2298dd94b791da25de6912982f7c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Dec 28 17:46:14 2017 +0800
+
+    Update 0.0.2.3
+    
+    Added 5 new exploitation tools.
+    
+    Committed changes:
+    
+    MOD src/ShadowSuite
+    MOD src/ShadowSuite.c
+    ADD src/tools/exploitation/les/les-wrapper
+
+commit bd3f46ebba145444b6f997f151b0efde7b8db453
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Dec 28 12:53:15 2017 +0800
+
+    More comprehensive descriptions on README-DEV
+    
+    Committed changes:
+    
+    MOD README-DEV
+
+commit 2a7f92d932cfdae8aedc38d58ff3af187c1c8baa
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Dec 28 12:45:34 2017 +0800
+
+    Fixed Credits section.
+    
+    Committed changes:
+    
+    MOD README
+
+commit 845d9e782a033d4400ea1109d75fc850c46063b3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Dec 28 12:39:09 2017 +0800
+
+    Fixed Brutal's payload filename.
+
+commit 0279d12bc6a39e31e95223e8e7ade200960b7017
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Dec 28 12:31:02 2017 +0800
+
+    Added MOAR!!! tools to be implemented, Metasploit is coming!!!
+
+commit 8c1c11ba703fd32c22df30e572b9b038e1e0c81d
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu Dec 28 09:50:33 2017 +0800
+
+    Now we had our Cracking toolkit and added some fancy colors to lighten up your work!
+    
+    Committed changes:
+    
+    MOD README
+    MOD src/MANUAL
+    MOD src/ShadowSuite
+    MOD src/ShadowSuite.c
+    MOD src/tools/cracking/randompass/*.*
+
+commit 59509ad595bd701f9d0180da8f2df17763e96006
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Dec 27 21:28:41 2017 +0800
+
+    Update 0.0.2.2
+    
+    We added MORE MORE MORE TOOLS!
+    
+    On total, we have TWENTY-TWO tools! Yes, 22!
+    
+    We will be adding more tools in the future.
+    
+    Committed changes:
+    
+    MOD README
+    ADD src/LICENSE
+    MOD src/MANUAL
+    MOD src/ShadowSuite
+    MOD src/ShadowSuite.c
+    ADD src/tools/cracking/cupp/*.*
+    ADD src/tools/cracking/fbrute/*.*
+    ADD src/tools/cracking/hashbuster/*.*
+    ADD src/tools/cracking/hashidentifier/*.*
+    ADD src/tools/cracking/wifite2/*.*
+    MOD src/tools/reconnaissance/urlcrazy/urlcrazy-wrapper
+    DEL src/tools/scanning/cisco-auditing-tool/.svn/*.*
+
+commit 265c5eaca678036fb814160339b4a2e1aae43899
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Dec 27 17:58:53 2017 +0800
+
+    Added new encryption and password cracking tools.
+    
+    Committed changes:
+    
+    MOD src/ShadowSuite
+    MOD src/ShadowSuite.c
+    ADD src/tools/cracking/blackhydra/*.*
+    ADD src/tools/cracking/randompass/*.*
+    ADD src/tools/cracking/shadowcrack/*.*
+
+commit 8fd37cd87ac36729028704a8449f1dd856c0578a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Dec 27 15:46:49 2017 +0800
+
+    New scanning tool:  Nmap
+    
+    Committed changes:
+    
+    MOD src/ShadowSuite
+    MOD src/ShadowSuite.c
+    ADD src/tools/scanning/nmap/nmap-wrapper
+
+commit 5b543805aa309c237b4438d966125f93a565aea3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Dec 27 10:06:55 2017 +0800
+
+    0.0.2.1 update. Added help menu, added new tools.
+    
+    Committed changes:
+    
+    MOD README
+    MOD src/MANUAL
+    MOD src/ShadowSuite
+    MOD src/ShadowSuite.c
+
+commit 6c00a9ae62d0709cc58ce144c0cc535ebdc953e2
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Dec 26 16:54:04 2017 +0800
+
+    Renamed sections directory to tools.
+    Added new tools
+
+commit 773fad9d3390071a3fff16c1921166a2c960bc84
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Dec 25 15:33:03 2017 +0800
+
+    Automater and DNSMap under construction.
+
+commit 407059681c6ea0eb1b60d5766809584bf55a467e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Dec 25 15:12:31 2017 +0800
+
+    Updated ShadowSuite; Infoga and URLCrazy now functional :)
+    
+    Committed changes:
+    
+    MOD src/ShadowSuite
+    MOD src/ShadowSuite.c
+    MOD src/sections/reconnaissance/infoga/infoga.py
+    ADD src/sections/reconnaissance/infoga/infoga_wrapper.sh
+    ADD src/sections/reconnaissance/urlcrazy/urlcrazy-wrapper
+
+commit d1775755bcfaca8e68091817919086c4c3d52d05
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Dec 25 09:59:48 2017 +0800
+
+    It's name is no longer describes its real purpose.
+    It's no longer a framework. It's now a toolkit.
+    Shadow Suite version 0.0.2.0! Happy new year!
+
+commit a4540738efba0a0d9d5611bd22383a37e2711fbd
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Dec 24 22:31:18 2017 +0800
+
+    It's name is no longer describes its real purpose.
+    It's no longer a framework. It's now a toolkit.
+    Shadow Suite version 0.0.2.0! Happy new year!
+
+commit f9c76130a133f99d35e812b9a16fcc3e4e298b7b
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Dec 22 22:36:55 2017 +0800
+
+    Compiled ShadowFramework for Termux and experimenting with the source
+    code.
+    
+    Committed changes:
+    
+    ADD src/ShadowFramework
+    REN src/CatayaoLibLnx.h -> src/ShadowFramework.c
+
+commit 4c8a3e857ae1ea9a5e1d731a4a8357d5ab965172
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Dec 20 15:39:20 2017 +0800
+
+    Version 0.0.1.1 update on README file.
+    
+    Committed changes:
+    
+    MOD README
+
+commit f2f9b4b0a9af9c4c52802e88b4401551304db49e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Dec 20 15:38:02 2017 +0800
+
+    Started the renewed and fresh project.
+
+commit 2f79be44462f21ddc61c94bffdb7eb53fa2527f1
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Dec 20 15:13:34 2017 +0800
+
+    We will be reconstructing Shadow Framework... Just wait...
+    
+    Committecd changes:
+    
+    DEL src/CatayaoLibLnx.h
+    DEL src/ShadowFramework.c
+    DEL src/logo.c
+    DEL src/sflib.h
+
+commit 6e23beb5cd055538960461006f669a92516fd4fd
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Mon Dec 11 17:58:52 2017 +0800
+
+    Update README
+    
+    Added more information.
+
+commit 5a75117d6478cfe6c1210ce9ff8afb862d3c35d5
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Mon Dec 11 17:48:24 2017 +0800
+
+    Update README-DEV
+    
+    Changed the description of DEV0001.
+
+commit 9e474349d931b38da5c2dbe9f86b8843044d8db9
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Mon Dec 11 17:44:31 2017 +0800
+
+    Update logo.c
+
+commit b2e6b6af96298e80efff647f1508920446f136b1
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Mon Dec 11 17:43:01 2017 +0800
+
+    Delete Install.sh, Oops!
+    
+    Oops! I uploaded this file to a wrong folder!
+
+commit f5330808f66dd11ac2d15fc8e7d43665e16d5696
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Mon Dec 11 17:41:43 2017 +0800
+
+    Update ShadowFramework.c
+
+commit 59d8f22fc9a0ec8122763a87c651265e59c1d6ea
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Mon Dec 11 17:37:04 2017 +0800
+
+    Update README-DEV
+    
+    Edited "How the code is structured?"
+
+commit dab42988bc73ba65d8948a7d712166a86665b8c2
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Mon Dec 11 17:34:07 2017 +0800
+
+    Add files via upload
+    
+    Added README-DEV file for developers.
+
+commit 4c6d68c020918a21e8a47076ea377722aaf68333
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Thu Dec 7 14:45:33 2017 +0800
+
+    Source files
+    
+    Uploaded the source files.
+
+commit 5254e24b782e7af563b5ba01a11764c971757b50
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Thu Dec 7 14:44:37 2017 +0800
+
+    Initial commit
