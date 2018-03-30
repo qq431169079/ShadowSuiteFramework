@@ -33,6 +33,7 @@ from core import misc
 
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
+# WARNING 0003: An error occured when processing your command.
 
     ##################################################################################
     #                                                                                #
@@ -76,8 +77,11 @@ error0010 = "ERROR 0010: Cannot connect! Is it really up? Or the problem is ours
     #                                                                                #
     ##################################################################################
 
-# This function is vacant
+# This function is called when feature was still under development.
 warning0001 = misc.cy + "WARNING 0001: This feature was still under development, it may contain bugs." + misc.cw
 
 # This function should be called if a feature is not yet implemented.
 warning0002 = misc.cy + "WARNING 0002: Feature not yet implemented, cannot proceed..." + misc.cw
+
+# This function is called when an error occured when processing your command.
+warning0003 = misc.cy + "WARNING 0003: An error occured when processing your command." + misc.cw

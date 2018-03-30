@@ -94,3 +94,21 @@ class programFunctions():
 
             else:
                 os.system('read A972681B318C92911A4020C18ACF78B6')
+
+    def error_except(self):
+        while loop == True:
+            quit = None
+            ask = input(cb + fb + fi + 'Do you want to keep Shadow Suite running? (y/n)> ' + cw + fr)
+            ask = ask.lower()
+            if ask == 'y':
+                loop = False
+                quit = False
+
+            elif ask == 'n':
+                loop = False
+                quit = True
+
+            else:
+                loop = True
+
+        return quit

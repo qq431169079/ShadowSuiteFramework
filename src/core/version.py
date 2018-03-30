@@ -20,7 +20,7 @@ import os
 from core import misc
 from core import error
 
-vapi = "0.0.6.1-API"
+vapi = "0.0.6.2-API"
 vnumber = "0.0.7.9-Linux"
 vtype = "Weekly Build"
 vcodename = "Lambda"

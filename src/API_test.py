@@ -11,6 +11,17 @@ def main():
     
     except ImportError:
         print('Error importing time module!')
+        traceback.print_exc()
+        sys.exit(1)
+
+    try:
+        print('Importing traceback module...')
+        import traceback
+        time.sleep(1)
+
+    except ImportError:
+        print('Error importing traceback module...')
+        traceback.print_exc()
         sys.exit(1)
 
     try:
@@ -20,6 +31,7 @@ def main():
 
     except ImportError:
         print('Error importing API module!')
+        traceback.print_exc()
         sys.exit(1)
 
     print('Preparing to test API...')
@@ -52,6 +64,7 @@ def main():
 
     except:
         print('Error while testing error module...')
+        traceback.print_exc()
         sys.exit(1)
 
     try:
@@ -67,6 +80,7 @@ def main():
 
     except:
         print('Error while testing misc module...')
+        traceback.print_exc()
         sys.exit(1)
 
     print('Skipping update module...')
@@ -86,6 +100,7 @@ def main():
 
     except:
         print('Error while testing version module...')
+        traceback.print_exc()
         sys.exit(1)
 
     try:
@@ -99,6 +114,7 @@ def main():
 
     except:
         print('Error while testing quote module...')
+        traceback.print_exc()
         sys.exit(1)
 
     try:
@@ -112,6 +128,7 @@ def main():
 
     except:
         print('Error while testing joke module...')
+        traceback.print_exc()
         sys.exit(1)
 
     print('Skipping logger module...')
@@ -131,6 +148,7 @@ def main():
 
     except:
         print('Error while testing ShadowSuiteLE class variables...')
+        traceback.print_exc()
         sys.exit(1)
 
     print('Skipping ShadowSuiteLE class generate_new_module method...')
@@ -142,6 +160,7 @@ def main():
 
     except:
         print('Error while testing ShadowSuiteLE class list_module method...')
+        traceback.print_exc()
         sys.exit(1)
 
     try:
@@ -151,6 +170,7 @@ def main():
 
     except:
         print('Error while testing ShadowSuiteLE class find_module method...')
+        traceback.print_exc()
         sys.exit(1)
 
     try:
@@ -160,6 +180,7 @@ def main():
 
     except:
         print('Error while testing ShadowSuiteLE class find_module method...')
+        traceback.print_exc()
         sys.exit(1)
         
     try:
@@ -169,6 +190,7 @@ def main():
     
     except:
         print('Error while testing ShadowSuiteLE class use_module method...')
+        traceback.print_exc()
         sys.exit(1)
         
     try:
@@ -178,6 +200,7 @@ def main():
     
     except:
         print('Error while testing ShadowSuiteLE class use_module method...')
+        traceback.print_exc()
         sys.exit(1)
 
     try:
@@ -187,6 +210,7 @@ def main():
 
     except:
         print('Error while testing ShadowSuiteLE class suggest method...')
+        traceback.print_exc()
         syd.exit(1)
 
     try:
@@ -196,6 +220,7 @@ def main():
 
     except:
         print('Error while testing ShadowSuiteLE class pause method...')
+        traceback.print_exc()
         sys.exit(1)
 
     try:
@@ -205,6 +230,7 @@ def main():
 
     except:
         print('Error while testing ShadowSuiteLE class clrscrn method...')
+        traceback.print_exc()
         sys.exit(1)
 
     print('Finished testing API!')

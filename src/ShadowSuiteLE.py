@@ -56,7 +56,7 @@ except ImportError:
     sys.exit(2)
 
 def main():
-    logger.log(0, 'Shadow Suite launched...', 'logfile.txt')
+    logger.log(0, 'Shadow Suite Linux Edition launched.', 'logfile.txt')
     print()
     print(misc.logo) # Prints logo
     print("\n")
@@ -79,15 +79,16 @@ def main():
             # If os.geteuid() is equal to 0, then a terminal with # will be shown.
             # Otherwise, $ will be shown.
             if os.geteuid() != 0:
-                logger.log(0, 'Running as normal user...', 'logfile.txt')
+                logger.log(0, 'Running as normal user.', 'logfile.txt')
                 menu_input = input("[" + misc.cb + misc.fb + misc.fi + "ShadowSuite.py" + misc.fr + misc.cw + "] $: ")
             else:
-                logger.log(0, 'Running as root...', 'logfile.txt')
+                logger.log(0, 'Running as root.', 'logfile.txt')
                 menu_input = input("[" + misc.cb + misc.fb + misc.fi + "ShadowSuite.py" + misc.fr + misc.cw + "] #: ")
 
             menu_input.lower()
 
             if menu_input == "help":
+                logger.log(0, 'User needs help.', 'logfile.txt')
                 print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr)
                 print(misc.cw + "help              :: prints this help menu.")
                 print("license           :: opens the license file via less command.")
@@ -106,9 +107,11 @@ def main():
 
             elif menu_input == "license":
                 print("Opening \'LICENSE\' file via less command ...")
+                logger.log(0, 'User opens license via less command...', 'logfile.txt')
                 os.system("less extras/shadowsuitelicense")
 
             elif menu_input == "info":
+                logger.log(0, 'Users looks at the info.', 'logfile.txt')
                 print()
                 print("The current version number of this program is: " + version.vnumber)
                 print()
@@ -143,6 +146,7 @@ def main():
                     print(error.error0001)
 
             elif menu_input == "changelog":
+                logger.log(0, 'User opens changelog.', 'logfile.txt')
                 version.changelog()
 
             elif menu_input == "module":
@@ -170,13 +174,13 @@ def main():
                 print(joke.joke())
                 print("Quitting Shadow Suite...\n")
                 logger.log(0, 'User quits Shadow Suite...', 'logfile.txt')
-                sys.exit(0)
+                sys.exit()
 
             elif menu_input == "exit":
                 print(joke.joke())
                 print("Quitting Shadow Suite...\n")
                 logger.log(0, 'User exits Shadow Suite...', 'logfile.txt')
-                sys.exit(0)
+                sys.exit()
 
             else:
                 logger.log(2, 'ERROR 0001: Invalid Input', 'logfile.txt')
@@ -185,7 +189,7 @@ def main():
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C Detected...', 'logfile.txt')
             print(error.error0002)
-            sys.exit(1)
+            sys.exit()
 
         except ImportError:
             # This function is called if a module was missing.
@@ -195,15 +199,38 @@ def main():
             print("==================== TRACEBACK ====================")
             traceback.print_exc()
             print("===================================================")
-            sys.exit(2)
+            logger.log(2, 'ImportError catched.', 'logfile.txt')
+            sys.exit()
+
+        except SystemExit:
+            logger.log(2, 'SystemExit catched.', 'logfile.txt')
+            sys.exit(0)
+
+        except:
+            print(error.warning0003)
+            quit = misc.programFunctions().error_except()
+            if quit == True:
+                sys.exit(0)
+
+            elif quit == False:
+                pass
+
+            else:
+                ValueError_msg = "ValueError: quit variable must be a boolean (True or False)."
+                print(ValueError_msg)
+                logger.log(0, ValueError_msg, 'logfile.txt')
+                sys.exit(0)
 
 # Starts the program
 if __name__ == "__main__":
     # Check python version first before main() function execution
     req_py_version = (3, 6, 4)
     cur_py_version = sys.version_info
+    logger.log(0, 'User has python version ' + '.', 'logfile.txt')
     if cur_py_version < req_py_version:
-        print('ERROR: Python 3.6.4 or greater is recommended. Now Quitting...')
+        PythonVersionError_msg = 'PythonVersionError: Python 3.6.4 or greater is recommended. Now Quitting...'
+        print(PythonVersionError_msg)
+        logger.log(0, PythonVersionError_msg, 'logfile.txt')
         sys.exit(2)
 
     else:

@@ -135,29 +135,36 @@ class ShadowSuiteLE:
         cmn = cmn.lower()
         # Copies the custom module template from module directory to output directory.
         manage_module.generate_new(cmn)
+        logger.log(0, 'User generates a new module named ' + cmn + ' via API.', 'api_logfile.txt')
 
     def list_module(self):
+        logger.log(0, 'User used list_module method via API.', 'api_logfile.txt')
         list_module.list()
 
     def find_module(self, module):
         # Argument "module" is the target module to view the info.
         module = module.lower()
+        logger.log(0, 'User used find_module method to look for ' + module + ' via API.', 'api_logfile.txt')
         find_module.find(module)
 
     def use_module(self, module):
         # Argument "module" is the target module to run.
         module = module.lower()
+        logger.log(0, 'User used use_module method to use ' + module + ' via API.', 'api_logfile.txt')
         use_module.use(module)
 
     def suggest(self, criteria):
         # Argument "criteria" is the keywords typed in by user.
         criteria = criteria.lower()
+        logger.log(0, 'User wants a suggestion about ' + criteria + ' via API.', 'api_logfile.txt')
         suggest.api(criteria)
 
     def clrscrn(self):
         # Clears the contents of the screen.
+        logger.log(0, 'User clears the screen via API.', 'api_logfile.txt')
         misc.programFunctions().clrscrn()
 
     def pause(self, silent=False):
         # Waits the user to press enter.
+        logger.log(0, 'User used pause method via API with \'silent\' argument to ' + str(silent) + '.', 'api_logfile.txt')
         misc.programFunctions().pause(silent)
