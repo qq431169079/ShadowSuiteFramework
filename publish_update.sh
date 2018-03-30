@@ -35,6 +35,7 @@ git log > changelog
 cd ../..
 echo "[!] Press any key to continue... (Git commit -as)"
 read TEMP
+git add src/extras/changelog
 git commit -as -m 'Added changelog.'
 echo "[!] Press any key to continue... (Git status)"
 read TEMP
