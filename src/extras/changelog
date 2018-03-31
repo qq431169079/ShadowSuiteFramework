@@ -1,3 +1,34 @@
+commit c5557f52223ef0c77d245483f9b8cace3d610d00
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 31 23:47:09 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.8.3-Linux:
+    
+    More verbosity in logging.
+    
+            modified:   README
+            modified:   src/API.py
+            modified:   src/ShadowSuiteLE.py
+            modified:   src/core/error.py
+            modified:   src/core/joke.py
+            modified:   src/core/list_module.py
+            modified:   src/core/logger.py
+            modified:   src/core/manage_module.py
+            modified:   src/core/misc.py
+            modified:   src/core/module_manager.py
+            modified:   src/core/quote.py
+            modified:   src/core/version.py
+
+commit af55ab2e4bbaeb15738de9c8e1895b482bc9cec0
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 31 21:35:00 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit a268f537071a31e726f56ed7e9105ee86f4a5ac2
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Sat Mar 31 21:34:19 2018 +0800
