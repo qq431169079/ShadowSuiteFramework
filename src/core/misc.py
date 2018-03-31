@@ -60,55 +60,71 @@ class programFunctions():
         curdir = os.getcwd()
 
     def clrscrn(self):
-        platform = sys.platform
-        if platform == 'linux':
-            os.system('clear')
+        try:
+            platform = sys.platform
+            if platform == 'linux':
+                os.system('clear')
 
-        elif platform == 'windows':
-            os.system('cls')
+            elif platform == 'windows':
+                os.system('cls')
 
-        else:
-            os.system('clear')
+            else:
+                os.system('clear')
+
+        except KeyboardInterrupt:
+            print(error.error0002)
+            sys.exit(2)
 
     def pause(self, silent=False):
-        platform = sys.platform
-        if platform == 'linux':
-            if silent is False:
-                print('Press any key to continue...')
-                os.system('read A972681B318C92911A4020C18ACF78B6')
+        try:
+            platform = sys.platform
+            if platform == 'linux':
+                if silent is False:
+                    print('Press any key to continue...')
+                    os.system('read A972681B318C92911A4020C18ACF78B6')
+
+                else:
+                    os.system('read A972681B318C92911A4020C18ACF78B6')
+
+            elif platform == 'windows':
+                if silent is False:
+                    os.system('pause')
+
+                else:
+                    os.sysem('pause > nul')
 
             else:
-                os.system('read A972681B318C92911A4020C18ACF78B6')
+                if silent is False:
+                    print('Press any key to continue...')
+                    os.system('read A972681B318C92911A4020C18ACF78B6')
 
-        elif platform == 'windows':
-            if silent is False:
-                os.system('pause')
+                else:
+                    os.system('read A972681B318C92911A4020C18ACF78B6')
 
-            else:
-                os.sysem('pause > nul')
-
-        else:
-            if silent is False:
-                print('Press any key to continue...')
-                os.system('read A972681B318C92911A4020C18ACF78B6')
-
-            else:
-                os.system('read A972681B318C92911A4020C18ACF78B6')
+        except KeyboardInterrupt:
+            print(error.error0002)
+            sys.exit(2)
 
     def error_except(self):
-        while loop == True:
-            quit = None
-            ask = input(cb + fb + fi + 'Do you want to keep Shadow Suite running? (y/n)> ' + cw + fr)
-            ask = ask.lower()
-            if ask == 'y':
-                loop = False
-                quit = False
+        try:
+            loop = True
+            while loop == True:
+                quit = None
+                ask = input(cb + fb + fi + 'Do you want to keep Shadow Suite running? (y/n)> ' + cw + fr)
+                ask = ask.lower()
+                if ask == 'y':
+                    loop = False
+                    quit = False
 
-            elif ask == 'n':
-                loop = False
-                quit = True
+                elif ask == 'n':
+                    loop = False
+                    quit = True
 
-            else:
-                loop = True
+                else:
+                    loop = True
 
-        return quit
+            return quit
+
+        except KeyboardInterrupt:
+            print(error.error0002)
+            sys.exit(2)

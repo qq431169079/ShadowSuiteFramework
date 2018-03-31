@@ -186,6 +186,11 @@ def find(module_name):
         import modules.weeman
         modules.weeman.module_info()
 
+    elif module_name == "ipcalc":
+        print("Module found!")
+        import modules.ipcalc
+        modules.ipcalc.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

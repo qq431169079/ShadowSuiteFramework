@@ -208,6 +208,11 @@ def main():
 
         except:
             print(error.warning0003)
+            print()
+            print("==================== TRACEBACK ====================")
+            traceback.print_exc()
+            print("===================================================")
+            print()
             quit = misc.programFunctions().error_except()
             if quit == True:
                 sys.exit(0)

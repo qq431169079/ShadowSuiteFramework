@@ -147,6 +147,10 @@ def api(criteria):
         print(misc.cg + "Weeman :: HTTP Server for phishing.\n" + misc.cw)
         results = results + 1
 
+    if 'ipcalc' in criteria or 'ip' in criteria or 'calc' in criteria or 'catayao56' in criteria or 'python' in criteria or 'net' in criteria or 'proto' in criteria:
+        print(misc.cg + "IPcalc :: An IP calculator.\n" + misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

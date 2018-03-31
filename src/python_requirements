@@ -33,3 +33,5 @@ dnspython
 bs4
 lxml
 pycommand
+ipcalc
+six

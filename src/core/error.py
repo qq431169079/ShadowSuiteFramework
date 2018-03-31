@@ -33,7 +33,7 @@ from core import misc
 
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
-# WARNING 0003: An error occured when processing your command.
+# WARNING 0003: An unknown error occured when processing your command.
 
     ##################################################################################
     #                                                                                #
@@ -84,4 +84,4 @@ warning0001 = misc.cy + "WARNING 0001: This feature was still under development,
 warning0002 = misc.cy + "WARNING 0002: Feature not yet implemented, cannot proceed..." + misc.cw
 
 # This function is called when an error occured when processing your command.
-warning0003 = misc.cy + "WARNING 0003: An error occured when processing your command." + misc.cw
+warning0003 = misc.cy + "WARNING 0003: An unknown error occured when processing your command." + misc.cw
