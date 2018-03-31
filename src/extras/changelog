@@ -1,3 +1,19 @@
+commit f72b101dc47c944a5e40c3423871a233d789603a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 31 23:56:12 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated API_test.py
+
+commit 0d12d2a3994b7dcc4dfc1d2bba30ff63c998c234
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 31 23:49:33 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit c5557f52223ef0c77d245483f9b8cace3d610d00
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Sat Mar 31 23:47:09 2018 +0800
