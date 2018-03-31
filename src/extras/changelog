@@ -1,3 +1,21 @@
+commit a268f537071a31e726f56ed7e9105ee86f4a5ac2
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 31 21:34:19 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.8.2-Linux
+    
+    Added IPcalc.
+
+commit b9f536072906637bb76ce240865438ab04615638
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri Mar 30 17:40:36 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit a8facb57bcfefce2f8d267b4254d84c7508730fb
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Fri Mar 30 17:37:56 2018 +0800
