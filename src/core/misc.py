@@ -19,6 +19,7 @@
 import os
 import sys
 from core import version
+from core import logger
 
 # Colors with meanings
 cw = '\033[0m'     #  white  (normal)
@@ -73,6 +74,7 @@ class programFunctions():
 
         except KeyboardInterrupt:
             print(error.error0002)
+            logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
 
     def pause(self, silent=False):
@@ -103,6 +105,7 @@ class programFunctions():
 
         except KeyboardInterrupt:
             print(error.error0002)
+            logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
 
     def error_except(self):
@@ -127,4 +130,5 @@ class programFunctions():
 
         except KeyboardInterrupt:
             print(error.error0002)
+            logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)

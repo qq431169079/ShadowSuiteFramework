@@ -118,7 +118,8 @@ except ImportError:
     print("==================== TRACEBACK ====================")
     traceback.print_exc()
     print("===================================================")
-    sys.exit(1)
+    logger.log(2, "SystemExit raised with error code 8.", 'logfile.txt')
+    sys.exit(8)
 
 class ShadowSuiteLE:
     # Method calling: API.ShadowSuiteLE().[METHOD NAME]()

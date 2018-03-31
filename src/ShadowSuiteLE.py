@@ -53,7 +53,8 @@ except ImportError:
     print("==================== TRACEBACK ====================")
     traceback.print_exc()
     print("===================================================")
-    sys.exit(2)
+    logger.log(2, "SystemExit raised with error code 8.", 'logfile.txt')
+    sys.exit(8)
 
 def main():
     logger.log(0, 'Shadow Suite Linux Edition launched.', 'logfile.txt')
@@ -162,7 +163,7 @@ def main():
                 misc.programFunctions().clrscrn()
 
             elif menu_input == "back":
-                logger.log(2, 'ERROR 0004: Back can\'t be used in the main module', 'logfile.txt')
+                logger.log(2, "ERROR 0004: Back cannot be used in the main module", 'logfile.txt')
                 print(error.error0004)
 
             elif menu_input == "restart":
@@ -174,13 +175,15 @@ def main():
                 print(joke.joke())
                 print("Quitting Shadow Suite...\n")
                 logger.log(0, 'User quits Shadow Suite...', 'logfile.txt')
-                sys.exit()
+                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt')
+                sys.exit(0)
 
             elif menu_input == "exit":
                 print(joke.joke())
                 print("Quitting Shadow Suite...\n")
                 logger.log(0, 'User exits Shadow Suite...', 'logfile.txt')
-                sys.exit()
+                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt')
+                sys.exit(0)
 
             else:
                 logger.log(2, 'ERROR 0001: Invalid Input', 'logfile.txt')
@@ -189,7 +192,8 @@ def main():
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C Detected...', 'logfile.txt')
             print(error.error0002)
-            sys.exit()
+            logger.log(1, "SystemExit raise with error code 2.", 'logfile.txt')
+            sys.exit(2)
 
         except ImportError:
             # This function is called if a module was missing.
@@ -200,11 +204,12 @@ def main():
             traceback.print_exc()
             print("===================================================")
             logger.log(2, 'ImportError catched.', 'logfile.txt')
-            sys.exit()
+            logger.log(2, "SystemExit raised with error code 8.", 'logfile.txt')
+            sys.exit(8)
 
         except SystemExit:
-            logger.log(2, 'SystemExit catched.', 'logfile.txt')
-            sys.exit(0)
+            logger.log(1, 'SystemExit catched.', 'logfile.txt')
+            sys.exit()
 
         except:
             print(error.warning0003)
@@ -235,11 +240,17 @@ if __name__ == "__main__":
     str_py_version = str_py_version.replace('sys.version_info(', '')
     str_py_version = str_py_version.replace(')', '')
     logger.log(0, 'User has python version ' + str_py_version +'.', 'logfile.txt')
+    req_py_version_str = "v"
+    for ver_nums in req_py_version:
+        req_py_version_str = req_py_version_str + str(ver_nums) + '.'
+
     if cur_py_version < req_py_version:
-        PythonVersionError_msg = 'PythonVersionError: Python 3.6.4 or greater is recommended. Now Quitting...'
+        PythonVersionError_msg = error.error0011
+        PythonVersionError_msg = PythonVersionError_msg.format(req_py_version_str)
         print(PythonVersionError_msg)
         logger.log(0, PythonVersionError_msg, 'logfile.txt')
-        sys.exit(2)
+        logger.log(2, "SystemExit raised with error code 11.", 'logfile.txt')
+        sys.exit(11)
 
     else:
         misc.programFunctions().clrscrn()

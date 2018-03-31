@@ -108,6 +108,7 @@ def list():
     print()
     print(cb + "\t==06-Wireless Attacks==\n" + cw)
     # print(cr + "\t\tWifite" + cw)
+    print(nyi)
     print()
     print(cb + "\t==07-Reverse Engineering==\n" + cw)
     print(nyi)

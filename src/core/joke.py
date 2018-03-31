@@ -10,6 +10,7 @@ def joke():
     joke6 = "Hacking is like s**. You get in, you get out, and hope that you didn\'t leave something that can be traced back to you."
     joke7 = "!false - its funny because its true"
     joke8 = "<joke>Joke Here</joke>"
-    joke9 = "Hide & Seek champion (Hackers vs. FBI) -- Since 1958"
+    joke9 = "Hide & Seek champion (Hackers vs. CIA championship) -- Since 1958"
     headers = [joke1, joke2, joke3, joke4, joke5, joke6, joke7, joke8, joke9]
-    return headers[randint(0,8)]
+    result =  headers[randint(0,8)]
+    return result

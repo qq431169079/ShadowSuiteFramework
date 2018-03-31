@@ -90,4 +90,5 @@ def shell():
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C detected...', 'logfile.txt')
             print(error.error0002)
-            sys.exit(1)
+            logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
+            sys.exit(2)

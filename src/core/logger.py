@@ -5,7 +5,7 @@ import os
 
 def log(TYPE=3, MSG="", LOGFILE="logfile.txt"):
     TYPE = int(TYPE)
-    line = '========================================'
+    line = '============================================================================='
 
     boundary = os.system('echo ' + line + " >> " + LOGFILE)
     date = os.system("date >> " + LOGFILE)

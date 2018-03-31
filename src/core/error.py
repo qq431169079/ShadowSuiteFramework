@@ -30,6 +30,7 @@ from core import misc
 # ERROR 0008: A module was missing message
 # ERROR 0009: Update package not found
 # ERROR 0010: Connection Error
+# ERROR 0011: Python version error (Needs string formatting)
 
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
@@ -70,6 +71,9 @@ error0009 = "ERROR 0009: The update package was not found! Maybe corrupted?"
 
 # This is called if we need internet but there is no internet connection.
 error0010 = "ERROR 0010: Cannot connect! Is it really up? Or the problem is ours? Please check."
+
+# This is called if python version of user doesn't meet the required version.
+error0011 = "ERROR 0011: Python {0} or later is recommended. Now Quitting..."
 
     ##################################################################################
     #                                                                                #

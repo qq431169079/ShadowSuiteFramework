@@ -1,4 +1,4 @@
-Shadow Suite Linux Edition 0.0.8.2-Linux :: Ethical Hacking Toolkit
+Shadow Suite Linux Edition 0.0.8.3-Linux :: Ethical Hacking Toolkit
 Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite Linux Edition is an Ethical Hacking Toolkit.
@@ -48,7 +48,7 @@ Full Feature List
        Ruby, Perl, PHP, and many more!
 
       -Full tools listing:
-       ==01-Information Gathering==
+        ==01-Information Gathering==
 
                 Automater
                 DNSEnum
@@ -64,13 +64,12 @@ Full Feature List
 
                 ==Cisco Tools==
 
-                        Cisco Auditing Tool
-                        Cisco Global Exploiter
+                        Cisco Auditing Tool (CAT)
+                        Cisco Global Exploiter (CGE)
 
                 ==Fuzzing Tools==
 
                         Angry Fuzzer
-                        DotDotPwn
 
                 ==Stress Testing==
 
@@ -81,9 +80,101 @@ Full Feature List
 
         [i] Not yet Implemented!!!
 
-        ==Integrated Frameworks==
+        ==03-Web Application Analysis==
 
-                Hakku Framework
+                ==CMS and Framework Identification==
+
+        [i] Not yet Implemented!!!
+
+                ==Web Application Proxies==
+
+        [i] Not yet Implemented!!!
+
+                ==Web Crawlers and Directory Bruteforcing Tools==
+
+        [i] Not yet Implemented!!!
+
+                ==Web Vulnerability Scanners==
+
+                        D-TECT (DTECT)
+                        Shellshocker
+                        Striker
+
+        ==04-Database Assessment==
+
+                DSSS
+                SQLMap
+
+        ==05-Password Attacks==
+
+                ==Offline Attacks==
+
+                        Hash Identifier
+                        ShadowCrack
+
+                ==Online Attacks==
+
+                        Black Hydra
+                        Hash Buster
+
+                ==Passing the Hash Tools==
+
+        [i] Not yet Implemented!!!
+
+                ==Password Profiling and Wordlists==
+
+                        CUPP
+
+        ==06-Wireless Attacks==
+
+        [i] Not yet Implemented!!!
+
+        ==07-Reverse Engineering==
+
+        [i] Not yet Implemented!!!
+
+        ==08-Exploitation Tools==
+
+                Linux Exploit Suggester (LES)
+                RouterSploit
+
+        ==09-Sniffing and Spoofing==
+
+                ==Network Sniffers==
+
+        [i] Not yet Implemented!!!
+
+                ==Spoofing and MITM==
+
+        [i] Not yet Implemented!!!
+
+        ==10-Post Exploitation==
+
+        [i] Not yet Implemented!!!
+
+        ==11-Forensics==
+
+        [i] Not yet Implemented!!!
+
+        ==12-Reporting Tools==
+
+                Pipal
+
+        ==13-Social Engineering Tools==
+
+                Social Engineer Toolkit (SET)
+                URLCrazy
+                Weeman
+
+        ==14-System Services==
+
+                Ipify
+                IPcalc
+                WebExpose
+
+        ==15-Others==
+
+        [i] Not yet Implemented!!!
 
         ==Custom Modules==
 
@@ -190,4 +281,4 @@ Installing & Running
 
 2.Questions? Feature requests? Bugs?
       
-      -Just contact us and we'll respond as soon as possible.
+      -Just contact us and we'll respond as soon as possible. You can also create a pull request on https://github.com/Sh4d0w-T34m/ShadowSuiteLE
