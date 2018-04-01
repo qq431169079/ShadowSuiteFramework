@@ -191,6 +191,11 @@ def find(module_name):
         import modules.ipcalc
         modules.ipcalc.module_info()
 
+    elif module_name == "deception":
+        print("Module found!")
+        import modules.deception
+        modules.deception.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

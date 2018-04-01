@@ -21,7 +21,7 @@ from core import misc
 from core import error
 
 vapi = "0.0.6.3-API"
-vnumber = "0.0.8.3-Linux"
+vnumber = "0.0.8.4-Linux"
 vtype = "Unstable"
 vcodename = "Machine Independent"
 both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
@@ -83,7 +83,7 @@ both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
     # Jargon                                             ( Used in v0.0.4.6 )
     # Kerberos                                           ( Used in v0.0.6.0 )
     # Lambda                                             ( Used in v0.0.7.0 )
-    # Machine Independent                                ( Not yet used )
+    # Machine Independent                                ( Used in v0.0.8.0 )
     # Netmask                                            ( Not yet used )
     # Open Source                                        ( Not yet used )
     # PHP                                                ( Not yet used )

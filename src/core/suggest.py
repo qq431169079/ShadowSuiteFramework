@@ -151,6 +151,10 @@ def api(criteria):
         print(misc.cg + "IPcalc :: An IP calculator.\n" + misc.cw)
         results = results + 1
 
+    if 'deception' in criteria or 'catayao56' in criteria or 'honeypot' in criteria or 'honey' in criteria or 'python' in criteria:
+        print(misc.cg + "Deception :: A simple low-interaction honeypot server.\n" + misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

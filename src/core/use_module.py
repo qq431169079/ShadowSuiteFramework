@@ -192,6 +192,11 @@ def use(module_name):
         import modules.ipcalc
         modules.ipcalc.main()
 
+    elif module_name == "deception":
+        print("Module found!")
+        import modules.deception
+        modules.deception.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

@@ -209,6 +209,13 @@ def main():
 
         except SystemExit:
             logger.log(1, 'SystemExit catched.', 'logfile.txt')
+            try:
+                open('.instance_running.log', 'r').read() # Try to read the file
+                open('.instance_running.log', 'r').close() # Close the file
+                os.system('rm .instance_running.log')
+
+            except:
+                pass
             sys.exit()
 
         except:
@@ -253,5 +260,23 @@ if __name__ == "__main__":
         sys.exit(11)
 
     else:
+        pass
+    
+    try:
+        open('.instance_running.log', 'r').read() # Try to read the file
+        open('.instance_running.log', 'r').close() # Close the file
+        print(error.warning0004)
+        instance_warn = str(input(misc.cy + misc.fb + misc.fi + "Do you still want to run anyway? (y/n) > " + misc.fr + misc.cw))
+        instance_warn = instance_warn.lower()
+        if instance_warn == 'y':
+            misc.programFunctions().clrscrn()
+            main()
+
+        else:
+            sys.exit(0)
+    
+    except FileNotFoundError:
+        open('.instance_running.log', 'w').write('')
+        open('.instance_running.log', 'w').close() # Close the file
         misc.programFunctions().clrscrn()
         main()

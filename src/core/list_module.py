@@ -146,7 +146,7 @@ def list():
     print(cg + "\t\tWebExpose" + cw)
     print()
     print(cb + "\t==15-Others==\n" + cw)
-    print(nyi)
+    print(cg + "\t\tDeception" + cw)
     print()
     print(cb + "\t==Custom Modules==\n" + cw)
     # If you are adding a custom module, duplicate the code below:

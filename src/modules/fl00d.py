@@ -96,18 +96,23 @@ def main():
 def module_body():
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
-    print("Fl00D LAUNCHER\n\n")
-    print("[1] Fl00d 1\n[2] Fl00d 2\n[3] Quit\n")
-    selection = input(">>> ")
-    selection = int(selection)
-    if selection == 1:
-        from modules.FL00D import fl00d
+    try:
+        print("Fl00D LAUNCHER\n\n")
+        print("[1] Fl00d 1\n[2] Fl00d 2\n[3] Quit\n")
+        selection = input(">>> ")
+        selection = int(selection)
+        if selection == 1:
+            from modules.FL00D import fl00d
 
-    elif selection == 2:
-        from modules.FL00D import fl00d2
+        elif selection == 2:
+            from modules.FL00D import fl00d2
 
-    elif selection == 3:
+        elif selection == 3:
+            pass
+
+        else:
+            print(API.error.error0001)
+
+    except KeyboardInterrupt:
+        print(API.error.error0002)
         pass
-
-    else:
-        print(API.error.error0001)
