@@ -1,3 +1,26 @@
+commit 1e011206f7009cffc9d17cb0f37769a008d81810
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Apr 1 16:16:18 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.8.4-Linux
+    
+    + Added warning message when trying to launch 2 or more instances at the
+    same time.
+    
+    + Added Deception.
+    
+    + Fixed fl00d error-handling.
+
+commit 589102d4645b36a68abee61097336094a5df3056
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat Mar 31 23:56:51 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit f72b101dc47c944a5e40c3423871a233d789603a
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Sat Mar 31 23:56:12 2018 +0800
