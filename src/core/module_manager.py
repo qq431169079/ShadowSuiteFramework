@@ -47,6 +47,7 @@ def shell():
                 print("manage          :: run module manager.")
                 print("suggest         :: suggest an attack based on your criteria.")
                 print("clear           :: clears the screen.")
+                print("run             :: run a command from your terminal.")
                 print("\n")
                 print("back            :: back to Shadow Suite shell.")
 
@@ -72,6 +73,11 @@ def shell():
 
             elif command == "clear":
                 os.system("clear")
+
+            elif command == "run":
+                command_to_run = input(r"Command to run > ")
+                logger.log(0, 'User run the command: ' + command_to_run, 'logfile.txt')
+                os.system(command_to_run)
 
             elif command == "quit":
                 print(error.error0003)

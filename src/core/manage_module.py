@@ -40,10 +40,10 @@ def manager():
     while loop == True:
         try:
             if os.geteuid() != 0:
-                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Module Manager" + misc.cw + misc.fr + "] $: ")
+                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Manage_Module.py" + misc.cw + misc.fr + "] $: ")
 
             else:
-                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Module Manager" + misc.cw + misc.fr + "] #: ")
+                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Manage_Module.py" + misc.cw + misc.fr + "] #: ")
 
             command = command.lower()
 
@@ -51,6 +51,7 @@ def manager():
                 print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr + misc.cw)
                 print("generate     :: generate a new module template.")
                 print("clear        :: clears the screen.")
+                print("run          :: run a command from your terminal.")
                 print("\n")
                 print("back         :: back to Module_Manager.py shell.")
 
@@ -61,6 +62,11 @@ def manager():
 
             elif command == "clear":
                 os.system("clear")
+
+            elif command == "run":
+                command_to_run = input(r"Command to run > ")
+                logger.log(0, 'User run the command: ' + command_to_run, 'logfile.txt')
+                os.system(command_to_run)
 
             elif command == "quit":
                 print(error.error0003)

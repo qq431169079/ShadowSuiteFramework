@@ -101,6 +101,7 @@ def main():
                 print("module            :: enter module shell. type \'module\' then \'help\'for details.")
                 print("suggest           :: suggests a tool based on your critera.")
                 print("clear             :: clears the screen.")
+                print("run               :: run a command from your terminal.")
                 print("\n")
                 print("restart           :: restart Shadow Suite.")
                 print("quit              :: quit Shadow Suite.")
@@ -161,6 +162,11 @@ def main():
 
             elif menu_input == "clear":
                 misc.programFunctions().clrscrn()
+
+            elif menu_input == "run":
+                command = input(r"Command to run > ")
+                logger.log(0, 'User run the command: ' + command, 'logfile.txt')
+                os.system(command)
 
             elif menu_input == "back":
                 logger.log(2, "ERROR 0004: Back cannot be used in the main module", 'logfile.txt')
