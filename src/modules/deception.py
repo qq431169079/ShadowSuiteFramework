@@ -31,7 +31,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Deception", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "Catayao56", # Author
         "desc": "A simple low-interaction honeypot server", # Brief description
         "email": "Catayao56@gmail.com", # Email
@@ -45,7 +45,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 2.0:\nFixed bugs.\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -126,28 +126,45 @@ def getInput():
 
 def writeLog(client, data=''):
     separator = '='*50
-    fopen = open('./honeypot.log', 'a')
+    fopen = open('./output/honeypot.log', 'a')
     fopen.write('Time: %s\nIP: %s\nPort: %d\nData: %s\n%s\n\n'%(time.ctime(), client[0], client[1], data, separator))
     fopen.close()
 
 def honeypot(host, port, motd):
-    print('Starting honeypot!')
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind((host, port))
-    s.listen(100)
-    while True:
-        (insock, address) = s.accept()
-        print('Connection from: %s:%d' % (address[0], address[1]))
-        try:
-            insock.send(motd)
-            data = insock.recv(1024)
-            insock.close()
+    try:
+        print('Starting honeypot!')
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind((host, port))
+        s.listen(100)
+        while True:
+            (insock, address) = s.accept()
+            print('Connection from: %s:%d' % (address[0], address[1]))
+            try:
+                insock.send(motd)
+                data = insock.recv(1024)
+                insock.close()
+
+            except KeyboardInterrupt:
+                print("\nHoneypot shutting down... Bye!")
+                return None
         
-        except socket.error as e:
-            writeLog(address)
+            except socket.error as e:
+                writeLog(address)
         
-        else:
-            writeLog(address, data)
+            else:
+                writeLog(address, data)
+
+    except KeyboardInterrupt:
+        print("\nHoneypot shutting down... Bye!")
+        return None
+
+    except OSError:
+        print("The port we are trying to use is already being used by another process. Sorry!")
+        return None
+
+    except PermissionError:
+        print(error.error0005)
+        return None
 
 def module_body():
     try:
@@ -156,8 +173,8 @@ def module_body():
 
     except KeyboardInterrupt:
         print('\nHoneypot shutting down... Bye!')
-        exit(0)
+        return None
     
     except BaseException as e:
         print('Error: ' + e)
-        exit(1)
+        return None

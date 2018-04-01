@@ -21,7 +21,7 @@ from core import misc
 from core import error
 
 vapi = "0.0.6.3-API"
-vnumber = "0.0.8.4-Linux"
+vnumber = "0.0.8.5-Linux"
 vtype = "Unstable"
 vcodename = "Machine Independent"
 both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
