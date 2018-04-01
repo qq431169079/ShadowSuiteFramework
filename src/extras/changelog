@@ -1,3 +1,23 @@
+commit 0d2a5d879cb435b46ef931d91a3889852a403dd3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Apr 1 20:47:34 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.8.5-Linux
+    
+    -Fixed error-handling of Fl00d
+    
+    -Updated deception.
+
+commit 140821bdfb5d8214e49fbce7fc5f90fa66574d24
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Apr 1 16:18:00 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 1e011206f7009cffc9d17cb0f37769a008d81810
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Sun Apr 1 16:16:18 2018 +0800
