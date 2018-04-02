@@ -102,9 +102,14 @@ try:
     #      (Logging something)
     #      # This function needs three arguments, type, message, and logfile.
     #      # The type is an integer, message is a string, and logfile is also a string.
-    #      # Log Type codes: 0 == INF (Information)
-    #      #                 1 == WRN (Warning)
-    #      #                 2 == ERR (Error)
+    #      # Log Type codes:          0 == INF       (Information)
+    #      #                          1 == WRN       (Warning)
+    #      #                          2 == ERR       (Error)
+    #      #
+    #      # Extended Log Type codes: 3 == ***INF*** (Important)
+    #      #                          4 == ***WRN*** (Serious warning)
+    #      #                          5 == ***ERR*** (Fatal error)
+    #      #
     #      # If none above met, then UNK (Unknown) will be used.
     #
     #      # Example usage:
@@ -118,7 +123,7 @@ except ImportError:
     print("==================== TRACEBACK ====================")
     traceback.print_exc()
     print("===================================================")
-    logger.log(2, "SystemExit raised with error code 8.", 'logfile.txt')
+    logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt')
     sys.exit(8)
 
 class ShadowSuiteLE:

@@ -1,4 +1,4 @@
-Shadow Suite Linux Edition 0.0.8.6-Linux :: Ethical Hacking Toolkit
+Shadow Suite Linux Edition 0.0.8.7-Linux :: Ethical Hacking Toolkit
 Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite Linux Edition is an Ethical Hacking Toolkit.
@@ -13,7 +13,7 @@ for Shadow Suite Windows Edition.
 
 What's new?
 ------------------
-1.We now have 28 tools!
+1.35 modules for ethical hacking and penetration testing.
 
 2.This is now the linux edition... We will have the windows edition!
 
@@ -22,11 +22,11 @@ What's new?
 Full Feature List
 ------------------------
 -Friendly CLI
-      -As most people know, Command-Line Interfaces (CLI) are very hard to
+      -As most people know, Command-Line Interfaces (CLIs) are very hard to
        use. But this framework is different. The commands does not need
        arguments, instead they ask you interactively. For example, it needs
-       three arguments. Then the command will ask you "Will i enable this?",
-       "Do i need to do that?", "which file should i work on?", and so on.
+       three arguments. Then it will ask you interactively, no memorization
+       needed to enable switches and options.
 
 -Open Source
       -Shadow Suite is protected by the GNU General Public License, means
@@ -35,16 +35,18 @@ Full Feature List
        tools :)
 
 -Create Custom Modules from template
-      -Do you know Python? Do you know how to code in Python 3? Do you want
+      -Do you know Python? Do you know how to code in Python? Do you want
        to create your own module that can penetration test a Class A network
        in just three seconds? (exagerrated) Shadow Suite provides you a module
        template to help you start creating your custom module. It also
        provides an Application Programming Interface (API) to help you on
        the integration of Shadow Suite and your custom module.
 
+       You can also submit your custom module to us to make it pre-installed!
+
 -Pre-installed modules
       -It's okay if you don't know how to program. Shadow Suite has an
-       arsenal! It provides you tools written in different languages, Python,
+       arsenal! It provides you tools written in different languages. Python,
        Ruby, Perl, PHP, and many more!
 
       -Full tools listing:
@@ -174,7 +176,7 @@ Full Feature List
 
         ==15-Others==
 
-        [i] Not yet Implemented!!!
+        	Deception
 
         ==Custom Modules==
 
@@ -183,11 +185,11 @@ Full Feature List
 TO-DO List
 ------------------------
 
-1.Add more modules.
+1.Code the new update algorithm.
 
 2.Figure out how to automatically install custom modules.
 
-3.Fix bugs.
+3.Fix bugs. Then proceed to the next development phase.
 
 License and Copying
 ------------------------
@@ -234,6 +236,11 @@ Credits
 	DedSecTL: for creating Black Hydra.
 	Muris Kurgas aka j0rgan: for creating Common User Passwords Profiler.
 	Pentura Labs: for creating Linux Exploit Suggester.
+	Marcin Bury (lucyoa) & Mariusz Kupidura (fwkz): for creating RouterSploit.
+	Robin Wood: for creating Pipal.
+	Social Engineer Development Team: for creating Social Engineer Toolkit.
+	Andrew Horton: for creating URLCrazy.
+	Hypsurus: for creating Weeman.
 
 		Whoever you are, thank you for creating:
 		-DNSMap

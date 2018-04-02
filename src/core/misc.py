@@ -22,12 +22,12 @@ from core import version
 from core import logger
 
 # Colors with meanings
-cw = '\033[0m'     #  white  (normal)
-cr = '\033[31m'    #  red    (errors)
-cg = '\033[32m'    #  green  (main color)
-cy = '\033[33m'    #  yellow (warnings)
-cb = '\033[34m'    #  blue   (highlights)
-cgr = '\033[37m'   #  gray   (questions)
+cw = '\033[0m'     #  white     (normal)
+cr = '\033[31m'    #  red       (errors)
+cg = '\033[32m'    #  green     (main color)
+cy = '\033[33m'    #  yellow    (warnings)
+cb = '\033[34m'    #  blue      (highlights)
+cgr = '\033[37m'   #  gray      (questions)
 
 # Misc colors
 cp = '\033[35m'    #  purple

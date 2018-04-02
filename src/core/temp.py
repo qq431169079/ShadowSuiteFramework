@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 4.3
+# Module version: 5.0
 
 # Import directives
 try:
@@ -13,6 +13,7 @@ try:
     import sys
     import traceback
     from core import error
+    from core.logger import log
     import API
 
     # Place your 'import' directives below

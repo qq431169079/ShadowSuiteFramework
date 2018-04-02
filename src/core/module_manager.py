@@ -76,7 +76,7 @@ def shell():
 
             elif command == "run":
                 command_to_run = input(r"Command to run > ")
-                logger.log(0, 'User run the command: ' + command_to_run, 'logfile.txt')
+                logger.log(3, 'User run the command: ' + command_to_run, 'logfile.txt')
                 os.system(command_to_run)
 
             elif command == "quit":

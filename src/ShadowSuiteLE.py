@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/bin/env python3
 # Coding=UTF-8
 # Shadow Suite Linux Edition :: Ethical Hacking Toolkit
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
@@ -53,7 +53,7 @@ except ImportError:
     print("==================== TRACEBACK ====================")
     traceback.print_exc()
     print("===================================================")
-    logger.log(2, "SystemExit raised with error code 8.", 'logfile.txt')
+    logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt')
     sys.exit(8)
 
 def main():
@@ -70,7 +70,7 @@ def main():
     if __name__ != '__main__':
         # If the program is not running independently, then a message will be shown, while
         # still allowing the user to use it.
-        logger.log(0, 'Shadow Suite running as module...', 'logfile.txt')
+        logger.log(3, 'Shadow Suite running as module...', 'logfile.txt')
         print(misc.module_mode)
 
     # This while loop enables the user to enter commands inside shadow suite without
@@ -108,24 +108,23 @@ def main():
                 print("exit              :: same as \'quit\' command.\n")
 
             elif menu_input == "license":
-                print("Opening \'LICENSE\' file via less command ...")
                 logger.log(0, 'User opens license via less command...', 'logfile.txt')
                 os.system("less extras/shadowsuitelicense")
 
             elif menu_input == "info":
                 logger.log(0, 'Users looks at the info.', 'logfile.txt')
                 print()
-                print("The current version number of this program is: " + version.vnumber)
+                print("Current version number:   " + version.vnumber)
                 print()
-                print("The current version type of this program is: " + version.vtype)
+                print("Current version type:     " + version.vtype)
                 print()
-                print("The current version codename of this program is: " + version.vcodename)
+                print("Current version codename: " + version.vcodename)
                 print()
-                print("To automatically update, type \'full update\' on this terminal.\n")
-                print("To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuiteLE\' and clone the repository.")
+                print("[i] To automatically update, type \'full update\' on this terminal.")
+                print("[i] To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuiteLE\' and clone the repository.")
 
             elif menu_input == "prog update":
-                print(misc.cgr + "Fetching Shadow Suite from Shadow Team's repository..." + misc.cw)
+                print(misc.cgr + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.cw)
                 logger.log(0, 'User performs a program update...', 'logfile.txt')
                 update.prog_update()
 
@@ -157,7 +156,8 @@ def main():
                 module_manager.shell()
 
             elif menu_input == "suggest":
-                criteria = input("Enter keywords separated by comma (dns, wireless, cracking) > ")
+                criteria = input("Enter keywords (dns, wireless, cracking) > ")
+                logger.log(0, 'User want a suggestion with the criteria ' + criteria + '.', 'logfile.txt')
                 suggest.api(criteria)
 
             elif menu_input == "clear":
@@ -165,7 +165,7 @@ def main():
 
             elif menu_input == "run":
                 command = input(r"Command to run > ")
-                logger.log(0, 'User run the command: ' + command, 'logfile.txt')
+                logger.log(3, 'User run the command: CODE[' + command + ']', 'logfile.txt')
                 os.system(command)
 
             elif menu_input == "back":
@@ -209,8 +209,8 @@ def main():
             print("==================== TRACEBACK ====================")
             traceback.print_exc()
             print("===================================================")
-            logger.log(2, 'ImportError catched.', 'logfile.txt')
-            logger.log(2, "SystemExit raised with error code 8.", 'logfile.txt')
+            logger.log(5, 'ImportError catched.', 'logfile.txt')
+            logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt')
             sys.exit(8)
 
         except SystemExit:
@@ -218,10 +218,11 @@ def main():
             try:
                 open('.instance_running.log', 'r').read() # Try to read the file
                 open('.instance_running.log', 'r').close() # Close the file
-                os.system('rm .instance_running.log')
+                os.system('rm .instance_running.log') # Delete the file
 
             except:
-                pass
+                pass # If file doesn't exist, do nothing. just exit
+
             sys.exit()
 
         except:
@@ -233,6 +234,7 @@ def main():
             print()
             quit = misc.programFunctions().error_except()
             if quit == True:
+                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt')
                 sys.exit(0)
 
             elif quit == False:
@@ -247,12 +249,12 @@ def main():
 # Starts the program
 if __name__ == "__main__":
     # Check python version first before main() function execution
-    req_py_version = (3, 6, 4)
+    req_py_version = (3, 6, 0)
     cur_py_version = sys.version_info
     str_py_version = str(sys.version_info)
     str_py_version = str_py_version.replace('sys.version_info(', '')
     str_py_version = str_py_version.replace(')', '')
-    logger.log(0, 'User has python version ' + str_py_version +'.', 'logfile.txt')
+    logger.log(3, 'User has python version ' + str_py_version +'.', 'logfile.txt')
     req_py_version_str = "v"
     for ver_nums in req_py_version:
         req_py_version_str = req_py_version_str + str(ver_nums) + '.'

@@ -20,9 +20,9 @@ import os
 from core import misc
 from core import error
 
-vapi = "0.0.6.3-API"
-vnumber = "0.0.8.6-Linux"
-vtype = "Unstable"
+vapi = "0.0.6.4-API"
+vnumber = "0.0.8.7-Linux"
+vtype = "Experimental"
 vcodename = "Machine Independent"
 both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
 

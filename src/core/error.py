@@ -74,7 +74,7 @@ error0009 = "ERROR 0009: The update package was not found! Maybe corrupted?"
 error0010 = "ERROR 0010: Cannot connect! Is it really up? Or the problem is ours? Please check."
 
 # This is called if python version of user doesn't meet the required version.
-error0011 = "ERROR 0011: Python {0} or later is recommended. Now Quitting..."
+error0011 = "ERROR 0011: Python {0} or later is needed to run Shadow Suite."
 
     ##################################################################################
     #                                                                                #

@@ -1,7 +1,4 @@
-bash
-cowsay
 curl
-figlet
 git
 less
 nmap
@@ -11,7 +8,6 @@ python
 python2
 ruby
 tar
-tor
 vim
 wget
 zip
