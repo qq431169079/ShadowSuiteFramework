@@ -1,3 +1,38 @@
+commit c43dffd96df472ae612bde7b4798829450c2b81e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Apr 2 23:59:58 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.8.7-Linux
+    
+    We are now in experimental phase!
+    
+    Deleted test script.
+    
+    Updated code and fixed bugs.
+            modified:   src/API.py
+            modified:   src/API_test.py
+            modified:   src/ShadowSuiteLE.py
+            modified:   src/apt_requirements
+            modified:   src/core/error.py
+            modified:   src/core/fullupdate.py
+            modified:   src/core/list_module.py
+            modified:   src/core/logger.py
+            modified:   src/core/manage_module.py
+            modified:   src/core/misc.py
+            modified:   src/core/module_manager.py
+            modified:   src/core/temp.py
+            modified:   src/core/version.py
+
+commit 4155447441cf2428824a000d17705fac90116706
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Apr 2 00:42:06 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 3f46bc4b2d3c3d400a415588ba5158034227d032
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Mon Apr 2 00:41:38 2018 +0800
