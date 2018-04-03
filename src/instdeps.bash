@@ -3,4 +3,4 @@
 
 # Install packages listed in apt_requirements file.
 
-xargs -0 apt install -y < <(tr \\n \\0 < apt_requirements)
+xargs -0 apt install -y --upgrade < <(tr \\n \\0 < apt_requirements)

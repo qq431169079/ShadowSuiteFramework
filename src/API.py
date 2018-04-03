@@ -1,4 +1,4 @@
-#!/bin/python
+#!usr/bin/env python3
 # Coding=UTF-8
 # Shadow Suite Linux Edition :: Ethical Hacking Toolkit
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
@@ -126,7 +126,7 @@ except ImportError:
     logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt')
     sys.exit(8)
 
-class ShadowSuiteLE:
+class ShadowSuiteLE():
     # Method calling: API.ShadowSuiteLE().[METHOD NAME]()
     # Variable assignment: variable = API.ShadowSuiteLE().[VARIABLE]
 

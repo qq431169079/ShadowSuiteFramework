@@ -20,8 +20,8 @@ import os
 from core import misc
 from core import error
 
-vapi = "0.0.6.4-API"
-vnumber = "0.0.8.7-Linux"
+vapi = "0.0.6.5-API"
+vnumber = "0.0.8.8-Linux"
 vtype = "Experimental"
 vcodename = "Machine Independent"
 both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
@@ -52,6 +52,8 @@ both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
     #               like nightly builds, but instead of updating nightly,
     #               it's updating weekly.
     #
+    #####################################################################
+    #
     # Weekly Build: first phase of release cycle. Many tools under
     #               production, program has so many bugs, very unstable.
     #
@@ -65,6 +67,8 @@ both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
     #               all known bugs are fixed. In this phase, you can now
     #               start a new maintenance update, which means the release
     #               cycle will go back to Weekly Build.
+    #
+    #####################################################################
     #
     # (Catayao56:) I suggest that you use codenames in alphabetical order.
     # What i mean is this:
