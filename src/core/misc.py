@@ -56,6 +56,14 @@ class programFunctions():
     copyright = "Copyright(C) 2017-2018 by Shadow Team"
 
     def program_restart(self):
+        try:
+            open('.last_session_exit_fail.log', 'r').read() # Try to read the file
+            open('.last_session_exit_fail.log', 'r').close() # Close the file
+            os.system('rm .last_session_exit_fail.log') # Delete the file
+
+        except:
+            pass # If file doesn't exist, do nothing, just restart.
+
         python = sys.executable
         os.execl(python, python, * sys.argv)
         curdir = os.getcwd()

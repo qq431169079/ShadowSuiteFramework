@@ -216,9 +216,9 @@ def main():
         except SystemExit:
             logger.log(1, 'SystemExit catched.', 'logfile.txt')
             try:
-                open('.instance_running.log', 'r').read() # Try to read the file
-                open('.instance_running.log', 'r').close() # Close the file
-                os.system('rm .instance_running.log') # Delete the file
+                open('.last_session_exit_fail.log', 'r').read() # Try to read the file
+                open('.last_session_exit_fail.log', 'r').close() # Close the file
+                os.system('rm .last_session_exit_fail.log') # Delete the file
 
             except:
                 pass # If file doesn't exist, do nothing. just exit
@@ -271,8 +271,8 @@ if __name__ == "__main__":
         pass
     
     try:
-        open('.instance_running.log', 'r').read() # Try to read the file
-        open('.instance_running.log', 'r').close() # Close the file
+        open('.last_session_exit_fail.log', 'r').read() # Try to read the file
+        open('.last_session_exit_fail.log', 'r').close() # Close the file
         print(error.warning0004)
         instance_warn = str(input(misc.cy + misc.fb + misc.fi + "Do you still want to run anyway? (y/n) > " + misc.fr + misc.cw))
         instance_warn = instance_warn.lower()
@@ -284,7 +284,7 @@ if __name__ == "__main__":
             sys.exit(0)
     
     except FileNotFoundError:
-        open('.instance_running.log', 'w').write('')
-        open('.instance_running.log', 'w').close() # Close the file
+        open('.last_session_exit_fail.log', 'w').write('')
+        open('.last_session_exit_fail.log', 'w').close() # Close the file
         misc.programFunctions().clrscrn()
         main()

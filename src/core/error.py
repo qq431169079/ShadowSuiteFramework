@@ -35,7 +35,7 @@ from core import misc
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
 # WARNING 0003: An unknown error occured when processing your command.
-# WARNING 0004: Another instance of Shadow Suite is running.
+# WARNING 0004: The last session of Shadow Suite has failed to quit properly.
 
     ##################################################################################
     #                                                                                #
@@ -92,4 +92,4 @@ warning0002 = misc.cy + "WARNING 0002: Feature not yet implemented, cannot proce
 warning0003 = misc.cy + "WARNING 0003: An unknown error occured when processing your command." + misc.cw
 
 # This is called if another instance of Shadow Suite is currently running...
-warning0004 = misc.cy + "WARNING 0004: Another instance of Shadow Suite is already running." + misc.cw
+warning0004 = misc.cy + "WARNING 0004: The last session of Shadow Suite has failed to quit properly." + misc.cw
