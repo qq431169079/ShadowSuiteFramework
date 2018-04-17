@@ -1,3 +1,32 @@
+commit 3d485f662b13a61e02056a77e27679baac661d14
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Apr 17 10:44:13 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.2-Linux
+    
+    All modules have their mandatory module update!
+    They all have minimum module version of 5.0
+    
+    Added --debug and --failsafe options (experimental)
+    
+    Bug fixes
+    
+    Removed unnecesarry variables.
+    
+    Trying to make a 'cleaner' code.
+    
+    DNSRecon: dns module is now locally installed.
+
+commit 5945a070ef26063b90793fdc512ec4534938d28a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Apr 9 11:32:43 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit ca9bcad234e702bae6d0af51893d591dacc1a8ae
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Mon Apr 9 11:32:20 2018 +0800
