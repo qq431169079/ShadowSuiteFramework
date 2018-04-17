@@ -1,33 +1,59 @@
-# Import directives
-import os
-import sys
-from core import error
-# import API
-# Uncomment the line above if your module will use Shadow Suite's API.
+########################################################################################
+#                                                                                      #
+#                       MODULE FOR SHADOW SUITE LINUX EDITION                          #
+#                                                                                      #
+########################################################################################
+# Coding=UTF-8
 
-# Place your 'import' directives here
+# Module version: 5.0
+
+# Import directives
+try:
+    import os
+    import sys
+    import traceback
+    from core import error
+    from core.logger import log
+    import API
+
+    # Place your 'import' directives below
+
+    import_error = False
+
+except ImportError:
+    print("[!] A module is missing! Please install the required modules...")
+    print("==================== TRACEBACK ====================")
+    traceback.print_exc()
+    print("===================================================")
+    import_error = True
 
 # Put your module information here.
 info = {
-        "name": "Red Hawk", # Module filename (Change filename if you want to change this)
-        "version": "3.0", # version
+        "name": "Red Hawk", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "version": "4.0", # version
         "author": "R3D#@0R_2H1N A.K.A Tuhinshubhra", # Author
         "desc": "All in one tool for Information Gathering and Vulnerability Scanning", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
+        "lastupdate": "Apr. 09, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
-        "usingapi": "False", # Using API?
+        "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['PHP 7.1.12-1', 'PHP-dev', 'PHP-curl', 'PHP-xml'] # Put needed dependencies here.  
+dependencies = ['BINARY: PHP 7.2.3-2'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 2.0:\nMerge pull request #15 from Romain/master; Fixed a typo\n\nVersion 1.0:\nInitial wrapper module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.0:\nMerge pull request #15 from Romain/master; Fixed a typo\n\nVersion 1.0:\nInitial wrapper module release"
+# Changelog format:
+#
+# changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
 
 # Prints the module information
 def module_info():
+    # Unofficial way to convert integer to Boolean
+    # (well, not really a boolean, as it is a string).
+    # if [argument] == 0 then True; Otherwise, False.
     if info['needsroot'] == "0":
         superm = "True"
     else:
@@ -41,30 +67,43 @@ def module_info():
     print("Module Author's Email: " + info['email'])
     print("Module Author's Info: " + info['authorinfo'])
     print("Module's last update: " + info['lastupdate'])
-    print("Using Shadow Suite's API: " + info['usingapi'])
+    print("Shadow Suite API Support: " + info['usingapi'])
     print("Needs root: " + superm)
     print()
+    # Prints the dependencies via for loop. I just copy/pasted it from a reference book
+    # and modified it XD
     print("Dependencies:", end=' ')
     for item in dependencies:
         print(item, ",", end=' ')
     print()
+    # Prints the changelog of the module.
     print("Changelog:\n" + "\n" + changelog)
     print("\n\n")
 
 # Main module function
 def main():
-    if info['needsroot'] == "0":
-        if os.geteuid() != 0:
-            print(error.error0005)
-            return 0
+    if import_error is True:
+        return None
+
+    else:
+        """ First, it checks the value assigned to the 'needsroot' variable in the 
+        dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
+        function from the 'os' module. If the result from geteuid is also zero, then
+        the module will call the function 'module_body()'. Otherwise, it will print an
+        error message. If the value assigned to the 'needsroot' variable in the dictionary
+        'info' is not equal to zero, then the module will not call the 'geteuid()' function
+        from the 'os' module, and will immediately call 'module_body()' function. """
+        if info['needsroot'] == "0":
+            if os.geteuid() != 0:
+                print(error.error0005)
+                return 0
+
+            else:
+                module_body()
 
         else:
             module_body()
 
-    else:
-        module_body()
-
 def module_body():
-    # Place your program here. This is the function where your program will be placed.
-    os.system("php modules/RED_HAWK/rhawk.php")
-    print()
+    os.system("cd modules/RED_HAWK && php rhawk.php")
+    print(API.ShadowSuiteLE().finish)

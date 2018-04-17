@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 4.2
+# Module version: 5.0
 
 # Import directives
 try:
@@ -13,6 +13,7 @@ try:
     import sys
     import traceback
     from core import error
+    from core.logger import log
     import API
 
     # Place your 'import' directives below
@@ -29,21 +30,21 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Weeman", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "3.0", # version
         "author": "Hypsurus", # Author
         "desc": "HTTP Server for phishing.", # Brief description
         "email": "none", # Email
         "authorinfo": "https://github.com/Hypsurus/weeman", # Additional information about the author; this could be
-        "lastupdate": "Mar. 28, 2018",                     # a website of the author.
+        "lastupdate": "Apr. 13, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['Python 2 Interpreter'] # Put needed dependencies here.  
+dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -105,5 +106,4 @@ def main():
 
 def module_body():
     os.system("cd modules/WEEMAN && python2 -B weeman.py")
-    os.system("cd ../..")
     print(API.ShadowSuiteLE().finish)

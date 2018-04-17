@@ -1,42 +1,50 @@
 ########################################################################################
 #                                                                                      #
-#                             MODULE FOR SHADOW SUITE                                  #
+#                       MODULE FOR SHADOW SUITE LINUX EDITION                          #
 #                                                                                      #
 ########################################################################################
+# Coding=UTF-8
 
-# Module version: 3.2
+# Module version: 5.0
 
 # Import directives
 try:
     import os
     import sys
+    import traceback
     from core import error
+    from core.logger import log
     import API
-    # Uncomment the line above if your module will use Shadow Suite's API.
 
     # Place your 'import' directives below
 
+    import_error = False
+
 except ImportError:
     print("[!] A module is missing! Please install the required modules...")
+    print("==================== TRACEBACK ====================")
+    traceback.print_exc()
+    print("===================================================")
+    import_error = True
 
 # Put your module information here.
 info = {
-        "name": "Cisco Auditing Tool", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "2.0", # version
+        "name": "Cisco Auditing Tool (CAT)", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "version": "3.0", # version
         "author": "g0ne [null0]", # Author
         "desc": "A tool for auditing Cisco networks.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
+        "lastupdate": "Apr. 10, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['Perl 5.26.1'] # Put needed dependencies here.  
+dependencies = ['BINARY: Perl 5.26.1', 'PERL: Getopt::Std'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -74,27 +82,29 @@ def module_info():
 
 # Main module function
 def main():
-    """ First, it checks the value assigned to the 'needsroot' variable in the 
-    dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
-    function from the 'os' module. If the result from geteuid is also zero, then
-    the module will call the function 'module_body()'. Otherwise, it will print an
-    error message. If the value assigned to the 'needsroot' variable in the dictionary
-    'info' is not equal to zero, then the module will not call the 'geteuid()' function
-    from the 'os' module, and will immediately call 'module_body()' function. """
-    if info['needsroot'] == "0":
-        if os.geteuid() != 0:
-            print(error.error0005)
-            return 0
+    if import_error is True:
+        return None
+
+    else:
+        """ First, it checks the value assigned to the 'needsroot' variable in the 
+        dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
+        function from the 'os' module. If the result from geteuid is also zero, then
+        the module will call the function 'module_body()'. Otherwise, it will print an
+        error message. If the value assigned to the 'needsroot' variable in the dictionary
+        'info' is not equal to zero, then the module will not call the 'geteuid()' function
+        from the 'os' module, and will immediately call 'module_body()' function. """
+        if info['needsroot'] == "0":
+            if os.geteuid() != 0:
+                print(error.error0005)
+                return 0
+
+            else:
+                module_body()
 
         else:
             module_body()
 
-    else:
-        module_body()
-
 def module_body():
-    # Place your program here. This is the function where your program will be placed.
-    # Remove module_info(), or leave it here. It's your call.
     print()
     print()
     print()
@@ -110,5 +120,4 @@ def module_body():
     print()
     print("[i] Running module...")
     os.system("cd modules/CAT && perl CAT -h " + TARGET + " -p " + PORT + " -w " + WLCN + " -a " + WLPW + " -l " + OUTPUT)
-    os.system("cd ../..")
     print(API.ShadowSuiteLE().finish)

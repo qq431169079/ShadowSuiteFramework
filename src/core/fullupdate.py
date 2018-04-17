@@ -19,6 +19,8 @@ from core import error
 def check_for_updates():
     try:
         print(misc.cg + "[i] Checking for updates..." + misc.cw)
+        if misc.debugging == True:
+            print("[DEBUG] getting https://api.github.com/repos/Sh4d0w-T34m/ShadowSuiteLE/releases/latest...")
         r = requests.get("https://api.github.com/repos/Sh4d0w-T34m/ShadowSuiteLE/releases/latest")
         if(r.ok):
             items = json.loads(r.text or r.content)
@@ -40,6 +42,8 @@ def update():
         url = "https://github.com/Sh4d0w-T34m/ShadowSuiteLE/tarball/master"
         print(misc.cg + "Downloading..." + misc.cw)
         try:
+            if misc.debugging == True:
+                print("[DEBUG] Opening https://github.com/Sh4d0w-T34m/ShadowSuiteLE/tarball/master")
             u = urllib.request.urlopen(url)
 
         except urllib.error.URLError:

@@ -3,6 +3,11 @@ from moduleBS import BeautifulSoup
 import urlparse
 from dtectcolors import Style,Fore,Back,init 
 init()
+if os.name == 'nt':
+	os.system('cls')
+else:
+	os.system('clear')
+
 d4rk = 0
 dr1 = "D4rk "
 
@@ -43,7 +48,7 @@ def dtect():
 	print("")
 	def menu():
 		global filedetector,wpenumerator,subdomainscan,portscan,wpscan,xssscanner,wpbackupscan,sqliscanner
-		print(" -- "+boldwhite+"Menu"+reset+" -- \n \n  1. 	"+boldwhite+"WordPress Username Enumerator"+reset+"   \n  2. 	"+boldwhite+"Sensitive File Detector"+reset+"        \n  3. 	"+boldwhite+"Sub-Domain Scanner"+reset+"\n  4. 	"+boldwhite+"Port Scanner"+reset+"        \n  5. 	"+boldwhite+"Wordpress Scanner\n"+reset+"  6. 	"+boldwhite+"Cross-Site Scripting [ XSS ] Scanner\n"+reset+"  7.    "+boldwhite+"Wordpress Backup Grabber\n"+reset+"  8.    "+boldwhite+"SQL Injection [ SQLI ] Scanner\n"+reset+"  9.    "+boldwhite+"Quit\n"+reset)
+		print(" -- "+boldwhite+"Menu"+reset+" -- \n \n  1. 	"+boldwhite+"WordPress Username Enumerator"+reset+"   \n  2. 	"+boldwhite+"Sensitive File Detector"+reset+"        \n  3. 	"+boldwhite+"Sub-Domain Scanner"+reset+"\n  4. 	"+boldwhite+"Port Scanner"+reset+"        \n  5. 	"+boldwhite+"Wordpress Scanner\n"+reset+"  6. 	"+boldwhite+"Cross-Site Scripting [ XSS ] Scanner\n"+reset+"  7.    "+boldwhite+"Wordpress Backup Grabber\n"+reset+"  8.    "+boldwhite+"SQL Injection [ SQLI ] Scanner\n"+reset)+"  9.    "+boldwhite+"Exit\n"+reset
 		option = raw_input("[+] Select Option\n    > ")
 		if option == "1":
 			wpenumerator = "on"

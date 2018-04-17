@@ -1,34 +1,41 @@
 ########################################################################################
 #                                                                                      #
-#                             MODULE FOR SHADOW SUITE                                  #
+#                       MODULE FOR SHADOW SUITE LINUX EDITION                          #
 #                                                                                      #
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 3.5
+# Module version: 5.0
 
 # Import directives
 try:
     import os
     import sys
+    import traceback
     from core import error
+    from core.logger import log
     import API
-    # Uncomment the line above if your module will use Shadow Suite's API.
 
     # Place your 'import' directives below
 
+    import_error = False
+
 except ImportError:
     print("[!] A module is missing! Please install the required modules...")
+    print("==================== TRACEBACK ====================")
+    traceback.print_exc()
+    print("===================================================")
+    import_error = True
 
 # Put your module information here.
 info = {
         "name": "Common User Passwords Profiler (CUPP)", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "2.0", # version
+        "version": "3.0", # version
         "author": "Muris Kurgas aka j0rgan", # Author
         "desc": "Common user passwords profiler.", # Brief description
         "email": "j0rgan@remote-exploit.org", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
+        "lastupdate": "Apr. 13, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -37,7 +44,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -75,28 +82,32 @@ def module_info():
 
 # Main module function
 def main():
-    """ First, it checks the value assigned to the 'needsroot' variable in the 
-    dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
-    function from the 'os' module. If the result from geteuid is also zero, then
-    the module will call the function 'module_body()'. Otherwise, it will print an
-    error message. If the value assigned to the 'needsroot' variable in the dictionary
-    'info' is not equal to zero, then the module will not call the 'geteuid()' function
-    from the 'os' module, and will immediately call 'module_body()' function. """
-    if info['needsroot'] == "0":
-        if os.geteuid() != 0:
-            print(error.error0005)
+    if import_error is True:
+        return None
+
+    else:
+        """ First, it checks the value assigned to the 'needsroot' variable in the 
+        dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
+        function from the 'os' module. If the result from geteuid is also zero, then
+        the module will call the function 'module_body()'. Otherwise, it will print an
+        error message. If the value assigned to the 'needsroot' variable in the dictionary
+        'info' is not equal to zero, then the module will not call the 'geteuid()' function
+        from the 'os' module, and will immediately call 'module_body()' function. """
+        if info['needsroot'] == "0":
+            if os.geteuid() != 0:
+                print(error.error0005)
+                return 0
+
+            else:
+                module_body()
 
         else:
             module_body()
 
-    else:
-        module_body()
-
 def module_body():
     go = "cd modules/CUPP"
-    back = os.system("cd ../..")
     print("  ___________")
-    print(" | cupp.py! |               # Common")
+    print(" | cupp.py! |                # Common")
     print("      \\                     # User")
     print("       \\   ,__,             # Passwords")
     print("        \\  (oo)____         # Profiler")
@@ -111,23 +122,21 @@ def module_body():
     select = input("Input > ")
     select = int(select)
     if select == 1:
-        os.system(go + " && python cupp3.py -i -q")
-        back
+        os.system(go + " && python3 cupp3.py -i -q")
 
     elif select == 2:
-        os.system(go + " && python cupp3.py -w -q")
-        back
+        os.system(go + " && python3 cupp3.py -w -q")
 
     elif select == 3:
-        os.system(go + " && python cupp3.py -l -q")
-        back
+        os.system(go + " && python3 cupp3.py -l -q")
 
     elif select == 4:
-        os.system(go + " && python test_cupp.py")
-        back
+        os.system(go + " && python3 test_cupp.py")
 
     elif select == 9:
         return
 
     else:
         print(error.error0001)
+
+    print(API.ShadowSuiteLE().finish)

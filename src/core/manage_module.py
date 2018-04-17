@@ -26,18 +26,39 @@ from core import logger
 def generate_new(cmn):
     # This is used to generate a custom module from a template via API.
     logger.log(0, 'User generated a new module named ' + cmn, 'logfile.txt')
+    if misc.failsafe == True:
+        print("[FAILSAFE] called logger... (Press enter key to continue)")
+        misc.programFunctions().pause(True)
+
     cmn = cmn.lower()
+    if misc.failsafe == True:
+        print("[FAILSAFE] lower-cased cmn variable's value. (Press enter key to continue)")
+        misc.programFunctions().pause(True)
+
     cmn = cmn.strip()
+    if misc.failsafe == True:
+        print("[FAILSAFE] stripped value of cmn variable. (Press enter key to continue)")
+        misc.programFunctions().pause(True)
+
     cmn = cmn.replace(' ', '')
+    if misc.failsafe == True:
+        print("[FAILSAFE] replaced ' ' with '' in cmn variable. (Press enter key to continue)")
+        misc.programFunctions().pause(True)
+
     os.system("cp $PWD/core/temp.py $PWD/output/")
+    if misc.failsafe == True:
+        print("[FAILSAFE] copied core/temp.py to output/temp.py. (Press enter key to continue)")
+        misc.programFunctions().pause(True)
+
     os.system("mv $PWD/output/temp.py $PWD/output/" + cmn + ".py")
+    if misc.failsafe == True:
+        print("[FAILSAFE] renamed output/temp.py to output/$cmn.py. (Press enter key to continue)")
+        misc.programFunctions().pause(True)
+
     os.system("echo You can now open the template located on: $PWD/output/" + cmn + ".py")
 
 def manager():
-    loop = True
-    global core
-    
-    while loop == True:
+    while True:
         try:
             if os.geteuid() != 0:
                 command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Manage_Module.py" + misc.cw + misc.fr + "] $: ")

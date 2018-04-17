@@ -73,6 +73,16 @@ def main():
         logger.log(3, 'Shadow Suite running as module...', 'logfile.txt')
         print(misc.module_mode)
 
+    if misc.debugging == True:
+        # If the program has been executed with an argument -d or --debug, show this info
+        print("[i] Debugging mode is on")
+        logger.log(3, 'Shadow Suite Debugging is on', 'logfile.txt')
+
+    if misc.failsafe == True:
+        # If the program has been executed with an argument -f or --failsafe, show this
+        print("[i] Failsafe mode is on")
+        logger.log(3, 'Shadow Suite Failsafe is on', 'logfile.txt')
+
     # This while loop enables the user to enter commands inside shadow suite without
     # needing to run the program everytime a command is entered.
     while True:
@@ -82,6 +92,7 @@ def main():
             if os.geteuid() != 0:
                 logger.log(0, 'Running as normal user.', 'logfile.txt')
                 menu_input = input("[" + misc.cb + misc.fb + misc.fi + "ShadowSuite.py" + misc.fr + misc.cw + "] $: ")
+
             else:
                 logger.log(0, 'Running as root.', 'logfile.txt')
                 menu_input = input("[" + misc.cb + misc.fb + misc.fi + "ShadowSuite.py" + misc.fr + misc.cw + "] #: ")
@@ -108,11 +119,18 @@ def main():
                 print("exit              :: same as \'quit\' command.\n")
 
             elif menu_input == "license":
+                if misc.failsafe == True:
+                    print("[FAILSAFE] license not available")
+                    continue
+
                 logger.log(0, 'User opens license via less command...', 'logfile.txt')
                 os.system("less extras/shadowsuitelicense")
 
             elif menu_input == "info":
                 logger.log(0, 'Users looks at the info.', 'logfile.txt')
+                print()
+                if misc.failsafe == True:
+                    print("Failsafe: ON")
                 print()
                 print("Current version number:   " + version.vnumber)
                 print()
@@ -124,31 +142,47 @@ def main():
                 print("[i] To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuiteLE\' and clone the repository.")
 
             elif menu_input == "prog update":
-                print(misc.cgr + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.cw)
-                logger.log(0, 'User performs a program update...', 'logfile.txt')
-                update.prog_update()
-
-            elif menu_input == "deps update":
-                print(misc.cgr + "Downloading and installing dependencies..." + misc.cw)
-                logger.log(0, 'User performs a dependency update...', 'logfile.txt')
-                update.deps_update()
-
-            elif menu_input == "full update":
-                print(misc.cgr + "Do you really want to perform a full update (y/n)?" + misc.cw)
-                full_updateinput = input(" > ")
-                if full_updateinput == "y" or full_updateinput == "Y":
-                    logger.log(0, 'User performs a full update...', 'logfile.txt')
-                    update.full_update()
-
-                elif full_updateinput == "n" or full_updateinput == "N":
-                    print(misc.cr + "Full update cancelled by user..." + misc.cw)
+                if misc.failsafe == True:
+                    print("[FAILSAFE] prog update not available")
 
                 else:
-                    print(error.error0001)
+                    print(misc.cgr + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.cw)
+                    logger.log(0, 'User performs a program update...', 'logfile.txt')
+                    update.prog_update()
+
+            elif menu_input == "deps update":
+                if misc.failsafe == True:
+                    print("[FAILSAFE] deps update not available")
+
+                else:
+                    print(misc.cgr + "Downloading and installing dependencies..." + misc.cw)
+                    logger.log(0, 'User performs a dependency update...', 'logfile.txt')
+                    update.deps_update()
+
+            elif menu_input == "full update":
+                if misc.failsafe == True:
+                    print("[FAILSAFE] full update not available")
+
+                else:
+                    print(misc.cgr + "Do you really want to perform a full update (y/n)?" + misc.cw)
+                    full_updateinput = input(" > ")
+                    if full_updateinput == "y" or full_updateinput == "Y":
+                        logger.log(0, 'User performs a full update...', 'logfile.txt')
+                        update.full_update()
+
+                    elif full_updateinput == "n" or full_updateinput == "N":
+                        print(misc.cr + "Full update cancelled by user..." + misc.cw)
+
+                    else:
+                        print(error.error0001)
 
             elif menu_input == "changelog":
-                logger.log(0, 'User opens changelog.', 'logfile.txt')
-                version.changelog()
+                if misc.failsafe == True:
+                    print("[FAILSAFE] changelog not available")
+
+                else:
+                    logger.log(0, 'User opens changelog.', 'logfile.txt')
+                    version.changelog()
 
             elif menu_input == "module":
                 # Runs the module_manager.py module.
@@ -156,14 +190,26 @@ def main():
                 module_manager.shell()
 
             elif menu_input == "suggest":
+                if misc.failsafe == True:
+                    print("[FAILSAFE] suggest command not available")
+                    continue
+
                 criteria = input("Enter keywords (dns, wireless, cracking) > ")
                 logger.log(0, 'User want a suggestion with the criteria ' + criteria + '.', 'logfile.txt')
                 suggest.api(criteria)
 
             elif menu_input == "clear":
+                if misc.failsafe == True:
+                    print("[FAILSAFE] clear not available")
+                    continue
+
                 misc.programFunctions().clrscrn()
 
             elif menu_input == "run":
+                if misc.failsafe == True:
+                    print("[FAILSAFE] run not available")
+                    continue
+
                 command = input(r"Command to run > ")
                 logger.log(3, 'User run the command: CODE[' + command + ']', 'logfile.txt')
                 os.system(command)
@@ -216,11 +262,15 @@ def main():
         except SystemExit:
             logger.log(1, 'SystemExit catched.', 'logfile.txt')
             try:
+                if misc.debugging == True:
+                    print("[DEBUG] Deleting session file...")
                 open('.last_session_exit_fail.log', 'r').read() # Try to read the file
                 open('.last_session_exit_fail.log', 'r').close() # Close the file
                 os.system('rm .last_session_exit_fail.log') # Delete the file
 
             except:
+                if misc.debugging == True:
+                    print("[DEBUG] Session file doesn't exist, now quitting...")
                 pass # If file doesn't exist, do nothing. just exit
 
             sys.exit()
@@ -270,6 +320,23 @@ if __name__ == "__main__":
     else:
         pass
     
+    # Check for arguments, if any.
+    try:
+        sys.argv[1] = sys.argv[1].lower()
+        if sys.argv[1] == '-d' or sys.argv[1] == '--debug':
+            misc.debugging = True
+
+        if sys.argv[1] == '-f' or sys.argv[1] == '--failsafe':
+            misc.failsafe = True
+
+        if sys.argv[1] == '-df':
+            misc.debugging = True
+            misc.failsafe = True
+
+    except IndexError:
+        pass
+
+    # Checks if last session failed to exit properly
     try:
         open('.last_session_exit_fail.log', 'r').read() # Try to read the file
         open('.last_session_exit_fail.log', 'r').close() # Close the file

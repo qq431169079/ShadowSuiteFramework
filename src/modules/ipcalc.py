@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 4.3
+# Module version: 5.0
 
 # Import directives
 try:
@@ -13,6 +13,7 @@ try:
     import sys
     import traceback
     from core import error
+    from core.logger import log
     import API
 
     # Place your 'import' directives below
@@ -29,13 +30,13 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "IPcalc", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "name": "IPCalc", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "version": "2.0", # version
         "author": "Catayao56", # Author
         "desc": "An IP Calculator.", # Brief description
         "email": "Catayao56@gmail.com", # Email
         "authorinfo": "https://github.com/Catayao56", # Additional information about the author; this could be
-        "lastupdate": "Mar. 31, 2018",                     # a website of the author.
+        "lastupdate": "Apr. 13, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -44,7 +45,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 2.0:\nMandatory module update\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -153,3 +154,5 @@ def module_body():
     print('Network netmask derived from subnet size, as IP object: ', netmask)
     size = ipn.size()
     print('Number of ip\'s within the network: ', size)
+    print()
+    print(API.ShadowSuiteLE().finish)

@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 4.2
+# Module version: 5.0
 
 # Import directives
 try:
@@ -13,6 +13,7 @@ try:
     import sys
     import traceback
     from core import error
+    from core.logger import log
     import API
 
     # Place your 'import' directives below
@@ -30,12 +31,12 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Ipify", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "2.0", # version
         "author": "Catayao56", # Author
         "desc": "A simple Public IP Address API.", # Brief description
         "email": "Catayao56@gmail.com", # Email
         "authorinfo": "https://github.com/Catayao56", # Additional information about the author; this could be
-        "lastupdate": "Mar. 24, 2018",                     # a website of the author.
+        "lastupdate": "Apr. 13, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -44,7 +45,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 2.0:\nMandatory module update\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -105,8 +106,6 @@ def main():
             module_body()
 
 def module_body():
-    # Place your program here. This is the function where your program will be placed.
-    # Remove module_info(), or leave it here. It's your call.
     try:
         ip = requests.get('https://api.ipify.org/').text
         ip = str(ip)
@@ -118,3 +117,5 @@ def module_body():
 
     except requests.exceptions.ConnectionError:
         print(API.error.error0010)
+
+    print(API.ShadowSuiteLE().finish)

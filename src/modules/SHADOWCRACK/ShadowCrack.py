@@ -1,77 +1,196 @@
-#!/usr/bin/python2
-import os, sys, hashlib, time
+#!/usr/bin/env python
 
-# Console colors
-W  = '\033[0m'  # white (normal)
-R  = '\033[31m' # red
-G  = '\033[32m' # green
-O  = '\033[33m' # orange
-B  = '\033[1m'  # bold
-RR = '\033[3m'  # greencolor
+# Import directives
+try:
+    import os
+    import sys
+    import traceback
 
-# Restart ####################
-def restart_ShadowCrack():
-   python = sys.executable
-   os.execl(python, python, * sys.argv)
-   curdir = os.getcwd()
-##############################
+    import base64
 
-print("\n\n")
-print(" ____  _               _                ____                _")
-print("/ ___|| |__   __ _  __| | _____      __/ ___|_ __ __ _  ___| | __")
-print("\\___ \\| '_ \\ / _` |/ _` |/ _ \\ \\ /\\ / / |   | '__/ _` |/ __| |/ /")
-print(" ___) | | | | (_| | (_| | (_) \\ V  V /| |___| | | (_| | (__|   <")
-print("|____/|_| |_|\\__,_|\\__,_|\\___/ \\_/\\_/  \\____|_|  \\__,_|\\___|_|\\_\\")
-print ("")
-print("Hashing Tool and Hash Cracker")
-print ("\n\nCopyright (C) 2018 Shadow Team\n")
-print ("\n\n")
-# Asks if encrypt or decrypt.
-encryptordecrypt = raw_input("\n[E] Encrypt a String\n[C] Crack a hash\n[Q] Quit\n\nInput: ")
+    from core import misc
+    from core import encrypt
+    from core import decrypt
+    # from core import info # DEV0001
 
-if encryptordecrypt == 'e' or encryptordecrypt == 'E':
-  import ecrypt
-   
-elif encryptordecrypt == 'c' or encryptordecrypt == 'C':
-    print ("%s%s  %s" % (W, RR, W))
-    print ("%s                            %s" % (RR, W))
-    print ("                          %s  %s" % (RR, W))
-    print ("    %s                                            %s" % (RR, W))
-    print ("%s      %s%s%s[ md5|sha1|sha224|sha256|sha384|sha512 ]%s%s  %s" % (RR, W, B, O, W, RR, W))
-    print ("%s  %s  %s                                            %s" % (RR, W, RR, W))
-    print ("%s  %s" % (RR, W))
-    algorithm2 = raw_input("%s    %s%s[%s#%s%s] Algorithm:%s " % (RR, W, B, R, W, B, O))
-    algorithm2 = algorithm2.upper()
+except ImportError:
+    # Prints if error is encountered while importing modules.
+    print("Import Error!")
+    print()
+    print("==================== TRACEBACK ====================")
+    traceback.print_exc()
+    print("===================================================")
 
-elif encryptordecrypt == 'q' or encryptordecrypt == 'Q':
-    print ("Quitting...")
+def main(): # The Main Function
+    print(misc.banner)
+    print('\n' + misc.copyright)
+    print('\n\n')
+    while True:
+        try:
+            command = str(input(" >>> "))
+            command = command.lower()
+        
+            if command == 'help':
+                print(misc.help)
+        
+            elif command == 'encrypt':
+                print(misc.ciphers)
+                try:
+                    cipher = int(input(' >>> '))
+                    
+                    if cipher == 1:
+                        caesar_msg = str(input("Message: "))
+                        caesar_shift = int(input("Shift: "))
+                        result = encrypt.caesar(caesar_msg, caesar_shift)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del caesar_msg
+                        del caesar_shift
+                        del result
+
+                    elif cipher == 2:
+                        reverse_msg = str(input("Message: "))
+                        result = encrypt.reverse(reverse_msg)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del reverse_msg
+                        del result
+
+                    elif cipher == 3:
+                        atbash_msg = str(input("Message: "))
+                        result = encrypt.atbash(atbash_msg)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del atbash_msg
+                        del result
+
+                    elif cipher == 4:
+                        masc_msg = str(input("Message: "))
+                        result = encrypt.masc(masc_msg)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del masc_msg
+                        del result
+
+                    elif cipher == 5:
+                        ### DEV0001 Base64 decoder and encoder isn't working! ###
+                        print(misc.coming_soon)
+                        """
+                        base64_msg = str(input("Message: ")).encode()
+                        result = base64.b64encode(base64_msg, altchars=None)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del base64_msg
+                        del result
+                        """
+
+                    elif cipher == 6:
+                        leet_msg = str(input("Message: "))
+                        result = encrypt.leet(leet_msg)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del leet_msg
+                        del result
+
+                    else:
+                        print(misc.invalid_input)
+
+                except ValueError:
+                    print(misc.invalid_input)
+
+                except TypeError:
+                    print(misc.invalid_input)
+
+            elif command == 'decrypt':
+                print(misc.ciphers)
+                try:
+                    cipher = int(input(' >>> '))
+
+                    if cipher == 1:
+                        caesar_ciphertext = str(input("Ciphertext: "))
+                        caesar_shift = int(input("Number of rotations: "))
+                        result = decrypt.caesar(caesar_ciphertext, caesar_shift)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del caesar_ciphertext
+                        del caesar_shift
+                        del result
+
+                    elif cipher == 2:
+                        reverse_msg = str(input("Message: "))
+                        result = decrypt.reverse(reverse_msg)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del reverse_msg
+                        del result
+
+                    elif cipher == 3:
+                        atbash_msg = str(input("Message: "))
+                        result = decrypt.atbash(atbash_msg)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del atbash_msg
+                        del result
+
+                    elif cipher == 4:
+                        masc_msg = str(input("Message: "))
+                        result = decrypt.masc(masc_msg)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del masc_msg
+                        del result
+
+                    elif cipher == 5:
+                        ### DEV0001 Must be human-readable form ###
+                        """
+                        base64_msg = str(input("Message: "))
+                        result = base64.b64decode(base64_msg, altchars=None, validate=False)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del base64_msg
+                        del result
+                        """
+
+                    elif cipher == 6:
+                        leet_msg = str(input("Message: "))
+                        result = decrypt.leet(leet_msg)
+                        print(result)
+                        misc.programFunctions().pause()
+                        del leet_msg
+                        del result
+
+                    else:
+                        print(misc.invalid_input)
+
+                except ValueError:
+                    print(misc.invalid_input)
+
+                except TypeError:
+                    print(misc.invalid_input)
+
+            elif command == 'info':
+                print(misc.coming_soon)
+
+            elif command == "clear":
+                misc.programFunctions().clrscrn()
+
+            elif command == 'quit':
+                exit(0)
+
+            else:
+                print(misc.invalid_input)
+
+        except ValueError:
+            print(misc.invalid_input)
+
+        except TypeError:
+            print(misc.invalid_input)
+
+        except KeyboardInterrupt:
+            print("CTRL+C detected, quitting...")
+            sys.exit(1)
+
+# If running independently, run main() function.
+if __name__ == '__main__':
+    main()
     sys.exit(0)
-  
-else:
-	print ("\n%s%s[%s!%s%s] %sWrong Input... Please check your input...%s" % (W, B, R, W, B, R, W))
-	time.sleep(2)
-	restart_ShadowCrack()
-	
-if algorithm2 == "MD5":
-  import md5
-  
-elif algorithm2 == "SHA1":
-  import sha1
-  
-elif algorithm2 == "SHA224":
-  import sha224
-  
-elif algorithm2 == "SHA256":
-  import sha256
-  
-elif algorithm2 == "SHA384":
-  import sha384
-
-elif algorithm2 == "SHA512":
-  import sha512
-     
-else:
-    # If user enters an invalid password, this will show up.
-	print ("\n%s%s[%s!%s%s] %sWrong Input... Please check your input...%s" % (W, B, R, W, B, R, W))
-	time.sleep(2)
-	sys.exit()

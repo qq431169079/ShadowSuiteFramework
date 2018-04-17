@@ -1,4 +1,4 @@
-Shadow Suite Linux Edition 0.0.9.0-Linux :: Ethical Hacking Toolkit
+Shadow Suite Linux Edition 0.0.9.2-Linux :: Ethical Hacking Toolkit
 Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite Linux Edition is an Ethical Hacking Toolkit.
@@ -189,7 +189,11 @@ TO-DO List
 
 2.Figure out how to automatically install custom modules.
 
-3.Fix bugs. Then proceed to the next development phase.
+3.Update the harvester.
+
+4.Add SimpleFl00der, Social Media Toolkit (SMT), RandomPass, KickThemOut, Wifite2, MSF, WebExpose, and MultiTool.
+
+5.Debug and failsafe modes. Also add persistent mode (all settings can be used in the next run).)
 
 License and Copying
 ------------------------

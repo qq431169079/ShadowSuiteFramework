@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 4.2
+# Module version: 5.0
 
 # Import directives
 try:
@@ -13,6 +13,7 @@ try:
     import sys
     import traceback
     from core import error
+    from core.logger import log
     import API
 
     # Place your 'import' directives below
@@ -29,21 +30,21 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "URLCrazy", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.0", # version
+        "version": "3.0", # version
         "author": "Andrew Horton", # Author
         "desc": "UrlCrazy is for the study of domainname typos and URL hijacking.", # Brief description
         "email": "none", # Email
         "authorinfo": "www.morningstarsecurity.com/research/urlcrazy", # Additional information about the author; this could be
-        "lastupdate": "Mar. 24, 2018",                     # a website of the author.
+        "lastupdate": "Apr. 13, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['Ruby'] # Put needed dependencies here.  
+dependencies = ['Ruby 1.9.x'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -136,10 +137,10 @@ def module_body():
     show_invalid = show_invalid.lower()
     if show_invalid == 'y':
         si_switch = '-i '
-
+    
     else:
         si_switch = ''
-
+        
     csv = csv.lower()
     if csv == 'y':
         csv_switch = '-f csv '
@@ -148,5 +149,4 @@ def module_body():
         csv_switch = '-f human '
 
     os.system("cd modules/URLCRAZY && ruby urlcrazy -k " + kb_layout + " " + cp_switch + nr_switch + si_switch + csv_switch + "-o ../../output/" + output + ' ' + domain)
-    os.system("pwd")
-    print(API.ShadowSuiteLE.finish)
+    print(API.ShadowSuiteLE().finish)
