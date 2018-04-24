@@ -35,10 +35,10 @@ try:
     # error calling
     #      
     #      (Replace * with error number. See core/error.py for details.)
-    #      error = API.error.error****
+    #      error = API.error.ERROR****
     #
     #      (Replace * with warning number. See core/error.py for details.)
-    #      error = API.error.warning****
+    #      error = API.error.WARNING****
     #
     from core import find_module
     from core import list_module
@@ -47,10 +47,10 @@ try:
     # misc calling
     #
     #      (Prints Shadow Suite logo and version.)
-    #      print(API.misc.logo)
+    #      print(API.misc.LOGO)
     #
     #      (Prints "module mode" message.)
-    #      print(API.misc.module_mode_info)
+    #      print(API.misc.MODULE_MODE_INFO)
     #
     #      (Restarts Shadow Suite.)
     #      API.misc.restart_program()
@@ -73,28 +73,28 @@ try:
     # version calling
     #
     #      (Print the Shadow Suite's version number)
-    #      print(API.version.vnumber)
+    #      print(API.version.VNUMBER)
     #
     #      (Print the Shadow Suite's version type.)
-    #      print(API.version.vtype)
+    #      print(API.version.VTYPE)
     #
     #      (Print the Shadow Suite's version codename.)
-    #      print(API.version.vcodename)
+    #      print(API.version.VCODENAME)
     #
     #      (Print the Shadow Suite's version number, type and codename.)
-    #      print(API.version.both)
+    #      print(API.version.BOTH)
     #
     from core import quote
     # quote calling
     #
     #      (Print a random quote)
-    #      print(API.quote.quote)
+    #      print(API.quote.quote())
     #
     from core import joke
     # joke calling
     #
     #      (Print a random joke)
-    #      print(API.joke.joke)
+    #      print(API.joke.joke())
     #
     from core import logger
     # logger calling
@@ -130,13 +130,14 @@ class ShadowSuiteLE():
     # Method calling: API.ShadowSuiteLE().[METHOD NAME]()
     # Variable assignment: variable = API.ShadowSuiteLE().[VARIABLE]
 
-    API_version = version.vapi # This API's version
-    ShadowSuite_ver_num = version.vnumber # Shadow Suite's version number
-    ShadowSuite_ver_type = version.vtype # Shadow Suite's version type
-    ShadowSuite_ver_codename = version.vcodename # Shadow Suite's version codename
-    finish = "\n[i] Module finished running...\n"
+    API_VERSION = version.VAPI # This API's version
+    SHADOWSUITE_VER_NUM = version.VNUMBER # Shadow Suite's version number
+    SHADOWSUITE_VER_TYPE = version.VTYPE # Shadow Suite's version type
+    SHADOWSUITE_VER_CODENAME = version.VCODENAME # Shadow Suite's version codename
+    FINISH = "\n[i] Module finished running...\n"
 
     def generate_new_module(self, cmn):
+        # DEV0005: cmn == Custom Module Name
         # Converts capital characters to lowercase characters.
         cmn = cmn.lower()
         # Copies the custom module template from module directory to output directory.

@@ -58,10 +58,13 @@ except ImportError:
 
 def main():
     logger.log(0, 'Shadow Suite Linux Edition launched.', 'logfile.txt')
+    PLATFORM = misc.programFunctions().get_platform()
     print()
-    print(misc.logo) # Prints logo
+    print(misc.LOGO) # Prints logo
     print("\n")
-    print(misc.brief_license) # Prints a brief information about the license.
+    print("[i] Running on " + PLATFORM + " platform.")
+    print("\n")
+    print(misc.BRIEF_LICENSE) # Prints a brief information about the license.
     print("\n")
     print(quote.quote())
     print("\n")
@@ -71,7 +74,7 @@ def main():
         # If the program is not running independently, then a message will be shown, while
         # still allowing the user to use it.
         logger.log(3, 'Shadow Suite running as module...', 'logfile.txt')
-        print(misc.module_mode)
+        print(misc.MODULE_MODE_INFO)
 
     if misc.debugging == True:
         # If the program has been executed with an argument -d or --debug, show this info
@@ -91,18 +94,18 @@ def main():
             # Otherwise, $ will be shown.
             if os.geteuid() != 0:
                 logger.log(0, 'Running as normal user.', 'logfile.txt')
-                menu_input = input("[" + misc.cb + misc.fb + misc.fi + "ShadowSuite.py" + misc.fr + misc.cw + "] $: ")
+                menu_input = input("[" + misc.CB + misc.FB + misc.FI + "ShadowSuite.py" + misc.FR + misc.CW + "] $: ")
 
             else:
                 logger.log(0, 'Running as root.', 'logfile.txt')
-                menu_input = input("[" + misc.cb + misc.fb + misc.fi + "ShadowSuite.py" + misc.fr + misc.cw + "] #: ")
+                menu_input = input("[" + misc.CB + misc.FB + misc.FI + "ShadowSuite.py" + misc.FR + misc.CW + "] #: ")
 
             menu_input.lower()
 
             if menu_input == "help":
                 logger.log(0, 'User needs help.', 'logfile.txt')
-                print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr)
-                print(misc.cw + "help              :: prints this help menu.")
+                print(misc.CC + misc.FB + misc.FI + "\nHELP\n" + misc.FR)
+                print(misc.CW + "help              :: prints this help menu.")
                 print("license           :: opens the license file via less command.")
                 print("info              :: prints a brief information about Shadow Suite.")
                 print("prog update       :: update Shadow Suite.")
@@ -132,11 +135,11 @@ def main():
                 if misc.failsafe == True:
                     print("Failsafe: ON")
                 print()
-                print("Current version number:   " + version.vnumber)
+                print("Current version number:   " + version.VNUMBER)
                 print()
-                print("Current version type:     " + version.vtype)
+                print("Current version type:     " + version.VTYPE)
                 print()
-                print("Current version codename: " + version.vcodename)
+                print("Current version codename: " + version.VCODENAME)
                 print()
                 print("[i] To automatically update, type \'full update\' on this terminal.")
                 print("[i] To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuiteLE\' and clone the repository.")
@@ -146,7 +149,7 @@ def main():
                     print("[FAILSAFE] prog update not available")
 
                 else:
-                    print(misc.cgr + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.cw)
+                    print(misc.CGR + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.CW)
                     logger.log(0, 'User performs a program update...', 'logfile.txt')
                     update.prog_update()
 
@@ -155,7 +158,7 @@ def main():
                     print("[FAILSAFE] deps update not available")
 
                 else:
-                    print(misc.cgr + "Downloading and installing dependencies..." + misc.cw)
+                    print(misc.CGR + "Downloading and installing dependencies..." + misc.CW)
                     logger.log(0, 'User performs a dependency update...', 'logfile.txt')
                     update.deps_update()
 
@@ -164,17 +167,17 @@ def main():
                     print("[FAILSAFE] full update not available")
 
                 else:
-                    print(misc.cgr + "Do you really want to perform a full update (y/n)?" + misc.cw)
+                    print(misc.CGR + "Do you really want to perform a full update (y/n)?" + misc.CW)
                     full_updateinput = input(" > ")
                     if full_updateinput == "y" or full_updateinput == "Y":
                         logger.log(0, 'User performs a full update...', 'logfile.txt')
                         update.full_update()
 
                     elif full_updateinput == "n" or full_updateinput == "N":
-                        print(misc.cr + "Full update cancelled by user..." + misc.cw)
+                        print(misc.CR + "Full update cancelled by user..." + misc.CW)
 
                     else:
-                        print(error.error0001)
+                        print(error.ERROR0001)
 
             elif menu_input == "changelog":
                 if misc.failsafe == True:
@@ -216,11 +219,11 @@ def main():
 
             elif menu_input == "back":
                 logger.log(2, "ERROR 0004: Back cannot be used in the main module", 'logfile.txt')
-                print(error.error0004)
+                print(error.ERROR0004)
 
             elif menu_input == "restart":
                 logger.log(0, 'User restarted Shadow Suite...', 'logfile.txt')
-                os.system("clear")
+                misc.programFunctions().clrscrn()
                 misc.programFunctions().program_restart()
 
             elif menu_input == "quit":
@@ -239,11 +242,11 @@ def main():
 
             else:
                 logger.log(2, 'ERROR 0001: Invalid Input', 'logfile.txt')
-                print(error.error0001)
+                print(error.ERROR0001)
 
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C Detected...', 'logfile.txt')
-            print(error.error0002)
+            print(error.ERROR0002)
             logger.log(1, "SystemExit raise with error code 2.", 'logfile.txt')
             sys.exit(2)
 
@@ -276,7 +279,7 @@ def main():
             sys.exit()
 
         except:
-            print(error.warning0003)
+            print(error.WARNING0003)
             print()
             print("==================== TRACEBACK ====================")
             traceback.print_exc()
@@ -310,7 +313,7 @@ if __name__ == "__main__":
         req_py_version_str = req_py_version_str + str(ver_nums) + '.'
 
     if cur_py_version < req_py_version:
-        PythonVersionError_msg = error.error0011
+        PythonVersionError_msg = error.ERROR0011
         PythonVersionError_msg = PythonVersionError_msg.format(req_py_version_str)
         print(PythonVersionError_msg)
         logger.log(0, PythonVersionError_msg, 'logfile.txt')
@@ -340,8 +343,8 @@ if __name__ == "__main__":
     try:
         open('.last_session_exit_fail.log', 'r').read() # Try to read the file
         open('.last_session_exit_fail.log', 'r').close() # Close the file
-        print(error.warning0004)
-        instance_warn = str(input(misc.cy + misc.fb + misc.fi + "Do you still want to run anyway? (y/n) > " + misc.fr + misc.cw))
+        print(error.WARNING0004)
+        instance_warn = str(input(misc.CY + misc.FB + misc.FI + "Do you still want to run anyway? (y/n) > " + misc.FR + misc.CW))
         instance_warn = instance_warn.lower()
         if instance_warn == 'y':
             misc.programFunctions().clrscrn()

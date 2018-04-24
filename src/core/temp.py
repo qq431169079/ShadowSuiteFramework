@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 5.0
+# Module version: 5.1
 
 # Import directives
 try:
@@ -95,7 +95,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -109,5 +109,5 @@ def module_body():
     # Remove module_info(), or leave it here. It's your call.
     module_info()
     print()
-    print(error.warning0002)
-    print(API.ShadowSuiteLE().finish)
+    print(error.WARNING0002)
+    print(API.ShadowSuiteLE().FINISH)

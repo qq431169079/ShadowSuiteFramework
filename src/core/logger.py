@@ -2,14 +2,17 @@
 # Encoding=UTF-8
 
 import os
+from time import asctime
 from core import misc
 
 def log(TYPE=9999, MSG="Logger called.", LOGFILE="logfile.txt"):
     TYPE = int(TYPE)
     line = '=' * 50
+    date = asctime()
 
-    boundary = os.system('echo ' + line + " >> " + LOGFILE)
-    date = os.system("date >> " + LOGFILE)
+    # Legacy algorithm to log...
+    # boundary = os.system('echo ' + line + " >> " + LOGFILE)
+    # date = os.system("date >> " + LOGFILE)
 
     ### Basic types ###
     # 0 == Normal message
@@ -42,9 +45,28 @@ def log(TYPE=9999, MSG="Logger called.", LOGFILE="logfile.txt"):
     else:
         ICO = '[**UNK**]: '
 
+    # Old algorithm to log...
+    """
     boundary
     date
     message = os.system('echo ' + ICO + MSG + " >> " + LOGFILE)
     boundary
+    """
+
+    # New algorithm to log...
+    try:
+        open(LOGFILE, 'r').read()
+        open(LOGFILE, 'r').close()
+
+    except FileNotFoundError:
+        open(LOGFILE, 'w').write('')
+        open(LOGFILE, 'w').close()
+
+    with open(LOGFILE, 'a') as f:
+        f.write(line + '\n')
+        f.write(date + '\n')
+        f.write(ICO + MSG + '\n')
+        f.write('\n')
+
     if misc.debugging == True:
         print("[DEBUG] Operation logged: " + ICO + MSG)

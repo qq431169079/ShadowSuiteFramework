@@ -31,15 +31,15 @@ def shell():
     while True:
         try:
             if os.geteuid() != 0:
-                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Module_Manager.py" + misc.cw + misc.fr + "] $: ")
+                command = input(misc.CW + "[" + misc.CB + misc.FB + misc.FI + "Module_Manager.py" + misc.CW + misc.FR + "] $: ")
                 
             else:
-                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Module_Manager.py" + misc.cw + misc.fr + "] #: ")
+                command = input(misc.CW + "[" + misc.CB + misc.FB + misc.FI + "Module_Manager.py" + misc.CW + misc.FR + "] #: ")
 
             command = command.lower()
             
             if command == "help":
-                print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr + misc.cw)
+                print(misc.CC + misc.FB + misc.FI + "\nHELP\n" + misc.FR + misc.CW)
                 print("help            :: prints this help menu.")
                 print("list            :: list modules and frameworks.")
                 print("use             :: use a module.")
@@ -55,12 +55,12 @@ def shell():
                 list_module.list()
 
             elif command == "use":
-                module_name = input(misc.cgr + "Enter the module name to use > " + misc.cw)
+                module_name = input(misc.CGR + "Enter the module name to use > " + misc.CW)
                 logger.log(0, 'User uses ' + module_name + ' module.', 'logfile.txt')
                 use_module.use(module_name)
 
             elif command == "info":
-                miname = input(misc.cgr + "Enter the module name to view > " + misc.cw)
+                miname = input(misc.CGR + "Enter the module name to view > " + misc.CW)
                 logger.log(0, 'User finds ' + miname + ' module.', 'logfile.txt')
                 find_module.find(miname)
 
@@ -72,7 +72,7 @@ def shell():
                 suggest.api(criteria)
 
             elif command == "clear":
-                os.system("clear")
+                misc.programFunctions().clrscrn()
 
             elif command == "run":
                 command_to_run = input(r"Command to run > ")
@@ -80,10 +80,10 @@ def shell():
                 os.system(command_to_run)
 
             elif command == "quit":
-                print(error.error0003)
+                print(error.ERROR0003)
 
             elif command == "exit":
-                print(error.error0003)
+                print(error.ERROR0003)
 
             elif command == "back":
                 print("[i] Going back to Shadow Suite shell...")
@@ -91,10 +91,10 @@ def shell():
                 
             else:
                 logger.log(2, 'User entered an unknown command.', 'logfile.txt')
-                print(error.error0001)
+                print(error.ERROR0001)
 
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C detected...', 'logfile.txt')
-            print(error.error0002)
+            print(error.ERROR0002)
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)

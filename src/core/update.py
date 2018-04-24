@@ -24,31 +24,31 @@ from core import fullupdate
 def full_update():
     process = "4"
 
-    print(misc.fb + misc.fi + misc.cb + "Performing a full update..." + misc.fr + misc.cw)
-    print(misc.cb + "Installing dependency files... (1/" + process + ")\n" + misc.cw)
+    print(misc.FB + misc.FI + misc.CB + "Performing a full update..." + misc.FR + misc.CW)
+    print(misc.CB + "Installing dependency files... (1/" + process + ")\n" + misc.CW)
     os.system("bash instdeps.bash")
-    print(misc.cb + "Updating Shadow Suite... (2/" + process + ")\n" + misc.cw)
+    print(misc.CB + "Updating Shadow Suite... (2/" + process + ")\n" + misc.CW)
     fullupdate.update()
-    print(misc.cb + "Installing python modules... (3/" + process + ")\n" + misc.cw)
+    print(misc.CB + "Installing python modules... (3/" + process + ")\n" + misc.CW)
     os.system("pip install -r python_requirements")
-    print(misc.cb + "Installing perl modules... (4/" + process + ")\n" + misc.cw)
+    print(misc.CB + "Installing perl modules... (4/" + process + ")\n" + misc.CW)
     os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize")
-    print(misc.fb + misc.fi + misc.cb + "Performing a full update... Done!" + misc.fr + misc.cw)
+    print(misc.FB + misc.FI + misc.CB + "Performing a full update... Done!" + misc.FR + misc.CW)
 
 def deps_update():
     process = "3"
 
-    print(misc.cb + "Installing dependency files... (1/" + process + ")\n" + misc.cw)
+    print(misc.CB + "Installing dependency files... (1/" + process + ")\n" + misc.CW)
     os.system("bash instdeps.bash")
-    print(misc.cb + "Installing python modules... (2/" + process + ")\n" + misc.cw)
+    print(misc.CB + "Installing python modules... (2/" + process + ")\n" + misc.CW)
     os.system("pip install -r python_requirements")
-    print(misc.cb + "Installing perl modules... (3/" + process + ")\n" + misc.cw)
+    print(misc.CB + "Installing perl modules... (3/" + process + ")\n" + misc.CW)
     os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize")
-    print(misc.fb + misc.fi + misc.cb + "Performing a dependency update... Done!" + misc.fr + misc.cw)
+    print(misc.FB + misc.FI + misc.CB + "Performing a dependency update... Done!" + misc.FR + misc.CW)
     
 def prog_update():
     process = "1"
     
-    print(misc.cb + "Updating Shadow Suite... (1/" + process + ")\n" + misc.cw)
+    print(misc.CB + "Updating Shadow Suite... (1/" + process + ")\n" + misc.CW)
     fullupdate.check_for_updates()
     fullupdate.update()

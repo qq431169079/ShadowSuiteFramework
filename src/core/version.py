@@ -20,11 +20,11 @@ import os
 from core import misc
 from core import error
 
-vapi = "0.0.6.6-API"
-vnumber = "0.0.9.2-Linux"
-vtype = "Experimental"
-vcodename = "Machine Independent"
-both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
+VAPI = "0.0.6.7-API"
+VNUMBER = "0.0.9.3-Linux"
+VTYPE = "Experimental"
+VCODENAME = "Netmask"
+BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
 
     # example:
     # Program's version is...
@@ -88,7 +88,7 @@ both = vnumber + '\t' + vtype + '\tCodename: ' + vcodename
     # Kerberos                                           ( Used in v0.0.6.0 )
     # Lambda                                             ( Used in v0.0.7.0 )
     # Machine Independent                                ( Used in v0.0.8.0 )
-    # Netmask                                            ( Not yet used )
+    # Netmask                                            ( Used in v0.0.9.3 )
     # Open Source                                        ( Not yet used )
     # PHP                                                ( Not yet used )
     # Querty                                             ( Not yet used )

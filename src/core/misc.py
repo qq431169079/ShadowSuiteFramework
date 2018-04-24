@@ -22,48 +22,53 @@ from core import version
 from core import logger
 
 # Colors with meanings
-cw = '\033[0m'     #  white     (normal)
-cr = '\033[31m'    #  red       (errors)
-cg = '\033[32m'    #  green     (main color)
-cy = '\033[33m'    #  yellow    (warnings)
-cb = '\033[34m'    #  blue      (highlights)
-cgr = '\033[37m'   #  gray      (questions)
+CW = '\033[0m'     #  white     (normal)
+CR = '\033[31m'    #  red       (errors)
+CG = '\033[32m'    #  green     (main color)
+CY = '\033[33m'    #  yellow    (warnings)
+CB = '\033[34m'    #  blue      (highlights)
+CGR = '\033[37m'   #  gray      (questions)
 
 # Misc colors
-cp = '\033[35m'    #  purple
-cc = '\033[36m'    #  cyan
+CP = '\033[35m'    #  purple
+CC = '\033[36m'    #  cyan
 
 # Font types
-fr = '\033[0m'     #  regular
-fb = '\033[1m'     #  bold
-fi = '\033[3m'     #  italic
+FR = '\033[0m'     #  regular
+FB = '\033[1m'     #  bold
+FI = '\033[3m'     #  italic
 
 # Shadow Suite's logo and a brief description.
-logo = cg + """  ___|  |               |                  ___|       _) |
+LOGO = CG + """  ___|  |               |                  ___|       _) |
 \\___ \\  __ \\   _` |  _` |  _ \\\\ \\  \\   / \\___ \\  |   | | __|  _ \\
       | | | | (   | (   | (   |\\ \\  \\ /        | |   | | |    __/
-_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|""" + "\n                    Linux Edition\n                Ethical Hacking Toolkit\n\n" + '\n' + version.both + cw
+_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|""" + "\n                    Linux Edition\n                Ethical Hacking Toolkit\n\n" + '\n' + version.BOTH + CW
 
 # brief description of the license.
-brief_license = cg + r"""This program comes with ABSOLUTELY NO WARRANTY.
+BRIEF_LICENSE = CG + r"""This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
-under certain conditions; type 'license' for details.""" + cw
+under certain conditions; type 'license' for details.""" + CW
 
 # ShadowSuite is running as module.
-module_mode_info = cy + "[i] Running as module...\n" + cw
+MODULE_MODE_INFO = CY + "[i] Running as module...\n" + CW
 
 # Debugging and Failsafe modes
 debugging = False # Default value
 failsafe = False # Default value
 
-class programFunctions():
-    copyright = "Copyright(C) 2017-2018 by Shadow Team"
+class programFunctions:
+    COPYRIGHT = "Copyright(C) 2017-2018 by Shadow Team"
 
     def program_restart(self):
         try:
             open('.last_session_exit_fail.log', 'r').read() # Try to read the file
             open('.last_session_exit_fail.log', 'r').close() # Close the file
-            os.system('rm .last_session_exit_fail.log') # Delete the file
+            IS_WINDOWS = self.is_windows()
+            if IS_WINDOWS == False:
+                os.system('rm .last_session_exit_fail.log') # Delete the file
+
+            else:
+                os.system("del .last_session_exit_fail.log") # Delete the file
 
         except:
             pass # If file doesn't exist, do nothing, just restart.
@@ -83,9 +88,16 @@ class programFunctions():
 
             else:
                 os.system('clear')
+                # DEV0001: Thinking of new generic clrscrn...
+                """
+                loop = 0
+                while loop != 100:
+                    print()
+                    loop += 1
+                """
 
         except KeyboardInterrupt:
-            print(error.error0002)
+            print(error.ERROR0002)
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
 
@@ -116,7 +128,7 @@ class programFunctions():
                     os.system('read A972681B318C92911A4020C18ACF78B6')
 
         except KeyboardInterrupt:
-            print(error.error0002)
+            print(error.ERROR0002)
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
 
@@ -125,7 +137,7 @@ class programFunctions():
             loop = True
             while loop == True:
                 quit = None
-                ask = input(cb + fb + fi + 'Do you want to keep Shadow Suite running? (y/n)> ' + cw + fr)
+                ask = input(CB + FB + FI + 'Do you want to keep Shadow Suite running? (y/n)> ' + CW + FR)
                 ask = ask.lower()
                 if ask == 'y':
                     loop = False
@@ -141,6 +153,30 @@ class programFunctions():
             return quit
 
         except KeyboardInterrupt:
-            print(error.error0002)
+            print(error.ERROR0002)
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
+
+    def get_platform(self):
+        result = sys.platform
+        return result
+
+    def cli_color_support(self):
+        PLATFORM = self.get_platform()
+        if PLATFORM == 'linux':
+            return True
+
+        elif PLATFORM == 'windows':
+            return False
+
+        else:
+            # Just to be sure that we will not mess up everything.
+            return False
+
+    def is_windows(self):
+        PLATFORM = self.get_platform()
+        if PLATFORM == 'windows':
+            return True
+
+        else:
+            return False

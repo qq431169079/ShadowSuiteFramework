@@ -207,4 +207,4 @@ def use(module_name):
 
     # Hey! don't modify this thing below!
     else:
-        print(error.error0006)
+        print(error.ERROR0006)

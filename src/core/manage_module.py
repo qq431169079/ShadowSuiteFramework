@@ -45,31 +45,42 @@ def generate_new(cmn):
         print("[FAILSAFE] replaced ' ' with '' in cmn variable. (Press enter key to continue)")
         misc.programFunctions().pause(True)
 
-    os.system("cp $PWD/core/temp.py $PWD/output/")
+    IS_WINDOWS = misc.is_windows()
+    if IS_WINDOWS == False:
+        os.system("cp $PWD/core/temp.py $PWD/output/")
+
+    else:
+        os.system("xcopy core/temp.py output/")
+
     if misc.failsafe == True:
         print("[FAILSAFE] copied core/temp.py to output/temp.py. (Press enter key to continue)")
         misc.programFunctions().pause(True)
 
-    os.system("mv $PWD/output/temp.py $PWD/output/" + cmn + ".py")
+    if IS_WINDOWS == False:
+        os.system("mv $PWD/output/temp.py $PWD/output/" + cmn + ".py")
+
+    else:
+        os.system("ren output/temp.py output/" + cmn + ".py")
+
     if misc.failsafe == True:
         print("[FAILSAFE] renamed output/temp.py to output/$cmn.py. (Press enter key to continue)")
         misc.programFunctions().pause(True)
 
-    os.system("echo You can now open the template located on: $PWD/output/" + cmn + ".py")
+    print("You can now open the template located on: output/" + cmn + ".py")
 
 def manager():
     while True:
         try:
             if os.geteuid() != 0:
-                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Manage_Module.py" + misc.cw + misc.fr + "] $: ")
+                command = input(misc.CW + "[" + misc.CB + misc.FB + misc.FI + "Manage_Module.py" + misc.CW + misc.FR + "] $: ")
 
             else:
-                command = input(misc.cw + "[" + misc.cb + misc.fb + misc.fi + "Manage_Module.py" + misc.cw + misc.fr + "] #: ")
+                command = input(misc.CW + "[" + misc.CB + misc.FB + misc.FI + "Manage_Module.py" + misc.CW + misc.FR + "] #: ")
 
             command = command.lower()
 
             if command == "help":
-                print(misc.cc + misc.fb + misc.fi + "\nHELP\n" + misc.fr + misc.cw)
+                print(misc.CC + misc.FB + misc.FI + "\nHELP\n" + misc.FR + misc.CW)
                 print("generate     :: generate a new module template.")
                 print("clear        :: clears the screen.")
                 print("run          :: run a command from your terminal.")
@@ -82,7 +93,7 @@ def manager():
                 generate_new(cmn)
 
             elif command == "clear":
-                os.system("clear")
+                misc.programFunctions().clrscrn()
 
             elif command == "run":
                 command_to_run = input(r"Command to run > ")
@@ -90,10 +101,10 @@ def manager():
                 os.system(command_to_run)
 
             elif command == "quit":
-                print(error.error0003)
+                print(error.ERROR0003)
 
             elif command == "exit":
-                print(error.error0003)
+                print(error.ERROR0003)
 
             elif command == "back":
                 print("[i] Going back to Module_Manager.py shell...")
@@ -102,10 +113,10 @@ def manager():
 
             else:
                 logger.log(0, 'User entered an unknown command.', 'logfile.txt')
-                print(error.error0001)
+                print(error.ERROR0001)
 
         except KeyboardInterrupt:
             logger.log(0, 'CTRL+C detected...', 'logfile.txt')
-            print(error.error0002)
+            print(error.ERROR0002)
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)

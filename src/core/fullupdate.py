@@ -18,7 +18,7 @@ from core import error
 
 def check_for_updates():
     try:
-        print(misc.cg + "[i] Checking for updates..." + misc.cw)
+        print(misc.CG + "[i] Checking for updates..." + misc.CW)
         if misc.debugging == True:
             print("[DEBUG] getting https://api.github.com/repos/Sh4d0w-T34m/ShadowSuiteLE/releases/latest...")
         r = requests.get("https://api.github.com/repos/Sh4d0w-T34m/ShadowSuiteLE/releases/latest")
@@ -27,36 +27,36 @@ def check_for_updates():
             rver = items['tag_name']
         
         else:
-            print(error.error0007)
+            print(error.ERROR0007)
 
     except Exception as error:
-        print(misc.cr + "Error: " + str(error) + misc.cw)
+        print(misc.CR + "Error: " + str(error) + misc.CW)
 
 def update():
-    answer = input(misc.cgr + "Do you want to start update? > " + misc.cw)
+    answer = input(misc.CGR + "Do you want to start update? > " + misc.CW)
     answer = answer.lower()
     if answer != "yes" and answer != "y":
         return None
     
     else:
         url = "https://github.com/Sh4d0w-T34m/ShadowSuiteLE/tarball/master"
-        print(misc.cg + "Downloading..." + misc.cw)
+        print(misc.CG + "Downloading..." + misc.CW)
         try:
             if misc.debugging == True:
                 print("[DEBUG] Opening https://github.com/Sh4d0w-T34m/ShadowSuiteLE/tarball/master")
             u = urllib.request.urlopen(url)
 
         except urllib.error.URLError:
-            print(error.error0010)
+            print(error.ERROR0010)
             return None
 
-        print(misc.cg + "Clearing tmp..." + misc.cw)
+        print(misc.CG + "Clearing tmp..." + misc.CW)
         mscop.clear_tmp()
-        print(misc.cg + "Writing..." + misc.cw)
+        print(misc.CG + "Writing..." + misc.CW)
         f = open(getpath.tmp()+"update.tar.gz", "wb")
         f.write(u.read())
         f.close()
-        print(misc.cg + "Extracting..." + misc.cw)
+        print(misc.CG + "Extracting..." + misc.CW)
         os.system("tar -zxvf '" + getpath.tmp() + "update.tar.gz' -C '" + getpath.tmp() + "'")
         files = glob(getpath.tmp()+"*/")
         update_path = None
@@ -66,11 +66,11 @@ def update():
                 break
             
         if update_path == None:
-            print(misc.cr + error.error0009 + misc.cw)
+            print(misc.CR + error.ERROR0009 + misc.CW)
             return
         
         files = glob(update_path + "*")
-        print(misc.cg + "Installing update..." + misc.cw)
+        print(misc.CG + "Installing update..." + misc.CW)
         for file in files:
             file_name = file.replace(update_path, "")
             print(getpath.main() + file_name)
@@ -80,7 +80,7 @@ def update():
             else:
                 distutils.dir_util.copy_tree(file, getpath.main() + file_name)
                 
-        print(misc.cg + "Clearing tmp..." + misc.cw)
+        print(misc.CG + "Clearing tmp..." + misc.CW)
         mscop.clear_tmp()
-        print(misc.cy + "Update installed! closing Shadow Suite LE..." + misc.cw)
+        print(misc.CY + "Update installed! closing Shadow Suite LE..." + misc.CW)
         sys.exit(0)
