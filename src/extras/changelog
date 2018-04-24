@@ -1,3 +1,24 @@
+commit fd4332731b45ceab2cd9effcffe7ebee2668897b
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Apr 24 13:12:40 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.3
+    
+    -We are 'cleaning' the code to follow the "PEP 0008's" Guidelines.
+    -Fixed some bugs.
+    -Fixing algorithms to be cross-platform.
+    -Modules not yet updated to follow the new update.
+
+commit 685f8046b9e3660bd022b4516c756558379b0604
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Apr 23 19:05:15 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 018e1d15e78b27a6e4fee1228e0de5d663594667
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Mon Apr 23 19:05:00 2018 +0800
