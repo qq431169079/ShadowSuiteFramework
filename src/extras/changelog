@@ -1,3 +1,19 @@
+commit e47146ecf323c384e503164bf1abb047e6c6a9bd
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Apr 25 10:49:21 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Fixed modules to follow PEP 0008 Guidelines
+
+commit 8a2578d699ba800cd969fd1b30c3842d9b8411c8
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Apr 24 13:15:10 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 43b2e808d3011d5a6de65b2fc1c151f52ea673d5
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Tue Apr 24 13:14:58 2018 +0800
