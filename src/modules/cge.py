@@ -95,7 +95,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -136,7 +136,7 @@ def module_body():
         else:
             print("Wrong input!")
 
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)
 
 def start():
     TARGET = input("Target IP: ")
@@ -175,4 +175,4 @@ def vulnlst():
 def exploit(TARGET, TGTNUM):
     space = ' '
     os.system("cd modules/CGE && perl cge.pl " + TARGET + space + TGTNUM)
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

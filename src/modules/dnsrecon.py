@@ -95,7 +95,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -126,4 +126,4 @@ def module_body():
     print()
     print("Running...")
     os.system("cd modules/DNSRECON && python3 dnsrecon.py -d " + target + " -t " + enumtype + " --xml " + output)
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

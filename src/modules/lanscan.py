@@ -95,7 +95,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -107,4 +107,4 @@ def main():
 def module_body():
     print("[i] Running LANScan...")
     os.system("cd modules/LANSCAN && python2 lanscan.py")
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

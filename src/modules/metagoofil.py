@@ -95,7 +95,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -124,9 +124,9 @@ def module_body():
         pass
     
     else:
-        print(API.error.error0001)
+        print(API.error.ERROR0001)
 
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)
     
 def remote():
     # This function is called if user wants to work with remote target.

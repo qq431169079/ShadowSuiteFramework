@@ -45,7 +45,7 @@ def generate_new(cmn):
         print("[FAILSAFE] replaced ' ' with '' in cmn variable. (Press enter key to continue)")
         misc.programFunctions().pause(True)
 
-    IS_WINDOWS = misc.is_windows()
+    IS_WINDOWS = misc.programFunctions().is_windows()
     if IS_WINDOWS == False:
         os.system("cp $PWD/core/temp.py $PWD/output/")
 

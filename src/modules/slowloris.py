@@ -17,6 +17,7 @@ try:
     import API
 
     # Place your 'import' directives below
+    import time
 
     import_error = False
 
@@ -95,7 +96,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -151,4 +152,4 @@ def module_body():
     time.sleep(1)
     print("[i] Running test... Press CTRL + C to stop...")
     os.system("python3 modules/SLOWLORIS/slowloris.py -p " + PORT + " -s " + SOCKETS + " -v -ua " + USEPROXY_SWITCH + USEPROXY_HSW + USEPROXY_HOST + " " + USEPROXY_PSW + USEPROXY_PORT + " " + HTTPSSW + TARGET)
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

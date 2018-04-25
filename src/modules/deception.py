@@ -97,7 +97,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -158,7 +158,7 @@ def honeypot(host, port, motd):
         print("The port we are trying to use is already being used by another process. Sorry!")
 
     except PermissionError:
-        print(error.error0005)
+        print(error.ERROR0005)
 
 def module_body():
     try:
@@ -171,4 +171,4 @@ def module_body():
     except BaseException as e:
         print('Error: ' + e)
 
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

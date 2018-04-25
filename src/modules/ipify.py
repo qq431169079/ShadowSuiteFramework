@@ -96,7 +96,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -110,12 +110,11 @@ def module_body():
         ip = requests.get('https://api.ipify.org/').text
         ip = str(ip)
         print('Your public IP Address: ' + ip)
-        print(API.ShadowSuiteLE.finish)
 
     except ConnectionError:
-        print(API.error.error0010)
+        print(API.error.ERROR0010)
 
     except requests.exceptions.ConnectionError:
-        print(API.error.error0010)
+        print(API.error.ERROR0010)
 
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

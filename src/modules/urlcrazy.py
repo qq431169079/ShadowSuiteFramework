@@ -95,7 +95,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -149,4 +149,4 @@ def module_body():
         csv_switch = '-f human '
 
     os.system("cd modules/URLCRAZY && ruby urlcrazy -k " + kb_layout + " " + cp_switch + nr_switch + si_switch + csv_switch + "-o ../../output/" + output + ' ' + domain)
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

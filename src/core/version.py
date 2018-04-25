@@ -21,7 +21,7 @@ from core import misc
 from core import error
 
 VAPI = "0.0.6.7-API"
-VNUMBER = "0.0.9.3-Linux"
+VNUMBER = "0.0.9.4-Linux"
 VTYPE = "Experimental"
 VCODENAME = "Netmask"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME

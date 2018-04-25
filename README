@@ -1,4 +1,4 @@
-Shadow Suite Linux Edition 0.0.9.3-Linux :: Ethical Hacking Toolkit
+Shadow Suite Linux Edition 0.0.9.4-Linux :: Ethical Hacking Toolkit
 Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite Linux Edition is an Ethical Hacking Toolkit.
@@ -15,9 +15,7 @@ What's new?
 ------------------
 1.35 modules for ethical hacking and penetration testing.
 
-2.This is now the linux edition... We will have the windows edition!
-
-3.Participation in this project is open to anyone. :)
+2.Participation in this project is open to anyone. :)
 
 Full Feature List
 ------------------------
@@ -193,7 +191,9 @@ TO-DO List
 
 4.Add SimpleFl00der, Social Media Toolkit (SMT), RandomPass, KickThemOut, Wifite2, MSF, WebExpose, and MultiTool.
 
-5.Debug and failsafe mode.
+5.Debug and failsafe modes.
+
+6.Make SSLE cross-platform.
 
 License and Copying
 ------------------------

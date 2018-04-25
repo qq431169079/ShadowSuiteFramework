@@ -95,7 +95,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -112,4 +112,4 @@ def module_body():
     target = input("Target URL (e.g. \"http://www.target.com/page.php?id=1\") > ")
     print()
     os.system("cd modules/DSSS && python2 dsss.py -u " + target)
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

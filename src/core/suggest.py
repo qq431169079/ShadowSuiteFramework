@@ -21,6 +21,10 @@ from core import misc
 from core import version
 
 def api(criteria):
+    # DEV0001: I'm just lazy to convert those :P
+    misc.cg = misc.CG
+    misc.cw = misc.CW
+
     criteria = criteria.lower()
     criteria = criteria.replace(',', ' ')
     print("Searching...")

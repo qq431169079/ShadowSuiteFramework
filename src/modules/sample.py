@@ -49,7 +49,7 @@ def module_info():
 def main():
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            print(error.error0005)
+            print(error.ERROR0005)
             return
 
         else:
@@ -65,13 +65,13 @@ def module_body():
     time.sleep(2)
     print("This is a sample module for Shadow Suite...")
     time.sleep(2)
-    print("Shadow Suite's version number is " + API.ShadowSuiteLE().ShadowSuite_ver_num + ".")
+    print("Shadow Suite's version number is " + API.ShadowSuiteLE().SHADOWSUITE_VER_NUM + ".")
     time.sleep(2)
-    print("Shadow Suite's version type is " + API.ShadowSuiteLE().ShadowSuite_ver_type + ".")
+    print("Shadow Suite's version type is " + API.ShadowSuiteLE().SHADOWSUITE_VER_TYPE + ".")
     time.sleep(2)
-    print("Shadow Suite's version codename is " + API.ShadowSuiteLE().ShadowSuite_ver_codename + ".")
+    print("Shadow Suite's version codename is " + API.ShadowSuiteLE().SHADOWSUITE_VER_CODENAME + ".")
     time.sleep(2)
-    print("Shadow Suite's API version is " + API.ShadowSuiteLE().API_version + ".")
+    print("Shadow Suite's API version is " + API.ShadowSuiteLE().API_VERSION + ".")
     time.sleep(2)
     print("Listing installed modules...")
     time.sleep(2)
@@ -85,4 +85,4 @@ def module_body():
     time.sleep(0.700)
     print("Quitting in 0...")
     time.sleep(.300)
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

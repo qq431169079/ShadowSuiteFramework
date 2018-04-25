@@ -79,7 +79,7 @@ def main():
     from the 'os' module, and will immediately call 'module_body()' function. """
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            print(error.error0005)
+            print(error.ERROR0005)
             return 0
 
         else:
@@ -124,4 +124,4 @@ def module_body():
             LIMIT = ''
 
     os.system("python2 modules/THEHARVESTER/theHarvester.py -d " + TARGET + " -b " + SOURCE + " -s " + START + " -f $PWD/output/" + OUTPUT + LIMITSWITCH + LIMIT)
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

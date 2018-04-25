@@ -95,7 +95,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -114,4 +114,4 @@ def module_body():
     print("\n\n[i] This module is still under development, so some features are not yet available, like intelligent fuzzing...\n\n")
     print("[i] Running module...")
     os.system("cd modules/DOTDOTPWN && perl dotdotpwn.pl -m " + module + " -u " + url + " -d " + depth + " -x " + port)
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)

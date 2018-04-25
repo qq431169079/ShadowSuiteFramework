@@ -95,7 +95,7 @@ def main():
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.error0005)
+                print(error.ERROR0005)
                 return 0
 
             else:
@@ -113,4 +113,4 @@ def module_body():
     print("Performing enumeration...")
     os.system("cd modules/DNSENUM && perl dnsenum.pl --enum -v -o $PWD/output/"+ output + " " + target)
     print()
-    print(API.ShadowSuiteLE().finish)
+    print(API.ShadowSuiteLE().FINISH)
