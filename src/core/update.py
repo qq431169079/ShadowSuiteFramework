@@ -26,7 +26,12 @@ def full_update():
 
     print(misc.FB + misc.FI + misc.CB + "Performing a full update..." + misc.FR + misc.CW)
     print(misc.CB + "Installing dependency files... (1/" + process + ")\n" + misc.CW)
-    os.system("bash instdeps.bash")
+    if sys.platform == 'windows' or sys.platform == 'nt':
+        print("[i] Can't install binaries on Windows. Please install them manually.")
+
+    else:
+        os.system("bash instdeps.bash")
+
     print(misc.CB + "Updating Shadow Suite... (2/" + process + ")\n" + misc.CW)
     fullupdate.update()
     print(misc.CB + "Installing python modules... (3/" + process + ")\n" + misc.CW)
@@ -39,7 +44,12 @@ def deps_update():
     process = "3"
 
     print(misc.CB + "Installing dependency files... (1/" + process + ")\n" + misc.CW)
-    os.system("bash instdeps.bash")
+    if sys.platform == 'windows' or sys.platform == 'nt':
+        print("[i] Can't install binaries on Windows. Please install them manually.")
+    
+    else:
+        os.system("bash instdeps.bash")
+
     print(misc.CB + "Installing python modules... (2/" + process + ")\n" + misc.CW)
     os.system("pip install -r python_requirements")
     print(misc.CB + "Installing perl modules... (3/" + process + ")\n" + misc.CW)

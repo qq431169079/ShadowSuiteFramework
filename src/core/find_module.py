@@ -22,6 +22,7 @@ from core import misc
 from core import error
 
 def find(module_name):
+    # DEV0001: Reconstruct this algorithm to automatically detect custom modules.
     print("searching for module named \'" + module_name + "\' in modules directory...\n\n\n")
     module_name = module_name.lower()
     

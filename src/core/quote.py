@@ -2,15 +2,31 @@
 #!/usr/bin/env python
 from random import *
 def quote():
-    joke1 = "A lot of hacking is playing with other people, you know, getting them to do strange things."
-    joke2 = "When solving problems, dig at the roots instead of just hacking at the leaves."
-    joke3 = "Most hackers are young because young people tend to be adaptable. As long as you remain adaptable, you can always be a good hacker."
-    joke4 = "Hacking is fun if you're a Hacker"
-    joke5 = "Behind every successful Coder there\'s an even more successful De-coder to understand that code"
-    joke6 = "Hacking just means building something quickly or testing the boundaries of what can be done"
-    joke7 = "Hackers are not crackers"
-    joke8 = "If you give a hacker a new toy, the first thing he'll do is take it apart to figure out how it works."
-    joke9 = "Press any key... no, no, no, NOT THAT ONE!"
-    headers = [joke1, joke2, joke3, joke4, joke5, joke6, joke7, joke8, joke9]
-    result = headers[randint(0,8)]
+    quote01 = "A lot of hacking is playing with other people, you know, getting them to do strange things."
+    quote02 = "When solving problems, dig at the roots instead of just hacking at the leaves."
+    quote03 = "Most hackers are young because young people tend to be adaptable. As long as you remain adaptable, you can always be a good hacker."
+    quote04 = "Hacking is fun if you're a Hacker"
+    quote05 = "Behind every successful Coder there\'s an even more successful De-coder to understand that code"
+    quote06 = "Hacking just means building something quickly or testing the boundaries of what can be done"
+    quote07 = "Hackers are not crackers"
+    quote08 = "If you give a hacker a new toy, the first thing he'll do is take it apart to figure out how it works."
+    quote09 = "Press any key... no, no, no, NOT THAT ONE!"
+
+    tip01 = "Don't forget to do reconnaissance first before doing anything serious!"
+    tip02 = "Nmap is the best tool to use when you need to scan for open ports."
+    tip03 = "There are so many tool that is included in Shadow Suite so make sure to check them out!"
+    tip04 = "Learn, Try, Rage, Retry..."
+    tip05 = "Atleast 4GB of RAM is recommended."
+    tip06 = "Python is the best language to start from."
+    tip07 = "Use SQLMap for SQL Injection attacks."
+    tip08 = "Use Hash Identifier to indentify the kind of a hash."
+    tip09 = "Use ShadowCrack to crack encryptions and hashes."
+    tip10 = "Shadow Repository has lots of wordlists! You can also use CUPP to generate your own wordlist, included in this framework."
+    tip11 = "Social Engineer Toolkit is included here in Shadow Suite!"
+    tip12 = "Weeman can serve a phishing page."
+    tip13 = "Use Ipify to know your external IP Address."
+    tip14 = "To expose your local server to the internet, use WebExpose."
+    tip15 = "I recommend not to use Deception in a very serious job."
+    headers = [quote01, quote02, quote03, quote04, quote05, quote06, quote07, quote08, quote09, tip01, tip02, tip03, tip04, tip05, tip06, tip07, tip08, tip09, tip10, tip11, tip12, tip13, tip14, tip15]
+    result = headers[randint(0,23)]
     return result

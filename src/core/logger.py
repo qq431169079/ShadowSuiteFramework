@@ -3,12 +3,14 @@
 
 import os
 from time import asctime
+
 from core import misc
 
-def log(TYPE=9999, MSG="Logger called.", LOGFILE="logfile.txt"):
+def log(TYPE=9999, MSG="Logger called.", LOGFILE="logfile.txt", SESSION_ID=123456, DEBUGGING=False):
     TYPE = int(TYPE)
     line = '=' * 50
     date = asctime()
+    session = "Session ID: "
 
     # Legacy algorithm to log...
     # boundary = os.system('echo ' + line + " >> " + LOGFILE)
@@ -65,8 +67,9 @@ def log(TYPE=9999, MSG="Logger called.", LOGFILE="logfile.txt"):
     with open(LOGFILE, 'a') as f:
         f.write(line + '\n')
         f.write(date + '\n')
+        f.write(session + str(SESSION_ID) + '\n')
         f.write(ICO + MSG + '\n')
         f.write('\n')
 
-    if misc.debugging == True:
-        print("[DEBUG] Operation logged: " + ICO + MSG)
+    if DEBUGGING == True or misc.debugging == True:
+        print("[DEBUG]: Operation logged: " + ICO + MSG)

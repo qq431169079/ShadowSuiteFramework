@@ -57,7 +57,7 @@ except ImportError:
     sys.exit(8)
 
 def main():
-    logger.log(0, 'Shadow Suite Linux Edition launched.', 'logfile.txt')
+    logger.log(0, 'Shadow Suite Linux Edition launched.', 'logfile.txt', SESSION_ID)
     PLATFORM = misc.programFunctions().get_platform()
     print()
     print(misc.LOGO) # Prints logo
@@ -73,18 +73,18 @@ def main():
     if __name__ != '__main__':
         # If the program is not running independently, then a message will be shown, while
         # still allowing the user to use it.
-        logger.log(3, 'Shadow Suite running as module...', 'logfile.txt')
+        logger.log(3, 'Shadow Suite running as module...', 'logfile.txt', SESSION_ID)
         print(misc.MODULE_MODE_INFO)
 
     if misc.debugging == True:
         # If the program has been executed with an argument -d or --debug, show this info
         print("[i] Debugging mode is on")
-        logger.log(3, 'Shadow Suite Debugging is on', 'logfile.txt')
+        logger.log(3, 'Shadow Suite Debugging is on', 'logfile.txt', SESSION_ID)
 
     if misc.failsafe == True:
         # If the program has been executed with an argument -f or --failsafe, show this
         print("[i] Failsafe mode is on")
-        logger.log(3, 'Shadow Suite Failsafe is on', 'logfile.txt')
+        logger.log(3, 'Shadow Suite Failsafe is on', 'logfile.txt', SESSION_ID)
 
     # This while loop enables the user to enter commands inside shadow suite without
     # needing to run the program everytime a command is entered.
@@ -93,17 +93,16 @@ def main():
             # If os.geteuid() is equal to 0, then a terminal with # will be shown.
             # Otherwise, $ will be shown.
             if os.geteuid() != 0:
-                logger.log(0, 'Running as normal user.', 'logfile.txt')
+                logger.log(0, 'Running as normal user.', 'logfile.txt', SESSION_ID)
                 menu_input = input("[" + misc.CB + misc.FB + misc.FI + "ShadowSuite.py" + misc.FR + misc.CW + "] $: ")
 
             else:
-                logger.log(0, 'Running as root.', 'logfile.txt')
+                logger.log(0, 'Running as root.', 'logfile.txt', SESSION_ID)
                 menu_input = input("[" + misc.CB + misc.FB + misc.FI + "ShadowSuite.py" + misc.FR + misc.CW + "] #: ")
 
             menu_input.lower()
-
             if menu_input == "help":
-                logger.log(0, 'User needs help.', 'logfile.txt')
+                logger.log(0, 'User needs help.', 'logfile.txt', SESSION_ID)
                 print(misc.CC + misc.FB + misc.FI + "\nHELP\n" + misc.FR)
                 print(misc.CW + "help              :: prints this help menu.")
                 print("license           :: opens the license file via less command.")
@@ -126,19 +125,28 @@ def main():
                     print("[FAILSAFE] license not available")
                     continue
 
-                logger.log(0, 'User opens license via less command...', 'logfile.txt')
+                logger.log(0, 'User opens license via less command...', 'logfile.txt', SESSION_ID)
                 os.system("less extras/shadowsuitelicense")
 
             elif menu_input == "info":
-                logger.log(0, 'Users looks at the info.', 'logfile.txt')
+                logger.log(0, 'Users looks at the info.', 'logfile.txt', SESSION_ID)
                 print()
+                if misc.debugging == True:
+                    print("Debugging: ON")
+
+                else:
+                    print("Debugging: OFF")
+
                 if misc.failsafe == True:
                     print("Failsafe: ON")
+
+                else:
+                    print("Failsafe: OFF")
+
+                print("Session ID: " + str(SESSION_ID))
                 print()
                 print("Current version number:   " + version.VNUMBER)
-                print()
                 print("Current version type:     " + version.VTYPE)
-                print()
                 print("Current version codename: " + version.VCODENAME)
                 print()
                 print("[i] To automatically update, type \'full update\' on this terminal.")
@@ -150,7 +158,7 @@ def main():
 
                 else:
                     print(misc.CGR + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.CW)
-                    logger.log(0, 'User performs a program update...', 'logfile.txt')
+                    logger.log(0, 'User performs a program update...', 'logfile.txt', SESSION_ID)
                     update.prog_update()
 
             elif menu_input == "deps update":
@@ -159,7 +167,7 @@ def main():
 
                 else:
                     print(misc.CGR + "Downloading and installing dependencies..." + misc.CW)
-                    logger.log(0, 'User performs a dependency update...', 'logfile.txt')
+                    logger.log(0, 'User performs a dependency update...', 'logfile.txt', SESSION_ID)
                     update.deps_update()
 
             elif menu_input == "full update":
@@ -170,7 +178,7 @@ def main():
                     print(misc.CGR + "Do you really want to perform a full update (y/n)?" + misc.CW)
                     full_updateinput = input(" > ")
                     if full_updateinput == "y" or full_updateinput == "Y":
-                        logger.log(0, 'User performs a full update...', 'logfile.txt')
+                        logger.log(0, 'User performs a full update...', 'logfile.txt', SESSION_ID)
                         update.full_update()
 
                     elif full_updateinput == "n" or full_updateinput == "N":
@@ -184,13 +192,13 @@ def main():
                     print("[FAILSAFE] changelog not available")
 
                 else:
-                    logger.log(0, 'User opens changelog.', 'logfile.txt')
+                    logger.log(0, 'User opens changelog.', 'logfile.txt', SESSION_ID)
                     version.changelog()
 
             elif menu_input == "module":
                 # Runs the module_manager.py module.
-                logger.log(0, 'User enters module_manager shell...', 'logfile.txt')
-                module_manager.shell()
+                logger.log(0, 'User enters module_manager shell...', 'logfile.txt', SESSION_ID)
+                module_manager.shell(misc.debugging, misc.failsafe, SESSION_ID)
 
             elif menu_input == "suggest":
                 if misc.failsafe == True:
@@ -198,7 +206,7 @@ def main():
                     continue
 
                 criteria = input("Enter keywords (dns, wireless, cracking) > ")
-                logger.log(0, 'User want a suggestion with the criteria ' + criteria + '.', 'logfile.txt')
+                logger.log(0, 'User want a suggestion with the criteria ' + criteria + '.', 'logfile.txt', SESSION_ID)
                 suggest.api(criteria)
 
             elif menu_input == "clear":
@@ -214,40 +222,40 @@ def main():
                     continue
 
                 command = input(r"Command to run > ")
-                logger.log(3, 'User run the command: CODE[' + command + ']', 'logfile.txt')
+                logger.log(3, 'User run the command: CODE[' + command + ']', 'logfile.txt', SESSION_ID)
                 os.system(command)
 
             elif menu_input == "back":
-                logger.log(2, "ERROR 0004: Back cannot be used in the main module", 'logfile.txt')
+                logger.log(2, "ERROR 0004: Back cannot be used in the main module", 'logfile.txt', SESSION_ID)
                 print(error.ERROR0004)
 
             elif menu_input == "restart":
-                logger.log(0, 'User restarted Shadow Suite...', 'logfile.txt')
+                logger.log(0, 'User restarted Shadow Suite...', 'logfile.txt', SESSION_ID)
                 misc.programFunctions().clrscrn()
                 misc.programFunctions().program_restart()
 
             elif menu_input == "quit":
                 print(joke.joke())
                 print("Quitting Shadow Suite...\n")
-                logger.log(0, 'User quits Shadow Suite...', 'logfile.txt')
-                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt')
+                logger.log(0, 'User quits Shadow Suite...', 'logfile.txt', SESSION_ID)
+                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt', SESSION_ID)
                 sys.exit(0)
 
             elif menu_input == "exit":
                 print(joke.joke())
                 print("Quitting Shadow Suite...\n")
-                logger.log(0, 'User exits Shadow Suite...', 'logfile.txt')
-                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt')
+                logger.log(0, 'User exits Shadow Suite...', 'logfile.txt', SESSION_ID)
+                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt', SESSION_ID)
                 sys.exit(0)
 
             else:
-                logger.log(2, 'ERROR 0001: Invalid Input', 'logfile.txt')
+                logger.log(2, 'ERROR 0001: Invalid Input', 'logfile.txt', SESSION_ID)
                 print(error.ERROR0001)
 
         except KeyboardInterrupt:
-            logger.log(1, 'CTRL+C Detected...', 'logfile.txt')
+            logger.log(1, 'CTRL+C Detected...', 'logfile.txt', SESSION_ID)
             print(error.ERROR0002)
-            logger.log(1, "SystemExit raise with error code 2.", 'logfile.txt')
+            logger.log(1, "SystemExit raise with error code 2.", 'logfile.txt', SESSION_ID)
             sys.exit(2)
 
         except ImportError:
@@ -258,22 +266,28 @@ def main():
             print("==================== TRACEBACK ====================")
             traceback.print_exc()
             print("===================================================")
-            logger.log(5, 'ImportError catched.', 'logfile.txt')
-            logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt')
+            logger.log(5, 'ImportError catched.', 'logfile.txt', SESSION_ID)
+            logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt', SESSION_ID)
             sys.exit(8)
 
         except SystemExit:
-            logger.log(1, 'SystemExit catched.', 'logfile.txt')
+            logger.log(1, 'SystemExit catched.', 'logfile.txt', SESSION_ID)
             try:
                 if misc.debugging == True:
                     print("[DEBUG] Deleting session file...")
+
                 open('.last_session_exit_fail.log', 'r').read() # Try to read the file
                 open('.last_session_exit_fail.log', 'r').close() # Close the file
-                os.system('rm .last_session_exit_fail.log') # Delete the file
+                if PLATFORM == 'windows' or PLATFORM == 'nt':
+                    os.system("del .last_session_exit_fail.log")
+
+                else:
+                    os.system('rm .last_session_exit_fail.log') # Delete the file
 
             except:
                 if misc.debugging == True:
                     print("[DEBUG] Session file doesn't exist, now quitting...")
+
                 pass # If file doesn't exist, do nothing. just exit
 
             sys.exit()
@@ -287,7 +301,7 @@ def main():
             print()
             quit = misc.programFunctions().error_except()
             if quit == True:
-                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt')
+                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt', SESSION_ID)
                 sys.exit(0)
 
             elif quit == False:
@@ -296,7 +310,7 @@ def main():
             else:
                 ValueError_msg = "ValueError: quit variable must be a boolean (True or False)."
                 print(ValueError_msg)
-                logger.log(0, ValueError_msg, 'logfile.txt')
+                logger.log(0, ValueError_msg, 'logfile.txt', SESSION_ID)
                 sys.exit(0)
 
 # Starts the program
@@ -322,6 +336,9 @@ if __name__ == "__main__":
 
     else:
         pass
+
+    SESSION_ID = misc.programFunctions().generate_session_id()
+    logger.log(3, "Generated Session ID: " + str(SESSION_ID))
     
     # Check for arguments, if any.
     try:

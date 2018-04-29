@@ -27,7 +27,7 @@ from core import manage_module
 from core import suggest
 from core import logger
 
-def shell():
+def shell(DEBUGGING, FAILSAFE, SESSION_ID):
     while True:
         try:
             if os.geteuid() != 0:
@@ -37,7 +37,6 @@ def shell():
                 command = input(misc.CW + "[" + misc.CB + misc.FB + misc.FI + "Module_Manager.py" + misc.CW + misc.FR + "] #: ")
 
             command = command.lower()
-            
             if command == "help":
                 print(misc.CC + misc.FB + misc.FI + "\nHELP\n" + misc.FR + misc.CW)
                 print("help            :: prints this help menu.")
@@ -56,16 +55,16 @@ def shell():
 
             elif command == "use":
                 module_name = input(misc.CGR + "Enter the module name to use > " + misc.CW)
-                logger.log(0, 'User uses ' + module_name + ' module.', 'logfile.txt')
+                logger.log(0, 'User uses ' + module_name + ' module.', 'logfile.txt', SESSION_ID)
                 use_module.use(module_name)
 
             elif command == "info":
                 miname = input(misc.CGR + "Enter the module name to view > " + misc.CW)
-                logger.log(0, 'User finds ' + miname + ' module.', 'logfile.txt')
+                logger.log(0, 'User finds ' + miname + ' module.', 'logfile.txt', SESSION_ID)
                 find_module.find(miname)
 
             elif command == "manage":
-                manage_module.manager()
+                manage_module.manager(DEBUGGING, FAILSAFE, SESSION_ID)
 
             elif command == "suggest":
                 criteria = input("Enter keywords separated by comma (dns, wireless, cracking) > ")
@@ -76,7 +75,7 @@ def shell():
 
             elif command == "run":
                 command_to_run = input(r"Command to run > ")
-                logger.log(3, 'User run the command: ' + command_to_run, 'logfile.txt')
+                logger.log(3, 'User run the command: ' + command_to_run, 'logfile.txt', SESSION_ID)
                 os.system(command_to_run)
 
             elif command == "quit":
@@ -90,11 +89,11 @@ def shell():
                 break
                 
             else:
-                logger.log(2, 'User entered an unknown command.', 'logfile.txt')
+                logger.log(2, 'User entered an unknown command.', 'logfile.txt', SESSION_ID)
                 print(error.ERROR0001)
 
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C detected...', 'logfile.txt')
             print(error.ERROR0002)
-            logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
+            logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt', SESSION_ID)
             sys.exit(2)

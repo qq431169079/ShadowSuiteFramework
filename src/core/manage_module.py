@@ -23,9 +23,11 @@ from core import error
 from core import use_module
 from core import logger
 
-def generate_new(cmn):
+def generate_new(DEBUGGING, FAILSAFE, SESSION_ID, cmn):
     # This is used to generate a custom module from a template via API.
-    logger.log(0, 'User generated a new module named ' + cmn, 'logfile.txt')
+    misc.debugging = DEBUGGING
+    misc.failsafe = FAILSAFE
+    logger.log(0, 'User generated a new module named ' + cmn, 'logfile.txt', SESSION_ID)
     if misc.failsafe == True:
         print("[FAILSAFE] called logger... (Press enter key to continue)")
         misc.programFunctions().pause(True)
@@ -68,7 +70,7 @@ def generate_new(cmn):
 
     print("You can now open the template located on: output/" + cmn + ".py")
 
-def manager():
+def manager(DEBUGGING, FAILSAFE, SESSION_ID):
     while True:
         try:
             if os.geteuid() != 0:
@@ -97,7 +99,7 @@ def manager():
 
             elif command == "run":
                 command_to_run = input(r"Command to run > ")
-                logger.log(3, 'User run the command: CODE[' + command_to_run + ']', 'logfile.txt')
+                logger.log(3, 'User run the command: CODE[' + command_to_run + ']', 'logfile.txt', SESSION_ID)
                 os.system(command_to_run)
 
             elif command == "quit":
@@ -108,15 +110,15 @@ def manager():
 
             elif command == "back":
                 print("[i] Going back to Module_Manager.py shell...")
-                logger.log(0, 'User exits module manager...', 'logfile.txt')
+                logger.log(0, 'User exits module manager...', 'logfile.txt', SESSION_ID)
                 break
 
             else:
-                logger.log(0, 'User entered an unknown command.', 'logfile.txt')
+                logger.log(0, 'User entered an unknown command.', 'logfile.txt', SESSION_ID)
                 print(error.ERROR0001)
 
         except KeyboardInterrupt:
-            logger.log(0, 'CTRL+C detected...', 'logfile.txt')
+            logger.log(0, 'CTRL+C detected...', 'logfile.txt', SESSION_ID)
             print(error.ERROR0002)
-            logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
+            logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt', SESSION_ID)
             sys.exit(2)

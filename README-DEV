@@ -31,7 +31,18 @@ README for Developers
 
       -Shadow Suite uses the 'Shadow Team Software Development Cycle'.
 
-4.Manual Module Installation
+4.New framework module (For Framework Contributors):
+      -If you want to contribute and wanted to create a new framework module
+       (like misc.py or manage_module.py module), you need to follow these
+       guidelines:
+               
+	       - Always follow the PEP 0008 Guideline.
+	       - Use meaningful function and variable names.
+	       - Always use the logger.py module to log information.
+	       - Create a cross-platform module.
+	       - All modules must accept arguments that is needed like " SESSION_ID, misc.debugging, misc.failsafe, and more important information."
+
+5.Manual Module Installation
 
       -As of now, Shadow Suite LE cannot install modules with just one command.
        But if you really want to install a module, follow these steps:

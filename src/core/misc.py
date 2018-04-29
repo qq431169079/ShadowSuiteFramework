@@ -18,6 +18,8 @@
 
 import os
 import sys
+import random
+
 from core import version
 from core import logger
 
@@ -180,3 +182,7 @@ class programFunctions:
 
         else:
             return False
+
+    def generate_session_id(self):
+        session = random.randint(111111, 999999)
+        return session
