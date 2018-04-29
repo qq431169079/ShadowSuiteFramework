@@ -1,3 +1,23 @@
+commit 4beddc1bfd5a9878b87d37818a983cb649c18f27
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Apr 29 15:11:45 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.5
+    
+    We are now making Shadow Suite cross-platform!
+    New logging algorithm, New Session IDs, and some bugs fixed.
+    Still making the code clean, and expect *some* bugs.
+
+commit cfc64d2e86a19e73cbc20cb63106e58c0332886c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Apr 25 10:49:47 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit e47146ecf323c384e503164bf1abb047e6c6a9bd
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Wed Apr 25 10:49:21 2018 +0800
