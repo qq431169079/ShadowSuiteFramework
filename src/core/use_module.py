@@ -197,6 +197,11 @@ def use(module_name):
         import modules.deception
         modules.deception.main()
 
+    elif module_name == "smt":
+        print("Module found!")
+        import modules.smt
+        modules.smt.main()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

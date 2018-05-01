@@ -197,6 +197,11 @@ def find(module_name):
         import modules.deception
         modules.deception.module_info()
 
+    elif module_name == "smt":
+        print("Module found!")
+        import modules.smt
+        modules.smt.module_info()
+
     # Put the code below... Careful with the indentation! match indents of the codes
     # above to avoid errors!
 

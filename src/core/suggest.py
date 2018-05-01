@@ -159,6 +159,10 @@ def api(criteria):
         print(misc.cg + "Deception :: A simple low-interaction honeypot server.\n" + misc.cw)
         results = results + 1
 
+    if 'social' in criteria and 'media' in criteria or 'toolkit' in criteria or 'facebook' in criteria or 'fb' in criteria or 'insta' in criteria or 'twitter' in criteria or 'tweet' in criteria or 'crack' in criteria or 'python' in criteria:
+        print(misc.cg + "Social Media Toolkit (SMT) :: A suite of tools for hacking a target's social media account." + misc.cw)
+        results = results + 1
+
     # More info
     print("\n")
     results = str(results)

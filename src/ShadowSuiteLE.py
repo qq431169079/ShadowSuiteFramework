@@ -24,6 +24,7 @@ try:
     import sys
     print("Importing 'traceback' module...")
     import traceback
+
     print("Importing 'error' module...")
     from core import error
     print("Importing 'misc' module...")
@@ -159,7 +160,7 @@ def main():
                 else:
                     print(misc.CGR + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.CW)
                     logger.log(0, 'User performs a program update...', 'logfile.txt', SESSION_ID)
-                    update.prog_update()
+                    update.prog_update(misc.debugging)
 
             elif menu_input == "deps update":
                 if misc.failsafe == True:
@@ -179,7 +180,7 @@ def main():
                     full_updateinput = input(" > ")
                     if full_updateinput == "y" or full_updateinput == "Y":
                         logger.log(0, 'User performs a full update...', 'logfile.txt', SESSION_ID)
-                        update.full_update()
+                        update.full_update(DEBUGGING)
 
                     elif full_updateinput == "n" or full_updateinput == "N":
                         print(misc.CR + "Full update cancelled by user..." + misc.CW)
@@ -346,12 +347,15 @@ if __name__ == "__main__":
         if sys.argv[1] == '-d' or sys.argv[1] == '--debug':
             misc.debugging = True
 
+        # DEV0001: Wrong meaning of Failsafe :P
+        """
         if sys.argv[1] == '-f' or sys.argv[1] == '--failsafe':
             misc.failsafe = True
 
         if sys.argv[1] == '-df':
             misc.debugging = True
             misc.failsafe = True
+        """
 
     except IndexError:
         pass

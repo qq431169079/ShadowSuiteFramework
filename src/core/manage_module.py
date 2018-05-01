@@ -71,6 +71,8 @@ def generate_new(DEBUGGING, FAILSAFE, SESSION_ID, cmn):
     print("You can now open the template located on: output/" + cmn + ".py")
 
 def manager(DEBUGGING, FAILSAFE, SESSION_ID):
+    misc.debugging = DEBUGGING
+    misc.failsafe = FAILSAFE
     while True:
         try:
             if os.geteuid() != 0:
@@ -92,7 +94,7 @@ def manager(DEBUGGING, FAILSAFE, SESSION_ID):
             elif command == "generate":
                 cmn = input("Enter the name of your custom module > ")
                 print("Extracting template...")
-                generate_new(cmn)
+                generate_new(DEBUGGING, FAILSAFE, SESSION_ID, cmn)
 
             elif command == "clear":
                 misc.programFunctions().clrscrn()

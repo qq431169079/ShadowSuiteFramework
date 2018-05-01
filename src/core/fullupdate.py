@@ -15,7 +15,8 @@ from glob import glob
 from core import misc
 from core import error
 
-def check_for_updates():
+def check_for_updates(DEBUGGING):
+    misc.debugging = DEBUGGING
     try:
         print(misc.CG + "[i] Checking for updates..." + misc.CW)
         if misc.debugging == True:
@@ -31,7 +32,8 @@ def check_for_updates():
     except Exception as error:
         print(misc.CR + "Error: " + str(error) + misc.CW)
 
-def update():
+def update(DEBUGGING):
+    misc.debugging = DEBUGGING
     answer = input(misc.CGR + "Do you want to start update? > " + misc.CW)
     answer = answer.lower()
     if answer != "yes" and answer != "y":

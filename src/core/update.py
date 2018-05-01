@@ -17,11 +17,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
+import sys
 from core import misc
 from core import error
 from core import fullupdate
 
-def full_update():
+def full_update(DEBUGGING):
     process = "4"
 
     print(misc.FB + misc.FI + misc.CB + "Performing a full update..." + misc.FR + misc.CW)
@@ -33,7 +34,7 @@ def full_update():
         os.system("bash instdeps.bash")
 
     print(misc.CB + "Updating Shadow Suite... (2/" + process + ")\n" + misc.CW)
-    fullupdate.update()
+    fullupdate.update(DEBUGGING)
     print(misc.CB + "Installing python modules... (3/" + process + ")\n" + misc.CW)
     os.system("pip install -r python_requirements")
     print(misc.CB + "Installing perl modules... (4/" + process + ")\n" + misc.CW)
@@ -56,9 +57,9 @@ def deps_update():
     os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize")
     print(misc.FB + misc.FI + misc.CB + "Performing a dependency update... Done!" + misc.FR + misc.CW)
     
-def prog_update():
+def prog_update(DEBUGGING):
     process = "1"
     
     print(misc.CB + "Updating Shadow Suite... (1/" + process + ")\n" + misc.CW)
-    fullupdate.check_for_updates()
-    fullupdate.update()
+    fullupdate.check_for_updates(DEBUGGING)
+    fullupdate.update(DEBUGGING)

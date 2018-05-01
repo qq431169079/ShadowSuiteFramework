@@ -28,6 +28,8 @@ from core import suggest
 from core import logger
 
 def shell(DEBUGGING, FAILSAFE, SESSION_ID):
+    misc.debugging = DEBUGGING
+    misc.failsafe = FAILSAFE
     while True:
         try:
             if os.geteuid() != 0:
@@ -70,8 +72,7 @@ def shell(DEBUGGING, FAILSAFE, SESSION_ID):
                 criteria = input("Enter keywords separated by comma (dns, wireless, cracking) > ")
                 suggest.api(criteria)
 
-            elif command == "clear":
-                misc.programFunctions().clrscrn()
+
 
             elif command == "run":
                 command_to_run = input(r"Command to run > ")
