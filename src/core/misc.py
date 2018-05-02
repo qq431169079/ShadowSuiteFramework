@@ -23,22 +23,39 @@ import random
 from core import version
 from core import logger
 
-# Colors with meanings
-CW = '\033[0m'     #  white     (normal)
-CR = '\033[31m'    #  red       (errors)
-CG = '\033[32m'    #  green     (main color)
-CY = '\033[33m'    #  yellow    (warnings)
-CB = '\033[34m'    #  blue      (highlights)
-CGR = '\033[37m'   #  gray      (questions)
+if sys.platform == 'linux' or sys.platform == 'darwin':
+    # Colors with meanings
+    CW = '\033[0m'     #  white     (normal)
+    CR = '\033[31m'    #  red       (errors)
+    CG = '\033[32m'    #  green     (main color)
+    CY = '\033[33m'    #  yellow    (warnings)
+    CB = '\033[34m'    #  blue      (highlights)
+    CGR = '\033[37m'   #  gray      (questions)
 
-# Misc colors
-CP = '\033[35m'    #  purple
-CC = '\033[36m'    #  cyan
+    # Misc colors
+    CP = '\033[35m'    #  purple
+    CC = '\033[36m'    #  cyan
 
-# Font types
-FR = '\033[0m'     #  regular
-FB = '\033[1m'     #  bold
-FI = '\033[3m'     #  italic
+    # Font types
+    FR = '\033[0m'     #  regular
+    FB = '\033[1m'     #  bold
+    FI = '\033[3m'     #  italic
+
+else:
+    # No color support on windows operating systems.
+    CW = ''
+    CR = ''
+    CG = ''
+    CY = ''
+    CB = ''
+    CGR = ''
+
+    CP = ''
+    CC = ''
+
+    FR = ''
+    FB = ''
+    FI = ''
 
 # Shadow Suite's logo and a brief description.
 LOGO = CG + """  ___|  |               |                  ___|       _) |
@@ -85,7 +102,7 @@ class programFunctions:
             if platform == 'linux':
                 os.system('clear')
 
-            elif platform == 'windows':
+            elif platform == 'windows' or platform == 'nt':
                 os.system('cls')
 
             else:
@@ -105,6 +122,7 @@ class programFunctions:
 
     def pause(self, silent=False):
         try:
+            """
             platform = sys.platform
             if platform == 'linux':
                 if silent is False:
@@ -128,6 +146,13 @@ class programFunctions:
 
                 else:
                     os.system('read A972681B318C92911A4020C18ACF78B6')
+            """
+
+            if silent == True:
+                input()
+
+            else:
+                input("Press return/enter to continue...")
 
         except KeyboardInterrupt:
             print(error.ERROR0002)

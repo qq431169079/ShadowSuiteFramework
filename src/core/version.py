@@ -17,13 +17,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
-from core import misc
 from core import error
 
 VAPI = "0.0.6.8-API"
-VNUMBER = "0.0.9.6"
+VNUMBER = "0.0.9.7"
 VTYPE = "Experimental"
-VCODENAME = "Netmask"
+VCODENAME = "Open Source"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
 
     # example:
@@ -89,7 +88,7 @@ BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
     # Lambda                                             ( Used in v0.0.7.0 )
     # Machine Independent                                ( Used in v0.0.8.0 )
     # Netmask                                            ( Used in v0.0.9.3 )
-    # Open Source                                        ( Not yet used )
+    # Open Source                                        ( Used in v0.0.9.7 )
     # PHP                                                ( Not yet used )
     # Querty                                             ( Not yet used )
     # Ruby                                               ( Not yet used )

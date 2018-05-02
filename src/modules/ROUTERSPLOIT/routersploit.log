@@ -1,7 +1,0 @@
-2018-03-21 11:15:36,251 ERROR routersploit.exceptions       Please set target address.
-None
-2018-04-25 10:02:33,316 ERROR routersploit.exceptions       Unknown command: 'list'
-Traceback (most recent call last):
-  File "/data/data/com.termux/files/home/storage/tools/15-Others/Frameworks/ShadowSuiteLE/src/modules/ROUTERSPLOIT/routersploit/interpreter.py", line 80, in get_command_handler
-    command_handler = getattr(self, "command_{}".format(command))
-AttributeError: 'RoutersploitInterpreter' object has no attribute 'command_list'

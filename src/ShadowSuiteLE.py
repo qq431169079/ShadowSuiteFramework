@@ -342,40 +342,70 @@ if __name__ == "__main__":
     logger.log(3, "Generated Session ID: " + str(SESSION_ID))
     
     # Check for arguments, if any.
+    NO_WARN = False
     try:
         sys.argv[1] = sys.argv[1].lower()
-        if sys.argv[1] == '-d' or sys.argv[1] == '--debug':
+        if '-d' in sys.argv or '--debug' in sys.argv:
             misc.debugging = True
+
+        if '-h' in sys.argv or '--help' in sys.argv:
+            misc.programFunctions().clrscrn()
+            print(sys.argv[0] + "\t--\t" + version.BOTH)
+            print()
+            print("Basic Usage:")
+            print(sys.argv[0] + " [-h/--help] || [SWITCHES]")
+            print()
+            print("-h    --help         Show this help menu.")
+            print()
+            print("Troubleshooting Switches:")
+            print("-d    --debug        Run Shadow Suite in debug mode; Shows logging information.")
+            print("-f    --failsafe     Run Shadow Suite in failsafe mode.")
+            print("-df                  Run Shadow Suite in debug and failsafe mode at the same time.")
+            print()
+            print("Compatibility Swotches:")
+            print("-w    --no-warn      Disable last session exit fail warning.")
+            print()
+            sys.exit(0)
 
         # DEV0001: Wrong meaning of Failsafe :P
-        """
-        if sys.argv[1] == '-f' or sys.argv[1] == '--failsafe':
+        if '-f' in sys.argv or '--failsafe' in sys.argv:
             misc.failsafe = True
+            print("[i] Failsafe mode is not available this time! Sorry, dude.")
+            sys.exit(0)
 
-        if sys.argv[1] == '-df':
+        if '-df' in sys.argv:
             misc.debugging = True
             misc.failsafe = True
-        """
+            print("[i] Failsafe mode is not available this time! Sorry, dude.")
+            sys.exit(0)
+
+        if '-w' in sys.argv or '--no-warn' in sys.argv:
+            NO_WARN = True
 
     except IndexError:
         pass
 
     # Checks if last session failed to exit properly
-    try:
-        open('.last_session_exit_fail.log', 'r').read() # Try to read the file
-        open('.last_session_exit_fail.log', 'r').close() # Close the file
-        print(error.WARNING0004)
-        instance_warn = str(input(misc.CY + misc.FB + misc.FI + "Do you still want to run anyway? (y/n) > " + misc.FR + misc.CW))
-        instance_warn = instance_warn.lower()
-        if instance_warn == 'y':
+    if NO_WARN == False:
+        try:
+            open('.last_session_exit_fail.log', 'r').read() # Try to read the file
+            open('.last_session_exit_fail.log', 'r').close() # Close the file
+            print(error.WARNING0004)
+            instance_warn = str(input(misc.CY + misc.FB + misc.FI + "Do you still want to run anyway? (y/n) > " + misc.FR + misc.CW))
+            instance_warn = instance_warn.lower()
+            if instance_warn == 'y':
+                misc.programFunctions().clrscrn()
+                main()
+
+            else:
+                sys.exit(0)
+    
+        except FileNotFoundError:
+            open('.last_session_exit_fail.log', 'w').write('')
+            open('.last_session_exit_fail.log', 'w').close() # Close the file
             misc.programFunctions().clrscrn()
             main()
 
-        else:
-            sys.exit(0)
-    
-    except FileNotFoundError:
-        open('.last_session_exit_fail.log', 'w').write('')
-        open('.last_session_exit_fail.log', 'w').close() # Close the file
+    else:
         misc.programFunctions().clrscrn()
         main()

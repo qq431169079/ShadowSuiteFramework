@@ -19,6 +19,7 @@ try:
     # Place your 'import' directives below
     import time
     import socket
+    from modules.DECEPTION import httpd
 
     import_error = False
 
@@ -32,7 +33,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Deception", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Catayao56", # Author
         "desc": "A simple low-interaction honeypot server.", # Brief description
         "email": "Catayao56@gmail.com", # Email
@@ -106,8 +107,7 @@ def main():
         else:
             module_body()
 
-def getInput():
-    motd = input(r'MOTD: ').encode()
+def getBasicInput():
     host = input('IP Address: ')
     while True:
         try:
@@ -123,7 +123,7 @@ def getInput():
                 continue
 
             else:
-                return (host, port, motd)
+                return(host, port)
 
 def writeLog(client, data=''):
     separator = '='*50
@@ -131,7 +131,76 @@ def writeLog(client, data=''):
     fopen.write('Time: %s\nIP: %s\nPort: %d\nData: %s\n%s\n\n'%(time.ctime(), client[0], client[1], data, separator))
     fopen.close()
 
-def honeypot(host, port, motd):
+def HTTP_honeypot():
+    url = input("URL to emulate: ")
+    if 'http' not in url:
+        url = 'http://' + url
+
+    while True:
+        port = int(input("Port: "))
+        if port < 1 or port > 65535:
+            print("Error: Invalid port number.")
+            continue
+
+        else:
+            break
+    try:
+        print("[i] Starting honeypot!")
+        s = httpd.weeman(url, port)
+        s.clone()
+        s.serve()
+        API.programFunctions().pause()
+
+    except KeyboardInterrupt:
+        s.cleanup()
+        print("\n[i] Honeypot shutting down... Bye!")
+
+    except OSError:
+        print("The port we are trying to use is already being used by another process. Sorry!")
+
+    except PermissionError:
+        print(error.ERROR0005)
+
+def Telnet_honeypot():
+    host, port = getBasicInput()
+    motd = input("MOTD #1 (Enter '' (none) for default): ")
+    if motd == None or motd == "":
+        motd = """\
+
+
+
+Ubuntu LTS 16.1 Telnet Server
+
+#################################################################################
+#                                                                               #
+# AUTHORIZED USERS ONLY! DISCONNECT IF YOU ARE NOT ONE OF THE AUTHORIZED USERS! #
+#                                                                               #
+#################################################################################
+
+Login: """
+
+    motd = motd.encode()
+
+    honey_motd2 = input("MOTD #2 (Enter '' (none) for default: ")
+    if honey_motd2 == None or honey_motd2 == '':
+        motd2 = """\
+
+Password: """
+
+    motd = motd.encode()
+
+    honey_reply = input("Do you want to send a message to the attacker? (Makes the honeypot suspicious; y/n) > ").lower()
+    if honey_reply == 'y':
+        reply = input("Message: ").encode()
+
+    elif honey_reply == 'n':
+        print("[i] You choosed to not send a message. Wise choice, dude!")
+        reply = None
+
+    else:
+        print("[i] Unknown answer, assuming no...")
+        reply = None
+
     try:
         print('Starting honeypot!')
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -139,10 +208,21 @@ def honeypot(host, port, motd):
         s.listen(100)
         while True:
             (insock, address) = s.accept()
-            print('Connection from: %s:%d' % (address[0], address[1]))
+            print('Connection from %s port %d' % (address[0], address[1]))
             try:
                 insock.send(motd)
                 data = insock.recv(1024)
+                if data == None or data == "":
+                    insock.send(motd2)
+                    data = insock.recv(1024)
+
+                if reply == None or reply == "":
+                    pass
+
+                else:
+                    insock.send(reply)
+                    data = insock.recv(1024)
+
                 insock.close()
 
             except KeyboardInterrupt:
@@ -154,13 +234,84 @@ def honeypot(host, port, motd):
             else:
                 writeLog(address, data)
 
+    except KeyboardInterrupt:
+        print("\nHoneypot shutting down... Bye!")
+
     except OSError:
         print("The port we are trying to use is already being used by another process. Sorry!")
+        API.misc.programFunctions().pause()
 
     except PermissionError:
         print(error.ERROR0005)
+        API.misc.programFunctions90.pause()
 
 def module_body():
+    BANNER = r"""
+ ____                      _   _
+|  _ \  ___  ___ ___ _ __ | |_(_) ___  _ __
+| | | |/ _ \/ __/ _ \ '_ \| __| |/ _ \| '_ \
+| |_| |  __/ (_|  __/ |_) | |_| | (_) | | | |
+|____/ \___|\___\___| .__/ \__|_|\___/|_| |_|
+                    |_|          {}
+    """
+    while True:
+        try:
+            pf = API.misc.programFunctions()
+            pf.clrscrn()
+            print(BANNER.format(info['version']))
+            print()
+            print("Current Time: " + time.asctime())
+            print()
+            print("[01] HTTP (80/443) Honeypot")
+            print("[02] FTP/FTPS (20,21/989,990) Honeypot")
+            print("[03] SMTP (25) Honeypot")
+            print("[04] Telnet (23) Honeypot")
+            print("[05] SSH (22) Honeypot")
+            print("[06] SNMP (161,162) Honeypot")
+            print()
+            print("[98] View honeypot log")
+            print("[99] Quit")
+            honeytype = int(input("[DECEPTION]: "))
+            if honeytype == 1:
+                HTTP_honeypot()
+
+            elif honeytype == 2:
+                continue
+
+            elif honeytype == 3:
+                continue
+
+            elif honeytype == 4:
+                Telnet_honeypot()
+
+            elif honeytype == 5:
+                continue
+
+            elif honeytype == 6:
+                continue
+
+            elif honeytype == 98:
+                try:
+                    open('output/honeypot.log', 'r').read()
+                    os.system("less output/honeypot.log")
+                    open('output/honeypot.log', 'r').close()
+
+                except FileNotFoundError:
+                    print("[i] No logfile found!")
+                    pf.pause()
+
+            elif honeytype == 99:
+                return 0
+
+            else:
+                print(error.ERROR0001)
+
+        except KeyboardInterrupt:
+            print(error.ERROR0002)
+
+        except(ValueError, TypeError):
+            pass
+    """
     try:
         stuff = getInput()
         honeypot(stuff[0], stuff[1], stuff[2])
@@ -172,3 +323,4 @@ def module_body():
         print('Error: ' + e)
 
     print(API.ShadowSuiteLE().FINISH)
+    """
