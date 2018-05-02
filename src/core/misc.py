@@ -152,7 +152,7 @@ class programFunctions:
                 input()
 
             else:
-                input("Press return/enter to continue...")
+                input("Press enter to continue...")
 
         except KeyboardInterrupt:
             print(error.ERROR0002)

@@ -125,11 +125,16 @@ def getBasicInput():
             else:
                 return(host, port)
 
-def writeLog(client, data=''):
-    separator = '='*50
-    fopen = open('./output/honeypot.log', 'a')
+def telnet_writeLog(client, data=''):
+    separator = '=' * 50
+    fopen = open('./output/telnet_honeypot.log', 'a')
     fopen.write('Time: %s\nIP: %s\nPort: %d\nData: %s\n%s\n\n'%(time.ctime(), client[0], client[1], data, separator))
     fopen.close()
+
+def ftp_writeLog(client):
+    separator = '=' * 50
+    fopen = open('./output/ftp_honeypot.log', 'a')
+    fopen.write('Time: %s\nIP: %s\nPort: %s\n%s\n\n'%(time.ctime(), client[0], client[1], separator))
 
 def HTTP_honeypot():
     url = input("URL to emulate: ")
@@ -145,21 +150,53 @@ def HTTP_honeypot():
         else:
             break
     try:
-        print("[i] Starting honeypot!")
-        s = httpd.weeman(url, port)
+        print("[i] Starting HTTP honeypot!")
+        s = httpd.httpd(url, port)
         s.clone()
         s.serve()
         API.programFunctions().pause()
 
     except KeyboardInterrupt:
         s.cleanup()
-        print("\n[i] Honeypot shutting down... Bye!")
+        print("\n[i] HTTP Honeypot shutting down... Bye!")
 
     except OSError:
         print("The port we are trying to use is already being used by another process. Sorry!")
 
     except PermissionError:
         print(error.ERROR0005)
+
+def Ftp_honeypot():
+    host, port = getBasicInput()
+    try:
+        print('Starting FTP honeypot!')
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind((host, port))
+        s.listen(100)
+        while True:
+            (insock, address) = s.accept()
+            print('Connection from %s port %d' % (address[0], address[1]))
+            try:
+                insock.close()
+            except KeyboardInterrupt:
+                print("\nFTP honeypot shutting down... Bye!")
+            
+            except socket.error as e:
+                ftp_writeLog(address)
+
+            else:
+                ftp_writeLog(address)
+            
+    except KeyboardInterrupt:
+        print("\nFTP honeypot shutting down... Bye!")
+
+    except OSError:
+        print("The port we are trying to use is already being used by another process. Sorry!")
+        API.misc.programFunctions().pause()
+    
+    except PermissionError:
+        print(error.ERROR0005)
+        API.misc.programFunctions().pause()
 
 def Telnet_honeypot():
     host, port = getBasicInput()
@@ -181,13 +218,13 @@ Login: """
 
     motd = motd.encode()
 
-    honey_motd2 = input("MOTD #2 (Enter '' (none) for default: ")
-    if honey_motd2 == None or honey_motd2 == '':
+    motd2 = input("MOTD #2 (Enter '' (none) for default: ")
+    if motd2 == None or motd2 == '':
         motd2 = """\
 
 Password: """
 
-    motd = motd.encode()
+    motd2 = motd2.encode()
 
     honey_reply = input("Do you want to send a message to the attacker? (Makes the honeypot suspicious; y/n) > ").lower()
     if honey_reply == 'y':
@@ -202,7 +239,7 @@ Password: """
         reply = None
 
     try:
-        print('Starting honeypot!')
+        print('Starting Telnet honeypot!')
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind((host, port))
         s.listen(100)
@@ -212,10 +249,8 @@ Password: """
             try:
                 insock.send(motd)
                 data = insock.recv(1024)
-                if data == None or data == "":
-                    insock.send(motd2)
-                    data = insock.recv(1024)
-
+                insock.send(motd2)
+                data = insock.recv(1024)
                 if reply == None or reply == "":
                     pass
 
@@ -226,16 +261,16 @@ Password: """
                 insock.close()
 
             except KeyboardInterrupt:
-                print("\nHoneypot shutting down... Bye!")
+                print("\nTelnet honeypot shutting down... Bye!")
 
             except socket.error as e:
-                writeLog(address)
+                telnet_writeLog(address)
 
             else:
-                writeLog(address, data)
+                telnet_writeLog(address, data)
 
     except KeyboardInterrupt:
-        print("\nHoneypot shutting down... Bye!")
+        print("\nTelnet honeypot shutting down... Bye!")
 
     except OSError:
         print("The port we are trying to use is already being used by another process. Sorry!")
@@ -243,7 +278,7 @@ Password: """
 
     except PermissionError:
         print(error.ERROR0005)
-        API.misc.programFunctions90.pause()
+        API.misc.programFunctions().pause()
 
 def module_body():
     BANNER = r"""
@@ -252,7 +287,7 @@ def module_body():
 | | | |/ _ \/ __/ _ \ '_ \| __| |/ _ \| '_ \
 | |_| |  __/ (_|  __/ |_) | |_| | (_) | | | |
 |____/ \___|\___\___| .__/ \__|_|\___/|_| |_|
-                    |_|          {}
+                    |_|         v{}
     """
     while True:
         try:
@@ -262,21 +297,20 @@ def module_body():
             print()
             print("Current Time: " + time.asctime())
             print()
-            print("[01] HTTP (80/443) Honeypot")
-            print("[02] FTP/FTPS (20,21/989,990) Honeypot")
+            print("[01] HTTP (80) Honeypot")
+            print("[02] FTP (20,21) Honeypot")
             print("[03] SMTP (25) Honeypot")
             print("[04] Telnet (23) Honeypot")
             print("[05] SSH (22) Honeypot")
             print("[06] SNMP (161,162) Honeypot")
             print()
-            print("[98] View honeypot log")
             print("[99] Quit")
             honeytype = int(input("[DECEPTION]: "))
             if honeytype == 1:
                 HTTP_honeypot()
 
             elif honeytype == 2:
-                continue
+                Ftp_honeypot()
 
             elif honeytype == 3:
                 continue
@@ -290,17 +324,8 @@ def module_body():
             elif honeytype == 6:
                 continue
 
-            elif honeytype == 98:
-                try:
-                    open('output/honeypot.log', 'r').read()
-                    os.system("less output/honeypot.log")
-                    open('output/honeypot.log', 'r').close()
-
-                except FileNotFoundError:
-                    print("[i] No logfile found!")
-                    pf.pause()
-
             elif honeytype == 99:
+                print(API.ShadowSuiteLE().FINISH)
                 return 0
 
             else:
@@ -311,16 +336,3 @@ def module_body():
 
         except(ValueError, TypeError):
             pass
-    """
-    try:
-        stuff = getInput()
-        honeypot(stuff[0], stuff[1], stuff[2])
-
-    except KeyboardInterrupt:
-        print('\nHoneypot shutting down... Bye!')
-
-    except BaseException as e:
-        print('Error: ' + e)
-
-    print(API.ShadowSuiteLE().FINISH)
-    """

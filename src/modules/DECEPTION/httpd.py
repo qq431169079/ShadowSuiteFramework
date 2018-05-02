@@ -52,7 +52,7 @@ class handler(http.server.SimpleHTTPRequestHandler):
                  'CONTENT_TYPE':self.headers['Content-Type'],})
         try:
             
-            logger = open("%s.log" %url.replace("https://", "").replace("http://", "").split("/")[0], "a")
+            logger = open('output/http_honeypot.log', 'a')
             logger.write("\n## %s - Data for %s\n\n" %(time.strftime("%H:%M:%S - %d/%m/%y"), url))
             
             for tag in form.list:
@@ -83,7 +83,7 @@ class handler(http.server.SimpleHTTPRequestHandler):
                 printt(3, "%s - sent GET request with parameters." %self.address_string())
                 printt(2, "%s" %arg.split()[1])
 
-class weeman(object):
+class httpd(object):
     """
         weeman Object 
     """
@@ -141,7 +141,7 @@ class weeman(object):
             index.close()
 
     def serve(self):
-        print(("\033[01;35m[i] Starting Weeman %s server on http://localhost:%s\033[00m" %(str(__version__), self.port)))
+        print(("\033[01;35m[i] Starting Deception server on http://localhost:%s\033[00m" % self.port))
         try:
             self.port = int(self.port)
             self.httpd = socketserver.TCPServer(("", self.port),handler)
@@ -159,43 +159,12 @@ class weeman(object):
             os.remove("redirect.html")
 
 def create_post(url,action_url, post_request):
-    """
-        Create the page that will reidrect to the orignal page.
-    """
-    
     printt(3, "Creating redirect.html ...")
-    
     with open("redirect.html","w") as r:
-        r.write("<body><form id=\"firefox\" action=\"%s\" method=\"post\" >\n" %action_url)
+        r.write("<body><form id=\"firefox\" action=\"%s\" method=\"post\" >\n" % url)
         for post in post_request:
             key,value = post.split()
             r.write("<input name=\"%s\" value=\"%s\" type=\"hidden\" >\n" %(key,value))
         r.write("<input name=\"login\" type=\"hidden\">")
         r.write("<script type=\"text/javascript\">document.forms[\"firefox\"].submit();</script>")
     r.close()
-
-def main():
-    try:
-        print('Interactive module for Weeman HTTPd')
-        print(('version: %s %s' % (__version__, __codename__)))
-        url = input("URL: ")
-        port = input("Port: ")
-        action_url = input("Action URL: ")
-        __url__ = url
-        __port__ = port
-        __action_url__ = action_url
-        s = weeman(url, port)
-        s.clone()
-        s.serve()
-
-    except KeyboardInterrupt:
-        s = weeman(url, port)
-        s.cleanup()
-        print("CTRL+C Detected...")
-        sys.exit(1)
-
-    except Exception as e:
-        printt(3, "Error: (%s)" %(str(e)))
-
-if __name__ == '__main__':
-    main()
