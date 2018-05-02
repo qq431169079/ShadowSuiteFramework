@@ -1,3 +1,32 @@
+commit fcb3c086f7fb199ef8e0c59e9ae1d5fd7e4ad1ab
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 2 08:02:42 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.7
+    
+    Added new switches:
+        -h    --help        Shows the help menu.
+        -w    --no-warn     Disable last session exit fail warning message.
+    
+    Deception:
+        Still under update. New honeypot types under development.
+    
+    Fl00d:
+        Fixed Fl00d 1 not sending packets to target.
+    
+    Core:
+        Tweaks in misc.py
+
+commit 7566ac206abea30f9c42917fbff283d1f8e17803
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 1 11:16:23 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 2ec05d1d81be16e6393f254406a6c318862f626b
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Tue May 1 11:15:39 2018 +0800
