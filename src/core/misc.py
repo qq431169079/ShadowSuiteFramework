@@ -18,7 +18,9 @@
 
 import os
 import sys
+
 import random
+import datetime
 
 from core import version
 from core import logger
@@ -61,7 +63,7 @@ else:
 LOGO = CG + """  ___|  |               |                  ___|       _) |
 \\___ \\  __ \\   _` |  _` |  _ \\\\ \\  \\   / \\___ \\  |   | | __|  _ \\
       | | | | (   | (   | (   |\\ \\  \\ /        | |   | | |    __/
-_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|""" + "\n                    Linux Edition\n                Ethical Hacking Toolkit\n\n" + '\n' + version.BOTH + CW
+_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|""" + "\n                    Linux Edition\n                Ethical Hacking Toolkit\n\n" + '\n' + version.BOTH + "\n\n         Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year) + CW
 
 # brief description of the license.
 BRIEF_LICENSE = CG + r"""This program comes with ABSOLUTELY NO WARRANTY.
@@ -76,7 +78,7 @@ debugging = False # Default value
 failsafe = False # Default value
 
 class programFunctions:
-    COPYRIGHT = "Copyright(C) 2017-2018 by Shadow Team"
+    COPYRIGHT = "Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
 
     def program_restart(self):
         try:

@@ -360,7 +360,6 @@ if __name__ == "__main__":
             print("Troubleshooting Switches:")
             print("-d    --debug        Run Shadow Suite in debug mode; Shows logging information.")
             print("-f    --failsafe     Run Shadow Suite in failsafe mode.")
-            print("-df                  Run Shadow Suite in debug and failsafe mode at the same time.")
             print()
             print("Compatibility Switches:")
             print("-w    --no-warn      Disable last session exit fail warning.")
@@ -369,12 +368,6 @@ if __name__ == "__main__":
 
         # DEV0001: Wrong meaning of Failsafe :P
         if '-f' in sys.argv or '--failsafe' in sys.argv:
-            misc.failsafe = True
-            print("[i] Failsafe mode is not available this time! Sorry, dude.")
-            sys.exit(0)
-
-        if '-df' in sys.argv:
-            misc.debugging = True
             misc.failsafe = True
             print("[i] Failsafe mode is not available this time! Sorry, dude.")
             sys.exit(0)
