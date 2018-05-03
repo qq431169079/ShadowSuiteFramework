@@ -1,3 +1,21 @@
+commit d33c9abd07fadf95e8e78ac89aca1cb365de9211
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 3 13:24:24 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.7-Build_B
+    
+    Updated deception module.
+
+commit b2e5092740bbcc0c3354c9e58a14d14f0bbdd456
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 2 09:35:18 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit c00f621b77df505d881afc75a69ecbdf8fed7109
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Wed May 2 09:35:01 2018 +0800
