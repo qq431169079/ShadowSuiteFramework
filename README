@@ -8,8 +8,6 @@ written mainly in Python, BASH, PHP, etc.
 Tools that you need for reconnaissance, scanning,
 exploitation, encryption, password cracking, and more!
 Shadow Suite is the main project of Shadow Team.
-If you only have a windows computer, you should look
-for Shadow Suite Windows Edition.
 
 What's new?
 ------------------
@@ -191,7 +189,7 @@ TO-DO List
 
 4.Update The Harvester.
 
-5.Add Social Media Toolkit (SMT), RandomPass, Kick Them Out, Wifite2, Metasploit Framework, WebExpose, and MultiTool.
+5.Add Social Media Toolkit (SMT), RandomPass, Kick Them Out, Wifite2, Metasploit Framework, WebExpose, BRAT,  and MultiTool.
 
 6.Automatic installation of custom modules.
 

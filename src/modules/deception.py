@@ -47,7 +47,7 @@ info = {
 dependencies = ['none'] # Put needed dependencies here.  
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nFixed bugs\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMore honeypot types\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nFixed bugs\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -151,10 +151,11 @@ def HTTP_honeypot():
             break
     try:
         print("[i] Starting HTTP honeypot!")
+        #httpd.__url__privatemethod = url
+        #httpd.__port__privatemethod = port
         s = httpd.httpd(url, port)
         s.clone()
         s.serve()
-        API.programFunctions().pause()
 
     except KeyboardInterrupt:
         s.cleanup()
@@ -175,7 +176,7 @@ def Ftp_honeypot():
         s.listen(100)
         while True:
             (insock, address) = s.accept()
-            print('Connection from %s port %d' % (address[0], address[1]))
+            print('[' + time.asctime() +'] Connection from %s port %d' % (address[0], address[1]))
             try:
                 insock.close()
             except KeyboardInterrupt:
@@ -192,11 +193,9 @@ def Ftp_honeypot():
 
     except OSError:
         print("The port we are trying to use is already being used by another process. Sorry!")
-        API.misc.programFunctions().pause()
     
     except PermissionError:
         print(error.ERROR0005)
-        API.misc.programFunctions().pause()
 
 def Telnet_honeypot():
     host, port = getBasicInput()
@@ -245,7 +244,7 @@ Password: """
         s.listen(100)
         while True:
             (insock, address) = s.accept()
-            print('Connection from %s port %d' % (address[0], address[1]))
+            print('[' + time.asctime() + '] Connection from %s port %d' % (address[0], address[1]))
             try:
                 insock.send(motd)
                 data = insock.recv(1024)
@@ -274,11 +273,9 @@ Password: """
 
     except OSError:
         print("The port we are trying to use is already being used by another process. Sorry!")
-        API.misc.programFunctions().pause()
 
     except PermissionError:
         print(error.ERROR0005)
-        API.misc.programFunctions().pause()
 
 def module_body():
     BANNER = r"""
@@ -330,6 +327,8 @@ def module_body():
 
             else:
                 print(error.ERROR0001)
+
+            API.misc.programFunctions().pause()
 
         except KeyboardInterrupt:
             print(error.ERROR0002)

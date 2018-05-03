@@ -362,7 +362,7 @@ if __name__ == "__main__":
             print("-f    --failsafe     Run Shadow Suite in failsafe mode.")
             print("-df                  Run Shadow Suite in debug and failsafe mode at the same time.")
             print()
-            print("Compatibility Swotches:")
+            print("Compatibility Switches:")
             print("-w    --no-warn      Disable last session exit fail warning.")
             print()
             sys.exit(0)
