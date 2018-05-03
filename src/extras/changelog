@@ -1,3 +1,30 @@
+commit c2da8337e19c667fd5f4a4d9d8d4f923e33707f3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 3 17:04:29 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.7-Build_C
+    
+    -Added copyright information in banner.
+    -Social Media Toolkit under development.
+
+commit 884bb7e6412f0a9fa42a3933148e77998c21df07
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 3 14:44:36 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated version info in README and version.py
+
+commit bf8ea5fb2a70371f13b7eeb58d87bde178a29b78
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 3 13:25:18 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit d33c9abd07fadf95e8e78ac89aca1cb365de9211
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Thu May 3 13:24:24 2018 +0800
