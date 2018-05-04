@@ -20,7 +20,7 @@ import os
 from core import error
 
 VAPI = "0.0.6.8-API"
-VNUMBER = "0.0.9.7-Build_C"
+VNUMBER = "0.0.9.8"
 VTYPE = "Experimental"
 VCODENAME = "Open Source"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
