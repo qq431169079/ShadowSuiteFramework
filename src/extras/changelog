@@ -1,3 +1,23 @@
+commit c9094c668d8267396feedf215e43610f95ace07a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 4 10:49:35 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.8
+    
+    -SMToolkit (WIP)
+    -Commands more organized
+    -Configuration file (WIP)
+
+commit 20ca90eb4c9cabf4e1c3c9a3d321667e6e648950
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 3 17:06:17 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit c2da8337e19c667fd5f4a4d9d8d4f923e33707f3
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Thu May 3 17:04:29 2018 +0800
