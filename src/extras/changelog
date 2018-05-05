@@ -1,3 +1,26 @@
+commit 48ccda589c562a881a0e33e36815abbc03c11e1d
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat May 5 11:51:34 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.9
+    
+    Configuration files are now working!
+    -User accounts and password protection!
+    -Root account!
+    
+    Currently, we have a very weak and vulnerable password protection, so it
+    only provides a very little security.
+
+commit bb3f4061c1829e0f8a4ec3540bab28d9949c950b
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 4 10:50:55 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit c9094c668d8267396feedf215e43610f95ace07a
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Fri May 4 10:49:35 2018 +0800
