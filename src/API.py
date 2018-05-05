@@ -175,3 +175,9 @@ class ShadowSuiteLE():
         # Waits the user to press enter.
         logger.log(0, 'User used pause method via API with \'silent\' argument to ' + str(silent) + '.', 'api_logfile.txt')
         misc.programFunctions().pause(silent)
+
+    def export_conf(self, config_file, config_dict):
+        # Exports the current configuration to a file.
+        logger.log(3, config_dict['username'] + " is exporting settings to " + config_file + " via API.")
+        result = misc.programFunctions().export_conf(config_file, config_dict)
+        return result

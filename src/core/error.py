@@ -31,11 +31,16 @@ from core import misc
 # ERROR 0009: Update package not found
 # ERROR 0010: Connection Error
 # ERROR 0011: Python version error (Needs string formatting)
+# ERROR 0012: Invalid configuration file
+# ERROR 0013: Wrong username or password
+# ERROR 0014: Max login attempts reached.
+# ERROR 0015: Path not found
 
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
 # WARNING 0003: An unknown error occured when processing your command.
 # WARNING 0004: The last session of Shadow Suite has failed to quit properly.
+# WARNING 0005: Shadow Suite will not work unless you 
 
     ##################################################################################
     #                                                                                #
@@ -68,13 +73,25 @@ ERROR0007 = misc.CR + "ERROR 0007: An error occured while updating Shadow Suite.
 ERROR0008 = "ERROR 0008: A module is missing!\nPlease re-install/re-download the missing module to continue..."
 
 # This is called if the update package is not found.
-ERROR0009 = "ERROR 0009: The update package was not found! Maybe corrupted?"
+ERROR0009 = misc.CR + "ERROR 0009: The update package was not found! Maybe corrupted?" + misc.CW
 
 # This is called if we need internet but there is no internet connection.
-ERROR0010 = "ERROR 0010: Cannot connect! Is it really up? Or the problem is ours? Please check."
+ERROR0010 = misc.CR + "ERROR 0010: Cannot connect! Is it really up? Or the problem is ours? Please check." + misc.CW
 
 # This is called if python version of user doesn't meet the required version.
 ERROR0011 = "ERROR 0011: Python {0} or later is needed to run Shadow Suite."
+
+# This is called if the configuration file is invalid.
+ERROR0012 = misc.CR + "ERROR 0012: Invalid configuration file!" + misc.CW
+
+# This is called if the username or password is wrong.
+ERROR0013 = misc.CR + "ERROR 0013: Wrong username or password!" + misc.CW
+
+# This is called if max attempts of login fail reached.
+ERROR0014 = misc.CR + "ERROR 0014: Max login attempts reached!" + misc.CW
+
+# This is called if path is not found.
+ERROR0015 = misc.CR + "ERROR 0015: Path not found." + misc.CW
 
     ##################################################################################
     #                                                                                #
@@ -93,3 +110,5 @@ WARNING0003 = misc.CY + "WARNING 0003: An unknown error occured when processing 
 
 # This is called if another instance of Shadow Suite is currently running...
 WARNING0004 = misc.CY + "WARNING 0004: The last session of Shadow Suite has failed to quit properly." + misc.CW
+
+WARNING0005 = misc.CY + "WARNING 0005: Shadow Suite will not work unless you define a custom configuration file!" + misc.CW

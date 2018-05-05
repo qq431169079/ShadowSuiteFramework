@@ -1,0 +1,129 @@
+#############################################
+#                                           #
+#     Shadow Suite v0.0.9.8 Manual File     #
+#                                           #
+#############################################
+
+I. Table of Contents
+        -01.Introduction
+		-What is Shadow Suite?
+		-Example cases of using Shadow Suite
+
+	-02.Installation
+		-Installing on Linux
+		-Installing on Windows
+		-Installing on Termux Terminal Emulator (Android)
+		-Installing on Cygwin Terminal Emulator (Windows)
+
+	-03.Basic Usage
+		-The 'help' command
+		-The 'show' command
+		-The 'update' command
+		-The 'suggest' command
+		-The 'clear' command
+		-The 'run' command
+		-The Module Shell
+			-The 'list' command
+			-The 'use' command
+			-The 'info' command
+			-The Module Manager
+				-The 'generate' command
+		
+		-The 'back' command
+		-The 'restart' command
+		-The 'quit' and 'exit' commands
+
+	-04.Reconnaissance
+		-What is reconnaissance?
+		-Tools for reconnaissance
+		-Information Gathering using Shadow Suite
+
+	-05.Vulnerability Analysis
+		-What is vulnerability analysis?
+		-Tools for vulnerability analysis
+		-Vulnerability Analysis using Shadow Suite
+
+	-06.Web Application Analysis
+		-What is Web Application Analysis?
+		-Tools for web application analysis
+		-Web application analysis using Shadow Suite
+
+	-07.Database Assessment
+		-What is Database Assessment?
+		-Tools for database assessment
+		-Database assessment using Shadow Suite
+
+	-08.Password Attacks
+		-What are Password Attacks?
+		-Tools for password attacks
+		-Cracking encryptions and passwords using Shadow Suite
+
+	-09.Wireless Attacks
+		-What are Wireless Attacks?
+		-Tools for wireless attacks
+		-Cracking WiFi passwords with Shadow Suite
+
+	-10.Reverse Engineering
+		-What is reverse engineering?
+		-Tools for reverse engineering
+		-Reverse engineering an application using Shadow Suite
+
+	-11.Exploitation
+		-What is exploitation?
+		-Tools for exploitation
+		-Exploiting Router vulnerabilities using Shadow Suite
+		-Exploiting Computer vulnerabilities using Shadow Suite
+
+	-12.Sniffing and Spoofing
+		-What are Sniffing and Spoofing?
+		-Tools for Sniffing and Spoofing
+		-Sniffing network traffic with Shadow Suite
+		-Spoofing a TCP session using Shadow Suite
+
+	-13.Post Exploitation
+		-What is Post exploitation?
+		-Tools for post-exploitation
+		-Gaining access to a remote computer using Shadow Suite
+
+	-14.Forensics
+		-What is Computer Forensics?
+		-Tools for computer forensic investigations
+		-Recovering data using Shadow Suite
+
+	-15.Reporting Tools
+		-What is report generation?
+		-Tools for report generation
+		-Creating a penetration test report using Shadow Suite
+
+	-16.Social Engineering Tools
+		-What is Social Engineering?
+		-Tools for social engineering
+		-Hacking people with Shadow Suite
+
+	-17.System Services
+		-What are System Srrvices?
+		-System services included in Shadow Suite
+		-Knowing your external IP address with Shadow Suite
+		-Exposing your local website to the internet using Shadow Suite
+
+	-18.Others
+		-Why there are uncategorized tools?
+		-Uncategorized tools listing
+		-Starting a variety of honeypots using Shadow Suite
+
+	-19.Custom Modules
+		-What are custom modules?
+		-Creating your own custom modules using python
+		-Creating your own custom modules using other programming languages
+		-Installing your own custom modules
+
+	-20.Shadow Suite command-line arguments
+		-The help switch
+		-The debug switch
+		-The failsafe switch
+		-The no-warn switch
+		-The config switch
+			-Creating your own configuration file
+
+	-Index
+	-Glossary

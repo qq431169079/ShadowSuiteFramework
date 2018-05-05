@@ -12,12 +12,12 @@ git clean -dfi
 echo "[!] Press any key to continue... (Git gc)"
 read TEMP
 git gc
-echo "[!] Press any key to continue... (Git add .)"
+echo "[!] Press any key to continue... (staging and unstaging)"
 read TEMP
-git add .
-echo "[!] Press any key to continue... (Git commit -as)"
+tig status
+echo "[!] Press any key to continue... (Git commit -s)"
 read TEMP
-git commit -as
+git commit -s
 echo "[!] Press any key to continue... (Git status)"
 read TEMP
 git status

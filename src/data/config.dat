@@ -1,1 +1,10 @@
-hi
+# This is the default configuration file for Shadow Suite.
+# Every line that starts with '#' is a comment.
+
+username=""
+userpass=""
+rootname=""
+rootpass=""
+
+module_path="modules/"
+output_path="output/"

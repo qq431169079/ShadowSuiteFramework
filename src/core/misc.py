@@ -21,6 +21,7 @@ import sys
 
 import random
 import datetime
+import hashlib
 
 from core import version
 from core import logger
@@ -213,3 +214,121 @@ class programFunctions:
     def generate_session_id(self):
         session = random.randint(111111, 999999)
         return session
+
+    def hash(self, string, hashtype='md5'):
+        string = string.encode()
+        hashtype = hashtype.lower()
+        if hashtype == 'blake2b':
+            result = hashlib.blake2b(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'blake2s':
+            result = hashlib.blake2s(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'sha3_224':
+            result = hashlib.sha3_224(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'sha3_256':
+            result = hashlib.sha3_256(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'sha3_384':
+            result = hashlib.sha3_384(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'sha3_512':
+            result = hashlib.sha3_512(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'shake_128':
+            result = hashlib.shake_128(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'shake_256':
+            result = hashlib.shake_256(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'md5':
+            result = hashlib.md5(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'sha1':
+            result = hashlib.sha1(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'sha224':
+            result = hashlib.sha224(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'sha256':
+            result = hashlib.sha256(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'sha384':
+            result = hashlib.sha384(string).hexdigest()
+            result = result.upper()
+            return result
+
+        elif hashtype == 'sha512':
+            result = hashlib.sha512(string).hexdigest()
+            result = result.upper()
+            return result
+
+        else:
+            raise UnknownHashTypeError("An unknown hash type is entered...")
+
+    def path_exists(self, file_path):
+        return os.path.exists(file_path)
+
+    def isfile(self, file_path):
+        return os.path.isfile(file_path)
+
+    def isfolder(self, file_path):
+        return os.path.isdir(file_path)
+
+    def export_conf(self, config_file, config_dict):
+        logger.log(3, config_dict['username'] + " is exporting settings to " + config_file + ".")
+        try:
+            open(config_file, 'r').read()
+            open(config_file, 'r').close()
+
+        except FileNotFoundError:
+            open(config_file, 'w').write('')
+            open(config_file, 'w').close()
+
+        try:
+            config_new_data = """\
+# This is the default configuration file for Shadow Suite.
+# Every line that starts with '#' is a comment.
+
+username="{0}"
+userpass="{1}"
+rootname="{2}"
+rootpass="{3}"
+
+module_path="modules/"
+output_path="output/"
+                    """
+
+            config_new_data = config_new_data.format(config_dict['username'], config_dict['userpass'], config_dict['rootname'], config_dict['rootpass'])
+            with open(config_file, 'a') as fopen:
+                fopen.write(config_new_data)
+
+            return True # means success
+
+        except:
+            return False # means failed

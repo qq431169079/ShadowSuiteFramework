@@ -18,32 +18,40 @@
 
 # Import Python and Core modules to run properly
 try:
-    print("Importing 'os' module...")
+    print("[i] Importing 'os' module...")
     import os
-    print("Importing 'sys' module...")
+    print("[i] Importing 'sys' module...")
     import sys
-    print("Importing 'traceback' module...")
+    print("[i] Importing 'traceback' module...")
     import traceback
+    print("[i] Importing 'getpass' module...")
+    from getpass import getpass
+    print("[i] Importing 'hashlib' module...")
+    import hashlib
+    print("[i] Importing 'time' module...")
+    import time
 
-    print("Importing 'error' module...")
+    print("[i] Importing 'error' module...")
     from core import error
-    print("Importing 'misc' module...")
+    print("[i] Importing 'misc' module...")
     from core import misc
-    print("Importing 'update' module...")
+    print("[i] Importing 'update' module...")
     from core import update
-    print("Importing 'version' module...")
+    print("[i] Importing 'version' module...")
     from core import version
-    print("Importing 'module_manager' module...")
+    print("[i] Importing 'module_manager' module...")
     from core import module_manager
-    print("Importing 'suggest' module...")
+    print("[i] Importing 'suggest' module...")
     from core import suggest
-    print("Importing 'logger' module...")
+    print("[i] Importing 'logger' module...")
     from core import logger
-    print("Importing 'joke' module...")
+    print("[i] Importing 'joke' module...")
     from core import joke
-    print("Importing 'quote' module...")
+    print("[i] Importing 'quote' module...")
     from core import quote
-    print("Finished Importing modules...\n")
+    print("[i] Importing 'API' module...")
+    import API
+    print("[i] Finished Importing modules...\n")
     misc.programFunctions().pause(False)
 
 except ImportError:
@@ -59,6 +67,13 @@ except ImportError:
 
 def main():
     logger.log(0, 'Shadow Suite Linux Edition launched.', 'logfile.txt', SESSION_ID)
+    global config_file
+    global __USERNAME__
+    global __USERPASS__
+    global __ROOTNAME__
+    global __ROOTPASS__
+    global __MODULE_PATH__
+    global __OUTPUT_PATH__
     PLATFORM = misc.programFunctions().get_platform()
     print()
     print(misc.LOGO) # Prints logo
@@ -100,14 +115,13 @@ def main():
             else:
                 logger.log(0, 'Running as root.', 'logfile.txt', SESSION_ID)
                 menu_input = input("[" + misc.CB + misc.FB + misc.FI + "ShadowSuite.py" + misc.FR + misc.CW + "] #: ")
-
-            menu_input.lower()
-            if menu_input in ["help"]:
+            if menu_input.lower() in ["help"]:
                 logger.log(0, 'User needs help.', 'logfile.txt', SESSION_ID)
                 print(misc.CC + misc.FB + misc.FI + "\nHELP\n" + misc.FR)
                 print(misc.CW + "help              :: prints this help menu.")
                 print("show [OPTION]     :: Shows the license/info/changelog.")
                 print("update [OPTION]   :: update program/dependencies/all.")
+                print("config [OPTION]   :: Configure Shadow Suite settings; Export settings.")
                 print("module            :: enter module shell. type \'module\' then \'help\'for details.")
                 print("suggest           :: suggests a tool based on your critera.")
                 print("clear             :: clears the screen.")
@@ -117,10 +131,10 @@ def main():
                 print("quit              :: quit Shadow Suite.")
                 print("exit              :: same as \'quit\' command.\n")
 
-            elif menu_input.startswith("show"):
+            elif menu_input.lower().startswith("show"):
                 show_o = menu_input.split(" ")
                 try:
-                    if show_o[1] in ["license", "copying", "copyright"]:
+                    if show_o[1].lower() in ["license", "copying", "copyright"]:
                         if misc.failsafe == True:
                             print("[FAILSAFE] license not available")
                             continue
@@ -128,7 +142,7 @@ def main():
                         logger.log(0, 'User opens license via less command...', 'logfile.txt', SESSION_ID)
                         os.system("less extras/shadowsuitelicense")
 
-                    elif show_o[1] in ["info", "information", "status", "stats"]:
+                    elif show_o[1].lower() in ["info", "information", "status", "stats"]:
                         logger.log(0, 'Users looks at the info.', 'logfile.txt', SESSION_ID)
                         print()
                         if misc.debugging == True:
@@ -143,6 +157,8 @@ def main():
                         else:
                             print("Failsafe: OFF")
 
+                        print()
+                        print("Current User: " + current_user)
                         print("Session ID: " + str(SESSION_ID))
                         print()
                         print("Current version number:   " + version.VNUMBER)
@@ -152,13 +168,34 @@ def main():
                         print("[i] To automatically update, type \'full update\' on this terminal.")
                         print("[i] To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuiteLE\' and clone the repository.")
 
-                    elif show_o[1] == "changelog":
+                    elif show_o[1].lower() == "changelog":
                         if misc.failsafe == True:
                             print("[FAILSAFE] changelog not available")
 
                         else:
                             logger.log(0, 'User opens changelog.', 'logfile.txt', SESSION_ID)
                             version.changelog()
+
+                    elif show_o[1].lower() == "config_files":
+                        if misc.failsafe == True:
+                            print("[FAILSAFE] config_files not available")
+
+                        else:
+                            try:
+                                available_config_files = os.listdir('data/')
+                                acf_iterator = 0
+                                for config_files in available_config_files:
+                                    if config_files == 'config.dat':
+                                        continue
+
+                                    else:
+                                        acf_iterator += 1
+                                        print("[" + str(acf_iterator) + "] " + config_files)
+
+                                del acf_iterator
+
+                            except NotImplementedError:
+                                print("[SYSTEM] functionality is unavailable")
 
                     else:
                         print()
@@ -176,12 +213,13 @@ def main():
                     print("license  copying  copyright         -    Shows the full license via less command.")
                     print("info  information  status  stats    -    Shows the current information of Shadow Suite.")
                     print("changelog                           -    Shows the changelog via less command.")
+                    print("config_files                        -    Lists the configuration files available.")
                     print()
 
-            elif menu_input.startswith("update"):
+            elif menu_input.lower().startswith("update"):
                 update_o = menu_input.split(" ")
                 try:
-                    if update_o[1] in ["prog", "program"]:
+                    if update_o[1].lower() in ["prog", "program"]:
                         if misc.failsafe == True:
                             print("[FAILSAFE] prog update not available")
 
@@ -190,7 +228,7 @@ def main():
                             logger.log(0, 'User performs a program update...', 'logfile.txt', SESSION_ID)
                             update.prog_update(misc.debugging)
 
-                    elif update_o[1] in ["deps", "dependencies", "dependency"]:
+                    elif update_o[1].lower() in ["deps", "dependencies", "dependency"]:
                         if misc.failsafe == True:
                             print("[FAILSAFE] deps update not available")
 
@@ -199,7 +237,7 @@ def main():
                             logger.log(0, 'User performs a dependency update...', 'logfile.txt', SESSION_ID)
                             update.deps_update()
 
-                    elif update_o[1] in ["full", "all"]:
+                    elif update_o[1].lower() in ["full", "all"]:
                         if misc.failsafe == True:
                             print("[FAILSAFE] full update not available")
 
@@ -232,6 +270,243 @@ def main():
                     print("prog  program                     -    Update Shadow Suite from GitHub.")
                     print("deps  dependencies  dependency    -    Update/install dependencies.")
                     print("full  all                         -    Update both Shadow Suite and dependencies.")
+                    print()
+
+            elif menu_input.lower().startswith("config"):
+                config_o = menu_input.split(" ")
+                try:
+                    if config_o[1].lower() in ["username"]:
+                        config_o[2] = misc.programFunctions().hash(config_o[2], 'sha256')
+                        __USERNAME__ = config_o[2]
+                        if __ROOTPASS__ == None or __ROOTPASS__ == "":
+                            __USERNAME__ = config_o[2]
+                            print("[i] Username successfully changed!")
+
+                        else:
+                            confirm_rootpass = getpass("Enter root password to continue: ")
+                            confirm_rootpass = misc.programFunctions().hash(confirm_rootpass, 'sha256')
+                            # print(confirm_rootpass + '\n' + __ROOTPASS__) # DEV0005
+                            if confirm_rootpass == __ROOTPASS__:
+                                __USERNAME__ = config_o[2]
+                                print("[i] Username successfully changed!")
+                                del confirm_rootpass
+
+                            else:
+                                print(error.ERROR0013)
+                                del confirm_rootpass
+
+                    elif config_o[1].lower() in ["password", "passwd"]:
+                        if __USERPASS__ == "" or __USERPASS__ == None:
+                            new_userpass1 = getpass("Enter new password: ")
+                            new_userpass2 = getpass("Confirm new password: ")
+                            if new_userpass1 == new_userpass2:
+                                new_userpass1 = misc.programFunctions().hash(new_userpass1, 'sha256')
+                                __USERPASS__ = new_userpass1
+                                print("[i] Password successfully changed!")
+                            
+                            else:
+                                print("[i] Passwords doesn't match!")
+
+                        else:
+                            old_userpass = getpass("Enter old password: ")
+                            old_userpass = misc.programFunctions().hash(old_userpass, 'sha256')
+                            if old_userpass == __USERPASS__:
+                                new_userpass1 = getpass("Enter new password: ")
+                                new_userpass2 = getpass("Confirm new password: ")
+                                if new_userpass1 == new_userpass2:
+                                    new_userpass1 = misc.programFunctions().hash(new_userpass1, 'sha256')
+                                    __USERPASS__ = new_userpass1
+                                    print("[i] Password successfully changed!")
+
+                                else:
+                                    print("[i] Passwords doesn't match!")
+
+                            else:
+                                print(error.ERROR0013)
+
+                    elif config_o[1].lower() in ["rootname"]:
+                        config_o[2] = misc.programFunctions().hash(config_o[2], 'sha256')
+                        if __ROOTPASS__ == None or __ROOTPASS__ == "":
+                            __ROOTNAME__ = config_o[2]
+                            print("[i] Root username successfully changed!")
+
+                        else:
+                            confirm_rootpass = getpass("Enter root password to continue: ")
+                            confirm_rootpass = misc.programFunctions().hash(confirm_rootpass, 'sha256')
+                            if confirm_rootpass == __ROOTPASS__:
+                                __ROOTNAME__ = config_o[2]
+                                print("[i] Root username successfully changed!")
+                                del confirm_rootpass
+
+                            else:
+                                print(error.ERROR0013)
+                                del confirm_rootpass
+
+                    elif config_o[1].lower() in ["rootpass"]:
+                        if __ROOTPASS__ == "" or __ROOTPASS__ == None:
+                            new_rootpass1 = getpass("Enter new root password: ")
+                            new_rootpass2 = getpass("Confirm new root password: ")
+                            if new_rootpass1 == new_rootpass2:
+                                new_rootpass1 = misc.programFunctions().hash(new_rootpass1, 'sha256')
+                                __ROOTPASS__ = new_rootpass1
+                                print("[i] Root password successfully changed!")
+                            
+                            else:
+                                print("[i] Root passwords doesn't match!")
+
+                        else:
+                            old_rootpass = getpass("Enter old root password: ")
+                            old_rootpass = misc.programFunctions().hash(old_rootpass, 'sha256')
+                            if old_rootpass == __ROOTPASS__:
+                                new_rootpass1 = getpass("Enter new root password: ")
+                                new_rootpass2 = getpass("Confirm new root password: ")
+                                if new_rootpass1 == new_rootpass2:
+                                    new_rootpass1 = misc.programFunctions().hash(new_rootpass1, 'sha256')
+                                    __ROOTPASS__ = new_rootpass1
+                                    print("[i] Root password successfully changed!")
+
+                                else:
+                                    print("[i] Root passwords doesn't match!")
+
+                            else:
+                                print(error.ERROR0013)
+
+                    elif config_o[1].lower() in ["module_path"]:
+                        new_module_path = input("Enter the new module path: ")
+                        if misc.programFunctions().path_exists(new_module_path):
+                            if misc.programFunctions().isfile(new_module_path):
+                                __MODULE_PATH__ = new_module_path
+                                print("[i] Module path set!")
+
+                            else:
+                                print(error.ERROR0015)
+
+                        else:
+                            print(error.ERROR0015)
+
+                    elif config_o[1].lower() in ["output_path"]:
+                        new_output_path = input("Enter the new output path: ")
+                        if misc.programFunctions().path_exists(new_output_path):
+                            if misc.programFunctions().isfile(new_output_path):
+                                __MODULE_PATH__ = new_module_path
+                                print("[i] Output path set!")
+                            
+                            else:
+                                print(error.ERROR0015)
+                            
+                        else:
+                            print(error.ERROR0015)
+
+                    elif config_o[1].lower() in ["export", "save"]:
+                        config_dict = {
+                                "username": __USERNAME__,
+                                "userpass": __USERPASS__,
+                                "rootname": __ROOTNAME__,
+                                "rootpass": __ROOTPASS__,
+                                "module_path": __MODULE_PATH__,
+                                "output_path": __OUTPUT_PATH__
+                                }
+                        try:
+                            open(config_file, 'r').read()
+                            open(config_file, 'r').close()
+                            confirm_export_overwrite = input("Do you really want to overwrite the current configuration file? (y/n) > ").lower()
+                            if confirm_export_overwrite == 'y':
+                                export_conf_result = API.ShadowSuiteLE().export_conf(config_file, config_dict)
+                                if export_conf_result == True:
+                                    print("[i] Settings successfully saved to configuration file: \"" + config_file + "\".")
+
+                                else:
+                                    print("[i] There was a problem exporting the settings.")
+
+                            elif confirm_export_overwrite == 'n':
+                                print("[i] Saving of settings to configuration file aborted.")
+
+                            else:
+                                print("[i] Unknown answer, assuming no.")
+
+                        except FileNotFoundError:
+                            export_conf_result = API.ShadowSuiteLE().export_conf(config_file, config_dict)
+                            if export_conf_result == True:
+                                print("[i] Settings successfully saved to configuration file: \"" + config_file + "\".")
+                            
+                            else:
+                                print("[i] There was a problem exporting the settings.")
+
+                    elif config_o[1].lower() in ['generate']:
+                        new_config = config_o[2]
+                        if 'data/' not in new_config:
+                            new_config = "data/" + new_config
+
+                        if '.dat' not in new_config:
+                            new_config = new_config + '.dat'
+
+                        if misc.programFunctions().path_exists(new_config) and misc.programFunctions().isfile(new_config):
+                            print("[i] Saving of settings to new configuration file aborted. File already exists.")
+                            continue
+
+                        else:
+                            print('[i] Exporting...')
+                            config_dict = {
+                                    "username": __USERNAME__,
+                                    "userpass": __USERPASS__,
+                                    "rootname": __ROOTNAME__,
+                                    "rootpass": __ROOTPASS__,
+                                    "module_path": __MODULE_PATH__,
+                                    "output_path": __OUTPUT_PATH__
+                                    }
+                            export_conf_result = API.ShadowSuiteLE().export_conf(new_config, config_dict)
+                            if export_conf_result == True:
+                                print("[i] " + new_config + " successfully generated!")
+
+                            else:
+                                print("[i] There was a problem generating the configuration file.")
+
+                    elif config_o[1].lower() in ['remove', 'del', 'delete']:
+                        if '.dat' not in config_o[2]:
+                            config_o[2] += '.dat'
+
+                        if 'data/' in config_o[2]:
+                            config_o[2] = config_o[2].replace('data/', '')
+
+                        if config_o[2] == 'config.dat':
+                            print(error.WARNING0005)
+                            ask_remove_default_config = input("Do you still want to continue> (y/n) > ").lower()
+                            if ask_remove_default_config == 'y':
+                                os.remove('data/' + config_o[2])
+                                print("[i] Configuration file removed succesfully!")
+
+                            else:
+                                pass
+
+                            del ask_remove_default_config
+
+                        else:
+                            ask_remove_config = input("Do you really want to remove " + config_o[2] + "? (y/n) > ").lower()
+                            if ask_remove_config == 'y':
+                                os.remove('data/' + config_o[2])
+                                print("[i] Configuration file removed successfully!")
+
+                            else:
+                                pass
+
+                            del ask_remove_config
+
+                    else:
+                        raise IndexError
+
+                except(IndexError, FileNotFoundError):
+                    print()
+                    print("[i] Usage: config [OPTION] [VALUE]")
+                    print()
+                    print("username [VALUE]    -    Change username.")
+                    print("password | passwd   -    Change password.")
+                    print("rootname [VALUE]    -    Change root username.")
+                    print("rootpass            -    Change root password.")
+                    print("module_path         -    Change the path where modules will be found.")
+                    print("output_path         -    Change the path where module outputs will be found.")
+                    print("export | save       -    Save changes to current configuration file.")
+                    print("generate [FILENAME] -    Save changes to a new configuration file.")
+                    print("remove [FILENAME]   -    Delete a configuration file.")
                     print()
 
             elif menu_input in ["module"]:
@@ -345,6 +620,10 @@ def main():
                 logger.log(0, ValueError_msg, 'logfile.txt', SESSION_ID)
                 sys.exit(0)
 
+def no_escape_chars(string):
+    result = string.replace('\n', '').replace('\t', '')
+    return result
+
 # Starts the program
 if __name__ == "__main__":
     # Check python version first before main() function execution
@@ -371,6 +650,17 @@ if __name__ == "__main__":
 
     SESSION_ID = misc.programFunctions().generate_session_id()
     logger.log(3, "Generated Session ID: " + str(SESSION_ID))
+
+    current_user = "user"
+    __USERNAME__ = None
+    __USERPASS__ = None
+    __ROOTNAME__ = None
+    __ROOTPASS__ = None
+
+    __MODULE_PATH__ = "modules/"
+    __OUTPUT_PATH__ = "output/"
+
+    __USERLEVEL__ = 2
     
     # Check for arguments, if any.
     NO_WARN = False
@@ -416,47 +706,161 @@ if __name__ == "__main__":
         except IndexError:
             pass
 
-    # Parse configuration file (WIP)
+    # Parse configuration file
+    config_file = "data/config.dat"
     try:
         iterator_config = 0
-        while iterator_config <= len(sys.argv):
-            if sys.argv[iterator_config] == '-c':
+        while iterator_config < len(sys.argv):
+            if '-c' in sys.argv[iterator_config]:
                 iterator_config += 1
                 config_file = sys.argv[iterator_config]
+                config_file = "data/" + config_file
                 if os.path.exists(config_file):
+                    del iterator_config
                     break
 
                 else:
-                    print("[i] Invalid configuration file!")
-                    sys.exit(1)
+                    print(error.ERROR0012)
+                    sys.exit(12)
 
             else:
                 iterator_config += 1
 
     except IndexError:
-        pass
+        config_file = "data/config.dat"
+        del iterator_config
 
     try:
         iterator_config = 0
-        while iterator_config <= len(sys.argv):
+        while iterator_config < len(sys.argv):
             if '--config=' in sys.argv[iterator_config]:
                 config_filf = sys.argv[iterator_config]
                 config_filf = config_filf.split("=")
                 config_file = config_filf[1]
+                config_file = "data/" + config_file
                 if os.path.exists(config_file):
+                    del iterator_config
                     break
                 
                 else:
-                    print("[i] Invalid configuration file!")
-                    sys.exit(1)
+                    print(error.ERROR0012)
+                    sys.exit(12)
                 
             else:
                 iterator_config += 1
 
     except IndexError:
-        pass
+        config_file = "data/config.dat"
+        del iterator_config
 
-    #
+    # Reading the configuration file...
+    try:
+        config_data = open(config_file, 'r').readlines()
+        open(config_file, 'r').close()
+        # print(config_data) # DEV0005 #####
+        new_config_data = []
+        for data in config_data:
+            if data.startswith("#"):
+                continue
+
+            elif "username=" in data:
+                __USERNAME__ = data.replace('username=', '')
+                __USERNAME__ = __USERNAME__.replace('"', '')
+                __USERNAME__ = no_escape_chars(__USERNAME__)
+
+            elif "userpass=" in data:
+                __USERPASS__ = data.replace('userpass=', '')
+                __USERPASS__ = __USERPASS__.replace('"', '')
+                __USERPASS__ = no_escape_chars(__USERPASS__)
+
+            elif "rootname=" in data:
+                __ROOTNAME__ = data.replace('rootname=', '')
+                __ROOTNAME__ = __ROOTNAME__.replace('"', '')
+                __ROOTNAME__ = no_escape_chars(__ROOTNAME__)
+
+            elif "rootpass=" in data:
+                __ROOTPASS__ = data.replace('rootpass=', '')
+                __ROOTPASS__ = __ROOTPASS__.replace('"', '')
+                __ROOTPASS__ = no_escape_chars(__ROOTPASS__)
+
+            elif "module_path=" in data:
+                __MODULE_PATH__ = data.replace('module_path="', '')
+                __MODULE_PATH__ = __MODULE_PATH__.replace('"', '')
+                __MODULE_PATH__ = no_escape_chars(__MODULE_PATH__)
+
+            elif "output_path=" in data:
+                __OUTPUT_PATH__ = data.replace('output_path=', '')
+                __OUTPUT_PATH__ = __OUTPUT_PATH__.replace('"', '')
+                __OUTPUT_PATH__ = no_escape_chars(__OUTPUT_PATH__)
+
+            else:
+                continue
+
+        """
+        print(config_data)
+        print(__USERNAME__)
+        print(__USERPASS__)
+        print(__ROOTNAME__)
+        print(__ROOTPASS__)
+        print(__MODULE_PATH__)
+        print(__OUTPUT_PATH__)
+        misc.programFunctions().pause()
+        """
+        logger.log(3, "Someone is trying to use Shadow Suite...", 'logfile.txt')
+        if __USERNAME__ == None or __USERNAME__ == "":
+            pass
+
+        else:
+            if __USERPASS__ == None or __USERPASS__ == "":
+                pass
+
+            else:
+                attempts = 0
+                while True:
+                    try:
+                        misc.programFunctions().clrscrn()
+                        print()
+                        print(misc.LOGO)
+                        print()
+                        print("Attempts: " + str(attempts))
+                        print()
+                        print("Please login to continue...\n")
+                        login_user = input("Username: ")
+                        current_user = login_user
+                        login_user = misc.programFunctions().hash(login_user, 'sha256')
+                        login_pass = getpass()
+                        login_pass = misc.programFunctions().hash(login_pass, 'sha256')
+                        # print(login_user) # DEV0005
+                        # print(login_pass) # DEV0005
+                        if login_user == __USERNAME__ and login_pass == __USERPASS__:
+                            print("[i] You are now logged in!")
+                            logger.log(3, login_user + " logged in successfully on " + time.asctime() + " with " + str(attempts) + " attempts.", 'logfile.txt')
+                            misc.programFunctions().pause()
+                            break
+
+                        else:
+                            print(error.ERROR0013)
+                            logger.log(4, login_user + " failed to log in on " + time.asctime() + " with " + str(attempts) + " attempts.", 'logfile.txt')
+                            misc.programFunctions().pause()
+                            if attempts < 3:
+                                attempts += 1
+                                continue
+
+                            else:
+                                print(error.ERROR0014 + " Now quitting...")
+                                sys.exit(13)
+
+                    except KeyboardInterrupt:
+                        print(error.ERROR0002)
+                        sys.exit(2)
+
+    except IndexError:
+        print(error.ERROR0012)
+        sys.exit(12)
+
+    except FileNotFoundError:
+        print(error.ERROR0015)
+        sys.exit(15)
 
     # Checks if last session failed to exit properly
     if NO_WARN == False:
