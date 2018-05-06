@@ -17,10 +17,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
+import sys
 from core import error
 
 VAPI = "0.0.6.8-API"
-VNUMBER = "0.0.9.9"
+VNUMBER = "0.0.9.9-Build_A"
 VTYPE = "Experimental"
 VCODENAME = "Open Source"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
@@ -102,4 +103,8 @@ BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
     # Zero-Day                                           ( Not yet used )
 
 def changelog():
-    os.system('less extras/changelog')
+    if sys.platform == 'windows' or sys.platform == 'nt':
+        os.system("start extras/changelog")
+
+    else:
+        os.system("less extras/changelog")

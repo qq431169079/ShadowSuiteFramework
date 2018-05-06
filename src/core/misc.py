@@ -101,11 +101,11 @@ class programFunctions:
 
     def clrscrn(self):
         try:
-            platform = sys.platform
-            if platform == 'linux':
+            platform = self.is_windows()
+            if platform == False:
                 os.system('clear')
 
-            elif platform == 'windows' or platform == 'nt':
+            elif platform == True:
                 os.system('cls')
 
             else:
@@ -192,11 +192,11 @@ class programFunctions:
         return result
 
     def cli_color_support(self):
-        PLATFORM = self.get_platform()
-        if PLATFORM == 'linux':
+        PLATFORM = self.is_windows()
+        if PLATFORM == False:
             return True
 
-        elif PLATFORM == 'windows':
+        elif PLATFORM == True:
             return False
 
         else:
@@ -332,3 +332,13 @@ output_path="output/"
 
         except:
             return False # means failed
+
+    def geteuid(self):
+        try:
+            euid = os.geteuid()
+
+        except:
+            # Must be running on windows...
+            euid = 0
+
+        return euid

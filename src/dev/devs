@@ -1,0 +1,7 @@
+DEV0001
+
+-API.py (line 126): API arguments
+-SSF.py: List modules with colors.
+-SSF.py (line 629): Uninstall option
+-modules/*.py: API usage and arguments
+-core/suggest.py: New algorithm

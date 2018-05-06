@@ -1,6 +1,6 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 # Coding=UTF-8
-# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Shadow Suite Framework :: Ethical Hacking Toolkit and Framework
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,12 @@ try:
     import hashlib
     print("[i] Importing 'time' module...")
     import time
+    print("[i] Importing 'subprocess' module...")
+    import subprocess
+    print("[i] Importing 'importlib' module...")
+    import importlib
 
+    print()
     print("[i] Importing 'error' module...")
     from core import error
     print("[i] Importing 'misc' module...")
@@ -39,8 +44,6 @@ try:
     from core import update
     print("[i] Importing 'version' module...")
     from core import version
-    print("[i] Importing 'module_manager' module...")
-    from core import module_manager
     print("[i] Importing 'suggest' module...")
     from core import suggest
     print("[i] Importing 'logger' module...")
@@ -49,8 +52,16 @@ try:
     from core import joke
     print("[i] Importing 'quote' module...")
     from core import quote
+
+    print()
+    print("[i] Importing 'list_module' module...")
+    from core import list_module
+
+    print()
     print("[i] Importing 'API' module...")
     import API
+
+    print()
     print("[i] Finished Importing modules...\n")
     misc.programFunctions().pause(False)
 
@@ -58,7 +69,7 @@ except ImportError:
     # This function is called if a module was missing.
     cr = '\033[31m'
     cw = '\033[0m'
-    print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite to continue... Please make sure that required modules are installed and running properly!" + cw)
+    print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite Framework to continue... Please make sure that required modules are installed and running properly!" + cw)
     print("==================== TRACEBACK ====================")
     traceback.print_exc()
     print("===================================================")
@@ -67,6 +78,7 @@ except ImportError:
 
 def main():
     logger.log(0, 'Shadow Suite Linux Edition launched.', 'logfile.txt', SESSION_ID)
+    # Global variables
     global config_file
     global __USERNAME__
     global __USERPASS__
@@ -78,11 +90,12 @@ def main():
     print()
     print(misc.LOGO) # Prints logo
     print("\n")
+    # Informs the user on what platform Shadow Suite is running.
     print("[i] Running on " + PLATFORM + " platform.")
     print("\n")
     print(misc.BRIEF_LICENSE) # Prints a brief information about the license.
     print("\n")
-    print(quote.quote())
+    print(quote.quote()) # Print a random quote or tip.
     print("\n")
     print("[i] If you need help, type 'help'...")
     print("\n")
@@ -108,28 +121,30 @@ def main():
         try:
             # If os.geteuid() is equal to 0, then a terminal with # will be shown.
             # Otherwise, $ will be shown.
-            if os.geteuid() != 0:
+            if misc.programFunctions().geteuid() != 0:
                 logger.log(0, 'Running as normal user.', 'logfile.txt', SESSION_ID)
-                menu_input = input("[" + misc.CB + misc.FB + misc.FI + "ShadowSuite.py" + misc.FR + misc.CW + "] $: ")
+                menu_input = input("[" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] $: ")
 
             else:
                 logger.log(0, 'Running as root.', 'logfile.txt', SESSION_ID)
-                menu_input = input("[" + misc.CB + misc.FB + misc.FI + "ShadowSuite.py" + misc.FR + misc.CW + "] #: ")
+                menu_input = input("[" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] #: ")
+
             if menu_input.lower() in ["help"]:
                 logger.log(0, 'User needs help.', 'logfile.txt', SESSION_ID)
                 print(misc.CC + misc.FB + misc.FI + "\nHELP\n" + misc.FR)
-                print(misc.CW + "help              :: prints this help menu.")
-                print("show [OPTION]     :: Shows the license/info/changelog.")
-                print("update [OPTION]   :: update program/dependencies/all.")
-                print("config [OPTION]   :: Configure Shadow Suite settings; Export settings.")
-                print("module            :: enter module shell. type \'module\' then \'help\'for details.")
-                print("suggest           :: suggests a tool based on your critera.")
-                print("clear             :: clears the screen.")
-                print("run               :: run a command from your terminal.")
+                print(misc.CW)
+                print("help                      :: prints this help menu.")
+                print("show [OPTION]             :: Shows the license/info/changelog.")
+                print("update [OPTION]           :: update program/dependencies/all.")
+                print("config [OPTION]           :: Configure Shadow Suite settings; Export settings.")
+                print("module [OPTION]           :: manage modules.")
+                print("suggest [CRITERIA]        :: suggests a tool based on your critera.")
+                print("clear                     :: clears the screen.")
+                print("run || exec [COMMAND]     :: run a command from your terminal.")
                 print("\n")
-                print("restart           :: restart Shadow Suite.")
-                print("quit              :: quit Shadow Suite.")
-                print("exit              :: same as \'quit\' command.\n")
+                print("restart                   :: restart Shadow Suite.")
+                print("quit || exit              :: quit Shadow Suite.")
+                print()
 
             elif menu_input.lower().startswith("show"):
                 show_o = menu_input.split(" ")
@@ -140,7 +155,11 @@ def main():
                             continue
 
                         logger.log(0, 'User opens license via less command...', 'logfile.txt', SESSION_ID)
-                        os.system("less extras/shadowsuitelicense")
+                        if PLATFORM == 'windows' or PLATFORM == 'nt':
+                            os.system("start extras/shadowsuitelicense")
+
+                        else:
+                            os.system("less extras/shadowsuitelicense")
 
                     elif show_o[1].lower() in ["info", "information", "status", "stats"]:
                         logger.log(0, 'Users looks at the info.', 'logfile.txt', SESSION_ID)
@@ -198,13 +217,7 @@ def main():
                                 print("[SYSTEM] functionality is unavailable")
 
                     else:
-                        print()
-                        print("Usage: show [OPTION]")
-                        print()
-                        print("license  copying  copyright         -    Shows the full license via less command.")
-                        print("info  information  status  stats    -    Shows the current information of Shadow Suite.")
-                        print("changelog                           -    Shows the changelog via less command.")
-                        print()
+                        raise IndexError
 
                 except IndexError:
                     print()
@@ -255,13 +268,7 @@ def main():
                                 print(error.ERROR0001)
 
                     else:
-                        print()
-                        print("[i] Usage: update [OPTION]")
-                        print()
-                        print("prog  program                     -    Update Shadow Suite from GitHub.")
-                        print("deps  dependencies  dependency    -    Update/install dependencies.")
-                        print("full  all                         -    Update both Shadow Suite and dependencies.")
-                        print()
+                        raise IndexError
 
                 except IndexError:
                     print()
@@ -374,7 +381,7 @@ def main():
                     elif config_o[1].lower() in ["module_path"]:
                         new_module_path = input("Enter the new module path: ")
                         if misc.programFunctions().path_exists(new_module_path):
-                            if misc.programFunctions().isfile(new_module_path):
+                            if misc.programFunctions().isfolder(new_module_path):
                                 __MODULE_PATH__ = new_module_path
                                 print("[i] Module path set!")
 
@@ -387,8 +394,8 @@ def main():
                     elif config_o[1].lower() in ["output_path"]:
                         new_output_path = input("Enter the new output path: ")
                         if misc.programFunctions().path_exists(new_output_path):
-                            if misc.programFunctions().isfile(new_output_path):
-                                __MODULE_PATH__ = new_module_path
+                            if misc.programFunctions().isfolder(new_output_path):
+                                __OUTPUT_PATH__ = new_output_path
                                 print("[i] Output path set!")
                             
                             else:
@@ -509,41 +516,171 @@ def main():
                     print("remove [FILENAME]   -    Delete a configuration file.")
                     print()
 
-            elif menu_input in ["module"]:
-                # Runs the module_manager.py module.
-                logger.log(0, 'User enters module_manager shell...', 'logfile.txt', SESSION_ID)
-                module_manager.shell(misc.debugging, misc.failsafe, SESSION_ID)
+            elif menu_input.startswith("module"):
+                module_o = menu_input.split(" ")
+                try:
+                    if module_o[1] in ['show', 'list', 'lst', 'ls']:
+                        list_module.list(__MODULE_PATH__)
 
-            elif menu_input in ["suggest"]:
+                    elif module_o[1] in ['use', 'run', 'exec', 'execute']:
+                        module_name = __MODULE_PATH__ + module_o[2]
+                        try:
+                            module_name = module_name.replace('/', '.')
+                            module = importlib.import_module(module_name)
+                            module.main()
+
+                        except ModuleNotFoundError as modulenotfounderror_msg:
+                            print("[i] " + str(modulenotfounderror_msg))
+
+                    elif module_o[1] in ['info', 'information', 'search', 'query']:
+                        module_name = __MODULE_PATH__ + module_o[2]
+                        try:
+                            module_name = module_name.replace('/', '.')
+                            module = importlib.import_module(module_name)
+                            module.module_info()
+
+                        except ModuleNotFoundError as modulenotfounderror_msg:
+                            print("[i] " + str(modulenotfounderror_msg))
+
+                    elif module_o[1] in ['generate', 'produce', 'new']:
+                        module_name = module_o[2]
+                        logger.log(0, 'User generated a new module named ' + module_name, 'logfile.txt', SESSION_ID)
+                        if misc.programFunctions().is_windows() == ('windows' or 'win' or 'nt'):
+                            os.system("xcopy core/temp.py output/" + module_name + ".py")
+
+                        else:
+                            os.system("cp core/temp.py output/" + module_name + ".py")
+
+                        if misc.programFunctions().path_exists('output/' + module_name + '.py'):
+                            print("[i] " + module_name + ".py successfully generated!")
+
+                        else:
+                            print(error.ERROR0015 + " (Generated module not found)")
+
+                    elif module_o[1].startswith("install"):
+                        if misc.programFunctions().path_exists(module_o[2]):
+                            print("[i] Path found...")
+                            if '.py' in module_o[2]:
+                                print("[i] Parsing " + module_o[2] + '...')
+                                try:
+                                    parser = importlib.import_module(module_o[2])
+                                    parser.module_info()
+
+                                except Exception as parsingerror_msg:
+                                    print("[i] " + error.ERROR0017)
+                                    print("[i] " + parsingerror_msg)
+
+                                else:
+                                    print("[i] Parsing successful!")
+                                    print("[i] Installing " + module_o[2] + '...')
+                                    if misc.programFunctions().is_windows():
+                                        os.system("xcopy " + module_o[2] + " modules/")
+
+                                    else:
+                                        os.system("cp " + module_o[2] + " modules/")
+
+                                    module_dependencies = parser.dependencies
+                                    bin_manual_install = []
+                                    for deps in module_dependencies:
+                                        if 'BINARY: ' in deps:
+                                            deps = deps.replace('BINARY: ', '')
+                                            if misc.programFunctions().is_windows():
+                                                bin_manual_install += ('BINARY: ' + deps)
+
+                                            else:
+                                                if misc.programFunctions().path_exists('/usr/bin/apt'):
+                                                    os.system("apt install " + deps)
+                                                    continue
+
+                                                elif misc.programFunctions().path_exists('/usr/bin/yum'):
+                                                    os.system("yum install " + deps)
+                                                    continue
+
+                                                elif misc.programFunctions().path_exists('/usr/bin/pkg'):
+                                                    os.system("pkg install " + deps)
+                                                    continue
+
+                                                else:
+                                                    bin_manual_install += ('BINARY: ' + deps)
+
+                                        elif 'PYTHON: ' in deps:
+                                            deps = deps.replace('PYTHON: ' + deps)
+                                            for pip in ['pip', 'pip3.6', 'pip3']:
+                                                os.system(pip + "install " + deps)
+
+                                        elif 'PERL: ' in deps:
+                                            os.system("cpan install " + deps)
+
+                                        else:
+                                            manual_install += deps
+
+                                    if manual_install != (None or [] or "") and bin_manual_install != (None or [] or ""):
+                                        manual_install = bin_manual_install + manual_install
+                                        print("[i] Can't install the following:\n")
+                                        for deps in manual_install:
+                                            print("- " + deps)
+
+                                        print("\nPlease install to use the module without errors...")
+
+                            else:
+                                print("[i] " + error.ERROR0016)
+
+                    elif module_o[1].lower().startswith("uninstall"):
+                        print('[i] ' + error.WARNING0002)
+
+                    else:
+                        raise IndexError
+
+                except IndexError:
+                    print()
+                    print("[i] Usage: module [OPTION] [ARGUMENTS]")
+                    print()
+                    print("show  list  lst  ls                                -    List available modules.")
+                    print("use || run || exec || execute [MODULE]             -    Use specified module.")
+                    print("info || information || search || query [MODULE]    -    Show information of the specified module.")
+                    print("generate || produce || new [MODULE]                -    Generate a new module template.")
+                    print("install [MODULE_PATH]                              -    Install a module.")
+                    print("uninstall [MODULE_PATH]                            -    Uninstall a module.")
+                    print()
+
+            elif menu_input.lower().startswith("suggest"):
+                suggest_o = menu_input.split(' ')
+                suggest_o[0] = None
                 if misc.failsafe == True:
                     print("[FAILSAFE] suggest command not available")
                     continue
 
-                criteria = input("Enter keywords (dns, wireless, cracking) > ")
+                for args in suggest_o:
+                    criteria += args + ' '
+
                 logger.log(0, 'User want a suggestion with the criteria ' + criteria + '.', 'logfile.txt', SESSION_ID)
                 suggest.api(criteria)
 
-            elif menu_input in ["clear", "clr", "cls", "clrscrn"]:
+            elif menu_input.lower().startswith(("clear", "clr", "cls", "clrscrn")):
                 if misc.failsafe == True:
                     print("[FAILSAFE] clear not available")
                     continue
 
                 misc.programFunctions().clrscrn()
 
-            elif menu_input in ["run"]:
+            elif menu_input.lower().startswith("run"):
+                run_o = menu_input.split(' ')
+                run_o[0] = None
                 if misc.failsafe == True:
                     print("[FAILSAFE] run not available")
                     continue
 
-                command = input(r"Command to run > ")
-                logger.log(3, 'User run the command: CODE[' + command + ']', 'logfile.txt', SESSION_ID)
+                for args in run_o:
+                    command += args + ' '
+
+                logger.log(3, 'User run the command: "' + command + '".', 'logfile.txt', SESSION_ID)
                 os.system(command)
 
             elif menu_input in ["back"]:
                 logger.log(2, "ERROR 0004: Back cannot be used in the main module", 'logfile.txt', SESSION_ID)
                 print(error.ERROR0004)
 
-            elif menu_input in ["restart"]:
+            elif menu_input in ["restart", "reboot"]:
                 logger.log(0, 'User restarted Shadow Suite...', 'logfile.txt', SESSION_ID)
                 misc.programFunctions().clrscrn()
                 misc.programFunctions().program_restart()

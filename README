@@ -1,13 +1,13 @@
-Shadow Suite Linux Edition 0.0.9.9 :: Ethical Hacking Toolkit
+Shadow Suite Framework 0.0.9.9-Build_A :: Ethical Hacking Toolkit and Framework
 Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
-Shadow Suite Linux Edition is an Ethical Hacking Toolkit.
-It was born on Thursday, Dec 7 2:44:37 PM, 2017.
+Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
+It was created on Thursday, Dec 7 2:44:37 PM, 2017.
 It provides many tools that you can use,
 written mainly in Python, BASH, PHP, etc.
 Tools that you need for reconnaissance, scanning,
 exploitation, encryption, password cracking, and more!
-Shadow Suite is the main project of Shadow Team.
+Shadow Suite Framework is the main project of Shadow Team.
 
 What's new?
 ------------------
@@ -17,13 +17,6 @@ What's new?
 
 Full Feature List
 ------------------------
--Friendly CLI
-      -As most people know, Command-Line Interfaces (CLIs) are very hard to
-       use. But this framework is different. The commands does not need
-       arguments, instead they ask you interactively. For example, it needs
-       three arguments. Then it will ask you interactively, no memorization
-       needed to enable switches and options.
-
 -Open Source
       -Shadow Suite is protected by the GNU General Public License, means
        that you can freely download, modify, and distribute the software.
@@ -33,169 +26,36 @@ Full Feature List
 -Create Custom Modules from template
       -Do you know Python? Do you know how to code in Python? Do you want
        to create your own module that can penetration test a Class A network
-       in just three seconds? (exagerrated) Shadow Suite provides you a module
-       template to help you start creating your custom module. It also
+       in just three seconds? (exagerrated) Shadow Suite Framework provides
+       a module template to help you start creating your custom module. It also
        provides an Application Programming Interface (API) to help you on
-       the integration of Shadow Suite and your custom module.
+       the integration of Shadow Suite Framework and your custom module.
 
        You can also submit your custom module to us to make it pre-installed!
 
 -Pre-installed modules
-      -It's okay if you don't know how to program. Shadow Suite has an
+      -It's okay if you don't know how to program. Shadow Suite Framework has an
        arsenal! It provides you tools written in different languages. Python,
        Ruby, Perl, PHP, and many more!
-
-      -Full tools listing:
-        ==01-Information Gathering==
-
-                Automater
-                DNSEnum
-                DNSMap
-                DNSrecon
-                LANScan
-                Metagoofil
-                Nwrap
-                Red Hawk
-                The Harvester
-
-        ==02-Vulnerability Analysis==
-
-                ==Cisco Tools==
-
-                        Cisco Auditing Tool (CAT)
-                        Cisco Global Exploiter (CGE)
-
-                ==Fuzzing Tools==
-
-                        Angry Fuzzer
-
-                ==Stress Testing==
-
-                        fl00d
-                        Slowloris
-
-                ==VoIP Tools==
-
-        [i] Not yet Implemented!!!
-
-        ==03-Web Application Analysis==
-
-                ==CMS and Framework Identification==
-
-        [i] Not yet Implemented!!!
-
-                ==Web Application Proxies==
-
-        [i] Not yet Implemented!!!
-
-                ==Web Crawlers and Directory Bruteforcing Tools==
-
-        [i] Not yet Implemented!!!
-
-                ==Web Vulnerability Scanners==
-
-                        D-TECT (DTECT)
-                        Shellshocker
-                        Striker
-
-        ==04-Database Assessment==
-
-                DSSS
-                SQLMap
-
-        ==05-Password Attacks==
-
-                ==Offline Attacks==
-
-                        Hash Identifier
-                        ShadowCrack
-
-                ==Online Attacks==
-
-                        Black Hydra
-                        Hash Buster
-
-                ==Passing the Hash Tools==
-
-        [i] Not yet Implemented!!!
-
-                ==Password Profiling and Wordlists==
-
-                        CUPP
-
-        ==06-Wireless Attacks==
-
-        [i] Not yet Implemented!!!
-
-        ==07-Reverse Engineering==
-
-        [i] Not yet Implemented!!!
-
-        ==08-Exploitation Tools==
-
-                Linux Exploit Suggester (LES)
-                RouterSploit
-
-        ==09-Sniffing and Spoofing==
-
-                ==Network Sniffers==
-
-        [i] Not yet Implemented!!!
-
-                ==Spoofing and MITM==
-
-        [i] Not yet Implemented!!!
-
-        ==10-Post Exploitation==
-
-        [i] Not yet Implemented!!!
-
-        ==11-Forensics==
-
-        [i] Not yet Implemented!!!
-
-        ==12-Reporting Tools==
-
-                Pipal
-
-        ==13-Social Engineering Tools==
-
-                Social Engineer Toolkit (SET)
-                URLCrazy
-                Weeman
-
-        ==14-System Services==
-
-                Ipify
-                IPcalc
-                WebExpose
-
-        ==15-Others==
-
-        	Deception
-
-        ==Custom Modules==
-
-                sample
 
 TO-DO List
 ------------------------
 
 1.CONSTANTS and function arguments. (Finished)
 
-2.Exit codes via returns and system exits. (Cancelled)
+2.Debug and Failsafe modes. (Finished)
 
-3.Debug and Failsafe modes. (Finished)
+3.Update The Harvester.
 
-4.Update The Harvester.
+4.Kick Them Out, Wifite2, Metasploit Framework, WebExpose, BRAT,  and MultiTool. Update Deception
 
-5.Kick Them Out, Wifite2, Metasploit Framework, WebExpose, BRAT,  and MultiTool. Update Deception
+5.Automatic installation of custom modules. (Finished)
 
-6.Automatic installation of custom modules.
+6.New update algorithms.
 
-7.New update algorithms.
+7.Make Shadow Suite Framework Cross-platform. No more Linux and Windows editions ;)
 
-8.Make Shadow Suite Cross-platform. No more Linux and Windows editions ;)
+8.More logging verbosity.
 
 License and Copying
 ------------------------
@@ -260,13 +120,20 @@ Credits
         Linus Torvalds and contributors: for creating the Linux Operating System.
 	Termux Developers: for creating an amazing terminal emulator for Android.
 
-
+	[i] More contributors in program...
 
 Requirements
 ------------------------
-1.Linux or Linux-based Operating System (Tested on Termux Terminal Emulator and Kali Operating System)
+1.Supported Operating Systems
+`	-Kali Linux
+	-Termux Terminal Emulator for Android
+	-Cygwin Terminal Emulator for Windows
+	
+	[i] Not yet tested for Windows Operating Systems...
+	[i] Worked on your operating system but not listed here? Please contact us and we'll be happy to include it here!
+
 2.Internet Connection. (for performing remote attacks and/or updating)
-3.Python Interpreter version 3.
+3.Python Interpreter version 2 and 3.
 4.Dependencies can be installed automatically in the program. (Needs Internet Connection)
 
 
@@ -277,21 +144,21 @@ Installing & Running
 
       $ apt update && apt upgrade -y [1]
       $ apt install python git [2]
-      $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuiteLE/ [3]
-      $ cd ShadowSuiteLE/src && chmod 755 ShadowSuiteLE.py [4]
-      $ ./ShadowSuiteLE.py [5]
+      $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuiteFramework/ [3]
+      $ cd ShadowSuiteFramework/src && chmod 755 SSF.py [4]
+      $ ./SSF.py [5]
       [Shadow] $ full update [6]
       [Shadow] $ help [7]
 
       [1] Update repository package list/s.
       [2] Install Python interpreter and Git client.
-      [3] Clone Shadow Suite Linux Edition from Shadow Team's Github repository.
-      [4] Changes directory to ShadowSuiteLE/src and changes file mode to executable.
-      [5] Run 'ShadowSuiteLE.py'.
+      [3] Clone Shadow Suite Framework from Shadow Team's Github repository.
+      [4] Changes directory to ShadowSuiteFramework/src and changes file mode to executable.
+      [5] Run 'SSF.py'.
       [6] Type 'full update' on Shadow Suite's console to update
           the program and dependencies.
       [7] Type 'help' on Shadow Suite's console to see the help menu.
 
 2.Questions? Feature requests? Bugs?
       
-      -Just contact us and we'll respond as soon as possible. You can also create a pull request on https://github.com/Sh4d0w-T34m/ShadowSuiteLE
+      -Just contact us and we'll respond as soon as possible. You can also create a pull request on https://github.com/Sh4d0w-T34m/ShadowSuiteFramework.git

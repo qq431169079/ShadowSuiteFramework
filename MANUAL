@@ -1,13 +1,13 @@
-#############################################
-#                                           #
-#     Shadow Suite v0.0.9.8 Manual File     #
-#                                           #
-#############################################
+#######################################################
+#                                                     #
+#     Shadow Suite Framework v0.0.9.8 Manual File     #
+#                                                     #
+#######################################################
 
 I. Table of Contents
         -01.Introduction
-		-What is Shadow Suite?
-		-Example cases of using Shadow Suite
+		-What is Shadow Suite Framework?
+		-Example cases of using Shadow Suite Framework
 
 	-02.Installation
 		-Installing on Linux
@@ -36,80 +36,80 @@ I. Table of Contents
 	-04.Reconnaissance
 		-What is reconnaissance?
 		-Tools for reconnaissance
-		-Information Gathering using Shadow Suite
+		-Information Gathering using Shadow Suite Framework
 
 	-05.Vulnerability Analysis
 		-What is vulnerability analysis?
 		-Tools for vulnerability analysis
-		-Vulnerability Analysis using Shadow Suite
+		-Vulnerability Analysis using Shadow Suite Framework
 
 	-06.Web Application Analysis
 		-What is Web Application Analysis?
 		-Tools for web application analysis
-		-Web application analysis using Shadow Suite
+		-Web application analysis using Shadow Suite Frameork
 
 	-07.Database Assessment
 		-What is Database Assessment?
 		-Tools for database assessment
-		-Database assessment using Shadow Suite
+		-Database assessment using Shadow Suite Framework
 
 	-08.Password Attacks
 		-What are Password Attacks?
 		-Tools for password attacks
-		-Cracking encryptions and passwords using Shadow Suite
+		-Cracking encryptions and passwords using Shadow Suite Framework
 
 	-09.Wireless Attacks
 		-What are Wireless Attacks?
 		-Tools for wireless attacks
-		-Cracking WiFi passwords with Shadow Suite
+		-Cracking WiFi passwords with Shadow Suite Framework
 
 	-10.Reverse Engineering
 		-What is reverse engineering?
 		-Tools for reverse engineering
-		-Reverse engineering an application using Shadow Suite
+		-Reverse engineering an application using Shadow Suite Framework
 
 	-11.Exploitation
 		-What is exploitation?
 		-Tools for exploitation
-		-Exploiting Router vulnerabilities using Shadow Suite
-		-Exploiting Computer vulnerabilities using Shadow Suite
+		-Exploiting Router vulnerabilities using Shadow Suite Framework
+		-Exploiting Computer vulnerabilities using Shadow Suite Framework
 
 	-12.Sniffing and Spoofing
 		-What are Sniffing and Spoofing?
 		-Tools for Sniffing and Spoofing
-		-Sniffing network traffic with Shadow Suite
-		-Spoofing a TCP session using Shadow Suite
+		-Sniffing network traffic with Shadow Suite Framework
+		-Spoofing a TCP session using Shadow Suite Framework
 
 	-13.Post Exploitation
 		-What is Post exploitation?
 		-Tools for post-exploitation
-		-Gaining access to a remote computer using Shadow Suite
+		-Gaining access to a remote computer using Shadow Suite Framework
 
 	-14.Forensics
 		-What is Computer Forensics?
 		-Tools for computer forensic investigations
-		-Recovering data using Shadow Suite
+		-Recovering data using Shadow Suite Framework
 
 	-15.Reporting Tools
 		-What is report generation?
 		-Tools for report generation
-		-Creating a penetration test report using Shadow Suite
+		-Creating a penetration test report using Shadow Suite Framework
 
 	-16.Social Engineering Tools
 		-What is Social Engineering?
 		-Tools for social engineering
-		-Hacking people with Shadow Suite
+		-Hacking people with Shadow Suite Framework
 
 	-17.System Services
 		-What are System Srrvices?
-		-System services included in Shadow Suite
-		-Knowing your external IP address with Shadow Suite
-		-Exposing your local website to the internet using Shadow Suite
+		-System services included in Shadow Suite Framework
+		-Knowing your external IP address with Shadow Suite Framework
+		-Exposing your local website to the internet using Shadow Suite Framework
 
 	-18.Others
 		-Why there are uncategorized tools?
 		-Uncategorized tools listing
-		-Starting a variety of honeypots using Shadow Suite
+		-Starting a variety of honeypots using Shadow Suite Framework
 
 	-19.Custom Modules
 		-What are custom modules?

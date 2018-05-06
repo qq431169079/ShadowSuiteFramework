@@ -20,7 +20,7 @@ import os
 from core import misc
 from core import error
 
-def list():
+def list(module_path):
     COLOR_SUPPORT = misc.programFunctions().cli_color_support()
     if COLOR_SUPPORT == True:
         cw = '\033[0m'                         #  white  (normal)
@@ -58,8 +58,18 @@ def list():
     print(cr + "\tUnstable" + cw)
     print(cp + "\tCustom Module\n\n" + cw)
 
-    # DEV0002: Add new modules here, self-explanatory.
+    modules = os.listdir(module_path)
+    module_iterator = 0
+    for module in modules:
+        if '.py' in module or '.Py' in module or '.pY' in module or '.PY' in module:
+            module_iterator += 1
+            module = module.replace('.py', '')
+            print("[" + str(module_iterator) +"] " + module)
 
+        else:
+            continue
+
+    """
     print(cb + fb + "\t==01-Information Gathering==\n" + cw + fr)
     print(cg + "\t\tAutomater" + cw)
     print(cg + "\t\tDNSEnum" + cw)
@@ -166,3 +176,4 @@ def list():
     # If you are adding a custom module, duplicate the code below:
     # print(core.misc.cp + "[MODULE NAME]")
     print(cp + "\t\tsample" + cw)
+    """

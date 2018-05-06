@@ -4,10 +4,8 @@ README for Developers
 
       -The program is now ported to Python 3. The program has been
        broken down into little pieces called 'modules'. The Shadow
-       Suite API provides methods to integrate with Shadow Suite LE.
-
-
-
+       Suite API provides methods to integrate with Shadow Suite
+       Framework.
 
 2.Comment Tags
 
@@ -29,7 +27,7 @@ README for Developers
 
 3.Program Development Cycle
 
-      -Shadow Suite uses the 'Shadow Team Software Development Cycle'.
+      -Shadow Suite Framework uses the 'Shadow Team Software Development Cycle'.
 
 4.New framework module (For Framework Contributors):
       -If you want to contribute and wanted to create a new framework module
@@ -41,54 +39,3 @@ README for Developers
 	       - Always use the logger.py module to log information.
 	       - Create a cross-platform module.
 	       - All modules must accept arguments that is needed like " SESSION_ID, misc.debugging, misc.failsafe, and more important information."
-
-5.Manual Module Installation
-
-      -As of now, Shadow Suite LE cannot install modules with just one command.
-       But if you really want to install a module, follow these steps:
-
-       1.Launch Shadow Suite LE, type 'module', then 'manage', and lastly,
-         type 'generate new'.
-
-       2.The program will as you for the filename and it will be created.
-         It can be seen in the 'output' directory.
-
-       3.Edit the file and write your module. You may need to learn Python 3
-         to create your own module.
-
-       4.After finishing programming the file, edit the use_module.py file
-         inside the 'core' directory. Add the code below:
-
-		elif module_name == "1":
-		    print("Module found!")
-		    import modules.1
-		    modules.1.main()
-	
-	 NOTE: Replace '1' with your module's filename.
-
-       5.After that, edit 'list_module.py' and copy the code below, which is
-         optional:
-
-       		print(core.misc.cp + "\t\t1" + cw)
-
-	 NOTE: Replace '1' with your module's filename.
-
-       6.The next step is edit 'find_module.py', which is also inside core directory.
-         Copy the code below, which is also optional:
-	 
-	 elif module_name == "1":
-	     print("Module found!")
-	     import modules.1
-	     modules.1.module_info()
-
-	NOTE: Replace '1' with your module's filename.
-
-       7.After finishing the steps above, it's time to move your custom module
-         into the modules folder. Move your custom module to the 'modules' directory.
-
-       8.Lastly, test your module:
-
-       		$ python ShadowSuite.py
-		[ShadowSuiteLE.py] $: module
-		[Module_Manager.py] $: use
-		Enter the module name to use > Your-module-name

@@ -35,6 +35,7 @@ from core import misc
 # ERROR 0013: Wrong username or password
 # ERROR 0014: Max login attempts reached.
 # ERROR 0015: Path not found
+# ERROR 0016: Not a valid SSF module.
 
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
@@ -92,6 +93,12 @@ ERROR0014 = misc.CR + "ERROR 0014: Max login attempts reached!" + misc.CW
 
 # This is called if path is not found.
 ERROR0015 = misc.CR + "ERROR 0015: Path not found." + misc.CW
+
+# This is called if the module user is trying to install is not a python script.
+ERROR0016 = misc.CR + "ERROR 0016: Not a valid SSF module!" + misc.CW
+
+# This is called if the module user is trying to install has encountered an error.
+ERROR0017 = misc.CR + "ERROR 0017: There was a problem Parsing the pakcage..." + misc.CW
 
     ##################################################################################
     #                                                                                #
