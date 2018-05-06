@@ -1,3 +1,22 @@
+commit e792e2e9fec971c052ecaaf9cf92e71b9452f31f
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun May 6 18:47:43 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.9-Build_A
+    
+    -Updated Shadow Suite Framework.
+    -SFF is now cross-platform, but still in testing phase!
+
+commit b7147c73d4a5c876558deb2871ba6389db56b553
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat May 5 11:53:04 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 48ccda589c562a881a0e33e36815abbc03c11e1d
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Sat May 5 11:51:34 2018 +0800
