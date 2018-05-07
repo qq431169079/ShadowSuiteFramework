@@ -1,3 +1,23 @@
+commit 2470907048b4bb2939ce3fe91b1ba6f94803baf4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 7 16:54:18 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.9-Build_C
+    
+    -suggest command is now functional again!
+    -More new features added!
+    -Bug fixes
+
+commit ee4009824e0540ed3c6fec971cefb442bfa72f0c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 7 14:14:42 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 6f15a8751b0b267532dbe23f08db0f9aacfed66d
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Mon May 7 14:11:59 2018 +0800
