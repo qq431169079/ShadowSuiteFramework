@@ -1,3 +1,25 @@
+commit 6f15a8751b0b267532dbe23f08db0f9aacfed66d
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 7 14:11:59 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.9-Build_B
+    
+    -More new features!
+    -"module install [MODULE_PATH]" command
+    -Fancy colors when listing modules are now back!
+    -Updated all modules to avoid errors using the API.
+    -More new features coming sooner!!!
+
+commit 6a8296136b73202a774c3910a14cf1a6cfadea81
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun May 6 18:54:22 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit e792e2e9fec971c052ecaaf9cf92e71b9452f31f
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Sun May 6 18:47:43 2018 +0800
