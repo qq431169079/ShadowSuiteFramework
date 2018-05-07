@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Cisco Global Exploiter", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Nemesis and E4m", # Author
         "desc": "Cisco Global Exploiter (CGE), is an advanced,simple and fast security\ntesting tool, that is able to exploit the most dangerous vulnerabilities\nof Cisco systems.", # Brief description
         "email": "nemesis@blackangels.it -- e4m@blackangels.it,", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['BINARY: Perl 5.26.1'] # Put needed dependencies here.  
+module_status = 0
+category = ['cisco', 'global', 'universal', 'exploit', 'nemesis', 'e4m', 'advance', 'fast', 'perl']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -136,7 +138,7 @@ def module_body():
         else:
             print("Wrong input!")
 
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)
 
 def start():
     TARGET = input("Target IP: ")
@@ -175,4 +177,4 @@ def vulnlst():
 def exploit(TARGET, TGTNUM):
     space = ' '
     os.system("cd modules/CGE && perl cge.pl " + TARGET + space + TGTNUM)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

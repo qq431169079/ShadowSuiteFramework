@@ -22,7 +22,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "The Harvester", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "2.4", # version
+        "version": "3.0", # version
         "author": "Christian Martorella", # Author
         "desc": "A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/banners, and employee names from different public sources (search engines, pgp key servers).", # Brief description
         "email": "cmartorella@edge-security.com", # Email
@@ -34,9 +34,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
+module_status = 0
+category = ['harvester', 'christian', 'martorella', 'email', 'account', 'subdomain', 'virtual host', 'open', 'port', 'banner', 'employee', 'name', 'python']
 
 # Changelog of the module
-changelog = "Version 1.4:\nAdding full functionality\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.2:\nMandstory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.4:\nAdding full functionality\n\nVersion 1.0:\nInitial module release"
 
 # Prints the module information
 def module_info():
@@ -124,4 +126,4 @@ def module_body():
             LIMIT = ''
 
     os.system("python2 modules/THEHARVESTER/theHarvester.py -d " + TARGET + " -b " + SOURCE + " -s " + START + " -f $PWD/output/" + OUTPUT + LIMITSWITCH + LIMIT)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

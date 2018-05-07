@@ -41,7 +41,9 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = [''] # Put needed dependencies here.  
+dependencies = ['none'] # Put needed dependencies here.  
+module_status = 1
+category = ['striker', 'offensive', 'info', 'vuln', 'scan']
 
 # Changelog of the module
 changelog = "Version 5.0:\nMandatory module update\n\nVersion 4.0:\nMandatory bug fix\n\nVersion 3.0:\nFixes #27\n\nVersion 1.0:\nInitial module release"
@@ -106,4 +108,4 @@ def main():
 
 def module_body():
     os.system("cd modules/STRIKER/ && python2 striker.py")
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

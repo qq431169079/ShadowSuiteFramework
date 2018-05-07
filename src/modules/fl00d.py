@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Fl00D", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "4.1", # version
+        "version": "5.0", # version
         "author": "DedSecTL and AndroSec1337", # Author
         "desc": "A simple UDP DoS tool for target hosts with low-level security.", # Brief description
         "email": "none", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
+module_status = 1
+category = ['fl00d', 'dedsectl', 'androsec1337', 'catayao56', 'python', 'simple', 'udp', 'dos', 'denial', 'service', 'low', 'level', 'security']
 
 # Changelog of the module
-changelog = "Version 4.1:\nFixed fl00d 1\n\nVersion 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.1:\nFixed error-handling.\n\nVersion 2.0:\nUpdated code to support new API.\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 5.0:\nMandatory module update\n\nVersion 4.1:\nFixed fl00d 1\n\nVersion 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.1:\nFixed error-handling.\n\nVersion 2.0:\nUpdated code to support new API.\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -127,4 +129,4 @@ def module_body():
             print(API.error.ERROR0002)
             continue
 
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

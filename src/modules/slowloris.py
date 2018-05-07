@@ -31,7 +31,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Slowloris", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "4.0", # version
+        "version": "5.0", # version
         "author": "none", # Author
         "desc": "Low bandwidth stress test tool for websites.", # Brief description
         "email": "none", # Email
@@ -43,9 +43,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['PYTHON: argparse', 'PYTHON: ssl'] # Put needed dependencies here.  
+module_status = 0
+category = ['slowloris', 'low', 'bandwidth', 'stress', 'test', 'website', 'python']
 
 # Changelog of the module
-changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.0:\nMerge pull request #16 from Syslog777/patch-1\nChanged shebang line\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 5.0:\nMandatory module update\n\nVersion 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.0:\nMerge pull request #16 from Syslog777/patch-1\nChanged shebang line\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -152,4 +154,4 @@ def module_body():
     time.sleep(1)
     print("[i] Running test... Press CTRL + C to stop...")
     os.system("python3 modules/SLOWLORIS/slowloris.py -p " + PORT + " -s " + SOCKETS + " -v -ua " + USEPROXY_SWITCH + USEPROXY_HSW + USEPROXY_HOST + " " + USEPROXY_PSW + USEPROXY_PORT + " " + HTTPSSW + TARGET)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

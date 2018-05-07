@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Common User Passwords Profiler (CUPP)", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Muris Kurgas aka j0rgan", # Author
         "desc": "Common user passwords profiler.", # Brief description
         "email": "j0rgan@remote-exploit.org", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
+module_status = 0
+category = ['common', 'user', 'password', 'profiler', 'cupp', 'muris', 'kurgas', 'j0rgan', 'python']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -139,4 +141,4 @@ def module_body():
     else:
         print(error.ERROR0001)
 
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

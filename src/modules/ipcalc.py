@@ -31,7 +31,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "IPCalc", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "2.0", # version
+        "version": "3.0", # version
         "author": "Catayao56", # Author
         "desc": "An IP Calculator.", # Brief description
         "email": "Catayao56@gmail.com", # Email
@@ -43,9 +43,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
+module_status = 0
+category = ['ipcalc', 'ip', 'calculator', 'catayao', 'python']
 
 # Changelog of the module
-changelog = "Version 2.0:\nMandatory module update\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory module update\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -155,4 +157,4 @@ def module_body():
     size = ipn.size()
     print('Number of ip\'s within the network: ', size)
     print()
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

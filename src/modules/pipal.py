@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Pipal", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Robin Wood", # Author
         "desc": "Password Analyser", # Brief description
         "email": "robin@digi.ninja", # Email
@@ -41,10 +41,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['Ruby 1.9.x'] # Put needed dependencies here.  
+dependencies = ['BINARY: Ruby'] # Put needed dependencies here.  
+module_status = 0
+category = ['passowrd', 'analyser', 'analyze', 'robin', 'wood', 'pipal', 'ruby']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -111,4 +113,4 @@ def module_body():
     output = str(input("Output filename > "))
     print("[i] Running module...")
     os.system("cd modules/PIPAL && ruby pipal.rb -o ../../output/" + output + " " + wordfile)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

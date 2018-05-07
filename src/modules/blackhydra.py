@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Black Hydra", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "DedSecTL", # Author
         "desc": "A small program to shorten brute force sessions on hydra.", # Brief description
         "email": "none", # Email
@@ -41,10 +41,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none'] # Put needed dependencies here.  
+dependencies = ['BINARY: hydra'] # Put needed dependencies here.  
+module_status = 0
+category = ['black', 'hydra', 'dedsectl', 'short', 'brute', 'force', 'word', 'list', 'hydra', 'python']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -106,4 +108,4 @@ def main():
 
 def module_body():
     os.system("cd modules/BLACK_HYDRA && python2 blackhydra.py")
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

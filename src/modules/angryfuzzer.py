@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Angry Fuzz3r", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Unknown", # Author
         "desc": "A collection of tools for pentesting to gather information and discover vulnerabilities of the targets based on Fuzzedb https://github.com/fuzzdb-project/fuzzdb project.", # Brief description
         "email": "none", # Email
@@ -41,10 +41,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['PYTHON: requests', 'PYTHON: optparse', 'PYTHON: urlparse', 'PYTHON: getopt'] # Put needed dependencies here.  
+dependencies = ['PYTHON: requests', 'PYTHON: optparse', 'PYTHON: urlparse', 'PYTHON: getopt'] # Put needed dependencies here.
+module_status = 0
+category = ['angry', 'fuzzer', 'recon', 'info', 'gather', 'vuln', 'fuzzdb', 'python']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -108,4 +110,4 @@ def module_body():
     target = input("Target URL > ")
     print("[i] Running module...")
     os.system("cd modules/ANGRYFUZZER && python2 angryFuzzer.py -u " + target)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

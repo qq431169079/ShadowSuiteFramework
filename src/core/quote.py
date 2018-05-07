@@ -1,6 +1,23 @@
-# coding: utf-8
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# Coding=UTF-8
+# Shadow Suite Framework :: Ethical Hacking Toolkit and Framework
+# Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>
+
 from random import *
+
 def quote():
     quote01 = "A lot of hacking is playing with other people, you know, getting them to do strange things."
     quote02 = "When solving problems, dig at the roots instead of just hacking at the leaves."

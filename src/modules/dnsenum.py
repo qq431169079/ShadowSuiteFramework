@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "DNSEnum", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Filip Waeytens", # Author
         "desc": "multithreaded perl script to enumerate DNS information of a domain\nand to discover non-contiguous ip blocks.", # Brief description
         "email": "none", # Email
@@ -41,10 +41,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['BINARY: perl 5.26.1', 'PERL: Term::ANSIColor', 'PERL: Getopt::Long', 'PERL: Net::IP', 'PERL: Net::DNS', 'PERL: Net::Netmask'] # Put needed dependencies here.
+dependencies = ['BINARY: perl', 'PERL: Term::ANSIColor', 'PERL: Getopt::Long', 'PERL: Net::IP', 'PERL: Net::DNS', 'PERL: Net::Netmask'] # Put needed dependencies here.
+module_status = 0
+category = ['dnsenum', 'filip', 'waeytens', 'multithread', 'perl', 'enum', 'dns', 'info', 'domain', 'discover', 'non-contigous', 'ip blocks']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -113,4 +115,4 @@ def module_body():
     print("Performing enumeration...")
     os.system("cd modules/DNSENUM && perl dnsenum.pl --enum -v -o $PWD/output/"+ output + " " + target)
     print()
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

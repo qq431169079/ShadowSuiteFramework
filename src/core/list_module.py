@@ -1,6 +1,6 @@
-#!/bin/python
+#!/usr/bin/env python3
 # Coding=UTF-8
-# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Shadow Suite Framework :: Ethical Hacking Toolkit and Framework
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -17,6 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
+import importlib
 from core import misc
 from core import error
 
@@ -29,8 +30,8 @@ def list(module_path):
         cg = '\033[32m'                        #  green  (Stable)
         cy = '\033[33m'                        #  yellow (Experimental)
         cr = '\033[31m'                        #  red    (Unstable)
-        nyi = "\t[i] Not yet Implemented!!!"   # Not yet Implemented
-        cp = '\033[35m'                        #  purple (Custom Module)
+        nyi = "\t[i] Not yet Implemented!!!"   #  Not yet Implemented
+        cp = '\033[35m'                        #  Unknown status
     
         # Font types
         fr = '\033[0m'                         #  regular (Modules)
@@ -44,7 +45,7 @@ def list(module_path):
         cg = ''
         cy = ''
         cr = ''
-        nyi = '\t[i] Not yet Implemented!!!'
+        nyi = '\t[i] Not yet Implemented/Working'
         cp = ''
 
         fr = ''
@@ -60,15 +61,37 @@ def list(module_path):
 
     modules = os.listdir(module_path)
     module_iterator = 0
+    # 0 == Stable
+    # 1 == Experimental
+    # 2 == Unstable
+    # 3 == Not yet implemented/working
     for module in modules:
+        imodule_path = module_path.replace('/', '.')
+        imodule = module.replace('.py', '')
+        ms = importlib.import_module(imodule_path + imodule)
         if '.py' in module or '.Py' in module or '.pY' in module or '.PY' in module:
             module_iterator += 1
             module = module.replace('.py', '')
-            print("[" + str(module_iterator) +"] " + module)
+            status = ms.module_status
+            if status == 0:
+                print("[" + str(module_iterator) +"] " + cg + module + cw)
+
+            elif status == 1:
+                print("[" + str(module_iterator) +"] " + cy + module + cw)
+
+            elif status == 2:
+                print("[" + str(module_iterator) +"] " + cr + module + cw)
+
+            elif status == 3:
+                print("[" + str(module_iterator) +"] (" + nyi + ")" + module + cw)
+
+            else:
+                print("[" + str(module_iterator) +"] " + cp + module + cw)
 
         else:
             continue
 
+    # Old, lame, lazy, hard-coded algorithm :)
     """
     print(cb + fb + "\t==01-Information Gathering==\n" + cw + fr)
     print(cg + "\t\tAutomater" + cw)

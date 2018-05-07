@@ -1,6 +1,6 @@
-#!/bin/python
+#!/usr/bin/env python3
 # Coding=UTF-8
-# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Shadow Suite Framework :: Ethical Hacking Toolkit and Framework
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@ import hashlib
 
 from core import version
 from core import logger
+from core import multitasking
 
 if sys.platform == 'linux' or sys.platform == 'darwin':
     # Colors with meanings
@@ -64,7 +65,7 @@ else:
 LOGO = CG + """  ___|  |               |                  ___|       _) |
 \\___ \\  __ \\   _` |  _` |  _ \\\\ \\  \\   / \\___ \\  |   | | __|  _ \\
       | | | | (   | (   | (   |\\ \\  \\ /        | |   | | |    __/
-_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|""" + "\n                    Linux Edition\n                Ethical Hacking Toolkit\n\n" + '\n' + version.BOTH + "\n\n         Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year) + CW
+_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|""" + "\n                        Framework\n                Ethical Hacking Toolkit\n\n" + '\n' + version.BOTH + "\n\n         Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year) + CW
 
 # brief description of the license.
 BRIEF_LICENSE = CG + r"""This program comes with ABSOLUTELY NO WARRANTY.

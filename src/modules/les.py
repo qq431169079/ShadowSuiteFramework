@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Linux Exploit Suggester", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Pentura Labs", # Author
         "desc": "Linux Exploit Suggester; based on operating system release number.", # Brief description
         "email": "none", # Email
@@ -41,10 +41,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['Perl'] # Put needed dependencies here.
+dependencies = ['BINARY: perl'] # Put needed dependencies here.
+module_status = 0
+category = ['linux', 'exploit', 'suggester', 'pentura', 'labs', 'perl']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -126,4 +128,4 @@ def module_body():
     else:
         print(error.ERROR0001)
 
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

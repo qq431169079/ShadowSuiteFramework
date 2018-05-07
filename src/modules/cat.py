@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Cisco Auditing Tool (CAT)", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "g0ne [null0]", # Author
         "desc": "A tool for auditing Cisco networks.", # Brief description
         "email": "none", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['BINARY: Perl 5.26.1', 'PERL: Getopt::Std'] # Put needed dependencies here.  
+module_status = 0
+category = ['cisco', 'audit', 'g0ne', 'null0', 'network', 'perl']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -120,4 +122,4 @@ def module_body():
     print()
     print("[i] Running module...")
     os.system("cd modules/CAT && perl CAT -h " + TARGET + " -p " + PORT + " -w " + WLCN + " -a " + WLPW + " -l " + OUTPUT)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

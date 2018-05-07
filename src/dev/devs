@@ -1,7 +1,8 @@
 DEV0001
 
--API.py (line 126): API arguments
--SSF.py: List modules with colors.
--SSF.py (line 629): Uninstall option
+-API.py (line 126): API arguments (DEBUGGING)
+-SSF.py (line 629): Uninstall option not working
 -modules/*.py: API usage and arguments
--core/suggest.py: New algorithm
+-core/suggest.py: Not working
+-core/fullupdate.py: Fix algorithm
+-core/update.py: Fix algorithm

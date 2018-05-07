@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Metagoofil", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Christian Martorella", # Author
         "desc": "A tool for extracting metadata of public documents (pdf,doc,xls,ppt,etc) availables in the target websites.", # Brief description
         "email": "cmartorella@edge-security.com", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
+module_status = 0
+category = ['metagoofil', 'christian', 'matorella', 'extract', 'metadata', 'pdf', 'doc', 'xls', 'ppt']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -126,7 +128,7 @@ def module_body():
     else:
         print(API.error.ERROR0001)
 
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)
     
 def remote():
     # This function is called if user wants to work with remote target.

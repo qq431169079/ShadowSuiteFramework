@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "DotDotPwn", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "SecTester", # Author
         "desc": "A very flexible intelligent fuzzer to discover traversal directory vulnerabilities in software such as HTTP/FTP/TFTP servers, Web platforms such as CMSs, ERPs, Blogs, etc.", # Brief description
         "email": "dotdotpwn@sectester.net", # Email
@@ -41,10 +41,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['BINARY: Perl 5.26.1', 'BINARY: Nmap 7.70', 'PERL: Getopt', 'PERL: exporter', 'PERL: switch', 'PERL: Net::FTP', 'PERL: Time::HiRes', 'PERL: Socket', 'PERL: IO::Socket', 'PERL: HTTP::Request', 'PERL: LWP::UserAgent'] # Put needed dependencies here.  
+dependencies = ['BINARY: Perl', 'BINARY: Nmap', 'PERL: Getopt', 'PERL: exporter', 'PERL: switch', 'PERL: Net::FTP', 'PERL: Time::HiRes', 'PERL: Socket', 'PERL: IO::Socket', 'PERL: HTTP::Request', 'PERL: LWP::UserAgent'] # Put needed dependencies here.  
+module_status = 1
+category = ['dotdotpwn', 'flexible', 'fuzz', 'traversal', 'directory', 'http', 'ftp', 'tftp', 'cms', 'erp', 'blogs', 'perl', 'sectester']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -114,4 +116,4 @@ def module_body():
     print("\n\n[i] This module is still under development, so some features are not yet available, like intelligent fuzzing...\n\n")
     print("[i] Running module...")
     os.system("cd modules/DOTDOTPWN && perl dotdotpwn.pl -m " + module + " -u " + url + " -d " + depth + " -x " + port)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

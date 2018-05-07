@@ -33,7 +33,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Deception", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "4.0", # version
+        "version": "5.0", # version
         "author": "Catayao56", # Author
         "desc": "A simple low-interaction honeypot server.", # Brief description
         "email": "Catayao56@gmail.com", # Email
@@ -44,10 +44,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none'] # Put needed dependencies here.  
+dependencies = ['PYTHON: twisted'] # Put needed dependencies here.  
+module_status = 0
+category = ['deception', 'catayao', 'python', 'low', 'interaction', 'honeypot', 'server', 'http', 'ftp', 'ssh', 'telnet', 'snmp', 'smtp']
 
 # Changelog of the module
-changelog = "Version 4.0:\nMore honeypot types\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nFixed bugs\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 5.0:\nMandatory module update\n\nVersion 4.0:\nMore honeypot types\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nFixed bugs\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -322,7 +324,7 @@ def module_body():
                 continue
 
             elif honeytype == 99:
-                print(API.ShadowSuiteLE().FINISH)
+                print(API.ShadowSuite().FINISH)
                 return 0
 
             else:

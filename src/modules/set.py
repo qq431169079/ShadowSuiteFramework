@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Social Engineer Toolkit (SET)", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Social Engineer Development Team", # Author
         "desc": "A tool designed to make complex social engineering tasks relatively simple for you by allowing you to utilize a robust framework for penetration tests.", # Brief description
         "email": "none", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
+module_status = 0
+category = ['social', 'engineer', 'toolkit', 'set', 'complex']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -106,4 +108,4 @@ def main():
 
 def module_body():
     os.system("cd modules/SET && python2 set")
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Red Hawk", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "4.0", # version
+        "version": "5.0", # version
         "author": "R3D#@0R_2H1N A.K.A Tuhinshubhra", # Author
         "desc": "All in one tool for Information Gathering and Vulnerability Scanning", # Brief description
         "email": "none", # Email
@@ -41,10 +41,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['BINARY: PHP 7.2.3-2'] # Put needed dependencies here.  
+dependencies = ['BINARY: PHP'] # Put needed dependencies here.  
+module_status = 0
+category = ['red', 'hawk', 'r3d#@0r_2h1n', 'tuhinshubhra', 'php', 'recon', 'info', 'ga', 'viln', 'scan']
 
 # Changelog of the module
-changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.0:\nMerge pull request #15 from Romain/master; Fixed a typo\n\nVersion 1.0:\nInitial wrapper module release"
+changelog = "Version 5.0:\nMandatory module update\n\nVersion 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory bug fix\n\nVersion 2.0:\nMerge pull request #15 from Romain/master; Fixed a typo\n\nVersion 1.0:\nInitial wrapper module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -106,4 +108,4 @@ def main():
 
 def module_body():
     os.system("cd modules/RED_HAWK && php rhawk.php")
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

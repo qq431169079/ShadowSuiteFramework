@@ -1,6 +1,6 @@
-#!/bin/python
+#!/usr/bin/env python3
 # Coding=UTF-8
-# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+# Shadow Suite Framework :: Ethical Hacking Toolkit and Framework
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -13,7 +13,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
-# You should have received a copy of the GNU General Public License.
+# You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 import os
@@ -21,9 +21,9 @@ import sys
 from core import error
 
 VAPI = "0.0.6.8-API"
-VNUMBER = "0.0.9.9-Build_A"
+VNUMBER = "0.0.9.9-Build_B"
 VTYPE = "Experimental"
-VCODENAME = "Open Source"
+VCODENAME = "Portable"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
 
     # example:
@@ -90,7 +90,7 @@ BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
     # Machine Independent                                ( Used in v0.0.8.0 )
     # Netmask                                            ( Used in v0.0.9.3 )
     # Open Source                                        ( Used in v0.0.9.7 )
-    # PHP                                                ( Not yet used )
+    # Portable                                           ( Not yet used )
     # Querty                                             ( Not yet used )
     # Ruby                                               ( Not yet used )
     # SCADA                                              ( Not yet used )

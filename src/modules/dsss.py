@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Damn Small SQLi Scanner (DSSS)", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Miroslav Stampar", # Author
         "desc": "A fully functional SQL Injection vulnerability scanner (supporting GET and POST parameters) written in under 100 lines of code.", # Brief description
         "email": "none", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['PYTHON: optparse', 'PYTHON: urllib', 'PYTHON: urllib2', 'PYTHON: urlparse'] # Put needed dependencies here.  
+module_status = 1
+category = ['damn', 'small', 'sqli', 'scanner', 'dsss', 'miroslav', 'stampar', 'sql', 'inkection', 'python']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -112,4 +114,4 @@ def module_body():
     target = input("Target URL (e.g. \"http://www.target.com/page.php?id=1\") > ")
     print()
     os.system("cd modules/DSSS && python2 dsss.py -u " + target)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

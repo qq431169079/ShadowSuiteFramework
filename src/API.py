@@ -123,17 +123,7 @@ except ImportError:
     logger.log(5, "SystemExit raised with error code 8.", 'api_logfile.txt')
     sys.exit(8)
 
-#class ShadowSuiteLE(current_user='user', MODULE_PATH='modules/', OUTPUT_PATH='output/', SESSION_ID=123456, USERLEVEL=2, debugging=False, failsafe=False):
-class ShadowSuiteLE:
-    ###### DEV0001 ###############
-    current_user = 'user'
-    MODULE_PATH = 'modules/'
-    OUTPUT_PATH = 'output/'
-    SESSION_ID = 123456
-    USERLEVEL = 2
-    debugging = False
-    failsafe = False
-    ##############################
+class ShadowSuite:
 
     # Method calling: API.ShadowSuiteLE().[METHOD NAME]()
     # Variable assignment: variable = API.ShadowSuiteLE().[VARIABLE]
@@ -144,17 +134,67 @@ class ShadowSuiteLE:
     SHADOWSUITE_VER_CODENAME = version.VCODENAME # Shadow Suite's version codename
     FINISH = "\n[i] Module finished running...\n"
 
+    #def __init__(current_user, MODULE_PATH, OUTPUT_PATH, SESSION_ID, USERLEVEL, debugging, failsafe):
+    def __init__(self):
+        if not current_user:
+            self.current_user = 'user'
+
+        else:
+            self.current_user = current_user
+
+        if not MODULE_PATH:
+            self.MODULE_PATH = 'modules/'
+
+        else:
+            self.MODULE_PATH = MODULE_PATH
+
+        if not OUTPUT_PATH:
+            self.OUTPUT_PATH = 'output/'
+
+        else:
+            self.OUTPUT_PATH = OUTPUT_PATH
+
+        if not SESSION_ID:
+            self.SESSION_ID = 123456
+
+        else:
+            self.SESSION_ID = SESSION_ID
+        
+        if not USERLEVEL:
+            self.USERLEVEL = 2
+
+        else:
+            self.USERLEVEL = USERLEVEL
+
+        if not debugging:
+            self.debugging = False
+
+        else:
+            self.debugging = debugging
+
+        if not failsafe:
+            self.failsafe = False
+
+        else:
+            self.failsafe = failsafe
+
     def generate_new_module(self, cmn):
-        # DEV0005: 'cmn' means 'Custom Module Name'
-        # Converts capital characters to lowercase characters.
-        cmn = cmn.lower()
-        # Copies the custom module template from module directory to output directory.
-        manage_module.generate_new(cmn)
-        logger.log(0, 'User generates a new module named ' + cmn + ' via API.', 'api_logfile.txt', self.SESSION_ID)
+        logger.log(0, 'User generated a new module named ' + module_name, 'logfile.txt', self.SESSION_ID)
+        if misc.programFunctions().is_windows() == ('windows' or 'win' or 'nt'):
+            os.system("xcopy core/temp.py output/" + module_name + ".py")
+        
+        else:
+            os.system("cp core/temp.py output/" + module_name + ".py")
+            
+        if misc.programFunctions().path_exists('output/' + module_name + '.py'):
+            print("[i] " + module_name + ".py successfully generated!")
+        
+        else:
+            print("[i] " + error.ERROR0015 + " (Generated module not found)")
 
     def list_module(self):
         logger.log(0, 'User used list_module method via API.', 'api_logfile.txt', self.SESSION_ID)
-        list_module.list()
+        list_module.list(self.__MODULE_PATH__)
 
     def find_module(self, module):
         # Argument "module" is the target module to view the info.

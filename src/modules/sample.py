@@ -11,7 +11,7 @@ import time
 # Put your module information here.
 info = {
         "name": "Sample", # Module filename (Change filename if you want to change this)
-        "version": "5.0", # version
+        "version": "6.0", # version
         "author": "Catayao56", # Author
         "desc": "A sample module that uses the Shadow Suite API.", # Brief description
         "email": "N/A", # Email
@@ -22,10 +22,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['python 3','ShadowSuiteLE.py','API.py','Nothing','N/A'] # Put needed dependencies here.  
+dependencies = ['BINARY: python3'] # Put needed dependencies here.  
+module_status = 0
+category = ['sample', 'api', 'shadow', 'suite', 'framework']
 
 # Changelog of the module
-changelog = "Version 3.3:\nUpdated Sample module to keep up with API's update.\n\nVersion 3.2:\nSample module update\n\nVersion 2.1:\nAnother Update\n\nVersion 1.0:\nSample Module Initial Release"
+changelog = "Version 6.0:\nMandatory module update\n\nVersion 5.0:\nMandatory module update\n\nVersion 4.0:\nMandatory bug fix\n\nVersion 3.3:\nUpdated Sample module to keep up with API's update.\n\nVersion 3.2:\nSample module update\n\nVersion 2.1:\nAnother Update\n\nVersion 1.0:\nSample Module Initial Release"
 
 # Prints the module information
 def module_info():
@@ -65,17 +67,17 @@ def module_body():
     time.sleep(2)
     print("This is a sample module for Shadow Suite...")
     time.sleep(2)
-    print("Shadow Suite's version number is " + API.ShadowSuiteLE().SHADOWSUITE_VER_NUM + ".")
+    print("Shadow Suite's version number is " + API.ShadowSuite().SHADOWSUITE_VER_NUM + ".")
     time.sleep(2)
-    print("Shadow Suite's version type is " + API.ShadowSuiteLE().SHADOWSUITE_VER_TYPE + ".")
+    print("Shadow Suite's version type is " + API.ShadowSuite().SHADOWSUITE_VER_TYPE + ".")
     time.sleep(2)
-    print("Shadow Suite's version codename is " + API.ShadowSuiteLE().SHADOWSUITE_VER_CODENAME + ".")
+    print("Shadow Suite's version codename is " + API.ShadowSuite().SHADOWSUITE_VER_CODENAME + ".")
     time.sleep(2)
-    print("Shadow Suite's API version is " + API.ShadowSuiteLE().API_VERSION + ".")
+    print("Shadow Suite's API version is " + API.ShadowSuite().API_VERSION + ".")
     time.sleep(2)
     print("Listing installed modules...")
     time.sleep(2)
-    API.ShadowSuiteLE().list_module()
+    API.ShadowSuite().list_module()
     time.sleep(2)
     print("Quitting in 3...")
     time.sleep(1)
@@ -85,4 +87,4 @@ def module_body():
     time.sleep(0.700)
     print("Quitting in 0...")
     time.sleep(.300)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

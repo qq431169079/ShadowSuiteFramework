@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Shadow Crack", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Catayao56", # Author
         "desc": "A tool to encrypt and/or decrypt many kinds of ciphers and hashes.", # Brief description
         "email": "Catayao56@gmail.com", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
+module_status = 1
+category = ['encrypt', 'decrypt', 'crack', 'hash', 'cipher', 'md', 'sha', 'rc', 'catayao56', 'python']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.5:\nBug fix\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.2:\nUpdated wordlist.\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.5:\nBug fix\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.2:\nUpdated wordlist.\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -130,4 +132,4 @@ def module_body():
         else:
             print(API.error.ERROR0001)
 
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

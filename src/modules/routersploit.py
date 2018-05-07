@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "RouterSploit", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Marcin Bury (lucyoa) & Mariusz Kupidura (fwkz)", # Author
         "desc": "A Router Exploitation Framework.", # Brief description
         "email": "none", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
+module_status = 0
+category = ['router', 'exploit', 'framework', 'routersploit', 'marcin', 'bury', 'lucyoa', 'mariusz', 'kupidura', 'fkwz', 'python']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -106,4 +108,4 @@ def main():
 
 def module_body():
     os.system("cd modules/ROUTERSPLOIT && python2 rsf.py")
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

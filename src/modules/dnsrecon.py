@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "DNSRecon", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "4.0", # version
+        "version": "5.0", # version
         "author": "none", # Author
         "desc": "DNS reconnaissance tool", # Brief description
         "email": "none", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['PYTHON: argparse', 'PYTHON: sqlite3', 'PYTHON: netaddr', 'PYTHON: queue', 'PYTHON: xml', 'PYTHON: dns', 'PYTHON: json'] # Put needed dependencies here.  
+module_status = 0
+category = ['dnsrecon', 'dns', 'reconnaissance', 'python', 'filip', 'waeytens']
 
 # Changelog of the module
-changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nChanged to new function.\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 5.0:\nMandatory module update\n\nVersion 4.0:\nMandatory module update\n\nVersion 3.0:\nChanged to new function.\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -126,4 +128,4 @@ def module_body():
     print()
     print("Running...")
     os.system("cd modules/DNSRECON && python3 dnsrecon.py -d " + target + " -t " + enumtype + " --xml " + output)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

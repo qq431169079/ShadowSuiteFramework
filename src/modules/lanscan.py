@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "LANScan", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Stephan Van De Kerkhof", # Author
         "desc": "System ping/TCP network scanner", # Brief description
         "email": "none", # Email
@@ -42,9 +42,11 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
+module_status = 0
+category = ['lanscan', 'system', 'ping', 'tcp', 'network', 'scanner', 'stephan', 'van', 'de', 'kerkhof']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.2:\nAdded Error-handling\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.2:\nAdded Error-handling\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -107,4 +109,4 @@ def main():
 def module_body():
     print("[i] Running LANScan...")
     os.system("cd modules/LANSCAN && python2 lanscan.py")
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

@@ -42,10 +42,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['PYTHON: python-nmap 0.6.1', 'BINARY: Nmap 7.70'] # Put needed dependencies here.  
+dependencies = ['BINARY: Nmap'] # Put needed dependencies here.  
+module_status = 1
+category = ['nwrap', 'nmap', 'wrapper', 'catayao56', 'python']
 
 # Changelog of the module
-changelog = "Version 5.0:\nMandatory module update\n\nVersion 4.4:\nBug fix\n\nVersion 4.0:\nMandatory bug fix\n\nVersion 3.4:\nRewritten to be a Shadow Suite module\n\nVersion 3.0:\nAdded new scan types\n\nVersion 2.1:\nFixed bugs\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 6.0:\nMandatory module update\n\nVersion 5.0:\nMandatory module update\n\nVersion 4.4:\nBug fix\n\nVersion 4.0:\nMandatory bug fix\n\nVersion 3.4:\nRewritten to be a Shadow Suite module\n\nVersion 3.0:\nAdded new scan types\n\nVersion 2.1:\nFixed bugs\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -334,7 +336,7 @@ def module_body():
         else:
             print(error.error0001)
 
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)
 
 def automated_scans():
     print()

@@ -30,7 +30,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "URLCrazy", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "4.0", # version
         "author": "Andrew Horton", # Author
         "desc": "UrlCrazy is for the study of domainname typos and URL hijacking.", # Brief description
         "email": "none", # Email
@@ -41,10 +41,12 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['Ruby 1.9.x'] # Put needed dependencies here.  
+dependencies = ['Ruby'] # Put needed dependencies here.  
+module_status = 0
+category = ['urlcrazy', 'study', 'domain', 'typo', 'url', 'hijack']
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -149,4 +151,4 @@ def module_body():
         csv_switch = '-f human '
 
     os.system("cd modules/URLCRAZY && ruby urlcrazy -k " + kb_layout + " " + cp_switch + nr_switch + si_switch + csv_switch + "-o ../../output/" + output + ' ' + domain)
-    print(API.ShadowSuiteLE().FINISH)
+    print(API.ShadowSuite().FINISH)

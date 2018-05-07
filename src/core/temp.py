@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 5.1
+# Module version: 6.0
 
 # Import directives
 try:
@@ -41,7 +41,9 @@ info = {
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none1', 'none2'] # Put needed dependencies here.  
+dependencies = ['BINARY: python3', 'PYTHON: none'] # Put needed dependencies here.
+module_status = 1 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
+category = ['all', 'python']
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"

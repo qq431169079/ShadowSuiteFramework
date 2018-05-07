@@ -40,6 +40,8 @@ try:
     from core import error
     print("[i] Importing 'misc' module...")
     from core import misc
+    print("[i] Importing 'multitasking' module...")
+    from core import multitasking
     print("[i] Importing 'update' module...")
     from core import update
     print("[i] Importing 'version' module...")
@@ -119,7 +121,7 @@ def main():
     # needing to run the program everytime a command is entered.
     while True:
         try:
-            # If os.geteuid() is equal to 0, then a terminal with # will be shown.
+            # If geteuid is equal to 0, then a terminal with # will be shown.
             # Otherwise, $ will be shown.
             if misc.programFunctions().geteuid() != 0:
                 logger.log(0, 'Running as normal user.', 'logfile.txt', SESSION_ID)
@@ -129,21 +131,21 @@ def main():
                 logger.log(0, 'Running as root.', 'logfile.txt', SESSION_ID)
                 menu_input = input("[" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] #: ")
 
-            if menu_input.lower() in ["help"]:
+            if menu_input.lower().startswith("help"):
                 logger.log(0, 'User needs help.', 'logfile.txt', SESSION_ID)
                 print(misc.CC + misc.FB + misc.FI + "\nHELP\n" + misc.FR)
                 print(misc.CW)
-                print("help                      :: prints this help menu.")
-                print("show [OPTION]             :: Shows the license/info/changelog.")
-                print("update [OPTION]           :: update program/dependencies/all.")
-                print("config [OPTION]           :: Configure Shadow Suite settings; Export settings.")
-                print("module [OPTION]           :: manage modules.")
-                print("suggest [CRITERIA]        :: suggests a tool based on your critera.")
-                print("clear                     :: clears the screen.")
-                print("run || exec [COMMAND]     :: run a command from your terminal.")
+                print("help                          :: prints this help menu.")
+                print("show [OPTION]                 :: Shows the license/info/changelog.")
+                print("update [OPTION]               :: update program/dependencies/all.")
+                print("config [OPTION]               :: Configure Shadow Suite settings; Export settings.")
+                print("module [OPTION]               :: manage modules.")
+                print("suggest=[CRITERIA1,CRITERIA2] :: suggests a tool based on your critera.")
+                print("clear                         :: clears the screen.")
+                print("run || exec [COMMAND]         :: run a command from your terminal.")
                 print("\n")
-                print("restart                   :: restart Shadow Suite.")
-                print("quit || exit              :: quit Shadow Suite.")
+                print("restart                       :: restart Shadow Suite.")
+                print("quit || exit                  :: quit Shadow Suite.")
                 print()
 
             elif menu_input.lower().startswith("show"):
@@ -287,18 +289,21 @@ def main():
                         __USERNAME__ = config_o[2]
                         if __ROOTPASS__ == None or __ROOTPASS__ == "":
                             __USERNAME__ = config_o[2]
+                            logger.log(3, 'User changed his username...', 'logfile.txt', SESSION_ID)
                             print("[i] Username successfully changed!")
 
                         else:
                             confirm_rootpass = getpass("Enter root password to continue: ")
                             confirm_rootpass = misc.programFunctions().hash(confirm_rootpass, 'sha256')
-                            # print(confirm_rootpass + '\n' + __ROOTPASS__) # DEV0005
+                            # print(confirm_rootpass + '\n' + __ROOTPASS__) # DEV0005: just for debugging purposes...
                             if confirm_rootpass == __ROOTPASS__:
                                 __USERNAME__ = config_o[2]
+                                logger.log(3, 'User changed his username...', 'logfile.txt', SESSION_ID)
                                 print("[i] Username successfully changed!")
                                 del confirm_rootpass
 
                             else:
+                                logger.log(3, 'User failed to change his username... Wrong root password.', 'logfile.txt', SESSION_ID)
                                 print(error.ERROR0013)
                                 del confirm_rootpass
 
@@ -309,9 +314,11 @@ def main():
                             if new_userpass1 == new_userpass2:
                                 new_userpass1 = misc.programFunctions().hash(new_userpass1, 'sha256')
                                 __USERPASS__ = new_userpass1
+                                logger.log(3, 'User changed his password...', 'logfile.txt', SESSION_ID)
                                 print("[i] Password successfully changed!")
                             
                             else:
+                                logger.log(3, 'User failed to change his password... Passwords doesn\'t match', 'logfile.txt', SESSION_ID)
                                 print("[i] Passwords doesn't match!")
 
                         else:
@@ -323,18 +330,22 @@ def main():
                                 if new_userpass1 == new_userpass2:
                                     new_userpass1 = misc.programFunctions().hash(new_userpass1, 'sha256')
                                     __USERPASS__ = new_userpass1
+                                    logger.log(3, 'User changed his password...', 'logfile.txt', SESSION_ID)
                                     print("[i] Password successfully changed!")
 
                                 else:
+                                    logger.log(3, 'User failed to change his username... Passwords doesn\'t match', 'logfile.txt', SESSION_ID)
                                     print("[i] Passwords doesn't match!")
 
                             else:
+                                logger.log(3, 'User failed to change his password... Wrong username/password.', 'logfile.txt', SESSION_ID)
                                 print(error.ERROR0013)
 
                     elif config_o[1].lower() in ["rootname"]:
                         config_o[2] = misc.programFunctions().hash(config_o[2], 'sha256')
                         if __ROOTPASS__ == None or __ROOTPASS__ == "":
                             __ROOTNAME__ = config_o[2]
+                            logger.log(3, 'User changed his root username...', 'logfile.txt', SESSION_ID)
                             print("[i] Root username successfully changed!")
 
                         else:
@@ -342,10 +353,12 @@ def main():
                             confirm_rootpass = misc.programFunctions().hash(confirm_rootpass, 'sha256')
                             if confirm_rootpass == __ROOTPASS__:
                                 __ROOTNAME__ = config_o[2]
+                                logger.log(3, 'User changed his root username...', 'logfile.txt', SESSION_ID)
                                 print("[i] Root username successfully changed!")
                                 del confirm_rootpass
 
                             else:
+                                logger.log(3, 'User failed to change his root username... Wrong username/password.', 'logfile.txt', SESSION_ID)
                                 print(error.ERROR0013)
                                 del confirm_rootpass
 
@@ -356,9 +369,11 @@ def main():
                             if new_rootpass1 == new_rootpass2:
                                 new_rootpass1 = misc.programFunctions().hash(new_rootpass1, 'sha256')
                                 __ROOTPASS__ = new_rootpass1
+                                logger.log(3, 'User changed his root password...', 'logfile.txt', SESSION_ID)
                                 print("[i] Root password successfully changed!")
                             
                             else:
+                                logger.log(3, 'User failed to change his root password... Passwords doesn\'t match', 'logfile.txt', SESSION_ID)
                                 print("[i] Root passwords doesn't match!")
 
                         else:
@@ -370,12 +385,15 @@ def main():
                                 if new_rootpass1 == new_rootpass2:
                                     new_rootpass1 = misc.programFunctions().hash(new_rootpass1, 'sha256')
                                     __ROOTPASS__ = new_rootpass1
+                                    logger.log(3, 'User changed his root password...', 'logfile.txt', SESSION_ID)
                                     print("[i] Root password successfully changed!")
 
                                 else:
+                                    logger.log(3, 'User failed to change his root password... Passwords doesn\'t match.', 'logfile.txt', SESSION_ID)
                                     print("[i] Root passwords doesn't match!")
 
                             else:
+                                logger.log(3, 'User failed to change his root password... Wrong username/password', 'logfile.txt', SESSION_ID)
                                 print(error.ERROR0013)
 
                     elif config_o[1].lower() in ["module_path"]:
@@ -383,6 +401,7 @@ def main():
                         if misc.programFunctions().path_exists(new_module_path):
                             if misc.programFunctions().isfolder(new_module_path):
                                 __MODULE_PATH__ = new_module_path
+                                logger.log(3, 'User changed the module path to ' + new_module_path + '...', 'logfile.txt', SESSION_ID)
                                 print("[i] Module path set!")
 
                             else:
@@ -396,6 +415,7 @@ def main():
                         if misc.programFunctions().path_exists(new_output_path):
                             if misc.programFunctions().isfolder(new_output_path):
                                 __OUTPUT_PATH__ = new_output_path
+                                logger.log(3, 'User changed the output path to ' + new_output_path + '...', 'logfile.txt', SESSION_ID)
                                 print("[i] Output path set!")
                             
                             else:
@@ -420,6 +440,7 @@ def main():
                             if confirm_export_overwrite == 'y':
                                 export_conf_result = API.ShadowSuiteLE().export_conf(config_file, config_dict)
                                 if export_conf_result == True:
+                                    logger.log(3, 'Current user settings successfully saved to ' + config_file + '.', 'logfile.txt', SESSION_ID)
                                     print("[i] Settings successfully saved to configuration file: \"" + config_file + "\".")
 
                                 else:
@@ -434,6 +455,7 @@ def main():
                         except FileNotFoundError:
                             export_conf_result = API.ShadowSuiteLE().export_conf(config_file, config_dict)
                             if export_conf_result == True:
+                                logger.log(3, 'Current user settings successfully saved to ' + config_file + '.', 'logfile.txt', SESSION_ID)
                                 print("[i] Settings successfully saved to configuration file: \"" + config_file + "\".")
                             
                             else:
@@ -463,6 +485,7 @@ def main():
                                     }
                             export_conf_result = API.ShadowSuiteLE().export_conf(new_config, config_dict)
                             if export_conf_result == True:
+                                logger.log(3, 'User generated new config file named ' + new_config +'.', 'logfile.txt', SESSION_ID)
                                 print("[i] " + new_config + " successfully generated!")
 
                             else:
@@ -477,9 +500,10 @@ def main():
 
                         if config_o[2] == 'config.dat':
                             print(error.WARNING0005)
-                            ask_remove_default_config = input("Do you still want to continue> (y/n) > ").lower()
+                            ask_remove_default_config = input("Do you still want to continue? (y/n) > ").lower()
                             if ask_remove_default_config == 'y':
                                 os.remove('data/' + config_o[2])
+                                logger.log(3, 'User removed '+ config_o[2] + ' configuration file...', 'logfile.txt', SESSION_ID)
                                 print("[i] Configuration file removed succesfully!")
 
                             else:
@@ -491,6 +515,7 @@ def main():
                             ask_remove_config = input("Do you really want to remove " + config_o[2] + "? (y/n) > ").lower()
                             if ask_remove_config == 'y':
                                 os.remove('data/' + config_o[2])
+                                logger.log(3, 'User removed ' + config_o[2] + ' configuration file...', 'logfile.txt', SESSION_ID)
                                 print("[i] Configuration file removed successfully!")
 
                             else:
@@ -526,6 +551,7 @@ def main():
                         module_name = __MODULE_PATH__ + module_o[2]
                         try:
                             module_name = module_name.replace('/', '.')
+                            logger.log(3, 'User used ' + module_name + '.', 'logfile.txt', SESSION_ID)
                             module = importlib.import_module(module_name)
                             module.main()
 
@@ -536,6 +562,7 @@ def main():
                         module_name = __MODULE_PATH__ + module_o[2]
                         try:
                             module_name = module_name.replace('/', '.')
+                            logger.log(3, 'User looks for ' + module_name + ' information.', 'logfile.txt', SESSION_ID)
                             module = importlib.import_module(module_name)
                             module.module_info()
 
@@ -559,18 +586,23 @@ def main():
 
                     elif module_o[1].startswith("install"):
                         if misc.programFunctions().path_exists(module_o[2]):
+                            logger.log(3, 'User is trying to install ' + module_o[2] + ' package...', 'logfile.txt', SESSION_ID)
                             print("[i] Path found...")
                             if '.py' in module_o[2]:
+                                logger.log(3, 'Parsing ' + module_o[2] + ' package...', 'logfile.txt', SESSION_ID)
                                 print("[i] Parsing " + module_o[2] + '...')
                                 try:
-                                    parser = importlib.import_module(module_o[2])
+                                    parse_module = module_o[2].replace('/', '.').replace('.py', '')
+                                    parser = importlib.import_module(parse_module)
                                     parser.module_info()
 
                                 except Exception as parsingerror_msg:
+                                    logger.log(3, module_o[2] + ': ' + error.ERROR0017 + "(" + str(parsingerror_msg) + ")", 'logfile.txt', SESSION_ID)
                                     print("[i] " + error.ERROR0017)
-                                    print("[i] " + parsingerror_msg)
+                                    print("[i] " + str(parsingerror_msg))
 
                                 else:
+                                    logger.log(3, module_o[2] + ': Parsing successful... Now installing', 'logfile.txt', SESSION_ID)
                                     print("[i] Parsing successful!")
                                     print("[i] Installing " + module_o[2] + '...')
                                     if misc.programFunctions().is_windows():
@@ -581,7 +613,10 @@ def main():
 
                                     module_dependencies = parser.dependencies
                                     bin_manual_install = []
+                                    manual_install =[]
+                                    print(module_dependencies) # DEV0005: for debugging purposes only
                                     for deps in module_dependencies:
+                                        logger.log(3, 'Installing dependency: ' + deps, 'logfile.txt', SESSION_ID)
                                         if 'BINARY: ' in deps:
                                             deps = deps.replace('BINARY: ', '')
                                             if misc.programFunctions().is_windows():
@@ -604,9 +639,9 @@ def main():
                                                     bin_manual_install += ('BINARY: ' + deps)
 
                                         elif 'PYTHON: ' in deps:
-                                            deps = deps.replace('PYTHON: ' + deps)
+                                            deps = deps.replace('PYTHON: ', '')
                                             for pip in ['pip', 'pip3.6', 'pip3']:
-                                                os.system(pip + "install " + deps)
+                                                os.system(pip + " install " + deps)
 
                                         elif 'PERL: ' in deps:
                                             os.system("cpan install " + deps)
@@ -615,18 +650,41 @@ def main():
                                             manual_install += deps
 
                                     if manual_install != (None or [] or "") and bin_manual_install != (None or [] or ""):
-                                        manual_install = bin_manual_install + manual_install
+                                        manual_install += bin_manual_install
                                         print("[i] Can't install the following:\n")
+                                        logger.log(3, 'Failed to install dependencies: ' + str(manual_install), 'logfile.txt', SESSION_ID)
                                         for deps in manual_install:
                                             print("- " + deps)
 
                                         print("\nPlease install to use the module without errors...")
 
                             else:
+                                logger.log(3, module_o[2] + ' is not a valid SSF module.', 'logfile.txt', SESSION_ID)
                                 print("[i] " + error.ERROR0016)
 
-                    elif module_o[1].lower().startswith("uninstall"):
-                        print('[i] ' + error.WARNING0002)
+                    elif module_o[1].lower() in ["uninstall"]:
+                        if __MODULE_PATH__ not in module_o[2]:
+                            module_name = __MODULE_PATH__ +  module_o[2]
+
+                        else:
+                            module_name = module_o[2]
+
+                        if '.py' not in module_name:
+                            module_name = module_name + '.py'
+
+                        if misc.programFunctions().path_exists(module_name):
+                            confirm_uninstall = ("Do you really want to uninstall " + module_name + "? (y/n) > ")
+                            if confirm_uninstall.lower() == ('y' or 'yes'):
+                                logger.log(3, 'User is trying to uninstall ' + module_name + '...', 'logfile.txt', SESSION_ID)
+                                print("[i] Uninstalling " + module_name + "...")
+                                os.remove(module_name)
+                                if misc.programFunctions().path_exists(module_name):
+                                    logger.log(3, module_name + ": " + error.ERROR0018, 'logfile.txt', SESSION_ID)
+                                    print("[i] " + error.ERROR0018)
+
+                                else:
+                                    logger.log(3, 'User successfully uninstalled ' + module_name, 'logfile.txt', SESSION_ID)
+                                    print("[i] " + module_name + " successfully uninstalled...")
 
                     else:
                         raise IndexError
@@ -644,17 +702,23 @@ def main():
                     print()
 
             elif menu_input.lower().startswith("suggest"):
-                suggest_o = menu_input.split(' ')
-                suggest_o[0] = None
-                if misc.failsafe == True:
-                    print("[FAILSAFE] suggest command not available")
-                    continue
+                try:
+                    if '=' not in menu_input:
+                        raise IndexError
 
-                for args in suggest_o:
-                    criteria += args + ' '
+                    suggest_o = menu_input.split('=')
+                    suggest_o[1] = suggest_o[1].lower()
+                    if misc.failsafe == True:
+                        print("[FAILSAFE] suggest command not available")
+                        continue
 
-                logger.log(0, 'User want a suggestion with the criteria ' + criteria + '.', 'logfile.txt', SESSION_ID)
-                suggest.api(criteria)
+                    logger.log(0, 'User want a suggestion with the criteria ' + suggest_o[1] + '.', 'logfile.txt', SESSION_ID)
+                    suggest.api(suggest_o[1], __MODULE_PATH__)
+
+                except IndexError:
+                    print()
+                    print("Usage: suggest=CRITERIA1,CRITERIA2,CRITERIA3,...,CRITERIA4")
+                    print()
 
             elif menu_input.lower().startswith(("clear", "clr", "cls", "clrscrn")):
                 if misc.failsafe == True:
@@ -663,18 +727,34 @@ def main():
 
                 misc.programFunctions().clrscrn()
 
-            elif menu_input.lower().startswith("run"):
-                run_o = menu_input.split(' ')
-                run_o[0] = None
-                if misc.failsafe == True:
-                    print("[FAILSAFE] run not available")
-                    continue
+            elif menu_input.lower().startswith("run") or menu_input.lower().startswith('exec'):
+                try:
+                    run_o = menu_input.split(' ')
+                    run_o[0] = ''
+                    if misc.failsafe == True:
+                        print("[FAILSAFE] run not available")
+                        continue
 
-                for args in run_o:
-                    command += args + ' '
+                    command = ''
+                    index_error = False
+                    for args in run_o:
+                        command += str(args) + ' '
 
-                logger.log(3, 'User run the command: "' + command + '".', 'logfile.txt', SESSION_ID)
-                os.system(command)
+                    #print('|', command, '|') # DEV0005: For debugging purposes only
+                    if command == (None or '' or ' '):
+                        raise IndexError
+
+                    else:
+                        logger.log(3, 'User run the command: "' + command + '".', 'logfile.txt', SESSION_ID)
+                        os.system(command)
+
+                except IndexError:
+                    print()
+                    print("Usage: run [COMAMND] || exec [COMMAND]")
+                    print()
+                    print("Example: run ls")
+                    print("         exec ls")
+                    print()
 
             elif menu_input in ["back"]:
                 logger.log(2, "ERROR 0004: Back cannot be used in the main module", 'logfile.txt', SESSION_ID)
@@ -844,6 +924,7 @@ if __name__ == "__main__":
             pass
 
     # Parse configuration file
+    logger.log(3, 'Parsing configuration file...', 'logfile.txt', SESSION_ID)
     config_file = "data/config.dat"
     try:
         iterator_config = 0
@@ -891,10 +972,11 @@ if __name__ == "__main__":
         del iterator_config
 
     # Reading the configuration file...
+    logger.log(3, 'Using ' + config_file + " configuration file; Now reading data...", 'logfile.txt', SESSION_ID)
     try:
         config_data = open(config_file, 'r').readlines()
         open(config_file, 'r').close()
-        # print(config_data) # DEV0005 #####
+        # print(config_data) # DEV0005: For debugging purposes only#####
         new_config_data = []
         for data in config_data:
             if data.startswith("#"):
@@ -933,6 +1015,7 @@ if __name__ == "__main__":
             else:
                 continue
 
+        # DEV0005: For debugging purposes only
         """
         print(config_data)
         print(__USERNAME__)
