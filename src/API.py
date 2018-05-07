@@ -113,6 +113,8 @@ try:
     #      API.logger.log(2, 'Error message', 'logfile.txt', SESSION_ID)
     #
     import importlib
+    from core import multitasking
+    import signal
 
 except ImportError:
     print("Error While Importing Modules! Now Quitting...")
@@ -134,8 +136,7 @@ class ShadowSuite:
     SHADOWSUITE_VER_CODENAME = version.VCODENAME # Shadow Suite's version codename
     FINISH = "\n[i] Module finished running...\n"
 
-    #def __init__(current_user, MODULE_PATH, OUTPUT_PATH, SESSION_ID, USERLEVEL, debugging, failsafe):
-    def __init__(self):
+    def __init__(self, current_user='user', MODULE_PATH='modules/', OUTPUT_PATH='output/', SESSION_ID=123456, USERLEVEL=2, debugging=False, failsafe=False):
         if not current_user:
             self.current_user = 'user'
 

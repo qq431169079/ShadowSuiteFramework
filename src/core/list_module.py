@@ -74,22 +74,29 @@ def list(module_path):
             module = module.replace('.py', '')
             status = ms.module_status
             if status == 0:
-                print("[" + str(module_iterator) +"] " + cg + module + cw)
+                print("[" + str(module_iterator) +"] " + cg + module + " :: " + ms.info['desc'] + cw)
+                print()
 
             elif status == 1:
-                print("[" + str(module_iterator) +"] " + cy + module + cw)
+                print("[" + str(module_iterator) +"] " + cy + module + " :: " + ms.info['desc'] + cw)
+                print()
 
             elif status == 2:
-                print("[" + str(module_iterator) +"] " + cr + module + cw)
+                print("[" + str(module_iterator) +"] " + cr + module + " :: " + ms.info['desc'] + cw)
+                print()
 
             elif status == 3:
-                print("[" + str(module_iterator) +"] (" + nyi + ")" + module + cw)
+                print("[" + str(module_iterator) +"] (" + nyi + ")" + module + " :: " + ms.info['desc'] + cw)
+                print()
 
             else:
-                print("[" + str(module_iterator) +"] " + cp + module + cw)
+                print("[" + str(module_iterator) +"] " + cp + module + " :: " + ms.info['desc'] + cw)
+                print()
 
         else:
             continue
+
+        print(matched_modules) # DEV0005: For debugging purposes only
 
     # Old, lame, lazy, hard-coded algorithm :)
     """

@@ -34,6 +34,8 @@ try:
     import subprocess
     print("[i] Importing 'importlib' module...")
     import importlib
+    print("[i] Importing 'signal' module...")
+    import signal
 
     print()
     print("[i] Importing 'error' module...")
@@ -54,12 +56,8 @@ try:
     from core import joke
     print("[i] Importing 'quote' module...")
     from core import quote
-
-    print()
     print("[i] Importing 'list_module' module...")
     from core import list_module
-
-    print()
     print("[i] Importing 'API' module...")
     import API
 
@@ -438,7 +436,7 @@ def main():
                             open(config_file, 'r').close()
                             confirm_export_overwrite = input("Do you really want to overwrite the current configuration file? (y/n) > ").lower()
                             if confirm_export_overwrite == 'y':
-                                export_conf_result = API.ShadowSuiteLE().export_conf(config_file, config_dict)
+                                export_conf_result = API.ShadowSuite().export_conf(config_file, config_dict)
                                 if export_conf_result == True:
                                     logger.log(3, 'Current user settings successfully saved to ' + config_file + '.', 'logfile.txt', SESSION_ID)
                                     print("[i] Settings successfully saved to configuration file: \"" + config_file + "\".")
@@ -708,6 +706,7 @@ def main():
 
                     suggest_o = menu_input.split('=')
                     suggest_o[1] = suggest_o[1].lower()
+                    #print(suggest_o[1]) # DEV0005: For debugging purposes only.
                     if misc.failsafe == True:
                         print("[FAILSAFE] suggest command not available")
                         continue
