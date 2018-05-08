@@ -1,3 +1,21 @@
+commit bda9699a5ecb42f1dc4af6665e2ab45398b6a219
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 8 13:49:42 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.9-Build_E
+    
+    -Mandatory module update
+
+commit f7cfe338889e15294943f8a1c2894b57488d5def
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 8 08:02:18 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 11f24aa4db63a4c3f2e5d858aa676e7fff99aa7a
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Tue May 8 08:02:01 2018 +0800
