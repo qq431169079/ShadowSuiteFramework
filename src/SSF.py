@@ -110,11 +110,6 @@ def main():
         print("[i] Debugging mode is on")
         logger.log(3, 'Shadow Suite Debugging is on', 'logfile.txt', SESSION_ID)
 
-    if misc.failsafe == True:
-        # If the program has been executed with an argument -f or --failsafe, show this
-        print("[i] Failsafe mode is on")
-        logger.log(3, 'Shadow Suite Failsafe is on', 'logfile.txt', SESSION_ID)
-
     # This while loop enables the user to enter commands inside shadow suite without
     # needing to run the program everytime a command is entered.
     while True:
@@ -150,10 +145,6 @@ def main():
                 show_o = menu_input.split(" ")
                 try:
                     if show_o[1].lower() in ["license", "copying", "copyright"]:
-                        if misc.failsafe == True:
-                            print("[FAILSAFE] license not available")
-                            continue
-
                         logger.log(0, 'User opens license via less command...', 'logfile.txt', SESSION_ID)
                         if PLATFORM == 'windows' or PLATFORM == 'nt':
                             os.system("start extras/shadowsuitelicense")
@@ -170,12 +161,6 @@ def main():
                         else:
                             print("Debugging: OFF")
 
-                        if misc.failsafe == True:
-                            print("Failsafe: ON")
-
-                        else:
-                            print("Failsafe: OFF")
-
                         print()
                         print("Current User: " + current_user)
                         print("Session ID: " + str(SESSION_ID))
@@ -188,33 +173,25 @@ def main():
                         print("[i] To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuiteLE\' and clone the repository.")
 
                     elif show_o[1].lower() == "changelog":
-                        if misc.failsafe == True:
-                            print("[FAILSAFE] changelog not available")
-
-                        else:
-                            logger.log(0, 'User opens changelog.', 'logfile.txt', SESSION_ID)
-                            version.changelog()
+                        logger.log(0, 'User opens changelog.', 'logfile.txt', SESSION_ID)
+                        version.changelog()
 
                     elif show_o[1].lower() == "config_files":
-                        if misc.failsafe == True:
-                            print("[FAILSAFE] config_files not available")
+                        try:
+                            available_config_files = os.listdir('data/')
+                            acf_iterator = 0
+                            for config_files in available_config_files:
+                                if config_files == 'config.dat':
+                                    continue
 
-                        else:
-                            try:
-                                available_config_files = os.listdir('data/')
-                                acf_iterator = 0
-                                for config_files in available_config_files:
-                                    if config_files == 'config.dat':
-                                        continue
+                                else:
+                                    acf_iterator += 1
+                                    print("[" + str(acf_iterator) + "] " + config_files)
 
-                                    else:
-                                        acf_iterator += 1
-                                        print("[" + str(acf_iterator) + "] " + config_files)
+                            del acf_iterator
 
-                                del acf_iterator
-
-                            except NotImplementedError:
-                                print("[SYSTEM] functionality is unavailable")
+                        except NotImplementedError:
+                            print("[SYSTEM] functionality is unavailable")
 
                     else:
                         raise IndexError
@@ -233,39 +210,27 @@ def main():
                 update_o = menu_input.split(" ")
                 try:
                     if update_o[1].lower() in ["prog", "program"]:
-                        if misc.failsafe == True:
-                            print("[FAILSAFE] prog update not available")
-
-                        else:
-                            print(misc.CGR + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.CW)
-                            logger.log(0, 'User performs a program update...', 'logfile.txt', SESSION_ID)
-                            update.prog_update(misc.debugging)
+                        print(misc.CGR + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.CW)
+                        logger.log(0, 'User performs a program update...', 'logfile.txt', SESSION_ID)
+                        update.prog_update(misc.debugging)
 
                     elif update_o[1].lower() in ["deps", "dependencies", "dependency"]:
-                        if misc.failsafe == True:
-                            print("[FAILSAFE] deps update not available")
-
-                        else:
-                            print(misc.CGR + "Downloading and installing dependencies..." + misc.CW)
-                            logger.log(0, 'User performs a dependency update...', 'logfile.txt', SESSION_ID)
-                            update.deps_update()
+                        print(misc.CGR + "Downloading and installing dependencies..." + misc.CW)
+                        logger.log(0, 'User performs a dependency update...', 'logfile.txt', SESSION_ID)
+                        update.deps_update()
 
                     elif update_o[1].lower() in ["full", "all"]:
-                        if misc.failsafe == True:
-                            print("[FAILSAFE] full update not available")
+                        print(misc.CGR + "Do you really want to perform a full update (y/n)?" + misc.CW)
+                        full_updateinput = input(" > ")
+                        if full_updateinput == "y" or full_updateinput == "Y":
+                            logger.log(0, 'User performs a full update...', 'logfile.txt', SESSION_ID)
+                            update.full_update(DEBUGGING)
+
+                        elif full_updateinput == "n" or full_updateinput == "N":
+                            print(misc.CR + "Full update cancelled by user..." + misc.CW)
 
                         else:
-                            print(misc.CGR + "Do you really want to perform a full update (y/n)?" + misc.CW)
-                            full_updateinput = input(" > ")
-                            if full_updateinput == "y" or full_updateinput == "Y":
-                                logger.log(0, 'User performs a full update...', 'logfile.txt', SESSION_ID)
-                                update.full_update(DEBUGGING)
-
-                            elif full_updateinput == "n" or full_updateinput == "N":
-                                print(misc.CR + "Full update cancelled by user..." + misc.CW)
-
-                            else:
-                                print(error.ERROR0001)
+                            print(error.ERROR0001)
 
                     else:
                         raise IndexError
@@ -707,10 +672,6 @@ def main():
                     suggest_o = menu_input.split('=')
                     suggest_o[1] = suggest_o[1].lower()
                     #print(suggest_o[1]) # DEV0005: For debugging purposes only.
-                    if misc.failsafe == True:
-                        print("[FAILSAFE] suggest command not available")
-                        continue
-
                     logger.log(0, 'User want a suggestion with the criteria ' + suggest_o[1] + '.', 'logfile.txt', SESSION_ID)
                     suggest.api(suggest_o[1], __MODULE_PATH__)
 
@@ -720,20 +681,12 @@ def main():
                     print()
 
             elif menu_input.lower().startswith(("clear", "clr", "cls", "clrscrn")):
-                if misc.failsafe == True:
-                    print("[FAILSAFE] clear not available")
-                    continue
-
                 misc.programFunctions().clrscrn()
 
             elif menu_input.lower().startswith("run") or menu_input.lower().startswith('exec'):
                 try:
                     run_o = menu_input.split(' ')
                     run_o[0] = ''
-                    if misc.failsafe == True:
-                        print("[FAILSAFE] run not available")
-                        continue
-
                     command = ''
                     index_error = False
                     for args in run_o:
@@ -900,7 +853,6 @@ if __name__ == "__main__":
                 print()
                 print("Troubleshooting Switches:")
                 print("-d           --debug            Run Shadow Suite in debug mode; Shows logging information.")
-                print("-f           --failsafe         Run Shadow Suite in failsafe mode.")
                 print()
                 print("Compatibility Switches:")
                 print("-w           --no-warn          Disable last session exit fail warning.")
@@ -908,12 +860,6 @@ if __name__ == "__main__":
                 print("Customization Switches:")
                 print("-c [FILE]    --config=[FILE]    Define a custom configuration file.")
                 print()
-                sys.exit(0)
-
-            # DEV0001: Wrong meaning of Failsafe :P
-            if '-f' == arg or '--failsafe' == arg:
-                misc.failsafe = True
-                print("[i] Failsafe mode is not available this time! Sorry, dude.")
                 sys.exit(0)
 
             if '-w' == arg or '--no-warn' == arg:

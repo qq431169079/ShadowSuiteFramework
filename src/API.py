@@ -136,7 +136,7 @@ class ShadowSuite:
     SHADOWSUITE_VER_CODENAME = version.VCODENAME # Shadow Suite's version codename
     FINISH = "\n[i] Module finished running...\n"
 
-    def __init__(self, current_user='user', MODULE_PATH='modules/', OUTPUT_PATH='output/', SESSION_ID=123456, USERLEVEL=2, debugging=False, failsafe=False):
+    def __init__(self, current_user='user', MODULE_PATH='modules/', OUTPUT_PATH='output/', SESSION_ID=123456, USERLEVEL=2, debugging=False):
         if not current_user:
             self.current_user = 'user'
 
@@ -172,12 +172,6 @@ class ShadowSuite:
 
         else:
             self.debugging = debugging
-
-        if not failsafe:
-            self.failsafe = False
-
-        else:
-            self.failsafe = failsafe
 
     def generate_new_module(self, cmn):
         logger.log(0, 'User generated a new module named ' + module_name, 'logfile.txt', self.SESSION_ID)
@@ -224,8 +218,7 @@ class ShadowSuite:
             print("[i] " + str(modulenotfounderror_msg))
 
     def suggest(self, criteria):
-        # Argument "criteria" is the keywords typed in by user.
-        # DEV0001: Update suggest for v0.1.0.0
+        # Argument "criteria" is the keywords typed in by user
         criteria = criteria.lower()
         logger.log(0, 'User wants a suggestion about ' + criteria + ' via API.', 'api_logfile.txt', self.SESSION_ID)
         suggest.api(criteria)

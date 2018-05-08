@@ -96,7 +96,7 @@ def list(module_path):
         else:
             continue
 
-        print(matched_modules) # DEV0005: For debugging purposes only
+        #print(matched_modules) # DEV0005: For debugging purposes only
 
     # Old, lame, lazy, hard-coded algorithm :)
     """

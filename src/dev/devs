@@ -5,3 +5,4 @@ DEV0001
 -modules/*.py: API usage and arguments
 -core/fullupdate.py: Fix algorithm
 -core/update.py: Fix algorithm
+-*: Remove Failsafe

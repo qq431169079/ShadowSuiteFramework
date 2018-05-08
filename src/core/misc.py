@@ -75,9 +75,8 @@ under certain conditions; type 'license' for details.""" + CW
 # ShadowSuite is running as module.
 MODULE_MODE_INFO = CY + "[i] Running as module...\n" + CW
 
-# Debugging and Failsafe modes
+# Debugging mode
 debugging = False # Default value
-failsafe = False # Default value
 
 class programFunctions:
     COPYRIGHT = "Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
