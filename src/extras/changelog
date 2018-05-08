@@ -1,3 +1,22 @@
+commit aba6d901842e4beec294b67b4999e3aceb6a1297
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 8 08:00:35 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.9-Build_C
+    
+    -Failsafe removed.
+    -More new update
+
+commit 878a3268c67bd6b8782a54023e441f66275be445
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 7 16:55:45 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 2470907048b4bb2939ce3fe91b1ba6f94803baf4
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Mon May 7 16:54:18 2018 +0800
