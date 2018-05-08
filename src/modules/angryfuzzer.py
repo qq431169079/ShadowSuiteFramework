@@ -35,7 +35,7 @@ info = {
         "desc": "A collection of tools for pentesting to gather information and discover vulnerabilities of the targets based on Fuzzedb https://github.com/fuzzdb-project/fuzzdb project.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Apr. 10, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -83,7 +83,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if import_error is True:
         return None
 
@@ -101,13 +101,13 @@ def main():
                 return 0
 
             else:
-                module_body()
+                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     target = input("Target URL > ")
     print("[i] Running module...")
     os.system("cd modules/ANGRYFUZZER && python2 angryFuzzer.py -u " + target)
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)

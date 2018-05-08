@@ -35,7 +35,7 @@ info = {
         "desc": "Identifies hash types.", # Brief description
         "email": "Root@Blackploit.com", # Email
         "authorinfo": "www.Blackploit.com", # Additional information about the author; this could be
-        "lastupdate": "Apr. 12, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -83,7 +83,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if import_error is True:
         return None
 
@@ -106,6 +106,6 @@ def main():
         else:
             module_body()
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     os.system("cd modules/HASH_IDENTIFIER && python2 Hash_ID.py")
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)

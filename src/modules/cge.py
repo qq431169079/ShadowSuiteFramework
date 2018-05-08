@@ -35,7 +35,7 @@ info = {
         "desc": "Cisco Global Exploiter (CGE), is an advanced,simple and fast security\ntesting tool, that is able to exploit the most dangerous vulnerabilities\nof Cisco systems.", # Brief description
         "email": "nemesis@blackangels.it -- e4m@blackangels.it,", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Apr. 10, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -83,7 +83,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if import_error is True:
         return None
 
@@ -101,12 +101,12 @@ def main():
                 return 0
 
             else:
-                module_body()
+                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     print()
     print()
     print()
@@ -138,7 +138,7 @@ def module_body():
         else:
             print("Wrong input!")
 
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
 
 def start():
     TARGET = input("Target IP: ")
@@ -177,4 +177,4 @@ def vulnlst():
 def exploit(TARGET, TGTNUM):
     space = ' '
     os.system("cd modules/CGE && perl cge.pl " + TARGET + space + TGTNUM)
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)

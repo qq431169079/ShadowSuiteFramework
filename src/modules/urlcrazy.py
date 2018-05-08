@@ -35,7 +35,7 @@ info = {
         "desc": "UrlCrazy is for the study of domainname typos and URL hijacking.", # Brief description
         "email": "none", # Email
         "authorinfo": "www.morningstarsecurity.com/research/urlcrazy", # Additional information about the author; this could be
-        "lastupdate": "Apr. 13, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -83,7 +83,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if import_error is True:
         return None
 
@@ -101,12 +101,12 @@ def main():
                 return 0
 
             else:
-                module_body()
+                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     domain = str(input("Domain name to test > "))
     print("""\n
         Available Keyboard Layouts:
@@ -151,4 +151,4 @@ def module_body():
         csv_switch = '-f human '
 
     os.system("cd modules/URLCRAZY && ruby urlcrazy -k " + kb_layout + " " + cp_switch + nr_switch + si_switch + csv_switch + "-o ../../output/" + output + ' ' + domain)
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)

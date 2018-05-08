@@ -36,7 +36,7 @@ info = {
         "desc": "An IP Calculator.", # Brief description
         "email": "Catayao56@gmail.com", # Email
         "authorinfo": "https://github.com/Catayao56", # Additional information about the author; this could be
-        "lastupdate": "Apr. 13, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -84,7 +84,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if import_error is True:
         return None
 
@@ -102,12 +102,12 @@ def main():
                 return 0
 
             else:
-                module_body()
+                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     print(info['name'] + '\t' + "An IP Calculator")
     print()
     try:
@@ -120,41 +120,41 @@ def module_body():
         print("Invalid IP Address!")
         return "Error"
 
-    print("IP Address version: ", ip_ver)
+    print("IP Address version                 :: ", ip_ver)
     if ip_ver == 4:
         ipv6 = ipc.to_ipv6()
-        print("IP Address v6: ", ipv6)
+        print("IP Address v6                      :: ", ipv6)
 
     elif ip_ver == 6:
         ipv4 = ipc.to_ipv4()
-        print("IP Address v4: ", ipv4)
+        print("IP Address v4                      :: ", ipv4)
 
     else:
         print("ERROR: Unsupported or unknown version of IP Address!")
 
     subnet_size = ipc.subnet()
-    print("CIDR subnet size: ", subnet_size)
+    print("CIDR subnet size                   :: ", subnet_size)
     flbin = ipc.bin()
-    print('Full-length binary: ', flbin)
+    print('Full-length binary                 :: ', flbin)
     flhex = ipc.hex()
-    print('Full-length hexadecimal: ', flhex)
+    print('Full-length hexadecimal            :: ', flhex)
     iana_alloc_info = ipc.info()
-    print('IANA allocation information:', iana_alloc_info)
+    print('IANA allocation information        :: ', iana_alloc_info)
     compressed = ipc.to_compressed()
-    print('Shortest possible compressed form: ', compressed)
+    print('Shortest possible compressed form  :: ', compressed)
     ptr_rec = ipc.to_reverse()
-    print('PTR record: ', ptr_rec)
+    print('PTR record                         :: ', ptr_rec)
     net_size = ipc.size()
-    print('Network size: ', net_size)
+    print('Network size                       :: ', net_size)
     broadcast_addr = ipn.broadcast()
-    print('Broadcast Address: ', broadcast_addr)
+    print('Broadcast Address                  :: ', broadcast_addr)
     host_first = ipn.host_first()
-    print('First available host in this subnet: ', host_first)
+    print('First available host in this subnet:: ', host_first)
     host_last = ipn.host_last()
-    print('Last available host in this subnet: ', host_last)
+    print('Last available host in this subnet :: ', host_last)
     netmask = ipn.netmask()
-    print('Network netmask derived from subnet size, as IP object: ', netmask)
+    print('Network netmask                    :: ', netmask)
     size = ipn.size()
-    print('Number of ip\'s within the network: ', size)
+    print('Number of ip\'s within the network  :: ', size)
     print()
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)

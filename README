@@ -1,4 +1,4 @@
-Shadow Suite Framework 0.0.9.9-Build_D :: Ethical Hacking Toolkit and Framework
+Shadow Suite Framework 0.0.9.9-Build_E :: Ethical Hacking Toolkit and Framework
 Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
@@ -45,15 +45,15 @@ TO-DO List
 
 2.Debug and Failsafe modes. (Finished)
 
-3.Update The Harvester.
+3.Update The Harvester and Deception.
 
-4.Kick Them Out, Wifite2, Metasploit Framework, WebExpose, BRAT, Httrack, and MultiTool. Update Deception
+4.Kick Them Out, Wifite2, Metasploit Framework, WebExpose, BRAT, Httrack, and MultiTool.
 
 5.Automatic installation of custom modules. (Finished)
 
 6.New update algorithms.
 
-7.Make Shadow Suite Framework Cross-platform. No more Linux and Windows editions ;)
+7.Make Shadow Suite Framework Cross-platform. No more Linux and Windows editions (FINISHED)
 
 8.More logging verbosity.
 

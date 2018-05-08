@@ -86,6 +86,7 @@ def main():
     global __ROOTPASS__
     global __MODULE_PATH__
     global __OUTPUT_PATH__
+    global USERLEVEL
     PLATFORM = misc.programFunctions().get_platform()
     print()
     print(misc.LOGO) # Prints logo
@@ -401,7 +402,7 @@ def main():
                             open(config_file, 'r').close()
                             confirm_export_overwrite = input("Do you really want to overwrite the current configuration file? (y/n) > ").lower()
                             if confirm_export_overwrite == 'y':
-                                export_conf_result = API.ShadowSuite().export_conf(config_file, config_dict)
+                                export_conf_result = API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).export_conf(config_file, config_dict)
                                 if export_conf_result == True:
                                     logger.log(3, 'Current user settings successfully saved to ' + config_file + '.', 'logfile.txt', SESSION_ID)
                                     print("[i] Settings successfully saved to configuration file: \"" + config_file + "\".")
@@ -416,7 +417,7 @@ def main():
                                 print("[i] Unknown answer, assuming no.")
 
                         except FileNotFoundError:
-                            export_conf_result = API.ShadowSuiteLE().export_conf(config_file, config_dict)
+                            export_conf_result = API.ShadowSuiteLE(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).export_conf(config_file, config_dict)
                             if export_conf_result == True:
                                 logger.log(3, 'Current user settings successfully saved to ' + config_file + '.', 'logfile.txt', SESSION_ID)
                                 print("[i] Settings successfully saved to configuration file: \"" + config_file + "\".")
@@ -446,7 +447,7 @@ def main():
                                     "module_path": __MODULE_PATH__,
                                     "output_path": __OUTPUT_PATH__
                                     }
-                            export_conf_result = API.ShadowSuiteLE().export_conf(new_config, config_dict)
+                            export_conf_result = API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, misc.debugging).export_conf(new_config, config_dict)
                             if export_conf_result == True:
                                 logger.log(3, 'User generated new config file named ' + new_config +'.', 'logfile.txt', SESSION_ID)
                                 print("[i] " + new_config + " successfully generated!")
@@ -516,7 +517,7 @@ def main():
                             module_name = module_name.replace('/', '.')
                             logger.log(3, 'User used ' + module_name + '.', 'logfile.txt', SESSION_ID)
                             module = importlib.import_module(module_name)
-                            module.main()
+                            module.main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, misc.debugging)
 
                         except ModuleNotFoundError as modulenotfounderror_msg:
                             print("[i] " + str(modulenotfounderror_msg))
@@ -577,9 +578,10 @@ def main():
                                     module_dependencies = parser.dependencies
                                     bin_manual_install = []
                                     manual_install =[]
-                                    print(module_dependencies) # DEV0005: for debugging purposes only
+                                    #print(module_dependencies) # DEV0005: for debugging purposes only
                                     for deps in module_dependencies:
                                         logger.log(3, 'Installing dependency: ' + deps, 'logfile.txt', SESSION_ID)
+                                        #print(deps) # DEV0005: For debugging purposes only
                                         if 'BINARY: ' in deps:
                                             deps = deps.replace('BINARY: ', '')
                                             if misc.programFunctions().is_windows():
@@ -599,7 +601,7 @@ def main():
                                                     continue
 
                                                 else:
-                                                    bin_manual_install += ('BINARY: ' + deps)
+                                                    manual_install.append('BINARY: ' + deps)
 
                                         elif 'PYTHON: ' in deps:
                                             deps = deps.replace('PYTHON: ', '')
@@ -610,20 +612,23 @@ def main():
                                             os.system("cpan install " + deps)
 
                                         else:
-                                            manual_install += deps
+                                            manual_install.append(deps)
 
-                                    if manual_install != (None or [] or "") and bin_manual_install != (None or [] or ""):
+                                    if manual_install != (None or [] or ""):
                                         manual_install += bin_manual_install
                                         print("[i] Can't install the following:\n")
                                         logger.log(3, 'Failed to install dependencies: ' + str(manual_install), 'logfile.txt', SESSION_ID)
-                                        for deps in manual_install:
-                                            print("- " + deps)
+                                        for ideps in manual_install:
+                                            print("- " + ideps)
 
                                         print("\nPlease install to use the module without errors...")
 
                             else:
                                 logger.log(3, module_o[2] + ' is not a valid SSF module.', 'logfile.txt', SESSION_ID)
                                 print("[i] " + error.ERROR0016)
+
+                        else:
+                            print("[i] " + error.ERROR0015)
 
                     elif module_o[1].lower() in ["uninstall"]:
                         if __MODULE_PATH__ not in module_o[2]:
@@ -635,8 +640,10 @@ def main():
                         if '.py' not in module_name:
                             module_name = module_name + '.py'
 
+                        print(module_name) # DEV0005: For debugging purposes only
+
                         if misc.programFunctions().path_exists(module_name):
-                            confirm_uninstall = ("Do you really want to uninstall " + module_name + "? (y/n) > ")
+                            confirm_uninstall = input("Do you really want to uninstall " + module_name + "? (y/n) > ")
                             if confirm_uninstall.lower() == ('y' or 'yes'):
                                 logger.log(3, 'User is trying to uninstall ' + module_name + '...', 'logfile.txt', SESSION_ID)
                                 print("[i] Uninstalling " + module_name + "...")
@@ -648,6 +655,12 @@ def main():
                                 else:
                                     logger.log(3, 'User successfully uninstalled ' + module_name, 'logfile.txt', SESSION_ID)
                                     print("[i] " + module_name + " successfully uninstalled...")
+
+                            else:
+                                print("[i] User cancelled uninstallation...")
+
+                        else:
+                            print("[i] " + error.ERROR0015 + ' (Module not found)')
 
                     else:
                         raise IndexError
@@ -829,7 +842,7 @@ if __name__ == "__main__":
     __MODULE_PATH__ = "modules/"
     __OUTPUT_PATH__ = "output/"
 
-    __USERLEVEL__ = 2
+    USERLEVEL = 2
     
     # Check for arguments, if any.
     NO_WARN = False

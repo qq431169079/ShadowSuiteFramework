@@ -35,7 +35,7 @@ info = {
         "desc": "A very flexible intelligent fuzzer to discover traversal directory vulnerabilities in software such as HTTP/FTP/TFTP servers, Web platforms such as CMSs, ERPs, Blogs, etc.", # Brief description
         "email": "dotdotpwn@sectester.net", # Email
         "authorinfo": "http://dotdotpwn.sectester.net", # Additional information about the author; this could be
-        "lastupdate": "Apr. 10, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -83,7 +83,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if import_error is True:
         return None
 
@@ -101,12 +101,12 @@ def main():
                 return 0
 
             else:
-                module_body()
+                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     print("DotDotPwn : The directory Traversal Fuzzer\n")
     print("\n\n[E] Sorry! This module is not yet working! Can you help us develop this module?\n")
     module = input("Module [http | http-url | ftp | tftp | payload | stdout] > ")
@@ -116,4 +116,4 @@ def module_body():
     print("\n\n[i] This module is still under development, so some features are not yet available, like intelligent fuzzing...\n\n")
     print("[i] Running module...")
     os.system("cd modules/DOTDOTPWN && perl dotdotpwn.pl -m " + module + " -u " + url + " -d " + depth + " -x " + port)
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)

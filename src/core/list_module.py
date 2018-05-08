@@ -66,9 +66,16 @@ def list(module_path):
     # 2 == Unstable
     # 3 == Not yet implemented/working
     for module in modules:
+        #print(modules) # DEV0005: For debugging purposes only
+        #print(module) # DEV0005: For debugging purposes only
         imodule_path = module_path.replace('/', '.')
         imodule = module.replace('.py', '')
-        ms = importlib.import_module(imodule_path + imodule)
+        try:
+            ms = importlib.import_module(imodule_path + imodule)
+
+        except ModuleNotFoundError:
+            pass
+
         if '.py' in module or '.Py' in module or '.pY' in module or '.PY' in module:
             module_iterator += 1
             module = module.replace('.py', '')

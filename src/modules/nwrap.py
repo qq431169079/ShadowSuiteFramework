@@ -31,23 +31,23 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Nwrap", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "5.0", # version
+        "version": "6.1", # version
         "author": "Catayao56", # Author
         "desc": "Wrapper script for Nmap Network Mapper.", # Brief description
         "email": "Catayao56@gmail.com", # Email
         "authorinfo": "https://github.com/Catayao56", # Additional information about the author; this could be
-        "lastupdate": "Apr. 09, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['BINARY: Nmap'] # Put needed dependencies here.  
+dependencies = ['BINARY: Nmap', 'PYTHON: nmap'] # Put needed dependencies here.  
 module_status = 1
-category = ['nwrap', 'nmap', 'wrapper', 'catayao56', 'python']
+category = ['nwrap', 'nmap', 'wrapper', 'catayao56', 'python', 'port', 'scan']
 
 # Changelog of the module
-changelog = "Version 6.0:\nMandatory module update\n\nVersion 5.0:\nMandatory module update\n\nVersion 4.4:\nBug fix\n\nVersion 4.0:\nMandatory bug fix\n\nVersion 3.4:\nRewritten to be a Shadow Suite module\n\nVersion 3.0:\nAdded new scan types\n\nVersion 2.1:\nFixed bugs\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 6.1:\nFixed false-positive error 'nmap not found on path' by using os.system() module.\n\nVersion 6.0:\nMandatory module update\n\nVersion 5.0:\nMandatory module update\n\nVersion 4.4:\nBug fix\n\nVersion 4.0:\nMandatory bug fix\n\nVersion 3.4:\nRewritten to be a Shadow Suite module\n\nVersion 3.0:\nAdded new scan types\n\nVersion 2.1:\nFixed bugs\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -84,7 +84,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if import_error is True:
         return None
 
@@ -102,12 +102,12 @@ def main():
                 return 0
 
             else:
-                module_body()
+                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     print("Nmap: Network exploration tool and security / port scanner\n\n")
     print("Target's IP Address or URL: ")
     TARGET = input("[NWRAP] > ")
@@ -163,7 +163,12 @@ def module_body():
             print()
             print("TCP Connect scan")
             print()
-            nmap.PortScanner("nmap -sT " + TARGET)
+            try:
+                nmap.PortScanner("nmap -sT " + TARGET)
+
+            except:
+                os.system('nmap -sT ' + TARGET)
+
             print()
             print("Scan finished!")
             API.misc.programFunctions().pause()
@@ -175,7 +180,12 @@ def module_body():
             print()
             print("Half-open scan")
             print()
-            nmap.PortScanner("nmap -sS " + TARGET)
+            try:
+                nmap.PortScanner("nmap -sS " + TARGET)
+
+            except:
+                os.system("nmap -sS " + TARGET)
+
             print()
             print("Scan finished!")
 
@@ -186,7 +196,12 @@ def module_body():
             print()
             print("Ping scan")
             print()
-            nmap.PortScanner("nmap -sP " + TARGET)
+            try:
+                nmap.PortScanner("nmap -sP " + TARGET)
+
+            except:
+                os.system('nmap -sP ' + TARGET)
+
             print()
             print("Scan finished!")
 
@@ -197,7 +212,12 @@ def module_body():
             print()
             print("UDP scan")
             print()
-            nmap.PortScanner("nmap -sU " + TARGET)
+            try:
+                nmap.PortScanner("nmap -sU " + TARGET)
+
+            except:
+                os.system("nmap -sU " + TARGET)
+
             print()
             print("Scan finished!")
             
@@ -208,7 +228,12 @@ def module_body():
             print()
             print("IP Protocol scan")
             print()
-            nmap.PortScanner("nmap -sO " + TARGET)
+            try:
+                nmap.PortScanner("nmap -sO " + TARGET)
+
+            except:
+                os.system("nmap -sO " + TARGET)
+
             print()
             print("Scan finished!")
 
@@ -219,7 +244,12 @@ def module_body():
             print()
             print("TCP SYN ping")
             print()
-            nmap.PortScanner("nmap -PS20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+            try:
+                nmap.PortScanner("nmap -PS20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+            
+            except:
+                os.system("nmap -PS20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+            
             print()
             print("Scan finished!")
 
@@ -230,7 +260,12 @@ def module_body():
             print()
             print("TCP ACK ping")
             print()
-            nmap.PortScanner("nmap -PA20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+            try:
+                nmap.PortScanner("nmap -PA20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+
+            except:
+                os.system('nmap -PA20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 ' + TARGET)
+
             print()
             print("Scan finished!")
         
@@ -241,7 +276,11 @@ def module_body():
             print()
             print("UDP ping")
             print()
-            nmap.PortScanner("nmap -PU20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+            try:
+                nmap.PortScanner("nmap -PU20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+
+            except:
+                os.system("nmap -PU20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060")
             print()
             print("Scan finished!")
 
@@ -252,7 +291,12 @@ def module_body():
             print()
             print("SCTP INIT ping")
             print()
-            nmap.PortScanner("nmap -PY20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+            try:
+                nmap.PortScanner("nmap -PY20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+
+            except:
+                os.system('nmap -PY20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 ' + TARGET)
+
             print()
             print("Scan finished!")
         
@@ -263,7 +307,12 @@ def module_body():
             print()
             print("ARP ping")
             print()
-            nmap.PortScanner("nmap -PR20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+            try:
+                nmap.PortScanner("nmap -PR20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 " + TARGET)
+
+            except:
+                os.system('nmap -PR20,21,22,23,25,53,80,88,110,119,123,137,139,143,161,162,163,164,194,443,514,563,989,990,5060 ' + TARGET)
+
             print()
             print("Scan finished!")
 
@@ -274,7 +323,12 @@ def module_body():
             print()
             print("List scan")
             print()
-            nmap.PortScanner("nmap -sL " + TARGET)
+            try:
+                nmap.PortScanner("nmap -sL " + TARGET)
+
+            except:
+                os.system('nmap -sL ' + TARGET)
+
             print()
             print("Scan finished!")
         
@@ -285,7 +339,12 @@ def module_body():
             print()
             print("SCTP INIT scan")
             print()
-            os.system("nmap -sY " + TARGET)
+            try:
+                nmap.PortScanner("nmap -sY " + TARGET)
+
+            except:
+                os.system('nmap -sY ' + TARGET)
+
             print()
             print("Scan finished!")
 
@@ -296,7 +355,12 @@ def module_body():
             print()
             print("TCP ACK scan")
             print()
-            nmap.PortScanner("nmap -sA " + TARGET)
+            try:
+                nmap.PortScanner("nmap -sA " + TARGET)
+
+            except:
+                os.system('nmap -sA ' + TARGET)
+
             print()
             print("Scan finished!")
 
@@ -307,7 +371,12 @@ def module_body():
             print()
             print("TCP Window scan")
             print()
-            nmap.PortScanner("nmap -sW " + TARGET)
+            try:
+                nmap.PortScanner("nmap -sW " + TARGET)
+
+            except:
+                os.system('nmap -sW ' + TARGET)
+
             print()
             print("Scan finished!")
 
@@ -318,7 +387,12 @@ def module_body():
             print()
             print("OS scan")
             print()
-            nmap.PortScanner("nmap -O " + TARGET)
+            try:
+                nmap.PortScanner("nmap -O " + TARGET)
+
+            except:
+                os.system('nmap -O ' + TARGET)
+
             print()
             print("Scan finished!")
 
@@ -336,7 +410,7 @@ def module_body():
         else:
             print(error.error0001)
 
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
 
 def automated_scans():
     print()

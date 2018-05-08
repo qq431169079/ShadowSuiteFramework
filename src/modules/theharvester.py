@@ -27,7 +27,7 @@ info = {
         "desc": "A tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/banners, and employee names from different public sources (search engines, pgp key servers).", # Brief description
         "email": "cmartorella@edge-security.com", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -71,7 +71,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     """ First, it checks the value assigned to the 'needsroot' variable in the 
     dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
     function from the 'os' module. If the result from geteuid is also zero, then
@@ -85,12 +85,12 @@ def main():
             return 0
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
     else:
-        module_body()
+        module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     # Place your program here. This is the function where your program will be placed.
     # Remove module_info(), or leave it here. It's your call.
     print("*******************************************************************")
@@ -126,4 +126,4 @@ def module_body():
             LIMIT = ''
 
     os.system("python2 modules/THEHARVESTER/theHarvester.py -d " + TARGET + " -b " + SOURCE + " -s " + START + " -f $PWD/output/" + OUTPUT + LIMITSWITCH + LIMIT)
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)

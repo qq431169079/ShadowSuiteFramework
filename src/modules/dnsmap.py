@@ -36,7 +36,7 @@ info = {
         "desc": "Dnsmap is mainly meant to be used by pentesters during the information\ngathering/enumeration phase of infrastructure security assessments. This script returns the DNS of the target domain.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Apr. 09, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -84,7 +84,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if import_error is True:
         return None
 
@@ -102,12 +102,12 @@ def main():
                 return 0
 
             else:
-                module_body()
+                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     # Colours
     D  = "\033[0m"
     W  = "\033[01;37m"
@@ -122,7 +122,7 @@ def module_body():
         ip = socket.gethostbyname(domain)
         print (SUCESS + "The DNS of \'" + domain + "\' is \'" + ip + "\'.")
 
-    except socket.gaierror:
-        print (FAIL+'Invalid Domain or no internet connection.\n')
+    except socket.gaierror as error_msg:
+        print (FAIL+'[i] ' + str(error_msg))
 
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)

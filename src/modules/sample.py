@@ -16,7 +16,7 @@ info = {
         "desc": "A sample module that uses the Shadow Suite API.", # Brief description
         "email": "N/A", # Email
         "authorinfo": "https://github.com/Catayao56/", # Additional information about the author; this could be
-        "lastupdate": "Mar. 21, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Using API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -48,19 +48,19 @@ def module_info():
     print("Needs root: " + superm)
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
             print(error.ERROR0005)
             return
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
     else:
-        module_body()
+        module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     # Place your program here. This is the function where your program will be placed.
     module_info()
     print("Hello!")
@@ -77,7 +77,7 @@ def module_body():
     time.sleep(2)
     print("Listing installed modules...")
     time.sleep(2)
-    API.ShadowSuite().list_module()
+    API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).list_module()
     time.sleep(2)
     print("Quitting in 3...")
     time.sleep(1)
@@ -87,4 +87,4 @@ def module_body():
     time.sleep(0.700)
     print("Quitting in 0...")
     time.sleep(.300)
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)

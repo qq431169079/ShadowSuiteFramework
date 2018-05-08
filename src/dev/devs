@@ -1,8 +1,5 @@
 DEV0001
 
--API.py (line 126): API arguments (DEBUGGING)
--SSF.py (line 629): Uninstall option not working
--modules/*.py: API usage and arguments
 -core/fullupdate.py: Fix algorithm
 -core/update.py: Fix algorithm
 -*: Remove Failsafe

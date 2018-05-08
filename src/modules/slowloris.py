@@ -36,7 +36,7 @@ info = {
         "desc": "Low bandwidth stress test tool for websites.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "Apr. 11, 2018",                     # a website of the author.
+        "lastupdate": "May. 08, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -84,7 +84,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main():
+def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if import_error is True:
         return None
 
@@ -102,12 +102,12 @@ def main():
                 return 0
 
             else:
-                module_body()
+                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
-def module_body():
+def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     print("Slowloris, low bandwidth stress test tool for websites\n")
     TARGET = input("Host to perform stress test on > ")
     PORT = input("Port of webserver, usually 80 > ")
@@ -154,4 +154,4 @@ def module_body():
     time.sleep(1)
     print("[i] Running test... Press CTRL + C to stop...")
     os.system("python3 modules/SLOWLORIS/slowloris.py -p " + PORT + " -s " + SOCKETS + " -v -ua " + USEPROXY_SWITCH + USEPROXY_HSW + USEPROXY_HOST + " " + USEPROXY_PSW + USEPROXY_PORT + " " + HTTPSSW + TARGET)
-    print(API.ShadowSuite().FINISH)
+    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
