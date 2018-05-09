@@ -76,32 +76,39 @@ def list(module_path):
         except ModuleNotFoundError:
             pass
 
-        if '.py' in module or '.Py' in module or '.pY' in module or '.PY' in module:
-            module_iterator += 1
-            module = module.replace('.py', '')
-            status = ms.module_status
-            if status == 0:
-                print("[" + str(module_iterator) +"] " + cg + module + " :: " + ms.info['desc'] + cw)
-                print()
+        try:
+            if '.py' in module or '.Py' in module or '.pY' in module or '.PY' in module:
+                module_iterator += 1
+                module = module.replace('.py', '')
+                status = ms.module_status
+                if status == 0:
+                    print("[" + str(module_iterator) +"] " + cg + module + " :: " + ms.info['desc'] + cw)
+                    print()
 
-            elif status == 1:
-                print("[" + str(module_iterator) +"] " + cy + module + " :: " + ms.info['desc'] + cw)
-                print()
+                elif status == 1:
+                    print("[" + str(module_iterator) +"] " + cy + module + " :: " + ms.info['desc'] + cw)
+                    print()
 
-            elif status == 2:
-                print("[" + str(module_iterator) +"] " + cr + module + " :: " + ms.info['desc'] + cw)
-                print()
+                elif status == 2:
+                    print("[" + str(module_iterator) +"] " + cr + module + " :: " + ms.info['desc'] + cw)
+                    print()
 
-            elif status == 3:
-                print("[" + str(module_iterator) +"] (" + nyi + ")" + module + " :: " + ms.info['desc'] + cw)
-                print()
+                elif status == 3:
+                    print("[" + str(module_iterator) +"] (" + nyi + ")" + module + " :: " + ms.info['desc'] + cw)
+                    print()
+
+                else:
+                    print("[" + str(module_iterator) +"] " + cp + module + " :: " + ms.info['desc'] + cw)
+                    print()
 
             else:
-                print("[" + str(module_iterator) +"] " + cp + module + " :: " + ms.info['desc'] + cw)
-                print()
+                continue
 
-        else:
-            continue
+        except:
+            print("[" + str(module_iterator) +"] " + cp + module + " :: (ERROR WHILE FETCHING INFO)" + cw)
+            print()
+
+        del ms
 
         #print(matched_modules) # DEV0005: For debugging purposes only
 

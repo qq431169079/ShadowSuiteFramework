@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 6.0
+module_version = 7.0
 
 # Import directives
 try:

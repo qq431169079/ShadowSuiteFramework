@@ -87,7 +87,26 @@ def main():
     global __MODULE_PATH__
     global __OUTPUT_PATH__
     global USERLEVEL
+
+    # More variables and constants
     PLATFORM = misc.programFunctions().get_platform()
+    global_variables = {
+            'config_file': config_file, # String; PATH to config file.
+            'USERNAME': __USERNAME__, # String; Hashed form of current_user.
+            'USERPASS': __USERPASS__, # String.
+            'ROOTNAME': __ROOTNAME__, # String.
+            'ROOTPASS': __ROOTPASS__, # String.
+            'MODULE_PATH': __MODULE_PATH__, # String; PATH to modules directory.
+            'OUTPUT_PATH': __OUTPUT_PATH__, # String; PATH to output directory.
+            'USERLEVEL': USERLEVEL, # INT; 0 for system-level root, 1 for application-level root, and 2 for normal user.
+
+            'current_user': current_user,
+            'PLATFORM': PLATFORM, # String
+            'SESSION_ID': SESSION_ID, # Int (6 digits)
+
+            'DEBUGGING': misc.debugging # Boolean
+            }
+
     print()
     print(misc.LOGO) # Prints logo
     print("\n")
@@ -138,7 +157,7 @@ def main():
                 print("clear                         :: clears the screen.")
                 print("run || exec [COMMAND]         :: run a command from your terminal.")
                 print("\n")
-                print("restart                       :: restart Shadow Suite.")
+                print("restart || reboot             :: restart Shadow Suite.")
                 print("quit || exit                  :: quit Shadow Suite.")
                 print()
 
@@ -155,23 +174,31 @@ def main():
 
                     elif show_o[1].lower() in ["info", "information", "status", "stats"]:
                         logger.log(0, 'Users looks at the info.', 'logfile.txt', SESSION_ID)
+                        random_color1 = misc.programFunctions().random_color()
+                        random_color2 = misc.programFunctions().random_color()
                         print()
-                        if misc.debugging == True:
-                            print("Debugging: ON")
+                        print(misc.CC + misc.FB + "===DEBUGGING INFORMATION===" + misc.FR + misc.CW)
+                        print()
+                        if global_variables['DEBUGGING'] == True:
+                            print(misc.CG + "Debugging: ON" + misc.CW)
 
                         else:
-                            print("Debugging: OFF")
+                            print(misc.CR + "Debugging: OFF" + misc.CW)
 
                         print()
-                        print("Current User: " + current_user)
-                        print("Session ID: " + str(SESSION_ID))
+                        print(misc.CC + misc.FB + "=== Current User Information ===" + misc.FR + misc.CW)
                         print()
-                        print("Current version number:   " + version.VNUMBER)
-                        print("Current version type:     " + version.VTYPE)
-                        print("Current version codename: " + version.VCODENAME)
+                        print(misc.CY + "Current User: " + current_user + misc.CW)
+                        print(random_color1 + "Session ID: " + str(SESSION_ID) + misc.CW)
                         print()
-                        print("[i] To automatically update, type \'full update\' on this terminal.")
-                        print("[i] To manually update, go to \'https://www.github.com/Sh4d0w-T34m/ShadowSuiteLE\' and clone the repository.")
+                        print(misc.CC + misc.FB + "=== Version Information ===" + misc.FR + misc.CW)
+                        print()
+                        print(misc.CG + "Version Number:   " + version.VNUMBER + misc.CW)
+                        print(misc.CB + "Version Type:     " + version.VTYPE + misc.CW)
+                        print(misc.CR + "Version Codename: " + version.VCODENAME + misc.CW)
+                        print()
+                        print(random_color2 + misc.FI + "[i] Type \'update\' for updating information." + misc.FR + misc.CW)
+                        print()
 
                     elif show_o[1].lower() == "changelog":
                         logger.log(0, 'User opens changelog.', 'logfile.txt', SESSION_ID)
@@ -213,7 +240,7 @@ def main():
                     if update_o[1].lower() in ["prog", "program"]:
                         print(misc.CGR + "Fetching Shadow Suite LE from Shadow Team's repository..." + misc.CW)
                         logger.log(0, 'User performs a program update...', 'logfile.txt', SESSION_ID)
-                        update.prog_update(misc.debugging)
+                        update.prog_update(global_variables['DEBUGGING'])
 
                     elif update_o[1].lower() in ["deps", "dependencies", "dependency"]:
                         print(misc.CGR + "Downloading and installing dependencies..." + misc.CW)
@@ -225,7 +252,7 @@ def main():
                         full_updateinput = input(" > ")
                         if full_updateinput == "y" or full_updateinput == "Y":
                             logger.log(0, 'User performs a full update...', 'logfile.txt', SESSION_ID)
-                            update.full_update(DEBUGGING)
+                            update.full_update(global_variables['DEBUGGING'])
 
                         elif full_updateinput == "n" or full_updateinput == "N":
                             print(misc.CR + "Full update cancelled by user..." + misc.CW)
@@ -548,6 +575,94 @@ def main():
                         else:
                             print(error.ERROR0015 + " (Generated module not found)")
 
+                    elif module_o[1].startswith("test") or module_o[1].startswith("runtest"):
+                        if global_variables['MODULE_PATH'] not in module_o[2]:
+                            module_o[2] = global_variables['MODULE_PATH'] + module_o[2]
+
+                        if '.py' not in module_o[2]:
+                            module_o[2] += '.py'
+                            module_problems = []
+                            print("[i] Checking for problems on " + module_o[2] + ' module...')
+                            time.sleep(1)
+                            try:
+                                test_module = module_o[2].replace('/', '.').replace('.py', '')
+                                tester = importlib.import_module(test_module)
+
+                            except Exception as importerror_msg:
+                                print("[i] Fatal error found:\n")
+                                print(misc.CR + "[i] " + str(importerror_msg) + misc.CW)
+                                continue
+
+                            try:
+                                module_version = tester.module_version
+                                if module_version < 7.0:
+                                    raise AttributeError
+
+                                else:
+                                    try:
+                                        test1 = tester.info
+                                    
+                                    except Exception as test1e:
+                                        module_problems.append(str(test1e))
+                                        
+                                    try:
+                                        test2 = tester.dependencies
+                                    
+                                    except Exception as test2e:
+                                        module_problems.append(str(test2e))
+                                        
+                                    try:
+                                        test3 = tester.category
+                                    
+                                    except Exception as test3e:
+                                        module_problems.append(str(test3e))
+
+                                    try:
+                                        test4 = tester.changelog
+
+                                    except Exception as test4e:
+                                        module_problems.append(str(test4e))
+
+                            except AttributeError:
+                                print("[i] Module is lower than v7.0, Switching to legacy test...")
+                                time.sleep(1)
+
+                                try:
+                                    test1 = tester.info
+                                
+                                except Exception as test1e:
+                                    module_problems.append(str(test1e))
+                                    
+                                try:
+                                    test2 = tester.dependencies
+                                
+                                except Exception as test2e:
+                                    module_problems.append(str(test2e))
+                                    
+                                try:
+                                    test3 = tester.category
+                                
+                                except Exception as test3e:
+                                    module_problems.append(str(test3e))
+                                    
+                                try:
+                                    test4 = tester.changelog
+                                
+                                except Exception as test4e:
+                                    module_problems.append(str(test4e))
+
+                            if module_problems != (None or "" or []):
+                                logger.log(3, module_o[2] + ': Test finished. Problems found:')
+                                print("\n\nTest finished. Problems found:\n\n")
+                                for problems in module_problems:
+                                    print('- ' + str(problems) + '\n')
+
+                            else:
+                                logger.log(3, module_o[2] + ': Testing finished. No problems found.', 'logfile.txt', SESSION_ID)
+                                print("[i] Testing successful! No problems found.")
+
+                            del tester
+
                     elif module_o[1].startswith("install"):
                         if misc.programFunctions().path_exists(module_o[2]):
                             logger.log(3, 'User is trying to install ' + module_o[2] + ' package...', 'logfile.txt', SESSION_ID)
@@ -588,28 +703,20 @@ def main():
                                                 bin_manual_install += ('BINARY: ' + deps)
 
                                             else:
-                                                if misc.programFunctions().path_exists('/usr/bin/apt'):
-                                                    os.system("apt install " + deps)
-                                                    continue
-
-                                                elif misc.programFunctions().path_exists('/usr/bin/yum'):
-                                                    os.system("yum install " + deps)
-                                                    continue
-
-                                                elif misc.programFunctions().path_exists('/usr/bin/pkg'):
-                                                    os.system("pkg install " + deps)
-                                                    continue
-
-                                                else:
-                                                    manual_install.append('BINARY: ' + deps)
+                                                for pkg_mgr in ['apt', 'pkg', 'yum']:
+                                                    os.system(pkg_mgr + " install --upgrade " + deps)
 
                                         elif 'PYTHON: ' in deps:
                                             deps = deps.replace('PYTHON: ', '')
-                                            for pip in ['pip', 'pip3.6', 'pip3']:
-                                                os.system(pip + " install " + deps)
+                                            misc.programFunctions().pip_install(deps)
 
                                         elif 'PERL: ' in deps:
+                                            deps = deps.replace('PERL: ', '')
                                             os.system("cpan install " + deps)
+
+                                        elif 'RUBY: ' in deps:
+                                            deps = deps.replace('RUBY: ', '')
+                                            os.system('gem install ' + deps)
 
                                         else:
                                             manual_install.append(deps)
@@ -673,6 +780,7 @@ def main():
                     print("use || run || exec || execute [MODULE]             -    Use specified module.")
                     print("info || information || search || query [MODULE]    -    Show information of the specified module.")
                     print("generate || produce || new [MODULE]                -    Generate a new module template.")
+                    print("test || runtest [MODULE]                           -    Test a module.")
                     print("install [MODULE_PATH]                              -    Install a module.")
                     print("uninstall [MODULE_PATH]                            -    Uninstall a module.")
                     print()
@@ -773,7 +881,7 @@ def main():
                 else:
                     os.system('rm .last_session_exit_fail.log') # Delete the file
 
-            except:
+            except(FileNotFoundError, IOError, OSError):
                 if misc.debugging == True:
                     print("[DEBUG] Session file doesn't exist, now quitting...")
 
@@ -781,7 +889,7 @@ def main():
 
             sys.exit()
 
-        except:
+        except Exception as exceptionmessage:
             print(error.WARNING0003)
             print()
             print("==================== TRACEBACK ====================")

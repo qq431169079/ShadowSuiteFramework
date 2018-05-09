@@ -31,11 +31,10 @@ README for Developers
 
 4.New framework module (For Framework Contributors):
       -If you want to contribute and wanted to create a new framework module
-       (like misc.py or manage_module.py module), you need to follow these
-       guidelines:
+       (like misc.py module), you need to follow these guidelines:
                
 	       - Always follow the PEP 0008 Guideline.
 	       - Use meaningful function and variable names.
-	       - Always use the logger.py module to log information.
+	       - Use the logger.py module to log information.
 	       - Create a cross-platform module.
 	       - All modules must accept arguments that is needed like " SESSION_ID, misc.debugging, misc.failsafe, and more important information."

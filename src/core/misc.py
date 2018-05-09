@@ -22,6 +22,7 @@ import sys
 import random
 import datetime
 import hashlib
+import pip
 
 from core import version
 from core import logger
@@ -300,6 +301,9 @@ class programFunctions:
     def isfolder(self, file_path):
         return os.path.isdir(file_path)
 
+    def pip_install(self, package):
+        pip.main(['install', package])
+
     def export_conf(self, config_file, config_dict):
         logger.log(3, config_dict['username'] + " is exporting settings to " + config_file + ".")
         try:
@@ -338,7 +342,12 @@ output_path="output/"
             euid = os.geteuid()
 
         except:
-            # Must be running on windows...
+            # Might be running on windows...
             euid = 0
 
         return euid
+
+    def random_color(self):
+        color_list = [CW, CR, CG, CY, CB, CGR, CP, CC]
+        randomizer = random.randint(0, 7)
+        return color_list[randomizer]

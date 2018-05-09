@@ -1,5 +1,6 @@
 DEV0001
 
--core/fullupdate.py: Fix algorithm
 -core/update.py: Fix algorithm
--*: Remove Failsafe
+-*: API arguments as dict.
+-SSF.py: less for python 3
+-core/list_module.py: List tools by category
