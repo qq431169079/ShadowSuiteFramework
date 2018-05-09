@@ -1,3 +1,22 @@
+commit 36c3a526235beda857591d941f4c41d49102dbf8
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 9 21:32:20 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.0.9.9-Final_Build
+    
+    -This is the Final Build of version 0.0.9.9
+    -Module test command now functional.
+
+commit c1890d50ce59ee5bc491f1ee6739eee7d062ea49
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 8 13:50:18 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit bda9699a5ecb42f1dc4af6665e2ab45398b6a219
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Tue May 8 13:49:42 2018 +0800
