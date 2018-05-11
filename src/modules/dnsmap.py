@@ -44,7 +44,7 @@ info = {
 }
 dependencies = ['PYTHON: socket'] # Put needed dependencies here.  
 module_status = 0
-category = ['dnsmap', 'filip', 'waeytens', 'dns', 'domain', 'python']
+category = ['dnsmap', 'filip', 'waeytens', 'dns', 'domain', 'python', 'info', 'ga', 'recon']
 
 # Changelog of the module
 changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"

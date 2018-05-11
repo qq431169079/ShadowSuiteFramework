@@ -44,8 +44,8 @@ def check_for_updates(DEBUGGING):
     try:
         print(misc.CG + "[i] Checking for updates..." + misc.CW)
         if misc.debugging == True:
-            print("[DEBUG] getting https://api.github.com/repos/Sh4d0w-T34m/ShadowSuiteLE/releases/latest...")
-        r = requests.get("https://api.github.com/repos/Sh4d0w-T34m/ShadowSuiteLE/releases/latest")
+            print("[DEBUG] getting https://api.github.com/repos/Sh4d0w-T34m/ShadowSuiteFramework/releases/latest...")
+        r = requests.get("https://api.github.com/repos/Sh4d0w-T34m/ShadowSuiteFramework/releases/latest")
         if(r.ok):
             items = json.loads(r.text or r.content)
             rver = items['tag_name']
@@ -64,11 +64,11 @@ def update(DEBUGGING):
         return None
     
     else:
-        url = "https://github.com/Sh4d0w-T34m/ShadowSuiteLE/tarball/master"
+        url = "https://github.com/Sh4d0w-T34m/ShadowSuiteFramework/tarball/master"
         print(misc.CG + "Downloading..." + misc.CW)
         try:
             if misc.debugging == True:
-                print("[DEBUG] Opening https://github.com/Sh4d0w-T34m/ShadowSuiteLE/tarball/master")
+                print("[DEBUG] Opening https://github.com/Sh4d0w-T34m/ShadowSuiteFramework/tarball/master")
             u = urllib.request.urlopen(url)
 
         except urllib.error.URLError:
@@ -86,7 +86,7 @@ def update(DEBUGGING):
         files = glob(getpath.tmp()+"*/")
         update_path = None
         for file in files:
-            if "ShadowSuiteLE.py" in file and os.path.isfile(file) == False:
+            if "SSF.py" in file and os.path.isfile(file) == False:
                 update_path = file
                 break
             
@@ -107,5 +107,5 @@ def update(DEBUGGING):
                 
         print(misc.CG + "Clearing tmp..." + misc.CW)
         mscop.clear_tmp()
-        print(misc.CY + "Update installed! closing Shadow Suite LE..." + misc.CW)
+        print(misc.CY + "Update installed! closing Shadow Suite Framework..." + misc.CW)
         sys.exit(0)

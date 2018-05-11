@@ -235,6 +235,6 @@ class ShadowSuite:
 
     def export_conf(self, config_file, config_dict):
         # Exports the current configuration to a file.
-        logger.log(3, config_dict['username'] + " is exporting settings to " + config_file + " via API.", 'api_logfile', self.SESSION_ID)
+        logger.log(3, config_dict['username'] + " is exporting settings to " + config_file + " via API.", 'api_logfile.txt', self.SESSION_ID)
         result = misc.programFunctions().export_conf(config_file, config_dict)
         return result

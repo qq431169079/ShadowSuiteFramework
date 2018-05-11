@@ -43,7 +43,7 @@ info = {
 }
 dependencies = ['none'] # Put needed dependencies here.  
 module_status = 0
-category = ['common', 'user', 'password', 'profiler', 'cupp', 'muris', 'kurgas', 'j0rgan', 'python']
+category = ['common', 'user', 'password', 'profiler', 'cupp', 'muris', 'kurgas', 'j0rgan', 'python', 'interactive']
 
 # Changelog of the module
 changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"

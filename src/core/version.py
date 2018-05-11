@@ -20,10 +20,10 @@ import os
 import sys
 from core import error
 
-VAPI = "0.0.6.9-API"
-VNUMBER = "0.0.9.9-Final_Build"
-VTYPE = "Experimental"
-VCODENAME = "Portable"
+VAPI = "0.0.7.0-API"
+VNUMBER = "0.1.0.0"
+VTYPE = "Stable"
+VCODENAME = "Quantum"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
 
     # example:
@@ -90,21 +90,12 @@ BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
     # Machine Independent                                ( Used in v0.0.8.0 )
     # Netmask                                            ( Used in v0.0.9.3 )
     # Open Source                                        ( Used in v0.0.9.7 )
-    # Portable                                           ( Not yet used )
-    # Querty                                             ( Not yet used )
-    # Ruby                                               ( Not yet used )
-    # SCADA                                              ( Not yet used )
-    # TCAP                                               ( Not yet used )
-    # Ugly Code                                          ( Not yet used )
-    # Variable                                           ( Not yet used )
-    # Wireless                                           ( Not yet used )
-    # Xfr                                                ( Not yet used )
-    # YWSYLS                                             ( Not yet used )
-    # Zero-Day                                           ( Not yet used )
+    # Portable                                           ( Used in v0.0.9.9 )
+    # Quantum                                            ( Used in v0.1.0.0 )
 
 def changelog():
     if sys.platform == 'windows' or sys.platform == 'nt':
-        os.system("start extras/changelog")
+        os.system("type extras/changelog")
 
     else:
         os.system("less extras/changelog")

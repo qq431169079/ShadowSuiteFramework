@@ -43,7 +43,7 @@ info = {
 }
 dependencies = ['PYTHON: optparse', 'PYTHON: urllib', 'PYTHON: urllib2', 'PYTHON: urlparse'] # Put needed dependencies here.  
 module_status = 1
-category = ['damn', 'small', 'sqli', 'scanner', 'dsss', 'miroslav', 'stampar', 'sql', 'inkection', 'python']
+category = ['damn', 'small', 'sqli', 'scanner', 'dsss', 'miroslav', 'stampar', 'sql', 'inkection', 'python', 'database', 'assesment']
 
 # Changelog of the module
 changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"

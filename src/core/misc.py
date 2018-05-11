@@ -62,18 +62,24 @@ else:
     FI = ''
 
 # Shadow Suite's logo and a brief description.
-LOGO = CG + """  ___|  |               |                  ___|       _) |
-\\___ \\  __ \\   _` |  _` |  _ \\\\ \\  \\   / \\___ \\  |   | | __|  _ \\
-      | | | | (   | (   | (   |\\ \\  \\ /        | |   | | |    __/
-_____/ _| |_|\\__,_|\\__,_|\\___/  \\_/\\_/   _____/ \\__,_|_|\\__|\\___|""" + "\n                        Framework\n                Ethical Hacking Toolkit\n\n" + '\n' + version.BOTH + "\n\n         Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year) + CW
+LOGO = r"""
+ ____  _               _                 ____        _ _
+/ ___|| |__   __ _  __| | _____      __ / ___| _   _(_) |_ ___
+\___ \| '_ \ / _` |/ _` |/ _ \ \ /\ / / \___ \| | | | | __/ _ \
+ ___) | | | | (_| | (_| | (_) \ V  V /   ___) | |_| | | ||  __/
+|____/|_| |_|\__,_|\__,_|\___/ \_/\_/   |____/ \__,_|_|\__\___|
+                         Framework
+                  Ethical Hacking Toolkit
+""" + "\n\t     " + version.BOTH + "\n\n             Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
 
 # brief description of the license.
-BRIEF_LICENSE = CG + r"""This program comes with ABSOLUTELY NO WARRANTY.
+BRIEF_LICENSE = r"""
+This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
-under certain conditions; type 'license' for details.""" + CW
+under certain conditions; type 'show license' for details."""
 
 # ShadowSuite is running as module.
-MODULE_MODE_INFO = CY + "[i] Running as module...\n" + CW
+MODULE_MODE_INFO = CY + "Running as module..." + CW
 
 # Debugging mode
 debugging = False # Default value
@@ -308,6 +314,8 @@ class programFunctions:
         try:
             open(config_file, 'r').read()
             open(config_file, 'r').close()
+            os.remove(config_file)
+            raise FileNotFoundError
 
         except FileNotFoundError:
             open(config_file, 'w').write('')
@@ -350,3 +358,7 @@ output_path="output/"
         color_list = [CW, CR, CG, CY, CB, CGR, CP, CC]
         randomizer = random.randint(0, 7)
         return color_list[randomizer]
+
+    def captcha_picker(self, list_of_strings):
+        randomizer = random.randint(0, (len(list_of_strings)-1))
+        return list_of_strings[randomizer]

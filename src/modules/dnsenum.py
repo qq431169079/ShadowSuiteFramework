@@ -43,7 +43,7 @@ info = {
 }
 dependencies = ['BINARY: perl', 'PERL: Term::ANSIColor', 'PERL: Getopt::Long', 'PERL: Net::IP', 'PERL: Net::DNS', 'PERL: Net::Netmask'] # Put needed dependencies here.
 module_status = 0
-category = ['dnsenum', 'filip', 'waeytens', 'multithread', 'perl', 'enum', 'dns', 'info', 'domain', 'discover', 'non-contigous', 'ip blocks']
+category = ['dnsenum', 'filip', 'waeytens', 'multithread', 'perl', 'enum', 'dns', 'info', 'domain', 'discover', 'non-contigous', 'ip blocks', 'recon', 'ga', 'host', 'address', 'nameserver', 'mx', 'axfr', 'google', 'scraping', 'brute', 'force', 'network', 'ranges', 'reverse', 'lookup']
 
 # Changelog of the module
 changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"

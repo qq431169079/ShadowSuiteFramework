@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 5.0
+module_version = 7.2
 
 # Import directives
 try:
@@ -29,24 +29,24 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "D-Tect", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "4.0", # version
-        "author": "Shawar Khan", # Author
-        "desc": "An All-In-One Tool that provides multiple features and detection features which gather target information and finds different flaws in it.", # Brief description
+        "name": "Wifite 2", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "version": "1.0", # version
+        "author": "derv82", # Author
+        "desc": "Wireless network auditing tool.", # Brief description
         "email": "none", # Email
-        "authorinfo": "https://shawarkhan.com/about/", # Additional information about the author; this could be
-        "lastupdate": "Apr. 11, 2018",                     # a website of the author.
+        "authorinfo": "none", # Additional information about the author; this could be
+        "lastupdate": "May. 11, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
-        "needsroot": "1", # Does this module needs root permissions?
+        "needsroot": "0", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none'] # Put needed dependencies here.  
-module_status = 0
-category = ['dtect', 'shawar', 'khan', 'multiple', 'detection', 'features', 'python', 'sub', 'domain', 'scan', 'port', 'wp', 'wordpress', 'username', 'backup', 'grab', 'sensitive', 'file', 'detect', 'same', 'site', 'scripting', 'click', 'jacking', 'xss', 'vuln', 'sqli', 'sql', 'inject']
+dependencies = ['BINARY: python2', 'BINARY: aircrack-ng', 'BINARY: reaver', 'BINARY: tshark', 'BINARY: cowpatty'] # Put needed dependencies here.
+module_status = 0 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
+category = ['all', 'python', 'wireless', 'attack', 'audit', 'network', 'crack', 'wifi', 'fidelity']
 
 # Changelog of the module
-changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -83,7 +83,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+def main(global_variables):
     if import_error is True:
         return None
 
@@ -101,11 +101,13 @@ def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, 
                 return 0
 
             else:
-                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
+                module_body(global_variables)
 
         else:
-            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
+            module_body(global_variables)
 
-def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
-    os.system("cd modules/DTECT && python2 d-tect.py")
-    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
+def module_body(global_variables):
+    # To support module versions older than v7.0
+    API_ShadowSuite = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
+    os.system("cd modules/WIFITE2/ && python2 -B Wifite.py")
+    print(API_ShadowSuite.FINISH)

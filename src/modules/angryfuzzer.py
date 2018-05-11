@@ -43,7 +43,7 @@ info = {
 }
 dependencies = ['PYTHON: requests', 'PYTHON: optparse', 'PYTHON: urlparse', 'PYTHON: getopt'] # Put needed dependencies here.
 module_status = 0
-category = ['angry', 'fuzzer', 'recon', 'info', 'gather', 'vuln', 'fuzzdb', 'python']
+category = ['angry', 'fuzz', 'recon', 'info', 'gather', 'vuln', 'fuzzdb', 'python', 'discover', 'hidden', 'file', 'directories', 'directory', 'web', 'server', 'url', 'relative', 'path', 'compare', 'cms', 'wp', 'word', 'press', 'drupal', 'joomla']
 
 # Changelog of the module
 changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"

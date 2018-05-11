@@ -43,7 +43,7 @@ info = {
 }
 dependencies = ['none'] # Put needed dependencies here. 
 module_status = 0
-category = ['automater', 'tekdefense', 'ip', 'url', 'hash', 'passive', 'analysis', 'tool', 'python']
+category = ['automater', 'tekdefense', 'ip', 'url', 'hash', 'passive', 'analysis', 'tool', 'python', 'auto', 'osint', 'analysis']
 
 # Changelog of the module
 changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"

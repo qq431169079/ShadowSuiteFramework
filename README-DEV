@@ -30,11 +30,14 @@ README for Developers
       -Shadow Suite Framework uses the 'Shadow Team Software Development Cycle'.
 
 4.New framework module (For Framework Contributors):
-      -If you want to contribute and wanted to create a new framework module
-       (like misc.py module), you need to follow these guidelines:
+      -If you want to contribute and wanted to create a new extension for the
+       framework (like misc.py module), you need to follow these guidelines:
                
 	       - Always follow the PEP 0008 Guideline.
 	       - Use meaningful function and variable names.
 	       - Use the logger.py module to log information.
 	       - Create a cross-platform module.
 	       - All modules must accept arguments that is needed like " SESSION_ID, misc.debugging, misc.failsafe, and more important information."
+
+5.Custom module creation:
+      -See MANUAL file.
