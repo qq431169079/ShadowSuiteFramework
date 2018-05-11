@@ -1,5 +1,3 @@
-wc -l *.py core/*.* extras/* modules/*.* ../README ../README-DEV ../MANUAL > dev/lines
-
    240 API.py
   1357 SSF.py
    128 core/error.py
@@ -58,5 +56,5 @@ wc -l *.py core/*.* extras/* modules/*.* ../README ../README-DEV ../MANUAL > dev
    113 modules/wifite2.py
    163 ../README
     43 ../README-DEV
-   129 ../MANUAL
- 11804 total
+   205 ../MANUAL
+ 11880 total
