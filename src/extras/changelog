@@ -1,3 +1,28 @@
+commit 2532b22dbdc55244bd52456f883e29ae33876355
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 11 19:11:08 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.0.0
+    
+    -Shadow Suite Framework is now officially stable!
+    -A new 'wizard' will automatically run at startup when it is your first
+    time running SSF.
+    -Added Wifite2, WebExpose module.
+    -Updated AngryFuzzer, Automater, Cupp, Dnsenum, Dnsmap, Dsss, D-Tect,
+    and HashBuster.
+    -Sorting out python_requirements and python_requirements.txt
+    -More features and modules coming soon!
+
+commit 6effdc86c012ddf6dbb8b9e7378b0d86a6c96c12
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 11 09:52:41 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 84cd14ba2013fab57c6611c28ac4ae6ada83a10c
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Fri May 11 09:51:50 2018 +0800
