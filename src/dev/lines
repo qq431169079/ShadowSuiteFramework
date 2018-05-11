@@ -1,21 +1,21 @@
-wc -l *.py core/*.* extras/* modules/*.* ../README ../README-DEV ../MANUAL > lines
+wc -l *.py core/*.* extras/* modules/*.* ../README ../README-DEV ../MANUAL > dev/lines
 
    240 API.py
-  1065 SSF.py
+  1357 SSF.py
    128 core/error.py
    111 core/fullupdate.py
     33 core/joke.py
-   216 core/list_module.py
+   166 core/list_module.py
     90 core/logger.py
-   348 core/misc.py
+   364 core/misc.py
     49 core/quote.py
     83 core/suggest.py
-   115 core/temp.py
+   117 core/temp.py
     65 core/update.py
-   110 core/version.py
+   101 core/version.py
      7 extras/Security Level Codes (for profiles).txt
      7 extras/Security Level Codes.txt
-  2054 extras/changelog
+  2114 extras/changelog
    479 extras/codes-of-conduct.txt
    674 extras/shadowsuitelicense
    113 modules/angryfuzzer.py
@@ -36,6 +36,7 @@ wc -l *.py core/*.* extras/* modules/*.* ../README ../README-DEV ../MANUAL > lin
    111 modules/hashid.py
    160 modules/ipcalc.py
    125 modules/ipify.py
+   115 modules/kickthemout.py
    112 modules/lanscan.py
    131 modules/les.py
    154 modules/metagoofil.py
@@ -50,11 +51,12 @@ wc -l *.py core/*.* extras/* modules/*.* ../README ../README-DEV ../MANUAL > lin
    157 modules/slowloris.py
    111 modules/sqlmap.py
    111 modules/striker.py
-   115 modules/temp.py
    129 modules/theharvester.py
    154 modules/urlcrazy.py
+   155 modules/webexpose.py
    111 modules/weeman.py
-   164 ../README
-    40 ../README-DEV
+   113 modules/wifite2.py
+   163 ../README
+    43 ../README-DEV
    129 ../MANUAL
- 11223 total
+ 11804 total
