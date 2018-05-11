@@ -127,3 +127,79 @@ I. Table of Contents
 
 	-Index
 	-Glossary
+
+=========================================================================================
+01.Introduction
+
+    ::What is Shadow Suite Framework?
+        -Shadow Suite Framework is an ethical hacking toolkit, made by the Shadow Team
+	 (https://github.com/Sh4d0w-T34m). The framework is made up by scripts made by
+	 different authors, in different languages. As of this writing, Shadow Suite
+	 Framework has 38 module installed. Written mainly in Python, and other languages
+	 like Perl, Ruby, PHP, and more.
+
+    ::Example cases of using Shadow Suite Framework
+        -Aiding penetration testers for their penetraion tests.
+	    + Shadow Suite Framework can aid penetration testers in auditing the network
+	      they are permitted to test. Testers can use SSF alongside other tools or
+	      frameworks.
+
+	-Simple Security Audits and Penetration Tests.
+	    + Authorized personell can also use Shadow Suite Framework, without using
+	      other tools or frameworks. SSF has modules from reconnaissance to post-
+	      exploitation. SSF module features are effective on simple networks with
+	      simple security.
+
+=========================================================================================
+02.Installation
+
+    Shadow Suite Framework is cross-platform, and can run on various operating systems,
+    as long as Python and other dependencies can be installed. Note that some antiviruses
+    flag Shadow Suite Framework and some of its files as malware. Shadow Suite Framework
+    has exploitation tools, so antiviruses may detect it.
+
+    ::Installing on Linux, Termux Terminal Emulator (Android), and Cygwin Terminal Emulator (Windows)
+        -SSF is tested on Kali Linux 2.0, Linux Mint 17.0, Ubuntu 17.0, Termux, and Cygwin.
+	    1.Update package list. It can be achieved by typing 'apt update' in your shell
+	      if you have APT package manager.
+
+	    2.Install Git client. You can install Git by typing 'apt install git' in your
+	      shell if you have APT package manager.
+
+	    3.Clone the Shadow Suite Framework. Once the Git installation is finished,
+	      You can now clone the repository by typing
+	      'git clone https://github.com/Sh4d0w-T34m/ShadowSuiteFramework.git' in your
+	      terminal.
+
+	    4.Change working directory. Now the repository is cloned and downloaded,
+	      change the working directory to ~/ShadowSuiteFramework/src by typing
+	      'cd ShadowSuiteFramework/src/' in your terminal.
+
+	    5.Install primary dependencies. You need Python interpreter to use Shadow
+	      Suite Framework. Type 'apt install python3 python3-dev' in your terminal
+	      to download python 3 and the python 3 development files.
+
+	    6.Change file mode. Type 'chmod 755 SSF.py' to change SSF.py mode bits to
+	      executable.
+
+	    7.Run SSF as root. Type 'sudo ./SSF.py' to run SSF as root. You can also
+	      run SSF without root, but some modules and features will be unavailable.
+
+	    8.Configure Shadow Suite Framework. Now you have executed SSF, a First-run
+	      wizard will show up. This wizard will run automatically if the specific
+	      dat file is not present. If desired, read the license file by entering 'r'.
+	      If you don't agree to the terms of the license, you can type "q" and
+	      delete the cloned repository. Otherwise, type the 'captcha' and press enter
+	      to continue. After the license agreement, It will ask you if you want to
+	      perform a full update. Type 'y' or 'yes' to perform a full update,
+	      Otherwise, type 'n' or 'no'. It is recommended that you perform a full
+	      update to avoid 'ModuleNotFoundError' or 'ImportError' exceptions and to
+	      use modules without errors. If you choosed no, you can perform a full update
+	      later inside SSF terminal. After the full update, enter your username,
+	      password, root username, and root password.
+
+	    9.You have now successfully installed Shadow Suite Framework!
+
+    ::Installing on Windows
+        -Shadow Suite Framework is not yet tested on Windows, please inform us if it
+	 works in your system.
