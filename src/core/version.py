@@ -20,7 +20,7 @@ import os
 import sys
 from core import error
 
-VAPI = "0.0.6.8-API"
+VAPI = "0.0.6.9-API"
 VNUMBER = "0.0.9.9-Final_Build"
 VTYPE = "Experimental"
 VCODENAME = "Portable"

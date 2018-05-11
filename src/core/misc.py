@@ -22,7 +22,6 @@ import sys
 import random
 import datetime
 import hashlib
-import pip
 
 from core import version
 from core import logger
@@ -302,7 +301,7 @@ class programFunctions:
         return os.path.isdir(file_path)
 
     def pip_install(self, package):
-        pip.main(['install', package])
+        os.system('pip install ' + package)
 
     def export_conf(self, config_file, config_dict):
         logger.log(3, config_dict['username'] + " is exporting settings to " + config_file + ".")

@@ -40,22 +40,21 @@ Full Feature List
 
 TO-DO List
 ------------------------
+1.Kick Them Out, Wifite2, Metasploit Framework, WebExpose, BRAT, Httrack, and MultiTool.
 
-1.CONSTANTS and function arguments. (Finished)
+2.Update The Harvester and Deception.
 
-2.Debug and Failsafe modes. (Finished)
+3.[core/list_module.py]: List tools by category.
 
-3.Update The Harvester and Deception.
+4.[SSF.py]: less for python 3
 
-4.Kick Them Out, Wifite2, Metasploit Framework, WebExpose, BRAT, Httrack, and MultiTool.
+5.[core/update.py]: Fix update algorithms.
 
-5.Automatic installation of custom modules. (Finished)
+6.[*]: API arguments as dict.
 
-6.New update algorithms.
+7.More logging verbosity.
 
-7.Make Shadow Suite Framework Cross-platform. No more Linux and Windows editions (FINISHED)
-
-8.More logging verbosity.
+8.Readline
 
 License and Copying
 ------------------------

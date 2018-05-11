@@ -1,6 +1,0 @@
-DEV0001
-
--core/update.py: Fix algorithm
--*: API arguments as dict.
--SSF.py: less for python 3
--core/list_module.py: List tools by category

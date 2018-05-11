@@ -78,6 +78,7 @@ except ImportError:
 
 def main():
     logger.log(0, 'Shadow Suite Linux Edition launched.', 'logfile.txt', SESSION_ID)
+
     # Global variables
     global config_file
     global __USERNAME__
@@ -90,6 +91,8 @@ def main():
 
     # More variables and constants
     PLATFORM = misc.programFunctions().get_platform()
+    INSTALLED_MODULES = list_module.count(__MODULE_PATH__)
+    #print(INSTALLED_MODULES) # DEV0005: For debugging purposes only
     global_variables = {
             'config_file': config_file, # String; PATH to config file.
             'USERNAME': __USERNAME__, # String; Hashed form of current_user.
@@ -99,6 +102,7 @@ def main():
             'MODULE_PATH': __MODULE_PATH__, # String; PATH to modules directory.
             'OUTPUT_PATH': __OUTPUT_PATH__, # String; PATH to output directory.
             'USERLEVEL': USERLEVEL, # INT; 0 for system-level root, 1 for application-level root, and 2 for normal user.
+            'INSTALLED_MODULES': INSTALLED_MODULES, # INT; Number of modules installed.
 
             'current_user': current_user,
             'PLATFORM': PLATFORM, # String
@@ -109,16 +113,18 @@ def main():
 
     print()
     print(misc.LOGO) # Prints logo
-    print("\n")
+    print()
     # Informs the user on what platform Shadow Suite is running.
     print("[i] Running on " + PLATFORM + " platform.")
-    print("\n")
+    print()
     print(misc.BRIEF_LICENSE) # Prints a brief information about the license.
-    print("\n")
-    print(quote.quote()) # Print a random quote or tip.
-    print("\n")
+    print()
+    print(misc.CW + "Modules:\t[T] " + str(INSTALLED_MODULES[0]) + misc.CG + " [S] " + str(INSTALLED_MODULES[1]) + misc.CY + " [E] " + str(INSTALLED_MODULES[2]) + misc.CR + " [U] " + str(INSTALLED_MODULES[3]) + misc.CGR + " [NYI] " + str(INSTALLED_MODULES[4]) + misc.CP + " [UNK] " + str(INSTALLED_MODULES[5]) + misc.CR + misc.FB + "  [ERR] " + str(INSTALLED_MODULES[6]) + misc.FR + misc.CW)
+    print()
+    print(misc.CG + quote.quote() + misc.CW) # Print a random quote or tip.
+    print()
     print("[i] If you need help, type 'help'...")
-    print("\n")
+    print('\n')
     if __name__ != '__main__':
         # If the program is not running independently, then a message will be shown, while
         # still allowing the user to use it.
@@ -190,6 +196,16 @@ def main():
                         print()
                         print(misc.CY + "Current User: " + current_user + misc.CW)
                         print(random_color1 + "Session ID: " + str(SESSION_ID) + misc.CW)
+                        print()
+                        print(misc.CC + misc.FB + "=== Modules Information ===" + misc.FR + misc.CW)
+                        print()
+                        print(misc.CW + "Total Installed Modules: " + str(INSTALLED_MODULES[0]) + misc.CW)
+                        print(misc.CG + "Stable Modules:          " + str(INSTALLED_MODULES[1]) + misc.CW)
+                        print(misc.CY + "Experimental Modules:    " + str(INSTALLED_MODULES[2]) + misc.CW)
+                        print(misc.CR + "Unstable Modules:        " + str(INSTALLED_MODULES[3]) + misc.CW)
+                        print(misc.CGR + "Not yet working:         " + str(INSTALLED_MODULES[4]) + misc.CW)
+                        print(misc.CP + "Unknown Status:          " + str(INSTALLED_MODULES[5]) + misc.CW)
+                        print(misc.CR + misc.FB + "Modules with Error/s:    " + str(INSTALLED_MODULES[6]) + misc.CW + misc.FR)
                         print()
                         print(misc.CC + misc.FB + "=== Version Information ===" + misc.FR + misc.CW)
                         print()
@@ -544,7 +560,16 @@ def main():
                             module_name = module_name.replace('/', '.')
                             logger.log(3, 'User used ' + module_name + '.', 'logfile.txt', SESSION_ID)
                             module = importlib.import_module(module_name)
-                            module.main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, misc.debugging)
+                            try:
+                                module_version = module.module_version
+                                if module_version < 7.0:
+                                    raise AttributeError
+
+                                else:
+                                    module.main(global_variables)
+
+                            except AttributeError:
+                                module.main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, misc.debugging)
 
                         except ModuleNotFoundError as modulenotfounderror_msg:
                             print("[i] " + str(modulenotfounderror_msg))
@@ -555,6 +580,7 @@ def main():
                             module_name = module_name.replace('/', '.')
                             logger.log(3, 'User looks for ' + module_name + ' information.', 'logfile.txt', SESSION_ID)
                             module = importlib.import_module(module_name)
+                            print('\n\n')
                             module.module_info()
 
                         except ModuleNotFoundError as modulenotfounderror_msg:
@@ -700,7 +726,7 @@ def main():
                                         if 'BINARY: ' in deps:
                                             deps = deps.replace('BINARY: ', '')
                                             if misc.programFunctions().is_windows():
-                                                bin_manual_install += ('BINARY: ' + deps)
+                                                manual_install.append('BINARY: ' + deps)
 
                                             else:
                                                 for pkg_mgr in ['apt', 'pkg', 'yum']:
@@ -721,12 +747,12 @@ def main():
                                         else:
                                             manual_install.append(deps)
 
-                                    if manual_install != (None or [] or ""):
-                                        manual_install += bin_manual_install
+                                    if manual_install != (None or []):
                                         print("[i] Can't install the following:\n")
                                         logger.log(3, 'Failed to install dependencies: ' + str(manual_install), 'logfile.txt', SESSION_ID)
+                                        print(manual_install)
                                         for ideps in manual_install:
-                                            print("- " + ideps)
+                                            print("- |" + ideps + '|')
 
                                         print("\nPlease install to use the module without errors...")
 
@@ -747,7 +773,7 @@ def main():
                         if '.py' not in module_name:
                             module_name = module_name + '.py'
 
-                        print(module_name) # DEV0005: For debugging purposes only
+                        #print(module_name) # DEV0005: For debugging purposes only
 
                         if misc.programFunctions().path_exists(module_name):
                             confirm_uninstall = input("Do you really want to uninstall " + module_name + "? (y/n) > ")

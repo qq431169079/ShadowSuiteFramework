@@ -53,11 +53,11 @@ def list(module_path):
         fr = ''
 
     print(cg + fb + fi + "===Shadow Suite Modules and Frameworks===\n\n" + cb + fr)
-    print(cw + "[i] The stability of the tools is color-coded:" + cw)
+    print(cw + fb + "[i] The stability of the tools is color-coded:" + cw)
     print(cg + "\tStable" + cw)
     print(cy + "\tExperimental" + cw)
     print(cr + "\tUnstable" + cw)
-    print(cp + "\tCustom Module\n\n" + cw)
+    print(cp + "\tCustom Module\n\n" + cw + fr)
 
     modules = os.listdir(module_path)
     module_iterator = 0
@@ -108,116 +108,59 @@ def list(module_path):
             print("[" + str(module_iterator) +"] " + cp + module + " :: (ERROR WHILE FETCHING INFO)" + cw)
             print()
 
-        del ms
+        try:
+            del ms
+
+        except:
+            pass
 
         #print(matched_modules) # DEV0005: For debugging purposes only
 
-    # Old, lame, lazy, hard-coded algorithm :)
-    """
-    print(cb + fb + "\t==01-Information Gathering==\n" + cw + fr)
-    print(cg + "\t\tAutomater" + cw)
-    print(cg + "\t\tDNSEnum" + cw)
-    print(cg + "\t\tDNSMap" + cw)
-    print(cg + "\t\tDNSrecon" + cw)
-    print(cg + "\t\tLANScan" + cw)
-    print(cg + "\t\tMetagoofil" + cw)
-    print(cg + "\t\tNwrap" + cw)
-    print(cg + "\t\tRed Hawk" + cw)
-    print(cg + "\t\tThe Harvester" + cw)
-    print()
-    print(cb + fb + "\t==02-Vulnerability Analysis==\n" + fr + cw)
-    print(cb + fi + "\t\t==Cisco Tools==\n" + cw + fr)
-    print(cg + "\t\t\tCisco Auditing Tool (CAT)" + cw)
-    print(cg + "\t\t\tCisco Global Exploiter (CGE)" + cw)
-    print()
-    print(cb + fi + "\t\t==Fuzzing Tools==\n" + cw + fr)
-    print(cg + "\t\t\tAngry Fuzzer" + cw)
-    print(cr + "\t\t\tDotDotPwn" + cw)
-    print()
-    print(cb + fi + "\t\t==Stress Testing==\n" + cw + fr)
-    print(cg + "\t\t\tfl00d" + cw)
-    print(cg + "\t\t\tSlowloris" + cw)
-    print()
-    print(cb + fi + "\t\t==VoIP Tools==\n" + cw + fr)
-    print(nyi)
-    print()
-    print(cb + fb + "\t==03-Web Application Analysis==\n" + cw + fr)
-    print(cb + fi + "\t\t==CMS and Framework Identification==\n" + cw + fr)
-    print(nyi)
-    print()
-    print(cb + fi + "\t\t==Web Application Proxies==\n" + cw + fr)
-    print(nyi)
-    print()
-    print(cb + fi + "\t\t==Web Crawlers and Directory Bruteforcing Tools==\n" + fr + cw)
-    print(nyi)
-    print()
-    print(cb + fb + "\t\t==Web Vulnerability Scanners==\n" + cw + fr)
-    print(cg + "\t\t\tD-TECT (DTECT)" + cw)
-    print(cg + "\t\t\tShellshocker" + cw)
-    print(cg + "\t\t\tStriker" + cw)
-    print()
-    print(cb + fb + "\t==04-Database Assessment==\n" + cw + fr)
-    print(cy + "\t\tDSSS" + cw)
-    print(cg + "\t\tSQLMap" + cw)
-    print()
-    print(cb + fb + "\t==05-Password Attacks==\n" + cw + fr)
-    print(cb + fi + "\t\t==Offline Attacks==\n" + cw + fr)
-    print(cg + "\t\t\tHash Identifier" + cw)
-    print(cg + "\t\t\tShadowCrack" + cw)
-    print()
-    print(cb + fi + "\t\t==Online Attacks==\n" + cw + fr)
-    print(cr + "\t\t\tSocial Media Toolkit (SMT)" + cw)
-    print(cg + "\t\t\tBlack Hydra" + cw)
-    print(cg + "\t\t\tHash Buster" + cw)
-    print()
-    print(cb + fi + "\t\t==Passing the Hash Tools==\n" + cw + fr)
-    print(nyi)
-    print()
-    print(cb + fi + "\t\t==Password Profiling and Wordlists==\n" + cw + fr)
-    print(cg + "\t\t\tCUPP" + cw)
-    print()
-    print(cb + fb + "\t==06-Wireless Attacks==\n" + cw + fr)
-    print("\t\tWifite" + cw + nyi) # DEV0001 #####
-    print()
-    print(cb + fb + "\t==07-Reverse Engineering==\n" + cw + fr)
-    print(nyi)
-    print()
-    print(cb + fb + "\t==08-Exploitation Tools==\n" + cw + fr)
-    print(cg + "\t\tLinux Exploit Suggester (LES)" + cw)
-    print("\t\tMetasploit Framework (MSF)" + cw + nyi) # DEV0001 #####
-    print(cg + "\t\tRouterSploit" + cw)
-    print()
-    print(cb + fb + "\t==09-Sniffing and Spoofing==\n" + fr +cw)
-    print(cb + fi + "\t\t==Network Sniffers==\n" + fr + cw)
-    print(nyi)
-    print()
-    print(cb + fi + "\t\t==Spoofing and MITM==\n" + cw + fr)
-    print(nyi)
-    print()
-    print(cb + fb + "\t==10-Post Exploitation==\n" + cw + fr)
-    print(nyi)
-    print()
-    print(cb + fb + "\t==11-Forensics==\n" + fr + cw)
-    print(nyi)
-    print()
-    print(cb + fb + "\t==12-Reporting Tools==\n" + cw + fr)
-    print(cg + "\t\tPipal" + cw)
-    print()
-    print(cb + fb + "\t==13-Social Engineering Tools==\n" + fr + cw)
-    print(cg + "\t\tSocial Engineer Toolkit (SET)" + cw)
-    print(cg + "\t\tURLCrazy" + cw)
-    print(cg + "\t\tWeeman" + cw)
-    print()
-    print(cb + fb + "\t==14-System Services==\n" + cw + fr)
-    print(cg + "\t\tIpify" + cw)
-    print(cg + "\t\tIPcalc" + cw)
-    print(cg + "\t\tWebExpose" + cw)
-    print()
-    print(cb + fb + "\t==15-Others==\n" + cw + fr)
-    print(cy + "\t\tDeception" + cw)
-    print()
-    print(cb + fb + "\t==Custom Modules==\n" + cw + fr)
-    # If you are adding a custom module, duplicate the code below:
-    # print(core.misc.cp + "[MODULE NAME]")
-    print(cp + "\t\tsample" + cw)
-    """
+def count(module_path):
+    modules = os.listdir(module_path)
+    module_count = [0, 0, 0, 0, 0, 0, 0]
+    # 0=All, 1=Stable, 2=Experimental, 3=Unstable, 4=NYI/W, 5=UNK, 6=Module with err
+    for module in modules:
+        #print(modules) # DEV0005: For debugging purposes only
+        #print(module) # DEV0005: For debugging purposes only
+        imodule_path = module_path.replace('/', '.')
+        imodule = module.replace('.py', '')
+        try:
+            ms = importlib.import_module(imodule_path + imodule)
+        
+        except ModuleNotFoundError:
+            pass
+        
+        try:
+            if '.py' in module or '.Py' in module or '.pY' in module or '.PY' in module:
+                module_count[0] += 1
+                module = module.replace('.py', '')
+                status = ms.module_status
+                if status == 0:
+                    module_count[1] += 1
+                
+                elif status == 1:
+                    module_count[2] += 1
+                
+                elif status == 2:
+                    module_count[3] += 1
+                
+                elif status == 3:
+                    module_count[4] += 1
+                
+                else:
+                    module_count[5] += 1
+                
+            else:
+                continue
+            
+        except:
+            module_count[6] += 1
+            
+        try:
+            del ms
+        
+        except:
+            pass
+
+    return module_count

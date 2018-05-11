@@ -29,21 +29,21 @@ except ImportError:
 
 # Put your module information here.
 info = {
-        "name": "test", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "Kick Them Out", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
-        "author": "none", # Author
-        "desc": "none", # Brief description
-        "email": "none", # Email
-        "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
+        "author": "Nikolaos Kamarinakis || David Schütz", # Author
+        "desc": "A tool to kick devices out of your network and enjoy all the bandwidth for yourself. It allows you to select specific or all devices and ARP spoofs them off your local area network.", # Brief description
+        "email": "nikolaskam{at}gmail{dot}com", # Email
+        "authorinfo": "https://twitter.com/nikolaskama || https://twitter.com/xdavidhu", # Additional information about the author; this could be
+        "lastupdate": "May. 10, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
-        "needsroot": "1", # Does this module needs root permissions?
+        "needsroot": "0", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['BINARY: python3', 'PYTHON: none'] # Put needed dependencies here.
-module_status = 1 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
-category = ['all', 'python']
+dependencies = ['BINARY: python3', 'BINARY: nmap', 'PYTHON: scapy-python', 'PYTHON: python-nmap', 'PYTHON: netifaces'] # Put needed dependencies here.
+module_status = 0 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
+category = ['all', 'python', 'kick', 'them', 'out', 'nikolaos', 'kamarinakis', 'david', 'schutz', 'badnwidth', 'arp', 'spoof', 'local', 'area', 'network']
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
@@ -109,9 +109,7 @@ def main(global_variables):
 def module_body(global_variables):
     # To support module versions older than v7.0
     API_ShadowSuite = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
-    # Place your program here. This is the function where your program will be placed.
-    # Remove module_info(), or leave it here. It's your call.
-    module_info()
+    
     print()
-    print(error.WARNING0002)
+    os.system('cd modules/KICKTHEMOUT && ' + sys.executable + ' kickthemout.py')
     print(API_ShadowSuite.FINISH)

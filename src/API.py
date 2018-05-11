@@ -189,7 +189,7 @@ class ShadowSuite:
 
     def list_module(self):
         logger.log(0, 'User used list_module method via API.', 'api_logfile.txt', self.SESSION_ID)
-        list_module.list(self.__MODULE_PATH__)
+        list_module.list(self.MODULE_PATH)
 
     def find_module(self, module):
         # Argument "module" is the target module to view the info.
