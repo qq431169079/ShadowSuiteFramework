@@ -1,6 +1,5 @@
 # Shadow Suite Framework 0.1.0.0 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
-================
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
 It provides many tools that you can use,
@@ -11,9 +10,9 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # What's new?
 ------------------
-1.36 modules for ethical hacking and penetration testing and counting!
+-36 modules for ethical hacking and penetration testing and counting!
 
-2.Participation in this project is open to anyone. :)
+-Participation in this project is open to anyone. :)
 
 # Full Feature List
 ------------------------
@@ -40,21 +39,21 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # TO-DO List
 ------------------------
-1.Metasploit Framework, BRAT, Httrack, and MultiTool.
+-Metasploit Framework, BRAT, Httrack, and MultiTool.
 
-2.Update The Harvester, FL00D, and Deception.
+-Update The Harvester, FL00D, and Deception.
 
-3.[core/list_module.py]: List tools by category.
+-[core/list_module.py]: List tools by category.
 
-4.[SSF.py]: less for python 3
+-[SSF.py]: less for python 3
 
-5.[core/update.py]: Fix update algorithms.
+-[core/update.py]: Fix update algorithms.
 
-6.[*]: API arguments as dict.
+-[*]: API arguments as dict.
 
-7.More logging verbosity.
+-More logging verbosity.
 
-8.Readline
+-Readline
 
 # License and Copying
 ------------------------
@@ -122,15 +121,11 @@ Shadow Suite Framework is the main project of Shadow Team.
 	[i] More contributors in program...
 
 # Requirements
-------------------------
-1.Supported Operating Systems
-`	-Kali Linux
-	-Linux Mint
-	-Termux Terminal Emulator for Android
-	-Cygwin Terminal Emulator for Windows
+-Tested Operating Systems are Kali Linux, Linux Mint, Termux Terminal Emulator for Android, and Cygwin Terminal Emulator for Windows
 	
-	[i] Not yet tested for Windows Operating Systems...
-	[i] Worked on your operating system but not listed here? Please contact us and we'll be happy to include it here!
+-[i] Not yet tested for Windows Operating Systems...
+
+-[i] Worked on your operating system but not listed here? Please contact us and we'll be happy to include it here!
 
 2.Internet Connection. (for performing remote attacks and/or updating)
 3.Python Interpreter version 2 and 3.
