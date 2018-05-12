@@ -1,5 +1,5 @@
-Shadow Suite Framework 0.1.0.0 :: Ethical Hacking Toolkit and Framework
-Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
+# Shadow Suite Framework 0.1.0.0 :: Ethical Hacking Toolkit and Framework
+## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 ================
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -9,13 +9,13 @@ Tools that you need for reconnaissance, scanning,
 exploitation, encryption, password cracking, and more!
 Shadow Suite Framework is the main project of Shadow Team.
 
-What's new?
+# What's new?
 ------------------
 1.36 modules for ethical hacking and penetration testing and counting!
 
 2.Participation in this project is open to anyone. :)
 
-Full Feature List
+# Full Feature List
 ------------------------
 -Open Source
       -Shadow Suite is protected by the GNU General Public License, means
@@ -38,7 +38,7 @@ Full Feature List
        arsenal! It provides you tools written in different languages. Python,
        Ruby, Perl, PHP, and many more!
 
-TO-DO List
+# TO-DO List
 ------------------------
 1.Metasploit Framework, BRAT, Httrack, and MultiTool.
 
@@ -56,7 +56,7 @@ TO-DO List
 
 8.Readline
 
-License and Copying
+# License and Copying
 ------------------------
 
 -This program is free software: you can redistribute it and/or modify
@@ -74,7 +74,7 @@ License and Copying
 
 -See LICENSE file.
 
-Credits
+# Credits
 ------------------------
 
 	==Shadow Suite Framework Contributors==
@@ -121,10 +121,11 @@ Credits
 
 	[i] More contributors in program...
 
-Requirements
+# Requirements
 ------------------------
 1.Supported Operating Systems
 `	-Kali Linux
+	-Linux Mint
 	-Termux Terminal Emulator for Android
 	-Cygwin Terminal Emulator for Windows
 	
@@ -136,7 +137,7 @@ Requirements
 4.Dependencies can be installed automatically in the program. (Needs Internet Connection)
 
 
-Installing & Running
+# Installing & Running
 ------------------------
 1.Installing and Running
       -Enter these commands in your terminal:
