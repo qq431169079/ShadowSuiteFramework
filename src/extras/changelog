@@ -1,3 +1,58 @@
+commit 7f79ee3d5f1e22715ac336dbf02adca89847e8bd
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun May 13 09:12:49 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.0.1
+    
+    DNSRECON:
+            + Merge pull request #79 from cramppet/master
+            + Fixed a typo when parsing TXT records
+    
+    SQLMAP:
+            + Patch for #3068
+    
+    KICKTHEMOUT:
+            + Fix keyboard exception in initial scanning process
+    
+    WIFITE2:
+            + --keep-ivs option to retain .ivs files across attacks on the same target
+            + For #27
+            + Lots of changes to improve WEP, but don't actually improve WEP.
+            + Don't kill+restart aircrack after 30s, wait 60s for target,
+            + Also detect enabled/disabled interfaces when putting in/out of monitor mode.
+    
+    ROUTERSPLOIT:
+            + Adding tests for exploits info (#416)
+            + Adding MVPower DVR Jaws RCE exploit (#414)
+            + Adding D-Link DIR-8XX Password Disclosure module (#413)
+            + Fixing airos_6_x (#412)
+            + Fixing tg784_authbypass, dlink-dsl and heartbleed (#411)
+            + Fixing Thomson TWG849 Info Disclosure module (#410)
+            + OpenSSL Heartbleed module (#409)
+            + Init heartbleed fixes
+            + Improving description
+            + Adding certificate parsing
+            + Fixing Telnet read until encoding (#408)
+            + tc7200_password_disclosure_v2: fix vulnerability check and wrong pycrypto call (#406)
+            + Fix vulnerability check in tc7200_password_disclosure_v2
+            + Use an encrypted zero block to identify the binary settings backup data.
+            + Make tc7200_password_disclosure_v2 compatible with new pycrypto
+            + The decryption routine uses AES in ECB mode. The pycrypto module is used for this routine. ECB does not involve any initialization vector (IV). However routersploit uses one that is 16 NUL bytes. Older pycrypto versions just ignored this, but newer versions (at least since 2.6) error on using an IV with ECB.
+            + tc7200_password_disclosure_v2: adapt test to the binary check
+            + add missing import
+            + Removing https warnings (#405)
+            + Removing issue template comments (#404)
+            + Adding issue template (#403)
+            + Fixed ubuntu pip requirements install command (#400)
+            + Adding new asciinema video
+            + Adding Travis status
+            + Fixing issue with pip
+            + Supporting only Python3.6
+            + Adding threat9-test-bed
+            + Test ci (#397)
+
 commit 14644f47bc28d929f3ad45e1e967de51e40f1679
 Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
 Date:   Sat May 12 04:41:33 2018 +0000
