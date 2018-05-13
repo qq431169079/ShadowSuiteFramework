@@ -19,8 +19,6 @@
 import os
 from time import asctime
 
-from core import misc
-
 def log(TYPE=9999, MSG="Logger called.", LOGFILE="logfile.txt", SESSION_ID=123456, DEBUGGING=False):
     TYPE = int(TYPE)
     line = '=' * 50
@@ -86,5 +84,5 @@ def log(TYPE=9999, MSG="Logger called.", LOGFILE="logfile.txt", SESSION_ID=12345
         f.write(ICO + MSG + '\n')
         f.write('\n')
 
-    if DEBUGGING == True or misc.debugging == True:
+    if DEBUGGING == True or DEBUGGING == True:
         print("[DEBUG]: Operation logged: " + ICO + MSG)

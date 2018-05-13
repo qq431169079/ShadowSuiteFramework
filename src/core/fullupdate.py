@@ -28,7 +28,7 @@
 
 import os
 import sys
-import requests
+from core import requests
 import json
 
 import urllib.request

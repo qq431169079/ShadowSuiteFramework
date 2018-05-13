@@ -27,6 +27,7 @@ from lib.core.common import wasLastResponseDBMSError
 from lib.core.data import conf
 from lib.core.data import kb
 from lib.core.data import logger
+from lib.core.decorators import stackedmethod
 from lib.core.dicts import FROM_DUMMY_TABLE
 from lib.core.enums import PAYLOAD
 from lib.core.settings import LIMITED_ROWS_TEST_NUMBER
@@ -48,13 +49,14 @@ def _findUnionCharCount(comment, place, parameter, value, prefix, suffix, where=
     """
     retVal = None
 
-    def _orderByTechnique(lowerCount, upperCount):
+    @stackedmethod
+    def _orderByTechnique(lowerCount=None, upperCount=None):
         def _orderByTest(cols):
             query = agent.prefixQuery("ORDER BY %d" % cols, prefix=prefix)
             query = agent.suffixQuery(query, suffix=suffix, comment=comment)
             payload = agent.payload(newValue=query, place=place, parameter=parameter, where=where)
             page, headers, code = Request.queryPage(payload, place=place, content=True, raise404=False)
-            return not any(re.search(_, page or "", re.I) and not re.search(_, kb.pageTemplate or "", re.I) for _ in ("(warning|error):", "order by", "unknown column", "failed")) and comparison(page, headers, code) or re.search(r"data types cannot be compared or sorted", page or "", re.I)
+            return not any(re.search(_, page or "", re.I) and not re.search(_, kb.pageTemplate or "", re.I) for _ in ("(warning|error):", "order by", "unknown column", "failed")) and not kb.heavilyDynamic and comparison(page, headers, code) or re.search(r"data types cannot be compared or sorted", page or "", re.I) is not None
 
         if _orderByTest(1 if lowerCount is None else lowerCount) and not _orderByTest(randomInt() if upperCount is None else upperCount + 1):
             infoMsg = "'ORDER BY' technique appears to be usable. "
@@ -88,8 +90,8 @@ def _findUnionCharCount(comment, place, parameter, value, prefix, suffix, where=
         kb.errorIsNone = False
         lowerCount, upperCount = conf.uColsStart, conf.uColsStop
 
-        if lowerCount == 1 or conf.uCols:
-            found = kb.orderByColumns or _orderByTechnique(lowerCount, upperCount)
+        if kb.orderByColumns is None and (lowerCount == 1 or conf.uCols):  # ORDER BY is not bullet-proof
+            found = _orderByTechnique(lowerCount, upperCount) if conf.uCols else _orderByTechnique()
             if found:
                 kb.orderByColumns = found
                 infoMsg = "target URL appears to have %d column%s in query" % (found, 's' if found > 1 else "")
@@ -114,10 +116,10 @@ def _findUnionCharCount(comment, place, parameter, value, prefix, suffix, where=
             items.append((count, ratio))
 
         if not isNullValue(kb.uChar):
-            for regex in (kb.uChar, r'>\s*%s\s*<' % kb.uChar):
-                contains = tuple((count, re.search(regex, _ or "", re.IGNORECASE) is not None) for count, _ in pages.items())
-                if len(filter(lambda _: _[1], contains)) == 1:
-                    retVal = filter(lambda _: _[1], contains)[0][0]
+            for regex in (kb.uChar.strip("'"), r'>\s*%s\s*<' % kb.uChar.strip("'")):
+                contains = [count for count, content in pages.items() if re.search(regex, content or "", re.IGNORECASE) is not None]
+                if len(contains) == 1:
+                    retVal = contains[0]
                     break
 
         if not retVal:
@@ -265,6 +267,8 @@ def _unionTestByCharBruteforce(comment, place, parameter, value, prefix, suffix)
 
     validPayload = None
     vector = None
+    orderBy = kb.orderByColumns
+    uChars = (conf.uChar, kb.uChar)
 
     # In case that user explicitly stated number of columns affected
     if conf.uColsStop == conf.uColsStart:
@@ -298,6 +302,10 @@ def _unionTestByCharBruteforce(comment, place, parameter, value, prefix, suffix)
 
             if not all((validPayload, vector)) and not warnMsg.endswith("consider "):
                 singleTimeWarnMessage(warnMsg)
+
+    if count and orderBy is None and kb.orderByColumns is not None:  # discard ORDER BY results (not usable - e.g. maybe invalid altogether)
+        conf.uChar, kb.uChar = uChars
+        validPayload, vector = _unionTestByCharBruteforce(comment, place, parameter, value, prefix, suffix)
 
     return validPayload, vector
 

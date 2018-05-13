@@ -21,9 +21,9 @@ import sys
 from core import error
 
 VAPI = "0.0.7.0-API"
-VNUMBER = "0.1.0.0"
+VNUMBER = "0.1.0.1"
 VTYPE = "Stable"
-VCODENAME = "Quantum"
+VCODENAME = "R"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
 
     # example:
@@ -92,6 +92,7 @@ BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
     # Open Source                                        ( Used in v0.0.9.7 )
     # Portable                                           ( Used in v0.0.9.9 )
     # Quantum                                            ( Used in v0.1.0.0 )
+    # Redundant                                          ( Used in v0.1.0.1 )
 
 def changelog():
     if sys.platform == 'windows' or sys.platform == 'nt':

@@ -18,7 +18,7 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-__version__ = '0.8.12'
+__version__ = '0.8.13'
 __author__ = 'Carlos Perez, Carlos_Perez@darkoperator.com'
 
 __doc__ = """
@@ -64,6 +64,7 @@ import dns.flags
 import json
 from dns.dnssec import algorithm_to_text
 
+from lib.crtenum import scrape_crtsh
 from lib.gooenum import *
 from lib.bingenum import *
 from lib.whois import *
@@ -114,7 +115,8 @@ class Worker(Thread):
 
             except Exception as e:
                 print_debug(e)
-            self.tasks.task_done()
+            finally:
+                self.tasks.task_done()
 
 
 class ThreadPool:
@@ -276,43 +278,43 @@ def brute_tlds(res, domain, verbose=False):
     global brtdata
     brtdata = []
 
-    # tlds taken from http://data.iana.org/TLD/tlds-alpha-by-domain.txt
-    gtld = ['co', 'com', 'net', 'biz', 'org']
-    tlds = ['ac', 'ad', 'ae', 'aero', 'af', 'ag', 'ai', 'al', 'am', 'an', 'ao', 'aq', 'ar',
-            'arpa', 'as', 'asia', 'at', 'au', 'aw', 'ax', 'az', 'ba', 'bb', 'bd', 'be', 'bf', 'bg',
-            'bh', 'bi', 'biz', 'bj', 'bm', 'bn', 'bo', 'br', 'bs', 'bt', 'bv', 'bw', 'by', 'bz', 'ca',
-            'cat', 'cc', 'cd', 'cf', 'cg', 'ch', 'ci', 'ck', 'cl', 'cm', 'cn', 'co', 'com', 'coop',
-            'cr', 'cu', 'cv', 'cx', 'cy', 'cz', 'de', 'dj', 'dk', 'dm', 'do', 'dz', 'ec', 'edu', 'ee',
-            'eg', 'er', 'es', 'et', 'eu', 'fi', 'fj', 'fk', 'fm', 'fo', 'fr', 'ga', 'gb', 'gd', 'ge',
-            'gf', 'gg', 'gh', 'gi', 'gl', 'gm', 'gn', 'gov', 'gp', 'gq', 'gr', 'gs', 'gt', 'gu', 'gw',
-            'gy', 'hk', 'hm', 'hn', 'hr', 'ht', 'hu', 'id', 'ie', 'il', 'im', 'in', 'info', 'int',
-            'io', 'iq', 'ir', 'is', 'it', 'je', 'jm', 'jo', 'jobs', 'jp', 'ke', 'kg', 'kh', 'ki', 'km',
-            'kn', 'kp', 'kr', 'kw', 'ky', 'kz', 'la', 'lb', 'lc', 'li', 'lk', 'lr', 'ls', 'lt', 'lu',
-            'lv', 'ly', 'ma', 'mc', 'md', 'me', 'mg', 'mh', 'mil', 'mk', 'ml', 'mm', 'mn', 'mo',
-            'mobi', 'mp', 'mq', 'mr', 'ms', 'mt', 'mu', 'museum', 'mv', 'mw', 'mx', 'my', 'mz', 'na',
-            'name', 'nc', 'ne', 'net', 'nf', 'ng', 'ni', 'nl', 'no', 'np', 'nr', 'nu', 'nz', 'om',
-            'org', 'pa', 'pe', 'pf', 'pg', 'ph', 'pk', 'pl', 'pm', 'pn', 'pr', 'pro', 'ps', 'pt', 'pw',
-            'py', 'qa', 're', 'ro', 'rs', 'ru', 'rw', 'sa', 'sb', 'sc', 'sd', 'se', 'sg', 'sh', 'si',
-            'sj', 'sk', 'sl', 'sm', 'sn', 'so', 'sr', 'st', 'su', 'sv', 'sy', 'sz', 'tc', 'td', 'tel',
-            'tf', 'tg', 'th', 'tj', 'tk', 'tl', 'tm', 'tn', 'to', 'tp', 'tr', 'travel', 'tt', 'tv',
-            'tw', 'tz', 'ua', 'ug', 'uk', 'us', 'uy', 'uz', 'va', 'vc', 've', 'vg', 'vi', 'vn', 'vu',
-            'wf', 'ws', 'ye', 'yt', 'za', 'zm', 'zw']
+    # https://en.wikipedia.org/wiki/Country_code_top-level_domain#Types
+    # https://www.iana.org/domains
+    # Taken from http://data.iana.org/TLD/tlds-alpha-by-domain.txt
+    itld = ['arpa']
+
+    # Generic TLD
+    gtld = ['co', 'com',  'info', 'net', 'org']
+
+    # Generic restricted TLD
+    grtld = ['biz', 'name', 'pro']
+
+    # Sponsored TLD
+    stld = ['aereo', 'asia', 'cat', 'coop', 'edu', 'gov', 'int', 'jobs', 'mil', 'mobi', 'museum', 'post', 'tel', 'travel', 'xxx']
+
+    # Country Code TLD
+    cctld = ['ac', 'ad', 'ae', 'af', 'ag', 'ai', 'al', 'am', 'an', 'ao', 'aq', 'ar', 'as', 'at', 'au', 'aw', 'ax', 'az', 'ba', 'bb', 'bd', 'be', 'bf', 'bg', 'bh', 'bi', 'bj', 'bl', 'bm', 'bn', 'bo', 'bq', 'br', 'bs', 'bt', 'bv', 'bw', 'by', 'bz', 'ca', 'cc', 'cd', 'cf', 'cg', 'ch', 'ci', 'ck', 'cl', 'cm', 'cn', 'co', 'cr', 'cu', 'cv', 'cw', 'cx', 'cy', 'cz', 'de', 'dj', 'dk', 'dm', 'do', 'dz', 'ec', 'ee', 'eg', 'eh', 'er', 'es', 'et', 'eu', 'fi', 'fj', 'fk', 'fm', 'fo', 'fr', 'ga', 'gb', 'gd', 'ge', 'gf', 'gg', 'gh', 'gi', 'gl', 'gm', 'gn', 'gp', 'gq', 'gr', 'gs', 'gt', 'gu', 'gw', 'gy', 'hk', 'hm', 'hn', 'hr', 'ht', 'hu', 'id', 'ie', 'il', 'im', 'in', 'io', 'iq', 'ir', 'is', 'it', 'je', 'jm', 'jo', 'jp', 'ke', 'kg', 'kh', 'ki', 'km', 'kn', 'kp', 'kr', 'kw', 'ky', 'kz', 'la', 'lb', 'lc', 'li', 'lk', 'lr', 'ls', 'lt', 'lu', 'lv', 'ly', 'ma', 'mc', 'md', 'me', 'mf', 'mg', 'mh', 'mk', 'ml', 'mm', 'mn', 'mo', 'mp', 'mq', 'mr', 'ms', 'mt', 'mu', 'mv', 'mw', 'mx', 'my', 'mz', 'na', 'nc', 'ne', 'nf', 'ng', 'ni', 'nl', 'no', 'np', 'nr', 'nu', 'nz', 'om', 'pa', 'pe', 'pf', 'pg', 'ph', 'pk', 'pl', 'pm', 'pn', 'pr', 'ps', 'pt', 'pw', 'py', 'qa', 're', 'ro', 'rs', 'ru', 'rw', 'sa', 'sb', 'sc', 'sd', 'se', 'sg', 'sh', 'si', 'sj', 'sk', 'sl', 'sm', 'sn', 'so', 'sr', 'ss', 'st', 'su', 'sv', 'sx', 'sy', 'sz', 'tc', 'td', 'tf', 'tg', 'th', 'tj', 'tk', 'tl', 'tm', 'tn', 'to', 'tp', 'tr', 'tt', 'tv', 'tw', 'tz', 'ua', 'ug', 'uk', 'um', 'us', 'uy', 'uz', 'va', 'vc', 've', 'vg', 'vi', 'vn', 'vu', 'wf', 'ws', 'yt', 'za', 'zm', 'zw']
+
     found_tlds = []
     domain_main = domain.split(".")[0]
 
     # Let the user know how long it could take
-    print_status("The operation could take up to: {0}".format(time.strftime('%H:%M:%S',
-                                                                            time.gmtime(len(tlds) / 4))))
-
+    print_status("The operation could take up to: {0}".format(time.strftime('%H:%M:%S', time.gmtime(( len (itld) + len(gtld) + len(grtld) + len(stld) + len(cctld) ) / 3))))
     try:
-        for t in tlds:
+        for t in list(set( itld + gtld + grtld + stld )):
             if verbose:
                 print_status("Trying {0}".format(domain_main + "." + t))
             pool.add_task(res.get_ip, domain_main + "." + t)
-            for g in gtld:
-                if verbose:
-                    print_status("Trying {0}".format(domain_main + "." + g + "." + t))
-                pool.add_task(res.get_ip, domain_main + "." + g + "." + t)
+
+        for cc in cctld:
+            if verbose:
+                print_status("Trying {0}".format(domain_main + "." + cc + "." + t))
+            pool.add_task(res.get_ip, domain_main + "." + cc + "." + t)
+
+        for cc in cctld:
+            if verbose:
+                print_status("Trying {0}".format(domain_main + "." + cc))
+            pool.add_task(res.get_ip, domain_main + "." + cc)
 
         # Wait for threads to finish.
         pool.wait_completion()
@@ -362,7 +364,7 @@ def brute_srv(res, domain, verbose=False):
     try:
         for srvtype in srvrcd:
             if verbose:
-                print_status("Trying {0}".format(res.get_srv, srvtype + domain))
+                print_status("Trying {0}".format(srvtype + domain))
             pool.add_task(res.get_srv, srvtype + domain)
 
         # Wait for threads to finish.
@@ -644,13 +646,13 @@ def dns_record_from_dict(record_dict_list, scan_info, domain):
                         v = unicode(str(v))
                         elem.attrib[k] = v
                     except:
-                        print_error("Could not convert key or value to unicode: '{0} = {1}'".format((repr(k), repr(v))))
+                        print_error("Could not convert key or value to unicode: '{0} = {1}'".format((repr(k)), (repr(v))))
                         print_error("In element: {0}".format(repr(elem.attrib)))
                         continue
                 xml_doc.append(elem)
             except AttributeError:
                 continue
-                xml_doc.append(elem)
+
             except AttributeError:
                 continue
 
@@ -732,6 +734,8 @@ def make_csv(data):
                 csv_data += n["type"] + "," + n["name"] + "," + n["address"] + "," + n["target"] + "," + n["port"] + "\n"
 
             elif re.search(r"CNAME", n["type"]):
+                if "target" not in n.keys():
+                    n["target"] = ""
                 csv_data += n["type"] + "," + n["name"] + ",," + n["target"] + ",\n"
 
             else:
@@ -850,6 +854,9 @@ def dns_sec_check(domain, res):
     except dns.resolver.NXDOMAIN:
         print_error("Could not resolve domain: {0}".format(domain))
         sys.exit(1)
+    
+    except dns.resolver.NoNameservers:
+        print_error("All nameservers failed to answer the DNSSEC query for {0}".format(domain))
 
     except dns.exception.Timeout:
         print_error("A timeout error occurred please make sure you can reach the target DNS Servers")
@@ -896,7 +903,7 @@ def check_recursive(ns_server, timeout):
     return is_recursive
 
 
-def general_enum(res, domain, do_axfr, do_google, do_bing, do_spf, do_whois, zw):
+def general_enum(res, domain, do_axfr, do_google, do_bing, do_spf, do_whois, do_crt, zw):
     """
     Function for performing general enumeration of a domain. It gets SOA, NS, MX
     A, AAAA and SRV records for a given domain. It will first try a Zone Transfer
@@ -1055,6 +1062,14 @@ def general_enum(res, domain, do_axfr, do_google, do_bing, do_spf, do_whois, zw)
                         ip_for_whois.append(r["address"])
                 returned_records.extend(bing_rcd)
 
+        if do_crt:
+            print_status("Performing Crt.sh Search Enumeration")
+            crt_rcd = se_result_process(res, scrape_crtsh(domain))
+            for r in crt_rcd:
+                if "address" in crt_rcd:
+                    ip_for_whois.append(r["address"])
+            returned_records.extend(crt_rcd)
+
         if do_whois:
             whois_rcd = whois_ips(res, ip_for_whois)
             if whois_rcd:
@@ -1149,7 +1164,7 @@ def lookup_next(target, res):
                 returned_records.append({'type': r[0],
                                          'name': r[1], 'strings': r[2]})
         else:
-            txt_answer = res_sys.get_txt(target)
+            txt_answer = res.get_txt(target)
             if len(txt_answer) > 0:
                 for r in txt_answer:
                     print_status("\t {0}".format(" ".join(r)))
@@ -1314,6 +1329,7 @@ def usage():
     print("                                axfr      Test all NS servers for a zone transfer.")
     print("                                goo       Perform Google search for subdomains and hosts.")
     print("                                bing      Perform Google search for subdomains and hosts.")
+    print("                                crt       Perform crt.sh search for subdomains and hosts.")
     print("                                snoop     Perform cache snooping against all NS servers for a given domain, testing")
     print("                                          all with file containing the domains, file given with -D option.")
     print("                                tld       Remove the TLD of given domain and test against all TLDs registered in IANA.")
@@ -1322,6 +1338,7 @@ def usage():
     print("   -s                           Perform a reverse lookup of IPv4 ranges in the SPF record with standard enumeration.")
     print("   -g                           Perform Google enumeration with standard enumeration.")
     print("   -b                           Perform Bing enumeration with standard enumeration.")
+    print("   -k                           Perform crt.sh enumeration with standard enumeration.")
     print("   -w                           Perform deep whois record analysis and reverse lookup of IP ranges found through")
     print("                                Whois when doing a standard enumeration.")
     print("   -z                           Performs a DNSSEC zone walk with standard enumeration.")
@@ -1355,6 +1372,7 @@ def main():
     bing = False
     spf_enum = False
     do_whois = False
+    do_crt = False
     thread_num = 10
     request_timeout = 3.0
     ip_range = None
@@ -1388,6 +1406,7 @@ def main():
         parser.add_argument("-s", help="Perform a reverse lookup of IPv4 ranges in the SPF record with standard enumeration.", action="store_true")
         parser.add_argument("-g", help="Perform Google enumeration with standard enumeration.", action="store_true")
         parser.add_argument("-b", help="Perform Bing enumeration with standard enumeration.", action="store_true")
+        parser.add_argument("-k", help="Perform crt.sh enumeration with standard enumeration.", action="store_true")
         parser.add_argument("-w", help="Perform deep whois record analysis and reverse lookup of IP ranges found through Whois when doing a standard enumeration.", action="store_true")
         parser.add_argument("-z", help="Performs a DNSSEC zone walk with standard enumeration.", action="store_true")
         parser.add_argument("--threads", type=int, dest="threads", help="Number of threads to use in reverse lookups, forward lookups, brute force and SRV record enumeration.")
@@ -1460,6 +1479,7 @@ def main():
     xfr = arguments.a
     goo = arguments.g
     bing = arguments.b
+    do_crt = arguments.k
     do_whois = arguments.w
     zonewalk = arguments.z
     spf_enum = arguments.s
@@ -1471,13 +1491,13 @@ def main():
     # Set the resolver
     res = DnsHelper(domain, ns_server, request_timeout)
 
-    domain_req = ["axfr", "std", "srv", "tld", "goo", "bing", "zonewalk"]
+    domain_req = ["axfr", "std", "srv", "tld", "goo", "bing", "crt", "zonewalk"]
     scan_info = [" ".join(sys.argv), str(datetime.datetime.now())]
 
     if type is not None:
 
         # Check for any illegal enumeration types from the user
-        valid_types = ["axfr","std","rvl","brt","srv","tld","goo","bing","snoop","zonewalk"]
+        valid_types = ["axfr","std","rvl","brt","srv","tld","goo","bing","crt","snoop","zonewalk"]
         incorrect_types = [t for t in type.split(',') if t not in valid_types]
         if incorrect_types:
             print_error("This type of scan is not in the list: {0}".format(','.join(incorrect_types)))
@@ -1498,8 +1518,8 @@ def main():
                         print_error("No records were returned in the zone transfer attempt.")
 
                 elif r == "std":
-                    print_status("Performing General Enumeration of Domain:".format(domain))
-                    std_enum_records = general_enum(res, domain, xfr, goo, bing, spf_enum, do_whois, zonewalk)
+                    print_status("Performing General Enumeration of Domain:{0}".format(domain))
+                    std_enum_records = general_enum(res, domain, xfr, goo, bing, spf_enum, do_whois, do_crt, zonewalk)
 
                     if (output_file is not None) or (results_db is not None) or (csv_file is not None) or (json_file is not None):
                         returned_records.extend(std_enum_records)
@@ -1562,6 +1582,12 @@ def main():
                     if (output_file is not None) or (results_db is not None) or (csv_file is not None) or (json_file is not None):
                         returned_records.extend(bing_enum_records)
 
+                elif r == "crt":
+                    print_status("Performing Crt.sh Search Enumeration against {0}".format(domain))
+                    crt_enum_records = se_result_process(res, scrape_crtsh(domain))
+                    if (output_file is not None) or (results_db is not None) or (csv_file is not None) or (json_file is not None):
+                        returned_records.extend(crt_enum_records)
+
                 elif r == "snoop":
                     if (dict is not None) and (ns_server is not None):
                         print_status("Performing Cache Snooping against NS Server: {0}".format(ns_server))
@@ -1595,7 +1621,7 @@ def main():
 
         # if an output xml file is specified it will write returned results.
         if (output_file is not None):
-            print_status("Saving records to XML file: {0}".format(output_file, scan_info))
+            print_status("Saving records to XML file: {0}".format(output_file))
             xml_enum_doc = dns_record_from_dict(returned_records, scan_info, domain)
             write_to_file(xml_enum_doc, output_file)
 
@@ -1620,13 +1646,13 @@ def main():
     elif domain is not None:
         try:
             print_status("Performing General Enumeration of Domain: {0}".format(domain))
-            std_enum_records = general_enum(res, domain, xfr, goo, bing, spf_enum, do_whois, zonewalk)
+            std_enum_records = general_enum(res, domain, xfr, goo, bing, spf_enum, do_whois, do_crt, zonewalk)
 
             returned_records.extend(std_enum_records)
 
             # if an output xml file is specified it will write returned results.
             if (output_file is not None):
-                print_status("Saving records to XML file: {0}".format(output_file, scan_info))
+                print_status("Saving records to XML file: {0}".format(output_file))
                 xml_enum_doc = dns_record_from_dict(returned_records, scan_info, domain)
                 write_to_file(xml_enum_doc, output_file)
 
@@ -1663,3 +1689,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

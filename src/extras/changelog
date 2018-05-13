@@ -1,3 +1,55 @@
+commit 14644f47bc28d929f3ad45e1e967de51e40f1679
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Sat May 12 04:41:33 2018 +0000
+
+    Update README.md
+
+commit 217b0582af67da9558ee7d84a9f81bf12be1b826
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat May 12 12:23:06 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Modified README to markdown.
+
+commit 943494044120a8921c1f94ad737fe9de7818abc2
+Author: Christopher Andrei Tayao <18389041+Catayao56@users.noreply.github.com>
+Date:   Sat May 12 04:15:00 2018 +0000
+
+    Added CODE_OF_CONDUCT
+
+commit f25fc11ce2e628e42e2ac222d9107e0ffecba647
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 11 20:54:02 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated src/dev/lines
+
+commit d79fb7204598d75d45b861c7be6df1ce7ef73f0e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 11 20:49:52 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated MANUAL.
+
+commit 85bf7dcd844dca3a739b3f9ca04f7a53d0f91d83
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 11 20:17:59 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated apt_requirements and dev/lines.
+
+commit 89f96b7ede527f1256c1c20c7aa642f9a243015a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 11 19:15:49 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 2532b22dbdc55244bd52456f883e29ae33876355
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Fri May 11 19:11:08 2018 +0800

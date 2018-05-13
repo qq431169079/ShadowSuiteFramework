@@ -71,10 +71,26 @@ except ImportError:
     cw = '\033[0m'
     print(cr + "ERROR 0008: A module is missing!\nPlease re-install/re-download Shadow Suite Framework to continue... Please make sure that required modules are installed and running properly!" + cw)
     print("==================== TRACEBACK ====================")
-    traceback.print_exc()
+    try:
+        traceback.print_exc()
+
+    except:
+        print()
+        print("(CANNOT PRINT TRACEBACK INFORMATION)")
+        print()
+
     print("===================================================")
-    logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt')
-    sys.exit(8)
+    try:
+        logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt')
+
+    except:
+        pass
+
+    try:
+        sys.exit(8)
+
+    except:
+        quit()
 
 def main():
     # Global variables

@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.0.0 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.0.1 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -10,19 +10,21 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # What's new?
 ------------------
--36 modules for ethical hacking and penetration testing and counting!
++ Updated DNSRecon, SQLMap, KickThemOut, Wifite2, and RouterSploit modules.
 
--Participation in this project is open to anyone. :)
++ 36 modules for ethical hacking and penetration testing and counting!
+
++ Participation in this project is open to anyone. :)
 
 # Full Feature List
 ------------------------
--Open Source
++ Open Source
       -Shadow Suite is protected by the GNU General Public License, means
        that you can freely download, modify, and distribute the software.
        Just give "creds" to us and the developers that made the awesome
        tools :)
 
--Create Custom Modules from template
++ Create Custom Modules from template
       -Do you know Python? Do you know how to code in Python? Do you want
        to create your own module that can penetration test a Class A network
        in just three seconds? (exagerrated) Shadow Suite Framework provides
@@ -32,46 +34,48 @@ Shadow Suite Framework is the main project of Shadow Team.
 
        You can also submit your custom module to us to make it pre-installed!
 
--Pre-installed modules
++ Pre-installed modules
       -It's okay if you don't know how to program. Shadow Suite Framework has an
        arsenal! It provides you tools written in different languages. Python,
        Ruby, Perl, PHP, and many more!
 
 # TO-DO List
 ------------------------
--Metasploit Framework, BRAT, Httrack, and MultiTool.
++ [FEATURE REQUEST]: Metasploit Framework, BRAT, Httrack, and MultiTool.
 
--Update The Harvester, FL00D, and Deception.
++ [MAINTENANCE]: Update The Harvester, FL00D, and Deception.
 
--[core/list_module.py]: List tools by category.
++ [FEATURE REQUEST]: List tools by category.
 
--[SSF.py]: less for python 3
++ [FEATURE REQUEST]: less for python 3
 
--[core/update.py]: Fix update algorithms.
++ [MAINTENANCE]: Fix update algorithms.
 
--[*]: API arguments as dict.
++ [MAINTENANCE]: API arguments as dict.
 
--More logging verbosity.
++ [MAINTENANCE]: More logging verbosity.
 
--Readline
++ [FEATURE REQUEST]: Readline
+
++ [ISSUE]: requests module not found when running on popular linux systems.
 
 # License and Copying
 ------------------------
 
--This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
++ This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
- You should have received a copy of the GNU General Public License
- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
--See LICENSE file.
++ See LICENSE file.
 
 # Credits
 ------------------------
@@ -118,18 +122,20 @@ Shadow Suite Framework is the main project of Shadow Team.
         Linus Torvalds and contributors: for creating the Linux Operating System.
 	Termux Developers: for creating an amazing terminal emulator for Android.
 
-	[i] More contributors in program...
+	[i] More contributors in program; Type 'module info [MODULE NAME]' on SSF Console.
 
 # Requirements
--Tested Operating Systems are Kali Linux, Linux Mint, Termux Terminal Emulator for Android, and Cygwin Terminal Emulator for Windows
++ Tested Operating Systems are Kali Linux, Linux Mint, Termux Terminal Emulator for Android, and Cygwin Terminal Emulator for Windows
 	
--[i] Not yet tested for Windows Operating Systems...
++ Not yet tested for Windows Operating Systems...
 
--[i] Worked on your operating system but not listed here? Please contact us and we'll be happy to include it here!
++ Worked on your operating system but not listed here? Please contact us and we'll be happy to include it here!
 
-2.Internet Connection. (for performing remote attacks and/or updating)
-3.Python Interpreter version 2 and 3.
-4.Dependencies can be installed automatically in the program. (Needs Internet Connection)
++ Internet Connection. (for performing remote attacks and/or updating)
++ Python Interpreter version 2 and 3.
++ Dependencies
+	-Dependencies can be installed automatically in the program. (Needs Internet Connection)
+	-To manually install, type "pip install -r requirements.txt" and bash instdeps.bash
 
 
 # Installing & Running
@@ -139,7 +145,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 
       $ apt update && apt upgrade -y [1]
       $ apt install python git [2]
-      $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuiteFramework/ [3]
+      $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuiteFramework.git [3]
       $ cd ShadowSuiteFramework/src && chmod 755 SSF.py [4]
       $ ./SSF.py [5]
       [Shadow] $ full update [6]
