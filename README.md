@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.0.1 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.0.2 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -10,7 +10,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # What's new?
 ------------------
-+ Updated DNSRecon, SQLMap, KickThemOut, Wifite2, and RouterSploit modules.
++ Updated BRAT.
 
 + 36 modules for ethical hacking and penetration testing and counting!
 
@@ -41,7 +41,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # TO-DO List
 ------------------------
-+ [FEATURE REQUEST]: Metasploit Framework, BRAT, Httrack, and MultiTool.
++ [FEATURE REQUEST]: Metasploit Framework, Httrack, MultiTool, Nscan, Aeneas Of Troy's PortScaner, PassHunt, GetSploit.
 
 + [MAINTENANCE]: Update The Harvester, FL00D, and Deception.
 

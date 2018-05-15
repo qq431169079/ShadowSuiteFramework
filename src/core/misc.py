@@ -70,7 +70,7 @@ LOGO = r"""
 |____/|_| |_|\__,_|\__,_|\___/ \_/\_/   |____/ \__,_|_|\__\___|
                          Framework
                   Ethical Hacking Toolkit
-""" + "\n\t     " + version.BOTH + "\n\n             Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
+""" + "\n\t    v" + version.BOTH + "\n\n             Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
 
 # brief description of the license.
 BRIEF_LICENSE = r"""

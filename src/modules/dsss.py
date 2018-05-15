@@ -42,7 +42,7 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['PYTHON: optparse', 'PYTHON: urllib', 'PYTHON: urllib2', 'PYTHON: urlparse'] # Put needed dependencies here.  
-module_status = 1
+module_status = 2
 category = ['damn', 'small', 'sqli', 'scanner', 'dsss', 'miroslav', 'stampar', 'sql', 'inkection', 'python', 'database', 'assesment']
 
 # Changelog of the module

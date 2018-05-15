@@ -145,122 +145,124 @@ def main():
     del PLATFORM
     del INSTALLED_MODULES
 
-    try:
-        open('data/.installed.dat', 'r').read()
-        open('data/.installed.dat', 'r').close()
+    if global_variables['config_file'] == 'data/config.dat':
+        try:
+           open('data/.installed.dat', 'r').read()
+           open('data/.installed.dat', 'r').close()
 
-    except(FileNotFoundError):
-        while True:
+        except(FileNotFoundError):
+            while True:
+                misc.programFunctions().clrscrn()
+                print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR)
+                print()
+                print(misc.CG + "\t\t\tFirst-run Wizard" + misc.CW)
+                print()
+                print(misc.FI + misc.CGR + misc.BRIEF_LICENSE + misc.CW + misc.FR)
+                print()
+                print("[R] Read the full version of the license")
+                print("[Q] Quit Shadow Suite Framework")
+                print()
+                list_of_captcha_strings = ['i agree', 'i do', 'i accept', 'i\'ll follow the rules']
+                captcha_string = misc.programFunctions().captcha_picker(list_of_captcha_strings)
+                print("If you accept and will follow the rules of the license, type '" + captcha_string + "'.")
+                captcha_confirm = input(" > ")
+                if captcha_confirm.lower() == 'r' or captcha_confirm.lower() == 'read' or 'license' in captcha_confirm.lower():
+                    if global_variables['PLATFORM'] == 'windows' or global_variables['PLATFORM'] == 'nt':
+                        os.system("start extras/shadowsuitelicense")
+
+                    else:
+                        os.system("less extras/shadowsuitelicense")
+
+                elif captcha_confirm.lower() == captcha_string:
+                    print(misc.FB + misc.CG + "[i] Thank you for downloading Shadow Suite Framework! :D " + misc.FR + misc.CW)
+                    misc.programFunctions().pause()
+                    break
+
+                elif captcha_confirm.lower() == 'q' or captcha_confirm.lower() == 'quit':
+                    print(misc.FB + misc.CR + "\n[i] Thank you for downloading Shadow Suite Framework...")
+                    print(misc.FR + "\n\tIf you are unsatisfied about this project,\n\t\tplease contact us and\n\twe will try our best to make you satisfied :)\n" + misc.CW)
+                    try:
+                        os.remove('.last_session_exit_fail.log') # Delete the file
+
+                    except:
+                        pass
+
+                    sys.exit(0)
+    
+                else:
+                    continue
+
             misc.programFunctions().clrscrn()
             print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR)
             print()
             print(misc.CG + "\t\t\tFirst-run Wizard" + misc.CW)
-            print()
-            print(misc.FI + misc.CGR + misc.BRIEF_LICENSE + misc.CW + misc.FR)
-            print()
-            print("[R] Read the full version of the license")
-            print("[Q] Quit Shadow Suite Framework")
-            print()
-            list_of_captcha_strings = ['i agree', 'i do', 'i accept', 'i\'ll follow the rules']
-            captcha_string = misc.programFunctions().captcha_picker(list_of_captcha_strings)
-            print("If you accept and will follow the rules of the license, type '" + captcha_string + "'.")
-            captcha_confirm = input(" > ")
-            if captcha_confirm.lower() == 'r' or captcha_confirm.lower() == 'read' or 'license' in captcha_confirm.lower():
-                if global_variables['PLATFORM'] == 'windows' or global_variables['PLATFORM'] == 'nt':
-                    os.system("start extras/shadowsuitelicense")
-
-                else:
-                    os.system("less extras/shadowsuitelicense")
-
-            elif captcha_confirm.lower() == captcha_string:
-                print(misc.FB + misc.CG + "[i] Thank you for downloading Shadow Suite Framework! :D " + misc.FR + misc.CW)
-                misc.programFunctions().pause()
-                break
-
-            elif captcha_confirm.lower() == 'q' or captcha_confirm.lower() == 'quit':
-                print(misc.FB + misc.CR + "[i] Thank you for downloading Shadow Suite Framework...")
-                print(misc.FR + "\n\tIf you are unsatisfied about this project,\n\t\tplease contact us and\n\twe will try our best to make you satisfied :)" + misc.CW)
-                try:
-                    os.remove('.last_session_exit_fail.log') # Delete the file
-
-                except:
-                    pass
-
-                sys.exit(0)
-
-            else:
-                continue
-
-        misc.programFunctions().clrscrn()
-        print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR)
-        print()
-        print(misc.CG + "\t\t\tFirst-run Wizard" + misc.CW)
-        while True:
-            askuser_fullupdate = input(misc.FB + misc.CGR + "Do you want to perform a full update? (y/n) > " + misc.CW + misc.FR)
-            if askuser_fullupdate.lower() in ('yes' or 'y'):
-                update.full_update(global_variables['DEBUGGING'])
-                break
-
-            elif askuser_fullupdate.lower() in ('no' or 'n'):
-                break
-
-            else:
-                continue
-
-        while True:
-            askuser_username = input("[i] Username: ")
-            hashed_username = misc.programFunctions().hash(askuser_username, 'sha256')
-            global_variables['USERNAME'] = hashed_username
-            global_variables['current_user'] = askuser_username
             while True:
-                askuser_userpass1 = getpass("[i] Userpass: ")
-                askuser_userpass2 = getpass("[i] Confirm Userpass: ")
-                if askuser_userpass1 == askuser_userpass2:
-                    global_variables['USERPASS'] = misc.programFunctions().hash(askuser_userpass1, 'sha256')
+                askuser_fullupdate = input(misc.FB + misc.CGR + "Do you want to perform a full update? (y/n) > " + misc.CW + misc.FR)
+                if askuser_fullupdate.lower() in ('yes' or 'y'):
+                    update.full_update(global_variables['DEBUGGING'])
+                    break
+
+                elif askuser_fullupdate.lower() in ('no' or 'n'):
                     break
 
                 else:
                     continue
-
-            askuser_rootname = input("[i] Rootname: ")
-            hashed_rootname = misc.programFunctions().hash(askuser_rootname, 'sha256')
-            global_variables['ROOTNAME'] = hashed_rootname
+            
+            print("[i] Just press enter if you don't want to use password protection.")
             while True:
-                askuser_rootpass1 = getpass("[i] Rootpass: ")
-                askuser_rootpass2 = getpass("[i] Confirm Rootpass: ")
-                if askuser_rootpass1 == askuser_rootpass2:
-                    global_variables['ROOTPASS'] = misc.programFunctions().hash(askuser_rootpass1, 'sha256')
-                    break
+                askuser_username = input("[i] Username: ")
+                hashed_username = misc.programFunctions().hash(askuser_username, 'sha256')
+                global_variables['USERNAME'] = hashed_username
+                global_variables['current_user'] = askuser_username
+                while True:
+                    askuser_userpass1 = getpass("[i] Userpass: ")
+                    askuser_userpass2 = getpass("[i] Confirm Userpass: ")
+                    if askuser_userpass1 == askuser_userpass2:
+                        global_variables['USERPASS'] = misc.programFunctions().hash(askuser_userpass1, 'sha256')
+                        break
 
-                else:
-                    continue
+                    else:
+                        continue
 
-            break
+                askuser_rootname = input("[i] Rootname: ")
+                hashed_rootname = misc.programFunctions().hash(askuser_rootname, 'sha256')
+                global_variables['ROOTNAME'] = hashed_rootname
+                while True:
+                    askuser_rootpass1 = getpass("[i] Rootpass: ")
+                    askuser_rootpass2 = getpass("[i] Confirm Rootpass: ")
+                    if askuser_rootpass1 == askuser_rootpass2:
+                        global_variables['ROOTPASS'] = misc.programFunctions().hash(askuser_rootpass1, 'sha256')
+                        break
 
-        config_dict = {
-                "username": global_variables['USERNAME'],
-                "userpass": global_variables['USERPASS'],
-                "rootname": global_variables['ROOTNAME'],
-                "rootpass": global_variables['ROOTPASS'],
-                "module_path": global_variables['MODULE_PATH'],
-                "output_path": global_variables['OUTPUT_PATH']
-                }
+                    else:
+                        continue
+
+                break
+
+            config_dict = {
+                    "username": global_variables['USERNAME'],
+                    "userpass": global_variables['USERPASS'],
+                    "rootname": global_variables['ROOTNAME'],
+                    "rootpass": global_variables['ROOTPASS'],
+                    "module_path": global_variables['MODULE_PATH'],
+                    "output_path": global_variables['OUTPUT_PATH']
+                    }
         
-        export_conf_result = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING']).export_conf(global_variables['config_file'], config_dict)
+            export_conf_result = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING']).export_conf(global_variables['config_file'], config_dict)
 
-        del askuser_fullupdate
-        del askuser_username
-        del askuser_userpass1
-        del askuser_userpass2
-        del askuser_rootname
-        del askuser_rootpass1
-        del askuser_rootpass2
+            del askuser_fullupdate
+            del askuser_username
+            del askuser_userpass1
+            del askuser_userpass2
+            del askuser_rootname
+            del askuser_rootpass1
+            del askuser_rootpass2
 
-        open('data/.installed.dat', 'w').write('True')
-        open('data/.installed.dat', 'w').close()
-        misc.programFunctions().clrscrn()
-        #print(config_dict) # DEV0005
-        #print(global_variables) # DEV0005
+            open('data/.installed.dat', 'w').write('True')
+            open('data/.installed.dat', 'w').close()
+            misc.programFunctions().clrscrn()
+            #print(config_dict) # DEV0005
+            #print(global_variables) # DEV0005
 
     print()
     print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR) # Prints logo
@@ -294,11 +296,11 @@ def main():
             # Otherwise, $ will be shown.
             if misc.programFunctions().geteuid() != 0:
                 logger.log(0, 'Running as normal user.', 'logfile.txt', global_variables['SESSION_ID'])
-                menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + "@" + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] $: ")
+                menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] $: ")
 
             else:
                 logger.log(0, 'Running as root.', 'logfile.txt', global_variables['SESSION_ID'])
-                menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + "@" + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] #: ")
+                menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] #: ")
 
             if menu_input.lower().startswith("help"):
                 logger.log(0, 'User needs help.', 'logfile.txt', global_variables['SESSION_ID'])
@@ -684,15 +686,15 @@ def main():
                             del ask_remove_config
 
                     elif config_o[1].startswith("reset"):
-                        confirm_config_reset = input("Do you really want to reset default values to data/config.dat? (y/n) > ")
+                        confirm_config_reset = input("Do you really want to reset default values to " + global_variables['config_file'] + "? (y/n) > ")
                         if confirm_config_reset.lower() == 'y':
                             if misc.programFunctions().is_windows():
-                                os.system("del data/config.dat")
-                                os.system("xcopy data/.default_config.dat data/config.dat")
+                                os.system("del " + global_variables['config_file'])
+                                os.system("xcopy data/.default_config.dat " + global_variables['config_file'])
 
                             else:
-                                os.system("rm data/config.dat")
-                                os.system("cp data/.default_config.dat data/config.dat")
+                                os.system("rm " + global_variables['config_file'])
+                                os.system("cp data/.default_config.dat " + global_variables['config_file'])
 
                             print("Default values reset finished! Press enter key to restart.")
                             misc.programFunctions().pause(True)
@@ -1194,7 +1196,7 @@ if __name__ == "__main__":
             if '-c' in sys.argv[iterator_config]:
                 iterator_config += 1
                 config_file = sys.argv[iterator_config]
-                config_file = "data/" + global_variables['config_file']
+                config_file = "data/" + config_file
                 if os.path.exists(config_file):
                     del iterator_config
                     break
@@ -1217,7 +1219,7 @@ if __name__ == "__main__":
                 config_filf = sys.argv[iterator_config]
                 config_filf = config_filf.split("=")
                 config_file = config_filf[1]
-                config_file = "data/" + global_variables['config_file']
+                config_file = "data/" + config_file
                 if os.path.exists(config_file):
                     del iterator_config
                     break
@@ -1304,11 +1306,12 @@ if __name__ == "__main__":
                         print()
                         print(misc.CG + misc.FB + misc.LOGO + misc.CW + misc.FR)
                         print()
-                        print(misc.CC + misc.FB + "Attempts: " + misc.CR + str(attempts) + misc.CW + misc.FR)
+                        print(misc.CC + misc.FB + "Failed Attempts: " + misc.CR + str(attempts) + misc.CW + misc.FR)
                         print()
                         print(misc.FB + "[i]" + misc.FR + "Please login to continue...\n")
                         login_user = input("Username: ")
                         current_user = login_user
+                        ploginuser = login_user
                         login_user = misc.programFunctions().hash(login_user, 'sha256')
                         login_pass = getpass()
                         login_pass = misc.programFunctions().hash(login_pass, 'sha256')
@@ -1319,13 +1322,13 @@ if __name__ == "__main__":
                         #print(USERPASS) # DEV0005
                         if login_user == USERNAME and login_pass == USERPASS:
                             print(misc.FB + "[i]" + misc.FR + " You are now logged in!")
-                            logger.log(3, login_user + " logged in successfully on " + time.asctime() + " with " + str(attempts) + " attempts.", 'logfile.txt', SESSION_ID)
+                            logger.log(3, ploginuser + " logged in successfully on " + time.asctime() + " with " + str(attempts) + " failed attempts.", 'logfile.txt', SESSION_ID)
                             misc.programFunctions().pause()
                             break
 
                         else:
                             print(error.ERROR0013)
-                            logger.log(4, login_user + " failed to log in on " + time.asctime() + " with " + str(attempts) + " attempts.", 'logfile.txt', SESSION_ID)
+                            logger.log(4, ploginuser + " failed to log in on " + time.asctime() + " with " + str(attempts) + " failed attempts.", 'logfile.txt', SESSION_ID)
                             misc.programFunctions().pause()
                             if attempts < 3:
                                 attempts += 1
@@ -1344,7 +1347,7 @@ if __name__ == "__main__":
         sys.exit(12)
 
     except FileNotFoundError:
-        print(error.ERROR0015)
+        print(error.ERROR0015 + " (default configuration file)")
         sys.exit(15)
 
     # Checks if last session failed to exit properly

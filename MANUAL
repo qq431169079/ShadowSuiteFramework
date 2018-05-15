@@ -158,8 +158,8 @@ I. Table of Contents
     flag Shadow Suite Framework and some of its files as malware. Shadow Suite Framework
     has exploitation tools, so antiviruses may detect it.
 
-    ::Installing on Linux, Termux Terminal Emulator (Android), and Cygwin Terminal Emulator (Windows)
-        -SSF is tested on Kali Linux 2.0, Linux Mint 17.0, Ubuntu 17.0, Termux, and Cygwin.
+    ::Installing on Linux Operating Systems
+        -SSF is tested on Kali Linux 2.0, Linux Mint Cinnamon Edition 17.0, and Ubuntu 17.0.
 	    1.Update package list. It can be achieved by typing 'apt update' in your shell
 	      if you have APT package manager.
 
@@ -203,3 +203,51 @@ I. Table of Contents
     ::Installing on Windows
         -Shadow Suite Framework is not yet tested on Windows, please inform us if it
 	 works in your system.
+
+    ::Installing on Termux Terminal Emulator (Android)
+        -The first versions of Shadow Suite is tested only on Termux. But with the
+	 help and cooperation of Ethical Hackers vs. Noobs (EHVSN), it is now
+	 crossplatform. Follow the guide below to install SSF on Termux.
+	    
+	    1.Fire up Termux. (Launch Termux)
+
+	    2.When successfully launched, type 'apt update && apt upgrade -y'.
+	      This will update the repository and upgrade all packages to newest versions.
+
+	    3.Install Git client. Type 'apt install git' to install.
+
+	    4.Clone the Shadow Suite Framework. Once the Git installation is finished,
+	      You can now clone the repository by typing
+	      'git clone https://github.com/Sh4d0w-T34m/ShadowSuiteFramework.git' in your
+	      terminal.
+
+	    5.Change directory to ShadowSuiteFramework/src. to change directory, type
+	      'cd ShadowSuiteFramework/src'.
+
+	    6.Fix Shebang. If you already installed 'termux-tools', you can automate the
+	      process by typing 'termux-fix-shebang SSF.py' or open 'SSF.py' with a text
+	      editor (e.g.: vi, vim, nano) and replace '#!/usr/bin/env python3' to
+	      '#!$PREFIX/bin/env python3'.
+
+	    7.Change file mode. type 'chmod 755 SSF.py'.
+
+	    8.Run SSF. type './SSF.py'.
+
+	    9.Configure Shadow Suite Framework. Now you have executed SSF, a First-run
+              wizard will show up. This wizard will run automatically if the specific
+              dat file is not present. If desired, read the license file by entering 'r'.
+              If you don't agree to the terms of the license, you can type "q" and
+              delete the cloned repository. Otherwise, type the 'captcha' and press enter
+              to continue. After the license agreement, It will ask you if you want to
+              perform a full update. Type 'y' or 'yes' to perform a full update,
+              Otherwise, type 'n' or 'no'. It is recommended that you perform a full
+              update to avoid 'ModuleNotFoundError' or 'ImportError' exceptions and to
+              use modules without errors. If you choosed no, you can perform a full update
+	      later inside SSF terminal. After the full update, enter your username,
+              password, root username, and root password.
+
+            10.You have now successfully installed Shadow Suite Framework!
+
+    ::Installing on Cygwin Terminal Emulator (Windows)
+        -Shadow Suite Framework is not yet tested on Cygwin, please inform us if it
+         works in your system.

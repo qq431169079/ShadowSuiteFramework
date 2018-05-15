@@ -37,11 +37,16 @@ def api(criteria, module_path):
     for module in modules:
         if '.py' in module or '.Py' in module or '.pY' in module or '.PY' in module:
             module = module.replace('/', '.').replace('.py', '')
-            ms = importlib.import_module(module_path + module)
-            module_iterator += 1
-            module = module.replace('.py', '')
-            status = ms.category
-            #print(status) # DEV0005: For debugging purposes only
+            try:
+                ms = importlib.import_module(module_path + module)
+                module_iterator += 1
+                module = module.replace('.py', '')
+                status = ms.category
+                #print(status) # DEV0005: For debugging purposes only
+
+            except ModuleNotFoundError:
+                continue
+
             for category in status:
                 for crit in criteria:
                     #print(category) # DEV0005: For debuging purposes only

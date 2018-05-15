@@ -42,7 +42,7 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['none'] # Put needed dependencies here.  
-module_status = 0
+module_status = 2
 category = ['router', 'exploit', 'framework', 'routersploit', 'marcin', 'bury', 'lucyoa', 'mariusz', 'kupidura', 'fkwz', 'python']
 
 # Changelog of the module

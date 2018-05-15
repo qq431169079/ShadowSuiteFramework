@@ -42,7 +42,7 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['BINARY: Perl', 'BINARY: Nmap', 'PERL: Getopt', 'PERL: exporter', 'PERL: switch', 'PERL: Net::FTP', 'PERL: Time::HiRes', 'PERL: Socket', 'PERL: IO::Socket', 'PERL: HTTP::Request', 'PERL: LWP::UserAgent'] # Put needed dependencies here.  
-module_status = 1
+module_status = 2
 category = ['dotdotpwn', 'flexible', 'fuzz', 'traversal', 'directory', 'http', 'ftp', 'tftp', 'cms', 'erp', 'blogs', 'perl', 'sectester']
 
 # Changelog of the module
