@@ -1,3 +1,22 @@
+commit 2363011ea2c637d2835d168aff8528c252fb97ec
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 15 16:32:07 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    v0.1.0.2
+    
+    -Updated BRAT
+    -Still fixing ImportError issue.
+
+commit 95a08ab182615173426c711b8aef6dfb666d2828
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun May 13 09:28:28 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 7f79ee3d5f1e22715ac336dbf02adca89847e8bd
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Sun May 13 09:12:49 2018 +0800
