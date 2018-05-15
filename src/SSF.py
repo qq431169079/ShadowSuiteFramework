@@ -750,18 +750,43 @@ def main():
                             print("[i] " + str(modulenotfounderror_msg))
 
                     elif module_o[1] in ['info', 'information', 'search', 'query']:
-                        module_name = global_variables['MODULE_PATH'] + module_o[2]
-                        try:
-                            module_name = module_name.replace('/', '.')
-                            logger.log(3, 'User looks for ' + module_name + ' information.', 'logfile.txt', global_variables['SESSION_ID'])
-                            module = importlib.import_module(module_name)
-                            print('\n\n')
-                            module.module_info()
+                        if module_o[2] == '*':
+                            modules = os.listdir(global_variables['MODULE_PATH'])
+                            for module in modules:
+                                module_name = global_variables['MODULE_PATH'] + module
+                                if misc.programFunctions().isfile(module_name):
+                                    pass
 
-                        except ModuleNotFoundError as modulenotfounderror_msg:
-                            print("[i] " + str(modulenotfounderror_msg))
+                                else:
+                                    continue
+
+                                module_name = module_name.replace('.py', '').replace('.Py', '').replace('.pY', '').replace('.PY', '')
+                                try:
+                                    module_name = module_name.replace('/', '.')
+                                    logger.log(3, 'User looks for all modules\' information.')
+                                    module = importlib.import_module(module_name)
+                                    print("\n\n")
+                                    module.module_info()
+
+                                except ModuleNotFoundError as modulenotfounderror_msg:
+                                    print("[i] " + str(modulenotfounderror_msg))
+
+                                print("\n" + ('=' * 50))
+
+                        else:
+                            module_name = global_variables['MODULE_PATH'] + module_o[2]
+                            try:
+                                module_name = module_name.replace('/', '.')
+                                logger.log(3, 'User looks for ' + module_name + ' information.', 'logfile.txt', global_variables['SESSION_ID'])
+                                module = importlib.import_module(module_name)
+                                print('\n\n')
+                                module.module_info()
+
+                            except ModuleNotFoundError as modulenotfounderror_msg:
+                                print("[i] " + str(modulenotfounderror_msg))
 
                     elif module_o[1] in ['generate', 'produce', 'new']:
+                        
                         module_name = module_o[2]
                         logger.log(0, 'User generated a new module named ' + module_name, 'logfile.txt', global_variables['SESSION_ID'])
                         if misc.programFunctions().is_windows() == ('windows' or 'win' or 'nt'):
@@ -777,29 +802,154 @@ def main():
                             print(error.ERROR0015 + " (Generated module not found)")
 
                     elif module_o[1].startswith("test") or module_o[1].startswith("runtest"):
-                        if global_variables['MODULE_PATH'] not in module_o[2]:
-                            module_o[2] = global_variables['MODULE_PATH'] + module_o[2]
-
-                        if '.py' not in module_o[2]:
-                            module_o[2] += '.py'
-                            module_problems = []
-                            print("[i] Checking for problems on " + module_o[2] + ' module...')
-                            time.sleep(1)
-                            try:
-                                test_module = module_o[2].replace('/', '.').replace('.py', '')
-                                tester = importlib.import_module(test_module)
-
-                            except Exception as importerror_msg:
-                                print("[i] Fatal error found:\n")
-                                print(misc.CR + "[i] " + str(importerror_msg) + misc.CW)
-                                continue
-
-                            try:
-                                module_version = tester.module_version
-                                if module_version < 7.0:
-                                    raise AttributeError
+                        if module_o[2] == '*':
+                            modules = os.listdir(global_variables['MODULE_PATH'])
+                            for module in modules:
+                                module = global_variables['MODULE_PATH'] + module
+                                if misc.programFunctions().isfile(module) == False:
+                                    continue
 
                                 else:
+                                    pass
+
+                                module_problems = []
+                                print("[i] Checking for problems on " + module + " module...")
+                                time.sleep(1)
+                                try:
+                                    test_module = module.replace('/', '.').replace('.py', '')
+                                    tester = importlib.import_module(test_module)
+
+                                except Exception as fatalerror_msg:
+                                    print("[i] Fatal error found:\n")
+                                    print(misc.CR + "[i] " + str(fatalerror_msg) + misc.CW)
+                                    continue
+
+                                try:
+                                    module_version = tester.module_version
+                                    if module_version < 7.0:
+                                        raise AttributeError
+
+                                    else:
+                                        try:
+                                            test1 = tester.info
+
+                                        except Exception as test1e:
+                                            module_problems.append(str(test1e))
+
+                                        try:
+                                            test2 = tester.dependencies
+
+                                        except Exception as test2e:
+                                            module_problems.append(str(test2e))
+
+                                        try:
+                                            test3 = tester.category
+                                        
+                                        except Exception as test3e:
+                                            module_problems.append(str(test3e))
+                                            
+                                        try:
+                                            test4 = tester.changelog
+                                        
+                                        except Exception as test4e:
+                                            module_problems.append(str(test4e))
+
+                                except AttributeError:
+                                    print("[i] Module is lower than v7.0, Switching to legacy test...")
+                                    time.sleep(1)
+                                    try:
+                                        test1 = tester.info
+
+                                    except Exception as test1e:
+                                        module_problems.append(str(test1e))
+
+                                    try:
+                                       test2 = tester.dependencies
+
+                                    except Exception as test2e:
+                                        module_problems.append(str(test2e))
+                                    
+                                    try:
+                                        test3 = tester.category
+                                    
+                                    except Exception as test3e:
+                                       module_problems.append(str(test3e))
+                                        
+                                    try:
+                                        test4 = tester.changelog
+                                    
+                                    except Exception as test4e:
+                                        module_problems.append(str(test4e))
+
+                                if module_problems != (None or "" or []):
+                                    logger.log(3, module_o[2] + ': Test finished. Problems found:')
+                                    print("\n\nTest finished. Problems found:\n\n")
+                                    for problems in module_problems:
+                                        print('- ' + str(problems) + '\n')
+                                        
+                                else:
+                                    logger.log(3, module_o[2] + ': Testing finished. No problems found.', 'logfile.txt', global_variables['SESSION_ID'])
+                                    print("[i] Testing successful! No problems found.")
+                                        
+                                del tester
+                                del module_problems
+
+                                print()
+                                print('=' * 50)
+                                print()
+
+                        else:
+                            if global_variables['MODULE_PATH'] not in module_o[2]:
+                                module_o[2] = global_variables['MODULE_PATH'] + module_o[2]
+
+                            if '.py' not in module_o[2]:
+                                module_o[2] += '.py'
+                                module_problems = []
+                                print("[i] Checking for problems on " + module_o[2] + ' module...')
+                                time.sleep(1)
+                                try:
+                                    test_module = module_o[2].replace('/', '.').replace('.py', '')
+                                    tester = importlib.import_module(test_module)
+
+                                except Exception as fatalerror_msg:
+                                    print("[i] Fatal error found:\n")
+                                    print(misc.CR + "[i] " + str(fatalerror_msg) + misc.CW)
+                                    continue
+
+                                try:
+                                    module_version = tester.module_version
+                                    if module_version < 7.0:
+                                        raise AttributeError
+
+                                    else:
+                                        try:
+                                            test1 = tester.info
+                        
+                                        except Exception as test1e:
+                                            module_problems.append(str(test1e))
+                                
+                                        try:
+                                            test2 = tester.dependencies
+                                
+                                        except Exception as test2e:
+                                            module_problems.append(str(test2e))
+                                        
+                                        try:
+                                            test3 = tester.category
+                                    
+                                        except Exception as test3e:
+                                            module_problems.append(str(test3e))
+
+                                        try:
+                                            test4 = tester.changelog
+
+                                        except Exception as test4e:
+                                            module_problems.append(str(test4e))
+
+                                except AttributeError:
+                                    print("[i] Module is lower than v7.0, Switching to legacy test...")
+                                    time.sleep(1)
+
                                     try:
                                         test1 = tester.info
                                     
@@ -817,52 +967,25 @@ def main():
                                     
                                     except Exception as test3e:
                                         module_problems.append(str(test3e))
-
+    
                                     try:
                                         test4 = tester.changelog
-
+                                    
                                     except Exception as test4e:
                                         module_problems.append(str(test4e))
 
-                            except AttributeError:
-                                print("[i] Module is lower than v7.0, Switching to legacy test...")
-                                time.sleep(1)
+                                if module_problems != (None or "" or []):
+                                    logger.log(3, module_o[2] + ': Test finished. Problems found:')
+                                    print("\n\nTest finished. Problems found:\n\n")
+                                    for problems in module_problems:
+                                        print('- ' + str(problems) + '\n')
 
-                                try:
-                                    test1 = tester.info
-                                
-                                except Exception as test1e:
-                                    module_problems.append(str(test1e))
-                                    
-                                try:
-                                    test2 = tester.dependencies
-                                
-                                except Exception as test2e:
-                                    module_problems.append(str(test2e))
-                                    
-                                try:
-                                    test3 = tester.category
-                                
-                                except Exception as test3e:
-                                    module_problems.append(str(test3e))
-                                    
-                                try:
-                                    test4 = tester.changelog
-                                
-                                except Exception as test4e:
-                                    module_problems.append(str(test4e))
-
-                            if module_problems != (None or "" or []):
-                                logger.log(3, module_o[2] + ': Test finished. Problems found:')
-                                print("\n\nTest finished. Problems found:\n\n")
-                                for problems in module_problems:
-                                    print('- ' + str(problems) + '\n')
-
-                            else:
-                                logger.log(3, module_o[2] + ': Testing finished. No problems found.', 'logfile.txt', global_variables['SESSION_ID'])
-                                print("[i] Testing successful! No problems found.")
-
-                            del tester
+                                else:
+                                    logger.log(3, module_o[2] + ': Testing finished. No problems found.', 'logfile.txt', global_variables['SESSION_ID'])
+                                    print("[i] Testing successful! No problems found.")
+    
+                                del tester
+                                del module_problems
 
                     elif module_o[1].startswith("install"):
                         if misc.programFunctions().path_exists(module_o[2]):

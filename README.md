@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.0.2 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.0.3 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -12,7 +12,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 ------------------
 + Updated BRAT.
 
-+ 36 modules for ethical hacking and penetration testing and counting!
++ 39 modules for ethical hacking and counting!
 
 + Participation in this project is open to anyone. :)
 
@@ -159,6 +159,8 @@ Shadow Suite Framework is the main project of Shadow Team.
       [6] Type 'full update' on Shadow Suite's console to update
           the program and dependencies.
       [7] Type 'help' on Shadow Suite's console to see the help menu.
+
+      -To see more installation guides, see MANUAL file.
 
 2.Questions? Feature requests? Bugs?
       

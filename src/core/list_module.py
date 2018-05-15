@@ -68,16 +68,16 @@ def list(module_path):
     for module in modules:
         #print(modules) # DEV0005: For debugging purposes only
         #print(module) # DEV0005: For debugging purposes only
-        imodule_path = module_path.replace('/', '.')
-        imodule = module.replace('.py', '')
-        try:
-            ms = importlib.import_module(imodule_path + imodule)
+        module = module_path + module
+        if ('.py' in module or '.Py' in module or '.pY' in module or '.PY' in module) and misc.programFunctions().isfile(module):
+            imodule = module.replace('.py', '').replace('/', '.')
+            try:
+                ms = importlib.import_module(imodule)
 
-        except ModuleNotFoundError:
-            pass
+            except ModuleNotFoundError:
+                pass
 
-        try:
-            if '.py' in module or '.Py' in module or '.pY' in module or '.PY' in module:
+            try:
                 module_iterator += 1
                 module = module.replace('.py', '')
                 status = ms.module_status
@@ -101,12 +101,12 @@ def list(module_path):
                     print("[" + str(module_iterator) +"] " + cp + module + " :: " + ms.info['desc'] + cw)
                     print()
 
-            else:
-                continue
+            except:
+                print("[" + str(module_iterator) +"] " + cp + module + " :: (ERROR WHILE FETCHING INFO)" + cw)
+                print()
 
-        except:
-            print("[" + str(module_iterator) +"] " + cp + module + " :: (ERROR WHILE FETCHING INFO)" + cw)
-            print()
+        else:
+            continue
 
         try:
             del ms
