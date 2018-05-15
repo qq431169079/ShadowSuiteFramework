@@ -1,3 +1,24 @@
+commit 808f46d988b451ba29b47a9a890494ee19ff057e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 15 21:47:22 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.0.3
+    
+    + Minor bug fixes
+    + When you type the commands 'module info *' or 'module test *', SSF
+    will now test all installed modules instead of raising a
+    ModuleNotFoundError exception. (Feature request by S3R3N17Y)
+
+commit a39c8bc7ac7cc6d68ff642bc60e14ed3587c1803
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 15 16:32:46 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 2363011ea2c637d2835d168aff8528c252fb97ec
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Tue May 15 16:32:07 2018 +0800
