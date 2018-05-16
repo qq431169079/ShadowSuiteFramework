@@ -1,3 +1,27 @@
+commit 2890f9a8515641f9cd139eba7763bf227c15fd65
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 16 13:59:58 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.0.4
+    
+    + Fixed list() function.
+    
+    + More logging verbosity.
+    
+    + Added Binary path variable in config files because Windows, Linux, Termux, and Cygwin have different environments. You might have to update your custom-made configuration file.
+    
+    + Bug fixes.
+
+commit 2fc3512b0a02caea67a3500e5aa5b6bfb4248765
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 15 21:49:08 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 808f46d988b451ba29b47a9a890494ee19ff057e
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Tue May 15 21:47:22 2018 +0800
