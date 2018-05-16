@@ -828,13 +828,21 @@ def main():
                                     raise AttributeError
 
                                 else:
-                                    module.main(global_variables)
+                                    try:
+                                        module.main(global_variables)
+
+                                    except Exception as module_error_msg:
+                                        print(misc.CR + "[i] " + str(module_error_msg))
 
                             except AttributeError:
-                                module.main(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
+                                try:
+                                    module.main(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
 
-                        except ModuleNotFoundError as modulenotfounderror_msg:
-                            print("[i] " + str(modulenotfounderror_msg))
+                                except Exception as module_error_msg:
+                                    print(misc.CR + "[i] " + str(module_error_msg))
+
+                        except Exception as moduleerror_msg:
+                            print("[i] " + str(moduleerror_msg))
 
                     elif module_o[1] in ['info', 'information', 'search', 'query']:
                         if module_o[2] == '*':
@@ -855,8 +863,8 @@ def main():
                                     print("\n\n")
                                     module.module_info()
 
-                                except ModuleNotFoundError as modulenotfounderror_msg:
-                                    print("[i] " + str(modulenotfounderror_msg))
+                                except Exception as moduleerror_msg:
+                                    print("[i] " + str(moduleerror_msg))
 
                                 print("\n" + ('=' * 50))
 
@@ -869,8 +877,8 @@ def main():
                                 print('\n\n')
                                 module.module_info()
 
-                            except ModuleNotFoundError as modulenotfounderror_msg:
-                                print("[i] " + str(modulenotfounderror_msg))
+                            except Exception as moduleerror_msg:
+                                print("[i] " + str(moduleerror_msg))
 
                     elif module_o[1] in ['generate', 'produce', 'new']:
                         
@@ -900,7 +908,7 @@ def main():
                                     pass
 
                                 module_problems = []
-                                print(misc.CY + "[i] Checking for problems on " + module + " module..." + misc.CW)
+                                print(misc.CY + "[i] Checking for problems on " + misc.CC + module + misc.CY + ' module...' + misc.CW)
                                 time.sleep(1)
                                 try:
                                     test_module = module.replace('/', '.').replace('.py', '')
@@ -992,7 +1000,7 @@ def main():
                             if '.py' not in module_o[2]:
                                 module_o[2] += '.py'
                                 module_problems = []
-                                print("[i] Checking for problems on " + module_o[2] + ' module...')
+                                print(misc.CY + "[i] Checking for problems on " + misc.CC + module_o[2] + misc.CY + ' module...' + misc.CW)
                                 time.sleep(1)
                                 try:
                                     test_module = module_o[2].replace('/', '.').replace('.py', '')

@@ -104,7 +104,7 @@ def list(module_path):
                     print("[" + str(module_iterator) +"] " + cp + module.replace(module_path, '') + " :: " + ms.info['desc'] + cw)
                     print()
 
-            except(ImportError, UnboundLocalError):
+            except(ImportError, UnboundLocalError, AttributeError):
                 print("[" + str(module_iterator) +"] " + cr + fb + module.replace(module_path, '') + " :: (ERROR WHILE FETCHING INFO)" + cw + fr)
                 print()
 
@@ -122,6 +122,9 @@ def list(module_path):
 def count(module_path):
     modules = os.listdir(module_path)
     module_count = [0, 0, 0, 0, 0, 0, 0]
+    #               ^  ^  ^  ^  ^  ^  ^
+    #               0  1  2  3  4  5  6
+    #
     # 0=All, 1=Stable, 2=Experimental, 3=Unstable, 4=NYI/W, 5=UNK, 6=Module with err
     for module in modules:
         #print(modules) # DEV0005: For debugging purposes only
@@ -131,11 +134,11 @@ def count(module_path):
         try:
             ms = importlib.import_module(imodule_path + imodule)
         
-        except ModuleNotFoundError:
+        except(ImportError, ModuleNotFoundError):
             pass
         
         try:
-            if '.py' in module or '.Py' in module or '.pY' in module or '.PY' in module:
+            if module.lower().endswith('.py') and misc.programFunctions().isfile(module):
                 module_count[0] += 1
                 module = module.replace('.py', '')
                 status = ms.module_status
