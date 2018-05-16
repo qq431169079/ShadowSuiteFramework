@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-module_version = 7.2
+module_version = 7.3
 
 # Import directives
 try:
@@ -44,6 +44,8 @@ info = {
 dependencies = ['BINARY: python3', 'PYTHON: none'] # Put needed dependencies here.
 module_status = 1 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
 category = ['all', 'python']
+#files = [] # Uncomment this line if the module needs a subdirectory to use.
+#E.g.: MODULE_NAME_OR_SUBDIRECTORY_NAME/
 
 # Changelog of the module
 changelog = "Version 1.0:\nInitial module release"
