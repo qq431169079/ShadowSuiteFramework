@@ -1,3 +1,21 @@
+commit 5434ded31114a7e4ec4843e0ac89662d1de2ec6a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 16 21:54:20 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    v0.1.0.6
+    
+    + More minor bug fixes.
+
+commit c6eb0354a96670976d5444217adff7fa04985dc4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 16 21:11:20 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 849f64b57cfc21674e7743496e897d606b207ac8
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Wed May 16 21:09:54 2018 +0800
