@@ -900,14 +900,14 @@ def main():
                                     pass
 
                                 module_problems = []
-                                print("[i] Checking for problems on " + module + " module...")
+                                print(misc.CY + "[i] Checking for problems on " + module + " module..." + misc.CW)
                                 time.sleep(1)
                                 try:
                                     test_module = module.replace('/', '.').replace('.py', '')
                                     tester = importlib.import_module(test_module)
 
                                 except Exception as fatalerror_msg:
-                                    print("[i] Fatal error found:\n")
+                                    print(misc.CR + misc.FB + "[i] Fatal error found:\n" + misc.CW + misc.FR)
                                     print(misc.CR + "[i] " + str(fatalerror_msg) + misc.CW)
                                     continue
 
@@ -942,7 +942,7 @@ def main():
                                             module_problems.append(str(test4e))
 
                                 except AttributeError:
-                                    print("[i] Module is lower than v7.0, Switching to legacy test...")
+                                    print(misc.CY + "[i] Module is lower than v7.0, Switching to legacy test..." + misc.CW)
                                     time.sleep(1)
                                     try:
                                         test1 = tester.info
@@ -970,13 +970,13 @@ def main():
 
                                 if module_problems != (None or "" or []):
                                     logger.log(3, module_o[2] + ': Test finished. Problems found:')
-                                    print("\n\nTest finished. Problems found:\n\n")
+                                    print(misc.CR + misc.FB + "\n\nTest finished. Problems found:\n\n" + misc.CW + misc.FR)
                                     for problems in module_problems:
-                                        print('- ' + str(problems) + '\n')
+                                        print(misc.CR + '- ' + str(problems) + '\n' + misc.CW)
                                         
                                 else:
                                     logger.log(3, module_o[2] + ': Testing finished. No problems found.', 'logfile.txt', global_variables['SESSION_ID'])
-                                    print("[i] Testing successful! No problems found.")
+                                    print(misc.CG + misc.FB + "[i] Testing successful! No problems found." + misc.CW + misc.FR)
                                         
                                 del tester
                                 del module_problems
@@ -999,7 +999,7 @@ def main():
                                     tester = importlib.import_module(test_module)
 
                                 except Exception as fatalerror_msg:
-                                    print("[i] Fatal error found:\n")
+                                    print(misc.CR + misc.FB + "[i] Fatal error found:\n" + misc.CW + misc.FR)
                                     print(misc.CR + "[i] " + str(fatalerror_msg) + misc.CW)
                                     continue
 
@@ -1034,7 +1034,7 @@ def main():
                                             module_problems.append(str(test4e))
 
                                 except AttributeError:
-                                    print("[i] Module is lower than v7.0, Switching to legacy test...")
+                                    print(misc.CY + "[i] Module is lower than v7.0, Switching to legacy test..." + misc.CW)
                                     time.sleep(1)
 
                                     try:
@@ -1063,13 +1063,13 @@ def main():
 
                                 if module_problems != (None or "" or []):
                                     logger.log(3, module_o[2] + ': Test finished. Problems found:')
-                                    print("\n\nTest finished. Problems found:\n\n")
+                                    print(misc.CR + misc.FB + "\n\nTest finished. Problems found:\n\n" + misc.CW + misc.FR)
                                     for problems in module_problems:
-                                        print('- ' + str(problems) + '\n')
+                                        print(misc.CR + '- ' + str(problems) + '\n' + misc.CW)
 
                                 else:
                                     logger.log(3, module_o[2] + ': Testing finished. No problems found.', 'logfile.txt', global_variables['SESSION_ID'])
-                                    print("[i] Testing successful! No problems found.")
+                                    print(misc.CG + misc.FB + "[i] Testing successful! No problems found." + misc.CW + misc.FR)
     
                                 del tester
                                 del module_problems
@@ -1307,7 +1307,7 @@ def main():
 
         except Exception as exceptionmessage:
             print(error.WARNING0003)
-            print("[i] " + exceptionmessage)
+            print("[i] " + str(exceptionmessage))
             print()
             print("==================== TRACEBACK ====================")
             traceback.print_exc()

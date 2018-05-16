@@ -72,7 +72,7 @@ def list(module_path):
         #print(modules) # DEV0005: For debugging purposes only
         #print(module) # DEV0005: For debugging purposes only
         module = module_path + module
-        if ('.py' in module or '.Py' in module or '.pY' in module or '.PY' in module) and misc.programFunctions().isfile(module):
+        if module.lower().endswith('.py') and misc.programFunctions().isfile(module):
             imodule = module.replace('.py', '').replace('/', '.')
             try:
                 ms = importlib.import_module(imodule)
@@ -101,11 +101,11 @@ def list(module_path):
                     print()
 
                 else:
-                    print("[" + str(module_iterator) +"] " + cp + module + " :: " + ms.info['desc'] + cw)
+                    print("[" + str(module_iterator) +"] " + cp + module.replace(module_path, '') + " :: " + ms.info['desc'] + cw)
                     print()
 
-            except ImportError:
-                print("[" + str(module_iterator) +"] " + cr + fb + module + " :: (ERROR WHILE FETCHING INFO)" + cw + fr)
+            except(ImportError, UnboundLocalError):
+                print("[" + str(module_iterator) +"] " + cr + fb + module.replace(module_path, '') + " :: (ERROR WHILE FETCHING INFO)" + cw + fr)
                 print()
 
         else:

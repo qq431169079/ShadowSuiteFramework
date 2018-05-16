@@ -20,7 +20,7 @@ try:
 
     import_error = False
 
-except ImportError:
+except(ImportError, ModuleNotFoundError):
     print("[!] A module is missing! Please install the required modules...")
     print("==================== TRACEBACK ====================")
     traceback.print_exc()

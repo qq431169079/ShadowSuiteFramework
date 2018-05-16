@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.0.4 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.0.5 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -41,7 +41,7 @@ Shadow Suite Framework is the main project of Shadow Team.
        arsenal! It provides you tools written in different languages. Python,
        Ruby, Perl, PHP, and many more!
 
-# TO-DO List
+-# TO-DO List
 ------------------------
 + [FEATURE REQUEST]: Metasploit Framework, Httrack, MultiTool, Nscan, Aeneas Of Troy's PortScaner, PassHunt, GetSploit, Tor Client (If available), Encrypted IM client (If available).
 
@@ -61,7 +61,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 + [ISSUE]: requests module not found when running on popular linux systems.
 
-+ [MAINTENANCE]: Installation of modules via ZIP archive (for modules with subdirectories)
++ [MAINTENANCE]: Installation of modules using a number of archive formats (for modules with subdirectories)
 
 # License and Copying
 ------------------------
