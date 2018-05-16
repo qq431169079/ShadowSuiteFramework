@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.0.3 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.0.4 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -10,11 +10,13 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # What's new?
 ------------------
-+ Updated BRAT.
++ Fixed list() function.
 
-+ 39 modules for ethical hacking and counting!
++  More logging verbosity.
 
-+ Participation in this project is open to anyone. :)
++ Added Binary path variable because Windows, Linux, Termux, and Cygwin have different environments. You might have to update your custom-made configuration file.
+
++ Bug fixes.
 
 # Full Feature List
 ------------------------
@@ -41,7 +43,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # TO-DO List
 ------------------------
-+ [FEATURE REQUEST]: Metasploit Framework, Httrack, MultiTool, Nscan, Aeneas Of Troy's PortScaner, PassHunt, GetSploit.
++ [FEATURE REQUEST]: Metasploit Framework, Httrack, MultiTool, Nscan, Aeneas Of Troy's PortScaner, PassHunt, GetSploit, Tor Client (If available), Encrypted IM client (If available).
 
 + [MAINTENANCE]: Update The Harvester, FL00D, and Deception.
 
@@ -58,6 +60,8 @@ Shadow Suite Framework is the main project of Shadow Team.
 + [FEATURE REQUEST]: Readline
 
 + [ISSUE]: requests module not found when running on popular linux systems.
+
++ [MAINTENANCE]: Installation of modules via ZIP archive (for modules with subdirectories)
 
 # License and Copying
 ------------------------

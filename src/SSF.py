@@ -101,13 +101,13 @@ def main():
     global ROOTPASS
     global MODULE_PATH
     global OUTPUT_PATH
+    global BINARY_PATH
     global USERLEVEL
     global current_user
     global SESSION_ID
     global DEBUGGING
 
-    logger.log(0, 'Shadow Suite Linux Edition launched.', 'logfile.txt', SESSION_ID)
-
+    logger.log(0, "Creating global_variables dictionary...", 'logfile.txt', SESSION_ID)
     # More variables and constants
     PLATFORM = misc.programFunctions().get_platform() # Get PLATFORM
     #print(MODULE_PATH) # DEV0005: For debugging purposes only
@@ -121,6 +121,7 @@ def main():
             'ROOTPASS': ROOTPASS, # String.
             'MODULE_PATH': MODULE_PATH, # String; PATH to modules directory.
             'OUTPUT_PATH': OUTPUT_PATH, # String; PATH to output directory.
+            'BINARY_PATH': BINARY_PATH, # String; PATH to system binaries.
             'USERLEVEL': USERLEVEL, # INT; 0 for system-level root, 1 for application-level root, and 2 for normal user.
             'INSTALLED_MODULES': INSTALLED_MODULES, # List; Number of modules installed and their status.
 
@@ -131,6 +132,7 @@ def main():
             'DEBUGGING': DEBUGGING # Boolean.
             }
 
+    logger.log(0, "Deleting unnecessary variables...", 'logfile.txt', global_variables['SESSION_ID'])
     del config_file
     del USERNAME
     del USERPASS
@@ -138,6 +140,7 @@ def main():
     del ROOTPASS
     del MODULE_PATH
     del OUTPUT_PATH
+    del BINARY_PATH
     del USERLEVEL
     del current_user
     del SESSION_ID
@@ -145,12 +148,15 @@ def main():
     del PLATFORM
     del INSTALLED_MODULES
 
+    logger.log(0, "Checking if SSF is already used...", 'logfile.txt', global_variables['SESSION_ID'])
     if global_variables['config_file'] == 'data/config.dat':
         try:
            open('data/.installed.dat', 'r').read()
            open('data/.installed.dat', 'r').close()
+           logger.log(0, "SSF already used... Skipping First-run wizard.", 'logfile.txt', global_variables['SESSION_ID'])
 
         except(FileNotFoundError):
+            logger.log(0, "Running First-run wizard...", 'logfile.txt', global_variables['SESSION_ID'])
             while True:
                 misc.programFunctions().clrscrn()
                 print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR)
@@ -173,8 +179,11 @@ def main():
                     else:
                         os.system("less extras/shadowsuitelicense")
 
+                    logger.log(0, "User read the license.", 'logfile.txt', global_variables['SESSION_ID'])
+
                 elif captcha_confirm.lower() == captcha_string:
                     print(misc.FB + misc.CG + "[i] Thank you for downloading Shadow Suite Framework! :D " + misc.FR + misc.CW)
+                    logger.log(0, "User accepted the agreement!", 'logfile.txt', global_variables['SESSION_ID'])
                     misc.programFunctions().pause()
                     break
 
@@ -187,6 +196,7 @@ def main():
                     except:
                         pass
 
+                    logger.log(0, "User choosed to quit.", 'logfile.txt', global_variables['SESSION_ID'])
                     sys.exit(0)
     
                 else:
@@ -199,10 +209,12 @@ def main():
             while True:
                 askuser_fullupdate = input(misc.FB + misc.CGR + "Do you want to perform a full update? (y/n) > " + misc.CW + misc.FR)
                 if askuser_fullupdate.lower() in ('yes' or 'y'):
+                    logger.log(0, "User performed a full update.", 'logfile.txt', global_variables['SESSION_ID'])
                     update.full_update(global_variables['DEBUGGING'])
                     break
 
                 elif askuser_fullupdate.lower() in ('no' or 'n'):
+                    logger.log(1, "User did not performed a full update.", 'logfile.txt', global_variables['SESSION_ID'])
                     break
 
                 else:
@@ -211,59 +223,108 @@ def main():
             print("[i] Just press enter if you don't want to use password protection.")
             while True:
                 askuser_username = input("[i] Username: ")
-                hashed_username = misc.programFunctions().hash(askuser_username, 'sha256')
-                global_variables['USERNAME'] = hashed_username
-                global_variables['current_user'] = askuser_username
+                if askuser_username == None or askuser_username == "":
+                    pass
+
+                else:
+                    hashed_username = misc.programFunctions().hash(askuser_username, 'sha256')
+                    global_variables['USERNAME'] = hashed_username
+                    global_variables['current_user'] = askuser_username
+
                 while True:
                     askuser_userpass1 = getpass("[i] Userpass: ")
-                    askuser_userpass2 = getpass("[i] Confirm Userpass: ")
-                    if askuser_userpass1 == askuser_userpass2:
-                        global_variables['USERPASS'] = misc.programFunctions().hash(askuser_userpass1, 'sha256')
+                    if askuser_userpass1 == None or askuser_userpass1 == "":
                         break
 
                     else:
-                        continue
+                        askuser_userpass2 = getpass("[i] Confirm Userpass: ")
+                        if askuser_userpass1 == askuser_userpass2:
+                            global_variables['USERPASS'] = misc.programFunctions().hash(askuser_userpass1, 'sha256')
+                            break
+
+                        else:
+                            continue
 
                 askuser_rootname = input("[i] Rootname: ")
-                hashed_rootname = misc.programFunctions().hash(askuser_rootname, 'sha256')
-                global_variables['ROOTNAME'] = hashed_rootname
+                if askuser_rootname == None or askuser_rootname == "":
+                    pass
+
+                else:
+                    hashed_rootname = misc.programFunctions().hash(askuser_rootname, 'sha256')
+                    global_variables['ROOTNAME'] = hashed_rootname
+
                 while True:
                     askuser_rootpass1 = getpass("[i] Rootpass: ")
-                    askuser_rootpass2 = getpass("[i] Confirm Rootpass: ")
-                    if askuser_rootpass1 == askuser_rootpass2:
-                        global_variables['ROOTPASS'] = misc.programFunctions().hash(askuser_rootpass1, 'sha256')
-                        break
+                    if askuser_rootpass1 == None or askuser_rootpass1 == "":
+                        pass
 
                     else:
-                        continue
+                        askuser_rootpass2 = getpass("[i] Confirm Rootpass: ")
+                        if askuser_rootpass1 == askuser_rootpass2:
+                            global_variables['ROOTPASS'] = misc.programFunctions().hash(askuser_rootpass1, 'sha256')
+                            break
+
+                        else:
+                            continue
+
+                    break
 
                 break
 
+            while True:
+                askuser_binary_path = input("Binary path (Usually '/usr/bin/'): ")
+                if misc.programFunctions().path_exists(askuser_binary_path):
+                    if not askuser_binary_path.endswith('/'):
+                        askuser_binary_path += '/'
+
+                    global_variables['BINARY_PATH'] = askuser_binary_path
+                    break
+
+                else:
+                    print(error.ERROR0015)
+                    continue
+
+            logger.log(0, "Updating configuration file data...", 'logfile.txt', global_variables['SESSION_ID'])
             config_dict = {
                     "username": global_variables['USERNAME'],
                     "userpass": global_variables['USERPASS'],
                     "rootname": global_variables['ROOTNAME'],
                     "rootpass": global_variables['ROOTPASS'],
                     "module_path": global_variables['MODULE_PATH'],
-                    "output_path": global_variables['OUTPUT_PATH']
+                    "output_path": global_variables['OUTPUT_PATH'],
+                    "binary_path": global_variables['BINARY_PATH']
                     }
         
             export_conf_result = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING']).export_conf(global_variables['config_file'], config_dict)
 
+            logger.log(0, "Deleting First-run Wizard variables...", 'logfile.txt', global_variables['SESSION_ID'])
             del askuser_fullupdate
             del askuser_username
             del askuser_userpass1
-            del askuser_userpass2
+            try:
+                del askuser_userpass2
+
+            except UnboundLocalError:
+                pass
+
             del askuser_rootname
             del askuser_rootpass1
-            del askuser_rootpass2
+            try:
+                del askuser_rootpass2
 
+            except UnboundLocalError:
+                pass
+
+            del askuser_binary_path
+
+            logger.log(0, "Writing to \"data/.installed.dat\" file...", 'logfile.txt', global_variables['SESSION_ID'])
             open('data/.installed.dat', 'w').write('True')
             open('data/.installed.dat', 'w').close()
             misc.programFunctions().clrscrn()
             #print(config_dict) # DEV0005
             #print(global_variables) # DEV0005
 
+    logger.log(0, "Starting Shadow Suite Framework Shell...", 'logfile.txt', global_variables['SESSION_ID'])
     print()
     print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR) # Prints logo
     print()
@@ -286,10 +347,11 @@ def main():
     if global_variables['DEBUGGING'] == True:
         # If the program has been executed with an argument -d or --debug, show this info
         print(misc.FB + "[i]" + misc.FR + " Debugging mode is on")
-        logger.log(3, 'Shadow Suite Debugging is on', 'logfile.txt', global_variables['SESSION_ID'])
+        logger.log(3, 'Debugging mode is on', 'logfile.txt', global_variables['SESSION_ID'])
 
     # This while loop enables the user to enter commands inside shadow suite without
     # needing to run the program everytime a command is entered.
+    logger.log(0, "Terminal started...", 'logfile.txt', global_variables['SESSION_ID'])
     while True:
         try:
             # If geteuid is equal to 0, then a terminal with # will be shown.
@@ -359,6 +421,12 @@ def main():
                         print(misc.CP + "Unknown Status:          " + str(global_variables['INSTALLED_MODULES'][5]) + misc.CW)
                         print(misc.CR + misc.FB + "Modules with Error/s:    " + str(global_variables['INSTALLED_MODULES'][6]) + misc.CW + misc.FR)
                         print()
+                        print(misc.CC + misc.FB + "=== Configuration Information ===" + misc.FR + misc.CW)
+                        print()
+                        print(misc.CG + "Module Path: " + global_variables['MODULE_PATH'])
+                        print(misc.CY + "Output Path: " + global_variables['OUTPUT_PATH'])
+                        print(misc.CR + "Binary Path: " + global_variables['BINARY_PATH'])
+                        print()
                         print(misc.CC + misc.FB + "=== Version Information ===" + misc.FR + misc.CW)
                         print()
                         print(misc.CG + "Version Number:   " + version.VNUMBER + misc.CW)
@@ -373,6 +441,7 @@ def main():
                         version.changelog()
 
                     elif show_o[1].lower() == "config_files":
+                        logger.log(0, "User lists available configuration files...", 'logfile.txt', global_variables['SESSION_ID'])
                         try:
                             available_config_files = os.listdir('data/')
                             acf_iterator = 0
@@ -387,6 +456,7 @@ def main():
                             del acf_iterator
 
                         except NotImplementedError:
+                            logger.log(0, "NotImplementedError exception raised.", 'logfile.txt', global_variables['SESSION_ID'])
                             print("[SYSTEM] functionality is unavailable")
 
                     else:
@@ -465,8 +535,8 @@ def main():
                                 del confirm_rootpass
 
                             else:
-                                logger.log(3, 'User failed to change his username... Wrong root password.', 'logfile.txt', global_variables['SESSION_ID'])
-                                print(error.ERROR0013)
+                                logger.log(4, 'User failed to change his username... Wrong root password.', 'logfile.txt', global_variables['SESSION_ID'])
+                                print(error.ERROR0013 + " [i] This incident will be reported!")
                                 del confirm_rootpass
 
                     elif config_o[1].lower() in ["password", "passwd"]:
@@ -481,7 +551,7 @@ def main():
                             
                             else:
                                 logger.log(3, 'User failed to change his password... Passwords doesn\'t match', 'logfile.txt', global_variables['SESSION_ID'])
-                                print("[i] Passwords doesn't match!")
+                                print("[i] Passwords doesn't match! This incident will be reported!")
 
                         else:
                             old_userpass = getpass("Enter old password: ")
@@ -497,11 +567,11 @@ def main():
 
                                 else:
                                     logger.log(3, 'User failed to change his username... Passwords doesn\'t match', 'logfile.txt', global_variables['SESSION_ID'])
-                                    print("[i] Passwords doesn't match!")
+                                    print("[i] Passwords doesn't match! This incident will be reported!")
 
                             else:
                                 logger.log(3, 'User failed to change his password... Wrong username/password.', 'logfile.txt', global_variables['SESSION_ID'])
-                                print(error.ERROR0013)
+                                print(error.ERROR0013 + " [i] This incident will be reported!")
 
                     elif config_o[1].lower() in ["rootname"]:
                         config_o[2] = misc.programFunctions().hash(config_o[2], 'sha256')
@@ -521,7 +591,7 @@ def main():
 
                             else:
                                 logger.log(3, 'User failed to change his root username... Wrong username/password.', 'logfile.txt', global_variables['SESSION_ID'])
-                                print(error.ERROR0013)
+                                print(error.ERROR0013 + " [i] This incident will be reported!")
                                 del confirm_rootpass
 
                     elif config_o[1].lower() in ["rootpass"]:
@@ -536,7 +606,7 @@ def main():
                             
                             else:
                                 logger.log(3, 'User failed to change his root password... Passwords doesn\'t match', 'logfile.txt', global_variables['SESSION_ID'])
-                                print("[i] Root passwords doesn't match!")
+                                print("[i] Root passwords doesn't match! This incident will be reported!")
 
                         else:
                             old_rootpass = getpass("Enter old root password: ")
@@ -552,11 +622,11 @@ def main():
 
                                 else:
                                     logger.log(3, 'User failed to change his root password... Passwords doesn\'t match.', 'logfile.txt', global_variables['SESSION_ID'])
-                                    print("[i] Root passwords doesn't match!")
+                                    print("[i] Root passwords doesn't match! This incident will be reported!")
 
                             else:
                                 logger.log(3, 'User failed to change his root password... Wrong username/password', 'logfile.txt', global_variables['SESSION_ID'])
-                                print(error.ERROR0013)
+                                print(error.ERROR0013 + " [i] This incident will be reported!")
 
                     elif config_o[1].lower() in ["module_path"]:
                         new_module_path = input("Enter the new module path: ")
@@ -586,6 +656,20 @@ def main():
                         else:
                             print(error.ERROR0015)
 
+                    elif config_o[1].lower() in ["binary_path"]:
+                        new_binary_path = input("Enter the new binary path (usually /usr/bin/): ")
+                        if misc.programFunctions().path_exists(new_output_path):
+                            if misc.programFunctions().isfolder(new_output_path):
+                                global_variables['BINARY_PATH'] = new_output_path
+                                logger.log(3, 'User changed the binary path to ' + new_binary_path + '...', 'logfile.txt', global_variables['SESSION_ID'])
+                                print("[i] Binary path set!")
+
+                            else:
+                                print(error.ERROR0015)
+
+                        else:
+                            print(error.ERROR0015)
+
                     elif config_o[1].lower() in ["export", "save"]:
                         config_dict = {
                                 "username": global_variables['USERNAME'],
@@ -593,7 +677,8 @@ def main():
                                 "rootname": global_variables['ROOTNAME'],
                                 "rootpass": global_variables['ROOTPASS'],
                                 "module_path": global_variables['MODULE_PATH'],
-                                "output_path": global_variables['OUTPUT_PATH']
+                                "output_path": global_variables['OUTPUT_PATH'],
+                                "binary_path": global_variables['BINARY_PATH']
                                 }
                         try:
                             open(global_variables['config_file'], 'r').read()
@@ -643,7 +728,8 @@ def main():
                                     "rootname": global_variables['ROOTNAME'],
                                     "rootpass": global_variables['ROOTPASS'],
                                     "module_path": global_variables['MODULE_PATH'],
-                                    "output_path": global_variables['OUTPUT_PATH']
+                                    "output_path": global_variables['OUTPUT_PATH'],
+                                    "binary_path": global_variables['BINARY_PATH']
                                     }
                             export_conf_result = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING']).export_conf(new_config, config_dict)
                             if export_conf_result == True:
@@ -717,6 +803,7 @@ def main():
                     print("rootpass            -    Change root password.")
                     print("module_path         -    Change the path where modules will be found.")
                     print("output_path         -    Change the path where module outputs will be found.")
+                    print("binary_path         -    Change the path where system binaries will be found.")
                     print("export | save       -    Save changes to current configuration file.")
                     print("generate [FILENAME] -    Save changes to a new configuration file.")
                     print("remove [FILENAME]   -    Delete a configuration file.")
@@ -1027,8 +1114,17 @@ def main():
                                                 manual_install.append('BINARY: ' + deps)
 
                                             else:
-                                                for pkg_mgr in ['apt', 'pkg', 'yum']:
-                                                    os.system(pkg_mgr + " install --upgrade " + deps)
+                                                if misc.programFunctions().path_exists(global_variables['BINARY_PATH'] + "apt"):
+                                                    subprocess.Popen(args='apt install --upgrade ' + deps, shell=True, universal_newlines=True)
+
+                                                elif misc.programFunctions().path_exists(global_variables['BINARY_PATH'] + "pkg"):
+                                                    subprocess.Popen(args='pkg install --upgrade' + deps, shell=True, universal_newlines=True)
+
+                                                elif misc.programFunctions().path_exists(global_variables['BINARY_PATH'] + "yum"):
+                                                    subprocess.Popen(args='yum install ' + deps, shell=True, universal_newlines=True)
+
+                                                else:
+                                                    manual_install.append('BINARY: ' + deps)
 
                                         elif 'PYTHON: ' in deps:
                                             deps = deps.replace('PYTHON: ', '')
@@ -1036,7 +1132,7 @@ def main():
 
                                         elif 'PERL: ' in deps:
                                             deps = deps.replace('PERL: ', '')
-                                            os.system("cpan install " + deps)
+                                            subprocess.Popen(args='cpan install ' + deps, shell=True, universal_newlines=True)
 
                                         elif 'RUBY: ' in deps:
                                             deps = deps.replace('RUBY: ', '')
@@ -1211,6 +1307,7 @@ def main():
 
         except Exception as exceptionmessage:
             print(error.WARNING0003)
+            print("[i] " + exceptionmessage)
             print()
             print("==================== TRACEBACK ====================")
             traceback.print_exc()
@@ -1269,6 +1366,7 @@ if __name__ == "__main__":
 
     MODULE_PATH = "modules/"
     OUTPUT_PATH = "output/"
+    BINARY_PATH = "/usr/bin/"
 
     USERLEVEL = 2
     
@@ -1399,6 +1497,11 @@ if __name__ == "__main__":
                 OUTPUT_PATH = OUTPUT_PATH.replace('"', '')
                 OUTPUT_PATH = no_escape_chars(OUTPUT_PATH)
 
+            elif "binary_path=" in data.lower():
+                BINARY_PATH = data.replace('binary_path=', '')
+                BINARY_PATH = BINARY_PATH.replace('"', '')
+                BINARY_PATH = no_escape_chars(BINARY_PATH)
+
             else:
                 continue
 
@@ -1411,6 +1514,7 @@ if __name__ == "__main__":
         print(ROOTPASS)
         print(MODULE_PATH)
         print(OUTPUT_PATH)
+        print(BINARY_PATH)
         misc.programFunctions().pause()
         """
         logger.log(3, "Someone is trying to use Shadow Suite...", 'logfile.txt', SESSION_ID)

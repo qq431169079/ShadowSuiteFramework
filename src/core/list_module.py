@@ -30,8 +30,8 @@ def list(module_path):
         cg = '\033[32m'                        #  green  (Stable)
         cy = '\033[33m'                        #  yellow (Experimental)
         cr = '\033[31m'                        #  red    (Unstable)
-        nyi = "\t[i] Not yet Implemented!!!"   #  Not yet Implemented
-        cp = '\033[35m'                        #  Unknown status
+        cgr = '\033[37m'                       #  gray   (Not yet Implemented)
+        cp = '\033[35m'                        #  purple (Unknown status)
     
         # Font types
         fr = '\033[0m'                         #  regular (Modules)
@@ -45,7 +45,7 @@ def list(module_path):
         cg = ''
         cy = ''
         cr = ''
-        nyi = '\t[i] Not yet Implemented/Working'
+        cgr = ''
         cp = ''
 
         fr = ''
@@ -57,7 +57,10 @@ def list(module_path):
     print(cg + "\tStable" + cw)
     print(cy + "\tExperimental" + cw)
     print(cr + "\tUnstable" + cw)
-    print(cp + "\tCustom Module\n\n" + cw + fr)
+    print(cgr + "\tNot Yet Implemented (NYI)" + cw)
+    print(cp + "\tUnknown Status" + cw)
+    print(cr + fb + "\tModule with Error" + cw + fr)
+    print("\n\n")
 
     modules = os.listdir(module_path)
     module_iterator = 0
@@ -82,27 +85,27 @@ def list(module_path):
                 module = module.replace('.py', '')
                 status = ms.module_status
                 if status == 0:
-                    print("[" + str(module_iterator) +"] " + cg + module + " :: " + ms.info['desc'] + cw)
+                    print("[" + str(module_iterator) +"] " + cg + module.replace(module_path, '') + " :: " + ms.info['desc'] + cw)
                     print()
 
                 elif status == 1:
-                    print("[" + str(module_iterator) +"] " + cy + module + " :: " + ms.info['desc'] + cw)
+                    print("[" + str(module_iterator) +"] " + cy + module.replace(module_path, '') + " :: " + ms.info['desc'] + cw)
                     print()
 
                 elif status == 2:
-                    print("[" + str(module_iterator) +"] " + cr + module + " :: " + ms.info['desc'] + cw)
+                    print("[" + str(module_iterator) +"] " + cr + module.replace(module_path, '') + " :: " + ms.info['desc'] + cw)
                     print()
 
                 elif status == 3:
-                    print("[" + str(module_iterator) +"] (" + nyi + ")" + module + " :: " + ms.info['desc'] + cw)
+                    print("[" + str(module_iterator) +"] " + cgr + module.replace(module_path, '') + " :: " + ms.info['desc'] + cw)
                     print()
 
                 else:
                     print("[" + str(module_iterator) +"] " + cp + module + " :: " + ms.info['desc'] + cw)
                     print()
 
-            except:
-                print("[" + str(module_iterator) +"] " + cp + module + " :: (ERROR WHILE FETCHING INFO)" + cw)
+            except ImportError:
+                print("[" + str(module_iterator) +"] " + cr + fb + module + " :: (ERROR WHILE FETCHING INFO)" + cw + fr)
                 print()
 
         else:

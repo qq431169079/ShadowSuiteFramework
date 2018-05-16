@@ -9,3 +9,4 @@ rootpass=""
 
 module_path="modules/"
 output_path="output/"
+binary_path="/usr/bin/"

@@ -22,6 +22,7 @@ import sys
 import random
 import datetime
 import hashlib
+import subprocess
 
 from core import version
 from core import logger
@@ -307,7 +308,8 @@ class programFunctions:
         return os.path.isdir(file_path)
 
     def pip_install(self, package):
-        os.system('pip install ' + package)
+        subprocess.Popen(args='pip install ' + package, shell=True, universal_newlines=True)
+        subprocess.Popen(args='pip2 install ' + package, shell=True, universal_newlines=True)
 
     def export_conf(self, config_file, config_dict):
         logger.log(3, config_dict['username'] + " is exporting settings to " + config_file + ".")
@@ -331,11 +333,12 @@ userpass="{1}"
 rootname="{2}"
 rootpass="{3}"
 
-module_path="modules/"
-output_path="output/"
+module_path="{4}"
+output_path="{5}"
+binary_path="{6}"
                     """
 
-            config_new_data = config_new_data.format(config_dict['username'], config_dict['userpass'], config_dict['rootname'], config_dict['rootpass'])
+            config_new_data = config_new_data.format(config_dict['username'], config_dict['userpass'], config_dict['rootname'], config_dict['rootpass'], config_dict['module_path'], config_dict['output_path'], config_dict['binary_path'])
             with open(config_file, 'a') as fopen:
                 fopen.write(config_new_data)
 
