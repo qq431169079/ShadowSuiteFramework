@@ -1,3 +1,29 @@
+commit 849f64b57cfc21674e7743496e897d606b207ac8
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 16 21:09:54 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.0.5
+    
+    + Minor bug fixes.
+
+commit f99efe4a21ea21689c2a3ba366a97702330b8a3b
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 16 20:33:23 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Updated temp.py for future update.
+
+commit 63915a61807eaf1abcb9fb90293f0e399386d897
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 16 14:01:20 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 2890f9a8515641f9cd139eba7763bf227c15fd65
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Wed May 16 13:59:58 2018 +0800
