@@ -126,8 +126,8 @@ def count(module_path):
     #               0  1  2  3  4  5  6
     #
     # 0=All, 1=Stable, 2=Experimental, 3=Unstable, 4=NYI/W, 5=UNK, 6=Module with err
+    #print(modules) # DEV0005: For debugging purposes only
     for module in modules:
-        #print(modules) # DEV0005: For debugging purposes only
         #print(module) # DEV0005: For debugging purposes only
         imodule_path = module_path.replace('/', '.')
         imodule = module.replace('.py', '')
@@ -135,12 +135,15 @@ def count(module_path):
             ms = importlib.import_module(imodule_path + imodule)
         
         except(ImportError, ModuleNotFoundError):
+        #except AttributeError:
             pass
         
         try:
-            if module.lower().endswith('.py') and misc.programFunctions().isfile(module):
+            #print(module) # DEV0005: For debugging purposes only
+            #print(module.lower().endswith('.py') and misc.programFunctions().isfile(module_path + module)) # DEV0005: For debugging purposes only
+            if module.lower().endswith('.py') and misc.programFunctions().isfile(module_path + module):
                 module_count[0] += 1
-                module = module.replace('.py', '')
+                module = module.replace('.py', '').replace('.Py', '').replace('.pY', '').replace('.PY', '')
                 status = ms.module_status
                 if status == 0:
                     module_count[1] += 1
