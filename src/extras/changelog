@@ -1,3 +1,23 @@
+commit 00c55efc0356eed795831f7e63157170650ca459
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 17 22:42:59 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.0.8
+    
+    + Added GetSploit
+    
+    + Minor bug fixes
+
+commit 5e3f6e94074be2a906b314f8feadd207a4afb261
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 17 13:30:13 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit fe354b940eae9766d7db81f6c0873ad452bece53
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Thu May 17 13:29:16 2018 +0800
