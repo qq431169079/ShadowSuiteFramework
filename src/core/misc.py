@@ -30,21 +30,54 @@ from core import multitasking
 
 if sys.platform == 'linux' or sys.platform == 'darwin':
     # Colors with meanings
-    CW = '\033[0m'     #  white     (normal)
-    CR = '\033[31m'    #  red       (errors)
-    CG = '\033[32m'    #  green     (main color)
-    CY = '\033[33m'    #  yellow    (warnings)
-    CB = '\033[34m'    #  blue      (highlights)
-    CGR = '\033[37m'   #  gray      (questions)
+    CW   = '\033[0m'       # white           (normal)
+    CR   = '\033[31m'      # red             (errors)
+    CG   = '\033[32m'      # green           (main color)
+    CY   = '\033[33m'      # yellow          (warnings)
+    CB   = '\033[34m'      # blue            (highlights)
+    CGR  = '\033[90m'      # gray            (questions)
 
     # Misc colors
-    CP = '\033[35m'    #  purple
-    CC = '\033[36m'    #  cyan
+    CP   = '\033[35m'      # purple
+    CC   = '\033[36m'      # cyan
+    CK   = '\003[8m'       # black
+
+    # Extended colors
+    CLM  = '\033[95m'      # light magenta
+    CLB  = '\033[94m'      # light blue
+    CLG  = '\033[92m'      # light green
+    CLY  = '\033[93m'      # light yellow
+    CLR  = '\033[91m'      # light red
+    CLC  = '\033[96'       # light cyan
+    CLGR = '\033[37m'      # light gray
+
+    # Background Colors without meanings :p
+    BW   = '\033[7m'       # white
+    BR   = '\033[41m'      # red
+    BG   = '\033[42m'      # green
+    BY   = '\033[43m'      # yellow
+    BB   = '\033[44m'      # blue
+    BM   = '\033[45m'      # magenta
+    BC   = '\033[46m'      # cyan
+    BGR  = '\033[100m'     # gray
+
+    BLGR = '\033[2m'       # light gray
+    BLR  = '\033[101m'     # light red
+    BLG  = '\033[102m'     # light green
+    BLY  = '\033[103m'     # light yellow
+    BLB  = '\033[104m'     # light blue
+    BLM  = '\033[105m'     # light magenta
+    BLC  = '\033[106m'     # light cyan
+    BLW  = '\033[107m'     # light white?!?
 
     # Font types
-    FR = '\033[0m'     #  regular
-    FB = '\033[1m'     #  bold
-    FI = '\033[3m'     #  italic
+    FR   = '\033[0m'       # regular
+    FB   = '\033[1m'       # bold
+    FI   = '\033[3m'       # italic
+    FU   = '\033[4m'       # underline
+    FE   = '\033[9m'       # erased
+
+    END  = '\033[0m'       # I know... CW, FR and this are the same... I didn't realize it earlier...
 
 else:
     # No color support on windows operating systems.

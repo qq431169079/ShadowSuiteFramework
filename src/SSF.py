@@ -1261,6 +1261,11 @@ def main():
                 logger.log(2, "ERROR 0004: Back cannot be used in the main module", 'logfile.txt', global_variables['SESSION_ID'])
                 print(error.ERROR0004)
 
+            elif menu_input == "THIS":
+                print("\n\n")
+                import this # Just an 'Easter egg'...
+                print("\n\n")
+
             elif menu_input in ["restart", "reboot"]:
                 logger.log(0, 'User restarted Shadow Suite...', 'logfile.txt', global_variables['SESSION_ID'])
                 misc.programFunctions().clrscrn()
