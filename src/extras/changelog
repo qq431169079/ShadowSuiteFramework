@@ -1,3 +1,21 @@
+commit fe354b940eae9766d7db81f6c0873ad452bece53
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 17 13:29:16 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    v0.1.0.7
+    
+    + Fixed list_module bug doesn't count modules..
+
+commit db38f862e6254671dd318f002046c29ae009454e
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 16 21:56:35 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 5434ded31114a7e4ec4843e0ac89662d1de2ec6a
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Wed May 16 21:54:20 2018 +0800
