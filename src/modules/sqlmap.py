@@ -30,12 +30,12 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "SQLMap", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "4.0", # version
+        "version": "4.1", # version
         "author": "SQLMap Development Team", # Author
         "desc": "An open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.", # Brief description
         "email": "dev@sqlmap.org", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "May. 08, 2018",                     # a website of the author.
+        "lastupdate": "May. 18, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
@@ -46,7 +46,7 @@ module_status = 0
 category = ['sqlmap', 'sql', 'sqli', 'inject', 'database', 'python']
 
 # Changelog of the module
-changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.1:\nFixes #3100, Fixes #3099, Patch for #3068, and Minor updates\n\nVersion 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"

@@ -40,7 +40,7 @@ if sys.platform == 'linux' or sys.platform == 'darwin':
     # Misc colors
     CP   = '\033[35m'      # purple
     CC   = '\033[36m'      # cyan
-    CK   = '\003[8m'       # black
+    CK   = ''              #'\003[8m'       # black DEV0001: NYW
 
     # Extended colors
     CLM  = '\033[95m'      # light magenta
@@ -48,7 +48,7 @@ if sys.platform == 'linux' or sys.platform == 'darwin':
     CLG  = '\033[92m'      # light green
     CLY  = '\033[93m'      # light yellow
     CLR  = '\033[91m'      # light red
-    CLC  = '\033[96'       # light cyan
+    CLC  = '\033[96m'      # light cyan
     CLGR = '\033[37m'      # light gray
 
     # Background Colors without meanings :p
@@ -90,10 +90,41 @@ else:
 
     CP = ''
     CC = ''
+    CK   = ''
+
+    CLM  = ''
+    CLB = ''
+    CLG  = ''
+    CLY = ''
+    CLR = ''
+    CLC  = ''
+    CLGR = ''
+
+    BW   = ''
+    BR   = ''
+    BG   = ''
+    BY   = ''
+    BB   = ''
+    BM   = ''
+    BC   = ''
+    BGR  = ''
+
+    BLGR = ''
+    BLR  = ''
+    BLG  = ''
+    BLY  = ''
+    BLB  = ''
+    BLM  = ''
+    BLC  = ''
+    BLW  = ''
 
     FR = ''
     FB = ''
     FI = ''
+    FU = ''
+    FE = ''
+
+    END = ''
 
 # Shadow Suite's logo and a brief description.
 LOGO = r"""
@@ -391,8 +422,8 @@ binary_path="{6}"
         return euid
 
     def random_color(self):
-        color_list = [CW, CR, CG, CY, CB, CGR, CP, CC]
-        randomizer = random.randint(0, 7)
+        color_list = [CW, CR, CG, CY, CB, CGR, CP, CC, CK, CLM, CLB, CLG, CLY, CLR, CLC, CLGR]
+        randomizer = random.randint(0, 15)
         return color_list[randomizer]
 
     def captcha_picker(self, list_of_strings):

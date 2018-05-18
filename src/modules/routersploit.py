@@ -30,23 +30,23 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "RouterSploit", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "4.0", # version
+        "version": "4.1", # version
         "author": "Marcin Bury (lucyoa) & Mariusz Kupidura (fwkz)", # Author
         "desc": "A Router Exploitation Framework.", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "May. 08, 2018",                     # a website of the author.
+        "lastupdate": "May. 18, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none'] # Put needed dependencies here.  
-module_status = 2
+dependencies = [] # Put needed dependencies here.  
+module_status = 0
 category = ['router', 'exploit', 'framework', 'routersploit', 'marcin', 'bury', 'lucyoa', 'mariusz', 'kupidura', 'fkwz', 'python']
 
 # Changelog of the module
-changelog = "Version 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 4.1:\nAdding telnet creds tests (#423), Improving exploitation process for dsl_2750b_rce (#421), Fixing zywall_usg_extract_hashes and adding tests (#419), Adding generic tests (#418), Adding tests for exploits info (#416), Adding MVPower DVR Jaws RCE exploit (#414), Adding D-Link DIR-8XX Password Disclosure module (#413), Fixing airos_6_x (#412), Fixing tg784_authbypass, dlink-dsl and heartbleed (#411), Fixing Thomson TWG849 Info Disclosure module (#410), OpenSSL Heartbleed module (#409), fixed missing import\n\nVersion 4.0:\nMandatory module update\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"

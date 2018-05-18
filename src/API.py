@@ -31,11 +31,7 @@ try:
     from core import error
     # error calling
     #      
-    #      (Replace * with error number. See core/error.py for details.)
-    #      error = API.error.ERROR****
-    #
-    #      (Replace * with warning number. See core/error.py for details.)
-    #      error = API.error.WARNING****
+    #      *Use 'from core import error' instead*
     #
     from core import list_module
     from core import misc
@@ -174,15 +170,15 @@ class ShadowSuite:
             self.debugging = debugging
 
     def generate_new_module(self, cmn):
-        logger.log(0, 'User generated a new module named ' + module_name, 'logfile.txt', self.SESSION_ID)
+        logger.log(0, 'User generated a new module named ' + cmn, 'logfile.txt', self.SESSION_ID)
         if misc.programFunctions().is_windows() == ('windows' or 'win' or 'nt'):
-            os.system("xcopy core/temp.py output/" + module_name + ".py")
+            os.system("xcopy core/temp.py output/" + cmn + ".py")
         
         else:
-            os.system("cp core/temp.py output/" + module_name + ".py")
+            os.system("cp core/temp.py output/" + cmn + ".py")
             
-        if misc.programFunctions().path_exists('output/' + module_name + '.py'):
-            print("[i] " + module_name + ".py successfully generated!")
+        if misc.programFunctions().path_exists('output/' + cmn + '.py'):
+            print("[i] " + cmn + ".py successfully generated!")
         
         else:
             print("[i] " + error.ERROR0015 + " (Generated module not found)")
@@ -195,9 +191,8 @@ class ShadowSuite:
         # Argument "module" is the target module to view the info.
         module = module.lower()
         logger.log(0, 'User used find_module method to look for ' + module + ' via API.', 'api_logfile.txt', self.SESSION_ID)
-        module_name = self.MODULE_PATH + module
         try:
-            module_path = module_path.replace('/', '.')
+            module_path = self.MODULE_PATH.replace('/', '.') + module
             module_import = importlib.import_module(module_path)
             module_import.module_info()
 
@@ -208,9 +203,8 @@ class ShadowSuite:
         # Argument "module" is the target module to run.
         module = module.lower()
         logger.log(0, 'User used use_module method to use ' + module + ' via API.', 'api_logfile.txt', self.SESSION_ID)
-        module_name = MODULE_PATH + module
         try:
-            module_path = module_path.replace('/', '.')
+            module_path = self.MODULE_PATH.replace('/', '.') + module
             module_import = importlib.import_module(module_path)
             module_import.main()
 

@@ -832,6 +832,7 @@ def main():
                                         module.main(global_variables)
 
                                     except Exception as module_error_msg:
+                                        traceback.print_exc() # DEV0005
                                         print(misc.CR + "[i] " + str(module_error_msg))
 
                             except AttributeError:
@@ -839,6 +840,7 @@ def main():
                                     module.main(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
 
                                 except Exception as module_error_msg:
+                                    traceback.print_exc() # DEV0005
                                     print(misc.CR + "[i] " + str(module_error_msg))
 
                         except Exception as moduleerror_msg:

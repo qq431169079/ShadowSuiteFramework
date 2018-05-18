@@ -17,6 +17,9 @@ try:
     import API
 
     # Place your 'import' directives below
+    import socket
+    import time
+    import importlib
 
     import_error = False
 
@@ -29,22 +32,22 @@ except(ImportError, ModuleNotFoundError):
 
 # Put your module information here.
 info = {
-        "name": "GetSploit", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "SimpleIM", # Module filename (Change this; I recommend you to use the filename as the module name.)
         "version": "1.0", # version
-        "author": "Kir Ermakov", # Author
-        "desc": "It allows you to search online for the exploits across all the most popular collections: Exploit-DB, Metasploit, Packetstorm and others.", # Brief description
-        "email": "isox(at)vulners.com", # Email
-        "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "May. 17, 2018",                     # a website of the author.
+        "author": "Catayao56", # Author
+        "desc": "A simple encrypted messenger written in python, based on Beyar Nahro's \"talkwithme.py\".", # Brief description
+        "email": "Catayao56@gmail.com", # Email
+        "authorinfo": "https://github.com/Catayao56", # Additional information about the author; this could be
+        "lastupdate": "May. 18, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['BINARY: python3', 'PYTHON: urllib', 'PYTHON: argparse', 'PYTHON: optparse', 'PYTHON: textwrap', 'PYTHON: optik', 'PYTHON: sqlite3'] # Put needed dependencies here.
+dependencies = ['BINARY: python3'] # Put needed dependencies here.
 module_status = 0 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
-category = ['all', 'python', 'search', 'exploit', 'online', 'database', 'metasploit', 'packetstorm', 'vuln']
-files = ['GETSPLOIT/'] # Uncomment this line if the module needs a subdirectory to use.
+category = ['all', 'python', 'encrypt', 'message', 'messenger', 'messaging', 'catayao', 'python', 'beyar', 'nahro', 'im']
+#files = [] # Uncomment this line if the module needs a subdirectory to use.
 #E.g.: MODULE_NAME_OR_SUBDIRECTORY_NAME/
 
 # Changelog of the module
@@ -112,75 +115,63 @@ def module_body(global_variables):
     # To support module versions older than v7.0
     API_ShadowSuite = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
     misc = API.misc
-    
-    print()
-    print(info['name'] + " " + info['version']+ " :: " + info['desc'])
-    print()
-    print("Type 'help' for information")
-    print()
+    mpf = misc.programFunctions()
+    try:
+        module_path = global_variables['MODULE_PATH'].replace('/', '.') + 'ipify'
+        ipify = importlib.import_module(module_path)
+        ip = ipify.API()
+
+    except:
+        ip = "ImportError"
+        
+    settings = {
+            "username": global_variables['current_user'],
+            "password": "password",
+            "ip": ip,
+            "sport": 8220,
+            "cip": "127.0.0.1",
+            "cport": 8220,
+            "encryption_key": "default",
+            "encryption": "AES"
+            }
+
+    #print(settings) # DEV0005: For debugging purposes only
+    #input()
+
     while True:
         try:
-            getsploit_comm = input("[" + global_variables['current_user'] + "@GETSPLOIT] $ ")
-            if getsploit_comm.lower().startswith("help"):
-                print()
-                print("""usage: Exploit search and download utility [-h] [-t] [-j] [-m] [-c COUNT] [-l]
-                                           [-u]
-                                           [query [query ...]]
+            mpf.clrscrn()
+            print()
+            print(info['name'] + " " + info['version'] + " :: " + info['desc'])
+            print()
+            print(misc.CLG + "[01] Start a Server" + misc.END)
+            print(misc.CG + "[02] Start a Client" + misc.END)
+            print(misc.CY + "[03] Configure settings" + misc.END)
+            print()
+            print(misc.CR + "[99] Reset data and quit" + misc.END)
+            print()
+            selection = int(input("[" + global_variables['current_user'] + "@" + info['name'] + "] "))
+            if selection == 1:
+                pass
 
-positional arguments:
-  query                 Exploit search query. See https://vulners.com/help for
-                        the detailed manual.
+            elif selection == 2:
+                pass
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -t, --title           Search JUST the exploit title (Default is description
-                        and source code).
-  -j, --json            Show result in JSON format.
-  -m, --mirror          Mirror (aka copies) search result exploit files to the
-                        subdirectory with your search query name.
-  -c COUNT, --count COUNT
-                        Search limit. Default 10.
-  -l, --local           Perform search in the local database instead of
-                        searching online.
-  -u, --update          Update getsploit.db database. Will be downloaded in
-                        the script path.
+            elif selection == 3:
+                pass
 
-module commands:
-  help                  Prints this help menu.
-  quit                  Quit GetSploit module.
-[i] In this case, you only need to supply the arguments, and the module will do the rest for you. """)
-                print()
-
-            elif getsploit_comm.lower().startswith("quit"):
+            elif selection == 99:
                 print(API_ShadowSuite.FINISH)
                 break
 
             else:
-                #print("skek") # DEV0005
-                os.system("cd " + global_variables['MODULE_PATH'] + "/GETSPLOIT && python3 getsploit.py " + getsploit_comm)
-                #print("kdkd") # DEV0005
-                paths = os.listdir(global_variables['MODULE_PATH'] + '/GETSPLOIT/')
-                #print(paths) # DEV0005
-                for path in paths:
-                    #print(path) # DEV0005
-                    if path == '__pycache__':
-                        continue
+                raise ValueError("Invalid selection!")
 
-                    else:
-                        if misc.programFunctions().isfolder(global_variables['MODULE_PATH'] + 'GETSPLOIT/' + path):
-                            if misc.programFunctions().is_windows():
-                                os.system("move " + global_variables['MODULE_PATH'] + 'GETSPLOIT/' + path + " " + global_variables['OUTPUT_PATH'])
+        except Exception as exceptionerrmsg:
+            print("[i] " + str(exceptionerrmsg))
+            mpf.pause()
 
-                            else:
-                                os.system("mv -f " + global_variables['MODULE_PATH'] + "GETSPLOIT/" + path + " " + global_variables['OUTPUT_PATH'])
+class Security:
 
-                        else:
-                            continue
-
-        except Exception as err:
-            print(misc.BR + misc.CK + "[EXCEPTION] " + str(err) + misc.END)
-            continue
-
-        except(urllib.error.URLError, socket.gaierror) as sockerr:
-            print(misc.BR + misc.CK + "[EXCEPTION] " + str(sockerr) + misc.END)
-            continue
+    def __init__(self, global_variables):
+        self.gv = global_variables

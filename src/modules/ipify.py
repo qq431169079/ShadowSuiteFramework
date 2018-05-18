@@ -5,7 +5,7 @@
 ########################################################################################
 # Coding=UTF-8
 
-# Module version: 5.0
+module_version = 7.3
 
 # Import directives
 try:
@@ -21,7 +21,7 @@ try:
 
     import_error = False
 
-except ImportError:
+except(ImportError, ModuleNotFoundError):
     print("[!] A module is missing! Please install the required modules...")
     print("==================== TRACEBACK ====================")
     traceback.print_exc()
@@ -31,23 +31,25 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Ipify", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "3.0", # version
+        "version": "3.1", # version
         "author": "Catayao56", # Author
-        "desc": "A simple Public IP Address API.", # Brief description
-        "email": "Catayao56@gmail.com", # Email
+        "desc": "A public IP address API.", # Brief description
+        "email": "Catayao56", # Email
         "authorinfo": "https://github.com/Catayao56", # Additional information about the author; this could be
-        "lastupdate": "May. 08, 2018",                     # a website of the author.
+        "lastupdate": "May. 18, 2018",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
         "usingapi": "True", # Is this module using Shadow Suite's API?
         "needsroot": "1", # Does this module needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['none'] # Put needed dependencies here.  
-module_status = 0
-category = ['ipify', 'public', 'ip', 'address', 'python', 'catayao']
+dependencies = ['BINARY: python3', 'PYTHON: requests'] # Put needed dependencies here.
+module_status = 1 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
+category = ['all', 'python', 'public', 'ip', 'address', 'ipify', 'catayao']
+#files = [] # Uncomment this line if the module needs a subdirectory to use.
+#E.g.: MODULE_NAME_OR_SUBDIRECTORY_NAME/
 
 # Changelog of the module
-changelog = "Version 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory module update\n\nVersion 1.0:\nInitial module release"
+changelog = "Version 3.1:\nBug fix\n\nVersion 3.0:\nMandatory module update\n\nVersion 2.0:\nMandatory module update\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -84,7 +86,7 @@ def module_info():
     print("\n\n")
 
 # Main module function
-def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+def main(global_variables):
     if import_error is True:
         return None
 
@@ -102,24 +104,26 @@ def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, 
                 return 0
 
             else:
-                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
+                module_body(global_variables)
 
         else:
-            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
+            module_body(global_variables)
 
-def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+def module_body(global_variables):
+    # To support module versions older than v7.0
+    API_ShadowSuite = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
+    print()
     try:
         ip = requests.get('https://api.ipify.org/').text
-        ip = str(ip)
-        print('Your public IP Address: ' + ip)
+        print("Your public IP Address is '" + str(ip) + "'.")
 
     except ConnectionError:
-        print(API.error.ERROR0010)
-
+        print(error.ERROR0010)
+    
     except requests.exceptions.ConnectionError:
-        print(API.error.ERROR0010)
+        print(error.ERROR0010)
 
-    except Excdption as error_msg:
+    except Exception as error_msg:
         print("[i] " + str(error_msg))
 
-    print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
+    print(API_ShadowSuite.FINISH)
