@@ -1,3 +1,50 @@
+commit 3d1a6f78d79f56bf3078b25d1884d73262c8cbc5
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 18 15:06:14 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.0.9
+    
+    + SQLMap:
+        -Fixes #3100
+        -Fixes #3099
+        -Patch for #3068
+        -Minor updates
+    
+    + Routersploit:
+        -Adding telnet creds tests (#423)
+        -Improving exploitation process for dsl_2750b_rce (#421)
+        -Fixing zywall_usg_extract_hashes and adding tests (#419)
+        -Adding generic tests (#418)
+        -Adding tests for exploits info (#416)
+        -Adding MVPower DVR Jaws RCE exploit (#414)
+        -Adding D-Link DIR-8XX Password Disclosure module (#413)
+        -Fixing airos_6_x (#412)
+        -Fixing tg784_authbypass
+        -dlink-dsl and heartbleed (#411)
+        -Fixing Thomson TWG849 Info Disclosure module (#410)
+        -OpenSSL Heartbleed module (#409)
+        -Fixed missing import
+    
+    + Rewrite of BRAT
+    
+    + Updated GetSploit
+    
+    + Updated Ipify to fix minor bug
+    
+    + Adding SimpleIM
+    
+    + Bug fixes on SSF and API.
+
+commit 3b6d8e6456fb619a83178c3013dca1719dcce4bb
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 17 22:43:38 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 00c55efc0356eed795831f7e63157170650ca459
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Thu May 17 22:42:59 2018 +0800
