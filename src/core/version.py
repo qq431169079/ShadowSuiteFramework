@@ -21,9 +21,9 @@ import sys
 from core import error
 
 VAPI = "0.0.7.0-API"
-VNUMBER = "0.1.0.9"
+VNUMBER = "0.1.0.10"
 VTYPE = "Experimental"
-VCODENAME = "Shellshock"
+VCODENAME = "Traversal"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
 
     # example:

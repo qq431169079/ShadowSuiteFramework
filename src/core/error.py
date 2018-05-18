@@ -102,7 +102,7 @@ ERROR0015 = misc.CR + "ERROR 0015: Path not found." + misc.CW
 ERROR0016 = misc.CR + "ERROR 0016: Not a valid SSF module!" + misc.CW
 
 # This is called if the module user is trying to install has encountered an error.
-ERROR0017 = misc.CR + "ERROR 0017: There was a problem Parsing the pakcage..." + misc.CW
+ERROR0017 = misc.CR + "ERROR 0017: There was a problem Parsing the package..." + misc.CW
 
 # This is called if the module to uninstall can't be removed.
 ERROR0018 = misc.CR + "ERROR 0018: Cannot uninstall the specified package!" + misc.CW

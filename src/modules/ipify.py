@@ -43,7 +43,7 @@ info = {
                                           # 0 == True; any number means false.
 }
 dependencies = ['BINARY: python3', 'PYTHON: requests'] # Put needed dependencies here.
-module_status = 1 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
+module_status = 0 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
 category = ['all', 'python', 'public', 'ip', 'address', 'ipify', 'catayao']
 #files = [] # Uncomment this line if the module needs a subdirectory to use.
 #E.g.: MODULE_NAME_OR_SUBDIRECTORY_NAME/
