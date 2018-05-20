@@ -1,3 +1,21 @@
+commit 62a3f154bf173ad5b3fd4d1c47103c7b06ec5c09
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun May 20 16:14:28 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.0.11
+    
+    + Added framework extensions/modules focused on UI design for future updates.
+
+commit de8e5373baee8f5834a0d04196e41a7897f7131b
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Fri May 18 16:45:48 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit f264cdb64c8b7f190a36a4843318536167f84b79
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Fri May 18 16:45:29 2018 +0800
