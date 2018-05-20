@@ -38,6 +38,8 @@ try:
     import signal # Signal API
 
     print()
+    print("[i] Importing 'ansi' module...")
+    from core import ansi # Like misc, but occassionally used.
     print("[i] Importing 'error' module...")
     from core import error # Error Code Definitions
     print("[i] Importing 'misc' module...")
@@ -52,6 +54,10 @@ try:
     from core import suggest # Suggestion Search Engine
     print("[i] Importing 'logger' module...")
     from core import logger # Logging API
+    print("[i] Importing 'gethost' module...")
+    from core import gethost # A little module for hostnames and IP Addresses.
+    print("[i] Importing 'asciigraphs' module...")
+    from core import asciigraphs # A little module for graphs.
     print("[i] Importing 'joke' module...")
     from core import joke # Corny Jokes
     print("[i] Importing 'quote' module...")
