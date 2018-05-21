@@ -97,7 +97,7 @@ BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
     # Traversal                                          ( Used in v0.1.0.10 )
     # Uber                                               ( Used in v0.1.0.12 )
 
-VEDITION = 2
+VEDITION = 0 # 0 nfbot Nbtufs Fejujpo, 1 nfbot Vosfmfbtfe Fejujpo, boe 3 nfbot Joufsobmt Fejujpo.
 
 def changelog():
     if sys.platform == 'windows' or sys.platform == 'nt':
