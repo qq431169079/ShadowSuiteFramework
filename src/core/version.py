@@ -21,7 +21,7 @@ import sys
 from core import error
 
 VAPI = "0.0.7.0-API"
-VNUMBER = "0.1.0.12"
+VNUMBER = "0.1.1.0"
 VTYPE = "Experimental"
 VCODENAME = "Uber"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
@@ -92,7 +92,12 @@ BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
     # Open Source                                        ( Used in v0.0.9.7 )
     # Portable                                           ( Used in v0.0.9.9 )
     # Quantum                                            ( Used in v0.1.0.0 )
-    # Redundant                                          ( Used in v0.1.0.1 )
+    # Rowhammer                                          ( Used in v0.1.0.1 )
+    # Shellshock                                         ( Used in v0.1.0.5 )
+    # Traversal                                          ( Used in v0.1.0.10 )
+    # Uber                                               ( Used in v0.1.0.12 )
+
+VEDITION = 2
 
 def changelog():
     if sys.platform == 'windows' or sys.platform == 'nt':

@@ -126,6 +126,19 @@ else:
 
     END = ''
 
+# Check if Edition is Master, Unreleased, or Internals.
+if version.VEDITION == 0:
+    edition_label = "Master Edition"
+
+elif version.VEDITION == 1:
+    edition_label = "Unreleased Edition"
+
+elif version.VEDITION == 2:
+    edition_label = "Internals Edition"
+
+else:
+    edition_label = "Master Edition"
+
 # Shadow Suite's logo and a brief description.
 LOGO = r"""
  ____  _               _                 ____        _ _
@@ -133,9 +146,10 @@ LOGO = r"""
 \___ \| '_ \ / _` |/ _` |/ _ \ \ /\ / / \___ \| | | | | __/ _ \
  ___) | | | | (_| | (_| | (_) \ V  V /   ___) | |_| | | ||  __/
 |____/|_| |_|\__,_|\__,_|\___/ \_/\_/   |____/ \__,_|_|\__\___|
-                         Framework
-                  Ethical Hacking Toolkit
-""" + "\n\t    v" + version.BOTH + "\n\n             Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
+                    Framework {}
+
+           Ethical Hacking Toolkit + Framework
+""".format(edition_label) + "\n\t    v" + version.BOTH + "\n\n             Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
 
 # brief description of the license.
 BRIEF_LICENSE = r"""
@@ -145,9 +159,6 @@ under certain conditions; type 'show license' for details."""
 
 # ShadowSuite is running as module.
 MODULE_MODE_INFO = CY + "Running as module..." + CW
-
-# Debugging mode
-debugging = False # Default value
 
 class programFunctions:
     COPYRIGHT = "Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
