@@ -1,3 +1,21 @@
+commit ff79b75d3d0dbb3d67b24de525547db960691232
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 21 15:15:14 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    [INTERNALS]
+    
+    + Fixed SSF.py for future update.
+
+commit 8cda7358dc2c9b07a08a5b99bcbcaa77f463550d
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 21 12:44:28 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 68889a0e983439fba03ea110e41ae30976624105
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Mon May 21 12:44:10 2018 +0800
