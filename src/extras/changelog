@@ -1,3 +1,21 @@
+commit 32b35fdc11d48eeac0c5250f3160d33a8d27d89a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 21 12:01:51 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.0.12
+    
+    + Added terminal title when launching SSF.
+
+commit d95b2af88dd0d8034c756e1f7185a9786ddb8463
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun May 20 16:15:24 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 62a3f154bf173ad5b3fd4d1c47103c7b06ec5c09
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Sun May 20 16:14:28 2018 +0800
