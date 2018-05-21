@@ -1,3 +1,35 @@
+commit 5532a562c2468ca399b851f247a662cfeb1d26e3
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 21 22:45:32 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.1.1
+    
+    + UI Improvement, recent commands can be reused by using the arrow keys.
+    
+    + New sub-command, that lets you to show recently entered commands.
+    
+    + New built-in 'notepad', still experimental but will be fixed on the
+    next update.
+    
+    + Minor bug fixes.
+
+commit cd95b454ffd98e405346613d8ef9a8f172066ebd
+Merge: 697250b f4fa5bc
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 21 15:17:42 2018 +0800
+
+    Merge branch 'internals'
+
+commit f4fa5bc45d06cc67dd30c72c014a177c156a7dcc
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 21 15:16:30 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit ff79b75d3d0dbb3d67b24de525547db960691232
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Mon May 21 15:15:14 2018 +0800
@@ -7,6 +39,14 @@ Date:   Mon May 21 15:15:14 2018 +0800
     [INTERNALS]
     
     + Fixed SSF.py for future update.
+
+commit 697250b9881d8b49e8fda63462f73dc7d0bb57a8
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 21 12:51:58 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added comment on version.py
 
 commit 8cda7358dc2c9b07a08a5b99bcbcaa77f463550d
 Author: Catayao56 <Catayao56@gmail.com>
