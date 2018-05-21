@@ -36,6 +36,10 @@ try:
     import importlib # Framework Module importing API
     print("[i] Importing 'signal' module...")
     import signal # Signal API
+    print("[i] Importing 'atexit' module...")
+    import atexit # Define multiple exit functions upon normal program termination.
+    print("[i] Importing 'readline' module...")
+    import readline
 
     print()
     print("[i] Importing 'ansi' module...")
@@ -437,7 +441,33 @@ def main():
                 print(ansi.set_title("Shadow Suite Framework: First-Run Wizard"))
                 
             first_run_wizard()
+
+    Terminal()
             
+def Terminal():
+    global global_variables
+
+    logger.log(0, "Reading history file...", 'logfile.txt', global_variables['SESSION_ID'])
+    history_file = os.path.expanduser("data/.SSFhistory")
+    history_length = 100
+    if not os.path.exists(history_file):
+        with open(history_file, "a+") as history:
+            if is_libedit():
+                history.write("_HiStOrY_V2_\n\n")
+
+        readline.read_history_file(history_file) # DEV0001: Not reading the history file.
+        readline.set_history_length(history_length)
+        atexit.register(readline.write_history_file, history_file)
+
+        readline.parse_and_bind("set enable-keypad on")
+  
+        readline.set_completer(complete)
+        readline.set_completer_delims(" \t\n;")
+        if is_libedit():
+            readline.parse_and_bind("bind ^I rl_complete")
+        else:
+            readline.parse_and_bind("tab: complete")
+
     logger.log(0, "Starting Shadow Suite Framework Shell...", 'logfile.txt', global_variables['SESSION_ID'])
     print()
     print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR) # Prints logo
@@ -488,6 +518,7 @@ def main():
                 print("config [OPTION]               :: Configure Shadow Suite settings; Export settings.")
                 print("module [OPTION]               :: manage modules.")
                 print("suggest=[CRITERIA1,CRITERIA2] :: suggests a tool based on your critera.")
+                print("notepad [OPTION]              :: built-in 'notepad'.")
                 print("clear                         :: clears the screen.")
                 print("run || exec [COMMAND]         :: run a command from your terminal.")
                 print("\n")
@@ -554,13 +585,34 @@ def main():
                         logger.log(0, 'User opens changelog.', 'logfile.txt', global_variables['SESSION_ID'])
                         version.changelog()
 
+                    elif show_o[1].lower() in ("recent_commands", "recent", "commands"):
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in as root first:")
+                            src_rootuser = input("Root Username: ")
+                            src_rootpass = getpass("Root Password: ")
+                            print(misc.programFunctions().login_root(global_variables, src_rootuser, src_rootpass) == "Login Successful!")
+                            if misc.programFunctions().login_root(global_variables, src_rootuser, src_rootpass) == "Login Successful!":
+                                print("Recent Commands:")
+                                for i in range(readline.get_current_history_length()):
+                                    print("- " + str(readline.get_history_item(i + 1)))
+
+                            else:
+                                print(error.ERROR0013)
+
+                            del src_rootuser, src_rootpass
+
+                        else:
+                            print("Recent Commands:")
+                            for i in range(readline.get_current_history_length()):
+                                print("- " + str(readline.get_history_item(i + 1)))
+
                     elif show_o[1].lower() == "config_files":
                         logger.log(0, "User lists available configuration files...", 'logfile.txt', global_variables['SESSION_ID'])
                         try:
                             available_config_files = os.listdir('data/')
                             acf_iterator = 0
                             for config_files in available_config_files:
-                                if config_files == 'config.dat' or config_files == '.default_config.dat' or config_files == '.installed.dat':
+                                if config_files == 'config.dat' or config_files == '.default_config.dat' or config_files == '.installed.dat' or config_files == '.SSFhistory' or config_files == '.SSFnotes':
                                     continue
 
                                 else:
@@ -584,6 +636,7 @@ def main():
                     print("info  information  status  stats    -    Shows the current information of Shadow Suite.")
                     print("changelog                           -    Shows the changelog via less command.")
                     print("config_files                        -    Lists the configuration files available.")
+                    print("recent_commands                     -    Lists the recent commands entered.")
                     print()
 
             elif menu_input.lower().startswith("update"):
@@ -1360,7 +1413,53 @@ def main():
 
                 except IndexError:
                     print()
-                    print("Usage: suggest=CRITERIA1,CRITERIA2,CRITERIA3,...,CRITERIA4")
+                    print("[i] Usage: suggest=CRITERIA1,CRITERIA2,CRITERIA3,...,CRITERIA4")
+                    print()
+
+            elif menu_input.lower().startswith(('notepad', 'note', 'notes')):
+                try:
+                    suggest_o = menu_input.split(' ')
+                    notes = 'data/.SSFnotes'
+                    if suggest_o[1].lower().startswith(("add", "new")):
+                        start = 2
+                        note = ""
+                        for word in suggest_o:
+                            if start == 0:
+                                note += word + ' '
+
+                            else:
+                                start -= 1
+
+                        with open(notes, 'a') as fopen:
+                            fopen.write(note + '\n')
+
+                        print("[i] Note added! (" + note + ")")
+                        del start, note
+
+                    elif suggest_o[1].lower().startswith(('show', 'ls')):
+                        with open(notes, 'r') as fopen:
+                            notes = fopen.readlines()
+
+                        print("Notes: ")
+                        MAXLINES = 20
+                        CURLINES = 0
+                        for note in notes:
+                            if CURLINES <= MAXLINES:
+                                note = note.replace('\n', '')
+                                print('- ' + note)
+
+                            else:
+                                print("[i] Max lines reached!")
+                                break
+
+                except IndexError:
+                    print()
+                    print("[i] Usage: notepad [OPTION] NOTE")
+                    print()
+                    print("add || new :: add a new note.")
+                    print("show || ls :: list notes.")
+                    print(misc.FE + \
+                          "rm || del  :: delete a note." + misc.END)
                     print()
 
             elif menu_input.lower().startswith(("clear", "clr", "cls", "clrscrn")):
@@ -1406,8 +1505,8 @@ def main():
                 misc.programFunctions().program_restart()
 
             elif menu_input in ["quit", "exit"]:
-                print(joke.joke())
-                print("Quitting Shadow Suite...\n")
+                print(misc.programFunctions().random_color() + joke.joke() + misc.END)
+                print(misc.FB + misc.CLR + "Quitting Shadow Suite...\n" + misc.END)
                 logger.log(0, 'User quits Shadow Suite...', 'logfile.txt', global_variables['SESSION_ID'])
                 proper_exit(0)
 
@@ -1475,18 +1574,63 @@ def main():
 def no_escape_chars(string):
     result = string.replace('\n', '').replace('\t', '')
     return result
+    
+def default_completer(*ignored):
+    return []
+    
+def complete(text, state):
+    """Return the next possible completion for 'text'.
+
+    If a command has not been entered, then complete against command list.
+    Otherwise try to call complete_<command> to get list of completions.
+    """
+    if state == 0:
+        original_line = readline.get_line_buffer()
+        line = original_line.lstrip()
+        stripped = len(original_line) - len(line)
+        start_index = readline.get_begidx() - stripped
+        end_index = readline.get_endidx() - stripped
+
+        if start_index > 0:
+            cmd, args = parse_line(line)
+            if cmd == "":
+                complete_function = default_completer
+            else:
+                try:
+                    complete_function = getattr("complete_" + cmd)
+                except AttributeError:
+                    complete_function = default_completer
+        else:
+            complete_function = raw_command_completer
+
+        completion_matches = complete_function(text, line, start_index, end_index)
+
+    try:
+        return self.completion_matches[state]
+        
+    except IndexError:
+        return None
+        
+def raw_command_completer(self, text, line, start_index, end_index):
+    """ Complete command w/o any argument """
+    return [command for command in suggested_commands() if command.startswith(text)]
+    
+def suggested_commands():
+	return commands()
+
+def commands(*ignored):
+    return [command.rsplit("_").pop() for command in dir(self) if command.startswith("command_")]
+
+def parse_line(line):
+        """ Split line into command and argument.
+
+        :param line: line to parse
+        :return: (command, argument)
+        """
+        command, _, arg = line.strip().partition(" ")
+        return command, arg.strip()
 
 def proper_exit(code):
-    global global_variables
-    try:
-        DEBUGGING = global_variables['DEBUGGING']
-
-    except:
-        DEBUGGING = False
-
-    if DEBUGGING == True:
-        print("[DEBUG] SystemExit raised with error code " + str(code) + ".")
-
     try:
         os.remove('.last_session_exit_fail.log') # Delete the file
     
@@ -1504,6 +1648,9 @@ def proper_exit(code):
 
     except:
         quit(code)
+        
+def is_libedit():
+    return "libedit" in readline.__doc__
     
 def first_run_wizard():
     while True:

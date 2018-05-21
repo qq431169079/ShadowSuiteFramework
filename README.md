@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.1.0 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.1.1 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -10,7 +10,13 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # What's new?
 ------------------
-+ Some features added.
++ UI Improvement, recent commands can be reused by using the arrow keys.
+
++ New sub-command, that lets you to show recently entered commands.
+
++ New built-in notepad, still experimental but will be fixed on the next update.
+
++ Minor bug fixes.
 
 # Full Feature List
 ------------------------
@@ -51,8 +57,6 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 + [MAINTENANCE]: More logging verbosity.
 
-+ [FEATURE REQUEST]: Readline
-
 + [ISSUE]: requests module not found when running on popular linux systems.
 
 + [MAINTENANCE]: Installation of modules using a number of archive formats (for modules with subdirectories)
@@ -61,9 +65,13 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 + [MAINTENANCE]: Module fixes.
 
-+ [FEATURE REQUEST]: in-app notes
-
 + [FEATURE REQUEST]: in-app sytem stats
+
++ [ISSUE]: Readline bug, when 'scrolling' through the recently entered *long* commands, the prompt disappears and the UI goes bezerk! :P
+
++ [ISSUE]: Readline bug, it does not read the command history properly.
+
++ [ISSUE]: Notepad bug fixes... BUGGY!
 
 # License and Copying
 ------------------------

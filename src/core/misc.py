@@ -24,9 +24,11 @@ import datetime
 import hashlib
 import subprocess
 
+########## FOR SSF ONLY ##########
 from core import version
 from core import logger
 from core import multitasking
+from core import error
 
 if sys.platform == 'linux' or sys.platform == 'darwin':
     # Colors with meanings
@@ -126,6 +128,7 @@ else:
 
     END = ''
 
+########## FOR SSF ONLY ##########
 # Check if Edition is Master, Unreleased, or Internals.
 if version.VEDITION == 0:
     edition_label = "Master Edition"
@@ -139,6 +142,7 @@ elif version.VEDITION == 2:
 else:
     edition_label = "Master Edition"
 
+########## FOR SSF ONLY ##########
 # Shadow Suite's logo and a brief description.
 LOGO = r"""
  ____  _               _                 ____        _ _
@@ -151,19 +155,24 @@ LOGO = r"""
            Ethical Hacking Toolkit + Framework
 """.format(edition_label) + "\n\t    v" + version.BOTH + "\n\n             Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
 
+########## FOR SSF ONLY ##########
 # brief description of the license.
 BRIEF_LICENSE = r"""
 This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
 under certain conditions; type 'show license' for details."""
 
+########## FOR SSF ONLY ##########
 # ShadowSuite is running as module.
 MODULE_MODE_INFO = CY + "Running as module..." + CW
 
-class programFunctions:
-    COPYRIGHT = "Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
+class programFunctions(object):
+
+    def __init__(self):
+        self.COPYRIGHT = "Copyright(C) 2017-{} by Shadow Team".format(datetime.datetime.now().year)
 
     def program_restart(self):
+        ########## TRY BLOCK FOR SSF ONLY ##########
         try:
             open('.last_session_exit_fail.log', 'r').read() # Try to read the file
             open('.last_session_exit_fail.log', 'r').close() # Close the file
@@ -192,7 +201,7 @@ class programFunctions:
 
             else:
                 os.system('clear')
-                # DEV0001: Thinking of new generic clrscrn...
+                # DEV0001: Thinking of new generic clrscrn... Try also using ansi module.
                 """
                 loop = 0
                 while loop != 100:
@@ -249,6 +258,7 @@ class programFunctions:
             loop = True
             while loop == True:
                 quit = None
+                ########## LABEL FOR SSF ONLY ##########
                 ask = input(CB + FB + FI + 'Do you want to keep Shadow Suite running? (y/n)> ' + CW + FR)
                 ask = ask.lower()
                 if ask == 'y':
@@ -373,6 +383,30 @@ class programFunctions:
         else:
             raise UnknownHashTypeError("An unknown hash type is entered...")
 
+    ########## FOR SSF ONLY ##########
+    def login_user(self, global_variables, ulogin, plogin):
+        ulogin = programFunctions().hash(ulogin, 'sha256')
+        plogin = programFunctions().hash(plogin, 'sha256')
+        if global_variables['USERNAME'] == ulogin and global_variables['USERPASS'] == plogin:
+            return "Login Successful!" # means success
+
+        else:
+            return error.ERROR0013 # means fail
+
+    ########## FOR SSF ONLY ##########
+    def login_root(self, global_variables, ulogin, plogin):
+        ulogin = programFunctions().hash(ulogin, 'sha256')
+        plogin = programFunctions().hash(plogin, 'sha256')
+        print("|" + global_variables['ROOTNAME'] + "|")
+        print(ulogin)
+        print("|" + global_variables['ROOTPASS'] + "|")
+        print(plogin)
+        if global_variables['ROOTNAME'] == ulogin and global_variables['ROOTPASS'] == plogin:
+            return "Login Successful!" # means success
+
+        else:
+            return error.ERROR0013 # means fail
+
     def path_exists(self, file_path):
         return os.path.exists(file_path)
 
@@ -386,6 +420,7 @@ class programFunctions:
         subprocess.Popen(args='pip install ' + package, shell=True, universal_newlines=True)
         subprocess.Popen(args='pip2 install ' + package, shell=True, universal_newlines=True)
 
+    ########## FOR SSF ONLY ##########
     def export_conf(self, config_file, config_dict):
         logger.log(3, config_dict['username'] + " is exporting settings to " + config_file + ".")
         try:
