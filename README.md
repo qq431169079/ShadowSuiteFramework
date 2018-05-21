@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.0.11 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.0.12 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -10,7 +10,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # What's new?
 ------------------
-+ Minor bug and typo fixes.
++ Added terminal title when launching SSF.
 
 # Full Feature List
 ------------------------
@@ -60,6 +60,10 @@ Shadow Suite Framework is the main project of Shadow Team.
 + [ISSUE]: modules lower than v7 doesn't use the "global variables" and doesn't check if the user has changed the "MODULE PATH" variable.
 
 + [MAINTENANCE]: Module fixes.
+
++ [FEATURE REQUEST]: in-app notes
+
++ [FEATURE REQUEST]: in-app sytem stats
 
 # License and Copying
 ------------------------

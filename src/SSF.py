@@ -163,6 +163,12 @@ def main():
 
         except(FileNotFoundError):
             logger.log(0, "Running First-run wizard...", 'logfile.txt', global_variables['SESSION_ID'])
+            if misc.programFunctions().is_windows():
+                pass
+
+            else:
+                print(ansi.set_title("Shadow Suite Framework: First-Run Wizard"))
+
             while True:
                 misc.programFunctions().clrscrn()
                 print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR)
@@ -196,6 +202,12 @@ def main():
                 elif captcha_confirm.lower() == 'q' or captcha_confirm.lower() == 'quit':
                     print(misc.FB + misc.CR + "\n[i] Thank you for downloading Shadow Suite Framework...")
                     print(misc.FR + "\n\tIf you are unsatisfied about this project,\n\t\tplease contact us and\n\twe will try our best to make you satisfied :)\n" + misc.CW)
+                    if misc.programFunctions().is_windows():
+                        pass
+                    
+                    else:
+                        print(ansi.set_title(""))
+
                     try:
                         os.remove('.last_session_exit_fail.log') # Delete the file
 
@@ -835,6 +847,12 @@ def main():
 
                                 else:
                                     try:
+                                        if misc.programFunctions().is_windows():
+                                            pass
+                                        
+                                        else:
+                                            print(ansi.set_title("Shadow Suite Framework: " + module_name))
+
                                         module.main(global_variables)
 
                                     except Exception as module_error_msg:
@@ -843,6 +861,12 @@ def main():
 
                             except AttributeError:
                                 try:
+                                    if misc.programFunctions().is_windows():
+                                        pass
+                                    
+                                    else:
+                                        print(ansi.set_title("Shadow Suite Framework: " + module_name))
+
                                     module.main(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
 
                                 except Exception as module_error_msg:
@@ -851,6 +875,12 @@ def main():
 
                         except Exception as moduleerror_msg:
                             print("[i] " + str(moduleerror_msg))
+
+                        if misc.programFunctions().is_windows():
+                            pass
+                        
+                        else:
+                            print(ansi.set_title("Shadow Suite Framework v" + version.VNUMBER))
 
                     elif module_o[1] in ['info', 'information', 'search', 'query']:
                         if module_o[2] == '*':
@@ -1271,7 +1301,7 @@ def main():
 
             elif menu_input == "THIS":
                 print("\n\n")
-                import this # Just an 'Easter egg'...
+                import this # No 'Easter egg' here! Go away!!!...
                 print("\n\n")
 
             elif menu_input in ["restart", "reboot"]:
@@ -1375,6 +1405,13 @@ if __name__ == "__main__":
 
     else:
         pass
+
+    if misc.programFunctions().is_windows():
+        pass
+
+    else:
+        print(ansi.set_title("Shadow Suite Framework v" + version.VNUMBER))
+        logger.log(0, "Title set for current terminal...", 'logfile.txt')
 
     SESSION_ID = misc.programFunctions().generate_session_id()
     logger.log(3, "Generated Session ID: " + str(SESSION_ID))

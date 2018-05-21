@@ -30,7 +30,7 @@ def byaddr(ip):
     try:
         host = socket.gethostbyaddr(ip)
 
-    except Exception as error
+    except Exception as error:
         return error
 
     else:
