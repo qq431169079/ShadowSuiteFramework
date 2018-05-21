@@ -86,20 +86,285 @@ except ImportError:
         print()
 
     print("===================================================")
-    try:
-        logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt')
+    proper_exit(8)
 
-    except:
-        pass
-
-    try:
-        sys.exit(8)
-
-    except:
-        quit()
+global global_variables
 
 def main():
+    # Check python version first before main() function execution
+    req_py_version = (3, 6, 0)
+    cur_py_version = sys.version_info
+    str_py_version = str(sys.version_info)
+    str_py_version = str_py_version.replace('sys.version_info(', '')
+    str_py_version = str_py_version.replace(')', '')
+    logger.log(3, 'User has python version ' + str_py_version +'.', 'logfile.txt')
+    req_py_version_str = "v"
+    for ver_nums in req_py_version:
+        req_py_version_str = req_py_version_str + str(ver_nums) + '.'
+
+    if cur_py_version < req_py_version:
+        PythonVersionError_msg = error.ERROR0011
+        PythonVersionError_msg = PythonVersionError_msg.format(req_py_version_str)
+        print(PythonVersionError_msg)
+        logger.log(0, PythonVersionError_msg, 'logfile.txt')
+        proper_exit(11)
+
+    else:
+        pass
+
+    if misc.programFunctions().is_windows():
+        pass
+
+    else:
+        print(ansi.set_title("Shadow Suite Framework v" + version.VNUMBER))
+        logger.log(0, "Title set for current terminal...", 'logfile.txt')
+
+    SESSION_ID = misc.programFunctions().generate_session_id()
+    logger.log(3, "Generated Session ID: " + str(SESSION_ID))
+
+    current_user = "user"
+    USERNAME = None
+    USERPASS = None
+    ROOTNAME = None
+    ROOTPASS = None
+
+    MODULE_PATH = "modules/"
+    OUTPUT_PATH = "output/"
+    BINARY_PATH = "/usr/bin/"
+
+    USERLEVEL = 2
+    
+    # Check for arguments, if any.
+    NO_WARN = False
+    DEBUGGING = False
+    argv = sys.argv
+    sys.argv = sys.argv
+    for args in sys.argv:
+        arg = args.lower()
+
+        try:
+            if '-d' == arg or '--debug' == arg:
+                DEBUGGING = True
+
+            if '-h' == arg or '--help' == arg:
+                misc.programFunctions().clrscrn()
+                print(sys.argv[0] + "\t--\t" + version.BOTH)
+                print()
+                print("Basic Usage:")
+                print(sys.argv[0] + " [-h/--help] || [SWITCHES]")
+                print()
+                print("-h    --help         Show this help menu.")
+                print()
+                print("Troubleshooting Switches:")
+                print("-d           --debug            Run Shadow Suite in debug mode; Shows logging information.")
+                print()
+                print("Compatibility Switches:")
+                print("-w           --no-warn          Disable last session exit fail warning.")
+                print()
+                print("Customization Switches:")
+                print("-c [FILE]    --config=[FILE]    Define a custom configuration file.")
+                print()
+                proper_exit(0)
+
+            if '-w' == arg or '--no-warn' == arg:
+                NO_WARN = True
+
+        except IndexError:
+            pass
+
+    # Parse configuration file
+    logger.log(3, 'Parsing configuration file...', 'logfile.txt', SESSION_ID)
+    config_file = "data/config.dat"
+    try:
+        iterator_config = 0
+        while iterator_config < len(sys.argv):
+            if '-c' in sys.argv[iterator_config]:
+                iterator_config += 1
+                config_file = sys.argv[iterator_config]
+                config_file = "data/" + config_file
+                if os.path.exists(config_file):
+                    del iterator_config
+                    break
+
+                else:
+                    print(error.ERROR0012)
+                    proper_exit(12)
+
+            else:
+                iterator_config += 1
+
+    except IndexError:
+        config_file = "data/config.dat"
+        del iterator_config
+
+    try:
+        iterator_config = 0
+        while iterator_config < len(sys.argv):
+            if '--config=' in sys.argv[iterator_config]:
+                config_filf = sys.argv[iterator_config]
+                config_filf = config_filf.split("=")
+                config_file = config_filf[1]
+                config_file = "data/" + config_file
+                if os.path.exists(config_file):
+                    del iterator_config
+                    break
+                
+                else:
+                    print(error.ERROR0012)
+                    proper_exit(12)
+                
+            else:
+                iterator_config += 1
+
+    except IndexError:
+        config_file = "data/config.dat"
+        del iterator_config
+
+    # Reading the configuration file...
+    logger.log(3, 'Using ' + config_file + " configuration file; Now reading data...", 'logfile.txt', SESSION_ID)
+    try:
+        config_data = open(config_file, 'r').readlines()
+        open(config_file, 'r').close()
+        # print(config_data) # DEV0005: For debugging purposes only#####
+        new_config_data = []
+        for data in config_data:
+            if data.startswith("#"):
+                continue
+
+            elif "username=" in data.lower():
+                USERNAME = data.replace('username=', '')
+                USERNAME = USERNAME.replace('"', '')
+                USERNAME = no_escape_chars(USERNAME)
+
+            elif "userpass=" in data.lower():
+                USERPASS = data.replace('userpass=', '')
+                USERPASS = USERPASS.replace('"', '')
+                USERPASS = no_escape_chars(USERPASS)
+
+            elif "rootname=" in data.lower():
+                ROOTNAME = data.replace('rootname=', '')
+                ROOTNAME = ROOTNAME.replace('"', '')
+                ROOTNAME = no_escape_chars(ROOTNAME)
+
+            elif "rootpass=" in data.lower():
+                ROOTPASS = data.replace('rootpass=', '')
+                ROOTPASS = ROOTPASS.replace('"', '')
+                ROOTPASS = no_escape_chars(ROOTPASS)
+
+            elif "module_path=" in data.lower():
+                MODULE_PATH = data.replace('module_path="', '')
+                MODULE_PATH = MODULE_PATH.replace('"', '')
+                MODULE_PATH = no_escape_chars(MODULE_PATH)
+
+            elif "output_path=" in data.lower():
+                OUTPUT_PATH = data.replace('output_path=', '')
+                OUTPUT_PATH = OUTPUT_PATH.replace('"', '')
+                OUTPUT_PATH = no_escape_chars(OUTPUT_PATH)
+
+            elif "binary_path=" in data.lower():
+                BINARY_PATH = data.replace('binary_path=', '')
+                BINARY_PATH = BINARY_PATH.replace('"', '')
+                BINARY_PATH = no_escape_chars(BINARY_PATH)
+
+            else:
+                continue
+
+        # DEV0005: For debugging purposes only
+        """
+        print(config_data)
+        print(USERNAME)
+        print(USERPASS)
+        print(ROOTNAME)
+        print(ROOTPASS)
+        print(MODULE_PATH)
+        print(OUTPUT_PATH)
+        print(BINARY_PATH)
+        misc.programFunctions().pause()
+        """
+        logger.log(3, "Someone is trying to use Shadow Suite...", 'logfile.txt', SESSION_ID)
+        if USERNAME == None or USERNAME == "":
+            pass
+
+        else:
+            if USERPASS == None or USERPASS == "":
+                pass
+
+            else:
+                attempts = 0
+                while True:
+                    try:
+                        misc.programFunctions().clrscrn()
+                        print()
+                        print(misc.CG + misc.FB + misc.LOGO + misc.CW + misc.FR)
+                        print()
+                        print(misc.CC + misc.FB + "Failed Attempts: " + misc.CR + str(attempts) + misc.CW + misc.FR)
+                        print()
+                        print(misc.FB + "[i]" + misc.FR + "Please login to continue...\n")
+                        login_user = input("Username: ")
+                        current_user = login_user
+                        ploginuser = login_user
+                        login_user = misc.programFunctions().hash(login_user, 'sha256')
+                        login_pass = getpass()
+                        login_pass = misc.programFunctions().hash(login_pass, 'sha256')
+                        #print(login_user) # DEV0005
+                        #print(login_pass) # DEV0005
+                        #print() # DEV0005
+                        #print(USERNAME) # DEV0005
+                        #print(USERPASS) # DEV0005
+                        if login_user == USERNAME and login_pass == USERPASS:
+                            print(misc.FB + "[i]" + misc.FR + " You are now logged in!")
+                            logger.log(3, ploginuser + " logged in successfully on " + time.asctime() + " with " + str(attempts) + " failed attempts.", 'logfile.txt', SESSION_ID)
+                            misc.programFunctions().pause()
+                            break
+
+                        else:
+                            print(error.ERROR0013)
+                            logger.log(4, ploginuser + " failed to log in on " + time.asctime() + " with " + str(attempts) + " failed attempts.", 'logfile.txt', SESSION_ID)
+                            misc.programFunctions().pause()
+                            if attempts < 3:
+                                attempts += 1
+                                continue
+
+                            else:
+                                print(error.ERROR0014 + " Now quitting...")
+                                proper_exit(13)
+
+                    except KeyboardInterrupt:
+                        print(error.ERROR0002)
+                        proper_exit(2)
+
+    except IndexError:
+        print(error.ERROR0012)
+        proper_exit(12)
+
+    except FileNotFoundError:
+        print(error.ERROR0015 + " (default configuration file)")
+        proper_exit(15)
+
+    # Checks if last session failed to exit properly
+    if NO_WARN == False:
+        try:
+            open('.last_session_exit_fail.log', 'r').read() # Try to read the file
+            open('.last_session_exit_fail.log', 'r').close() # Close the file
+            print(error.WARNING0004)
+            instance_warn = str(input(misc.CY + misc.FB + misc.FI + "Do you still want to run anyway? (y/n) > " + misc.FR + misc.CW))
+            instance_warn = instance_warn.lower()
+            if instance_warn == 'y':
+                misc.programFunctions().clrscrn()
+
+            else:
+                proper_exit(0)
+    
+        except FileNotFoundError:
+            open('.last_session_exit_fail.log', 'w').write('')
+            open('.last_session_exit_fail.log', 'w').close() # Close the file
+            misc.programFunctions().clrscrn()
+
+    else:
+        misc.programFunctions().clrscrn()
+
     # Global variables
+    """
     global config_file
     global USERNAME
     global USERPASS
@@ -112,6 +377,7 @@ def main():
     global current_user
     global SESSION_ID
     global DEBUGGING
+    """
 
     logger.log(0, "Creating global_variables dictionary...", 'logfile.txt', SESSION_ID)
     # More variables and constants
@@ -119,6 +385,7 @@ def main():
     #print(MODULE_PATH) # DEV0005: For debugging purposes only
     INSTALLED_MODULES = list_module.count(MODULE_PATH) # Count installed modules.
     #print(INSTALLED_MODULES) # DEV0005: For debugging purposes only
+    global global_variables
     global_variables = {
             'config_file': config_file, # String; PATH to config file.
             'USERNAME': USERNAME, # String; Hashed form of global_variables['current_user'].
@@ -168,180 +435,9 @@ def main():
 
             else:
                 print(ansi.set_title("Shadow Suite Framework: First-Run Wizard"))
-
-            while True:
-                misc.programFunctions().clrscrn()
-                print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR)
-                print()
-                print(misc.CG + "\t\t\tFirst-run Wizard" + misc.CW)
-                print()
-                print(misc.FI + misc.CGR + misc.BRIEF_LICENSE + misc.CW + misc.FR)
-                print()
-                print("[R] Read the full version of the license")
-                print("[Q] Quit Shadow Suite Framework")
-                print()
-                list_of_captcha_strings = ['i agree', 'i do', 'i accept', 'i\'ll follow the rules']
-                captcha_string = misc.programFunctions().captcha_picker(list_of_captcha_strings)
-                print("If you accept and will follow the rules of the license, type '" + captcha_string + "'.")
-                captcha_confirm = input(" > ")
-                if captcha_confirm.lower() == 'r' or captcha_confirm.lower() == 'read' or 'license' in captcha_confirm.lower():
-                    if global_variables['PLATFORM'] == 'windows' or global_variables['PLATFORM'] == 'nt':
-                        os.system("start extras/shadowsuitelicense")
-
-                    else:
-                        os.system("less extras/shadowsuitelicense")
-
-                    logger.log(0, "User read the license.", 'logfile.txt', global_variables['SESSION_ID'])
-
-                elif captcha_confirm.lower() == captcha_string:
-                    print(misc.FB + misc.CG + "[i] Thank you for downloading Shadow Suite Framework! :D " + misc.FR + misc.CW)
-                    logger.log(0, "User accepted the agreement!", 'logfile.txt', global_variables['SESSION_ID'])
-                    misc.programFunctions().pause()
-                    break
-
-                elif captcha_confirm.lower() == 'q' or captcha_confirm.lower() == 'quit':
-                    print(misc.FB + misc.CR + "\n[i] Thank you for downloading Shadow Suite Framework...")
-                    print(misc.FR + "\n\tIf you are unsatisfied about this project,\n\t\tplease contact us and\n\twe will try our best to make you satisfied :)\n" + misc.CW)
-                    if misc.programFunctions().is_windows():
-                        pass
-                    
-                    else:
-                        print(ansi.set_title(""))
-
-                    try:
-                        os.remove('.last_session_exit_fail.log') # Delete the file
-
-                    except:
-                        pass
-
-                    logger.log(0, "User choosed to quit.", 'logfile.txt', global_variables['SESSION_ID'])
-                    sys.exit(0)
-    
-                else:
-                    continue
-
-            misc.programFunctions().clrscrn()
-            print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR)
-            print()
-            print(misc.CG + "\t\t\tFirst-run Wizard" + misc.CW)
-            while True:
-                askuser_fullupdate = input(misc.FB + misc.CGR + "Do you want to perform a full update? (y/n) > " + misc.CW + misc.FR)
-                if askuser_fullupdate.lower() in ('yes' or 'y'):
-                    logger.log(0, "User performed a full update.", 'logfile.txt', global_variables['SESSION_ID'])
-                    update.full_update(global_variables['DEBUGGING'])
-                    break
-
-                elif askuser_fullupdate.lower() in ('no' or 'n'):
-                    logger.log(1, "User did not performed a full update.", 'logfile.txt', global_variables['SESSION_ID'])
-                    break
-
-                else:
-                    continue
+                
+            first_run_wizard()
             
-            print("[i] Just press enter if you don't want to use password protection.")
-            while True:
-                askuser_username = input("[i] Username: ")
-                if askuser_username == None or askuser_username == "":
-                    pass
-
-                else:
-                    hashed_username = misc.programFunctions().hash(askuser_username, 'sha256')
-                    global_variables['USERNAME'] = hashed_username
-                    global_variables['current_user'] = askuser_username
-
-                while True:
-                    askuser_userpass1 = getpass("[i] Userpass: ")
-                    if askuser_userpass1 == None or askuser_userpass1 == "":
-                        break
-
-                    else:
-                        askuser_userpass2 = getpass("[i] Confirm Userpass: ")
-                        if askuser_userpass1 == askuser_userpass2:
-                            global_variables['USERPASS'] = misc.programFunctions().hash(askuser_userpass1, 'sha256')
-                            break
-
-                        else:
-                            continue
-
-                askuser_rootname = input("[i] Rootname: ")
-                if askuser_rootname == None or askuser_rootname == "":
-                    pass
-
-                else:
-                    hashed_rootname = misc.programFunctions().hash(askuser_rootname, 'sha256')
-                    global_variables['ROOTNAME'] = hashed_rootname
-
-                while True:
-                    askuser_rootpass1 = getpass("[i] Rootpass: ")
-                    if askuser_rootpass1 == None or askuser_rootpass1 == "":
-                        pass
-
-                    else:
-                        askuser_rootpass2 = getpass("[i] Confirm Rootpass: ")
-                        if askuser_rootpass1 == askuser_rootpass2:
-                            global_variables['ROOTPASS'] = misc.programFunctions().hash(askuser_rootpass1, 'sha256')
-                            break
-
-                        else:
-                            continue
-
-                    break
-
-                break
-
-            while True:
-                askuser_binary_path = input("Binary path (Usually '/usr/bin/'): ")
-                if misc.programFunctions().path_exists(askuser_binary_path):
-                    if not askuser_binary_path.endswith('/'):
-                        askuser_binary_path += '/'
-
-                    global_variables['BINARY_PATH'] = askuser_binary_path
-                    break
-
-                else:
-                    print(error.ERROR0015)
-                    continue
-
-            logger.log(0, "Updating configuration file data...", 'logfile.txt', global_variables['SESSION_ID'])
-            config_dict = {
-                    "username": global_variables['USERNAME'],
-                    "userpass": global_variables['USERPASS'],
-                    "rootname": global_variables['ROOTNAME'],
-                    "rootpass": global_variables['ROOTPASS'],
-                    "module_path": global_variables['MODULE_PATH'],
-                    "output_path": global_variables['OUTPUT_PATH'],
-                    "binary_path": global_variables['BINARY_PATH']
-                    }
-        
-            export_conf_result = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING']).export_conf(global_variables['config_file'], config_dict)
-
-            logger.log(0, "Deleting First-run Wizard variables...", 'logfile.txt', global_variables['SESSION_ID'])
-            del askuser_fullupdate
-            del askuser_username
-            del askuser_userpass1
-            try:
-                del askuser_userpass2
-
-            except UnboundLocalError:
-                pass
-
-            del askuser_rootname
-            del askuser_rootpass1
-            try:
-                del askuser_rootpass2
-
-            except UnboundLocalError:
-                pass
-
-            del askuser_binary_path
-
-            logger.log(0, "Writing to \"data/.installed.dat\" file...", 'logfile.txt', global_variables['SESSION_ID'])
-            open('data/.installed.dat', 'w').write('True')
-            open('data/.installed.dat', 'w').close()
-            misc.programFunctions().clrscrn()
-            #print(config_dict) # DEV0005
-            #print(global_variables) # DEV0005
-
     logger.log(0, "Starting Shadow Suite Framework Shell...", 'logfile.txt', global_variables['SESSION_ID'])
     print()
     print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR) # Prints logo
@@ -1015,13 +1111,13 @@ def main():
                                         module_problems.append(str(test4e))
 
                                 if module_problems != (None or "" or []):
-                                    logger.log(3, module_o[2] + ': Test finished. Problems found:')
+                                    logger.log(3, test_module + ': Test finished. Problems found:')
                                     print(misc.CR + misc.FB + "\n\nTest finished. Problems found:\n\n" + misc.CW + misc.FR)
                                     for problems in module_problems:
                                         print(misc.CR + '- ' + str(problems) + '\n' + misc.CW)
                                         
                                 else:
-                                    logger.log(3, module_o[2] + ': Testing finished. No problems found.', 'logfile.txt', global_variables['SESSION_ID'])
+                                    logger.log(3, test_module + ': Testing finished. No problems found.', 'logfile.txt', global_variables['SESSION_ID'])
                                     print(misc.CG + misc.FB + "[i] Testing successful! No problems found." + misc.CW + misc.FR)
                                         
                                 del tester
@@ -1313,8 +1409,7 @@ def main():
                 print(joke.joke())
                 print("Quitting Shadow Suite...\n")
                 logger.log(0, 'User quits Shadow Suite...', 'logfile.txt', global_variables['SESSION_ID'])
-                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt', global_variables['SESSION_ID'])
-                sys.exit(0)
+                proper_exit(0)
 
             else:
                 logger.log(2, 'ERROR 0001: Invalid Input', 'logfile.txt', global_variables['SESSION_ID'])
@@ -1323,8 +1418,7 @@ def main():
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C Detected...', 'logfile.txt', global_variables['SESSION_ID'])
             print(error.ERROR0002)
-            logger.log(1, "SystemExit raise with error code 2.", 'logfile.txt', global_variables['SESSION_ID'])
-            sys.exit(2)
+            proper_exit(2)
 
         except ImportError:
             # This function is called if a module was missing.
@@ -1335,9 +1429,9 @@ def main():
             traceback.print_exc()
             print("===================================================")
             logger.log(5, 'ImportError catched.', 'logfile.txt', global_variables['SESSION_ID'])
-            logger.log(5, "SystemExit raised with error code 8.", 'logfile.txt', global_variables['SESSION_ID'])
-            sys.exit(8)
+            proper_exit(8)
 
+            """
         except SystemExit:
             logger.log(1, 'SystemExit catched.', 'logfile.txt', global_variables['SESSION_ID'])
             try:
@@ -1354,7 +1448,8 @@ def main():
 
                 pass # If file doesn't exist, do nothing. just exit
 
-            sys.exit()
+            proper_exit(0)
+            """
 
         except Exception as exceptionmessage:
             print(error.WARNING0003)
@@ -1366,8 +1461,7 @@ def main():
             print()
             quit = misc.programFunctions().error_except()
             if quit == True:
-                logger.log(0, "SystemExit raised with error code 0.", 'logfile.txt', global_variables['SESSION_ID'])
-                sys.exit(0)
+                proper_exit(0)
 
             elif quit == False:
                 pass
@@ -1376,286 +1470,217 @@ def main():
                 ValueError_msg = "ValueError: quit variable must be a boolean (True or False)."
                 print(ValueError_msg)
                 logger.log(0, ValueError_msg, 'logfile.txt', global_variables['SESSION_ID'])
-                sys.exit(0)
+                proper_exit(0)
 
 def no_escape_chars(string):
     result = string.replace('\n', '').replace('\t', '')
     return result
 
-# Starts the program
-if __name__ == "__main__":
-    # Check python version first before main() function execution
-    req_py_version = (3, 6, 0)
-    cur_py_version = sys.version_info
-    str_py_version = str(sys.version_info)
-    str_py_version = str_py_version.replace('sys.version_info(', '')
-    str_py_version = str_py_version.replace(')', '')
-    logger.log(3, 'User has python version ' + str_py_version +'.', 'logfile.txt')
-    req_py_version_str = "v"
-    for ver_nums in req_py_version:
-        req_py_version_str = req_py_version_str + str(ver_nums) + '.'
+def proper_exit(code):
+    global global_variables
+    try:
+        DEBUGGING = global_variables['DEBUGGING']
 
-    if cur_py_version < req_py_version:
-        PythonVersionError_msg = error.ERROR0011
-        PythonVersionError_msg = PythonVersionError_msg.format(req_py_version_str)
-        print(PythonVersionError_msg)
-        logger.log(0, PythonVersionError_msg, 'logfile.txt')
-        logger.log(2, "SystemExit raised with error code 11.", 'logfile.txt')
-        sys.exit(11)
+    except:
+        DEBUGGING = False
 
-    else:
-        pass
+    if DEBUGGING == True:
+        print("[DEBUG] SystemExit raised with error code " + str(code) + ".")
 
-    if misc.programFunctions().is_windows():
-        pass
-
-    else:
-        print(ansi.set_title("Shadow Suite Framework v" + version.VNUMBER))
-        logger.log(0, "Title set for current terminal...", 'logfile.txt')
-
-    SESSION_ID = misc.programFunctions().generate_session_id()
-    logger.log(3, "Generated Session ID: " + str(SESSION_ID))
-
-    current_user = "user"
-    USERNAME = None
-    USERPASS = None
-    ROOTNAME = None
-    ROOTPASS = None
-
-    MODULE_PATH = "modules/"
-    OUTPUT_PATH = "output/"
-    BINARY_PATH = "/usr/bin/"
-
-    USERLEVEL = 2
+    try:
+        os.remove('.last_session_exit_fail.log') # Delete the file
     
-    # Check for arguments, if any.
-    NO_WARN = False
-    DEBUGGING = False
-    argv = sys.argv
-    sys.argv = sys.argv
-    for args in sys.argv:
-        arg = args.lower()
+    except:
+        pass
 
-        try:
-            if '-d' == arg or '--debug' == arg:
-                DEBUGGING = True
+    try:
+        logger.log(4, "SystemExit raised with error code " + str(code) + ".", 'logfile.txt', global_variables['SESSION_ID'])
 
-            if '-h' == arg or '--help' == arg:
-                misc.programFunctions().clrscrn()
-                print(sys.argv[0] + "\t--\t" + version.BOTH)
-                print()
-                print("Basic Usage:")
-                print(sys.argv[0] + " [-h/--help] || [SWITCHES]")
-                print()
-                print("-h    --help         Show this help menu.")
-                print()
-                print("Troubleshooting Switches:")
-                print("-d           --debug            Run Shadow Suite in debug mode; Shows logging information.")
-                print()
-                print("Compatibility Switches:")
-                print("-w           --no-warn          Disable last session exit fail warning.")
-                print()
-                print("Customization Switches:")
-                print("-c [FILE]    --config=[FILE]    Define a custom configuration file.")
-                print()
-                sys.exit(0)
+    except:
+        logger.log(4, "SystemExit raised with error code " + str(code) + ".", 'logfile.txt')
 
-            if '-w' == arg or '--no-warn' == arg:
-                NO_WARN = True
+    try:
+        sys.exit(code)
 
-        except IndexError:
+    except:
+        quit(code)
+    
+def first_run_wizard():
+    while True:
+        misc.programFunctions().clrscrn()
+        print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR)
+        print()
+        print(misc.CG + "\t\t\tFirst-run Wizard" + misc.CW)
+        print()
+        print(misc.FI + misc.CGR + misc.BRIEF_LICENSE + misc.CW + misc.FR)
+        print()
+        print("[R] Read the full version of the license")
+        print("[Q] Quit Shadow Suite Framework")
+        print()
+        list_of_captcha_strings = ['i agree', 'i do', 'i accept', 'i\'ll follow the rules']
+        captcha_string = misc.programFunctions().captcha_picker(list_of_captcha_strings)
+        print("If you accept and will follow the rules of the license, type '" + captcha_string + "'.")
+        captcha_confirm = input(" > ")
+        if captcha_confirm.lower() == 'r' or captcha_confirm.lower() == 'read' or 'license' in captcha_confirm.lower():
+            if global_variables['PLATFORM'] == 'windows' or global_variables['PLATFORM'] == 'nt':
+                os.system("start extras/shadowsuitelicense")
+
+            else:
+                os.system("less extras/shadowsuitelicense")
+                
+            logger.log(0, "User read the license.", 'logfile.txt', global_variables['SESSION_ID'])
+            continue
+
+        elif captcha_confirm.lower() == captcha_string:
+            print(misc.FB + misc.CG + "[i] Thank you for downloading Shadow Suite Framework! :D " + misc.FR + misc.CW)
+            logger.log(0, "User accepted the agreement!", 'logfile.txt', global_variables['SESSION_ID'])
+            misc.programFunctions().pause()
             pass
 
-    # Parse configuration file
-    logger.log(3, 'Parsing configuration file...', 'logfile.txt', SESSION_ID)
-    config_file = "data/config.dat"
-    try:
-        iterator_config = 0
-        while iterator_config < len(sys.argv):
-            if '-c' in sys.argv[iterator_config]:
-                iterator_config += 1
-                config_file = sys.argv[iterator_config]
-                config_file = "data/" + config_file
-                if os.path.exists(config_file):
-                    del iterator_config
-                    break
-
-                else:
-                    print(error.ERROR0012)
-                    sys.exit(12)
-
-            else:
-                iterator_config += 1
-
-    except IndexError:
-        config_file = "data/config.dat"
-        del iterator_config
-
-    try:
-        iterator_config = 0
-        while iterator_config < len(sys.argv):
-            if '--config=' in sys.argv[iterator_config]:
-                config_filf = sys.argv[iterator_config]
-                config_filf = config_filf.split("=")
-                config_file = config_filf[1]
-                config_file = "data/" + config_file
-                if os.path.exists(config_file):
-                    del iterator_config
-                    break
-                
-                else:
-                    print(error.ERROR0012)
-                    sys.exit(12)
-                
-            else:
-                iterator_config += 1
-
-    except IndexError:
-        config_file = "data/config.dat"
-        del iterator_config
-
-    # Reading the configuration file...
-    logger.log(3, 'Using ' + config_file + " configuration file; Now reading data...", 'logfile.txt', SESSION_ID)
-    try:
-        config_data = open(config_file, 'r').readlines()
-        open(config_file, 'r').close()
-        # print(config_data) # DEV0005: For debugging purposes only#####
-        new_config_data = []
-        for data in config_data:
-            if data.startswith("#"):
-                continue
-
-            elif "username=" in data.lower():
-                USERNAME = data.replace('username=', '')
-                USERNAME = USERNAME.replace('"', '')
-                USERNAME = no_escape_chars(USERNAME)
-
-            elif "userpass=" in data.lower():
-                USERPASS = data.replace('userpass=', '')
-                USERPASS = USERPASS.replace('"', '')
-                USERPASS = no_escape_chars(USERPASS)
-
-            elif "rootname=" in data.lower():
-                ROOTNAME = data.replace('rootname=', '')
-                ROOTNAME = ROOTNAME.replace('"', '')
-                ROOTNAME = no_escape_chars(ROOTNAME)
-
-            elif "rootpass=" in data.lower():
-                ROOTPASS = data.replace('rootpass=', '')
-                ROOTPASS = ROOTPASS.replace('"', '')
-                ROOTPASS = no_escape_chars(ROOTPASS)
-
-            elif "module_path=" in data.lower():
-                MODULE_PATH = data.replace('module_path="', '')
-                MODULE_PATH = MODULE_PATH.replace('"', '')
-                MODULE_PATH = no_escape_chars(MODULE_PATH)
-
-            elif "output_path=" in data.lower():
-                OUTPUT_PATH = data.replace('output_path=', '')
-                OUTPUT_PATH = OUTPUT_PATH.replace('"', '')
-                OUTPUT_PATH = no_escape_chars(OUTPUT_PATH)
-
-            elif "binary_path=" in data.lower():
-                BINARY_PATH = data.replace('binary_path=', '')
-                BINARY_PATH = BINARY_PATH.replace('"', '')
-                BINARY_PATH = no_escape_chars(BINARY_PATH)
-
-            else:
-                continue
-
-        # DEV0005: For debugging purposes only
-        """
-        print(config_data)
-        print(USERNAME)
-        print(USERPASS)
-        print(ROOTNAME)
-        print(ROOTPASS)
-        print(MODULE_PATH)
-        print(OUTPUT_PATH)
-        print(BINARY_PATH)
-        misc.programFunctions().pause()
-        """
-        logger.log(3, "Someone is trying to use Shadow Suite...", 'logfile.txt', SESSION_ID)
-        if USERNAME == None or USERNAME == "":
-            pass
-
+        elif captcha_confirm.lower() == 'q' or captcha_confirm.lower() == 'quit':
+            print(misc.FB + misc.CR + "\n[i] Thank you for downloading Shadow Suite Framework...")
+            print(misc.FR + "\n\tIf you are unsatisfied about this project,\n\t\tplease contact us and\n\twe will try our best to make you satisfied :)\n" + misc.CW)
+            logger.log(0, "User choosed to not accept the license and quit.", 'logfile.txt', global_variables['SESSION_ID'])
+            proper_exit(0)
+    
         else:
-            if USERPASS == None or USERPASS == "":
+            continue
+        
+        misc.programFunctions().clrscrn()
+        print(misc.FB + misc.CG + misc.LOGO + misc.CW + misc.FR)
+        print()
+        print(misc.CG + "\t\t\tFirst-run Wizard" + misc.CW)
+        while True:
+            askuser_fullupdate = input(misc.FB + misc.CGR + "Do you want to perform a full update? (y/n) > " + misc.CW + misc.FR)
+            if askuser_fullupdate.lower() in ('yes' or 'y'):
+                logger.log(0, "User performed a full update.", 'logfile.txt', global_variables['SESSION_ID'])
+                update.full_update(global_variables['DEBUGGING'])
+                break
+
+            elif askuser_fullupdate.lower() in ('no' or 'n'):
+                logger.log(1, "User did not performed a full update.", 'logfile.txt', global_variables['SESSION_ID'])
+                break
+
+            else:
+                continue
+            
+        print("[i] Just press enter if you don't want to use password protection.")
+        while True:
+            askuser_username = input("[i] Username: ")
+            if askuser_username == None or askuser_username == "":
                 pass
 
             else:
-                attempts = 0
-                while True:
-                    try:
-                        misc.programFunctions().clrscrn()
-                        print()
-                        print(misc.CG + misc.FB + misc.LOGO + misc.CW + misc.FR)
-                        print()
-                        print(misc.CC + misc.FB + "Failed Attempts: " + misc.CR + str(attempts) + misc.CW + misc.FR)
-                        print()
-                        print(misc.FB + "[i]" + misc.FR + "Please login to continue...\n")
-                        login_user = input("Username: ")
-                        current_user = login_user
-                        ploginuser = login_user
-                        login_user = misc.programFunctions().hash(login_user, 'sha256')
-                        login_pass = getpass()
-                        login_pass = misc.programFunctions().hash(login_pass, 'sha256')
-                        #print(login_user) # DEV0005
-                        #print(login_pass) # DEV0005
-                        #print() # DEV0005
-                        #print(USERNAME) # DEV0005
-                        #print(USERPASS) # DEV0005
-                        if login_user == USERNAME and login_pass == USERPASS:
-                            print(misc.FB + "[i]" + misc.FR + " You are now logged in!")
-                            logger.log(3, ploginuser + " logged in successfully on " + time.asctime() + " with " + str(attempts) + " failed attempts.", 'logfile.txt', SESSION_ID)
-                            misc.programFunctions().pause()
-                            break
+                hashed_username = misc.programFunctions().hash(askuser_username, 'sha256')
+                global_variables['USERNAME'] = hashed_username
+                global_variables['current_user'] = askuser_username
 
-                        else:
-                            print(error.ERROR0013)
-                            logger.log(4, ploginuser + " failed to log in on " + time.asctime() + " with " + str(attempts) + " failed attempts.", 'logfile.txt', SESSION_ID)
-                            misc.programFunctions().pause()
-                            if attempts < 3:
-                                attempts += 1
-                                continue
+            while True:
+                askuser_userpass1 = getpass("[i] Userpass: ")
+                if askuser_userpass1 == None or askuser_userpass1 == "":
+                    break
 
-                            else:
-                                print(error.ERROR0014 + " Now quitting...")
-                                sys.exit(13)
+                else:
+                    askuser_userpass2 = getpass("[i] Confirm Userpass: ")
+                    if askuser_userpass1 == askuser_userpass2:
+                        global_variables['USERPASS'] = misc.programFunctions().hash(askuser_userpass1, 'sha256')
+                        break
 
-                    except KeyboardInterrupt:
-                        print(error.ERROR0002)
-                        sys.exit(2)
+                    else:
+                        continue
 
-    except IndexError:
-        print(error.ERROR0012)
-        sys.exit(12)
-
-    except FileNotFoundError:
-        print(error.ERROR0015 + " (default configuration file)")
-        sys.exit(15)
-
-    # Checks if last session failed to exit properly
-    if NO_WARN == False:
-        try:
-            open('.last_session_exit_fail.log', 'r').read() # Try to read the file
-            open('.last_session_exit_fail.log', 'r').close() # Close the file
-            print(error.WARNING0004)
-            instance_warn = str(input(misc.CY + misc.FB + misc.FI + "Do you still want to run anyway? (y/n) > " + misc.FR + misc.CW))
-            instance_warn = instance_warn.lower()
-            if instance_warn == 'y':
-                misc.programFunctions().clrscrn()
-                main()
+            askuser_rootname = input("[i] Rootname: ")
+            if askuser_rootname == None or askuser_rootname == "":
+                pass
 
             else:
-                sys.exit(0)
-    
-        except FileNotFoundError:
-            open('.last_session_exit_fail.log', 'w').write('')
-            open('.last_session_exit_fail.log', 'w').close() # Close the file
-            misc.programFunctions().clrscrn()
-            main()
+                hashed_rootname = misc.programFunctions().hash(askuser_rootname, 'sha256')
+                global_variables['ROOTNAME'] = hashed_rootname
 
-    else:
+            while True:
+                askuser_rootpass1 = getpass("[i] Rootpass: ")
+                if askuser_rootpass1 == None or askuser_rootpass1 == "":
+                    pass
+
+                else:
+                    askuser_rootpass2 = getpass("[i] Confirm Rootpass: ")
+                    if askuser_rootpass1 == askuser_rootpass2:
+                        global_variables['ROOTPASS'] = misc.programFunctions().hash(askuser_rootpass1, 'sha256')
+                        break
+
+                    else:
+                        continue
+
+                break
+
+            break
+
+        while True:
+            askuser_binary_path = input("Binary path (Usually '/usr/bin/'): ")
+            if misc.programFunctions().path_exists(askuser_binary_path):
+                if not askuser_binary_path.endswith('/'):
+                    askuser_binary_path += '/'
+
+                global_variables['BINARY_PATH'] = askuser_binary_path
+                break
+
+            else:
+                print(error.ERROR0015)
+                continue
+
+        logger.log(0, "Updating configuration file data...", 'logfile.txt', global_variables['SESSION_ID'])
+        config_dict = {
+                "username": global_variables['USERNAME'],
+                "userpass": global_variables['USERPASS'],
+                "rootname": global_variables['ROOTNAME'],
+                "rootpass": global_variables['ROOTPASS'],
+                "module_path": global_variables['MODULE_PATH'],
+                "output_path": global_variables['OUTPUT_PATH'],
+                "binary_path": global_variables['BINARY_PATH']
+                }
+        
+        export_conf_result = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING']).export_conf(global_variables['config_file'], config_dict)
+        
+        logger.log(0, "Deleting First-run Wizard variables...", 'logfile.txt', global_variables['SESSION_ID'])
+        del askuser_fullupdate
+        del askuser_username
+        del askuser_userpass1
+        try:
+            del askuser_userpass2
+
+        except UnboundLocalError:
+            pass
+
+        del askuser_rootname
+        del askuser_rootpass1
+        try:
+            del askuser_rootpass2
+
+        except UnboundLocalError:
+            pass
+
+        del askuser_binary_path
+
+        logger.log(0, "Writing to \"data/.installed.dat\" file...", 'logfile.txt', global_variables['SESSION_ID'])
+        open('data/.installed.dat', 'w').write('')
+        open('data/.installed.dat', 'w').close()
         misc.programFunctions().clrscrn()
-        main()
+        #print(config_dict) # DEV0005
+        #print(global_variables) # DEV0005
+        break
+
+	
+"""
+class debug:
+
+    def __init__(self):
+        pass
+        
+    def print_log(self, error_code, log):
+        pass
+	
+"""
+
+# Starts the program
+if __name__ == "__main__":
+	main()
