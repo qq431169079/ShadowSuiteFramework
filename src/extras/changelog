@@ -1,3 +1,25 @@
+commit 00db66a7be3ab7d4bd565c50430bef26531d33d4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 22 10:59:42 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.1.2
+    
+    + Notepad still experimental.
+    
+    + Config file update.
+    
+    + Minor bug fixes.
+
+commit fa5675e53d27bea19febb20da057e25450123ff2
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon May 21 22:47:10 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 5532a562c2468ca399b851f247a662cfeb1d26e3
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Mon May 21 22:45:32 2018 +0800
