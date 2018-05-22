@@ -1,3 +1,23 @@
+commit 219b848d070635b32b4ef14578a3323c97df24e6
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 22 16:39:32 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.1.3
+    
+    + Added little security for some commands.
+    
+    + Minor bug fixes.
+
+commit d82a7a7cca1fd8b96224dad2fa77f46f942272bf
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue May 22 11:04:38 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 00db66a7be3ab7d4bd565c50430bef26531d33d4
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Tue May 22 10:59:42 2018 +0800
