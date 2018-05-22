@@ -21,7 +21,7 @@ import sys
 from core import error
 
 VAPI = "0.0.7.0-API"
-VNUMBER = "0.1.1.2"
+VNUMBER = "0.1.1.3"
 VTYPE = "Experimental"
 VCODENAME = "Uber"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME

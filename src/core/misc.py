@@ -397,10 +397,6 @@ class programFunctions(object):
     def login_root(self, global_variables, ulogin, plogin):
         ulogin = programFunctions().hash(ulogin, 'sha256')
         plogin = programFunctions().hash(plogin, 'sha256')
-        print("|" + global_variables['ROOTNAME'] + "|")
-        print(ulogin)
-        print("|" + global_variables['ROOTPASS'] + "|")
-        print(plogin)
         if global_variables['ROOTNAME'] == ulogin and global_variables['ROOTPASS'] == plogin:
             return "Login Successful!" # means success
 

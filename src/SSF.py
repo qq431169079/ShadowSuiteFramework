@@ -39,11 +39,11 @@ try:
     print("[i] Importing 'atexit' module...")
     import atexit # Define multiple exit functions upon normal program termination.
     print("[i] Importing 'readline' module...")
-    import readline
+    import readline # Allows us to reuse recent commands.
 
     print()
     print("[i] Importing 'ansi' module...")
-    from core import ansi # Like misc, but occassionally used.
+    from core import ansi # Like misc, but focused on UI.
     print("[i] Importing 'error' module...")
     from core import error # Error Code Definitions
     print("[i] Importing 'misc' module...")
@@ -92,26 +92,26 @@ except ImportError:
     print("===================================================")
     proper_exit(8)
 
-global global_variables
+global global_variables # To be used by all functions defined here...
 
 def main():
-    # Check python version first before main() function execution
-    req_py_version = (3, 6, 0)
-    cur_py_version = sys.version_info
-    str_py_version = str(sys.version_info)
-    str_py_version = str_py_version.replace('sys.version_info(', '')
+    # Check python version first before main() function execution.
+    req_py_version = (3, 6, 0) # Required python version integer, in a tuple.
+    cur_py_version = sys.version_info # Get user python version.
+    str_py_version = str(sys.version_info) # Converting tuple to string explicitly, and a bad practice.
+    str_py_version = str_py_version.replace('sys.version_info(', '') # Removing unnecessary characters.
     str_py_version = str_py_version.replace(')', '')
     logger.log(3, 'User has python version ' + str_py_version +'.', 'logfile.txt')
-    req_py_version_str = "v"
-    for ver_nums in req_py_version:
+    req_py_version_str = "v" 
+    for ver_nums in req_py_version: # Creating string that contains the python version.
         req_py_version_str = req_py_version_str + str(ver_nums) + '.'
 
-    if cur_py_version < req_py_version:
+    if cur_py_version < req_py_version: # Check if user's python version is lower than the required version of python.
         PythonVersionError_msg = error.ERROR0011
-        PythonVersionError_msg = PythonVersionError_msg.format(req_py_version_str)
+        PythonVersionError_msg = PythonVersionError_msg.format(req_py_version_str) # Formats the error string.
         print(PythonVersionError_msg)
         logger.log(0, PythonVersionError_msg, 'logfile.txt')
-        proper_exit(11)
+        proper_exit(11) # Proper exit
 
     else:
         pass
@@ -120,12 +120,15 @@ def main():
         pass
 
     else:
+        # Set the title of the current terminal.
         print(ansi.set_title("Shadow Suite Framework v" + version.VNUMBER))
         logger.log(0, "Title set for current terminal...", 'logfile.txt')
 
+    # Generate a new session ID.
     SESSION_ID = misc.programFunctions().generate_session_id()
     logger.log(3, "Generated Session ID: " + str(SESSION_ID))
 
+    # Placeholders for the global_variables dictionary.
     current_user = "user"
     USERNAME = None
     USERPASS = None
@@ -148,22 +151,28 @@ def main():
 
         try:
             if '-d' == arg or '--debug' == arg:
-                DEBUGGING = True
+                DEBUGGING = True # Enables debugging mode when '-d' or '--debug' switch is present.
 
-            if '-h' == arg or '--help' == arg:
+            if '-h' == arg or '--help' == arg: # Show this help menu and properly exit.
                 misc.programFunctions().clrscrn()
                 print(sys.argv[0] + "\t--\t" + version.BOTH)
                 print()
                 print("Basic Usage:")
                 print(sys.argv[0] + " [-h/--help] || [SWITCHES]")
                 print()
-                print("-h    --help         Show this help menu.")
+                print("-h           --help         Show this help menu.")
                 print()
                 print("Troubleshooting Switches:")
                 print("-d           --debug            Run Shadow Suite in debug mode; Shows logging information.")
+                print(misc.FE + \
+                      "-f           --failsafe         Run Shadow Suite in failsafe mode" + \
+                      misc.END)
                 print()
                 print("Compatibility Switches:")
                 print("-w           --no-warn          Disable last session exit fail warning.")
+                print(misc.FE + \
+                      "-n           --no-color         Disable fancy colors. Automatically applied on Windows Systems." + \
+                      misc.END)
                 print()
                 print("Customization Switches:")
                 print("-c [FILE]    --config=[FILE]    Define a custom configuration file.")
@@ -171,16 +180,18 @@ def main():
                 proper_exit(0)
 
             if '-w' == arg or '--no-warn' == arg:
-                NO_WARN = True
+                NO_WARN = True # Disable 'last session exit fail' warning message.
 
         except IndexError:
-            pass
+            pass # IndexError may be raised when no arguments are passed. So except block is here.
 
     # Parse configuration file
     logger.log(3, 'Parsing configuration file...', 'logfile.txt', SESSION_ID)
-    config_file = "data/config.dat"
+    config_file = "data/config.dat" # The default configuration file.
     try:
         iterator_config = 0
+        # Iterates through the arguments passed. I think there's a more clean way to
+        # achive the same result, but i don't know it yet. Sorry, reader :(
         while iterator_config < len(sys.argv):
             if '-c' in sys.argv[iterator_config]:
                 iterator_config += 1
@@ -191,8 +202,8 @@ def main():
                     break
 
                 else:
-                    print(error.ERROR0012)
-                    proper_exit(12)
+                    print(error.ERROR0012) # If custom configuration file is invalid.
+                    proper_exit(12) # But still, don't forget to exit properly.
 
             else:
                 iterator_config += 1
@@ -203,6 +214,8 @@ def main():
 
     try:
         iterator_config = 0
+        # Just like above, but with a slight modification. I figured this code block
+        # within an hour, so trust me-- seriously, trust me --I'M A N00B.
         while iterator_config < len(sys.argv):
             if '--config=' in sys.argv[iterator_config]:
                 config_filf = sys.argv[iterator_config]
@@ -449,6 +462,9 @@ def main():
                 
             first_run_wizard()
 
+    else:
+        logger.log(0, 'User is using a custom config, so there\'s no need for running First-run Wizard.', 'logfile.txt', global_variables['SESSION_ID'])
+
     Terminal()
             
 def Terminal():
@@ -458,7 +474,7 @@ def Terminal():
     history_file = os.path.expanduser("data/.SSFhistory")
     history_length = 100
     if not os.path.exists(history_file):
-        with open(history_file, "a+") as history:
+        with open(history_file, "a") as history:
             if is_libedit():
                 history.write("_HiStOrY_V2_\n\n")
 
@@ -597,7 +613,6 @@ def Terminal():
                             print("[i] Please log-in as root first:")
                             src_rootuser = input("Root Username: ")
                             src_rootpass = getpass("Root Password: ")
-                            print(misc.programFunctions().login_root(global_variables, src_rootuser, src_rootpass) == "Login Successful!")
                             if misc.programFunctions().login_root(global_variables, src_rootuser, src_rootpass) == "Login Successful!":
                                 print("Recent Commands:")
                                 for i in range(readline.get_current_history_length()):
@@ -803,6 +818,22 @@ def Terminal():
                                 print(error.ERROR0013 + " [i] This incident will be reported!")
 
                     elif config_o[1].lower() in ["module_path"]:
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in as root first:")
+                            mp_rootuser = input("Root Username: ")
+                            mp_rootpass = getpass("Root Password: ")
+                            if misc.programFunctions().login_root(global_variables, mp_rootuser, mp_rootpass) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                                
+                            del mp_rootuser, mp_rootpass
+
+                        else:
+                            pass
+
                         new_module_path = input("Enter the new module path: ")
                         if misc.programFunctions().path_exists(new_module_path):
                             if misc.programFunctions().isfolder(new_module_path):
@@ -817,6 +848,22 @@ def Terminal():
                             print(error.ERROR0015)
 
                     elif config_o[1].lower() in ["output_path"]:
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in as root first:")
+                            op_rootuser = input("Root Username: ")
+                            op_rootpass = getpass("Root Password: ")
+                            if misc.programFunctions().login_root(global_variables, op_rootuser, op_rootpass) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                                
+                            del op_rootuser, op_rootpass
+                        
+                        else:
+                            pass
+
                         new_output_path = input("Enter the new output path: ")
                         if misc.programFunctions().path_exists(new_output_path):
                             if misc.programFunctions().isfolder(new_output_path):
@@ -831,6 +878,22 @@ def Terminal():
                             print(error.ERROR0015)
 
                     elif config_o[1].lower() in ["binary_path"]:
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in as root first:")
+                            bp_rootuser = input("Root Username: ")
+                            bp_rootpass = getpass("Root Password: ")
+                            if misc.programFunctions().login_root(global_variables, bp_rootuser, bp_rootpass) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                                
+                            del bp_rootuser, bp_rootpass
+                        
+                        else:
+                            pass
+
                         new_binary_path = input("Enter the new binary path (usually /usr/bin/): ")
                         if misc.programFunctions().path_exists(new_output_path):
                             if misc.programFunctions().isfolder(new_output_path):
@@ -845,6 +908,22 @@ def Terminal():
                             print(error.ERROR0015)
 
                     elif config_o[1].lower() in ["export", "save"]:
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in as root first:")
+                            sav_rootuser = input("Root Username: ")
+                            sav_rootpass = getpass("Root Password: ")
+                            if misc.programFunctions().login_root(global_variables, sav_rootuser, sav_rootpass) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                                
+                            del sav_rootuser, sav_rootpass
+                        
+                        else:
+                            pass
+
                         config_dict = {
                                 "username": global_variables['USERNAME'],
                                 "userpass": global_variables['USERPASS'],
@@ -883,6 +962,22 @@ def Terminal():
                                 print("[i] There was a problem exporting the settings.")
 
                     elif config_o[1].lower() in ['generate']:
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in as root first:")
+                            gen_rootuser = input("Root Username: ")
+                            gen_rootpass = getpass("Root Password: ")
+                            if misc.programFunctions().login_root(global_variables, gen_rootuser, gen_rootpass) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                                
+                            del gen_rootuser, gen_rootpass
+                        
+                        else:
+                            pass
+
                         new_config = config_o[2]
                         if 'data/' not in new_config:
                             new_config = "data/" + new_config
@@ -914,6 +1009,22 @@ def Terminal():
                                 print("[i] There was a problem generating the configuration file.")
 
                     elif config_o[1].lower() in ['remove', 'del', 'delete']:
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in as root first:")
+                            del_rootuser = input("Root Username: ")
+                            del_rootpass = getpass("Root Password: ")
+                            if misc.programFunctions().login_root(global_variables, del_rootuser, del_rootpass) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                            
+                            del del_rootuser, del_rootpass
+                        
+                        else:
+                            pass
+
                         if '.dat' not in config_o[2]:
                             config_o[2] += '.dat'
 
@@ -946,6 +1057,22 @@ def Terminal():
                             del ask_remove_config
 
                     elif config_o[1].startswith("reset"):
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in as root first:")
+                            rst_rootuser = input("Root Username: ")
+                            rst_rootpass = getpass("Root Password: ")
+                            if misc.programFunctions().login_root(global_variables, rst_rootuser, rst_rootpass) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                            
+                            del rst_rootuser, rst_rootpass
+                        
+                        else:
+                            pass
+
                         confirm_config_reset = input("Do you really want to reset default values to " + global_variables['config_file'] + "? (y/n) > ")
                         if confirm_config_reset.lower() == 'y':
                             if misc.programFunctions().is_windows():
@@ -1007,7 +1134,7 @@ def Terminal():
                                             pass
                                         
                                         else:
-                                            print(ansi.set_title("Shadow Suite Framework: " + module_name))
+                                            print(ansi.set_title("Shadow Suite Framework: " + module_name.replace(global_variables['MODULE_PATH'], '')))
 
                                         module.main(global_variables)
 
@@ -1278,6 +1405,22 @@ def Terminal():
 
                     elif module_o[1].startswith("install"):
                         if misc.programFunctions().path_exists(module_o[2]):
+                            if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                                print("[i] Please log-in as root first:")
+                                ins_rootuser = input("Root Username: ")
+                                ins_rootpass = getpass("Root Password: ")
+                                if misc.programFunctions().login_root(global_variables, ins_rootuser, ins_rootpass) == "Login Successful!":
+                                    pass
+                                
+                                else:
+                                    print(error.ERROR0013)
+                                    continue
+                                
+                                del ins_rootuser, ins_rootpass
+                            
+                            else:
+                                pass
+
                             logger.log(3, 'User is trying to install ' + module_o[2] + ' package...', 'logfile.txt', global_variables['SESSION_ID'])
                             print("[i] Path found...")
                             if '.py' in module_o[2]:
@@ -1372,6 +1515,22 @@ def Terminal():
                         #print(module_name) # DEV0005: For debugging purposes only
 
                         if misc.programFunctions().path_exists(module_name):
+                            if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                                print("[i] Please log-in as root first:")
+                                uns_rootuser = input("Root Username: ")
+                                uns_rootpass = getpass("Root Password: ")
+                                if misc.programFunctions().login_root(global_variables, uns_rootuser, uns_rootpass) == "Login Successful!":
+                                    pass
+                                
+                                else:
+                                    print(error.ERROR0013)
+                                    continue
+                                
+                                del uns_rootuser, uns_rootpass
+                            
+                            else:
+                                pass
+
                             confirm_uninstall = input("Do you really want to uninstall " + module_name + "? (y/n) > ")
                             if confirm_uninstall.lower() == ('y' or 'yes'):
                                 logger.log(3, 'User is trying to uninstall ' + module_name + '...', 'logfile.txt', global_variables['SESSION_ID'])
@@ -1428,6 +1587,22 @@ def Terminal():
                     suggest_o = menu_input.split(' ')
                     notes = 'data/.SSFnotes'
                     if suggest_o[1].lower().startswith(("add", "new")):
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in first:")
+                            npd_username = input("Username: ")
+                            npd_password = getpass("Password: ")
+                            if misc.programFunctions().login_user(global_variables, npd_username, npd_password) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                            
+                            del npd_username, npd_password
+                        
+                        else:
+                            pass
+
                         start = 2
                         note = ""
                         for word in suggest_o:
@@ -1444,6 +1619,22 @@ def Terminal():
                         del start, note
 
                     elif suggest_o[1].lower().startswith(('show', 'ls')):
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in first:")
+                            npd_username = input("Username: ")
+                            npd_password = getpass("Password: ")
+                            if misc.programFunctions().login_user(global_variables, npd_username, npd_password) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                            
+                            del npd_username, npd_password
+                        
+                        else:
+                            pass
+
                         try:
                             open(notes, 'r').read()
                             open(notes, 'r').close()
@@ -1469,6 +1660,22 @@ def Terminal():
                                 break
 
                     elif suggest_o[1].lower().startswith(('rm', 'del')):
+                        if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
+                            print("[i] Please log-in first:")
+                            npd_rootuser = input("Username: ")
+                            npd_rootpass = getpass("Password: ")
+                            if misc.programFunctions().login_user(global_variables, src_rootuser, src_rootpass) == "Login Successful!":
+                                pass
+                            
+                            else:
+                                print(error.ERROR0013)
+                                continue
+                            
+                            del npd_username, npd_password
+                        
+                        else:
+                            pass
+
                         try:
                             open(notes, 'r').read()
                             open(notes, 'r').close()
@@ -1524,17 +1731,17 @@ def Terminal():
                                         print("[i] Note successfully removed!")
                                 break
 
-                            #except(ValueError, TypeError):
-                            except Exception:
-                                traceback.print_exc()
-                                #print(error.ERROR0001)
+                            except(ValueError, TypeError):
+                            #except Exception: # DEV0005
+                                #traceback.print_exc() # DEV0005
+                                print(error.ERROR0001)
                                 break
 
                     else:
                         raise IndexError
 
-                #except IndexError:
-                except ImportError:
+                except IndexError:
+                #except ImportError: # DEV0005
                     print()
                     print("[i] Usage: notepad [OPTION] NOTE")
                     print()
@@ -1610,26 +1817,6 @@ def Terminal():
             print("===================================================")
             logger.log(5, 'ImportError catched.', 'logfile.txt', global_variables['SESSION_ID'])
             proper_exit(8)
-
-            """
-        except SystemExit:
-            logger.log(1, 'SystemExit catched.', 'logfile.txt', global_variables['SESSION_ID'])
-            try:
-                if global_variables['DEBUGGING'] == True:
-                    print("[DEBUG] Deleting session file...")
-
-                open('.last_session_exit_fail.log', 'r').read() # Try to read the file
-                open('.last_session_exit_fail.log', 'r').close() # Close the file
-                os.remove('.last_session_exit_fail.log') # Delete the file
-
-            except(FileNotFoundError, IOError, OSError):
-                if global_variables['DEBUGGING'] == True:
-                    print("[DEBUG] Session file doesn't exist, now quitting...")
-
-                pass # If file doesn't exist, do nothing. just exit
-
-            proper_exit(0)
-            """
 
         except Exception as exceptionmessage:
             print(error.WARNING0003)
@@ -1717,6 +1904,12 @@ def proper_exit(code):
     
     except:
         pass
+
+    if misc.programFunctions().is_windows():
+        pass
+
+    else:
+        print(ansi.set_title(''))
 
     try:
         logger.log(4, "SystemExit raised with error code " + str(code) + ".", 'logfile.txt', global_variables['SESSION_ID'])
