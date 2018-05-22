@@ -40,6 +40,8 @@ from core import misc
 # ERROR 0016: Not a valid SSF module.
 # ERROR 0017: There was a problem parsing the module/package.
 # ERROR 0018: Cannot uninstall the specified module.
+# ERROR 0019: No notes saved.
+# ERROR 0020: Unknown Fatal Error (Like WARNING 0003, but fatal) Used with Exception. (Needs string formatting)
 
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
@@ -106,6 +108,12 @@ ERROR0017 = misc.CR + "ERROR 0017: There was a problem Parsing the package..." +
 
 # This is called if the module to uninstall can't be removed.
 ERROR0018 = misc.CR + "ERROR 0018: Cannot uninstall the specified package!" + misc.CW
+
+# This is called if user tries to list saved notes but no notes are saved.
+ERROR0019 = misc.CR + "ERROR 0019: No notes saved!" + misc.CW
+
+# This is called if a FATAL unknown error occurs.
+ERROR0020 = misc.CR + "ERROR 0020: A fatal error occured: {0}" + misc.CW
 
     ##################################################################################
     #                                                                                #

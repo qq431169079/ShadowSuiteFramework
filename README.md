@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.1.1 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.1.2 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -10,11 +10,9 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # What's new?
 ------------------
-+ UI Improvement, recent commands can be reused by using the arrow keys.
++ Notepad still experimental.
 
-+ New sub-command, that lets you to show recently entered commands.
-
-+ New built-in notepad, still experimental but will be fixed on the next update.
++ Config file update.
 
 + Minor bug fixes.
 

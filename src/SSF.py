@@ -270,6 +270,16 @@ def main():
                 BINARY_PATH = BINARY_PATH.replace('"', '')
                 BINARY_PATH = no_escape_chars(BINARY_PATH)
 
+            elif "notes_maxlines=" in data.lower():
+                NOTES_MAXLINES = data.replace('notes_maxlines=', '')
+                NOTES_MAXLINES = no_escape_chars(NOTES_MAXLINES)
+                try:
+                    NOTES_MAXLINES = int(NOTES_MAXLINES)
+
+                except Exception as exc_err:
+                    print(error.ERROR0020.format(exc_err))
+                    proper_exit(20)
+
             else:
                 continue
 
@@ -367,22 +377,6 @@ def main():
     else:
         misc.programFunctions().clrscrn()
 
-    # Global variables
-    """
-    global config_file
-    global USERNAME
-    global USERPASS
-    global ROOTNAME
-    global ROOTPASS
-    global MODULE_PATH
-    global OUTPUT_PATH
-    global BINARY_PATH
-    global USERLEVEL
-    global current_user
-    global SESSION_ID
-    global DEBUGGING
-    """
-
     logger.log(0, "Creating global_variables dictionary...", 'logfile.txt', SESSION_ID)
     # More variables and constants
     PLATFORM = misc.programFunctions().get_platform() # Get PLATFORM
@@ -392,17 +386,23 @@ def main():
     global global_variables
     global_variables = {
             'config_file': config_file, # String; PATH to config file.
+
             'USERNAME': USERNAME, # String; Hashed form of global_variables['current_user'].
             'USERPASS': USERPASS, # String.
             'ROOTNAME': ROOTNAME, # String.
             'ROOTPASS': ROOTPASS, # String.
+
             'MODULE_PATH': MODULE_PATH, # String; PATH to modules directory.
             'OUTPUT_PATH': OUTPUT_PATH, # String; PATH to output directory.
             'BINARY_PATH': BINARY_PATH, # String; PATH to system binaries.
+
+            'NOTES_MAXLINES': NOTES_MAXLINES, # Int; Max lines of notes to show.
+
             'USERLEVEL': USERLEVEL, # INT; 0 for system-level root, 1 for application-level root, and 2 for normal user.
             'INSTALLED_MODULES': INSTALLED_MODULES, # List; Number of modules installed and their status.
 
             'current_user': current_user, # String; Plaintext form of global_variables['USERNAME'].
+
             'PLATFORM': PLATFORM, # String.
             'SESSION_ID': SESSION_ID, # Int (6 digits).
 
@@ -410,18 +410,25 @@ def main():
             }
 
     logger.log(0, "Deleting unnecessary variables...", 'logfile.txt', global_variables['SESSION_ID'])
+
     del config_file
+    
     del USERNAME
     del USERPASS
     del ROOTNAME
     del ROOTPASS
+
     del MODULE_PATH
     del OUTPUT_PATH
     del BINARY_PATH
+
+    del NOTES_MAXLINES
+
     del USERLEVEL
     del current_user
     del SESSION_ID
     del DEBUGGING
+
     del PLATFORM
     del INSTALLED_MODULES
 
@@ -1437,29 +1444,103 @@ def Terminal():
                         del start, note
 
                     elif suggest_o[1].lower().startswith(('show', 'ls')):
+                        try:
+                            open(notes, 'r').read()
+                            open(notes, 'r').close()
+
+                        except:
+                            print(error.ERROR0019)
+                            continue
+
                         with open(notes, 'r') as fopen:
                             notes = fopen.readlines()
 
                         print("Notes: ")
-                        MAXLINES = 20
+                        MAXLINES = global_variables['NOTES_MAXLINES']
                         CURLINES = 0
                         for note in notes:
+                            CURLINES += 1
                             if CURLINES <= MAXLINES:
                                 note = note.replace('\n', '')
-                                print('- ' + note)
+                                print('[' + str(CURLINES) + '] ' + note)
 
                             else:
-                                print("[i] Max lines reached!")
+                                print("[i] Max lines reached!\n    You can override this by changing the value from the configuration file.")
                                 break
 
-                except IndexError:
+                    elif suggest_o[1].lower().startswith(('rm', 'del')):
+                        try:
+                            open(notes, 'r').read()
+                            open(notes, 'r').close()
+
+                        except(IOError, EOFError, FileNotFoundError):
+                            print(error.ERROR0019)
+                            continue
+
+                        with open(notes, 'r') as fopen:
+                            notes_data = fopen.readlines()
+
+                        print("Notes: ")
+                        MAXLINES = global_variables['NOTES_MAXLINES']
+                        CURLINES = 1
+                        while CURLINES <= len(notes_data):
+                            print("[" + str(CURLINES) + "] " + notes_data[(CURLINES - 1)].replace('\n', ''))
+                            CURLINES += 1
+
+                        while True:
+                            try:
+                                del_line = int(input("Line number to remove (0 to cancel): "))
+                                if del_line == 0:
+                                    print("[i] No notes removed.")
+                                    break
+
+                                else:
+                                    if del_line < 0 and del_line > len(notes_data):
+                                        print(error.ERROR0001)
+                                        break
+
+                                    else:
+                                        CURLINES = 0
+                                        print("[i] Deleting note #" + str(del_line))
+                                        print("    Please don't interrupt the process or notes may be lost...\n")
+                                        try:
+                                            open(notes, 'r').read()
+                                            open(notes, 'r').close()
+
+                                        except(IOError, EOFError, FileNotFoundError):
+                                            print(error.ERROR0019)
+                                            continue
+
+                                        os.remove(notes)
+                                        with open(notes, 'a') as fopen:
+                                            while CURLINES <= len(notes_data):
+                                                if CURLINES == (del_line - 1):
+                                                    CURLINES += 1
+
+                                                else:
+                                                    fopen.write(notes_data[(CURLINES - 1)])
+                                                    CURLINES += 1
+
+                                        print("[i] Note successfully removed!")
+                                break
+
+                            #except(ValueError, TypeError):
+                            except Exception:
+                                traceback.print_exc()
+                                #print(error.ERROR0001)
+                                break
+
+                    else:
+                        raise IndexError
+
+                #except IndexError:
+                except ImportError:
                     print()
                     print("[i] Usage: notepad [OPTION] NOTE")
                     print()
                     print("add || new :: add a new note.")
                     print("show || ls :: list notes.")
-                    print(misc.FE + \
-                          "rm || del  :: delete a note." + misc.END)
+                    print("rm || del  :: delete a note.")
                     print()
 
             elif menu_input.lower().startswith(("clear", "clr", "cls", "clrscrn")):

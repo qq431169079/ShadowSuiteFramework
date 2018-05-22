@@ -2,11 +2,16 @@
 # Every line that starts with '#' is a comment.
 # DO NOT MODIFY THIS FILE!
 
+##### [ CREDENTIALS ] #####
 username=""
 userpass=""
 rootname=""
 rootpass=""
 
+##### [ PATHS ] #####
 module_path="modules/"
 output_path="output/"
 binary_path="/usr/bin/"
+
+##### [ NOTEPAD ] #####
+notes_maxlines=20
