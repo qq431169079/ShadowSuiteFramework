@@ -1,3 +1,25 @@
+commit 16463d4d19d7de764d004686364eb72f10295b71
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 23 17:16:40 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.1.5:
+    
+    + Updated 'update' commands, but not yet working. Sorry!
+    
+    + Added profile.sh. I'm just experimenting with python and this project.
+    
+    + Minor bug fixes.
+
+commit 2fc6f79ca4f1728c9bd4821a13c721eb6f0be759
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 23 10:15:50 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit f473829b9cbfe88b1c6da14462db6ff757d853df
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Wed May 23 10:15:24 2018 +0800
