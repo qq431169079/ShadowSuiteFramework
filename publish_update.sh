@@ -3,7 +3,7 @@
 git branch
 echo "Edit version on README.md and version.py... (vim README.md src/core/version.py)"
 read TEMP
-vim README.md src/core/version.py
+vim README.md src/core/version.py src/core/__init__.py
 echo "Enter version:"
 read VERSION
 echo ""

@@ -1787,6 +1787,11 @@ def Terminal():
                 import this # No 'Easter egg' here! Go away!!!...
                 print("\n\n")
 
+            elif menu_input == "SH4D0W734MD3V5":
+                # Again, No 'Easter egg' here!
+                print()
+                #DEV0003
+
             elif menu_input in ["restart", "reboot"]:
                 logger.log(0, 'User restarted Shadow Suite...', 'logfile.txt', global_variables['SESSION_ID'])
                 misc.programFunctions().clrscrn()
