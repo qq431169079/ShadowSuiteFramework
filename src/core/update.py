@@ -21,8 +21,9 @@ import sys
 from core import misc
 from core import error
 from core import fullupdate
+import subprocess
 
-def full_update(DEBUGGING):
+def full_update(global_variables, DEBUGGING):
     process = "4"
 
     print(misc.FB + misc.FI + misc.CB + "Performing a full update..." + misc.FR + misc.CW)
@@ -31,17 +32,20 @@ def full_update(DEBUGGING):
         print("[i] Can't install binaries on Windows. Please install them manually.")
 
     else:
-        os.system("bash instdeps.bash")
+        subprocess.call(["bash", "instdeps.bash"]) # DEV0001: Need a new algorithm!
 
     print(misc.CB + "Updating Shadow Suite... (2/" + process + ")\n" + misc.CW)
-    fullupdate.update(DEBUGGING)
+    fullupdate.update(global_variables, DEBUGGING)
+
     print(misc.CB + "Installing python modules... (3/" + process + ")\n" + misc.CW)
-    os.system("pip install -r python_requirements")
+    subprocess.call("pip", "install", "-r", "python_requirements") # DEV001: Also needs a new algorithm! I'm sure people are sick using this! >:(
+
     print(misc.CB + "Installing perl modules... (4/" + process + ")\n" + misc.CW)
-    os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize")
+    os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize") # DEV0001: Also this!
+
     print(misc.FB + misc.FI + misc.CB + "Performing a full update... Done!" + misc.FR + misc.CW)
 
-def deps_update():
+def deps_update(global_variables):
     process = "3"
 
     print(misc.CB + "Installing dependency files... (1/" + process + ")\n" + misc.CW)
@@ -49,17 +53,14 @@ def deps_update():
         print("[i] Can't install binaries on Windows. Please install them manually.")
     
     else:
-        os.system("bash instdeps.bash")
+        subprocess.call(["bash", "instdeps.bash"])
 
     print(misc.CB + "Installing python modules... (2/" + process + ")\n" + misc.CW)
     os.system("pip install -r python_requirements")
+
     print(misc.CB + "Installing perl modules... (3/" + process + ")\n" + misc.CW)
     os.system("cpan threads Thread Net WWW Getopt Socket IO Strict Warnings Config Term XML String DotDotPwn threads::shared Thread::Queue WWW::Mechanize")
     print(misc.FB + misc.FI + misc.CB + "Performing a dependency update... Done!" + misc.FR + misc.CW)
     
-def prog_update(DEBUGGING):
-    process = "1"
-    
-    print(misc.CB + "Updating Shadow Suite... (1/" + process + ")\n" + misc.CW)
-    fullupdate.check_for_updates(DEBUGGING)
-    fullupdate.update(DEBUGGING)
+def prog_update(global_variables, DEBUGGING):
+    fullupdate.update(global_variables, DEBUGGING)

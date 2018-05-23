@@ -42,6 +42,7 @@ from core import misc
 # ERROR 0018: Cannot uninstall the specified module.
 # ERROR 0019: No notes saved.
 # ERROR 0020: Unknown Fatal Error (Like WARNING 0003, but fatal) Used with Exception. (Needs string formatting)
+# ERROR 0021: Cannot get version number from repository!
 
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
@@ -114,6 +115,9 @@ ERROR0019 = misc.CR + "ERROR 0019: No notes saved!" + misc.CW
 
 # This is called if a FATAL unknown error occurs.
 ERROR0020 = misc.CR + "ERROR 0020: A fatal error occured: {0}" + misc.CW
+
+# This is called if there was a problem getting the version number from the repository.
+ERROR0021 = misc.CR + "ERROR 0021: Cannot get version number from repository! Please check for updates manually." + misc.END
 
     ##################################################################################
     #                                                                                #

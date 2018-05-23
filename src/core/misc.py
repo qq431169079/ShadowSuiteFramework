@@ -442,9 +442,10 @@ rootpass="{3}"
 module_path="{4}"
 output_path="{5}"
 binary_path="{6}"
-                    """
 
-            config_new_data = config_new_data.format(config_dict['username'], config_dict['userpass'], config_dict['rootname'], config_dict['rootpass'], config_dict['module_path'], config_dict['output_path'], config_dict['binary_path'])
+notes_maxlines={7}"""
+
+            config_new_data = config_new_data.format(config_dict['username'], config_dict['userpass'], config_dict['rootname'], config_dict['rootpass'], config_dict['module_path'], config_dict['output_path'], config_dict['binary_path'], config_dict['notes_maxlines'])
             with open(config_file, 'a') as fopen:
                 fopen.write(config_new_data)
 

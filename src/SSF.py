@@ -667,19 +667,19 @@ def Terminal():
                     if update_o[1].lower() in ["prog", "program"]:
                         print(misc.CGR + "Fetching Shadow Suite Framework from Shadow Team's repository..." + misc.CW)
                         logger.log(0, 'User performs a program update...', 'logfile.txt', global_variables['SESSION_ID'])
-                        update.prog_update(global_variables['DEBUGGING'])
+                        update.prog_update(global_variables, global_variables['DEBUGGING'])
 
                     elif update_o[1].lower() in ["deps", "dependencies", "dependency"]:
                         print(misc.CGR + "Downloading and installing dependencies..." + misc.CW)
                         logger.log(0, 'User performs a dependency update...', 'logfile.txt', global_variables['SESSION_ID'])
-                        update.deps_update()
+                        update.deps_update(global_variables)
 
                     elif update_o[1].lower() in ["full", "all"]:
                         print(misc.CGR + "Do you really want to perform a full update (y/n)?" + misc.CW)
                         full_updateinput = input(" > ")
                         if full_updateinput == "y" or full_updateinput == "Y":
                             logger.log(0, 'User performs a full update...', 'logfile.txt', global_variables['SESSION_ID'])
-                            update.full_update(global_variables['DEBUGGING'])
+                            update.full_update(global_variables, global_variables['DEBUGGING'])
 
                         elif full_updateinput == "n" or full_updateinput == "N":
                             print(misc.CR + "Full update cancelled by user..." + misc.CW)
@@ -895,9 +895,9 @@ def Terminal():
                             pass
 
                         new_binary_path = input("Enter the new binary path (usually /usr/bin/): ")
-                        if misc.programFunctions().path_exists(new_output_path):
-                            if misc.programFunctions().isfolder(new_output_path):
-                                global_variables['BINARY_PATH'] = new_output_path
+                        if misc.programFunctions().path_exists(new_binary_path):
+                            if misc.programFunctions().isfolder(new_binary_path):
+                                global_variables['BINARY_PATH'] = new_binary_path
                                 logger.log(3, 'User changed the binary path to ' + new_binary_path + '...', 'logfile.txt', global_variables['SESSION_ID'])
                                 print("[i] Binary path set!")
 
@@ -931,7 +931,8 @@ def Terminal():
                                 "rootpass": global_variables['ROOTPASS'],
                                 "module_path": global_variables['MODULE_PATH'],
                                 "output_path": global_variables['OUTPUT_PATH'],
-                                "binary_path": global_variables['BINARY_PATH']
+                                "binary_path": global_variables['BINARY_PATH'],
+                                "notes_maxlines": global_variables['NOTES_MAXLINES']
                                 }
                         try:
                             open(global_variables['config_file'], 'r').read()
@@ -953,7 +954,7 @@ def Terminal():
                                 print("[i] Unknown answer, assuming no.")
 
                         except FileNotFoundError:
-                            export_conf_result = API.ShadowSuiteLE(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], debugging).export_conf(global_variables['config_file'], config_dict)
+                            export_conf_result = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], debugging).export_conf(global_variables['config_file'], config_dict)
                             if export_conf_result == True:
                                 logger.log(3, 'Current user settings successfully saved to ' + global_variables['config_file'] + '.', 'logfile.txt', global_variables['SESSION_ID'])
                                 print("[i] Settings successfully saved to configuration file: \"" + global_variables['config_file'] + "\".")
@@ -998,7 +999,8 @@ def Terminal():
                                     "rootpass": global_variables['ROOTPASS'],
                                     "module_path": global_variables['MODULE_PATH'],
                                     "output_path": global_variables['OUTPUT_PATH'],
-                                    "binary_path": global_variables['BINARY_PATH']
+                                    "binary_path": global_variables['BINARY_PATH'],
+                                    "notes_maxlines": global_variables['NOTES_MAXLINES']
                                     }
                             export_conf_result = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING']).export_conf(new_config, config_dict)
                             if export_conf_result == True:
