@@ -1,3 +1,31 @@
+commit a1e063ca8aa08f6732cdb4315790d279701c9adb
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 24 13:00:27 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.1.6
+    
+    + Updated 'update' commands, yet experimental.
+    
+    + Minor bug fixes.
+
+commit 09b44f5356835ced1e8fd39317da2b6ee098441b
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 23 17:27:39 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Fixed __init__.py error.
+
+commit 68934e2aa1eb7a34524e81178d48b93994004877
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 23 17:21:12 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 16463d4d19d7de764d004686364eb72f10295b71
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Wed May 23 17:16:40 2018 +0800
