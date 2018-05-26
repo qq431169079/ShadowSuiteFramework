@@ -100,7 +100,7 @@ def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, 
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.ERROR0005)
+                print(error.errorCodes().ERROR0005)
                 return 0
 
             else:
@@ -167,7 +167,7 @@ def HTTP_honeypot():
         print("The port we are trying to use is already being used by another process. Sorry!")
 
     except PermissionError:
-        print(error.ERROR0005)
+        print(error.errorCodes().ERROR0005)
 
 def Ftp_honeypot():
     host, port = getBasicInput()
@@ -197,7 +197,7 @@ def Ftp_honeypot():
         print("The port we are trying to use is already being used by another process. Sorry!")
     
     except PermissionError:
-        print(error.ERROR0005)
+        print(error.errorCodes().ERROR0005)
 
 def Telnet_honeypot():
     host, port = getBasicInput()
@@ -277,7 +277,7 @@ Password: """
         print("The port we are trying to use is already being used by another process. Sorry!")
 
     except PermissionError:
-        print(error.ERROR0005)
+        print(error.errorCodes().ERROR0005)
 
 def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     BANNER = r"""
@@ -329,12 +329,12 @@ def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USER
                 return 0
 
             else:
-                print(error.ERROR0001)
+                print(error.errorCodes().ERROR0001)
 
             API.misc.programFunctions().pause()
 
         except KeyboardInterrupt:
-            print(error.ERROR0002)
+            print(error.errorCodes().ERROR0002)
 
         except(ValueError, TypeError):
             pass

@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.1.6 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.1.7 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -10,9 +10,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 # What's new?
 ------------------
-+ Updated update commands, yet experimental.
-
-+ Minor bug fixes.
++ Lots of new features and bug fixes.
 
 # Full Feature List
 ------------------------
@@ -41,13 +39,13 @@ Shadow Suite Framework is the main project of Shadow Team.
 ------------------------
 + [FEATURE REQUEST]: Metasploit Framework, MultiTool, Aeneas Of Troy's PortScaner, PassHunt, Tor Client (If available), Encrypted IM client (If available).
 
-+ [MAINTENANCE]: Update FL00D and Deception.
++ [MAINTENANCE]: Update FL00D, BRAT, and Deception.
 
 + [FEATURE REQUEST]: List tools by category.
 
 + [FEATURE REQUEST]: less for python 3
 
-+ [MAINTENANCE]: Fix update algorithms. (*ONGOING*)
++ [MAINTENANCE]: Fix update algorithms. (*ONGOING; Testing needed*)
 
 + [MAINTENANCE]: API arguments as dict.
 
@@ -70,6 +68,8 @@ Shadow Suite Framework is the main project of Shadow Team.
 + [ISSUE]: Notepad bug fixes... BUGGY!
 
 + [ISSUE]: Python requirements has no info if it is python 2 or 3.
+
++ [ISSUE]: On termux, (but maybe also in other systems) try to run vim via 'run vim [FILENAME]' and go to another app. When you go back, a very buggy UI will show.
 
 # License and Copying
 ------------------------

@@ -51,7 +51,7 @@ def module_info():
 def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     if info['needsroot'] == "0":
         if os.geteuid() != 0:
-            print(error.ERROR0005)
+            print(error.errorCodes().ERROR0005)
             return
 
         else:

@@ -100,7 +100,7 @@ def main(global_variables):
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.ERROR0005)
+                print(error.errorCodes().ERROR0005)
                 return 0
 
             else:

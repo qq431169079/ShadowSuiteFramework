@@ -97,14 +97,14 @@ def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, 
         from the 'os' module, and will immediately call 'module_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
-                print(error.ERROR0005)
+                print(error.errorCodes().ERROR0005)
                 return 0
 
             else:
-                module_body()
+                module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
         else:
-            module_body()
+            module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
 
 def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     os.system("cd modules/HASH_IDENTIFIER && python2 Hash_ID.py")

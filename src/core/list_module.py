@@ -80,6 +80,9 @@ def list(module_path):
             except ModuleNotFoundError:
                 pass
 
+            except:
+                pass
+
             try:
                 module_iterator += 1
                 module = module.replace('.py', '')
@@ -136,6 +139,9 @@ def count(module_path):
         
         except(ImportError, ModuleNotFoundError):
         #except AttributeError:
+            pass
+
+        except:
             pass
         
         try:

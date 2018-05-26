@@ -28,6 +28,7 @@ try:
     import time
 
     # Shadow Suite modules
+    import SSF
     from core import error
     # error calling
     #      
@@ -111,6 +112,7 @@ try:
     import importlib
     from core import multitasking
     import signal
+    from core import exceptions
 
 except ImportError:
     print("Error While Importing Modules! Now Quitting...")
@@ -122,6 +124,7 @@ except ImportError:
     sys.exit(8)
 
 class ShadowSuite:
+    # This is the class for SSF SUBMODULES located in the core/ directory.
 
     # Method calling: API.ShadowSuiteLE().[METHOD NAME]()
     # Variable assignment: variable = API.ShadowSuiteLE().[VARIABLE]
@@ -131,6 +134,8 @@ class ShadowSuite:
     SHADOWSUITE_VER_TYPE = version.VTYPE # Shadow Suite's version type
     SHADOWSUITE_VER_CODENAME = version.VCODENAME # Shadow Suite's version codename
     FINISH = "\n[i] Module finished running...\n"
+
+    MODULE_MODE_INFO = "[i] SSF is running as an imported module!\n" + misc.programFunctions().COPYRIGHT
 
     def __init__(self, current_user='user', MODULE_PATH='modules/', OUTPUT_PATH='output/', SESSION_ID=123456, USERLEVEL=2, debugging=False):
         if not current_user:
@@ -181,7 +186,7 @@ class ShadowSuite:
             print("[i] " + cmn + ".py successfully generated!")
         
         else:
-            print("[i] " + error.ERROR0015 + " (Generated module not found)")
+            print("[i] " + error.errorCodes().ERROR0015 + " (Generated module not found)")
 
     def list_module(self):
         logger.log(0, 'User used list_module method via API.', 'api_logfile.txt', self.SESSION_ID)
@@ -232,3 +237,153 @@ class ShadowSuite:
         logger.log(3, self.current_user + " is exporting settings to " + config_file + " via API.", 'api_logfile.txt', self.SESSION_ID)
         result = misc.programFunctions().export_conf(config_file, config_dict)
         return result
+
+class SSFMain:
+    # This is the class for the MAIN SSF module.
+
+    hs = '2c740d20dab7f14ec30510a11f8fd78b82bc3a711abe8a993acdb323e78e6d5e'
+
+    def __init__(self, global_variables):
+        if not global_variables:
+            raise ValueError("Global Variables is strictly needed!")
+
+        else:
+            if type(global_variables) is not dict:
+                raise TypeError("Global Variables must be a dictionary!")
+
+            else:
+                keys = ('config_file', 'USERNAME', 'USERPASS', 'ROOTNAME'\
+                        'ROOTPASS', 'MODULE_PATH', 'OUTPUT_PATH', 'BINARY_PATH'\
+                        'NOTES_MAXLINES', 'USERLEVEL', 'INSTALLED_MODULES'\
+                        'current_user', 'PLATFORM', 'SESSION_ID', 'DEBUGGING')
+                for key in keys:
+                    a = self._assert(global_variables[key], key)
+                    try:
+                        if a == 0:
+                            continue
+
+                        else:
+                            raise exceptions.InvalidParameterError(error.errorCodes().ERROR0022)
+
+                    except(TypeError, ValueError):
+                        raise exceptions.InvalidParameterError("[i] " + error.errorCodes().ERROR0020(str(a)))
+    
+    def _assert(self, value, key):
+        if key == 'config_file':
+            try:
+                with open('data/' + value, 'r') as fopen:
+                    fopen.read()
+                    fopen.close()
+                    return 0
+
+            except Exception as e:
+                return e
+
+        elif key in ('USERNAME', 'USERPASS', 'ROOTNAME', 'ROOTPASS'):
+            try:
+                is_str = type(value) is str
+                if is_str:
+                    if len(value) == len(self.hs) and value.isdigit() == False and \
+                            value.isalpha() == False and value.isalnum() == True:
+                        return 0
+
+                    else:
+                        return 1
+
+                else:
+                    return 1
+
+            except Exception as e:
+                return e
+
+        elif key in ('MODULE_PATH', 'OUTPUT_PATH', 'BINARY_PATH'):
+            try:
+                if misc.programFunctions().path_exists(value):
+                    return 0
+
+                else:
+                    return 1
+
+            except Exception as e:
+                return e
+
+        elif key in ('NOTES_MAXLINES'):
+            try:
+                if type(value) is int:
+                    return 1
+
+                else:
+                    return 0
+
+            except Exception as e:
+                return e
+
+        elif key in ('USERLEVEL'):
+            try:
+                if value in (0, 1, 2):
+                    return 0
+
+                else:
+                    return 1
+
+            except Exception as e:
+                return e
+
+        elif key in ('INSTALLED_MODULES'):
+            try:
+                if type(value) is list:
+                    return 0
+
+                else:
+                    return 1
+
+            except Exception as e:
+                return e
+
+        elif key in ('current_user'):
+            try:
+                if type(value) is str:
+                    return 0
+
+                else:
+                    return 1
+
+            except Exception as e:
+                return e
+
+        elif key in ('PLATFORM'):
+            try:
+                if type(value) is str:
+                    return 0
+
+                else:
+                    return 1
+
+            except Exception as e:
+                return e
+
+        elif key in ('SESSION_ID'):
+            try:
+                if type(value) is int:
+                    if value > 99999 and value < 1000000:
+                        return 0
+
+                    else:
+                        return 1
+
+                else:
+                    return 1
+
+            except Exception as e:
+                return e
+
+        elif key in ('DEBUGGING'):
+            try:
+                if type(value) is bool:
+                    return 0
+
+                else:
+                    return 1
+
+            except Exception as e:
+                return e

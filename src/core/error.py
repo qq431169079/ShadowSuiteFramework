@@ -19,8 +19,13 @@
 import os
 import sys
 from core import misc
+from core import exceptions
 
 ############### ERRORS AND WARNINGS ###############
+
+# All errors are in form of functions in a class.
+# They all have the @property decorator except for errors 0011 and 0020.
+# Those exceptions are normal functions, and needs parameters.
 
 # ERROR 0001: Invalid Input message
 # ERROR 0002: CTRL+C Detection
@@ -32,7 +37,7 @@ from core import misc
 # ERROR 0008: A module was missing message
 # ERROR 0009: Update package not found
 # ERROR 0010: Connection Error
-# ERROR 0011: Python version error (Needs string formatting)
+# ERROR 0011: Python version error (***IS A NORMAL FUNCTION!***)
 # ERROR 0012: Invalid configuration file
 # ERROR 0013: Wrong username or password
 # ERROR 0014: Max login attempts reached.
@@ -41,8 +46,9 @@ from core import misc
 # ERROR 0017: There was a problem parsing the module/package.
 # ERROR 0018: Cannot uninstall the specified module.
 # ERROR 0019: No notes saved.
-# ERROR 0020: Unknown Fatal Error (Like WARNING 0003, but fatal) Used with Exception. (Needs string formatting)
+# ERROR 0020: Unknown Fatal Error (Like WARNING 0003, but fatal) Used with Exception. (***IS A NORMAL FUNCTION!***)
 # ERROR 0021: Cannot get version number from repository!
+# ERROR 0022: Invalid Parameter Passed!
 
 # WARNING 0001: Feature under dev
 # WARNING 0002: Feature not implemented message
@@ -57,84 +63,143 @@ from core import misc
     ##################################################################################
 
 # This function prints the "Invalid Input message.
-ERROR0001 = misc.CR + "ERROR 0001: Invalid Input! Please check your command." + misc.CW
+class errorCodes:
 
-# This function prints this message if CTRL+C is detected.
-ERROR0002 = misc.CR + "ERROR 0002: Keyboard interrupt detected..." + misc.CW
+    def __init__(self):
+        pass
 
-# This function prints this message if 'quit' or 'exit' command is entered when inside a module.
-ERROR0003 = misc.CR + "ERROR 0003: 'exit' and 'quit' cannot be used inside a module; use 'back' instead..." + misc.CW
+    @property
+    def ERROR0001(self):
+        return(misc.CR + "ERROR 0001: Invalid Input! Please check your command." + misc.CW)
+    @property
+    def ERROR0002(self):
+        return(misc.CR + "ERROR 0002: Keyboard interrupt detected..." + misc.CW)
 
-# This function is called only in ShadowSuite.py
-ERROR0004 = misc.CR + "ERROR 0004: 'back' cannot be used in the main module; use 'quit' or 'exit' instead..." + misc.CW
+    @property
+    def ERROR0003(self):
+        return(misc.CR + "ERROR 0003: 'exit' and 'quit' cannot be used inside a module; use 'back' instead..." + misc.CW)
 
-# This function is called if user device has no superuser permission but is running a module that needs root.
-ERROR0005 = misc.CR + "ERROR 0005: This operation requires root permissions!\n\nPlease run as root first before proceeding. Search for \'Android Rooting\' if you are using\nShadow Suite Framework on Android, or \'Linux Root User\' if you are running on Linux for details.\nIf you are using Windows Operating System, try to run as Administrator..." + misc.CW
+    @property
+    def ERROR0004(self):
+        return(misc.CR + "ERROR 0004: 'back' cannot be used in the main module; use 'quit' or 'exit' instead..." + misc.CW)
+    
+    @property
+    def ERROR0005(self):
+        message = """ERROR 0005: {} requires root permissions!
+        Please run as root first before proceeding...
+        Search for 'Android Rooting' if you are using SSF on Android Systems,
+        or 'Linux Root User' if you are using SSF on Linux Systems.
+    
+        If you are using SSF on Windows, search for 'Windows Administrator'
+        for more information."""
 
-# This function is called if no modules were found in the modules directory.
-ERROR0006 = misc.CR + "ERROR 0006: No module with that name was found." + misc.CW
+        return(misc.CR + message.format("This operation") + misc.END)
+            
+    @property
+    def ERROR0006(self):
+        return(misc.CR + "ERROR 0006: No module with that name was found." + misc.CW)
+        
+    @property
+    def ERROR0007(self):
+        return(misc.CR + "ERROR 0007: An error occured while updating Shadow Suite Framework." + misc.CW)
+        
+    @property
+    def ERROR0008(self):
+        message = "ERROR 0008: A module is missing!\nPlease re-install/re-download {} to continue..."
+        
+        return(misc.CR + message.format("the missing module(s)") + misc.END)
 
-# Error while updating Shadow Suite Framework
-ERROR0007 = misc.CR + "ERROR 0007: An error occured while updating Shadow Suite Framework." + misc.CW
+    @property
+    def ERROR0009(self):
+        return(misc.CR + "ERROR 0009: The update package was not found! Maybe corrupted?" + misc.CW)
 
-# This function is called if a module was missing
-ERROR0008 = "ERROR 0008: A module is missing!\nPlease re-install/re-download the missing module/s to continue..."
+    @property
+    def ERROR0010(self):
+        return(misc.CR + "ERROR 0010: Cannot connect! Is it really up? Or the problem is ours? Please check." + misc.CW)
 
-# This is called if the update package is not found.
-ERROR0009 = misc.CR + "ERROR 0009: The update package was not found! Maybe corrupted?" + misc.CW
+    def ERROR0011(self, pyver=''):
+        message = "ERROR 0011: Python {0} or later is needed to run Shadow Suite Framework."
+        if not pyver:
+            raise exceptions.InvalidParameterError("The 'pyver' parameter is needed!")
 
-# This is called if we need internet but there is no internet connection.
-ERROR0010 = misc.CR + "ERROR 0010: Cannot connect! Is it really up? Or the problem is ours? Please check." + misc.CW
+        else:
+            return(misc.CR + message.format(pyver) + misc.END)
+            
+    @property
+    def ERROR0012(self):
+        return(misc.CR + "ERROR 0012: Invalid configuration file!" + misc.CW)
+        
+    @property
+    def ERROR0013(self):
+        return(misc.CR + "ERROR 0013: Wrong username or password!" + misc.CW)
+        
+    @property
+    def ERROR0014(self):
+        return(misc.CR + "ERROR 0014: Max login attempts reached!" + misc.CW)
+        
+    @property
+    def ERROR0015(self):
+        message = "ERROR 0015: Path {} not found."
 
-# This is called if python version of user doesn't meet the required version.
-ERROR0011 = "ERROR 0011: Python {0} or later is needed to run Shadow Suite Framework."
+        return(misc.CR + message.format('') + misc.END)
 
-# This is called if the configuration file is invalid.
-ERROR0012 = misc.CR + "ERROR 0012: Invalid configuration file!" + misc.CW
+    @property
+    def ERROR0016(self):
+        message = "ERROR 0016: {} a valid SSF module!"
+        
+        return(misc.CR + message.format('Not') + misc.CW)
+                    
+    @property
+    def ERROR0017(self):
+        message = "ERROR 0017: There was a problem parsing {}..."
+        
+        return(misc.CR + message.format('the package') + misc.END)
 
-# This is called if the username or password is wrong.
-ERROR0013 = misc.CR + "ERROR 0013: Wrong username or password!" + misc.CW
+    @property
+    def ERROR0018(self):
+        message = "ERROR 0018: Cannot uninstall {}!"
+        
+        return(misc.CR + message.format("the specified package") + misc.END)
 
-# This is called if max attempts of login fail reached.
-ERROR0014 = misc.CR + "ERROR 0014: Max login attempts reached!" + misc.CW
+    @property
+    def ERROR0019(self):
+        return(misc.CR + "ERROR 0019: No notes saved!" + misc.CW)
 
-# This is called if path is not found.
-ERROR0015 = misc.CR + "ERROR 0015: Path not found." + misc.CW
+    def ERROR0020(self, error_desc=''):
+        if not error_desc:
+            raise exceptions.InvalidParameterError("The 'error_desc' parameter is needed!")
+        else:
+            return(misc.CR + "ERROR 0020: A fatal error occured: {0}".format(error_desc) + misc.END)
 
-# This is called if the module user is trying to install is not a python script.
-ERROR0016 = misc.CR + "ERROR 0016: Not a valid SSF module!" + misc.CW
+    @property
+    def ERROR0021(self):
+        return(misc.CR + "ERROR 0021: Cannot get version number from repository! Please check for updates manually." + misc.END)
 
-# This is called if the module user is trying to install has encountered an error.
-ERROR0017 = misc.CR + "ERROR 0017: There was a problem Parsing the package..." + misc.CW
+    @property
+    def ERROR0022(self):
+        return(misc.CR + "ERROR 0022: Invalid parameter has been passed!" + misc.END)
 
-# This is called if the module to uninstall can't be removed.
-ERROR0018 = misc.CR + "ERROR 0018: Cannot uninstall the specified package!" + misc.CW
+class warningCodes:
+    
+    def __init__(self):
+        pass
 
-# This is called if user tries to list saved notes but no notes are saved.
-ERROR0019 = misc.CR + "ERROR 0019: No notes saved!" + misc.CW
+    @property
+    def WARNING0001(self):
+        return(misc.CY + "WARNING 0001: This feature was still under development, it may contain bugs." + misc.CW)
 
-# This is called if a FATAL unknown error occurs.
-ERROR0020 = misc.CR + "ERROR 0020: A fatal error occured: {0}" + misc.CW
+    @property
+    def WARNING0002(self):
+        return(misc.CY + "WARNING 0002: Feature not yet implemented, cannot proceed..." + misc.CW)
 
-# This is called if there was a problem getting the version number from the repository.
-ERROR0021 = misc.CR + "ERROR 0021: Cannot get version number from repository! Please check for updates manually." + misc.END
+    @property
+    def WARNING0003(self):
+        return(misc.CY + "WARNING 0003: An unknown error occured when processing your command." + misc.CW)
 
-    ##################################################################################
-    #                                                                                #
-    #                              WARNING FUNCTIONS                                 #
-    #                                                                                #
-    ##################################################################################
+    @property
+    def WARNING0004(self):
+        return(misc.CY + "WARNING 0004: The last session of Shadow Suite Framework has failed to quit properly." + misc.CW)
 
-# This function is called when feature was still under development.
-WARNING0001 = misc.CY + "WARNING 0001: This feature was still under development, it may contain bugs." + misc.CW
-
-# This function should be called if a feature is not yet implemented.
-WARNING0002 = misc.CY + "WARNING 0002: Feature not yet implemented, cannot proceed..." + misc.CW
-
-# This function is called when an error occured when processing your command.
-WARNING0003 = misc.CY + "WARNING 0003: An unknown error occured when processing your command." + misc.CW
-
-# This is called if another instance of Shadow Suite is currently running...
-WARNING0004 = misc.CY + "WARNING 0004: The last session of Shadow Suite Framework has failed to quit properly." + misc.CW
-
-WARNING0005 = misc.CY + "WARNING 0005: Shadow Suite Framework will not work unless you define a custom configuration file!" + misc.CW
+    @property
+    def WARNING0005(self):
+        return(misc.CY + "WARNING 0005: Shadow Suite Framework will not work unless you define a custom configuration file!" + misc.CW)

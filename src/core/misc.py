@@ -210,7 +210,7 @@ class programFunctions(object):
                 """
 
         except KeyboardInterrupt:
-            print(error.ERROR0002)
+            print(error.errorCodes().ERROR0002)
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
 
@@ -249,7 +249,7 @@ class programFunctions(object):
                 input("Press enter to continue...")
 
         except KeyboardInterrupt:
-            print(error.ERROR0002)
+            print(error.errorCodes().ERROR0002)
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
 
@@ -275,7 +275,7 @@ class programFunctions(object):
             return quit
 
         except KeyboardInterrupt:
-            print(error.ERROR0002)
+            print(error.errorCodes().ERROR0002)
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
 
@@ -391,7 +391,7 @@ class programFunctions(object):
             return "Login Successful!" # means success
 
         else:
-            return error.ERROR0013 # means fail
+            return error.errorCodes().ERROR0013 # means fail
 
     ########## FOR SSF ONLY ##########
     def login_root(self, global_variables, ulogin, plogin):
@@ -401,7 +401,7 @@ class programFunctions(object):
             return "Login Successful!" # means success
 
         else:
-            return error.ERROR0013 # means fail
+            return error.errorCodes().ERROR0013 # means fail
 
     def path_exists(self, file_path):
         return os.path.exists(file_path)

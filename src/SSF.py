@@ -18,63 +18,52 @@
 
 # Import Python and Core modules to run properly
 try:
-    print("[i] Importing 'os' module...")
+    if __name__ == '__main__':
+        print()
+        print("[i] Importing System modules...")
+
     import os # General Purpose
-    print("[i] Importing 'sys' module...")
     import sys # General Purpose
-    print("[i] Importing 'traceback' module...")
     import traceback # Debugging and Traceback information
-    print("[i] Importing 'getpass' module...")
     from getpass import getpass # Input Hiding
-    print("[i] Importing 'hashlib' module...")
     import hashlib # Hashing
-    print("[i] Importing 'time' module...")
     import time # Time API
-    print("[i] Importing 'subprocess' module...")
     import subprocess # Subprocessing API
-    print("[i] Importing 'importlib' module...")
     import importlib # Framework Module importing API
-    print("[i] Importing 'signal' module...")
     import signal # Signal API
-    print("[i] Importing 'atexit' module...")
     import atexit # Define multiple exit functions upon normal program termination.
-    print("[i] Importing 'readline' module...")
     import readline # Allows us to reuse recent commands.
 
-    print()
-    print("[i] Importing 'ansi' module...")
+    if __name__ == '__main__':
+        print()
+        print("[i] Importing Core modules...")
+
     from core import ansi # Like misc, but focused on UI.
-    print("[i] Importing 'error' module...")
     from core import error # Error Code Definitions
-    print("[i] Importing 'misc' module...")
+    from core import exceptions # Exceptions Definitions
     from core import misc # Miscellaneous Functions/Variables/Classes
-    print("[i] Importing 'multitasking' module...")
     from core import multitasking # Multitasking API
-    print("[i] Importing 'update' module...")
     from core import update # Updating API
-    print("[i] Importing  'version' module...")
     from core import version # Versioning Information
-    print("[i] Importing 'suggest' module...")
     from core import suggest # Suggestion Search Engine
-    print("[i] Importing 'logger' module...")
     from core import logger # Logging API
-    print("[i] Importing 'gethost' module...")
     from core import gethost # A little module for hostnames and IP Addresses.
-    print("[i] Importing 'asciigraphs' module...")
     from core import asciigraphs # A little module for graphs.
-    print("[i] Importing 'joke' module...")
     from core import joke # Corny Jokes
-    print("[i] Importing 'quote' module...")
     from core import quote # Quotes
-    print("[i] Importing 'list_module' module...")
     from core import list_module # Module Listing API
-    print("[i] Importing 'API' module...")
+
+    if __name__ == '__main__':
+        print()
+        print("[i] Importing API module...")
+
     import API # Framework API
  
-    print()
-    print("[i] Finished Importing modules...\n")
-    misc.programFunctions().pause(False)
-
+    if __name__ == '__main__':
+        print()
+        print("[i] Finished Importing modules...\n")
+        misc.programFunctions().pause(False)
+    
 except ImportError:
     # This function is called if a module was missing.
     cr = '\033[31m'
@@ -94,6 +83,35 @@ except ImportError:
 
 global global_variables # To be used by all functions defined here...
 
+def _testError():
+    print(error.errorCodes().ERROR0001)
+    print(error.errorCodes().ERROR0002)
+    print(error.errorCodes().ERROR0003)
+    print(error.errorCodes().ERROR0004)
+    print(error.errorCodes().ERROR0005)
+    print(error.errorCodes().ERROR0006)
+    print(error.errorCodes().ERROR0007)
+    print(error.errorCodes().ERROR0008)
+    print(error.errorCodes().ERROR0009)
+    print(error.errorCodes().ERROR0010)
+    print(error.errorCodes().ERROR0011("3.6.1"))
+    print(error.errorCodes().ERROR0012)
+    print(error.errorCodes().ERROR0013)
+    print(error.errorCodes().ERROR0014)
+    print(error.errorCodes().ERROR0015)
+    print(error.errorCodes().ERROR0016)
+    print(error.errorCodes().ERROR0017)
+    print(error.errorCodes().ERROR0018)
+    print(error.errorCodes().ERROR0019)
+    print(error.errorCodes().ERROR0020('UnknownError'))
+    print(error.errorCodes().ERROR0021)
+
+    print(error.warningCodes().WARNING0001)
+    print(error.warningCodes().WARNING0002)
+    print(error.warningCodes().WARNING0003)
+    print(error.warningCodes().WARNING0004)
+    print(error.warningCodes().WARNING0005)
+
 def main():
     # Check python version first before main() function execution.
     req_py_version = (3, 6, 0) # Required python version integer, in a tuple.
@@ -107,8 +125,7 @@ def main():
         req_py_version_str = req_py_version_str + str(ver_nums) + '.'
 
     if cur_py_version < req_py_version: # Check if user's python version is lower than the required version of python.
-        PythonVersionError_msg = error.ERROR0011
-        PythonVersionError_msg = PythonVersionError_msg.format(req_py_version_str) # Formats the error string.
+        PythonVersionError_msg = error.errorCodes().ERROR0011(req_py_version_str) # Gets and Formats the error string.
         print(PythonVersionError_msg)
         logger.log(0, PythonVersionError_msg, 'logfile.txt')
         proper_exit(11) # Proper exit
@@ -202,7 +219,7 @@ def main():
                     break
 
                 else:
-                    print(error.ERROR0012) # If custom configuration file is invalid.
+                    print(error.errorCodes().ERROR0012) # If custom configuration file is invalid.
                     proper_exit(12) # But still, don't forget to exit properly.
 
             else:
@@ -227,7 +244,7 @@ def main():
                     break
                 
                 else:
-                    print(error.ERROR0012)
+                    print(error.errorCodes().ERROR0012)
                     proper_exit(12)
                 
             else:
@@ -290,7 +307,7 @@ def main():
                     NOTES_MAXLINES = int(NOTES_MAXLINES)
 
                 except Exception as exc_err:
-                    print(error.ERROR0020.format(exc_err))
+                    print(error.errorCodes().ERROR0020(exc_err))
                     proper_exit(20)
 
             else:
@@ -345,7 +362,7 @@ def main():
                             break
 
                         else:
-                            print(error.ERROR0013)
+                            print(error.errorCodes().ERROR0013)
                             logger.log(4, ploginuser + " failed to log in on " + time.asctime() + " with " + str(attempts) + " failed attempts.", 'logfile.txt', SESSION_ID)
                             misc.programFunctions().pause()
                             if attempts < 3:
@@ -353,19 +370,19 @@ def main():
                                 continue
 
                             else:
-                                print(error.ERROR0014 + " Now quitting...")
+                                print(error.errorCodes().ERROR0014 + " Now quitting...")
                                 proper_exit(13)
 
-                    except KeyboardInterrupt:
-                        print(error.ERROR0002)
+                    except(KeyboardInterrupt, EOFError):
+                        print(error.errorCodes().ERROR0002)
                         proper_exit(2)
 
     except IndexError:
-        print(error.ERROR0012)
+        print(error.errorCodes().ERROR0012)
         proper_exit(12)
 
     except FileNotFoundError:
-        print(error.ERROR0015 + " (default configuration file)")
+        print(error.errorCodes().ERROR0015 + " (default configuration file)")
         proper_exit(15)
 
     # Checks if last session failed to exit properly
@@ -373,7 +390,7 @@ def main():
         try:
             open('.last_session_exit_fail.log', 'r').read() # Try to read the file
             open('.last_session_exit_fail.log', 'r').close() # Close the file
-            print(error.WARNING0004)
+            print(error.warningCodes().WARNING0004)
             instance_warn = str(input(misc.CY + misc.FB + misc.FI + "Do you still want to run anyway? (y/n) > " + misc.FR + misc.CW))
             instance_warn = instance_warn.lower()
             if instance_warn == 'y':
@@ -523,6 +540,7 @@ def Terminal():
         try:
             # If geteuid is equal to 0, then a terminal with # will be shown.
             # Otherwise, $ will be shown.
+
             if misc.programFunctions().geteuid() != 0:
                 logger.log(0, 'Running as normal user.', 'logfile.txt', global_variables['SESSION_ID'])
                 menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] $: ")
@@ -531,6 +549,22 @@ def Terminal():
                 logger.log(0, 'Running as root.', 'logfile.txt', global_variables['SESSION_ID'])
                 menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] #: ")
 
+            if '&&' in menu_input:
+                menu_input.split('&&')
+                for inputs in menu_input:
+                    parse_arguments(inputs)
+
+            else:
+                parse_arguments(menu_input)
+
+        except Exception as unknown_exception:
+            print(misc.CR + "[i] " + error.errorCodes().ERROR0020("Exception: " + str(unknown_exception)))
+
+def parse_arguments(menu_input):
+    recent_exceptions = ""
+    global global_variables
+    if menu_input:
+        try:
             if menu_input.lower().startswith("help"):
                 logger.log(0, 'User needs help.', 'logfile.txt', global_variables['SESSION_ID'])
                 print(misc.CC + misc.FB + misc.FI + "\nHELP\n" + misc.FR)
@@ -619,7 +653,7 @@ def Terminal():
                                     print("- " + str(readline.get_history_item(i + 1)))
 
                             else:
-                                print(error.ERROR0013)
+                                print(error.errorCodes().ERROR0013)
 
                             del src_rootuser, src_rootpass
 
@@ -627,6 +661,17 @@ def Terminal():
                             print("Recent Commands:")
                             for i in range(readline.get_current_history_length()):
                                 print("- " + str(readline.get_history_item(i + 1)))
+
+                    elif show_o[1].lower() in ("traceback", "tracebacks"):
+                        leline = misc.CC + misc.FB + misc.FI + ('=' * 25) + " Latest Exceptions " + ('=' * 25) + misc.END
+                        print()
+                        print(leline)
+                        print()
+                        print(recent_exceptions)
+                        print()
+                        print(leline)
+                        print()
+                        del leline
 
                     elif show_o[1].lower() == "config_files":
                         logger.log(0, "User lists available configuration files...", 'logfile.txt', global_variables['SESSION_ID'])
@@ -659,6 +704,7 @@ def Terminal():
                     print("changelog                           -    Shows the changelog via less command.")
                     print("config_files                        -    Lists the configuration files available.")
                     print("recent_commands                     -    Lists the recent commands entered.")
+                    print("tracebacks                          -    Lists the most latest exception/s.")
                     print()
 
             elif menu_input.lower().startswith("update"):
@@ -685,7 +731,7 @@ def Terminal():
                             print(misc.CR + "Full update cancelled by user..." + misc.CW)
 
                         else:
-                            print(error.ERROR0001)
+                            print(error.errorCodes().ERROR0001)
 
                     else:
                         raise IndexError
@@ -725,7 +771,7 @@ def Terminal():
 
                             else:
                                 logger.log(4, 'User failed to change his username... Wrong root password.', 'logfile.txt', global_variables['SESSION_ID'])
-                                print(error.ERROR0013 + " [i] This incident will be reported!")
+                                print(error.errorCodes().ERROR0013 + " [i] This incident will be reported!")
                                 del confirm_rootpass
 
                     elif config_o[1].lower() in ["password", "passwd"]:
@@ -760,7 +806,7 @@ def Terminal():
 
                             else:
                                 logger.log(3, 'User failed to change his password... Wrong username/password.', 'logfile.txt', global_variables['SESSION_ID'])
-                                print(error.ERROR0013 + " [i] This incident will be reported!")
+                                print(error.errorCodes().ERROR0013 + " [i] This incident will be reported!")
 
                     elif config_o[1].lower() in ["rootname"]:
                         config_o[2] = misc.programFunctions().hash(config_o[2], 'sha256')
@@ -780,7 +826,7 @@ def Terminal():
 
                             else:
                                 logger.log(3, 'User failed to change his root username... Wrong username/password.', 'logfile.txt', global_variables['SESSION_ID'])
-                                print(error.ERROR0013 + " [i] This incident will be reported!")
+                                print(error.errorCodes().ERROR0013 + " [i] This incident will be reported!")
                                 del confirm_rootpass
 
                     elif config_o[1].lower() in ["rootpass"]:
@@ -815,7 +861,7 @@ def Terminal():
 
                             else:
                                 logger.log(3, 'User failed to change his root password... Wrong username/password', 'logfile.txt', global_variables['SESSION_ID'])
-                                print(error.ERROR0013 + " [i] This incident will be reported!")
+                                print(error.errorCodes().ERROR0013 + " [i] This incident will be reported!")
 
                     elif config_o[1].lower() in ["module_path"]:
                         if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
@@ -826,8 +872,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                                 
                             del mp_rootuser, mp_rootpass
 
@@ -842,10 +888,10 @@ def Terminal():
                                 print("[i] Module path set!")
 
                             else:
-                                print(error.ERROR0015)
+                                print(error.errorCodes().ERROR0015)
 
                         else:
-                            print(error.ERROR0015)
+                            print(error.errorCodes().ERROR0015)
 
                     elif config_o[1].lower() in ["output_path"]:
                         if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
@@ -856,8 +902,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                                 
                             del op_rootuser, op_rootpass
                         
@@ -872,10 +918,10 @@ def Terminal():
                                 print("[i] Output path set!")
                             
                             else:
-                                print(error.ERROR0015)
+                                print(error.errorCodes().ERROR0015)
                             
                         else:
-                            print(error.ERROR0015)
+                            print(error.errorCodes().ERROR0015)
 
                     elif config_o[1].lower() in ["binary_path"]:
                         if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
@@ -886,8 +932,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                                 
                             del bp_rootuser, bp_rootpass
                         
@@ -902,10 +948,10 @@ def Terminal():
                                 print("[i] Binary path set!")
 
                             else:
-                                print(error.ERROR0015)
+                                print(error.errorCodes().ERROR0015)
 
                         else:
-                            print(error.ERROR0015)
+                            print(error.errorCodes().ERROR0015)
 
                     elif config_o[1].lower() in ["export", "save"]:
                         if global_variables['ROOTNAME'] != '' and global_variables['ROOTPASS'] != '':
@@ -916,8 +962,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                                 
                             del sav_rootuser, sav_rootpass
                         
@@ -971,8 +1017,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                                 
                             del gen_rootuser, gen_rootpass
                         
@@ -988,7 +1034,7 @@ def Terminal():
 
                         if misc.programFunctions().path_exists(new_config) and misc.programFunctions().isfile(new_config):
                             print("[i] Saving of settings to new configuration file aborted. File already exists.")
-                            continue
+                            return "Temporary Return"
 
                         else:
                             print('[i] Exporting...')
@@ -1019,8 +1065,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                             
                             del del_rootuser, del_rootpass
                         
@@ -1034,7 +1080,7 @@ def Terminal():
                             config_o[2] = config_o[2].replace('data/', '')
 
                         if config_o[2] == 'config.dat':
-                            print(error.WARNING0005)
+                            print(error.warningCodes().WARNING0005)
                             ask_remove_default_config = input("Do you still want to continue? (y/n) > ").lower()
                             if ask_remove_default_config == 'y':
                                 os.remove('data/' + config_o[2])
@@ -1067,8 +1113,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                             
                             del rst_rootuser, rst_rootpass
                         
@@ -1155,10 +1201,11 @@ def Terminal():
                                     module.main(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
 
                                 except Exception as module_error_msg:
-                                    traceback.print_exc() # DEV0005
+                                    #traceback.print_exc() # DEV0005
                                     print(misc.CR + "[i] " + str(module_error_msg))
 
                         except Exception as moduleerror_msg:
+                            recent_exceptions = traceback.format_exc()
                             print("[i] " + str(moduleerror_msg))
 
                         if misc.programFunctions().is_windows():
@@ -1187,6 +1234,7 @@ def Terminal():
                                     module.module_info()
 
                                 except Exception as moduleerror_msg:
+                                    recent_exceptions = traceback.format_exc()
                                     print("[i] " + str(moduleerror_msg))
 
                                 print("\n" + ('=' * 50))
@@ -1201,7 +1249,48 @@ def Terminal():
                                 module.module_info()
 
                             except Exception as moduleerror_msg:
+                                recent_exceptions = traceback.format_exc()
                                 print("[i] " + str(moduleerror_msg))
+
+                    elif module_o[1] in ['reload', 'restart', 'reboot']:
+                        module_name = module_o[2]
+                        if module_name == '*':
+                            modules = os.listdir(global_variables['MODULE_PATH'])
+                            for module in modules:
+                                module_name = global_variables['MODULE_PATH'] + module
+                                if misc.programFunctions().isfile(module_name):
+                                    pass
+
+                                else:
+                                    continue
+                                
+                                module_name = module_name.replace('.py', '').replace('.Py', '').replace('.pY', '').replace('.PY', '')
+                                #print(module_name) # DEV0005
+                                try:
+                                    module_name = module_name.replace('/', '.')
+                                    logger.log(3, 'User reloads all modules.')
+                                    module = importlib.reload(importlib.import_module(module_name))
+                                    print(misc.CG + "[i] " + module_name + " successfully reloaded!" + misc.END)
+                                    time.sleep(0.50)
+                                
+                                except Exception as moduleerror_msg:
+                                    recent_exceptions = traceback.format_exc()
+                                    print(misc.CR + "[i] " + error.errorCodes().ERROR0020(str(moduleerror_msg)) + misc.CW)
+                                    time.sleep(0.50)
+
+                        else:
+                            module_name = global_variables['MODULE_PATH'] + module_o[2]
+                            try:
+                                module_name = module_name.replace('/', '.')
+                                logger.log(3, 'User reloads ' + module_name + ' module.', 'logfile.txt', global_variables['SESSION_ID'])
+                                module = importlib.reload(importlib.import_module(module_name))
+                                print(misc.CG + "[i] " + module_name + " successfully reloaded!" + misc.END)
+                                time.sleep(0.50)
+                            
+                            except Exception as moduleerror_msg:
+                                recent_exceptions = traceback.format_exc()
+                                print(misc.CR + "[i] " + error.errorCodes().ERROR0020(str(moduleerror_msg)) + misc.CW)
+                                time.sleep(0.50)
 
                     elif module_o[1] in ['generate', 'produce', 'new']:
                         
@@ -1217,7 +1306,7 @@ def Terminal():
                             print("[i] " + module_name + ".py successfully generated!")
 
                         else:
-                            print(error.ERROR0015 + " (Generated module not found)")
+                            print(error.errorCodes().ERROR0015 + " (Generated module not found)")
 
                     elif module_o[1].startswith("test") or module_o[1].startswith("runtest"):
                         if module_o[2] == '*':
@@ -1232,12 +1321,13 @@ def Terminal():
 
                                 module_problems = []
                                 print(misc.CY + "[i] Checking for problems on " + misc.CC + module + misc.CY + ' module...' + misc.CW)
-                                time.sleep(1)
+                                time.sleep(0.50)
                                 try:
                                     test_module = module.replace('/', '.').replace('.py', '')
                                     tester = importlib.import_module(test_module)
 
                                 except Exception as fatalerror_msg:
+                                    recent_exceptions = traceback.format_exc()
                                     print(misc.CR + misc.FB + "[i] Fatal error found:\n" + misc.CW + misc.FR)
                                     print(misc.CR + "[i] " + str(fatalerror_msg) + misc.CW)
                                     continue
@@ -1274,7 +1364,7 @@ def Terminal():
 
                                 except AttributeError:
                                     print(misc.CY + "[i] Module is lower than v7.0, Switching to legacy test..." + misc.CW)
-                                    time.sleep(1)
+                                    time.sleep(0.50)
                                     try:
                                         test1 = tester.info
 
@@ -1324,15 +1414,16 @@ def Terminal():
                                 module_o[2] += '.py'
                                 module_problems = []
                                 print(misc.CY + "[i] Checking for problems on " + misc.CC + module_o[2] + misc.CY + ' module...' + misc.CW)
-                                time.sleep(1)
+                                time.sleep(0.50)
                                 try:
                                     test_module = module_o[2].replace('/', '.').replace('.py', '')
                                     tester = importlib.import_module(test_module)
 
                                 except Exception as fatalerror_msg:
                                     print(misc.CR + misc.FB + "[i] Fatal error found:\n" + misc.CW + misc.FR)
+                                    recent_exceptions = traceback.format_exc()
                                     print(misc.CR + "[i] " + str(fatalerror_msg) + misc.CW)
-                                    continue
+                                    pass
 
                                 try:
                                     module_version = tester.module_version
@@ -1366,7 +1457,7 @@ def Terminal():
 
                                 except AttributeError:
                                     print(misc.CY + "[i] Module is lower than v7.0, Switching to legacy test..." + misc.CW)
-                                    time.sleep(1)
+                                    time.sleep(0.50)
 
                                     try:
                                         test1 = tester.info
@@ -1415,8 +1506,8 @@ def Terminal():
                                     pass
                                 
                                 else:
-                                    print(error.ERROR0013)
-                                    continue
+                                    print(error.errorCodes().ERROR0013)
+                                    return "Temporary Return"
                                 
                                 del ins_rootuser, ins_rootpass
                             
@@ -1434,8 +1525,9 @@ def Terminal():
                                     parser.module_info()
 
                                 except Exception as parsingerror_msg:
-                                    logger.log(3, module_o[2] + ': ' + error.ERROR0017 + "(" + str(parsingerror_msg) + ")", 'logfile.txt', global_variables['SESSION_ID'])
-                                    print("[i] " + error.ERROR0017)
+                                    recent_exceptions = traceback.format_exc()
+                                    logger.log(3, module_o[2] + ': ' + error.errorCodes().ERROR0017 + "(" + str(parsingerror_msg) + ")", 'logfile.txt', global_variables['SESSION_ID'])
+                                    print("[i] " + error.errorCodes().ERROR0017)
                                     print("[i] " + str(parsingerror_msg))
 
                                 else:
@@ -1499,10 +1591,10 @@ def Terminal():
 
                             else:
                                 logger.log(3, module_o[2] + ' is not a valid SSF module.', 'logfile.txt', global_variables['SESSION_ID'])
-                                print("[i] " + error.ERROR0016)
+                                print("[i] " + error.errorCodes().ERROR0016)
 
                         else:
-                            print("[i] " + error.ERROR0015)
+                            print("[i] " + error.errorCodes().ERROR0015)
 
                     elif module_o[1].lower() in ["uninstall"]:
                         if global_variables['MODULE_PATH'] not in module_o[2]:
@@ -1525,8 +1617,8 @@ def Terminal():
                                     pass
                                 
                                 else:
-                                    print(error.ERROR0013)
-                                    continue
+                                    print(error.errorCodes().ERROR0013)
+                                    return "Temporary Return"
                                 
                                 del uns_rootuser, uns_rootpass
                             
@@ -1539,8 +1631,8 @@ def Terminal():
                                 print("[i] Uninstalling " + module_name + "...")
                                 os.remove(module_name)
                                 if misc.programFunctions().path_exists(module_name):
-                                    logger.log(3, module_name + ": " + error.ERROR0018, 'logfile.txt', global_variables['SESSION_ID'])
-                                    print("[i] " + error.ERROR0018)
+                                    logger.log(3, module_name + ": " + error.errorCodes().ERROR0018, 'logfile.txt', global_variables['SESSION_ID'])
+                                    print("[i] " + error.errorCodes().ERROR0018)
 
                                 else:
                                     logger.log(3, 'User successfully uninstalled ' + module_name, 'logfile.txt', global_variables['SESSION_ID'])
@@ -1550,7 +1642,7 @@ def Terminal():
                                 print("[i] User cancelled uninstallation...")
 
                         else:
-                            print("[i] " + error.ERROR0015 + ' (Module not found)')
+                            print("[i] " + error.errorCodes().ERROR0015 + ' (Module not found)')
 
                     else:
                         raise IndexError
@@ -1559,13 +1651,14 @@ def Terminal():
                     print()
                     print("[i] Usage: module [OPTION] [ARGUMENTS]")
                     print()
-                    print("show  list  lst  ls                                -    List available modules.")
-                    print("use || run || exec || execute [MODULE]             -    Use specified module.")
-                    print("info || information || search || query [MODULE]    -    Show information of the specified module.")
-                    print("generate || produce || new [MODULE]                -    Generate a new module template.")
-                    print("test || runtest [MODULE]                           -    Test a module.")
-                    print("install [MODULE_PATH]                              -    Install a module.")
-                    print("uninstall [MODULE_PATH]                            -    Uninstall a module.")
+                    print("show  list  lst  ls                   -  List available modules.")
+                    print("use || run || exec || [MODULE]        -  Use specified module.")
+                    print("info || search || query [MODULE]      -  Show information of the specified module. (\"*\" for all)")
+                    print("reload || restart || reboot [MODULE]  -  Reload a specified module. (\"*\" for all)")
+                    print("generate || produce || new [MODULE]   -  Generate a new module template.")
+                    print("test || runtest [MODULE]              -  Test a module. (\"*\" for all)")
+                    print("install [MODULE_PATH]                 -  Install a module.")
+                    print("uninstall [MODULE_PATH]               -  Uninstall a module.")
                     print()
 
             elif menu_input.lower().startswith("suggest"):
@@ -1597,8 +1690,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                             
                             del npd_username, npd_password
                         
@@ -1629,8 +1722,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                             
                             del npd_username, npd_password
                         
@@ -1642,11 +1735,16 @@ def Terminal():
                             open(notes, 'r').close()
 
                         except:
-                            print(error.ERROR0019)
-                            continue
+                            print(error.errorCodes().ERROR0019)
+                            return "Temporary Return"
 
-                        with open(notes, 'r') as fopen:
-                            notes = fopen.readlines()
+                        try:
+                            with open(notes, 'r') as fopen:
+                                notes = fopen.readlines()
+
+                        except Exception as openerr:
+                            print(misc.CR + "[i] No notes saved!")
+                            return None
 
                         print("Notes: ")
                         MAXLINES = global_variables['NOTES_MAXLINES']
@@ -1670,8 +1768,8 @@ def Terminal():
                                 pass
                             
                             else:
-                                print(error.ERROR0013)
-                                continue
+                                print(error.errorCodes().ERROR0013)
+                                return "Temporary Return"
                             
                             del npd_username, npd_password
                         
@@ -1683,8 +1781,8 @@ def Terminal():
                             open(notes, 'r').close()
 
                         except(IOError, EOFError, FileNotFoundError):
-                            print(error.ERROR0019)
-                            continue
+                            print(error.errorCodes().ERROR0019)
+                            return "Temporary Return"
 
                         with open(notes, 'r') as fopen:
                             notes_data = fopen.readlines()
@@ -1705,7 +1803,7 @@ def Terminal():
 
                                 else:
                                     if del_line < 0 and del_line > len(notes_data):
-                                        print(error.ERROR0001)
+                                        print(error.errorCodes().ERROR0001)
                                         break
 
                                     else:
@@ -1717,8 +1815,8 @@ def Terminal():
                                             open(notes, 'r').close()
 
                                         except(IOError, EOFError, FileNotFoundError):
-                                            print(error.ERROR0019)
-                                            continue
+                                            print(error.errorCodes().ERROR0019)
+                                            pass
 
                                         os.remove(notes)
                                         with open(notes, 'a') as fopen:
@@ -1736,7 +1834,7 @@ def Terminal():
                             except(ValueError, TypeError):
                             #except Exception: # DEV0005
                                 #traceback.print_exc() # DEV0005
-                                print(error.ERROR0001)
+                                print(error.errorCodes().ERROR0001)
                                 break
 
                     else:
@@ -1782,7 +1880,7 @@ def Terminal():
 
             elif menu_input in ["back"]:
                 logger.log(2, "ERROR 0004: Back cannot be used in the main module", 'logfile.txt', global_variables['SESSION_ID'])
-                print(error.ERROR0004)
+                print(error.errorCodes().ERROR0004)
 
             elif menu_input == "THIS":
                 print("\n\n")
@@ -1807,11 +1905,11 @@ def Terminal():
 
             else:
                 logger.log(2, 'ERROR 0001: Invalid Input', 'logfile.txt', global_variables['SESSION_ID'])
-                print(error.ERROR0001)
+                print(error.errorCodes().ERROR0001)
 
         except KeyboardInterrupt:
             logger.log(1, 'CTRL+C Detected...', 'logfile.txt', global_variables['SESSION_ID'])
-            print(error.ERROR0002)
+            print(error.errorCodes().ERROR0002)
             proper_exit(2)
 
         except ImportError:
@@ -1826,7 +1924,8 @@ def Terminal():
             proper_exit(8)
 
         except Exception as exceptionmessage:
-            print(error.WARNING0003)
+            recent_exceptions = traceback.format_exc()
+            print(error.warningCodes().WARNING0003)
             print("[i] " + str(exceptionmessage))
             print()
             print("==================== TRACEBACK ====================")
@@ -2053,7 +2152,7 @@ def first_run_wizard():
                 break
 
             else:
-                print(error.ERROR0015)
+                print(error.errorCodes().ERROR0015)
                 continue
 
         logger.log(0, "Updating configuration file data...", 'logfile.txt', global_variables['SESSION_ID'])
