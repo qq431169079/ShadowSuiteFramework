@@ -35,7 +35,6 @@ try:
     import readline # Allows us to reuse recent commands.
 
     if __name__ == '__main__':
-        print()
         print("[i] Importing Core modules...")
 
     from core import ansi # Like misc, but focused on UI.
@@ -54,7 +53,6 @@ try:
     from core import list_module # Module Listing API
 
     if __name__ == '__main__':
-        print()
         print("[i] Importing API module...")
 
     import API # Framework API
@@ -549,9 +547,27 @@ def Terminal():
                 logger.log(0, 'Running as root.', 'logfile.txt', global_variables['SESSION_ID'])
                 menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] #: ")
 
-            if '&&' in menu_input:
-                menu_input.split('&&')
+            #print(menu_input) # DEV0005
+
+            if ' && ' in menu_input:
+                menu_input = menu_input.split(' && ')
+                #print(menu_input) # DEV0005
+                iterator = 0
                 for inputs in menu_input:
+                    #print(inputs) # DEV0005
+                    iterator += 1
+                    if str(iterator).endswith('1'):
+                        print(misc.FB + misc.BGR + "[i] " + str(iterator) + "st command: " + inputs + misc.END)
+
+                    elif str(iterator).endswith('2'):
+                        print(misc.FB + misc.BGR + "[i] " + str(iterator) + "nd command: " + inputs + misc.END)
+
+                    elif str(iterator).endswith('3'):
+                        print(misc.FB + misc.BGR + "[i] " + str(iterator) + "rd command: " + inputs + misc.END)
+
+                    else:
+                        print(misc.FB + misc.BGR + "[i] " + str(iterator) + "th command: " + inputs + misc.END)
+
                     parse_arguments(inputs)
 
             else:
@@ -1868,7 +1884,8 @@ def parse_arguments(menu_input):
 
                     else:
                         logger.log(3, 'User run the command: "' + command + '".', 'logfile.txt', global_variables['SESSION_ID'])
-                        os.system(command)
+                        system_call_error_code = os.system(command)
+                        print(misc.CGR + "[i] process returned error code " + str(system_call_error_code) + '\n' + misc.END)
 
                 except IndexError:
                     print()
