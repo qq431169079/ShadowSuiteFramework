@@ -1904,10 +1904,16 @@ def parse_arguments(menu_input):
                 import this # No 'Easter egg' here! Go away!!!...
                 print("\n\n")
 
-            elif menu_input == "SH4D0W734MD3V5":
+            elif menu_input.startswith("SH4D0WT34MDEVS"):
                 # Again, No 'Easter egg' here!
-                print()
-                #DEV0003
+                shadow_o = menu_input.split(" ")
+                if shadow_o[1] == "modules":
+                    for modules in sys.modules:
+                        print("- " + modules)
+                        time.sleep(0.001)
+                
+                else:
+                    proper_exit(999)
 
             elif menu_input in ["restart", "reboot"]:
                 logger.log(0, 'User restarted Shadow Suite...', 'logfile.txt', global_variables['SESSION_ID'])
