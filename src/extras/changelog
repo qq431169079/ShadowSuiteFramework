@@ -1,3 +1,21 @@
+commit 7f3f9d91519199cd4434dd5c10550cd2d71444c0
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 30 21:16:37 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.1.9
+    
+    + No "secrets" added.
+
+commit d32908960a540677c4a041addac8170c713d2e4d
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sat May 26 16:24:33 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit a41a68064c6606847f0828f734ed312323129982
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Sat May 26 16:22:26 2018 +0800
