@@ -594,6 +594,9 @@ def parse_arguments(menu_input):
                 print("notepad [OPTION]              :: built-in 'notepad'.")
                 print("clear                         :: clears the screen.")
                 print("run || exec [COMMAND]         :: run a command from your terminal.")
+                print()
+                print("netifaces                     :: ipconfig/ifconfig command.")
+                print("trace [IP/HOSTNAME]           :: tracert/tracepath command.")
                 print("\n")
                 print("restart || reboot             :: restart Shadow Suite.")
                 print("quit || exit                  :: quit Shadow Suite.")
@@ -1893,6 +1896,37 @@ def parse_arguments(menu_input):
                     print()
                     print("Example: run ls")
                     print("         exec ls")
+                    print()
+
+            elif menu_input.lower() in ["netifaces"]:
+                if misc.programFunctions().is_windows():
+                    success = os.system("ipconfig /all")
+                    if success != 0:
+                        print(error.errorCodes().ERROR0020("Process returned error code" + str(success)))
+
+                    else:
+                        pass
+
+                else:
+                    success = os.system("ifconfig -a -s")
+                    if success != 0:
+                        print(error.errorCodes().ERROR0020("Process returned error code " + str(success) + '.'))
+
+                    else:
+                        pass
+
+            elif menu_input.lower().startswith("trace"):
+                try:
+                    trace_o = menu_input.split(' ')
+                    if misc.programFunctions().is_windows():
+                        os.system("tracert -b " + trace_o[1]) # DEV0001: must be tested on a windows system!
+
+                    else:
+                        os.system("tracepath -b " + trace_o[1])
+
+                except IndexError:
+                    print()
+                    print("Usage: trace [IP/HOSTNAME]")
                     print()
 
             elif menu_input in ["back"]:
