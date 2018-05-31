@@ -162,7 +162,7 @@ def module_body(global_variables):
             "hash": "MD5",
             "sign": "None",
             "whitelist": True, #If true, use allowed_ips and allowed_ports; Otherwise, no.
-            "allowqed_ips": ["127.0.0.1"],
+            "allowed_ips": ["127.0.0.1"],
             "allowed_ports": [8220, 8221, 8222, 8223, 8224]
             }
 
@@ -215,8 +215,7 @@ def module_body(global_variables):
                 pass
 
             elif selection == 3:
-                settings = Settings(user_sets, client_sets, server_sets)
-                user_sets, client_sets, server_sets = settings.main()
+                user_sets, client_sets, server_sets = settings(user_sets, client_sets, server_sets).main()
 
             elif selection == 99:
                 print(API_ShadowSuite.FINISH)
@@ -226,11 +225,12 @@ def module_body(global_variables):
                 raise ValueError("Invalid selection!")
 
         except Exception as exceptionerrmsg:
+            traceback.print_exc()
             print("[i] " + str(exceptionerrmsg))
             mpf.pause()
 
 def prompt(global_variables):
-    return "[" + global_variables['current_user'] + "@" + info['name'] + "] "
+    return("[" + str(global_variables['current_user']) + "@" + info['name'] + "] ")
 
 def banner():
     return(info['name'] + " " + info['version'] + " :: " + info['desc'])

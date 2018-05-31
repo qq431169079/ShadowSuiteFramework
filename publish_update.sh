@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
 git branch
-echo "Edit version on README.md and version.py... (vim README.md src/core/version.py)"
+echo "[i] Press any key to start... (Git diff HEAD)"
+read TEMP
+git diff HEAD
+echo "[i] Edit version on README.md and version.py... (vim README.md src/core/version.py)"
 read TEMP
 vim README.md src/core/version.py src/core/__init__.py
-echo "Enter version:"
+echo "[i] Enter version:"
 read VERSION
 echo ""
 echo "[i] Now publishing update... (Git status)"

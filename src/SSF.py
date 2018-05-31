@@ -657,6 +657,18 @@ def parse_arguments(menu_input):
                         print(random_color2 + misc.FI + "[i] Type \'update\' for updating information." + misc.FR + misc.CW)
                         print()
 
+                    elif show_o[1].lower() in ("system_info", "system_stats", "system_status", "sys_info", "sys_stats", "sys_status"):
+                        logger.log(0, "User looks at the system info.", 'logfile.txt', global_variables['SESSION_ID'])
+                        if misc.programFunctions().is_windows():
+                            print()
+                            os.system("systeminfo")
+                            print()
+
+                        else:
+                            print()
+                            os.system("bash core/neofetch.sh --config data/neofetch.config")
+                            print()
+
                     elif show_o[1].lower() == "changelog":
                         logger.log(0, 'User opens changelog.', 'logfile.txt', global_variables['SESSION_ID'])
                         version.changelog()
@@ -720,6 +732,7 @@ def parse_arguments(menu_input):
                     print()
                     print("license  copying  copyright         -    Shows the full license via less command.")
                     print("info  information  status  stats    -    Shows the current information of Shadow Suite.")
+                    print("system_info  system_stats           -    Shows the system information.")
                     print("changelog                           -    Shows the changelog via less command.")
                     print("config_files                        -    Lists the configuration files available.")
                     print("recent_commands                     -    Lists the recent commands entered.")
@@ -1919,10 +1932,13 @@ def parse_arguments(menu_input):
                 try:
                     trace_o = menu_input.split(' ')
                     if misc.programFunctions().is_windows():
-                        os.system("tracert -b " + trace_o[1]) # DEV0001: must be tested on a windows system!
+                        os.system("tracert /b " + trace_o[1]) # DEV0001: must be tested on a windows system!
 
                     else:
                         os.system("tracepath -b " + trace_o[1])
+
+                except(KeyboardInterrupt, EOFError):
+                    pass
 
                 except IndexError:
                     print()
@@ -1940,13 +1956,17 @@ def parse_arguments(menu_input):
 
             elif menu_input.startswith("SH4D0WT34MDEVS"):
                 # Again, No 'Easter egg' here!
-                shadow_o = menu_input.split(" ")
-                if shadow_o[1] == "modules":
-                    for modules in sys.modules:
-                        print("- " + modules)
-                        time.sleep(0.001)
-                
-                else:
+                try:
+                    shadow_o = menu_input.split(" ")
+                    if shadow_o[1] == "modules":
+                        for modules in sys.modules:
+                            print("- " + modules)
+                            time.sleep(0.001)
+
+                    else:
+                        raise IndexError
+
+                except IndexError:
                     proper_exit(999)
 
             elif menu_input in ["restart", "reboot"]:
