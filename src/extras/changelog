@@ -1,3 +1,31 @@
+commit ede38e32f19187478d0a31695b25dd4c1b9d6182
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 31 14:11:29 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.2.0
+    
+    + Added more commands (Last unversioned updates included)
+    + Bug fixes.
+    + simpleIM still under development.
+
+commit 8631f803a02c80f1fffd550b91e77225c7b11857
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 31 13:23:24 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Added two new commands.
+
+commit 289577c687d17b4183c6898ce5d137ee55c86581
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed May 30 21:17:07 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 7f3f9d91519199cd4434dd5c10550cd2d71444c0
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Wed May 30 21:16:37 2018 +0800
