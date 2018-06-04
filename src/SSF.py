@@ -51,6 +51,7 @@ try:
     from core import joke # Corny Jokes
     from core import quote # Quotes
     from core import list_module # Module Listing API
+    from core import list_services # Service Listing API
 
     if __name__ == '__main__':
         print("[i] Importing API module...")
@@ -80,6 +81,8 @@ except ImportError:
     proper_exit(8)
 
 global global_variables # To be used by all functions defined here...
+global recent_exceptions
+global active_services
 
 def _testError():
     print(error.errorCodes().ERROR0001)
@@ -151,6 +154,7 @@ def main():
     ROOTPASS = None
 
     MODULE_PATH = "modules/"
+    SERVICES_PATH = "services/"
     OUTPUT_PATH = "output/"
     BINARY_PATH = "/usr/bin/"
 
@@ -288,6 +292,11 @@ def main():
                 MODULE_PATH = MODULE_PATH.replace('"', '')
                 MODULE_PATH = no_escape_chars(MODULE_PATH)
 
+            elif "services_path=" in data.lower():
+                SERVICES_PATH = data.replace('services_path=', '')
+                SERVICES_PATH = SERVICES_PATH.replace('"', '')
+                SERVICES_PATH = no_escape_chars(SERVICES_PATH)
+
             elif "output_path=" in data.lower():
                 OUTPUT_PATH = data.replace('output_path=', '')
                 OUTPUT_PATH = OUTPUT_PATH.replace('"', '')
@@ -319,6 +328,7 @@ def main():
         print(ROOTNAME)
         print(ROOTPASS)
         print(MODULE_PATH)
+        print(SERVICES_PATH)
         print(OUTPUT_PATH)
         print(BINARY_PATH)
         misc.programFunctions().pause()
@@ -421,6 +431,7 @@ def main():
             'ROOTPASS': ROOTPASS, # String.
 
             'MODULE_PATH': MODULE_PATH, # String; PATH to modules directory.
+            'SERVICES_PATH': SERVICES_PATH, # String; PATH to services directory.
             'OUTPUT_PATH': OUTPUT_PATH, # String; PATH to output directory.
             'BINARY_PATH': BINARY_PATH, # String; PATH to system binaries.
 
@@ -447,6 +458,7 @@ def main():
     del ROOTPASS
 
     del MODULE_PATH
+    del SERVICES_PATH
     del OUTPUT_PATH
     del BINARY_PATH
 
@@ -484,6 +496,10 @@ def main():
             
 def Terminal():
     global global_variables
+    global recent_exceptions
+    global active_services
+    recent_exceptions = ""
+    active_services = []
 
     logger.log(0, "Reading history file...", 'logfile.txt', global_variables['SESSION_ID'])
     history_file = os.path.expanduser("data/.SSFhistory")
@@ -539,13 +555,18 @@ def Terminal():
             # If geteuid is equal to 0, then a terminal with # will be shown.
             # Otherwise, $ will be shown.
 
-            if misc.programFunctions().geteuid() != 0:
-                logger.log(0, 'Running as normal user.', 'logfile.txt', global_variables['SESSION_ID'])
-                menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] $: ")
+            try:
+                if misc.programFunctions().geteuid() != 0:
+                    logger.log(0, 'Running as normal user.', 'logfile.txt', global_variables['SESSION_ID'])
+                    menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] $: ")
 
-            else:
-                logger.log(0, 'Running as root.', 'logfile.txt', global_variables['SESSION_ID'])
-                menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] #: ")
+                else:
+                    logger.log(0, 'Running as root.', 'logfile.txt', global_variables['SESSION_ID'])
+                    menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] #: ")
+
+            except(KeyboardInterrupt, EOFError):
+                print(error.errorCodes().ERROR0002)
+                proper_exit(2)
 
             #print(menu_input) # DEV0005
 
@@ -576,9 +597,21 @@ def Terminal():
         except Exception as unknown_exception:
             print(misc.CR + "[i] " + error.errorCodes().ERROR0020("Exception: " + str(unknown_exception)))
 
-def parse_arguments(menu_input):
-    recent_exceptions = ""
+def parse_arguments(menu_input="help", API_global_variables={}):
+    """
+    API_global_variables :: (Dictionary) Needs if SSF is called from API.
+    menu_input :: (String) command to pass to SSF Terminal.
+    """
+    
+    global recent_exceptions
     global global_variables
+    global active_services
+
+    if API_global_variables:
+        global_variables = API_global_variables
+    
+    #print(global_variables) # DEV0005
+
     if menu_input:
         try:
             if menu_input.lower().startswith("help"):
@@ -590,6 +623,7 @@ def parse_arguments(menu_input):
                 print("update [OPTION]               :: update program/dependencies/all.")
                 print("config [OPTION]               :: Configure Shadow Suite settings; Export settings.")
                 print("module [OPTION]               :: manage modules.")
+                print("services [OPTION]             :: manage services.")
                 print("suggest=[CRITERIA1,CRITERIA2] :: suggests a tool based on your critera.")
                 print("notepad [OPTION]              :: built-in 'notepad'.")
                 print("clear                         :: clears the screen.")
@@ -1219,7 +1253,7 @@ def parse_arguments(menu_input):
                                         module.main(global_variables)
 
                                     except Exception as module_error_msg:
-                                        traceback.print_exc() # DEV0005
+                                        #traceback.print_exc() # DEV0005
                                         print(misc.CR + "[i] " + str(module_error_msg))
 
                             except AttributeError:
@@ -1234,6 +1268,7 @@ def parse_arguments(menu_input):
 
                                 except Exception as module_error_msg:
                                     #traceback.print_exc() # DEV0005
+                                    recent_exceptions = traceback.format_exc()
                                     print(misc.CR + "[i] " + str(module_error_msg))
 
                         except Exception as moduleerror_msg:
@@ -1329,10 +1364,10 @@ def parse_arguments(menu_input):
                         module_name = module_o[2]
                         logger.log(0, 'User generated a new module named ' + module_name, 'logfile.txt', global_variables['SESSION_ID'])
                         if misc.programFunctions().is_windows() == ('windows' or 'win' or 'nt'):
-                            os.system("xcopy core/temp.py output/" + module_name + ".py")
+                            os.system("xcopy core/temp_module.py output/" + module_name + ".py")
 
                         else:
-                            os.system("cp core/temp.py output/" + module_name + ".py")
+                            os.system("cp core/temp_module.py output/" + module_name + ".py")
 
                         if misc.programFunctions().path_exists('output/' + module_name + '.py'):
                             print("[i] " + module_name + ".py successfully generated!")
@@ -1397,6 +1432,13 @@ def parse_arguments(menu_input):
                                 except AttributeError:
                                     print(misc.CY + "[i] Module is lower than v7.0, Switching to legacy test..." + misc.CW)
                                     time.sleep(0.50)
+
+                                except Exception as fatalerror_msg:
+                                    print(misc.CR + misc.FB + "[i] Fatal error found:\n" + misc.CW + misc.FR)
+                                    recent_exceptions = traceback.format_exc()
+                                    print(misc.CR + "[i] " + str(fatalerror_msg) + misc.CW)
+                                    continue
+
                                     try:
                                         test1 = tester.info
 
@@ -1455,7 +1497,7 @@ def parse_arguments(menu_input):
                                     print(misc.CR + misc.FB + "[i] Fatal error found:\n" + misc.CW + misc.FR)
                                     recent_exceptions = traceback.format_exc()
                                     print(misc.CR + "[i] " + str(fatalerror_msg) + misc.CW)
-                                    pass
+                                    return "Temporary Return"
 
                                 try:
                                     module_version = tester.module_version
@@ -1487,9 +1529,15 @@ def parse_arguments(menu_input):
                                         except Exception as test4e:
                                             module_problems.append(str(test4e))
 
-                                except AttributeError:
+                                except(AttributeError):
                                     print(misc.CY + "[i] Module is lower than v7.0, Switching to legacy test..." + misc.CW)
                                     time.sleep(0.50)
+
+                                except Exception as fatalerror_msg:
+                                    print(misc.CR + misc.FB + "[i] Fatal error found:\n" + misc.CW + misc.FR)
+                                    recent_exceptions = traceback.format_exc()
+                                    print(misc.CR + "[i] " + str(fatalerror_msg) + misc.CW)
+                                    return "Temporary Return"
 
                                     try:
                                         test1 = tester.info
@@ -1691,6 +1739,82 @@ def parse_arguments(menu_input):
                     print("test || runtest [MODULE]              -  Test a module. (\"*\" for all)")
                     print("install [MODULE_PATH]                 -  Install a module.")
                     print("uninstall [MODULE_PATH]               -  Uninstall a module.")
+                    print()
+
+            elif menu_input.lower().startswith(("service", "services")):
+                try:
+                    services_o = menu_input.split(' ')
+                    if services_o[1].lower().startswith(('show', 'list', 'lst', 'ls')):
+                        list_services.list(global_variables['SERVICES_PATH'])
+
+                    elif services_o[1].lower().startswith(('start', 'enable')):
+                        service_name = global_variables['SERVICES_PATH'] + services_o[2]
+                        try:
+                            service_name = service_name.replace('/', '.')
+                            logger.log(3, 'User started ' + service_name + ' service.', 'logfile.txt', global_variables['SESSION_ID'])
+                            service_importlib(service_name)
+                        
+                        except Exception as service_err:
+                            print(error.errorCodes().ERROR0020(str(service_err)))
+
+                    elif services_o[1].lower().startswith(('stop', 'disable')):
+                        service_name = global_variables['SERVICES_PATH'] + services_o[2]
+                        try:
+                            service_name = service_name.replace('/', '.')
+                            logger.log(3, 'User started ' + service_name + ' service.', 'logfile.txt', global_variables['SESSION_ID'])
+                            service_importlib(service_name, 'stop')
+                        
+                        except Exception as service_err:
+                            print(error.errorCodes().ERROR0020(str(service_err)))
+
+                    elif services_o[1].lower().startswith(('info', 'search', 'query')):
+                        service_name = global_variables['SERVICES_PATH'] + services_o[2]
+                        try:
+                            service_name = service_name.replace('/', '.')
+                            logger.log(3, 'User shows info about ' + service_name + ' service.', 'logfile.txt', global_variables['SESSION_ID'])
+                            service_importlib(service_name, 'info')
+
+                        except Exception as service_err:
+                            print(error.errorCodes().ERROR0020(str(service_err)))
+
+                    elif services_o[1].lower().startswith(('reload', 'restart', 'reboot')):
+                        service_name = global_variables['SERVICES_PATH'] + services_o[2]
+                        try:
+                            service_name = service_name.replace('/', '.')
+                            logger.log(3, 'User shows info about ' + service_name + ' service.', 'logfile.txt', global_variables['SESSION_ID'])
+                            service_importlib(service_name, 'reload')
+
+                        except Exception as service_err:
+                            print(error.errorCodes().ERROR0020(str(service_err)))
+
+                    elif services_o[1].lower().startswith(('generate', 'produce', 'new')):
+                        pass
+
+                    elif services_o[1].lower().startswith(('test', 'runtest')):
+                        pass
+
+                    elif services_o[1].lower().startswith(('install')):
+                        pass
+
+                    elif services_o[1].lower().startswith(('uninstall')):
+                        pass
+
+                    else:
+                        raise IndexError
+
+                except IndexError:
+                    print()
+                    print("[i] Usage: services [OPTION] [ARGUMENTS]")
+                    print()
+                    print("show  list  lst  ls                   -  List available services.")
+                    print("start || enable || [SERVICE]   -  Start specified service.")
+                    print("stop || disable || [SERVICE]   -  Stop specified service.")
+                    print("info || search || query [SERVICE]     -  Show information of the specified service. " + misc.FE + "(\"*\" for all)" + misc.END)
+                    print("reload || restart || reboot [SERVICE] -  Reload a specified service. " + misc.FE + "(\"*\" for all)" + misc.END)
+                    print("generate || produce || new [SERVICE]  -  Generate a new service template.")
+                    print("test || runtest [SERVICE]             -  Test a service. " + misc.FE + "(\"*\" for all)" + misc.END)
+                    print("install [SERVICE_PATH]                -  Install a service.")
+                    print("uninstall [SERVICE_PATH]              -  Uninstall a service.")
                     print()
 
             elif menu_input.lower().startswith("suggest"):
@@ -1998,6 +2122,7 @@ def parse_arguments(menu_input):
             traceback.print_exc()
             print("===================================================")
             logger.log(5, 'ImportError catched.', 'logfile.txt', global_variables['SESSION_ID'])
+            
             proper_exit(8)
 
         except Exception as exceptionmessage:
@@ -2081,25 +2206,70 @@ def parse_line(line):
         command, _, arg = line.strip().partition(" ")
         return command, arg.strip()
 
+def service_importlib(service_name, mode='start'):
+    global active_services
+    try:
+        if mode == 'start':
+            print(misc.CGR + "[" + service_name + "] Starting service...")
+            iservice = importlib.import_module(service_name)
+            iservice.main(global_variables)
+            print(misc.CGR + "[" + service_name + "] Starting service... Done!")
+
+        if mode == 'stop':
+            # DEV0001: The program quits when iservice.stop_service() is called.
+            print(misc.CGR + "[" + service_name + "] Stopping service...")
+            iservice = importlib.import_module(service_name)
+            iservice.stop_service()
+            print(misc.CGR + "[" + service_name + "] Stopping service... Done!")
+
+        elif mode == 'info':
+            iservice = importlib.import_module(service_name)
+            iservice.service_info()
+
+        elif mode == 'reload':
+            print(misc.CGR + "[" + service_name + "] Reloading service...")
+            iservice = importlib.reload(importlib.import_module(service_name))
+            print(misc.CGR + "[" + service_name + "] Reloading service... Done!")
+            time.sleep(0.50)
+
+        else:
+            raise ValueError("Parameter mode must be 'start', 'stop', 'info', or 'reload'!")
+
+        active_services.append(service_name)
+
+    except Exception as service_err:
+        print(error.errorCodes().ERROR0020(str(service_err)))
+
 def proper_exit(code):
+    # Step 1: Deletes the file.
     try:
         os.remove('.last_session_exit_fail.log') # Delete the file
     
     except:
         pass
 
+    # Step 2: Sets title to None.
     if misc.programFunctions().is_windows():
         pass
 
     else:
         print(ansi.set_title(''))
 
+    # Step 3: Logs the exit
     try:
         logger.log(4, "SystemExit raised with error code " + str(code) + ".", 'logfile.txt', global_variables['SESSION_ID'])
 
     except:
         logger.log(4, "SystemExit raised with error code " + str(code) + ".", 'logfile.txt')
 
+    # Step 4: Kills all threads. Services and some modules uses 
+    multitasking.killall
+    for serv in active_services:
+        iserv = importlib.import_module(serv)
+        iserv.stop_service()
+        print(misc.CGR + "[SERVICE] Stopping " + serv + "...")
+
+    # Step 5: Quit
     try:
         sys.exit(code)
 
@@ -2239,6 +2409,7 @@ def first_run_wizard():
                 "rootname": global_variables['ROOTNAME'],
                 "rootpass": global_variables['ROOTPASS'],
                 "module_path": global_variables['MODULE_PATH'],
+                "services_path": global_variables['SERVICES_PATH'],
                 "output_path": global_variables['OUTPUT_PATH'],
                 "binary_path": global_variables['BINARY_PATH']
                 }

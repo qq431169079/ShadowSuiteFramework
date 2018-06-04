@@ -129,3 +129,6 @@ def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USER
     print("Running...")
     os.system("cd modules/DNSRECON && python3 dnsrecon.py -d " + target + " -t " + enumtype + " --xml " + output)
     print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

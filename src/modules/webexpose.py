@@ -153,3 +153,6 @@ def module_body(global_variables):
 def server1(host, port):
     print()
     os.system("ssh -R 80:" + host + ":" + str(port) + " serveo.net")
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

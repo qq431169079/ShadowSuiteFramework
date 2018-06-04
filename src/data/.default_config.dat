@@ -10,6 +10,7 @@ rootpass=""
 
 ##### [ PATHS ] #####
 module_path="modules/"
+services_path="services/"
 output_path="output/"
 binary_path="/usr/bin/"
 

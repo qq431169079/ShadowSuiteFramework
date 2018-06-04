@@ -155,3 +155,6 @@ def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USER
     print("[i] Running test... Press CTRL + C to stop...")
     os.system("python3 modules/SLOWLORIS/slowloris.py -p " + PORT + " -s " + SOCKETS + " -v -ua " + USEPROXY_SWITCH + USEPROXY_HSW + USEPROXY_HOST + " " + USEPROXY_PSW + USEPROXY_PORT + " " + HTTPSSW + TARGET)
     print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

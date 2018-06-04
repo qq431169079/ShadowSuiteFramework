@@ -418,3 +418,6 @@ def automated_scans():
     print()
     print()
     print("Coming soon!")
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

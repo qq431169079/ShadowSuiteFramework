@@ -338,3 +338,6 @@ def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USER
 
         except(ValueError, TypeError):
             pass
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

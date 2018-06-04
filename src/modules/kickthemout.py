@@ -113,3 +113,6 @@ def module_body(global_variables):
     print()
     os.system('cd modules/KICKTHEMOUT && ' + sys.executable + ' kickthemout.py')
     print(API_ShadowSuite.FINISH)
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

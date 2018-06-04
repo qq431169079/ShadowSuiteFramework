@@ -127,3 +127,6 @@ def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USER
 
     os.system("python2 modules/THEHARVESTER/theHarvester.py -d " + TARGET + " -b " + SOURCE + " -s " + START + " -f $PWD/output/" + OUTPUT + LIMITSWITCH + LIMIT)
     print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

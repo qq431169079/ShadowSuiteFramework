@@ -126,3 +126,11 @@ def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USER
         print (FAIL+'[i] ' + str(error_msg))
 
     print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging, domain):
+    try:
+        ip = socket.gethostbyname(domain)
+        return ip
+
+    except socket.gaierror as error_msg:
+        return error_msg

@@ -1,11 +1,11 @@
 ########################################################################################
 #                                                                                      #
-#                       MODULE FOR SHADOW SUITE LINUX EDITION                          #
+#                       SERVICE FOR SHADOW SUITE FRAMEWORK                             #
 #                                                                                      #
 ########################################################################################
 # Coding=UTF-8
 
-module_version = 7.2
+service_version = 1.0
 
 # Import directives
 try:
@@ -14,45 +14,47 @@ try:
     import traceback
     from core import error
     from core.logger import log
+    from core import multitasking
     import API
 
     # Place your 'import' directives below
 
     import_error = False
 
-except ImportError:
+except(ImportError, ModuleNotFoundError):
     print("[!] A module is missing! Please install the required modules...")
     print("==================== TRACEBACK ====================")
     traceback.print_exc()
     print("===================================================")
     import_error = True
 
-# Put your module information here.
+# Put your service information here.
 info = {
-        "name": "Wifite 2", # Module filename (Change this; I recommend you to use the filename as the module name.)
+        "name": "service test", # Service filename (Change this; I recommend you to use the filename as the service name.)
         "version": "1.0", # version
-        "author": "derv82", # Author
-        "desc": "Wireless network auditing tool.", # Brief description
+        "author": "none", # Author
+        "desc": "none", # Brief description
         "email": "none", # Email
         "authorinfo": "none", # Additional information about the author; this could be
-        "lastupdate": "May. 11, 2018",                     # a website of the author.
+        "lastupdate": "MON. DD, YYYY",                     # a website of the author.
         # The date format is MONTH, DD, YYYY e.g.: Jan. 4, 2018
-        "usingapi": "True", # Is this module using Shadow Suite's API?
-        "needsroot": "0", # Does this module needs root permissions?
+        "usingapi": "True", # Is this service using Shadow Suite's API?
+        "needsroot": "1", # Does this service needs root permissions?
                                           # 0 == True; any number means false.
 }
-dependencies = ['BINARY: python2', 'BINARY: aircrack-ng', 'BINARY: reaver', 'BINARY: tshark', 'BINARY: cowpatty'] # Put needed dependencies here.
-module_status = 0 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
-category = ['all', 'python', 'wireless', 'attack', 'audit', 'network', 'crack', 'wifi', 'fidelity']
+dependencies = ['BINARY: python3', 'PYTHON: none'] # Put needed dependencies here.
+service_status = 1 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
+#files = [] # Uncomment this line if the service needs a subdirectory to use.
+#E.g.: SERVICE_NAME_OR_SUBDIRECTORY_NAME/
 
-# Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+# Changelog of the service
+changelog = "Version 1.0:\nInitial servicee release"
 # Changelog format:
 #
-# changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
+# changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial service release"
 
-# Prints the module information
-def module_info():
+# Prints the servicee information
+def service_info():
     # Unofficial way to convert integer to Boolean
     # (well, not really a boolean, as it is a string).
     # if [argument] == 0 then True; Otherwise, False.
@@ -61,14 +63,14 @@ def module_info():
     else:
         superm = "False"
 
-    print("Module Name: " + info['name'])
-    print("Module Version: " + info['version'])
-    print("Module Author: " + info['author'])
-    print("Module Description: " + info['desc'])
+    print("Service Name: " + info['name'])
+    print("Service Version: " + info['version'])
+    print("Service Author: " + info['author'])
+    print("Service Description: " + info['desc'])
     print()
-    print("Module Author's Email: " + info['email'])
-    print("Module Author's Info: " + info['authorinfo'])
-    print("Module's last update: " + info['lastupdate'])
+    print("Service Author's Email: " + info['email'])
+    print("Service Author's Info: " + info['authorinfo'])
+    print("Service's last update: " + info['lastupdate'])
     print("Shadow Suite API Support: " + info['usingapi'])
     print("Needs root: " + superm)
     print()
@@ -78,11 +80,11 @@ def module_info():
     for item in dependencies:
         print(item, ",", end=' ')
     print()
-    # Prints the changelog of the module.
+    # Prints the changelog of the service.
     print("Changelog:\n" + "\n" + changelog)
     print("\n\n")
 
-# Main module function
+# Main service function
 def main(global_variables):
     if import_error is True:
         return None
@@ -91,26 +93,34 @@ def main(global_variables):
         """ First, it checks the value assigned to the 'needsroot' variable in the 
         dictionary 'info', then if the value is equal to zero, it calls the 'geteuid()'
         function from the 'os' module. If the result from geteuid is also zero, then
-        the module will call the function 'module_body()'. Otherwise, it will print an
+        the module will call the function 'service_body()'. Otherwise, it will print an
         error message. If the value assigned to the 'needsroot' variable in the dictionary
         'info' is not equal to zero, then the module will not call the 'geteuid()' function
-        from the 'os' module, and will immediately call 'module_body()' function. """
+        from the 'os' module, and will immediately call 'service_body()' function. """
         if info['needsroot'] == "0":
             if os.geteuid() != 0:
                 print(error.errorCodes().ERROR0005)
                 return 0
 
             else:
-                module_body(global_variables)
+                multitasking.set_engine("process")
+                service_body(global_variables)
 
         else:
-            module_body(global_variables)
+            multitasking.set_engine("process")
+            service_body(global_variables)
 
-def module_body(global_variables):
+def stop_service():
+    multitasking.killall('', '')
+
+@multitasking.task
+def service_body(global_variables):
     # To support module versions older than v7.0
+    # Remember, services and modules use the same API!
     API_ShadowSuite = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
-    os.system("cd modules/WIFITE2/ && python2 -B Wifite.py")
+    # Place your program here. This is the function where your program will be placed.
+    # Remove service_info(), or leave it here. It's your call.
+    service_info()
+    print()
+    print(error.warningCodes().WARNING0002)
     print(API_ShadowSuite.FINISH)
-
-def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
-    pass

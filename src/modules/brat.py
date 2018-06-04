@@ -492,3 +492,6 @@ def RAT_Shell(lhost, lport, global_variables, sock_obj, rhost, rport):
                 continue
             
             print(results)
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

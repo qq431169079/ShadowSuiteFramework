@@ -20,10 +20,10 @@ import os
 import sys
 from core import error
 
-VAPI = "0.0.7.0-API"
-VNUMBER = "0.1.2.0"
+VAPI = "0.0.7.1-API"
+VNUMBER = "0.1.2.1"
 VTYPE = "Experimental"
-VCODENAME = "Uber"
+VCODENAME = "Vandal"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
 
     # example:

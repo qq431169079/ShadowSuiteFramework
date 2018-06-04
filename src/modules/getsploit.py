@@ -121,6 +121,19 @@ def module_body(global_variables):
     while True:
         try:
             getsploit_comm = input("[" + global_variables['current_user'] + "@GETSPLOIT] $ ")
+            moduleAPI(global_variables, getsploit_comm)
+
+        except Exception as err:
+            print(misc.BR + misc.CK + "[EXCEPTION] " + str(err) + misc.END)
+            continue
+        
+        except(urllib.error.URLError, socket.gaierror) as sockerr:
+            print(misc.BR + misc.CK + "[EXCEPTION] " + str(sockerr) + misc.END)
+            continue
+
+def moduleAPI(global_variables, getsploit_comm):
+    while True:
+        try:
             if getsploit_comm.lower().startswith("help"):
                 print()
                 print("""usage: Exploit search and download utility [-h] [-t] [-j] [-m] [-c COUNT] [-l]
@@ -184,3 +197,5 @@ module commands:
         except(urllib.error.URLError, socket.gaierror) as sockerr:
             print(misc.BR + misc.CK + "[EXCEPTION] " + str(sockerr) + misc.END)
             continue
+
+        break

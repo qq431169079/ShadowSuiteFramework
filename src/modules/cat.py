@@ -123,3 +123,6 @@ def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USER
     print("[i] Running module...")
     os.system("cd modules/CAT && perl CAT -h " + TARGET + " -p " + PORT + " -w " + WLCN + " -a " + WLPW + " -l " + OUTPUT)
     print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

@@ -252,12 +252,16 @@ class SSFMain:
                 raise TypeError("Global Variables must be a dictionary!")
 
             else:
-                keys = ('config_file', 'USERNAME', 'USERPASS', 'ROOTNAME'\
-                        'ROOTPASS', 'MODULE_PATH', 'OUTPUT_PATH', 'BINARY_PATH'\
-                        'NOTES_MAXLINES', 'USERLEVEL', 'INSTALLED_MODULES'\
-                        'current_user', 'PLATFORM', 'SESSION_ID', 'DEBUGGING')
+                keys = ('config_file', 'USERNAME', 'USERPASS', 'ROOTNAME',\
+                        'ROOTPASS', 'MODULE_PATH', 'SERVICES_PATH', 'OUTPUT_PATH',\
+                        'BINARY_PATH', 'NOTES_MAXLINES', 'USERLEVEL',\
+                        'INSTALLED_MODULES', 'current_user', 'PLATFORM',\
+                        'SESSION_ID', 'DEBUGGING')
                 for key in keys:
                     a = self._assert(global_variables[key], key)
+                    #print(key) # DEV0005
+                    #print(global_variables[key]) # DEV0005
+                    #print(a) # DEV0005
                     try:
                         if a == 0:
                             continue
@@ -267,11 +271,13 @@ class SSFMain:
 
                     except(TypeError, ValueError):
                         raise exceptions.InvalidParameterError("[i] " + error.errorCodes().ERROR0020(str(a)))
-    
+
+                self.global_variables = global_variables
+
     def _assert(self, value, key):
         if key == 'config_file':
             try:
-                with open('data/' + value, 'r') as fopen:
+                with open(value, 'r') as fopen:
                     fopen.read()
                     fopen.close()
                     return 0
@@ -283,8 +289,9 @@ class SSFMain:
             try:
                 is_str = type(value) is str
                 if is_str:
-                    if len(value) == len(self.hs) and value.isdigit() == False and \
-                            value.isalpha() == False and value.isalnum() == True:
+                    if (len(value) == len(self.hs) and value.isdigit() == False and \
+                            value.isalpha() == False and value.isalnum() == True) or \
+                            (value == '' or value == None):
                         return 0
 
                     else:
@@ -296,8 +303,15 @@ class SSFMain:
             except Exception as e:
                 return e
 
-        elif key in ('MODULE_PATH', 'OUTPUT_PATH', 'BINARY_PATH'):
+        elif key in ('MODULE_PATH', 'SERVICES_PATH', 'OUTPUT_PATH', 'BINARY_PATH'):
             try:
+                if key == 'BINARY_PATH':
+                    if value == '/usr/bin/':
+                        return 0
+
+                    else:
+                        pass
+
                 if misc.programFunctions().path_exists(value):
                     return 0
 
@@ -310,10 +324,10 @@ class SSFMain:
         elif key in ('NOTES_MAXLINES'):
             try:
                 if type(value) is int:
-                    return 1
+                    return 0
 
                 else:
-                    return 0
+                    return 1
 
             except Exception as e:
                 return e
@@ -387,3 +401,25 @@ class SSFMain:
 
             except Exception as e:
                 return e
+
+        else:
+            return 2
+
+    def send_command(self, command):
+        SSF.parse_arguments(command, self.global_variables)
+
+    def use_module_API(self, module):
+        try:
+            module = self.global_variables['MODULE_PATH'].replace('/', '.') + module
+            imodule = importlib.import_module(module)
+            try:
+                result = imodule.moduleAPI(self.global_variables)
+
+            except(TypeError):
+                result = imodule.moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging)
+
+        except Exception as e:
+            result = e
+
+        finally:
+            return result

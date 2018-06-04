@@ -1,4 +1,6 @@
-########################################################################################
+#
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass#######################################################################################
 #                                                                                      #
 #                       MODULE FOR SHADOW SUITE LINUX EDITION                          #
 #                                                                                      #
@@ -109,3 +111,6 @@ def main(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, 
 def module_body(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
     os.system("cd modules/HASH_IDENTIFIER && python2 Hash_ID.py")
     print(API.ShadowSuite(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging).FINISH)
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

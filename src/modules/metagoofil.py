@@ -152,3 +152,6 @@ def local():
     os.system("cd modules/METAGOOFIL && python2 metagoofil.py -h yes -o " + target + " -f " + output + ".html")
     os.system("cd ../..")
     print("Running... Done!")
+
+def moduleAPI(current_user, __MODULE_PATH__, __OUTPUT_PATH__, SESSION_ID, USERLEVEL, debugging):
+    pass

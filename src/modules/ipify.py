@@ -127,3 +127,20 @@ def module_body(global_variables):
         print("[i] " + str(error_msg))
 
     print(API_ShadowSuite.FINISH)
+
+def moduleAPI(global_variables):
+    API_ShadowSuite = API.ShadowSuite(global_variables['current_user'], global_variables['MODULE_PATH'], global_variables['OUTPUT_PATH'], global_variables['SESSION_ID'], global_variables['USERLEVEL'], global_variables['DEBUGGING'])
+    try:
+        ip = requests.get('https://api.ipify.org/').text
+        return ip
+
+    except ConnectionError:
+        return error.errorCodes().ERROR0010
+
+    except requests.exceptions.ConnectionError:
+        return error.errorCodes().ERROR0010
+
+    except Exception as error_msg:
+        return error_msg
+
+    print(API_ShadowSuite.FINISH)
