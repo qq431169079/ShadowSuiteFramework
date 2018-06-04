@@ -1,3 +1,47 @@
+commit 6ead6c2bf90eb0af7a6d1a3952690fe521074a97
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Jun 4 17:29:44 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.2.1
+    
+    + SSF: Added 'services' commands
+        - *Run tools, server, or a Chatroom in the backround!*
+    
+    + API: Upgraded integration with SSF.
+        - Tools can now send and/or relay commands to SSF's Terminal!
+    
+    + Modules: Updated API
+        - *Tools can be used by other tools using the API's use_module_API() method.
+    
+    + Modules: SimpleIM
+        - *SimpleIM is still under development, we are finding a way to make it less messy. As of now, SimpleIM is currently not working.
+    
+    + Bug fixes
+        - The Terminal() function in SSF.py doesn't have a try/except block.
+        - Fixed API's _assert() method, which adds 'data/' to the path resulting to 'PathNotFound' exception being raised.
+        - Fixed API's _assert() method, which raises 'ValueError' when the configuration file's usernames and passwords are blank or None.
+        - Fixed API's _assert() method, which still checks the binary path even when the default path is used.
+        - Fixed API's _assert() method, which raises 'ValueError' when 'NOTES_MAXLINES' (an int) global variable is an integer.
+        - Fixed 'module test' command.
+        - Fixed proper_exit() function.
+    
+    + Miscellaneous Updates
+        - Deleted legacy update algorithm.
+        - *Added Service template for generating service modules.
+    
+    [i] All updates marked with an asterisk (*) is still under development,
+    and may or may not work partially, or totally.
+
+commit 8f7581154afd4f41128bfdb80cab2cd292bcf53c
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Thu May 31 14:12:31 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit ede38e32f19187478d0a31695b25dd4c1b9d6182
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Thu May 31 14:11:29 2018 +0800
