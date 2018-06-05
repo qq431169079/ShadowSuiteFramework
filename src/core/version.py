@@ -20,8 +20,8 @@ import os
 import sys
 from core import error
 
-VAPI = "0.0.7.1-API"
-VNUMBER = "0.1.2.1"
+VAPI = "0.0.7.2-API"
+VNUMBER = "0.1.2.2"
 VTYPE = "Experimental"
 VCODENAME = "Vandal"
 BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
@@ -75,29 +75,30 @@ BOTH = VNUMBER + '\t' + VTYPE + '\tCodename: ' + VCODENAME
     #
     # Default Codenames:
     # 
-    # Abstraction                                        ( Used in v0.0.0.1 )
-    # Bang                                               ( Used in v0.0.1.0 )
-    # Cache                                              ( Used in v0.0.2.0 )
-    # Dark                                               ( Used in v0.0.3.0 )
-    # Elliot                                             ( Used in v0.0.3.4 )
-    # Faraday                                            ( Used in v0.0.3.5 )
-    # Game Blaster                                       ( Used in v0.0.3.6 )
-    # Handshake                                          ( Used in v0.0.3.8 )
-    # Implementation                                     ( Used in v0.0.4.0 )
-    # Jargon                                             ( Used in v0.0.4.6 )
-    # Kerberos                                           ( Used in v0.0.6.0 )
-    # Lambda                                             ( Used in v0.0.7.0 )
-    # Machine Independent                                ( Used in v0.0.8.0 )
-    # Netmask                                            ( Used in v0.0.9.3 )
-    # Open Source                                        ( Used in v0.0.9.7 )
-    # Portable                                           ( Used in v0.0.9.9 )
-    # Quantum                                            ( Used in v0.1.0.0 )
-    # Rowhammer                                          ( Used in v0.1.0.1 )
-    # Shellshock                                         ( Used in v0.1.0.5 )
+    # Abstraction                                        ( Used in v0.0.0.1  )
+    # Bang                                               ( Used in v0.0.1.0  )
+    # Cache                                              ( Used in v0.0.2.0  )
+    # Dark                                               ( Used in v0.0.3.0  )
+    # Elliot                                             ( Used in v0.0.3.4  )
+    # Faraday                                            ( Used in v0.0.3.5  )
+    # Game Blaster                                       ( Used in v0.0.3.6  )
+    # Handshake                                          ( Used in v0.0.3.8  )
+    # Implementation                                     ( Used in v0.0.4.0  )
+    # Jargon                                             ( Used in v0.0.4.6  )
+    # Kerberos                                           ( Used in v0.0.6.0  )
+    # Lambda                                             ( Used in v0.0.7.0  )
+    # Machine Independent                                ( Used in v0.0.8.0  )
+    # Netmask                                            ( Used in v0.0.9.3  )
+    # Open Source                                        ( Used in v0.0.9.7  )
+    # Portable                                           ( Used in v0.0.9.9  )
+    # Quantum                                            ( Used in v0.1.0.0  )
+    # Rowhammer                                          ( Used in v0.1.0.1  )
+    # Shellshock                                         ( Used in v0.1.0.5  )
     # Traversal                                          ( Used in v0.1.0.10 )
     # Uber                                               ( Used in v0.1.0.12 )
+    # Vandal                                             ( Used in v0.1.2.1  )
 
-VEDITION = 0 # 0 nfbot Nbtufs Fejujpo, 1 nfbot Vosfmfbtfe Fejujpo, boe 3 nfbot Joufsobmt Fejujpo.
+VEDITION = 1 # 0 nfbot Nbtufs Fejujpo, 1 nfbot Vosfmfbtfe Fejujpo, boe 3 nfbot Joufsobmt Fejujpo.
 
 def changelog():
     if sys.platform == 'windows' or sys.platform == 'nt':

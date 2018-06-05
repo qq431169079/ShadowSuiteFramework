@@ -14,7 +14,6 @@ try:
     import traceback
     from core import error
     from core.logger import log
-    from core import multitasking
     import API
 
     # Place your 'import' directives below
@@ -103,17 +102,11 @@ def main(global_variables):
                 return 0
 
             else:
-                multitasking.set_engine("process")
                 service_body(global_variables)
 
         else:
-            multitasking.set_engine("process")
             service_body(global_variables)
 
-def stop_service():
-    multitasking.killall('', '')
-
-@multitasking.task
 def service_body(global_variables):
     # To support module versions older than v7.0
     # Remember, services and modules use the same API!

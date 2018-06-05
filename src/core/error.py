@@ -55,6 +55,7 @@ from core import exceptions
 # WARNING 0003: An unknown error occured when processing your command.
 # WARNING 0004: The last session of Shadow Suite Framework has failed to quit properly.
 # WARNING 0005: Shadow Suite Framework will !work unless you define a custom config file
+# WARNING 0006: Stopping all active services
 
     ##################################################################################
     #                                                                                #
@@ -203,3 +204,7 @@ class warningCodes:
     @property
     def WARNING0005(self):
         return(misc.CY + "WARNING 0005: Shadow Suite Framework will not work unless you define a custom configuration file!" + misc.CW)
+
+    @property
+    def WARNING0006(self):
+        return(misc.CY + "WARNING 0006: Stopping all active services..." + misc.CW)

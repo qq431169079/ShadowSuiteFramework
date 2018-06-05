@@ -93,9 +93,9 @@ try:
     #      (Logging something)
     #      # This function needs three arguments, type, message, logfile, and session ID.
     #      # The type is an integer, message is a string, and logfile is also a string.
-    #      # Log Type codes:          0 == INF       (Information)
-    #      #                          1 == WRN       (Warning)
-    #      #                          2 == ERR       (Error)
+    #      # Log Type codes:          0 ==    INF    (Information)
+    #      #                          1 ==    WRN    (Warning)
+    #      #                          2 ==    ERR    (Error)
     #      #
     #      # Extended Log Type codes: 3 == ***INF*** (Important)
     #      #                          4 == ***WRN*** (Serious warning)
@@ -137,7 +137,7 @@ class ShadowSuite:
 
     MODULE_MODE_INFO = "[i] SSF is running as an imported module!\n" + misc.programFunctions().COPYRIGHT
 
-    def __init__(self, current_user='user', MODULE_PATH='modules/', OUTPUT_PATH='output/', SESSION_ID=123456, USERLEVEL=2, debugging=False):
+    def __init__(self, current_user='user', MODULE_PATH='modules/', SERVICES_PATH='services/', OUTPUT_PATH='output/', SESSION_ID=123456, USERLEVEL=2, debugging=False):
         if not current_user:
             self.current_user = 'user'
 
@@ -149,6 +149,12 @@ class ShadowSuite:
 
         else:
             self.MODULE_PATH = MODULE_PATH
+
+        if not SERVICES_PATH:
+            self.SERVICES_PATH = 'services/'
+
+        else:
+            self.SERVICES_PATH = SERVICES_PATH
 
         if not OUTPUT_PATH:
             self.OUTPUT_PATH = 'output/'
@@ -176,21 +182,39 @@ class ShadowSuite:
 
     def generate_new_module(self, cmn):
         logger.log(0, 'User generated a new module named ' + cmn, 'logfile.txt', self.SESSION_ID)
-        if misc.programFunctions().is_windows() == ('windows' or 'win' or 'nt'):
-            os.system("xcopy core/temp.py output/" + cmn + ".py")
+        if misc.programFunctions().is_windows():
+            os.system("xcopy core/temp_module.py output/" + cmn + ".py")
         
         else:
-            os.system("cp core/temp.py output/" + cmn + ".py")
+            os.system("cp core/temp_module.py output/" + cmn + ".py")
             
         if misc.programFunctions().path_exists('output/' + cmn + '.py'):
-            print("[i] " + cmn + ".py successfully generated!")
+            print("[i] " + cmn + ".py module successfully generated!")
         
         else:
             print("[i] " + error.errorCodes().ERROR0015 + " (Generated module not found)")
 
+    def generate_new_service(self, csn):
+        logger.log(0, 'User generated a new service named ' + csn, 'logfile.txt', self.SESSION_ID)
+        if misc.programFunctions().is_windows():
+            os.system("xcopy core/temp_service.py output/" + csn + ".py")
+
+        else:
+            os.system("cp core/temp_service.py output/" + csn + ".py")
+
+        if misc.programFunctions().path_exists('output/' + csn + ".py"):
+            print("[i] " + csn + ".py service sucessfully generated!")
+
+        else:
+            print("[i] " + error.errorCodes().ERROR0015 + " (Generated service not found)")
+
     def list_module(self):
         logger.log(0, 'User used list_module method via API.', 'api_logfile.txt', self.SESSION_ID)
         list_module.list(self.MODULE_PATH)
+
+    def list_service(self):
+        logger.log(0, "User used list_service method via API.", 'api_logfile.txt', self.SESSION_ID)
+        list_service.list(self.SERVICE_PATH)
 
     def find_module(self, module):
         # Argument "module" is the target module to view the info.
@@ -204,6 +228,17 @@ class ShadowSuite:
         except ModuleNotFoundError as modulenotfounderror_msg:
             print("[i] " + str(modulenotfounderror_msg))
 
+    def find_service(self, service):
+        # Argument "service" is the target service to view the info.
+        service_name = self.SERVICES_PATH + service
+        try:
+            service_name = service_name.replace('/', '.')
+            logger.log(3, 'User shows info about ' + service_name + ' service via API.', 'logfile.txt', global_variables['SESSION_ID'])
+            service_importlib(service_name, 'info')
+        
+        except Exception as service_err:
+            print(error.errorCodes().ERROR0020(str(service_err)))
+
     def use_module(self, module):
         # Argument "module" is the target module to run.
         module = module.lower()
@@ -215,6 +250,9 @@ class ShadowSuite:
 
         except ModuleNotFoundError as modulenotfounderror_msg:
             print("[i] " + str(modulenotfounderror_msg))
+
+    def use_service(self, service):
+        pass # DEV0001: Implement this!
 
     def suggest(self, criteria):
         # Argument "criteria" is the keywords typed in by user

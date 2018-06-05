@@ -112,6 +112,7 @@ def _testError():
     print(error.warningCodes().WARNING0003)
     print(error.warningCodes().WARNING0004)
     print(error.warningCodes().WARNING0005)
+    print(error.warningCodes().WARNING0006)
 
 def main():
     # Check python version first before main() function execution.
@@ -565,8 +566,15 @@ def Terminal():
                     menu_input = input(misc.CW + "[" + misc.CB + global_variables['current_user'] + misc.CW + "@" + misc.CB + misc.FB + misc.FI + "SSF.py" + misc.FR + misc.CW + "] #: ")
 
             except(KeyboardInterrupt, EOFError):
-                print(error.errorCodes().ERROR0002)
-                proper_exit(2)
+                if active_services != [] or active_services != None:
+                    print(error.warningCodes().WARNING0006)
+                    kill_all_active_services()
+
+                else:
+                    print(error.errorCodes().ERROR0002)
+                    proper_exit(2)
+
+                continue
 
             #print(menu_input) # DEV0005
 
@@ -744,7 +752,7 @@ def parse_arguments(menu_input="help", API_global_variables={}):
                             available_config_files = os.listdir('data/')
                             acf_iterator = 0
                             for config_files in available_config_files:
-                                if config_files == 'config.dat' or config_files == '.default_config.dat' or config_files == '.installed.dat' or config_files == '.SSFhistory' or config_files == '.SSFnotes':
+                                if config_files == 'config.dat' or config_files == '.default_config.dat' or config_files == '.installed.dat' or config_files == '.SSFhistory' or config_files == '.SSFnotes' or config_files == 'neofetch.config':
                                     continue
 
                                 else:
@@ -1746,13 +1754,14 @@ def parse_arguments(menu_input="help", API_global_variables={}):
                     services_o = menu_input.split(' ')
                     if services_o[1].lower().startswith(('show', 'list', 'lst', 'ls')):
                         list_services.list(global_variables['SERVICES_PATH'])
+                        print(active_services) # DEV0005
 
                     elif services_o[1].lower().startswith(('start', 'enable')):
                         service_name = global_variables['SERVICES_PATH'] + services_o[2]
                         try:
                             service_name = service_name.replace('/', '.')
                             logger.log(3, 'User started ' + service_name + ' service.', 'logfile.txt', global_variables['SESSION_ID'])
-                            service_importlib(service_name)
+                            service_importlib(service_name, 'start')
                         
                         except Exception as service_err:
                             print(error.errorCodes().ERROR0020(str(service_err)))
@@ -1778,14 +1787,7 @@ def parse_arguments(menu_input="help", API_global_variables={}):
                             print(error.errorCodes().ERROR0020(str(service_err)))
 
                     elif services_o[1].lower().startswith(('reload', 'restart', 'reboot')):
-                        service_name = global_variables['SERVICES_PATH'] + services_o[2]
-                        try:
-                            service_name = service_name.replace('/', '.')
-                            logger.log(3, 'User shows info about ' + service_name + ' service.', 'logfile.txt', global_variables['SESSION_ID'])
-                            service_importlib(service_name, 'reload')
-
-                        except Exception as service_err:
-                            print(error.errorCodes().ERROR0020(str(service_err)))
+                        pass
 
                     elif services_o[1].lower().startswith(('generate', 'produce', 'new')):
                         pass
@@ -2109,9 +2111,15 @@ def parse_arguments(menu_input="help", API_global_variables={}):
                 print(error.errorCodes().ERROR0001)
 
         except KeyboardInterrupt:
-            logger.log(1, 'CTRL+C Detected...', 'logfile.txt', global_variables['SESSION_ID'])
-            print(error.errorCodes().ERROR0002)
-            proper_exit(2)
+            if active_services != [] or active_services != None:
+                print(error.warningCodes().WARNING0006)
+                logger.log(1, 'CTRL+C Detected, Stopping active services...', 'logfile.txt', global_variables['SESSION_ID'])
+                kill_all_active_services()
+
+            else:
+                logger.log(1, 'CTRL+C Detected, Stopping SSF...', 'logfile.txt', global_variables['SESSION_ID'])
+                print(error.errorCodes().ERROR0002)
+                proper_exit(2)
 
         except ImportError:
             # This function is called if a module was missing.
@@ -2210,12 +2218,18 @@ def service_importlib(service_name, mode='start'):
     global active_services
     try:
         if mode == 'start':
-            print(misc.CGR + "[" + service_name + "] Starting service...")
-            iservice = importlib.import_module(service_name)
-            iservice.main(global_variables)
-            print(misc.CGR + "[" + service_name + "] Starting service... Done!")
+            try:
+                serv_start(service_name)
 
-        if mode == 'stop':
+            except Exception as e:
+                print(error.errorCodes().ERROR0020(str(e)))
+
+            else:
+                active_services.append(service_name)
+
+            time.sleep(5)
+
+        elif mode == 'stop':
             # DEV0001: The program quits when iservice.stop_service() is called.
             print(misc.CGR + "[" + service_name + "] Stopping service...")
             iservice = importlib.import_module(service_name)
@@ -2227,18 +2241,25 @@ def service_importlib(service_name, mode='start'):
             iservice.service_info()
 
         elif mode == 'reload':
+            """
             print(misc.CGR + "[" + service_name + "] Reloading service...")
             iservice = importlib.reload(importlib.import_module(service_name))
             print(misc.CGR + "[" + service_name + "] Reloading service... Done!")
             time.sleep(0.50)
+            """
+            pass
 
         else:
             raise ValueError("Parameter mode must be 'start', 'stop', 'info', or 'reload'!")
 
-        active_services.append(service_name)
-
     except Exception as service_err:
         print(error.errorCodes().ERROR0020(str(service_err)))
+
+@multitasking.task
+def serv_start(service_name):
+    print(misc.CGR + "[" + service_name + "] Starting service...")
+    iservice = importlib.import_module(service_name)
+    iservice.main(global_variables)
 
 def proper_exit(code):
     # Step 1: Deletes the file.
@@ -2262,20 +2283,18 @@ def proper_exit(code):
     except:
         logger.log(4, "SystemExit raised with error code " + str(code) + ".", 'logfile.txt')
 
-    # Step 4: Kills all threads. Services and some modules uses 
-    multitasking.killall
-    for serv in active_services:
-        iserv = importlib.import_module(serv)
-        iserv.stop_service()
-        print(misc.CGR + "[SERVICE] Stopping " + serv + "...")
-
-    # Step 5: Quit
+    # Step 4: Kills all threads. Services and some modules uses and quit.
     try:
         sys.exit(code)
 
-    except:
-        quit(code)
-        
+    except SystemExit:
+        os._exit(code)
+
+def kill_all_active_services():
+    #multitasking.killall('self', 'cls')
+    #multitasking.wait_for_tasks()
+    multitasking.config["KILL_RECIEVED"] = True
+
 def is_libedit():
     return "libedit" in readline.__doc__
     
