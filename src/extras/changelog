@@ -1,3 +1,23 @@
+commit 8e36ed44255d2c0038f29a146f3794e0d2cee833
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Jun 5 16:06:30 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.2.2 [Unreleased]
+    
+    + API Update for services.
+    
+    + Minor bug fixes.
+
+commit 5744e7b9ebff8f91e895689acc58be3cffc41456
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Mon Jun 4 17:37:22 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 6ead6c2bf90eb0af7a6d1a3952690fe521074a97
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Mon Jun 4 17:29:44 2018 +0800
