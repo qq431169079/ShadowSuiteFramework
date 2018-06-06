@@ -1,3 +1,31 @@
+commit d5faf86e0b33a153d8cf35368085493371c4dbb4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Jun 6 15:22:03 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    Update v0.1.2.3
+    
+    + Updated BRAT from v1.3 to v1.4
+
+commit 256960512d016c934754b912ded1cf2253ba6eb1
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Jun 6 09:52:33 2018 +0800
+
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+    
+    [Internals]
+    
+    + Added some secrets.
+
+commit 43814a062aaa3d6bc40dafbfba088402d1baf3f4
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Tue Jun 5 16:07:06 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit 8e36ed44255d2c0038f29a146f3794e0d2cee833
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Tue Jun 5 16:06:30 2018 +0800
