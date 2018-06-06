@@ -31,6 +31,7 @@ try:
     import subprocess # Subprocessing API
     import importlib # Framework Module importing API
     import signal # Signal API
+    import random # As the name implies, its for randomization.
     import atexit # Define multiple exit functions upon normal program termination.
     import readline # Allows us to reuse recent commands.
 
@@ -2089,8 +2090,48 @@ def parse_arguments(menu_input="help", API_global_variables={}):
                             print("- " + modules)
                             time.sleep(0.001)
 
+                    elif shadow_o[1] == "test":
+                        if shadow_o[2] == "multitasking":
+                            try:
+                                if shadow_o[3] == "no_sleep":
+                                    no_sleep = True
+
+                                else:
+                                    no_sleep = False
+
+                            except IndexError:
+                                no_sleep = False
+
+                            @multitasking.task
+                            def test_thread(i, no_sleep):
+                                if no_sleep:
+                                    o = 0
+
+                                else:
+                                    o = random.randint(1, 10) / 2
+
+                                print("Task #" + str(i) + " started, sleeping for " + str(o) + "...")
+                                time.sleep(o)
+                                print("Task #" + str(i) + " finished...")
+
+                            for i in range(0, 32):
+                                test_thread(i, no_sleep)
+
+                            del test_thread
+                            del no_sleep
+
+                            time.sleep(20)
+
+                    elif shadow_o[1] == "show":
+                        if shadow_o[2] == "multitasking":
+                            print(multitasking)
+                            for i in multitasking.config:
+                                print(str(i) + ": " + str(multitasking.config[i]) + '\n')
+
                     else:
                         raise IndexError
+
+                    del shadow_o
 
                 except IndexError:
                     proper_exit(999)
