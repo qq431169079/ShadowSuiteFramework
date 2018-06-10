@@ -119,6 +119,7 @@ def _testError():
     print(error.HTTPCodes().info_101)
 
 def main():
+    sj
     # Check python version first before main() function execution.
     req_py_version = (3, 6, 0) # Required python version integer, in a tuple.
     cur_py_version = sys.version_info # Get user python version.
