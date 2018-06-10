@@ -115,6 +115,9 @@ def _testError():
     print(error.warningCodes().WARNING0005)
     print(error.warningCodes().WARNING0006)
 
+    print(error.HTTPCodes().info_100)
+    print(error.HTTPCodes().info_101)
+
 def main():
     # Check python version first before main() function execution.
     req_py_version = (3, 6, 0) # Required python version integer, in a tuple.
@@ -502,6 +505,7 @@ def Terminal():
     global active_services
     recent_exceptions = ""
     active_services = []
+    multitasking.set_max_threads(multitasking.config["CPU_CORES"] * 4)
 
     logger.log(0, "Reading history file...", 'logfile.txt', global_variables['SESSION_ID'])
     history_file = os.path.expanduser("data/.SSFhistory")
@@ -2062,7 +2066,7 @@ def parse_arguments(menu_input="help", API_global_variables={}):
                         os.system("tracert /b " + trace_o[1]) # DEV0001: must be tested on a windows system!
 
                     else:
-                        os.system("tracepath -b " + trace_o[1])
+                        os.system("traceroute -b " + trace_o[1])
 
                 except(KeyboardInterrupt, EOFError):
                     pass
@@ -2114,13 +2118,13 @@ def parse_arguments(menu_input="help", API_global_variables={}):
                                 time.sleep(o)
                                 print("Task #" + str(i) + " finished...")
 
-                            for i in range(0, 32):
+                            for i in range(0, 10):
                                 test_thread(i, no_sleep)
 
                             del test_thread
                             del no_sleep
 
-                            time.sleep(20)
+                            time.sleep(10)
 
                     elif shadow_o[1] == "show":
                         if shadow_o[2] == "multitasking":

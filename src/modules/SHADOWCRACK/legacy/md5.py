@@ -20,7 +20,7 @@ words = words.readlines()
 print('Cracking...')
 for word in words:
     word = word.strip('\n')
-    hash = hashlib.md5(word)
+    hash = hashlib.md5(word.encode())
     value = hash.hexdigest()
     value = value.upper()
     if value == hash01:

@@ -1,6 +1,4 @@
 #!/usr/bin/bash
 
-vim ShadowCrack.py
-vim core/encrypt.py
-vim core/decrypt.py
-vim core/misc.py
+vim ShadowCrack.py core/encrypt.py core/decrypt.py core/misc.py
+python3 ShadowCrack.py

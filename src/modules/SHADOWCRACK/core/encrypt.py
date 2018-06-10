@@ -1,16 +1,20 @@
 #!/usr/bin/env python
 
+import base64
 from core import misc
 
 def caesar(plainText, shift):
     cipherText = ""
-    for ch in plainText:
+    for ch in plainText.lower():
         if ch.isalpha():
             stayInAlphabet = ord(ch) + shift
             if stayInAlphabet > ord('z'):
                 stayInAlphabet -= 26
 
             finalLetter = chr(stayInAlphabet)
+
+        else:
+            finalLetter = ch
 
         cipherText += finalLetter
 
@@ -107,6 +111,10 @@ def masc(msg):
         else:
             result += char
 
+    return result
+
+def base64e(msg):
+    result = base64.b64encode(msg)
     return result
 
 def leet(msg):

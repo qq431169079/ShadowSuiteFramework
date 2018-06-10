@@ -11,16 +11,15 @@ hash01 = hash01.upper()
 print('%s%s  %s' % (W, RR, W))
 wordlist = input('%s    %s%s[%s#%s%s] Wordlist:%s ' % (RR, W, B, R, W, B, O))
 try:
-    words = open(wordlist, 'r')
+    words = open(wordlist, 'r').readlines()
 except(IOError):
     print('Error: Check your wordlist path\n')
     sys.exit(1)
 
-words = words.readlines()
 print('Cracking...')
 for word in words:
     word = word.strip('\n')
-    hash = hashlib.sha512(word)
+    hash = hashlib.sha512(word.encode())
     value = hash.hexdigest()
     value = value.upper()
     if value == hash01:

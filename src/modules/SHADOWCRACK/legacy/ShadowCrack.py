@@ -27,12 +27,12 @@ print("Hashing Tool and Hash Cracker")
 print ("\n\nCopyright (C) 2018 Shadow Team\n")
 print ("\n\n")
 # Asks if encrypt or decrypt.
-encryptordecrypt = input("\n[E] Encrypt a String\n[C] Crack a hash\n[Q] Quit\n\nInput: ")
+encryptordecrypt = int(input("[01] Encrypt a string\n[02] Crack a hash\n[99] Quit"))
 
-if encryptordecrypt == 'e' or encryptordecrypt == 'E':
+if encryptordecrypt == 1:
   import ecrypt
    
-elif encryptordecrypt == 'c' or encryptordecrypt == 'C':
+elif encryptordecrypt == 2:
     print(("%s%s  %s" % (W, RR, W)))
     print(("%s                            %s" % (RR, W)))
     print(("                          %s  %s" % (RR, W)))
@@ -43,7 +43,7 @@ elif encryptordecrypt == 'c' or encryptordecrypt == 'C':
     algorithm2 = input("%s    %s%s[%s#%s%s] Algorithm:%s " % (RR, W, B, R, W, B, O))
     algorithm2 = algorithm2.upper()
 
-elif encryptordecrypt == 'q' or encryptordecrypt == 'Q':
+elif encryptordecrypt == 99:
     print ("Quitting...")
     sys.exit(0)
   

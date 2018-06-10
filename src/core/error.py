@@ -208,3 +208,162 @@ class warningCodes:
     @property
     def WARNING0006(self):
         return(misc.CY + "WARNING 0006: Stopping all active services..." + misc.CW)
+
+class HTTPCodes:
+
+    def __init__(self):
+        pass
+
+    """ 1xx CODES - INFORMATION ONLY """
+    @property
+    def info_100(self):
+        return(misc.CGR + "100 - Continue; partial request received" + misc.END)
+
+    @property
+    def info_101(self):
+        return(misc.CGR + "101 - OK to switch protocols" + misc.END)
+    
+    """ 2xx CODES - SUCCESS """
+
+    @property
+    def success_200(self):
+        return(misc.CG + "200 - OK; all requested info returned" + misc.END)
+
+    @property
+    def created_201(self):
+        return(misc.CG + "201 - Created; request filled" + misc.END)
+    
+    @property
+    def accepted_202(self):
+        return(misc.CG + "202 - Accepted; request received" + misc.END)
+
+    @property
+    def source_unknown_203(self):
+        return(misc.CG + "203 - Source unknown; 3rd party info" + misc.END)
+
+    @property
+    def no_new_content_204(self):
+        return(misc.CG + "204 - No new content; nothing to send" + misc.END)
+
+    @property
+    def request_content(self):
+        return(misc.CG + "205 - Reset content; OK to clear form" + misc.END)
+
+    @property
+    def request_only_partially_filled(self):
+        return(misc.CG + "206 - Request only partially filled" + misc.END)
+
+    """ 3xx CODES - REDIRECTION """
+
+    @property
+    def header_300(self):
+        return(misc.CY + "300 - Header for 3xx codes" + misc.END)
+
+    @property
+    def moved_permanently_301(self):
+        return(misc.CY + "301 - Moved permanently; use new URL" + misc.END)
+
+    @property
+    def moved_temporarily_302(self):
+        return(misc.CY + "302 - Moved temporarily; use same URL" + misc.END)
+
+    @property
+    def redirected_303(self):
+        return(misc.CY + "303 - Redirected" + misc.END)
+
+    @property
+    def not_modified_304(self):
+        return(misc.CY + "304 - Not modified; use cached copy" + misc.END)
+
+    @property
+    def use_proxy_305(sef):
+        return(misc.CY + "305 - Use proxy; URL is provided" + misc.END)
+
+
+    """ 4xx CODES - FAILURE """
+
+    @property
+    def misunderstood_request_400(self):
+        return(misc.CR + "400 - Did not understand request" + misc.END)
+
+    @property
+    def password_required_401(self):
+        return(misc.CR + "401 - Password required" + misc.END)
+
+    @property
+    def payment_required_402(self):
+        return(misc.CR + "402 - Payment required" + misc.END)
+
+    @property
+    def refused_403(self):
+        return(misc.CR + "403 - Request refused" + misc.END)
+
+    @property
+    def not_found_404(self):
+        return(misc.CR + "404 - Not found" + misc.END)
+
+    @property
+    def not_acceptable_406(self):
+        return(misc.CR + "406 - Content type not acceptable" + misc.END)
+
+    @property
+    def must_auth_407(self):
+        return(misc.CR + "407 - Browser must authenticate" + misc.END)
+
+    @property
+    def timed_out_408(self):
+        return(misc.CR + "408 - Timed out; send again" + misc.END)
+
+    @property
+    def update_conflict_409(self):
+        return(misc.CR + "409 - Update conflict with explanation" + misc.END)
+
+    @property
+    def not_found_410(self):
+        return(misc.CR + "410 - Not found; resource gone" + misc.END)
+
+    @property
+    def content_length_missing_411(self):
+        return(misc.CR + "411 - Content length missing" + misc.END)
+
+    @property
+    def conditions_on_request_fail_412(self):
+        return(misc.CR + "412 - Conditions on request failed" + misc.END)
+
+    @property
+    def long_process_413(self):
+        return(misc.CR + "413 - Request too long to process" + misc.END)
+
+    @property
+    def resource_address_too_long_414(self):
+        return(misc.CR + "414 - Resource address too long" + misc.END)
+
+    @property
+    def bad_format_415(self):
+        return(misc.CR + "415 - Unsupported media type; bad format" + misc.END)
+
+    """ 5xx CODES - SERVER ERRORS """
+
+    @property
+    def internal_error_500(self):
+        return(misc.CR + "500 - Internal error" + misc.END)
+
+    @property
+    def cannot_fill_request_501(self):
+        return(misc.CR + "501 - Cannot fill request" + misc.END)
+
+    @property
+    def cannot_process_gateway_request_502(self):
+        return(misc.CR + "502 - Cannot process gateway request" + misc.END)
+
+    @property
+    def overloaded_503(self):
+        return(misc.CR + "503 - Overloaded or service over limits" + misc.END)
+
+    @property
+    def server_timed_out_504(self):
+        return(self.CR + "504 - Gateway or proxy server timed out" + misc.END)
+
+    @property
+    def HTTP_version_not_supported(self):
+        return(misc.CR + "505 - HTTP version not supported" + misc.END)

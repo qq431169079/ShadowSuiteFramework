@@ -39,6 +39,7 @@ def main(): # The Main Function
                     cipher = int(input(' >>> '))
                     
                     if cipher == 1:
+                        print("[i] Ceasar cipher automatically disables capitalization.")
                         caesar_msg = str(input("Message: "))
                         caesar_shift = int(input("Shift: "))
                         result = encrypt.caesar(caesar_msg, caesar_shift)
@@ -74,15 +75,14 @@ def main(): # The Main Function
 
                     elif cipher == 5:
                         ### DEV0001 Base64 decoder and encoder isn't working! ###
-                        print(misc.coming_soon)
-                        """
                         base64_msg = str(input("Message: ")).encode()
-                        result = base64.b64encode(base64_msg, altchars=None)
+                        result = str(encrypt.base64e(base64_msg))
+                        result = result.replace("b'", '')
+                        result = result.replace("'", '')
                         print(result)
                         misc.programFunctions().pause()
                         del base64_msg
                         del result
-                        """
 
                     elif cipher == 6:
                         leet_msg = str(input("Message: "))
@@ -95,11 +95,14 @@ def main(): # The Main Function
                     else:
                         print(misc.invalid_input)
 
-                except ValueError:
-                    print(misc.invalid_input)
+                except Exception as e:
+                    print(e)
+                    print()
+                    traceback.print_exc()
 
-                except TypeError:
-                    print(misc.invalid_input)
+                except KeyboardInterrupt:
+                    print("CTRL+C Detected, now quitting...")
+                    sys.exit(1)
 
             elif command == 'decrypt':
                 print(misc.ciphers)
@@ -107,6 +110,7 @@ def main(): # The Main Function
                     cipher = int(input(' >>> '))
 
                     if cipher == 1:
+                        print("[i] Ceasar cipher automatically disables capitalization.")
                         caesar_ciphertext = str(input("Ciphertext: "))
                         caesar_shift = int(input("Number of rotations: "))
                         result = decrypt.caesar(caesar_ciphertext, caesar_shift)
@@ -141,15 +145,12 @@ def main(): # The Main Function
                         del result
 
                     elif cipher == 5:
-                        ### DEV0001 Must be human-readable form ###
-                        """
                         base64_msg = str(input("Message: "))
-                        result = base64.b64decode(base64_msg, altchars=None, validate=False)
+                        result = decrypt.base64d(base64_msg)
                         print(result)
                         misc.programFunctions().pause()
                         del base64_msg
                         del result
-                        """
 
                     elif cipher == 6:
                         leet_msg = str(input("Message: "))
@@ -162,11 +163,10 @@ def main(): # The Main Function
                     else:
                         print(misc.invalid_input)
 
-                except ValueError:
-                    print(misc.invalid_input)
-
-                except TypeError:
-                    print(misc.invalid_input)
+                except Exception as e:
+                    print(e)
+                    print()
+                    traceback.print_exc()
 
             elif command == 'info':
                 print(misc.coming_soon)
@@ -179,16 +179,15 @@ def main(): # The Main Function
 
             else:
                 print(misc.invalid_input)
-
-        except ValueError:
-            print(misc.invalid_input)
-
-        except TypeError:
-            print(misc.invalid_input)
-
+        
         except KeyboardInterrupt:
             print("CTRL+C detected, quitting...")
             sys.exit(1)
+
+        except Exception as e:
+            print(e)
+            print()
+            traceback.print_exc()
 
 # If running independently, run main() function.
 if __name__ == '__main__':

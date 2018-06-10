@@ -7,7 +7,7 @@ git diff HEAD
 echo "[i] Edit version on README.md and version.py... (vim README.md src/core/version.py)"
 read TEMP
 vim README.md src/core/version.py src/core/__init__.py
-echo "[i] Enter version:"
+echo "[i] Enter new version:"
 read VERSION
 echo ""
 echo "[i] Now publishing update... (Git status)"

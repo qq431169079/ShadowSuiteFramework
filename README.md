@@ -1,4 +1,4 @@
-# Shadow Suite Framework 0.1.2.3 :: Ethical Hacking Toolkit and Framework
+# Shadow Suite Framework 0.1.2.4 :: Ethical Hacking Toolkit and Framework
 ## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
 Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
@@ -8,11 +8,12 @@ Tools that you need for reconnaissance, scanning,
 exploitation, encryption, password cracking, and more!
 Shadow Suite Framework is the main project of Shadow Team.
 
-# What's new?
+## What's new?
 ------------------
-+ Updated BRAT from v1.3 to v1.4
++ ATTENTION: We just moved to GitLab, people!
+      -https://gitlab.com/Catayao56/ShadowSuiteFramework.git
 
-# Full Feature List
+## Full Feature List
 ------------------------
 + Open Source
       -Shadow Suite is protected by the GNU General Public License, means
@@ -35,9 +36,18 @@ Shadow Suite Framework is the main project of Shadow Team.
        arsenal! It provides you tools written in different languages. Python,
        Ruby, Perl, PHP, and many more!
 
-# TO-DO List
++ Services
+      -Its too bad if you need to open multiple instances of SSF just to do other
+       tasks... So services just've come! Start those services such as servers,
+       background hash crackers, and many more!
+
++ Secrets
+      -We know this is not really necessary, But its fun to look at the code to
+       see SSF secrets!
+
+## TO-DO List
 ------------------------
-+ [FEATURE REQUEST]: Metasploit Framework, MultiTool, Aeneas Of Troy's PortScaner, PassHunt, Tor Client (If available), Encrypted IM client (If available).
++ [FEATURE REQUEST]: Metasploit Framework, MultiTool, Aeneas Of Troy's PortScaner, PassHunt, Encrypted IM client (If available).
 
 + [MAINTENANCE]: Update FL00D, BRAT, and Deception.
 
@@ -51,15 +61,13 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 + [MAINTENANCE]: More logging verbosity.
 
-+ [ISSUE]: requests module not found when running on popular linux systems.
++ [ISSUE]: Some modules are not found when running on popular linux systems, such as Ubuntu and Kali.
 
 + [MAINTENANCE]: Installation of modules using a number of archive formats (for modules with subdirectories) or optional/online install mode.
 
 + [ISSUE]: modules lower than v7 doesn't use the "global variables" and doesn't check if the user has changed the "MODULE PATH" variable.
 
 + [MAINTENANCE]: Module fixes.
-
-+ [FEATURE REQUEST]: in-app sytem stats
 
 + [ISSUE]: Readline bug, when 'scrolling' through the recently entered *long* commands, the prompt disappears and the UI goes bezerk! :P
 
@@ -71,7 +79,9 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 + [ISSUE]: On termux, (but maybe also in other systems) try to run vim via 'run vim [FILENAME]' and go to another app. When you go back, a very buggy UI will show.
 
-# License and Copying
++ [MAINTENANCE]: Module API support.
+
+## License and Copying
 ------------------------
 
 + This program is free software: you can redistribute it and/or modify
@@ -89,7 +99,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 + See LICENSE file.
 
-# Credits
+## Credits
 ------------------------
 
 	==Shadow Suite Framework Contributors==
@@ -136,8 +146,8 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 	[i] More contributors in program; Type 'module info [MODULE NAME]' on SSF Console.
 
-# Requirements
-+ Tested Operating Systems are Kali Linux, Linux Mint, Termux Terminal Emulator for Android, and Cygwin Terminal Emulator for Windows
+## Requirements
++ Tested Operating Systems are Kali, Mint, Ubuntu, Termux Terminal Emulator for Android, and Cygwin Terminal Emulator for Windows
 	
 + Not yet tested for Windows Operating Systems...
 
@@ -147,17 +157,17 @@ Shadow Suite Framework is the main project of Shadow Team.
 + Python Interpreter version 2 and 3.
 + Dependencies
 	-Dependencies can be installed automatically in the program. (Needs Internet Connection)
-	-To manually install, type "pip install -r requirements.txt" and bash instdeps.bash
+	-To manually install, type "sudo python3 core/update.py" and "bash instdeps.bash".
 
 
-# Installing & Running
+## Installing & Running
 ------------------------
 1.Installing and Running
       -Enter these commands in your terminal:
 
-      $ apt update && apt upgrade -y [1]
-      $ apt install python git [2]
-      $ git clone https://GitHub.com/Sh4d0w-T34m/ShadowSuiteFramework.git [3]
+      $ sudo apt update && apt upgrade -y [1]
+      $ sudo apt install python git [2]
+      $ git clone https://gitlab.com/Catayao56/ShadowSuiteFramework.git [3]
       $ cd ShadowSuiteFramework/src && chmod 755 SSF.py [4]
       $ ./SSF.py [5]
       [Shadow] $ full update [6]
@@ -165,7 +175,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 
       [1] Update repository package list/s.
       [2] Install Python interpreter and Git client.
-      [3] Clone Shadow Suite Framework from Shadow Team's Github repository.
+      [3] Clone Shadow Suite Framework from Catayao56's Github repository.
       [4] Changes directory to ShadowSuiteFramework/src and changes file mode to executable.
       [5] Run 'SSF.py'.
       [6] Type 'full update' on Shadow Suite's console to update
@@ -176,4 +186,4 @@ Shadow Suite Framework is the main project of Shadow Team.
 
 2.Questions? Feature requests? Bugs?
       
-      -Just contact us and we'll respond as soon as possible. You can also create a pull request on https://github.com/Sh4d0w-T34m/ShadowSuiteFramework.git
+      -Just contact us and we'll respond as soon as possible. You can also create a pull request on https://gitlab.com/Catayao56/ShadowSuiteFramework.git
