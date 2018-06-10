@@ -1,3 +1,31 @@
+commit 17f3a2d395ccab76d5841528637eb7d96dbf19df
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Jun 10 11:03:21 2018 +0800
+
+    Deleted payload.py which is not supposed to be here :/
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
+commit 8d5d0ecfd8401498ccafc23313b6bd0ddfd73866
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Sun Jun 10 11:01:58 2018 +0800
+
+    Update v.01.2.4
+    
+    + Updated Shadow Crack
+    
+    + Added HTTP error codes for future update.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
+commit 47993b101c836199ae9571f2231a731b7b786f1a
+Author: Catayao56 <Catayao56@gmail.com>
+Date:   Wed Jun 6 15:22:42 2018 +0800
+
+    Added changelog.
+    
+    Signed-off-by: Catayao56 <Catayao56@gmail.com>
+
 commit d5faf86e0b33a153d8cf35368085493371c4dbb4
 Author: Catayao56 <Catayao56@gmail.com>
 Date:   Wed Jun 6 15:22:03 2018 +0800
