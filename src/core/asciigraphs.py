@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Coding=UTF-8
+#
 # Shadow Suite Framework :: Ethical Hacking Toolkit and Framework
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
