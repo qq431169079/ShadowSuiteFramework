@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+import sys
+
 if sys.platform == 'linux' or sys.platform == 'darwin':
     # Colors with meanings
     CW   = '\033[0m'       # white           (normal)
