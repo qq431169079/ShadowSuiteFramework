@@ -2,5 +2,7 @@ test:
   script:
   - apt-get update -qy
   - apt-get install -y python-dev python-pip
+  - cd src
+  - bash instdeps.bash
   - python SSF.py
   - python -m API.py
