@@ -1,6 +1,6 @@
-#!/bin/python
-# Coding=UTF-8
-# Shadow Suite Linux Edition :: Ethical Hacking Toolkit
+#!/usr/bin/env python3
+#
+# Shadow Suite Framework :: Ethical Hacking Toolkit and Framework
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -15,6 +15,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
+
+# -*- coding: utf-8 -*-
 
 import os
 import sys

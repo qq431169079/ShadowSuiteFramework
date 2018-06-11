@@ -1,5 +1,5 @@
-#!usr/bin/env python3
-# Coding=UTF-8
+#!/usr/bin/env python3
+#
 # Shadow Suite Framework :: Ethical Hacking Toolkit and Framework
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
@@ -16,9 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-# This Application Programming Interface (API) is meantly built for
-# Shadow Suite Framework's custom modules. This may be used to integrate
-# with Shadow Suite Framework's features.
+# -*- coding: utf-8 -*-
 
 try:
     # Python modules
