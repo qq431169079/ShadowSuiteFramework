@@ -1,6 +1,6 @@
-# Shadow Suite Framework 0.1.2.4 :: Ethical Hacking Toolkit and Framework
-## Copyright (C) 2017-2018 :: Shadow Team <Public.ShadowTeam@gmail.com>
-Shadow Suite Framework is an Ethical Hacking Toolkit and Framework.
+# Shadow Suite Framework 0.1.2.4: Ethical Hacking Toolkit and Framework
+## Copyright (C) 2017-2018: Shadow Team <Public.ShadowTeam@gmail.com>
+[Shadow Suite Framework](https://gitlab.com/Catayao56/ShadowSuiteFramework.git) is an Ethical Hacking Toolkit and Framework.
 It was created on Thursday, Dec 7 2:44:37 PM, 2017.
 It provides many tools that you can use,
 written mainly in Python, BASH, PHP, etc.
@@ -9,17 +9,15 @@ exploitation, encryption, password cracking, and more!
 Shadow Suite Framework is the main project of Shadow Team.
 
 ## What's new?
-------------------
 + ATTENTION: We just moved to GitLab, people!
       -https://gitlab.com/Catayao56/ShadowSuiteFramework.git
 
 ## Full Feature List
-------------------------
 + Open Source
       -Shadow Suite is protected by the GNU General Public License, means
        that you can freely download, modify, and distribute the software.
        Just give "creds" to us and the developers that made the awesome
-       tools :)
+       tools)
 
 + Create Custom Modules from template
       -Do you know Python? Do you know how to code in Python? Do you want
@@ -46,43 +44,30 @@ Shadow Suite Framework is the main project of Shadow Team.
        see SSF secrets!
 
 ## TO-DO List
-------------------------
-+ [FEATURE REQUEST]: Metasploit Framework, MultiTool, Aeneas Of Troy's PortScaner, PassHunt, Encrypted IM client (If available).
+###Issues
+[ ] #0001: Some modules are not found when running on popular linux systems, such as Ubuntu and Kali.
+[ ] #0002: modules lower than v7 doesn't use the "global variables" and doesn't check if the user has changed the "MODULE PATH" variable.
+[ ] #0003: Readline bug, when 'scrolling' through the recently entered *long* commands, the prompt disappears and the UI goes bezerk!P
+[ ] #0004: Readline bug, it does not read the command history properly.
+[ ] #0005: Notepad bug fixes... BUGGY!
+[ ] #0006: Python requirements has no info if it is python 2 or 3.
+[ ] #0007: On termux, (but maybe also in other systems) try to run vim via 'run vim [FILENAME]' and go to another app. When you go back, a very buggy UI will show.
 
-+ [MAINTENANCE]: Update FL00D, BRAT, and Deception.
+###Maintenance
+[ ] #0001: Fix update algorithms. (*ONGOING; Testing needed*)
+[ ] #0002: Module fixes.
+[ ] #0003: Module API support.
+[ ] #0004: Update FL00D, BRAT, and Deception.
+[ ] #0005: API arguments as dict.
+[ ] #0006: Installation of modules using a number of archive formats (for modules with subdirectories) or optional/online install mode.
+[ ] #0007: More logging verbosity.
 
-+ [FEATURE REQUEST]: List tools by category.
-
-+ [FEATURE REQUEST]: less for python 3
-
-+ [MAINTENANCE]: Fix update algorithms. (*ONGOING; Testing needed*)
-
-+ [MAINTENANCE]: API arguments as dict.
-
-+ [MAINTENANCE]: More logging verbosity.
-
-+ [ISSUE]: Some modules are not found when running on popular linux systems, such as Ubuntu and Kali.
-
-+ [MAINTENANCE]: Installation of modules using a number of archive formats (for modules with subdirectories) or optional/online install mode.
-
-+ [ISSUE]: modules lower than v7 doesn't use the "global variables" and doesn't check if the user has changed the "MODULE PATH" variable.
-
-+ [MAINTENANCE]: Module fixes.
-
-+ [ISSUE]: Readline bug, when 'scrolling' through the recently entered *long* commands, the prompt disappears and the UI goes bezerk! :P
-
-+ [ISSUE]: Readline bug, it does not read the command history properly.
-
-+ [ISSUE]: Notepad bug fixes... BUGGY!
-
-+ [ISSUE]: Python requirements has no info if it is python 2 or 3.
-
-+ [ISSUE]: On termux, (but maybe also in other systems) try to run vim via 'run vim [FILENAME]' and go to another app. When you go back, a very buggy UI will show.
-
-+ [MAINTENANCE]: Module API support.
+###Feature Requests
+[ ] #0001: Metasploit Framework, MultiTool, Aeneas Of Troy's PortScaner, PassHunt, Encrypted IM client (If available).
+[ ] #0002: less for python 3
+[ ] #0003: List tools by category.
 
 ## License and Copying
-------------------------
 
 + This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -100,9 +85,8 @@ Shadow Suite Framework is the main project of Shadow Team.
 + See LICENSE file.
 
 ## Credits
-------------------------
 
-	==Shadow Suite Framework Contributors==
+	###Shadow Suite Framework Contributors
 	Project Lead: Catayao56
 	Project co-lead: Sh4d0wH4X0R
 
