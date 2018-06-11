@@ -39,11 +39,7 @@ class ASCII_Graphs():
 
                 else:
                     percent = percent // 2
-                    if sys.platform == 'nt':
-                        bar = '|' + ('█' * percent)
-
-                    else:
-                        bar = '|' + ('=' * percent)
+                    bar = '|' + ('=' * percent)
                     empty = 50 - percent
                     bar = bar + ' ' * empty + '|'
                     return bar
