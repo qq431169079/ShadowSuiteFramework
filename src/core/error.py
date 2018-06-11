@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Coding=UTF-8
+#
 # Shadow Suite Framework :: Ethical Hacking Toolkit and Framework
 # Copyright (C) 2017-2018  Shadow Team <Public.ShadowTeam@gmail.com>
 #
@@ -16,9 +16,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
+# -*- coding: utf-8 -*-
+
 import os
 import sys
-from core import misc
+from core import colors
 from core import exceptions
 
 ############### ERRORS AND WARNINGS ###############

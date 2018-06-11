@@ -17,8 +17,3 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 # -*- coding: utf-8 -*-
-
-# Shadow Suite Framework Exceptions
-
-class InvalidParameterError(Exception):
-    pass
