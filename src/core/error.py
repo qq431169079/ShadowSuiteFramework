@@ -18,7 +18,7 @@
 
 import os
 import sys
-from core import misc
+from core import colors
 from core import exceptions
 
 ############### ERRORS AND WARNINGS ###############
