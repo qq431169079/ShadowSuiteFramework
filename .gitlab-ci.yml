@@ -1,8 +1,13 @@
-test:
-  script:
-  - apt-get update -qy
-  - apt-get install -y python-dev python-pip
-  - cd src
-  - bash instdeps.bash
-  - python SSF.py
-  - python -m API.py
+stages:
+    setup:
+        - apt-get update -qy
+        - apt-get install -y python python-dev python-pip python2 python2-dev python2-pip
+        - cd src
+
+    test:
+        - python SSF.py
+        - python -m API.py
+
+    extended:
+        - python tests/SSF.py
+        - python tests/API.py
