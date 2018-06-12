@@ -5,5 +5,4 @@ test:
         - cd src
         - python SSF.py
         - python -m API.py
-        - python tests/SSF.py
         - python tests/API.py
