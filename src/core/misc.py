@@ -216,7 +216,7 @@ class programFunctions(object):
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
 
-    def pause(self, silent=False):
+    def pause(self, silent=False,  phrase="Press enter to continue..."):
         try:
             """
             platform = sys.platform
@@ -248,7 +248,7 @@ class programFunctions(object):
                 input()
 
             else:
-                input("Press enter to continue...")
+                input(phrase)
 
         except KeyboardInterrupt:
             print(error.errorCodes().ERROR0002)
