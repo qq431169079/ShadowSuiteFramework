@@ -10,6 +10,7 @@ class testEnvLinux:
         self.job_no = 0
         self.result = [0, '']
         self.retcode = 0
+        self.justContinue = False
         self.report = []
         self.rootdir = ''
         self.CG   = '\033[32m'
@@ -26,13 +27,19 @@ class testEnvLinux:
         test = ['echo 6', 'echo 7', 'eko 8']
         finalize = ['eao 9', 'echo 10']
         stages = [initialize, test, finalize]
+        iterate = 0
         for stage in stages:
+            iterate += 1
+            print(self.CGR, "[i] Running stage #" + str(iterate), self.END)
             for command in stage:
-                if self.run(command) == 0:
-                    continue
+                if not self.justContinue:
+                    self.run(command)
 
                 else:
-                    break
+                    self.report.append((-1, 'Skipped by CI Emulator.'))
+
+            self.justContinue = False
+            continue
 
         self.get_results()
 
