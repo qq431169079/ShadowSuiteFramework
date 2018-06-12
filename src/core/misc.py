@@ -250,7 +250,7 @@ class programFunctions(object):
             else:
                 input(phrase)
 
-        except KeyboardInterrupt:
+        except(KeyboardInterrupt, EOFError):
             print(error.errorCodes().ERROR0002)
             logger.log(2, "SystemExit raised with error code 2.", 'logfile.txt')
             sys.exit(2)
