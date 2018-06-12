@@ -44,7 +44,7 @@ Shadow Suite Framework is the main project of Shadow Team.
        see SSF secrets!
 
 ## TO-DO List
-###Issues
++ Issues
 [ ] #0001: Some modules are not found when running on popular linux systems, such as Ubuntu and Kali.
 [ ] #0002: modules lower than v7 doesn't use the "global variables" and doesn't check if the user has changed the "MODULE PATH" variable.
 [ ] #0003: Readline bug, when 'scrolling' through the recently entered *long* commands, the prompt disappears and the UI goes bezerk!P
@@ -53,7 +53,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 [ ] #0006: Python requirements has no info if it is python 2 or 3.
 [ ] #0007: On termux, (but maybe also in other systems) try to run vim via 'run vim [FILENAME]' and go to another app. When you go back, a very buggy UI will show.
 
-###Maintenance
++ Maintenance
 [ ] #0001: Fix update algorithms. (*ONGOING; Testing needed*)
 [ ] #0002: Module fixes.
 [ ] #0003: Module API support.
@@ -62,7 +62,7 @@ Shadow Suite Framework is the main project of Shadow Team.
 [ ] #0006: Installation of modules using a number of archive formats (for modules with subdirectories) or optional/online install mode.
 [ ] #0007: More logging verbosity.
 
-###Feature Requests
++ Feature Requests
 [ ] #0001: Metasploit Framework, MultiTool, Aeneas Of Troy's PortScaner, PassHunt, Encrypted IM client (If available).
 [ ] #0002: less for python 3
 [ ] #0003: List tools by category.

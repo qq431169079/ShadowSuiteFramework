@@ -1,1 +1,0 @@
-Httrack is coded in C, which is a compiled language.
