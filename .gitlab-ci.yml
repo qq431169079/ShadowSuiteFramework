@@ -3,6 +3,4 @@ test:
         - apt-get update -qy
         - apt-get install -y python python-dev python-pip
         - cd src
-        - python SSF.py
-        - python -m API.py
         - python tests/API.py
