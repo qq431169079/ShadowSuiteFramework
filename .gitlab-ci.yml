@@ -3,4 +3,5 @@ test:
         - apt-get update -qy
         - apt-get install -y python python-dev python-pip
         - cd src
-        - python tests/API.py
+        - cp test/API.py ./API.py
+        - python API.py
